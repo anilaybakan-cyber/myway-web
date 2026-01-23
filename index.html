@@ -59,9 +59,35 @@
         }
 
         .glass-card {
-            background: rgba(28, 31, 38, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .blob {
+            position: absolute;
+            filter: blur(80px);
+            z-index: 1;
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        @keyframes float-slow {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(10px, -20px);
+            }
+
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+
+        .animate-float-slow {
+            animation: float-slow 8s ease-in-out infinite;
         }
     </style>
 </head>
@@ -132,54 +158,97 @@
         </div>
     </section>
 
-    <!-- Features Grid -->
-    <section id="features" class="py-24 px-6 relative">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Why MyWay?</h2>
-                <p class="text-gray-400 max-w-xl mx-auto">Everything you need to experience a city, not just visit it.
+    <!-- Features Section -->
+    <section id="features" class="py-32 px-6 relative overflow-hidden">
+        <!-- Decorative Background Blobs -->
+        <div class="blob w-96 h-96 bg-primary/10 -top-20 -left-20 animate-float-slow"></div>
+        <div class="blob w-96 h-96 bg-accent/5 bottom-0 -right-20 animate-float-slow" style="animation-delay: -4s;">
+        </div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+                <div class="max-w-2xl">
+                    <span class="text-primary font-semibold tracking-widest uppercase text-xs mb-4 block">Experience
+                        More</span>
+                    <h2 class="text-4xl md:text-5xl font-bold leading-tight">
+                        Everything you need to <br />
+                        <span class="text-gray-500">experience a city.</span>
+                    </h2>
+                </div>
+                <p class="text-gray-400 max-w-sm text-lg leading-relaxed">
+                    Stop being a tourist. Start being a local with insights that actually matter.
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Feature 1 -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+                <!-- Large Feature: AI Guide -->
                 <div
-                    class="glass-card p-8 rounded-3xl hover:bg-white/10 transition-all duration-500 transform hover:-translate-y-2">
-                    <div
-                        class="w-12 h-12 rounded-2xl bg-primary/20 flex items-center justify-center text-primary text-xl mb-6">
-                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    class="md:col-span-8 group relative rounded-[2.5rem] p-10 overflow-hidden glass-card transition-all duration-500 hover:border-primary/30">
+                    <div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i class="fa-solid fa-wand-magic-sparkles text-9xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">AI-Powered Guide</h3>
-                    <p class="text-gray-400 leading-relaxed text-sm">
-                        Get personalized suggestions tailored to your vibe. Finding the perfect spot has never been
-                        easier.
-                    </p>
+
+                    <div class="relative z-10 h-full flex flex-col justify-between">
+                        <div>
+                            <div
+                                class="w-14 h-14 rounded-2xl bg-primary/20 flex items-center justify-center text-primary text-2xl mb-8 group-hover:scale-110 transition-transform duration-500">
+                                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            </div>
+                            <h3 class="text-3xl font-bold mb-6">Your Personal AI Concierge</h3>
+                            <p class="text-gray-400 text-lg leading-relaxed max-w-md">
+                                MyWay learns your travel style to curate hidden gems, secret spots, and local favorites
+                                that Google Maps won't tell you about.
+                            </p>
+                        </div>
+                        <div
+                            class="mt-12 flex items-center gap-4 text-sm font-medium text-white/60 group-hover:text-white transition-colors">
+                            <span>Tailored recommendations in real-time</span>
+                            <div class="h-px flex-1 bg-white/10 group-hover:bg-primary/30 transition-colors"></div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Feature 2 -->
+                <!-- Secondary Feature: Smart Routes -->
                 <div
-                    class="glass-card p-8 rounded-3xl hover:bg-white/10 transition-all duration-500 transform hover:-translate-y-2">
+                    class="md:col-span-4 group rounded-[2.5rem] p-10 glass-card transition-all duration-500 hover:border-accent/30 flex flex-col">
                     <div
-                        class="w-12 h-12 rounded-2xl bg-accent/20 flex items-center justify-center text-accent text-xl mb-6">
+                        class="w-14 h-14 rounded-2xl bg-accent/20 flex items-center justify-center text-accent text-2xl mb-8 group-hover:scale-110 transition-transform duration-500">
                         <i class="fa-solid fa-map-location-dot"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Smart Routes</h3>
-                    <p class="text-gray-400 leading-relaxed text-sm">
-                        Don't just wander, follow curated paths designed by experts to maximize your discovery.
+                    <h3 class="text-2xl font-bold mb-6">Expert <br />Smart Routes</h3>
+                    <p class="text-gray-400 leading-relaxed mb-auto">
+                        Follow curated journey paths designed by locals to witness the soul of the city in hours, not
+                        days.
                     </p>
                 </div>
 
-                <!-- Feature 3 -->
+                <!-- Secondary Feature: Offline Ready -->
                 <div
-                    class="glass-card p-8 rounded-3xl hover:bg-white/10 transition-all duration-500 transform hover:-translate-y-2">
+                    class="md:col-span-4 group rounded-[2.5rem] p-10 glass-card transition-all duration-500 hover:border-success/30 flex flex-col">
                     <div
-                        class="w-12 h-12 rounded-2xl bg-success/20 flex items-center justify-center text-success text-xl mb-6">
+                        class="w-14 h-14 rounded-2xl bg-success/20 flex items-center justify-center text-success text-2xl mb-8 group-hover:scale-110 transition-transform duration-500">
                         <i class="fa-solid fa-compass"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Offline Ready</h3>
-                    <p class="text-gray-400 leading-relaxed text-sm">
-                        Access your routes and city guides even without internet. Travel with confidence.
+                    <h3 class="text-2xl font-bold mb-6">Zero-Signal <br />Confidence</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Lose the roaming fees. Full offline support for maps and guides means you're never actually
+                        lost.
                     </p>
+                </div>
+
+                <!-- Bento Bonus: Interactive -->
+                <div class="md:col-span-8 group rounded-[2.5rem] p-1 glass-card overflow-hidden">
+                    <div
+                        class="bg-bg/40 w-full h-full rounded-[2.3rem] p-10 flex flex-col md:flex-row items-center gap-10">
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold mb-4">Ready to Change Your Way?</h3>
+                            <p class="text-gray-400 leading-relaxed">Join thousands of travelers who have rediscovered
+                                what it means to truly explore.</p>
+                        </div>
+                        <a href="#download"
+                            class="whitespace-nowrap px-8 py-4 bg-primary text-white rounded-2xl font-bold hover:bg-primary/80 transition-all hover:scale-105">Get
+                            Started Free</a>
+                    </div>
                 </div>
             </div>
         </div>
