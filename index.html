@@ -1,305 +1,1494 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyWay - The Smartest Way to Explore</title>
-    <meta name="description"
-        content="Your intelligent travel companion. Discover hidden gems, create custom routes, and explore cities like a local with AI-powered insights.">
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>MyWay – Smart Travel Routes & City Guide</title>
+    <meta name="description" content="Discover hidden gems, create smart routes, and explore cities like a local. Your AI-powered travel companion for iOS and Android.">
+    <meta name="keywords" content="travel app, city guide, smart routes, travel planner, AI travel, itinerary builder">
+    <meta property="og:title" content="MyWay – Smart Travel Routes & City Guide">
+    <meta property="og:description" content="Discover hidden gems, create smart routes, and explore cities like a local.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mywaytravelapp.com">
+    <link rel="icon" type="image/png" href="images/app_icon.png">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Outfit', 'sans-serif'],
-                    },
-                    colors: {
-                        bg: '#252131',
-                        card: '#1C1C26',
-                        primary: '#8C88F5',
-                        accent: '#EC4899', // Pinkish accent
-                        success: '#10B981'
-                    }
-                }
-            }
-        }
-    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-        body {
-            background-color: #252131;
-            color: #ffffff;
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
-        .gradient-text {
-            color: #8C88F5;
-            -webkit-text-fill-color: #8C88F5;
+        :root {
+            --primary: #7B6EF6;
+            --primary-light: #9D93FF;
+            --primary-dark: #5B4FD6;
+            --accent: #EC4899;
+            --bg-dark: #0F0B1A;
+            --bg-section: #130F22;
+            --bg-card: rgba(255, 255, 255, 0.04);
+            --text-primary: #FFFFFF;
+            --text-secondary: #9CA3AF;
+            --text-muted: #6B7280;
+            --border-subtle: rgba(255, 255, 255, 0.06);
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --radius-sm: 12px;
+            --shadow-glow: 0 0 80px rgba(123, 110, 246, 0.15);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        /* ===== UTILITY ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--primary-light);
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 560px;
+            line-height: 1.7;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 0 24px;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(15, 11, 26, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 1px 0 var(--border-subtle);
+        }
+
+        .navbar-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-brand img {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+        }
+
+        .nav-brand span {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: var(--primary);
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 100px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 24px rgba(123, 110, 246, 0.3);
+        }
+
+        /* Mobile menu */
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .nav-toggle svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            position: relative;
+            padding: 160px 24px 80px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .site-video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -10;
+            overflow: hidden;
+            background-color: var(--bg-dark);
+            pointer-events: none;
+        }
+
+        .site-video-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.18; /* Optimal visibility */
+            pointer-events: none;
+            filter: saturate(1.15) brightness(0.8) blur(1px); /* Low blur for crisp landscape video */
+        }
+
+        .site-video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 30%, rgba(15, 11, 26, 0.15) 0%, var(--bg-dark) 85%),
+                        linear-gradient(to bottom, rgba(15, 11, 26, 0.1) 0%, var(--bg-dark) 100%);
+            z-index: -9;
+            pointer-events: none;
         }
 
         .hero-glow {
             position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(140, 136, 245, 0.2) 0%, rgba(37, 33, 49, 0) 70%);
-            top: -20%;
+            width: 800px;
+            height: 800px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(123, 110, 246, 0.12) 0%, transparent 70%);
+            top: -200px;
             left: 50%;
             transform: translateX(-50%);
-            z-index: -1;
+            pointer-events: none;
+            z-index: 3;
         }
 
-        .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .blob {
+        .hero-glow-2 {
             position: absolute;
-            filter: blur(80px);
-            z-index: 1;
-            opacity: 0.4;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.08) 0%, transparent 70%);
+            bottom: 0;
+            right: 10%;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 4;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            background: rgba(123, 110, 246, 0.12);
+            border: 1px solid rgba(123, 110, 246, 0.2);
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--primary-light);
+            margin-bottom: 32px;
+        }
+
+        .hero-badge-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #34D399;
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 7vw, 72px);
+            font-weight: 800;
+            line-height: 1.08;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+        }
+
+        .gradient-text {
+            color: var(--primary);
+        }
+
+        .hero-description {
+            font-size: 18px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            max-width: 520px;
+            margin: 0 auto 40px;
+        }
+
+        /* Store Buttons */
+        .store-buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .store-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 28px;
+            border-radius: 14px;
+            font-size: 15px;
+            font-weight: 600;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .store-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .store-btn svg {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+
+        .store-btn-label {
+            text-align: left;
+        }
+
+        .store-btn-label small {
+            display: block;
+            font-size: 10px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.7;
+            line-height: 1;
+            margin-bottom: 2px;
+        }
+
+        .store-btn-label span {
+            display: block;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .store-btn--apple {
+            background: #FFFFFF;
+            color: #000000;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .store-btn--apple:hover {
+            box-shadow: 0 8px 32px rgba(123, 110, 246, 0.2);
+        }
+
+        .store-btn--google {
+            background: rgba(255, 255, 255, 0.08);
+            color: #FFFFFF;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .store-btn--google:hover {
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 8px 32px rgba(255, 255, 255, 0.05);
+        }
+
+        /* ===== SCREENSHOT CAROUSEL ===== */
+        .screenshots {
+            padding: 40px 0 100px;
+            position: relative;
+        }
+
+        .screenshots-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding: 0 24px;
+        }
+
+        .carousel-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 24px;
+            padding: 20px 24px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            /* Center the first/last items */
+            padding-left: max(24px, calc((100vw - 280px) / 2));
+            padding-right: max(24px, calc((100vw - 280px) / 2));
+        }
+
+        .carousel-track::-webkit-scrollbar {
+            display: none;
+        }
+
+        .carousel-item {
+            flex: 0 0 280px;
+            scroll-snap-align: center;
+            transition: transform 0.4s ease, opacity 0.4s ease;
+        }
+
+        .carousel-item img {
+            width: 280px;
+            height: auto;
+            border-radius: 32px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        /* Scroll-driven animation for modern browsers */
+        @supports ((animation-timeline: view()) and (animation-range: entry)) {
+            @keyframes carousel-scale {
+                0% { scale: 0.85; opacity: 0.5; }
+                50% { scale: 1; opacity: 1; }
+                100% { scale: 0.85; opacity: 0.5; }
+            }
+
+            .carousel-item {
+                animation: carousel-scale auto linear both;
+                animation-timeline: view(inline);
+            }
+        }
+
+        /* Carousel navigation dots */
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 32px;
+        }
+
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+            padding: 0;
+        }
+
+        .carousel-dot.active {
+            background: var(--primary);
+            transform: scale(1.2);
+        }
+
+        /* Carousel nav arrows */
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .carousel-arrow {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s ease, border-color 0.2s ease;
+        }
+
+        .carousel-arrow:hover {
+            background: rgba(123, 110, 246, 0.2);
+            border-color: rgba(123, 110, 246, 0.3);
+        }
+
+        .carousel-arrow svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* ===== FEATURES SECTION ===== */
+        .features {
+            padding: 100px 24px;
+            position: relative;
+        }
+
+        .features-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .features-header .section-subtitle {
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 24px;
+            height: 360px;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(123, 110, 246, 0.3), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: rgba(123, 110, 246, 0.15);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-card-text {
+            padding-bottom: 32px;
+            flex: 1;
+        }
+
+        .feature-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .feature-icon img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+
+        .feature-icon--purple {
+            background: rgba(123, 110, 246, 0.15);
+        }
+
+        .feature-icon--pink {
+            background: rgba(236, 72, 153, 0.15);
+        }
+
+        .feature-icon--green {
+            background: rgba(52, 211, 153, 0.15);
+        }
+
+        .feature-icon--blue {
+            background: rgba(56, 189, 248, 0.15);
+        }
+
+        .feature-icon--orange {
+            background: rgba(251, 146, 60, 0.15);
+        }
+
+        .feature-icon--indigo {
+            background: rgba(165, 130, 252, 0.15);
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -0.01em;
+        }
+
+        .feature-card p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        /* CSS Phone Mockup */
+        .phone-mockup {
+            width: 146px;
+            height: 292px;
+            background: #000000;
+            border: 5px solid #2C2638;
+            border-radius: 24px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4), inset 0 0 2px rgba(255, 255, 255, 0.15);
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+            align-self: center;
+        }
+
+        /* Dynamic Island */
+        .phone-mockup::after {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 10px;
+            background: #000000;
+            border-radius: 6px;
+            z-index: 10;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            border-radius: 19px;
+            overflow: hidden;
+            position: relative;
+            background: #110e1c;
+        }
+
+        .phone-screen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            display: block;
+        }
+
+        .feature-card:hover .phone-mockup {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(123, 110, 246, 0.2);
+        }
+
+
+        /* ===== STATS SECTION ===== */
+        .stats {
+            padding: 80px 24px;
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .stat-item p {
+            font-size: 14px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* ===== CTA SECTION ===== */
+        .cta {
+            padding: 120px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(123, 110, 246, 0.1) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             pointer-events: none;
         }
 
-        @keyframes float-slow {
-            0% {
-                transform: translate(0, 0);
-            }
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
 
-            50% {
-                transform: translate(10px, -20px);
-            }
+        .cta h2 {
+            font-size: clamp(32px, 5vw, 52px);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 20px;
+        }
 
-            100% {
-                transform: translate(0, 0);
+        .cta p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 480px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            padding: 64px 24px 32px;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 48px;
+            max-width: 1200px;
+            margin: 0 auto 48px;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .footer-brand img {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+        }
+
+        .footer-brand span {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .footer-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.7;
+            max-width: 300px;
+        }
+
+        .footer h4 {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            font-size: 14px;
+            color: var(--text-muted);
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 32px;
+            border-top: 1px solid var(--border-subtle);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-bottom p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fade-in-up {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
-        .animate-float-slow {
-            animation: float-slow 8s ease-in-out infinite;
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(24px);
+        }
+
+        .animate-on-scroll.visible {
+            animation: fade-in-up 0.7s ease-out forwards;
+        }
+
+        /* Stagger children animations */
+        .stagger-children .animate-on-scroll:nth-child(1) { animation-delay: 0ms; }
+        .stagger-children .animate-on-scroll:nth-child(2) { animation-delay: 100ms; }
+        .stagger-children .animate-on-scroll:nth-child(3) { animation-delay: 200ms; }
+        .stagger-children .animate-on-scroll:nth-child(4) { animation-delay: 300ms; }
+        .stagger-children .animate-on-scroll:nth-child(5) { animation-delay: 400ms; }
+        .stagger-children .animate-on-scroll:nth-child(6) { animation-delay: 500ms; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .hero {
+                padding: 130px 24px 60px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero-description {
+                font-size: 16px;
+            }
+
+            .feature-card {
+                flex-direction: column;
+                height: auto;
+                padding: 32px 24px;
+                align-items: flex-start;
+            }
+
+            .feature-card-text {
+                padding-bottom: 0;
+            }
+
+            .phone-mockup {
+                align-self: center;
+                width: 146px;
+                height: 292px;
+                margin-top: 24px;
+            }
+
+            .store-buttons {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .store-btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+
+            .carousel-item {
+                flex: 0 0 240px;
+            }
+
+            .carousel-item img {
+                width: 240px;
+            }
+
+            .carousel-track {
+                padding-left: max(24px, calc((100vw - 240px) / 2));
+                padding-right: max(24px, calc((100vw - 240px) / 2));
+            }
+        }
+
+        @media (max-width: 480px) {
+            .carousel-item {
+                flex: 0 0 220px;
+            }
+
+            .carousel-item img {
+                width: 220px;
+            }
+
+            .carousel-track {
+                padding-left: max(16px, calc((100vw - 220px) / 2));
+                padding-right: max(16px, calc((100vw - 220px) / 2));
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+        }
+
+        /* Reduce motion for accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
         }
     </style>
 </head>
 
-<body class="antialiased overflow-x-hidden">
+<body>
 
-    <!-- Navbar -->
-    <nav class="fixed w-full z-50 top-0 left-0 bg-bg/80 backdrop-blur-md border-b border-white/5">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <div
-                    class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center shadow-lg shadow-primary/20 p-1.5">
-                    <img src="assets/images/logo_symbol.png" alt="MyWay"
-                        class="w-full h-full object-contain brightness-0 invert">
-                </div>
-                <span class="font-bold text-xl tracking-tight">MyWay</span>
-            </div>
-            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
-                <a href="#features" class="hover:text-white transition">Features</a>
-                <a href="#download" class="hover:text-white transition">Download</a>
-                <a href="support.html" class="hover:text-white transition">Support</a>
-            </div>
+    <!-- Global Background Video -->
+    <div class="site-video-container">
+        <video class="site-video-bg" autoplay loop muted playsinline>
+            <source src="images/amalfi_bg_landscape.mp4" type="video/mp4">
+        </video>
+        <div class="site-video-overlay"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="#" class="nav-brand">
+                <img src="images/app_icon.png" alt="MyWay" width="40" height="40">
+                <span>MyWay</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#screenshots">Screenshots</a></li>
+                <li><a href="support.html">Support</a></li>
+                <li><a href="#download" class="nav-cta">Download</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 12h18M3 6h18M3 18h18"/>
+                </svg>
+            </button>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative pt-32 pb-20 md:pt-48 md:pb-32 px-6 overflow-hidden">
+    <section class="hero" id="hero">
         <div class="hero-glow"></div>
+        <div class="hero-glow-2"></div>
 
-        <div class="max-w-7xl mx-auto text-center relative z-10">
-            <div
-                class="inline-block px-4 py-1.5 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-indigo-300 text-xs font-semibold uppercase tracking-wider mb-6 animate-fade-in-up">
-                Now Available on iOS
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="hero-badge-dot"></span>
+                Available on iOS & Android
             </div>
 
-            <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6">
-                The Smartest Way <br />
+            <h1>
+                The Smartest Way<br>
                 <span class="gradient-text">To Explore.</span>
             </h1>
 
-            <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-                Meet your intelligent travel guide. Discover hidden gems, create custom routes,
-                and navigate cities like a local with MyWay.
+            <p class="hero-description">
+                Discover hidden gems, create smart routes, and navigate cities
+                like a local. Your AI-powered travel companion.
             </p>
 
-            <div id="download" class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <!-- App Store Button -->
-                <a href="#"
-                    class="group relative inline-flex items-center justify-center gap-3 bg-white text-black px-8 py-4 rounded-2xl font-semibold transition transform hover:scale-105 hover:shadow-lg hover:shadow-indigo-500/20">
-                    <i class="fa-brands fa-apple text-2xl"></i>
-                    <div class="text-left">
-                        <div class="text-[10px] leading-tight text-gray-500 uppercase">Download on the</div>
-                        <div class="text-base leading-tight">App Store</div>
+            <div class="store-buttons" id="download">
+                <!-- Apple App Store -->
+                <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-btn store-btn--apple" id="appStoreBtn">
+                    <svg viewBox="0 0 170 170" fill="currentColor">
+                        <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.34.13-9.13-1.85-14.36-5.94-3.86-3.08-7.89-7.83-12.09-14.23-8.29-12.67-14.34-26.9-18.15-42.71-3.82-15.82-5.73-31.17-5.73-46.06 0-16.71 3.93-30.82 11.79-42.32 7.86-11.51 17.8-17.37 29.84-17.6 5.56 0 11.56 1.63 18.01 4.9 6.45 3.26 10.96 4.9 13.53 4.9 2.12 0 6.27-1.46 12.43-4.38 6.16-2.93 11.96-4.49 17.39-4.7 13.62-.22 24.87 4.7 33.74 14.75-11.83 7.23-17.65 17.13-17.47 29.7.22 9.87 3.81 17.97 10.77 24.3 6.96 6.33 15.22 9.9 24.8 10.7-2.3 6.57-5.59 13.43-9.87 20.58zm-33.86-116.79c0-8.77 3.12-16.48 9.35-23.12 6.23-6.64 13.68-10.33 22.35-11.07.11 1.02.17 1.93.17 2.73 0 8.44-3.23 16.14-9.7 23.09-6.47 6.95-13.88 10.59-22.21 10.92-.09-.85-.14-1.63-.14-2.55z"/>
+                    </svg>
+                    <div class="store-btn-label">
+                        <small>Download on the</small>
+                        <span>App Store</span>
+                    </div>
+                </a>
+
+                <!-- Google Play Store -->
+                <a href="https://play.google.com/store/apps/details?id=com.anilaybakan.sehirkesif" class="store-btn store-btn--google" id="playStoreBtn">
+                    <svg viewBox="0 0 512 512" fill="currentColor">
+                        <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58 33.3-60.1-60.1L472.2 216c16.2 9.3 16.2 27.9 0 37.2zm-96.6 86.3L104.6 499l220.7-126.7-60.1-60.4z"/>
+                    </svg>
+                    <div class="store-btn-label">
+                        <small>Get it on</small>
+                        <span>Google Play</span>
                     </div>
                 </a>
             </div>
         </div>
+    </section>
 
-        <!-- Phone Mockup (Direct Image) -->
-        <div class="mt-16 relative max-w-[340px] mx-auto z-10 animate-float">
-            <!-- Glow Effect behind phone -->
-            <div class="absolute -inset-10 bg-primary/20 blur-3xl rounded-full z-0"></div>
+    <!-- Screenshots Carousel -->
+    <section class="screenshots" id="screenshots">
+        <div class="screenshots-header">
+            <span class="section-label">App Preview</span>
+            <h2 class="section-title">See It in Action</h2>
+            <p class="section-subtitle" style="margin: 0 auto;">
+                From personalized discoveries to smart route planning — everything you need for the perfect trip.
+            </p>
+        </div>
 
-            <div class="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl shadow-black/50">
-                <img src="assets/images/screenshot_vInternational.png" alt="MyWay App Screenshot"
-                    class="w-full h-auto block">
+        <div class="carousel-wrapper">
+            <div class="carousel-track" id="carouselTrack">
+                <div class="carousel-item">
+                    <img src="images/screenshots/EN_ios_4.png" alt="MyWay Explore Screen – Discover Barcelona with personalized suggestions" loading="lazy" width="280" height="607">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/screenshots/EN_ios_2.png" alt="MyWay AI Concierge – Hidden gems and local favorites" loading="lazy" width="280" height="607">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/screenshots/EN_ios_3.png" alt="MyWay Place Details – Sagrada Familia with ratings and tips" loading="lazy" width="280" height="607">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/screenshots/EN_ios_6.png" alt="MyWay Ready Routes – Curated walking routes with details" loading="lazy" width="280" height="607">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/screenshots/EN_ios_1.png" alt="MyWay My Route – Custom multi-day itinerary planner" loading="lazy" width="280" height="607">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/screenshots/EN_ios_5.png" alt="MyWay Route Map – Interactive daily route with navigation" loading="lazy" width="280" height="607">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/screenshots/EN_ios_7.png" alt="MyWay Nearby – Location-based search and filters" loading="lazy" width="280" height="607">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/screenshots/EN_ios_8.png" alt="MyWay Travel Blog – City guides and inspiration" loading="lazy" width="280" height="607">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/screenshots/EN_ios_9.png" alt="MyWay Profile – Trip history and travel memories" loading="lazy" width="280" height="607">
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-dots" id="carouselDots"></div>
+
+        <div class="carousel-nav">
+            <button class="carousel-arrow" id="prevBtn" aria-label="Previous screenshot">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <path d="M15 18l-6-6 6-6"/>
+                </svg>
+            </button>
+            <button class="carousel-arrow" id="nextBtn" aria-label="Next screenshot">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <path d="M9 18l6-6-6-6"/>
+                </svg>
+            </button>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-grid stagger-children">
+            <div class="stat-item animate-on-scroll">
+                <h3>90+</h3>
+                <p>Cities Covered</p>
+            </div>
+            <div class="stat-item animate-on-scroll">
+                <h3>14,000+</h3>
+                <p>Curated Places</p>
+            </div>
+            <div class="stat-item animate-on-scroll">
+                <h3>600+</h3>
+                <p>Ready Routes</p>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="py-32 px-6 relative overflow-hidden">
-        <!-- Decorative Background Blobs -->
-        <div class="blob w-96 h-96 bg-primary/10 -top-20 -left-20 animate-float-slow"></div>
-        <div class="blob w-96 h-96 bg-accent/5 bottom-0 -right-20 animate-float-slow" style="animation-delay: -4s;">
+    <section class="features" id="features">
+        <div class="features-header">
+            <span class="section-label">Why MyWay</span>
+            <h2 class="section-title">Everything You Need<br>to Explore a City</h2>
+            <p class="section-subtitle">
+                Stop being a tourist. Start exploring like a local with tools that actually make a difference.
+            </p>
         </div>
 
-        <div class="max-w-7xl mx-auto relative z-10">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
-                <div class="max-w-2xl">
-                    <span class="text-primary font-semibold tracking-widest uppercase text-xs mb-4 block">Experience
-                        More</span>
-                    <h2 class="text-4xl md:text-5xl font-bold leading-tight">
-                        Everything you need to <br />
-                        <span class="text-gray-500">experience a city.</span>
-                    </h2>
+        <div class="features-grid stagger-children">
+            <!-- Feature 1: AI Concierge -->
+            <div class="feature-card animate-on-scroll">
+                <div class="feature-card-text">
+                    <div class="feature-icon feature-icon--purple">
+                        <img src="images/icon_oneri.png" alt="AI Suggestions Icon">
+                    </div>
+                    <h3>AI-Powered Suggestions</h3>
+                    <p>MyWay learns your travel style and curates hidden gems, local favorites, and secret spots tailored just for you. Personalized recommendations that go beyond any guidebook.</p>
                 </div>
-                <p class="text-gray-400 max-w-sm text-lg leading-relaxed">
-                    Stop being a tourist. Start being a local with insights that actually matter.
-                </p>
+                <div class="phone-mockup">
+                    <div class="phone-screen">
+                        <img src="images/screenshots/EN_ios_2.png" alt="AI suggestions in MyWay" loading="lazy">
+                    </div>
+                </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-                <!-- Large Feature: AI Guide -->
-                <div
-                    class="md:col-span-8 group relative rounded-[2.5rem] p-10 overflow-hidden glass-card transition-all duration-500 hover:border-primary/30">
-                    <div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
-                        <i class="fa-solid fa-wand-magic-sparkles text-9xl"></i>
+            <!-- Feature 2: Smart Routes -->
+            <div class="feature-card animate-on-scroll">
+                <div class="feature-card-text">
+                    <div class="feature-icon feature-icon--pink">
+                        <img src="images/icon_myroute.png" alt="Smart Route Builder Icon">
                     </div>
-
-                    <div class="relative z-10 h-full flex flex-col justify-between">
-                        <div>
-                            <div
-                                class="w-14 h-14 rounded-2xl bg-primary/20 flex items-center justify-center text-primary text-2xl mb-8 group-hover:scale-110 transition-transform duration-500">
-                                <i class="fa-solid fa-wand-magic-sparkles"></i>
-                            </div>
-                            <h3 class="text-3xl font-bold mb-6">Your Personal AI Concierge</h3>
-                            <p class="text-gray-400 text-lg leading-relaxed max-w-md">
-                                MyWay learns your travel style to curate hidden gems, secret spots, and local favorites
-                                that Google Maps won't tell you about.
-                            </p>
-                        </div>
-                        <div
-                            class="mt-12 flex items-center gap-4 text-sm font-medium text-white/60 group-hover:text-white transition-colors">
-                            <span>Tailored recommendations in real-time</span>
-                            <div class="h-px flex-1 bg-white/10 group-hover:bg-primary/30 transition-colors"></div>
-                        </div>
+                    <h3>Smart Route Builder</h3>
+                    <p>Build optimized multi-day itineraries with drag-and-drop simplicity. See walking times, distances, and daily maps at a glance.</p>
+                </div>
+                <div class="phone-mockup">
+                    <div class="phone-screen">
+                        <img src="images/screenshots/EN_ios_1.png" alt="Smart Route Builder in MyWay" loading="lazy">
                     </div>
                 </div>
+            </div>
 
-                <!-- Secondary Feature: Smart Routes -->
-                <div
-                    class="md:col-span-4 group rounded-[2.5rem] p-10 glass-card transition-all duration-500 hover:border-accent/30 flex flex-col">
-                    <div
-                        class="w-14 h-14 rounded-2xl bg-accent/20 flex items-center justify-center text-accent text-2xl mb-8 group-hover:scale-110 transition-transform duration-500">
-                        <i class="fa-solid fa-map-location-dot"></i>
+            <!-- Feature 3: Ready Routes -->
+            <div class="feature-card animate-on-scroll">
+                <div class="feature-card-text">
+                    <div class="feature-icon feature-icon--green">
+                        <img src="images/icon_readyroute.png" alt="Ready-Made Routes Icon">
                     </div>
-                    <h3 class="text-2xl font-bold mb-6">Expert <br />Smart Routes</h3>
-                    <p class="text-gray-400 leading-relaxed mb-auto">
-                        Follow curated journey paths designed by locals to witness the soul of the city in hours, not
-                        days.
-                    </p>
+                    <h3>Ready-Made Routes</h3>
+                    <p>Follow expert-curated routes designed to show you the soul of each city — from Gothic Quarter walks to architecture trails.</p>
                 </div>
-
-                <!-- Secondary Feature: Offline Ready -->
-                <div
-                    class="md:col-span-4 group rounded-[2.5rem] p-10 glass-card transition-all duration-500 hover:border-success/30 flex flex-col">
-                    <div
-                        class="w-14 h-14 rounded-2xl bg-success/20 flex items-center justify-center text-success text-2xl mb-8 group-hover:scale-110 transition-transform duration-500">
-                        <i class="fa-solid fa-compass"></i>
+                <div class="phone-mockup">
+                    <div class="phone-screen">
+                        <img src="images/screenshots/EN_ios_6.png" alt="Ready-Made Routes in MyWay" loading="lazy">
                     </div>
-                    <h3 class="text-2xl font-bold mb-6">Zero-Signal <br />Confidence</h3>
-                    <p class="text-gray-400 leading-relaxed">
-                        Lose the roaming fees. Full offline support for maps and guides means you're never actually
-                        lost.
-                    </p>
                 </div>
+            </div>
 
-                <!-- Bento Bonus: Interactive -->
-                <div class="md:col-span-8 group rounded-[2.5rem] p-1 glass-card overflow-hidden">
-                    <div
-                        class="bg-bg/40 w-full h-full rounded-[2.3rem] p-10 flex flex-col md:flex-row items-center gap-10">
-                        <div class="flex-1">
-                            <h3 class="text-2xl font-bold mb-4">Ready to Change Your Way?</h3>
-                            <p class="text-gray-400 leading-relaxed">Join thousands of travelers who have rediscovered
-                                what it means to truly explore.</p>
-                        </div>
-                        <a href="#download"
-                            class="whitespace-nowrap px-8 py-4 bg-primary text-white rounded-2xl font-bold hover:bg-primary/80 transition-all hover:scale-105">Get
-                            Started Free</a>
+            <!-- Feature 4: Nearby -->
+            <div class="feature-card animate-on-scroll">
+                <div class="feature-card-text">
+                    <div class="feature-icon feature-icon--blue">
+                        <img src="images/icon_nearby.png" alt="Nearby Discovery Icon">
+                    </div>
+                    <h3>Nearby Discovery</h3>
+                    <p>Find the best restaurants, cafes, bars, and attractions near you. Filter by category, distance, and ratings.</p>
+                </div>
+                <div class="phone-mockup">
+                    <div class="phone-screen">
+                        <img src="images/screenshots/EN_ios_7.png" alt="Nearby Discovery in MyWay" loading="lazy">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature 5: City Guides -->
+            <div class="feature-card animate-on-scroll">
+                <div class="feature-card-text">
+                    <div class="feature-icon feature-icon--orange">
+                        <img src="images/icon_guide.png" alt="City Guides Icon">
+                    </div>
+                    <h3>City Guides</h3>
+                    <p>In-depth travel guides with seasonal recommendations, local tips, and themed collections for every type of traveler.</p>
+                </div>
+                <div class="phone-mockup">
+                    <div class="phone-screen">
+                        <img src="images/screenshots/EN_ios_8.png" alt="City Guides in MyWay" loading="lazy">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature 6: Travel Profile -->
+            <div class="feature-card animate-on-scroll">
+                <div class="feature-card-text">
+                    <div class="feature-icon feature-icon--indigo">
+                        <img src="images/icon_profile.png" alt="Travel Profile Icon">
+                    </div>
+                    <h3>Travel Profile</h3>
+                    <p>Track your trips, save memories, and build your travel history. Your personal travel journal, always with you.</p>
+                </div>
+                <div class="phone-mockup">
+                    <div class="phone-screen">
+                        <img src="images/screenshots/EN_ios_9.png" alt="Travel Profile in MyWay" loading="lazy">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="border-t border-white/5 bg-gray-900/50 pt-16 pb-8 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid md:grid-cols-4 gap-12 mb-12">
-                <div class="col-span-2">
-                    <div class="flex items-center gap-2 mb-4">
-                        <div
-                            class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center shadow-lg shadow-primary/20 p-1.5">
-                            <img src="assets/images/logo_symbol.png" alt="MyWay"
-                                class="w-full h-full object-contain brightness-0 invert">
-                        </div>
-                        <span class="font-bold text-lg">MyWay</span>
+    <!-- CTA Section -->
+    <section class="cta" id="cta">
+        <div class="cta-glow"></div>
+        <div class="cta-content">
+            <span class="section-label">Start Exploring</span>
+            <h2>Ready to Travel<br><span class="gradient-text">Your Way?</span></h2>
+            <p>Join thousands of travelers who explore smarter, not harder. Download MyWay and start planning your next adventure.</p>
+            <div class="store-buttons">
+                <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-btn store-btn--apple">
+                    <svg viewBox="0 0 170 170" fill="currentColor" width="24" height="24">
+                        <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.34.13-9.13-1.85-14.36-5.94-3.86-3.08-7.89-7.83-12.09-14.23-8.29-12.67-14.34-26.9-18.15-42.71-3.82-15.82-5.73-31.17-5.73-46.06 0-16.71 3.93-30.82 11.79-42.32 7.86-11.51 17.8-17.37 29.84-17.6 5.56 0 11.56 1.63 18.01 4.9 6.45 3.26 10.96 4.9 13.53 4.9 2.12 0 6.27-1.46 12.43-4.38 6.16-2.93 11.96-4.49 17.39-4.7 13.62-.22 24.87 4.7 33.74 14.75-11.83 7.23-17.65 17.13-17.47 29.7.22 9.87 3.81 17.97 10.77 24.3 6.96 6.33 15.22 9.9 24.8 10.7-2.3 6.57-5.59 13.43-9.87 20.58zm-33.86-116.79c0-8.77 3.12-16.48 9.35-23.12 6.23-6.64 13.68-10.33 22.35-11.07.11 1.02.17 1.93.17 2.73 0 8.44-3.23 16.14-9.7 23.09-6.47 6.95-13.88 10.59-22.21 10.92-.09-.85-.14-1.63-.14-2.55z"/>
+                    </svg>
+                    <div class="store-btn-label">
+                        <small>Download on the</small>
+                        <span>App Store</span>
                     </div>
-                    <p class="text-gray-500 text-sm max-w-xs">
-                        The ultimate travel companion for the modern explorer. Download today and start your journey.
-                    </p>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-4">Legal</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="privacy.html" class="hover:text-white transition">Privacy Policy (EN)</a></li>
-                        <li><a href="privacy-tr.html" class="hover:text-white transition">Gizlilik Politikası (TR)</a>
-                        </li>
-                        <li><a href="terms.html" class="hover:text-white transition">Terms of Use (EN)</a></li>
-                        <li><a href="terms-tr.html" class="hover:text-white transition">Kullanım Koşulları (TR)</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-4">Connect</h4>
-                    <ul id="contact" class="space-y-2 text-sm text-gray-400">
-                        <li><a href="support.html" class="hover:text-white transition">Support</a></li>
-                        <li><a href="mailto:info@mywaytravelapp.com"
-                                class="hover:text-white transition">info@mywaytravelapp.com</a></li>
-                        <li><a href="#" class="hover:text-white transition">Instagram</a></li>
-                    </ul>
-                </div>
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.anilaybakan.sehirkesif" class="store-btn store-btn--google">
+                    <svg viewBox="0 0 512 512" fill="currentColor" width="24" height="24">
+                        <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58 33.3-60.1-60.1L472.2 216c16.2 9.3 16.2 27.9 0 37.2zm-96.6 86.3L104.6 499l220.7-126.7-60.1-60.4z"/>
+                    </svg>
+                    <div class="store-btn-label">
+                        <small>Get it on</small>
+                        <span>Google Play</span>
+                    </div>
+                </a>
             </div>
-            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-gray-600 text-xs">© 2024 MyWay Travel App. All rights reserved.</p>
-                <div class="flex gap-4">
-                    <!-- Social Icons could go here -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div>
+                <div class="footer-brand">
+                    <img src="images/app_icon.png" alt="MyWay" width="36" height="36">
+                    <span>MyWay</span>
                 </div>
+                <p class="footer-desc">
+                    The ultimate travel companion for the modern explorer. Discover, plan, and navigate — all in one app.
+                </p>
             </div>
+            <div>
+                <h4>Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="privacy-tr.html">Gizlilik Politikasi</a></li>
+                    <li><a href="terms.html">Terms of Use</a></li>
+                    <li><a href="terms-tr.html">Kullanim Kosullari</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Connect</h4>
+                <ul class="footer-links">
+                    <li><a href="support.html">Support</a></li>
+                    <li><a href="mailto:support@mywaytravelapp.com">support@mywaytravelapp.com</a></li>
+                    <li><a href="https://www.instagram.com/mywaytravelapp/" target="_blank" rel="noopener">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 MyWay Travel App. All rights reserved.</p>
+            <p>Made with care for travelers worldwide.</p>
         </div>
     </footer>
 
-</body>
+    <!-- JavaScript -->
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        let lastScroll = 0;
 
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 40) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        }, { passive: true });
+
+        // Carousel functionality
+        const track = document.getElementById('carouselTrack');
+        const items = track.querySelectorAll('.carousel-item');
+        const dotsContainer = document.getElementById('carouselDots');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let currentIndex = 0;
+
+        // Create dots
+        items.forEach((_, i) => {
+            const dot = document.createElement('button');
+            dot.classList.add('carousel-dot');
+            if (i === 0) dot.classList.add('active');
+            dot.setAttribute('aria-label', `Go to screenshot ${i + 1}`);
+            dot.addEventListener('click', () => scrollToItem(i));
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = dotsContainer.querySelectorAll('.carousel-dot');
+
+        function scrollToItem(index) {
+            if (index < 0) index = 0;
+            if (index >= items.length) index = items.length - 1;
+            currentIndex = index;
+
+            items[index].scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest',
+                inline: 'center'
+            });
+
+            updateDots();
+        }
+
+        function updateDots() {
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentIndex);
+            });
+        }
+
+        prevBtn.addEventListener('click', () => scrollToItem(currentIndex - 1));
+        nextBtn.addEventListener('click', () => scrollToItem(currentIndex + 1));
+
+        // Update dots on scroll
+        let scrollTimeout;
+        track.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                const trackRect = track.getBoundingClientRect();
+                const centerX = trackRect.left + trackRect.width / 2;
+                let closestIndex = 0;
+                let closestDistance = Infinity;
+
+                items.forEach((item, i) => {
+                    const itemRect = item.getBoundingClientRect();
+                    const itemCenterX = itemRect.left + itemRect.width / 2;
+                    const distance = Math.abs(centerX - itemCenterX);
+                    if (distance < closestDistance) {
+                        closestDistance = distance;
+                        closestIndex = i;
+                    }
+                });
+
+                currentIndex = closestIndex;
+                updateDots();
+            }, 50);
+        }, { passive: true });
+
+        // Fallback for scroll-driven animations
+        if (!CSS.supports('(animation-timeline: view()) and (animation-range: entry)')) {
+            const tick = () => {
+                const trackRect = track.getBoundingClientRect();
+                const centerX = trackRect.left + trackRect.width / 2;
+
+                items.forEach(item => {
+                    const itemRect = item.getBoundingClientRect();
+                    const itemCenterX = itemRect.left + itemRect.width / 2;
+                    const distance = Math.abs(centerX - itemCenterX);
+                    const maxDistance = trackRect.width / 2;
+                    const progress = Math.max(0, 1 - distance / maxDistance);
+                    const scale = 0.85 + progress * 0.15;
+                    const opacity = 0.5 + progress * 0.5;
+
+                    item.style.transform = `scale(${scale})`;
+                    item.style.opacity = opacity;
+                });
+            };
+
+            track.addEventListener('scroll', tick, { passive: true });
+            window.addEventListener('resize', tick);
+            // Run after images load
+            window.addEventListener('load', tick);
+            tick();
+        }
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -60px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Mobile nav toggle (simple)
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        navToggle.addEventListener('click', () => {
+            const isOpen = navLinks.style.display === 'flex';
+            navLinks.style.display = isOpen ? 'none' : 'flex';
+            navLinks.style.position = isOpen ? '' : 'fixed';
+            navLinks.style.top = isOpen ? '' : '72px';
+            navLinks.style.left = isOpen ? '' : '0';
+            navLinks.style.right = isOpen ? '' : '0';
+            navLinks.style.flexDirection = isOpen ? '' : 'column';
+            navLinks.style.padding = isOpen ? '' : '24px';
+            navLinks.style.gap = isOpen ? '' : '16px';
+            navLinks.style.background = isOpen ? '' : 'rgba(15, 11, 26, 0.95)';
+            navLinks.style.backdropFilter = isOpen ? '' : 'blur(20px)';
+            navLinks.style.borderBottom = isOpen ? '' : '1px solid rgba(255,255,255,0.06)';
+            navLinks.style.zIndex = isOpen ? '' : '99';
+        });
+
+        // Keyboard navigation for carousel
+        track.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') scrollToItem(currentIndex - 1);
+            if (e.key === 'ArrowRight') scrollToItem(currentIndex + 1);
+        });
+
+        // Auto-scroll carousel hint (gentle initial movement)
+        setTimeout(() => {
+            if (currentIndex === 0 && track.scrollLeft === 0) {
+                scrollToItem(1);
+                setTimeout(() => scrollToItem(0), 1200);
+            }
+        }, 2000);
+    </script>
+
+</body>
 </html>

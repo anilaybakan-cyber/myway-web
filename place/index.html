@@ -1,126 +1,257 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="tr">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Way - Open in App</title>
-
-    <!-- Smart App Banner for iOS -->
-    <meta name="apple-itunes-app" content="app-id=6741743515">
-
+    <title>My Way - Seyahat Keşif Kartı</title>
+    <script>
+        // 🚀 Erken store yönlendirmesi — sayfa render olmadan önce çalışır
+        (function() {
+            var ua = navigator.userAgent || '';
+            var isIOS = /iPad|iPhone|iPod/.test(ua) || 
+                        (/Macintosh/i.test(ua) && navigator.maxTouchPoints > 1) ||
+                        (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+            var isAndroid = /android/i.test(ua);
+            
+            if (isIOS) {
+                window.location.replace("https://apps.apple.com/app/myway-route-travel-planner/id6757671492");
+            } else if (isAndroid) {
+                window.location.replace("https://play.google.com/store/apps/details?id=com.anilaybakan.sehirkesif");
+            }
+        })();
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
-
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #0A0612;
+            color: #FFFFFF;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
         }
-
+        /* Background Glows */
+        .glow-1 {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(0,0,0,0) 70%);
+            top: -100px;
+            left: -100px;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .glow-2 {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.15) 0%, rgba(0,0,0,0) 70%);
+            bottom: -100px;
+            right: -100px;
+            z-index: 1;
+            pointer-events: none;
+        }
         .container {
+            width: 90%;
+            max-width: 450px;
+            padding: 40px 30px;
+            background: rgba(20, 14, 30, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
             text-align: center;
-            max-width: 400px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            z-index: 2;
+            animation: fadeIn 0.8s ease-out;
         }
-
-        .logo {
-            font-size: 48px;
-            margin-bottom: 20px;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
-        h1 {
+        .logo-container {
+            margin-bottom: 25px;
+        }
+        .logo-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #8B5CF6, #EC4899);
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            font-weight: 800;
+            box-shadow: 0 10px 25px rgba(139, 92, 246, 0.4);
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        h2 {
             font-size: 24px;
-            margin-bottom: 10px;
-            color: #D4A574;
-        }
-
-        p {
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 30px;
-            line-height: 1.6;
-        }
-
-        .button {
-            display: inline-block;
-            padding: 16px 32px;
-            background: #D4A574;
-            color: #1a1a2e;
-            text-decoration: none;
-            border-radius: 12px;
             font-weight: 600;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+        .place-name {
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #A78BFA, #F472B6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 15px 0;
+            line-height: 1.2;
+        }
+        p.description {
             font-size: 16px;
-            transition: transform 0.2s;
+            color: #9CA3AF;
+            line-height: 1.6;
+            margin-bottom: 30px;
         }
-
-        .button:hover {
-            transform: scale(1.05);
+        .btn-primary {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #8B5CF6, #EC4899);
+            border: none;
+            border-radius: 14px;
+            color: white;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3);
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
         }
-
-        .sub-link {
-            margin-top: 20px;
-            color: rgba(255, 255, 255, 0.5);
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(139, 92, 246, 0.45);
+        }
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 25px 0;
+            color: #4B5563;
             font-size: 14px;
         }
-
-        .sub-link a {
-            color: #D4A574;
+        .divider::before, .divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.08);
+        }
+        .divider span {
+            padding: 0 15px;
+        }
+        .store-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .btn-store {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            color: white;
             text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        .btn-store:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        .btn-store img {
+            width: 20px;
+            height: 20px;
         }
     </style>
-
-    <script>
-        // Get place and city from URL query parameters
-        const params = new URLSearchParams(window.location.search);
-        const placeName = params.get('id') || '';
-        const city = params.get('city') || '';
-
-        // Also check path format: /place/PlaceName
-        const path = window.location.pathname;
-        let pathPlaceName = '';
-        const match = path.match(/\/place\/(.+)/);
-        if (match) {
-            pathPlaceName = decodeURIComponent(match[1]);
-        }
-
-        // Use query param if available, otherwise path
-        const finalPlaceName = placeName || pathPlaceName;
-
-        if (finalPlaceName) {
-            // Build custom scheme URL (matches what the app expects)
-            const customSchemeUrl = `mywayapp://place?id=${encodeURIComponent(finalPlaceName)}&city=${encodeURIComponent(city)}`;
-
-            // Immediately try to open the app
-            window.location.href = customSchemeUrl;
-
-            // If app doesn't open within 1.5 seconds, redirect to App Store
-            setTimeout(function () {
-                window.location.href = 'https://apps.apple.com/app/id6741743515';
-            }, 1500);
-        }
-    </script>
 </head>
-
 <body>
+    <div class="glow-1"></div>
+    <div class="glow-2"></div>
+    
     <div class="container">
-        <div class="logo">🧭</div>
-        <h1>My Way Travel</h1>
-        <p>Opening this place in My Way app...</p>
-        <a href="https://apps.apple.com/app/id6741743515" class="button">
-            Download My Way
-        </a>
-        <div class="sub-link">
-            <a href="/">Visit our website</a>
+        <div class="logo-container">
+            <div class="logo-icon">M</div>
+        </div>
+        
+        <h2 id="title-text">Bir Seyahat Kartı Paylaşıldı</h2>
+        <div id="place-name-display" class="place-name">Yükleniyor...</div>
+        <p id="desc-text" class="description">Akıllı rotalar ve kişiselleştirilmiş seyahat planları sunan My Way uygulamasında bu kartı görüntüleyin.</p>
+        
+        <a id="open-app-btn" href="#" class="btn-primary">Uygulamada Aç</a>
+        
+        <div class="divider">
+            <span id="divider-text">veya uygulamayı edinin</span>
+        </div>
+        
+        <div class="store-buttons">
+            <a id="ios-btn" href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="btn-store">
+                <svg width="20" height="20" viewBox="0 0 170 170" fill="currentColor">
+                    <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.34.13-9.13-1.85-14.36-5.94-3.86-3.08-7.89-7.83-12.09-14.23-8.29-12.67-14.34-26.9-18.15-42.71-3.82-15.82-5.73-31.17-5.73-46.06 0-16.71 3.93-30.82 11.79-42.32 7.86-11.51 17.8-17.37 29.84-17.6 5.56 0 11.56 1.63 18.01 4.9 6.45 3.26 10.96 4.9 13.53 4.9 2.12 0 6.27-1.46 12.43-4.38 6.16-2.93 11.96-4.49 17.39-4.7 13.62-.22 24.87 4.7 33.74 14.75-11.83 7.23-17.65 17.13-17.47 29.7.22 9.87 3.81 17.97 10.77 24.3 6.96 6.33 15.22 9.9 24.8 10.7-2.3 6.57-5.59 13.43-9.87 20.58zm-33.86-116.79c0-8.77 3.12-16.48 9.35-23.12 6.23-6.64 13.68-10.33 22.35-11.07.11 1.02.17 1.93.17 2.73 0 8.44-3.23 16.14-9.7 23.09-6.47 6.95-13.88 10.59-22.21 10.92-.09-.85-.14-1.63-.14-2.55z"/>
+                </svg>
+                <span>App Store</span>
+            </a>
+            <a id="android-btn" href="https://play.google.com/store/apps/details?id=com.anilaybakan.sehirkesif" class="btn-store">
+                <svg width="20" height="20" viewBox="0 0 512 512" fill="currentColor">
+                    <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58 33.3-60.1-60.1L472.2 216c16.2 9.3 16.2 27.9 0 37.2zm-96.6 86.3L104.6 499l220.7-126.7-60.1-60.4z"/>
+                </svg>
+                <span>Google Play</span>
+            </a>
         </div>
     </div>
-</body>
 
+    <script type="text/javascript">
+        // Desktop kullanıcılar için sayfa içeriğini güncelle (yönlendirme olmaz)
+        const urlParams = new URLSearchParams(window.location.search);
+        const placeName = urlParams.get('placeName') || '';
+        const cityId = urlParams.get('cityId') || '';
+
+        const userLang = navigator.language || navigator.userLanguage;
+        const isTr = userLang.startsWith('tr');
+
+        const placeNameDisplay = document.getElementById('place-name-display');
+        const titleText = document.getElementById('title-text');
+        const descText = document.getElementById('desc-text');
+        const openAppBtn = document.getElementById('open-app-btn');
+        const dividerText = document.getElementById('divider-text');
+
+        if (placeName) {
+            placeNameDisplay.textContent = decodeURIComponent(placeName);
+        } else {
+            placeNameDisplay.textContent = "My Way";
+        }
+
+        if (isTr) {
+            titleText.textContent = "Bir Seyahat Kartı Paylaşıldı";
+            descText.textContent = "Akıllı rotalar ve kişiselleştirilmiş seyahat planları sunan My Way uygulamasında bu kartı görüntüleyin.";
+            openAppBtn.textContent = "Uygulamada Aç";
+            dividerText.textContent = "veya uygulamayı edinin";
+            document.title = "My Way - Seyahat Keşif Kartı";
+        } else {
+            titleText.textContent = "A Travel Card Shared";
+            descText.textContent = "View this card in the My Way app, which offers smart routes and personalized travel plans.";
+            openAppBtn.textContent = "Open in App";
+            dividerText.textContent = "or get the app here";
+            document.title = "My Way - Travel Card Discovery";
+        }
+
+        openAppBtn.href = window.location.href;
+    </script>
+</body>
 </html>
