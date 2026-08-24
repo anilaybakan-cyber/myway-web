@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Curated City Guides & Smart Itineraries | MyWay</title>
     <meta name="description" content="Explore 90+ curated world city guides with local secrets, top spots, and smart itineraries.">
     <link rel="icon" type="image/png" href="../images/app_icon.png">
@@ -41,13 +41,18 @@
             color: #FFFFFF !important;
             font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             line-height: 1.65;
+            max-width: 100vw;
             overflow-x: hidden;
+            margin: 0;
+            padding: 0;
             -webkit-font-smoothing: antialiased;
         }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         a { text-decoration: none; color: inherit; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        img { max-width: 100%; height: auto; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; box-sizing: border-box; }
         
-        /* Navbar (100% Identical to Homepage) */
+        /* Navbar */
         .navbar {
             position: fixed;
             top: 0;
@@ -55,7 +60,7 @@
             right: 0;
             z-index: 100;
             padding: 0 24px;
-            background: rgba(15, 11, 26, 0.8);
+            background: rgba(15, 11, 26, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             box-shadow: 0 1px 0 var(--border-subtle);
@@ -78,8 +83,8 @@
             flex-shrink: 0;
         }
         .nav-brand img {
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
             border-radius: 10px;
         }
         .nav-links {
@@ -128,8 +133,12 @@
             cursor: pointer;
             padding: 8px;
         }
+        .nav-toggle svg {
+            width: 24px;
+            height: 24px;
+        }
         
-        /* Footer (100% Identical) */
+        /* Footer */
         .footer {
             padding: 64px 24px 32px;
             border-top: 1px solid var(--border-subtle);
@@ -185,27 +194,49 @@
             color: #6B7280;
         }
         
+        /* Mobile Breakpoints */
         @media (max-width: 768px) {
-            .nav-links { display: none; }
+            .navbar { padding: 0 16px; }
+            .navbar-inner { height: 64px; }
+            .nav-actions { display: none; }
             .nav-toggle { display: block; }
-            .footer-grid { grid-template-columns: 1fr; }
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: rgba(15, 11, 26, 0.98);
+                backdrop-filter: blur(25px);
+                -webkit-backdrop-filter: blur(25px);
+                flex-direction: column;
+                padding: 28px 24px;
+                gap: 20px;
+                border-bottom: 1px solid var(--border-subtle);
+                box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            }
+            .nav-links.open { display: flex; }
+            .container { padding: 0 16px; }
+            .footer { padding: 48px 16px 24px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 32px; }
             .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
         }
 
         
         .hub-hero {
-            padding: 160px 24px 60px;
+            padding: 150px 24px 50px;
             text-align: center;
             background: radial-gradient(circle at 50% 20%, rgba(123, 110, 246, 0.15), transparent 70%);
         }
         .hub-label { font-size: 13px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); font-weight: 700; }
-        .hub-title { font-size: clamp(36px, 6vw, 64px); font-weight: 800; margin: 12px 0 16px; line-height: 1.1; }
-        .hub-subtitle { font-size: 18px; color: var(--text-secondary); max-width: 620px; margin: 0 auto 36px; }
+        .hub-title { font-size: clamp(32px, 6vw, 56px); font-weight: 800; margin: 12px 0 16px; line-height: 1.15; }
+        .hub-subtitle { font-size: 17px; color: var(--text-secondary); max-width: 620px; margin: 0 auto 32px; line-height: 1.6; }
         
         .search-box {
             max-width: 520px;
             margin: 0 auto;
             position: relative;
+            width: 100%;
         }
         .search-input {
             width: 100%;
@@ -219,23 +250,24 @@
             outline: none;
             backdrop-filter: blur(10px);
             transition: border-color 0.2s, box-shadow 0.2s;
+            box-sizing: border-box;
         }
         .search-input:focus {
             border-color: var(--primary-light);
             box-shadow: 0 0 20px rgba(123, 110, 246, 0.3);
         }
         
-        /* Perfectly Proportioned Symmetrical Grid */
+        /* Grid */
         .hub-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
             gap: 24px;
-            padding: 40px 0 100px;
+            padding: 36px 0 100px;
         }
         .hub-city-card {
             position: relative;
             aspect-ratio: 4 / 4.8;
-            min-height: 290px;
+            min-height: 280px;
             border-radius: var(--radius-md);
             overflow: hidden;
             border: 1px solid var(--border-subtle);
@@ -296,7 +328,7 @@
             margin-bottom: 2px;
         }
         .hub-card-title {
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 800;
             color: #fff;
             line-height: 1.15;
@@ -317,19 +349,50 @@
             color: #fff;
             transform: translateX(4px);
         }
+        
+        /* Mobile Grid Adaptations */
+        @media (max-width: 768px) {
+            .hub-hero { padding: 100px 16px 30px; }
+            .hub-title { font-size: 32px; }
+            .hub-subtitle { font-size: 15px; margin-bottom: 24px; }
+            .search-input { padding: 14px 20px; font-size: 15px; }
+            .hub-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+                padding: 24px 0 60px;
+            }
+            .hub-city-card {
+                padding: 16px 14px;
+                min-height: 220px;
+                aspect-ratio: 3 / 4;
+                border-radius: 12px;
+            }
+            .hub-card-flag { font-size: 10px; padding: 2px 8px; letter-spacing: 0.5px; }
+            .hub-card-title { font-size: 18px; }
+            .hub-card-action { font-size: 11px; }
+        }
+        @media (max-width: 380px) {
+            .hub-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            .hub-city-card {
+                min-height: 260px;
+            }
+        }
     </style>
 </head>
 <body>
 
     
-    <!-- Navigation (100% Identical to Homepage) -->
+    <!-- Navigation (100% Identical & Mobile Responsive) -->
     <nav class="navbar" id="navbar">
         <div class="navbar-inner">
             <a href="/" class="nav-brand">
-                <img src="../images/app_icon.png" alt="MyWay" width="40" height="40">
+                <img src="../images/app_icon.png" alt="MyWay" width="38" height="38">
                 <span>MyWay</span>
             </a>
-            <ul class="nav-links">
+            <ul class="nav-links" id="navLinks">
                 <li><a href="/guides/" class="active">City Guides</a></li>
                 <li><a href="/#features">Features</a></li>
                 <li><a href="/#screenshots">Gallery</a></li>
@@ -338,7 +401,7 @@
             <div class="nav-actions">
                 <a href="/#download" class="nav-cta">Download</a>
             </div>
-            <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M3 12h18M3 6h18M3 18h18"/>
                 </svg>
@@ -363,7 +426,7 @@
         <div class="hub-grid" id="cityGrid">
             
     <a href="amalfi.html" class="hub-city-card" data-name="amalfi coast" data-country="italy">
-        <img src="https://images.unsplash.com/photo-1612698093158-e07ac200d44e?w=800" alt="Amalfi Coast" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1200" alt="Amalfi Coast" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇮🇹 Italy</div>
@@ -373,7 +436,7 @@
     </a>
     
     <a href="amsterdam.html" class="hub-city-card" data-name="amsterdam" data-country="netherlands">
-        <img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=800" alt="Amsterdam" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=1200" alt="Amsterdam" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇳🇱 Netherlands</div>
@@ -383,7 +446,7 @@
     </a>
     
     <a href="antalya.html" class="hub-city-card" data-name="antalya" data-country="türkiye">
-        <img src="https://emaadmin.emahouses.com//Content/Blog/pVPrGzHbS\u0131dfdsfsd.jpg" alt="Antalya" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=1200" alt="Antalya" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇹🇷 Türkiye</div>
@@ -403,7 +466,7 @@
     </a>
     
     <a href="atlanta.html" class="hub-city-card" data-name="atlanta" data-country="usa">
-        <img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=1200" alt="Atlanta" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1575917649705-5b59aaa12e6b?w=1200" alt="Atlanta" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">📍 USA</div>
@@ -423,7 +486,7 @@
     </a>
     
     <a href="barcelona.html" class="hub-city-card" data-name="barcelona" data-country="spain">
-        <img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?w=800" alt="Barcelona" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200" alt="Barcelona" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇪🇸 Spain</div>
@@ -433,7 +496,7 @@
     </a>
     
     <a href="bari.html" class="hub-city-card" data-name="bari" data-country="italy">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Puglia_bari_old-town.jpg/1280px-Puglia_bari_old-town.jpg" alt="Bari" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=1200" alt="Bari" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇮🇹 Italy</div>
@@ -443,7 +506,7 @@
     </a>
     
     <a href="belgrad.html" class="hub-city-card" data-name="belgrade" data-country="serbia">
-        <img src="https://cdnp.flypgs.com/files/Sehirler-long-tail/Belgrad/belgrad_otelleri.jpg" alt="Belgrade" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1588668214407-6ea9a6d8c272?w=1200" alt="Belgrade" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇷🇸 Serbia</div>
@@ -453,7 +516,7 @@
     </a>
     
     <a href="berlin.html" class="hub-city-card" data-name="berlin" data-country="germany">
-        <img src="https://images.unsplash.com/photo-1560969184-10fe8719e047?w=800" alt="Berlin" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1560969184-10fe8719e047?w=1200" alt="Berlin" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇩🇪 Germany</div>
@@ -473,7 +536,7 @@
     </a>
     
     <a href="bologna.html" class="hub-city-card" data-name="bologna" data-country="italy">
-        <img src="https://www.datocms-assets.com/57243/1661342703-6245af628d40974c9ab5a7fd_petr-slovacek-sxk8bwkvoxe-unsplash-20-1.jpg?auto=compress%2Cformat" alt="Bologna" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=1200" alt="Bologna" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇮🇹 Italy</div>
@@ -483,7 +546,7 @@
     </a>
     
     <a href="boston.html" class="hub-city-card" data-name="boston" data-country="usa">
-        <img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=1200" alt="Boston" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1501979376754-2ff867a4f659?w=1200" alt="Boston" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">📍 USA</div>
@@ -493,7 +556,7 @@
     </a>
     
     <a href="brugge.html" class="hub-city-card" data-name="bruges" data-country="belgium">
-        <img src="https://gezimanya.com/sites/default/files/styles/800x600_/public/lokasyon-detay/2021-08/brugge-hakkinda-bilinmesi-gerekenler.jpg" alt="Bruges" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=1200" alt="Bruges" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇧🇪 Belgium</div>
@@ -503,7 +566,7 @@
     </a>
     
     <a href="bruksel.html" class="hub-city-card" data-name="brussels" data-country="belgium">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Grand_Place_Bruselas_2.jpg/1280px-Grand_Place_Bruselas_2.jpg" alt="Brussels" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1559113202-c916b8e44373?w=1200" alt="Brussels" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇧🇪 Belgium</div>
@@ -513,7 +576,7 @@
     </a>
     
     <a href="budapeste.html" class="hub-city-card" data-name="budapest" data-country="hungary">
-        <img src="https://images.contentstack.io/v3/assets/blt06f605a34f1194ff/bltfde92aef92ecf073/6787eae0bf32fe28813c50fe/BCC-2024-EXPLORER-BUDAPEST-LANDMARKS-HEADER-_MOBILE.jpg?fit=crop&disable=upscale&auto=webp&quality=60&crop=smart" alt="Budapest" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1549877452-9c387954fbc2?w=1200" alt="Budapest" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇭🇺 Hungary</div>
@@ -523,7 +586,7 @@
     </a>
     
     <a href="budva.html" class="hub-city-card" data-name="budva" data-country="montenegro">
-        <img src="https://www.visit-montenegro.com/wp-content/uploads/2026/01/budva-drone-01-scaled.jpg" alt="Budva" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1555990538-1e4284d72856?w=1200" alt="Budva" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇲🇪 Montenegro</div>
@@ -533,7 +596,7 @@
     </a>
     
     <a href="cannes.html" class="hub-city-card" data-name="cannes" data-country="france">
-        <img src="https://www.rivieraloisirs.com/public/uploads/2021/05/Port-de-Cannes.jpg" alt="Cannes" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1200" alt="Cannes" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇫🇷 France</div>
@@ -543,7 +606,7 @@
     </a>
     
     <a href="catania.html" class="hub-city-card" data-name="catania" data-country="italy">
-        <img src="https://images.ctfassets.net/80dqdqpre1qk/cckCqd5EJjW09siSdf6Xo/dacc69a5bffc0e3a145df995c8684fa3/Catania_overzicht.jpg?fm=webp" alt="Catania" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=1200" alt="Catania" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇮🇹 Italy</div>
@@ -563,7 +626,7 @@
     </a>
     
     <a href="cesme.html" class="hub-city-card" data-name="cesme" data-country="turkey">
-        <img src="https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?w=1200" alt="Cesme" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=1200" alt="Cesme" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇹🇷 Turkey</div>
@@ -573,7 +636,7 @@
     </a>
     
     <a href="colmar.html" class="hub-city-card" data-name="colmar" data-country="france">
-        <img src="https://images.goway.com/production/hero/iStock-1423136049.jpg" alt="Colmar" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1520939817895-060bdef4ad1b?w=1200" alt="Colmar" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇫🇷 France</div>
@@ -583,7 +646,7 @@
     </a>
     
     <a href="dallas.html" class="hub-city-card" data-name="dallas" data-country="usa">
-        <img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=1200" alt="Dallas" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1545194959-71569e5d9333?w=1200" alt="Dallas" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">📍 USA</div>
@@ -593,7 +656,7 @@
     </a>
     
     <a href="dubai.html" class="hub-city-card" data-name="dubai" data-country="united arab emirates">
-        <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800" alt="Dubai" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1200" alt="Dubai" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇦🇪 United Arab Emirates</div>
@@ -613,7 +676,7 @@
     </a>
     
     <a href="dubrovnik.html" class="hub-city-card" data-name="dubrovnik" data-country="croatia">
-        <img src="https://images.unsplash.com/photo-1555990538-c48ed2061c43?w=800" alt="Dubrovnik" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1200" alt="Dubrovnik" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇭🇷 Croatia</div>
@@ -623,7 +686,7 @@
     </a>
     
     <a href="edinburgh.html" class="hub-city-card" data-name="edinburgh" data-country="scotland">
-        <img src="https://images.contentstack.io/v3/assets/blt06f605a34f1194ff/blt9d8daa2acc7bb33c/6797dc563b4101992b03092a/iStock-1153650218-MOBILE-HEADER.jpg?fit=crop&disable=upscale&auto=webp&quality=60&crop=smart" alt="Edinburgh" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=1200" alt="Edinburgh" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland</div>
@@ -633,7 +696,7 @@
     </a>
     
     <a href="fes.html" class="hub-city-card" data-name="fes" data-country="morocco">
-        <img src="https://images.unsplash.com/photo-1548013146-72479768bada?w=800" alt="Fes" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1548013146-72479768bada?w=1200" alt="Fes" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇲🇦 Morocco</div>
@@ -643,7 +706,7 @@
     </a>
     
     <a href="floransa.html" class="hub-city-card" data-name="florence" data-country="italy">
-        <img src="https://italien.expert/wp-content/uploads/2021/05/Florenz-Toskana-Italien0.jpg" alt="Florence" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1543429776-2782fc8e1acd?w=1200" alt="Florence" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇮🇹 Italy</div>
@@ -653,7 +716,7 @@
     </a>
     
     <a href="gaziantep.html" class="hub-city-card" data-name="gaziantep" data-country="turkey">
-        <img src="https://www.brandlifemag.com/wp-content/uploads/2021/04/acilis-gaziantep-december-06gaziantep-coppersmith-bazaar-600w-549044518.jpg" alt="Gaziantep" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=1200" alt="Gaziantep" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇹🇷 Turkey</div>
@@ -663,7 +726,7 @@
     </a>
     
     <a href="giethoorn.html" class="hub-city-card" data-name="giethoorn" data-country="netherlands">
-        <img src="https://www.onedayinacity.com/wp-content/uploads/2021/03/Giethoorn-Village.png" alt="Giethoorn" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1584003564911-a7a321c84e1c?w=1200" alt="Giethoorn" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇳🇱 Netherlands</div>
@@ -673,7 +736,7 @@
     </a>
     
     <a href="hallstatt.html" class="hub-city-card" data-name="hallstatt" data-country="austria">
-        <img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=1200" alt="Hallstatt" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1508873696983-2df5293cb32f?w=1200" alt="Hallstatt" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">📍 Austria</div>
@@ -683,7 +746,7 @@
     </a>
     
     <a href="heidelberg.html" class="hub-city-card" data-name="heidelberg" data-country="germany">
-        <img src="https://image.hurimg.com/i/hurriyet/90/1110x740/56b3325818c7730e3cdb6757.jpg" alt="Heidelberg" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=1200" alt="Heidelberg" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇩🇪 Germany</div>
@@ -703,7 +766,7 @@
     </a>
     
     <a href="houston.html" class="hub-city-card" data-name="houston" data-country="usa">
-        <img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=1200" alt="Houston" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1530089711124-9ca31fb9e863?w=1200" alt="Houston" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">📍 USA</div>
@@ -713,7 +776,7 @@
     </a>
     
     <a href="ibiza.html" class="hub-city-card" data-name="ibiza" data-country="spain">
-        <img src="https://www.visitspain.info/en/wp-content/uploads/sites/162/cala-d-hort-ibiza-hd.jpg" alt="Ibiza" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1512353087810-25dfcd100962?w=1200" alt="Ibiza" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇪🇸 Spain</div>
@@ -723,7 +786,7 @@
     </a>
     
     <a href="istanbul.html" class="hub-city-card" data-name="istanbul" data-country="türkiye">
-        <img src="https://bosporuscruise.com/wp-content/uploads/2025/09/Adsiz-tasarim-4.jpg" alt="Istanbul" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200" alt="Istanbul" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇹🇷 Türkiye</div>
@@ -733,7 +796,7 @@
     </a>
     
     <a href="kahire.html" class="hub-city-card" data-name="cairo" data-country="egypt">
-        <img src="https://gezimanya.com/sites/default/files/styles/800x600_/public/lokasyon-detay/2019-11/image-explore-ancient-egypt-merl.jpg" alt="Cairo" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1572252009286-268acec5ca0a?w=1200" alt="Cairo" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇪🇬 Egypt</div>
@@ -743,7 +806,7 @@
     </a>
     
     <a href="kansascity.html" class="hub-city-card" data-name="kansas city" data-country="usa">
-        <img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=1200" alt="Kansas City" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1545194959-71569e5d9333?w=1200" alt="Kansas City" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">📍 USA</div>
@@ -753,7 +816,7 @@
     </a>
     
     <a href="kapadokya.html" class="hub-city-card" data-name="cappadocia" data-country="turkey">
-        <img src="https://images.unsplash.com/photo-1641128324972-af3212f0f6bd?w=800" alt="Cappadocia" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1609137144822-0a27e3355f30?w=1200" alt="Cappadocia" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇹🇷 Turkey</div>
@@ -763,7 +826,7 @@
     </a>
     
     <a href="kas.html" class="hub-city-card" data-name="kas" data-country="turkey">
-        <img src="https://cdn.renticar.com/cms/Antalya_Kas_ta_Gezilecek_Yerler_1500x1000px_blog_goersel_kaputas_f9c367417e.jpg" alt="Kas" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=1200" alt="Kas" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇹🇷 Turkey</div>
@@ -773,7 +836,7 @@
     </a>
     
     <a href="kopenhag.html" class="hub-city-card" data-name="copenhagen" data-country="denmark">
-        <img src="https://images.unsplash.com/photo-1513622470522-26c3c8a854bc?w=800" alt="Copenhagen" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1513622470522-26c3c8a854bc?w=1200" alt="Copenhagen" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇩🇰 Denmark</div>
@@ -783,7 +846,7 @@
     </a>
     
     <a href="kotor.html" class="hub-city-card" data-name="kotor" data-country="montenegro">
-        <img src="https://www.etstur.com/letsgo/wp-content/uploads/2025/12/montenegro-kotorda-gezilecek-yerler-en-populer-rotalar-guncel-liste-1024x576.png" alt="Kotor" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1555990538-1e4284d72856?w=1200" alt="Kotor" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇲🇪 Montenegro</div>
@@ -793,7 +856,7 @@
     </a>
     
     <a href="ksamil.html" class="hub-city-card" data-name="ksamil" data-country="albania">
-        <img src="https://www.turizmtatilseyahat.com/wp-content/uploads/2020/07/ksamil-gezi-rehberi-.jpg" alt="Ksamil" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200" alt="Ksamil" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇦🇱 Albania</div>
@@ -803,7 +866,7 @@
     </a>
     
     <a href="lizbon.html" class="hub-city-card" data-name="lisbon" data-country="portugal">
-        <img src="https://images.unsplash.com/photo-1585208798174-6cedd86e019a?w=800" alt="Lisbon" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1509840841025-9088ba78a826?w=1200" alt="Lisbon" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇵🇹 Portugal</div>
@@ -813,7 +876,7 @@
     </a>
     
     <a href="londra.html" class="hub-city-card" data-name="london" data-country="united kingdom">
-        <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800" alt="London" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1200" alt="London" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇬🇧 United Kingdom</div>
@@ -823,7 +886,7 @@
     </a>
     
     <a href="losangeles.html" class="hub-city-card" data-name="los angeles" data-country="usa">
-        <img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=1200" alt="Los Angeles" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1580655653885-65763b2597d0?w=1200" alt="Los Angeles" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">📍 USA</div>
@@ -853,7 +916,7 @@
     </a>
     
     <a href="madrid.html" class="hub-city-card" data-name="madrid" data-country="spain">
-        <img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=800" alt="Madrid" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=1200" alt="Madrid" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇪🇸 Spain</div>
@@ -863,7 +926,7 @@
     </a>
     
     <a href="mallorca.html" class="hub-city-card" data-name="mallorca" data-country="spain">
-        <img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?auto=format&fit=crop&w=800&q=80" alt="Mallorca" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1200" alt="Mallorca" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇪🇸 Spain</div>
@@ -883,7 +946,7 @@
     </a>
     
     <a href="marsilya.html" class="hub-city-card" data-name="marseille" data-country="france">
-        <img src="https://images.contentstack.io/v3/assets/blt06f605a34f1194ff/blt0feb4d48a3fc134c/67c5fafa304ea9666082ff3e/iStock-956215674-2-Header_Mobile.jpg?fit=crop&disable=upscale&auto=webp&quality=60&crop=smart" alt="Marseille" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?w=1200" alt="Marseille" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇫🇷 France</div>
@@ -893,7 +956,7 @@
     </a>
     
     <a href="matera.html" class="hub-city-card" data-name="matera" data-country="italy">
-        <img src="https://ita.travel/user/blogimg/ostatni/aerial-view_matera_sunset.jpg" alt="Matera" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=1200" alt="Matera" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇮🇹 Italy</div>
@@ -903,7 +966,7 @@
     </a>
     
     <a href="miami.html" class="hub-city-card" data-name="miami" data-country="usa">
-        <img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=1200" alt="Miami" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1514214246283-d427a95c5d2f?w=1200" alt="Miami" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">📍 USA</div>
@@ -913,7 +976,7 @@
     </a>
     
     <a href="midilli.html" class="hub-city-card" data-name="lesbos" data-country="greece">
-        <img src="https://cdn.agentis.com.tr/www.drabostravel.com/files/actv/148/115540_b-f.jpg" alt="Lesbos" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1200" alt="Lesbos" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇬🇷 Greece</div>
@@ -923,7 +986,7 @@
     </a>
     
     <a href="milano.html" class="hub-city-card" data-name="milano" data-country="italy">
-        <img src="https://images.unsplash.com/photo-1520440229-6469a149ac59?w=800" alt="Milano" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1513581166391-887a96ddeafd?w=1200" alt="Milano" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇮🇹 Italy</div>
@@ -933,7 +996,7 @@
     </a>
     
     <a href="mykonos.html" class="hub-city-card" data-name="mykonos" data-country="greece">
-        <img src="https://images.unsplash.com/photo-1601581875309-fafbf2d3ed3a?w=800" alt="Mykonos" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1601581875309-fafbf2d3ed3a?w=1200" alt="Mykonos" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇬🇷 Greece</div>
@@ -943,7 +1006,7 @@
     </a>
     
     <a href="napoli.html" class="hub-city-card" data-name="naples" data-country="italy">
-        <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=800" alt="Naples" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?w=1200" alt="Naples" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇮🇹 Italy</div>
@@ -953,7 +1016,7 @@
     </a>
     
     <a href="newyork.html" class="hub-city-card" data-name="new york" data-country="united states">
-        <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=800" alt="New York" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=1200" alt="New York" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇺🇸 United States</div>
@@ -963,7 +1026,7 @@
     </a>
     
     <a href="nice.html" class="hub-city-card" data-name="nice" data-country="france">
-        <img src="https://www.flypgs.com/blog/wp-content/uploads/2024/05/nice-sahilleri.jpeg" alt="Nice" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1200" alt="Nice" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇫🇷 France</div>
@@ -973,7 +1036,7 @@
     </a>
     
     <a href="oslo.html" class="hub-city-card" data-name="oslo" data-country="norway">
-        <img src="https://www.journavel.com/wp-content/uploads/2024/10/IMG_1851-scaled.webp" alt="Oslo" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1588668214407-6ea9a6d8c272?w=1200" alt="Oslo" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇳🇴 Norway</div>
@@ -983,7 +1046,7 @@
     </a>
     
     <a href="palermo.html" class="hub-city-card" data-name="palermo" data-country="italy">
-        <img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?auto=format&fit=crop&w=800&q=80" alt="Palermo" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=1200" alt="Palermo" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇮🇹 Italy</div>
@@ -993,7 +1056,7 @@
     </a>
     
     <a href="paris.html" class="hub-city-card" data-name="paris" data-country="france">
-        <img src="https://www.royalcaribbean.com/media-assets/pmc/content/dam/shore-x/paris-le-havre-leh/lh17-paris-sightseeing-without-lunch/stock-photo-skyline-of-paris-with-eiffel-tower-at-sunset-in-paris-france-eiffel-tower-is-one-of-the-most-752725282.jpg?w=1920" alt="Paris" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200" alt="Paris" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇫🇷 France</div>
@@ -1003,7 +1066,7 @@
     </a>
     
     <a href="philadelphia.html" class="hub-city-card" data-name="philadelphia" data-country="usa">
-        <img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=1200" alt="Philadelphia" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1569683795645-b62e50fbf103?w=1200" alt="Philadelphia" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">📍 USA</div>
@@ -1013,7 +1076,7 @@
     </a>
     
     <a href="porto.html" class="hub-city-card" data-name="porto" data-country="portugal">
-        <img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=800" alt="Porto" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1555881400-74d7acaacd81?w=1200" alt="Porto" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇵🇹 Portugal</div>
@@ -1023,7 +1086,7 @@
     </a>
     
     <a href="prag.html" class="hub-city-card" data-name="prague" data-country="czech republic">
-        <img src="https://images.unsplash.com/photo-1541849546-216549ae216d?w=800" alt="Prague" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=1200" alt="Prague" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇨🇿 Czech Republic</div>
@@ -1033,7 +1096,7 @@
     </a>
     
     <a href="rhodes.html" class="hub-city-card" data-name="rhodes" data-country="greece">
-        <img src="https://blog.obilet.com/wp-content/uploads/2024/04/ana-gorsel-min-scaled.jpeg" alt="Rhodes" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1200" alt="Rhodes" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇬🇷 Greece</div>
@@ -1043,7 +1106,7 @@
     </a>
     
     <a href="roma.html" class="hub-city-card" data-name="rome" data-country="italy">
-        <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800" alt="Rome" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1200" alt="Rome" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇮🇹 Italy</div>
@@ -1053,7 +1116,7 @@
     </a>
     
     <a href="rovaniemi.html" class="hub-city-card" data-name="rovaniemi" data-country="finland">
-        <img src="https://www.visitfinland.com/dam/jcr:70734834-7ba2-4bf1-9f6e-bf185e014367/central-plaza-santa-claus-village-rovaniemi-lapland-finland%20(1).jpg" alt="Rovaniemi" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?w=1200" alt="Rovaniemi" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇫🇮 Finland</div>
@@ -1063,7 +1126,7 @@
     </a>
     
     <a href="saint_tropez.html" class="hub-city-card" data-name="saint-tropez" data-country="france">
-        <img src="https://cdn.sanity.io/images/nxpteyfv/goguides/3a6c92c8b52d99de1f3ef6d2fcebadfd646bf990-1600x1066.jpg" alt="Saint-Tropez" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1200" alt="Saint-Tropez" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇫🇷 France</div>
@@ -1073,7 +1136,7 @@
     </a>
     
     <a href="san_sebastian.html" class="hub-city-card" data-name="san sebastián" data-country="spain">
-        <img src="https://cdn.bunniktours.com.au/public/posts/images/Europe/Blog%20Header%20-%20Spain%20-%20San%20Sebastian%20-%20credit%20Raul%20Cacho%20Oses%20%28Unsplash%29-feature.jpg" alt="San Sebastián" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200" alt="San Sebastián" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇪🇸 Spain</div>
@@ -1083,7 +1146,7 @@
     </a>
     
     <a href="sanfrancisco.html" class="hub-city-card" data-name="san francisco" data-country="usa">
-        <img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=1200" alt="San Francisco" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=1200" alt="San Francisco" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">📍 USA</div>
@@ -1093,7 +1156,7 @@
     </a>
     
     <a href="santorini.html" class="hub-city-card" data-name="santorini" data-country="greece">
-        <img src="https://www.kucukoteller.com.tr/storage/images/2024/07/14/5e7eaf11eb5ec2dda2f7a602232faa8961347f29.webp" alt="Santorini" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=1200" alt="Santorini" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇬🇷 Greece</div>
@@ -1103,7 +1166,7 @@
     </a>
     
     <a href="saraybosna.html" class="hub-city-card" data-name="sarajevo" data-country="bosnia and herzegovina">
-        <img src="https://images.themagger.net/wp-content/uploads/2022/12/saraybosna-kapak-633x433.jpg" alt="Sarajevo" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1588668214407-6ea9a6d8c272?w=1200" alt="Sarajevo" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇧🇦 Bosnia and Herzegovina</div>
@@ -1113,7 +1176,7 @@
     </a>
     
     <a href="sardinya.html" class="hub-city-card" data-name="sardinia" data-country="italy">
-        <img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=1200" alt="Sardinia" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1200" alt="Sardinia" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">📍 Italy</div>
@@ -1123,7 +1186,7 @@
     </a>
     
     <a href="seattle.html" class="hub-city-card" data-name="seattle" data-country="usa">
-        <img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=1200" alt="Seattle" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1502175353174-a7a70e73b362?w=1200" alt="Seattle" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">📍 USA</div>
@@ -1133,7 +1196,7 @@
     </a>
     
     <a href="selanik.html" class="hub-city-card" data-name="thessaloniki" data-country="greece">
-        <img src="https://www.etstur.com/letsgo/wp-content/uploads/2025/09/01-selanik-letsgo.jpg" alt="Thessaloniki" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1555993539-1732b0258235?w=1200" alt="Thessaloniki" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇬🇷 Greece</div>
@@ -1143,7 +1206,7 @@
     </a>
     
     <a href="seul.html" class="hub-city-card" data-name="seoul" data-country="south korea">
-        <img src="https://www.agoda.com/wp-content/uploads/2019/03/Seoul-attractions-Gyeongbokgung-palace.jpg" alt="Seoul" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1538485399081-7191377e8241?w=1200" alt="Seoul" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇰🇷 South Korea</div>
@@ -1153,7 +1216,7 @@
     </a>
     
     <a href="sevilla.html" class="hub-city-card" data-name="seville" data-country="spain">
-        <img src="https://images.unsplash.com/photo-1558370781-d6196949e317?w=800" alt="Seville" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1559564484-e48b3e040ff4?w=1200" alt="Seville" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇪🇸 Spain</div>
@@ -1163,7 +1226,7 @@
     </a>
     
     <a href="singapur.html" class="hub-city-card" data-name="singapore" data-country="singapore">
-        <img src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=800" alt="Singapore" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=1200" alt="Singapore" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇸🇬 Singapore</div>
@@ -1173,7 +1236,7 @@
     </a>
     
     <a href="sintra.html" class="hub-city-card" data-name="sintra" data-country="portugal">
-        <img src="https://images.contentstack.io/v3/assets/blt06f605a34f1194ff/blt75a384a61f2efa5b/68848225e7cb649650cc2d81/BCC-2024-EXPLORER-SINTRA-BEST_PLACES_TO_VISIT-HEADER-MOBILE.jpg?format=webp&auto=avif&quality=60&crop=16%3A9&width=1440" alt="Sintra" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1509840841025-9088ba78a826?w=1200" alt="Sintra" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇵🇹 Portugal</div>
@@ -1183,7 +1246,7 @@
     </a>
     
     <a href="stockholm.html" class="hub-city-card" data-name="stockholm" data-country="sweden">
-        <img src="https://images.unsplash.com/photo-1509356843151-3e7d96241e11?w=800" alt="Stockholm" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1509356843151-3e7d96241e11?w=1200" alt="Stockholm" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇸🇪 Sweden</div>
@@ -1193,7 +1256,7 @@
     </a>
     
     <a href="strazburg.html" class="hub-city-card" data-name="strasbourg" data-country="france">
-        <img src="https://www.avruparuyasi.com.tr/uploads/tour-gallery/36c44666-5e5a-4c2d-a341-2fa8285c3fb6.webp" alt="Strasbourg" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1520939817895-060bdef4ad1b?w=1200" alt="Strasbourg" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇫🇷 France</div>
@@ -1203,7 +1266,7 @@
     </a>
     
     <a href="tokyo.html" class="hub-city-card" data-name="tokyo" data-country="japan">
-        <img src="https://img.piri.net/mnresize/900/-/resim/imagecrop/2023/01/17/11/54/resized_d9b02-8b17feafkapak2.jpg" alt="Tokyo" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?w=1200" alt="Tokyo" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇮🇹 Japan</div>
@@ -1213,7 +1276,7 @@
     </a>
     
     <a href="tromso.html" class="hub-city-card" data-name="tromsø" data-country="norway">
-        <img src="https://www.flightgift.com/media/wp/FG/2024/02/tromso.webp" alt="Tromsø" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?w=1200" alt="Tromsø" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇳🇴 Norway</div>
@@ -1223,7 +1286,7 @@
     </a>
     
     <a href="valencia.html" class="hub-city-card" data-name="valencia" data-country="spain">
-        <img src="https://img.static-kl.com/transform/81017f83-1bd0-46c4-9459-c199cf4e1dd7/" alt="Valencia" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200" alt="Valencia" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇪🇸 Spain</div>
@@ -1233,7 +1296,7 @@
     </a>
     
     <a href="venedik.html" class="hub-city-card" data-name="venice" data-country="italy">
-        <img src="https://images.unsplash.com/photo-1514890547357-a9ee288728e0?w=800" alt="Venice" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1514890547357-a9ee288728e0?w=1200" alt="Venice" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇮🇹 Italy</div>
@@ -1243,7 +1306,7 @@
     </a>
     
     <a href="viyana.html" class="hub-city-card" data-name="vienna" data-country="austria">
-        <img src="https://images.unsplash.com/photo-1516550893923-42d28e5677af?w=800" alt="Vienna" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1516550893923-42d28e5677af?w=1200" alt="Vienna" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇦🇹 Austria</div>
@@ -1253,7 +1316,7 @@
     </a>
     
     <a href="zermatt.html" class="hub-city-card" data-name="zermatt" data-country="switzerland">
-        <img src="https://holidaystoswitzerland.com/wp-content/uploads/2020/07/Zermatt-and-the-Matterhorn-at-dawn.jpg" alt="Zermatt" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=1200" alt="Zermatt" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇨🇭 Switzerland</div>
@@ -1263,7 +1326,7 @@
     </a>
     
     <a href="zurih.html" class="hub-city-card" data-name="zurich" data-country="switzerland">
-        <img src="https://images.unsplash.com/photo-1515488764276-beab7607c1e6?w=800" alt="Zurich" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
+        <img src="https://images.unsplash.com/photo-1515488764276-beab7607c1e6?w=1200" alt="Zurich" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506970845246-18f21d533b20?w=1200';">
         <div class="hub-card-overlay"></div>
         <div class="hub-card-content">
             <div class="hub-card-flag">🇨🇭 Switzerland</div>
@@ -1310,6 +1373,22 @@
             <p>Made for curious travelers worldwide.</p>
         </div>
     </footer>
+    
+    <script>
+        // Mobile menu toggle
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        if (navToggle && navLinks) {
+            navToggle.addEventListener('click', () => {
+                const isOpen = navLinks.classList.contains('open');
+                navLinks.classList.toggle('open', !isOpen);
+            });
+            // Close when clicking any link
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => navLinks.classList.remove('open'));
+            });
+        }
+    </script>
 
 
     <script>
