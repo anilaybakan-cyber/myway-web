@@ -2414,11 +2414,18 @@
             if (index < 0) index = 0;
             if (index >= items.length) index = items.length - 1;
 
-            items[index].scrollIntoView({
-                behavior: 'smooth',
-                block: 'nearest',
-                inline: 'center'
-            });
+            const item = items[index];
+            if (item && track) {
+                const trackWidth = track.clientWidth;
+                const itemLeft = item.offsetLeft;
+                const itemWidth = item.offsetWidth;
+                const scrollTarget = itemLeft - (trackWidth / 2) + (itemWidth / 2);
+
+                track.scrollTo({
+                    left: scrollTarget,
+                    behavior: 'smooth'
+                });
+            }
 
             updateActiveState(index);
         }
@@ -2505,14 +2512,6 @@
             if (e.key === 'ArrowLeft') scrollToItem(currentIndex - 1);
             if (e.key === 'ArrowRight') scrollToItem(currentIndex + 1);
         });
-
-        // Auto-scroll carousel hint (gentle initial movement)
-        setTimeout(() => {
-            if (currentIndex === 0 && track.scrollLeft === 0) {
-                scrollToItem(1);
-                setTimeout(() => scrollToItem(0), 1200);
-            }
-        }, 2000);
     </script>
 
 </body>
