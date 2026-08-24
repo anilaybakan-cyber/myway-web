@@ -747,12 +747,118 @@
             margin-bottom: 20px;
         }
 
-        .cta p {
-            font-size: 18px;
-            color: var(--text-secondary);
-            max-width: 480px;
+        .hero-guides-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 24px;
+            padding: 12px 28px;
+            border-radius: 99px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            backdrop-filter: blur(12px);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .hero-guides-btn:hover {
+            background: rgba(123, 110, 246, 0.2);
+            border-color: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(123, 110, 246, 0.25);
+        }
+        .hero-guides-btn span {
+            color: var(--primary-light);
+        }
+
+        /* Home Guides Grid Section */
+        .home-guides {
+            padding: 100px 24px;
+            background: var(--bg-section);
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        .home-guides-header {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 48px;
+        }
+        .home-guides-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            max-width: 1200px;
             margin: 0 auto 40px;
-            line-height: 1.7;
+        }
+        .home-guide-card {
+            position: relative;
+            height: 260px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border-subtle);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 24px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .home-guide-card img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+            filter: brightness(0.7);
+        }
+        .home-guide-card:hover img {
+            transform: scale(1.06);
+            filter: brightness(0.85);
+        }
+        .home-guide-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(15, 11, 26, 0.95) 15%, rgba(15, 11, 26, 0.3) 60%, transparent 100%);
+        }
+        .home-guide-content {
+            position: relative;
+            z-index: 2;
+        }
+        .home-guide-country {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--primary-light);
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .home-guide-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+        .home-guide-desc {
+            font-size: 13px;
+            color: #D1D5DB;
+            line-height: 1.4;
+        }
+        .home-guides-all-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            border-radius: 99px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #fff;
+            font-weight: 700;
+            font-size: 15px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .home-guides-all-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(123, 110, 246, 0.4);
         }
 
         /* ===== FOOTER ===== */
@@ -1067,6 +1173,12 @@
                     </div>
                 </a>
             </div>
+
+            <div>
+                <a href="/guides/" class="hero-guides-btn">
+                    <span>🗺️</span> Explore 90+ Curated City Guides &rarr;
+                </a>
+            </div>
         </div>
     </section>
 
@@ -1242,6 +1354,88 @@
                 <div class="store-mockup">
                     <img src="images/screenshots/store_en_04.jpg" alt="Travel Profile in MyWay" loading="lazy">
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured City Guides Section -->
+    <section class="home-guides" id="guides">
+        <div class="container">
+            <div class="home-guides-header">
+                <span class="section-label">Travel Guides</span>
+                <h2 class="section-title">Explore 90+ World Destinations</h2>
+                <p class="section-subtitle" style="margin: 8px auto 0;">
+                    From hidden backstreets in Rome to secret rooftop bars in Tokyo. Read our curated insider guides.
+                </p>
+            </div>
+
+            <div class="home-guides-grid">
+                <!-- Rome -->
+                <a href="/guides/roma.html" class="home-guide-card">
+                    <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800" alt="Rome Guide" loading="lazy">
+                    <div class="home-guide-overlay"></div>
+                    <div class="home-guide-content">
+                        <div class="home-guide-country">🇮🇹 Italy</div>
+                        <h3 class="home-guide-title">Rome</h3>
+                        <p class="home-guide-desc">3,000 years of history, authentic trattorias, and zero tourist traps.</p>
+                    </div>
+                </a>
+                <!-- Paris -->
+                <a href="/guides/paris.html" class="home-guide-card">
+                    <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800" alt="Paris Guide" loading="lazy">
+                    <div class="home-guide-overlay"></div>
+                    <div class="home-guide-content">
+                        <div class="home-guide-country">🇫🇷 France</div>
+                        <h3 class="home-guide-title">Paris</h3>
+                        <p class="home-guide-desc">Secret cafes, sunset views, and perfectly timed 3-day walking flows.</p>
+                    </div>
+                </a>
+                <!-- Tokyo -->
+                <a href="/guides/tokyo.html" class="home-guide-card">
+                    <img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?w=800" alt="Tokyo Guide" loading="lazy">
+                    <div class="home-guide-overlay"></div>
+                    <div class="home-guide-content">
+                        <div class="home-guide-country">🇯🇵 Japan</div>
+                        <h3 class="home-guide-title">Tokyo</h3>
+                        <p class="home-guide-desc">Hidden alleys, ramen counters, and neon-lit futuristic neighborhoods.</p>
+                    </div>
+                </a>
+                <!-- Amsterdam -->
+                <a href="/guides/amsterdam.html" class="home-guide-card">
+                    <img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=800" alt="Amsterdam Guide" loading="lazy">
+                    <div class="home-guide-overlay"></div>
+                    <div class="home-guide-content">
+                        <div class="home-guide-country">🇳🇱 Netherlands</div>
+                        <h3 class="home-guide-title">Amsterdam</h3>
+                        <p class="home-guide-desc">Scenic canal walks, boutique flea markets, and cozy brown cafes.</p>
+                    </div>
+                </a>
+                <!-- Barcelona -->
+                <a href="/guides/barcelona.html" class="home-guide-card">
+                    <img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?w=800" alt="Barcelona Guide" loading="lazy">
+                    <div class="home-guide-overlay"></div>
+                    <div class="home-guide-content">
+                        <div class="home-guide-country">🇪🇸 Spain</div>
+                        <h3 class="home-guide-title">Barcelona</h3>
+                        <p class="home-guide-desc">Gothic backstreets, Gaudí secrets, and the finest tapas bars.</p>
+                    </div>
+                </a>
+                <!-- London -->
+                <a href="/guides/londra.html" class="home-guide-card">
+                    <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800" alt="London Guide" loading="lazy">
+                    <div class="home-guide-overlay"></div>
+                    <div class="home-guide-content">
+                        <div class="home-guide-country">🇬🇧 United Kingdom</div>
+                        <h3 class="home-guide-title">London</h3>
+                        <p class="home-guide-desc">Historic pubs, riverside paths, and vibrant neighborhood markets.</p>
+                    </div>
+                </a>
+            </div>
+
+            <div style="text-align: center;">
+                <a href="/guides/" class="home-guides-all-btn">
+                    View All 90+ City Guides &rarr;
+                </a>
             </div>
         </div>
     </section>
