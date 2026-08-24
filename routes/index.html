@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyWay – Rota</title>
+    <script>
+        (function() {
+            var PACKAGE = "com.anilaybakan.sehirkesif";
+            var KNOWN_ACTIONS = [
+                "together", "plan-together", "plan_together", "birlikte",
+                "save", "save-plan", "save_plan", "kaydet",
+                "complete", "complete-route", "complete_route", "tamamla",
+                "start", "start-route", "start_route", "baslat"
+            ];
+            var pathParts = window.location.pathname.split("/").filter(Boolean);
+            var filtered = pathParts.filter(function(p) {
+                return p !== "routes" && p !== "index.html";
+            });
+            var params = new URLSearchParams(window.location.search);
+
+            var action = (params.get("action") || params.get("routesAction") || "").toLowerCase();
+            if (!action && filtered.length > 0) {
+                var maybeAction = filtered[filtered.length - 1].toLowerCase();
+                if (KNOWN_ACTIONS.indexOf(maybeAction) >= 0) {
+                    action = maybeAction;
+                }
+            }
+
+            var cityId = (params.get("cityId") || "").toLowerCase();
+            if (!cityId) {
+                for (var i = 0; i < filtered.length; i++) {
+                    var seg = filtered[i].toLowerCase();
+                    if (KNOWN_ACTIONS.indexOf(seg) < 0 && !/^\d+$/.test(seg)) {
+                        cityId = seg;
+                        break;
+                    }
+                }
+            }
+
+            if (!params.get("routesTab") && action) {
+                params.set("routesTab", "1");
+            }
+            if (action && !params.get("action")) {
+                params.set("action", action);
+            }
+            if (cityId && !params.get("cityId")) {
+                params.set("cityId", cityId);
+            }
+
+            var query = params.toString();
+            var path = "routes" + (query ? ("?" + query) : "");
+
+            var ua = navigator.userAgent || "";
+            var isAndroid = /android/i.test(ua);
+
+            if (isAndroid) {
+                window.location.replace(
+                    "intent://" + path + "#Intent;scheme=myway;package=" + PACKAGE + ";end"
+                );
+            } else {
+                window.location.replace("myway://" + path);
+            }
+        })();
+    </script>
+</head>
+<body style="margin:0;background:#0F0B1A;"></body>
+</html>

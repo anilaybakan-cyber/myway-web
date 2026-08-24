@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyWay – Oteller</title>
+    <script>
+        (function() {
+            var PACKAGE = "com.anilaybakan.sehirkesif";
+            var pathParts = window.location.pathname.split("/").filter(Boolean);
+            var filtered = pathParts.filter(function(p) {
+                return p !== "hotels" && p !== "index.html";
+            });
+            var params = new URLSearchParams(window.location.search);
+
+            var cityId = (params.get("cityId") || "").toLowerCase();
+            if (!cityId) {
+                for (var i = 0; i < filtered.length; i++) {
+                    var seg = filtered[i].toLowerCase();
+                    if (!/^\d+$/.test(seg)) {
+                        cityId = seg;
+                        break;
+                    }
+                }
+            }
+
+            if (cityId && !params.get("cityId")) {
+                params.set("cityId", cityId);
+            }
+
+            var query = params.toString();
+            var path = "hotels" + (query ? ("?" + query) : "");
+
+            var ua = navigator.userAgent || "";
+            var isAndroid = /android/i.test(ua);
+
+            if (isAndroid) {
+                window.location.replace(
+                    "intent://" + path + "#Intent;scheme=myway;package=" + PACKAGE + ";end"
+                );
+            } else {
+                window.location.replace("myway://" + path);
+            }
+        })();
+    </script>
+</head>
+<body style="margin:0;background:#0F0B1A;"></body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyWay</title>
+    <script>
+        (function() {
+            var APP_HOST = "app.mywaytravelapp.com";
+            var path = window.location.pathname + window.location.search + window.location.hash;
+
+            // Deeplink yolları Firebase hosting'de yaşıyor (app. alt alan adı)
+            if (/^\/(guide|city|place|routes|trip|together|hotels|flights)(\/|$)/i.test(path)) {
+                window.location.replace("https://" + APP_HOST + path);
+                return;
+            }
+
+            // Diğer bilinmeyen sayfalar — ana siteye
+            if (window.location.hostname !== APP_HOST) {
+                window.location.replace("https://" + APP_HOST + "/");
+            }
+        })();
+    </script>
+</head>
+<body>
+    <p style="font-family: sans-serif; text-align: center; margin-top: 40vh; color: #666;">
+        Yönlendiriliyor…
+    </p>
+</body>
+</html>

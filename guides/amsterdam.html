@@ -19,17 +19,19 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
+        
         :root {
             --primary: #7B6EF6;
             --primary-light: #9D93FF;
             --primary-dark: #5B4FD6;
             --accent: #EC4899;
             --bg-dark: #0F0B1A;
+            --bg-section: #130F22;
             --bg-card: rgba(255, 255, 255, 0.04);
-            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-subtle: rgba(255, 255, 255, 0.06);
             --text-primary: #FFFFFF;
             --text-secondary: #9CA3AF;
             --radius-lg: 24px;
@@ -37,56 +39,201 @@
         }
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background-color: var(--bg-dark);
             color: var(--text-primary);
             line-height: 1.65;
+            overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
         a { text-decoration: none; color: inherit; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
         
-        /* Navbar */
+        /* Navbar (100% Identical to Homepage) */
         .navbar {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-            background: rgba(15, 11, 26, 0.85); backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border-subtle); padding: 16px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 0 24px;
+            background: rgba(15, 11, 26, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 1px 0 var(--border-subtle);
         }
         .navbar-inner {
-            max-width: 1200px; margin: 0 auto; padding: 0 24px;
-            display: flex; align-items: center; justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
-        .nav-brand { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 20px; }
-        .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
-        .nav-links a { color: var(--text-secondary); font-size: 14px; font-weight: 500; transition: color 0.2s; }
-        .nav-links a:hover { color: #fff; }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 20px;
+            letter-spacing: -0.01em;
+            flex-shrink: 0;
+        }
+        .nav-brand img {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 36px;
+            list-style: none;
+            flex: 1;
+        }
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: color 0.2s ease;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--text-primary);
+        }
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
         .nav-cta {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            color: #fff !important; padding: 8px 20px; border-radius: 99px; font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            background: var(--primary);
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 100px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-        .nav-cta-mobile { display: none; }
+        .nav-cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 24px rgba(123, 110, 246, 0.35);
+        }
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 8px;
+        }
         
-        /* Hero */
+        /* Footer (100% Identical) */
+        .footer {
+            padding: 64px 24px 32px;
+            border-top: 1px solid var(--border-subtle);
+            background: #0A0712;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 48px;
+            max-width: 1200px;
+            margin: 0 auto 48px;
+        }
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            font-weight: 700;
+            font-size: 20px;
+        }
+        .footer-brand img {
+            border-radius: 8px;
+        }
+        .footer-desc {
+            font-size: 14px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            max-width: 320px;
+        }
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .footer-links a {
+            font-size: 14px;
+            color: var(--text-secondary);
+            transition: color 0.2s ease;
+        }
+        .footer-links a:hover {
+            color: var(--text-primary);
+        }
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 32px;
+            border-top: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 13px;
+            color: #6B7280;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-toggle { display: block; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+        }
+
+        
+        /* Guide Hero */
         .guide-hero {
-            position: relative; height: 500px; display: flex; align-items: flex-end;
-            padding-bottom: 60px; margin-top: 70px; overflow: hidden;
+            position: relative;
+            height: 520px;
+            display: flex;
+            align-items: flex-end;
+            padding-bottom: 60px;
+            margin-top: 72px;
+            overflow: hidden;
         }
         .guide-hero-bg {
-            position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-            filter: brightness(0.65);
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.6);
         }
         .guide-hero-overlay {
-            position: absolute; inset: 0;
-            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.3) 60%, transparent 100%);
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.4) 60%, transparent 100%);
         }
         .guide-hero-content { position: relative; z-index: 2; width: 100%; }
         .city-badge {
-            display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(8px); padding: 6px 14px; border-radius: 99px; font-size: 13px;
-            font-weight: 600; margin-bottom: 16px; border: 1px solid rgba(255, 255, 255, 0.15);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 6px 14px;
+            border-radius: 99px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
-        .guide-title { font-size: clamp(36px, 6vw, 56px); font-weight: 800; line-height: 1.1; margin-bottom: 12px; }
-        .guide-tagline { font-size: 18px; color: var(--primary-light); max-width: 700px; font-weight: 500; }
+        .guide-title { font-size: clamp(38px, 6vw, 60px); font-weight: 800; line-height: 1.1; margin-bottom: 12px; }
+        .guide-tagline { font-size: 18px; color: var(--primary-light); max-width: 720px; font-weight: 500; }
         
         /* Sections */
         .section { padding: 48px 0; border-bottom: 1px solid var(--border-subtle); }
@@ -173,44 +320,32 @@
             transition: transform 0.2s, box-shadow 0.2s;
         }
         .store-pill-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2); }
-        
-        /* Footer */
-        .footer { background: #0A0712; padding: 60px 0 30px; border-top: 1px solid var(--border-subtle); }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
-        .footer-brand { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 700; margin-bottom: 12px; }
-        .footer-desc { font-size: 14px; color: var(--text-secondary); max-width: 320px; }
-        .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-        .footer-links a { color: var(--text-secondary); font-size: 14px; }
-        .footer-links a:hover { color: #fff; }
-        .footer-bottom { border-top: 1px solid var(--border-subtle); padding-top: 24px; display: flex; justify-content: space-between; font-size: 13px; color: #6B7280; }
-
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .nav-cta-mobile { display: block; background: var(--primary); color: #fff; padding: 6px 16px; border-radius: 99px; font-size: 13px; font-weight: 600; }
-            .footer-grid { grid-template-columns: 1fr; }
-            .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
-            .app-cta-banner { padding: 32px 20px; }
-        }
     </style>
 </head>
 <body>
 
     
-    <!-- Navigation -->
+    <!-- Navigation (100% Identical to Homepage) -->
     <nav class="navbar" id="navbar">
         <div class="navbar-inner">
             <a href="/" class="nav-brand">
-                <img src="../images/app_icon.png" alt="MyWay" width="38" height="38">
+                <img src="../images/app_icon.png" alt="MyWay" width="40" height="40">
                 <span>MyWay</span>
             </a>
             <ul class="nav-links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/guides/" class="active" style="color: var(--primary-light);">City Guides</a></li>
+                <li><a href="/#guides" class="active">City Guides</a></li>
                 <li><a href="/#features">Features</a></li>
+                <li><a href="/#screenshots">Gallery</a></li>
                 <li><a href="/support.html">Support</a></li>
-                <li><a href="/#download" class="nav-cta">Download App</a></li>
             </ul>
-            <a href="/#download" class="nav-cta-mobile">Get App</a>
+            <div class="nav-actions">
+                <a href="/#download" class="nav-cta">Download</a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 12h18M3 6h18M3 18h18"/>
+                </svg>
+            </button>
         </div>
     </nav>
 
@@ -360,7 +495,7 @@
             <div>
                 <h4>Explore</h4>
                 <ul class="footer-links">
-                    <li><a href="/guides/">All City Guides</a></li>
+                    <li><a href="/#guides">City Guides</a></li>
                     <li><a href="/#features">Smart Routing</a></li>
                     <li><a href="/#screenshots">App Experience</a></li>
                 </ul>

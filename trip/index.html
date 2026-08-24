@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyWay – Birlikte Plan Daveti</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0F0B1A;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+        .card {
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+            padding: 32px 24px;
+            border-radius: 24px;
+            background: rgba(47, 38, 56, 0.92);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        h1 { font-size: 22px; margin-bottom: 8px; }
+        p { color: rgba(255,255,255,0.72); line-height: 1.5; margin-bottom: 20px; font-size: 15px; }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 14px 16px;
+            margin-bottom: 10px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary { background: #807AF5; color: #fff; }
+        .btn-store { background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.12); }
+        .hint { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 12px; }
+    </style>
+    <script>
+        (function() {
+            var PACKAGE = "com.anilaybakan.sehirkesif";
+            var IOS_STORE = "https://apps.apple.com/app/myway-route-travel-planner/id6757671492";
+            var ANDROID_STORE = "https://play.google.com/store/apps/details?id=" + PACKAGE;
+
+            var params = new URLSearchParams(window.location.search);
+            var tripId = params.get("tripId") || "";
+            var token = params.get("token") || "";
+            var invite = params.get("invite") || "";
+
+            var query = params.toString();
+            var path = "trip" + (query ? ("?" + query) : "");
+            var deepLink = "myway://" + path;
+            var universalLink = window.location.href.split("#")[0];
+
+            var ua = navigator.userAgent || "";
+            var isAndroid = /android/i.test(ua);
+            var isIOS = /iPad|iPhone|iPod/.test(ua) ||
+                (/Macintosh/i.test(ua) && navigator.maxTouchPoints > 1);
+            var inAppBrowser = /FBAN|FBAV|Instagram|WhatsApp|Line\/|Twitter|LinkedInApp|Snapchat/i.test(ua);
+
+            var appLikelyOpened = false;
+            var storeFallbackTimer = null;
+
+            function cancelStoreFallback() {
+                appLikelyOpened = true;
+                if (storeFallbackTimer) {
+                    clearTimeout(storeFallbackTimer);
+                    storeFallbackTimer = null;
+                }
+            }
+
+            function markAppOpened() {
+                if (document.hidden || document.webkitHidden) {
+                    cancelStoreFallback();
+                }
+            }
+
+            document.addEventListener("visibilitychange", markAppOpened);
+            window.addEventListener("pagehide", cancelStoreFallback);
+            window.addEventListener("blur", cancelStoreFallback);
+
+            function scheduleStoreFallback(delayMs) {
+                if (storeFallbackTimer) clearTimeout(storeFallbackTimer);
+                storeFallbackTimer = window.setTimeout(function() {
+                    storeFallbackTimer = null;
+                    if (appLikelyOpened || document.hidden || document.webkitHidden) return;
+                    window.location.href = isIOS ? IOS_STORE : ANDROID_STORE;
+                }, delayMs);
+            }
+
+            function openApp(options) {
+                options = options || {};
+                var allowStoreFallback = options.allowStoreFallback !== false;
+
+                if (isAndroid) {
+                    var intent =
+                        "intent://" + path +
+                        "#Intent;scheme=myway;package=" + PACKAGE +
+                        ";S.browser_fallback_url=" + encodeURIComponent(ANDROID_STORE) +
+                        ";end";
+                    window.location.href = intent;
+                    return;
+                }
+
+                if (isIOS) {
+                    appLikelyOpened = false;
+                    if (storeFallbackTimer) {
+                        clearTimeout(storeFallbackTimer);
+                        storeFallbackTimer = null;
+                    }
+
+                    // Universal link zaten bu sayfadaysa custom scheme dene.
+                    // In-app browser'larda genelde yalnızca kullanıcı dokunuşu çalışır.
+                    window.location.href = deepLink;
+
+                    if (allowStoreFallback && !inAppBrowser) {
+                        scheduleStoreFallback(2800);
+                    }
+                    return;
+                }
+
+                window.location.href = "https://mywaytravelapp.com/";
+            }
+
+            window.__mywayTrip = {
+                deepLink: deepLink,
+                universalLink: universalLink,
+                iosStore: IOS_STORE,
+                androidStore: ANDROID_STORE,
+                isIOS: isIOS,
+                isAndroid: isAndroid,
+                inAppBrowser: inAppBrowser,
+                tripId: tripId,
+                token: token
+            };
+
+            window.openMyWayTrip = function() {
+                openApp({ allowStoreFallback: true });
+            };
+            window.goToStore = function() {
+                cancelStoreFallback();
+                if (isIOS) window.location.href = IOS_STORE;
+                else if (isAndroid) window.location.href = ANDROID_STORE;
+                else window.location.href = "https://mywaytravelapp.com/";
+            };
+
+            document.addEventListener("DOMContentLoaded", function() {
+                var openBtn = document.getElementById("open-app");
+                var storeBtn = document.getElementById("get-app");
+                var subtitle = document.getElementById("subtitle");
+                var hint = document.getElementById("store-hint");
+
+                if (openBtn) {
+                    openBtn.addEventListener("click", function(e) {
+                        e.preventDefault();
+                        openApp({ allowStoreFallback: true });
+                    });
+                }
+                if (storeBtn) {
+                    storeBtn.addEventListener("click", function(e) {
+                        e.preventDefault();
+                        window.goToStore();
+                    });
+                }
+
+                if (inAppBrowser && subtitle) {
+                    subtitle.textContent = isIOS
+                        ? "Tap Open in MyWay below. If the app is installed, it will open."
+                        : "Tap Open in MyWay below to join this trip.";
+                }
+                if (inAppBrowser && hint) {
+                    hint.textContent = isIOS
+                        ? "App not installed? Use Get the app for the App Store."
+                        : "App not installed? Use Get the app for Google Play.";
+                } else if (isIOS && hint) {
+                    hint.textContent = "If MyWay isn't installed, we'll open the App Store.";
+                } else if (isAndroid && hint) {
+                    hint.textContent = "If MyWay isn't installed, we'll open Google Play.";
+                }
+
+                if (tripId && (token || invite)) {
+                    // WhatsApp / Instagram gibi gömülü tarayıcılarda otomatik store yönlendirmesi yapma.
+                    openApp({ allowStoreFallback: !inAppBrowser });
+                }
+            });
+        })();
+    </script>
+</head>
+<body>
+    <div class="card">
+        <h1>MyWay trip invite</h1>
+        <p id="subtitle">Join this shared trip plan in the MyWay app.</p>
+        <button type="button" id="open-app" class="btn btn-primary">Open in MyWay</button>
+        <button type="button" id="get-app" class="btn btn-store">Get the app</button>
+        <p class="hint" id="store-hint">If MyWay isn't installed, you'll be sent to the App Store or Google Play.</p>
+    </div>
+</body>
+</html>
