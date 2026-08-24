@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyWay City Guide</title>
+    <script>
+        (function() {
+            var pathParts = window.location.pathname.split("/").filter(Boolean);
+            var filtered = pathParts.filter(function(p) {
+                return p !== "city" && p !== "index.html";
+            });
+            var params = new URLSearchParams(window.location.search);
+            var cityId = (params.get("cityId") || filtered[filtered.length - 1] || "").toLowerCase();
+
+            if (cityId) {
+                window.location.replace("/guides/" + encodeURIComponent(cityId) + ".html");
+            } else {
+                window.location.replace("/guides/");
+            }
+        })();
+    </script>
+</head>
+<body style="margin:0;background:#0F0B1A;color:#fff;display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;">
+    <p>Loading city guide...</p>
+</body>
+</html>
