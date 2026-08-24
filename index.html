@@ -1612,6 +1612,21 @@
             });
         }
 
+        // Smooth scroll to top Hero download area
+        document.querySelectorAll('a[href="#download"], a[href="#hero"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        if (window.location.hash === '#download' || window.location.hash === '#hero') {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
         // Keyboard navigation for carousel
         track.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowLeft') scrollToItem(currentIndex - 1);
