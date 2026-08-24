@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sintra Travel Guide & Smart Itineraries | MyWay</title>
+    <meta name="description" content="Discover Sintra, Portugal. Curated walking routes, authentic local eats, hidden gems, and insider advice without tourist traps.">
+    <meta property="og:title" content="Sintra Travel Guide & Smart Itineraries | MyWay">
+    <meta property="og:description" content="A romantic fairytale in the palaces of a misty mountain">
+    <meta property="og:image" content="https://images.contentstack.io/v3/assets/blt06f605a34f1194ff/blt75a384a61f2efa5b/68848225e7cb649650cc2d81/BCC-2024-EXPLORER-SINTRA-BEST_PLACES_TO_VISIT-HEADER-MOBILE.jpg?format=webp&auto=avif&quality=60&crop=16%3A9&width=1440">
+    <link rel="icon" type="image/png" href="../images/app_icon.png">
+    
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
+         crossorigin="anonymous"></script>
+
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #7B6EF6;
+            --primary-light: #9D93FF;
+            --primary-dark: #5B4FD6;
+            --accent: #EC4899;
+            --bg-dark: #0F0B1A;
+            --bg-card: rgba(255, 255, 255, 0.04);
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --text-primary: #FFFFFF;
+            --text-secondary: #9CA3AF;
+            --radius-lg: 24px;
+            --radius-md: 16px;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { text-decoration: none; color: inherit; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        
+        /* Navbar */
+        .navbar {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(15, 11, 26, 0.85); backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-subtle); padding: 16px 0;
+        }
+        .navbar-inner {
+            max-width: 1200px; margin: 0 auto; padding: 0 24px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .nav-brand { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 20px; }
+        .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+        .nav-links a { color: var(--text-secondary); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: #fff; }
+        .nav-cta {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #fff !important; padding: 8px 20px; border-radius: 99px; font-weight: 600;
+        }
+        .nav-cta-mobile { display: none; }
+        
+        /* Hero */
+        .guide-hero {
+            position: relative; height: 500px; display: flex; align-items: flex-end;
+            padding-bottom: 60px; margin-top: 70px; overflow: hidden;
+        }
+        .guide-hero-bg {
+            position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+            filter: brightness(0.65);
+        }
+        .guide-hero-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.3) 60%, transparent 100%);
+        }
+        .guide-hero-content { position: relative; z-index: 2; width: 100%; }
+        .city-badge {
+            display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px); padding: 6px 14px; border-radius: 99px; font-size: 13px;
+            font-weight: 600; margin-bottom: 16px; border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .guide-title { font-size: clamp(36px, 6vw, 56px); font-weight: 800; line-height: 1.1; margin-bottom: 12px; }
+        .guide-tagline { font-size: 18px; color: var(--primary-light); max-width: 700px; font-weight: 500; }
+        
+        /* Sections */
+        .section { padding: 48px 0; border-bottom: 1px solid var(--border-subtle); }
+        .section-header { margin-bottom: 28px; }
+        .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); font-weight: 700; }
+        .section-title { font-size: 28px; font-weight: 700; margin-top: 6px; }
+        
+        .intro-text { font-size: 16px; color: #D1D5DB; line-height: 1.8; margin-bottom: 24px; }
+        
+        /* Local Word */
+        .local-word-box {
+            background: rgba(123, 110, 246, 0.08); border-left: 4px solid var(--primary);
+            padding: 20px 24px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-top: 24px;
+        }
+        .word-title { font-size: 16px; color: #fff; margin-bottom: 6px; }
+        .pron { color: var(--primary-light); font-weight: normal; font-size: 14px; }
+        
+        /* Facts Grid */
+        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
+        .fact-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md); padding: 20px; display: flex; gap: 16px; align-items: flex-start;
+        }
+        .fact-icon { font-size: 28px; }
+        .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
+        .fact-val { font-size: 15px; font-weight: 600; color: #fff; margin: 4px 0 2px; }
+        .fact-sub { font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
+        
+        /* Rules */
+        .rules-list { display: flex; flex-direction: column; gap: 16px; }
+        .rule-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md); padding: 24px; display: flex; gap: 20px; align-items: flex-start;
+        }
+        .rule-num {
+            background: var(--primary); color: #fff; width: 36px; height: 36px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-weight: 700; flex-shrink: 0;
+        }
+        .rule-content h4 { font-size: 17px; margin-bottom: 6px; }
+        .rule-content p { font-size: 14px; color: var(--text-secondary); }
+        
+        /* Hidden Gems & Eat Grid */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .gem-card, .eat-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md); padding: 24px; position: relative;
+        }
+        .gem-badge {
+            display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase;
+            color: #10B981; background: rgba(16, 185, 129, 0.12); padding: 4px 10px; border-radius: 99px;
+            margin-bottom: 12px;
+        }
+        .gem-hook { font-size: 13px; color: var(--primary-light); font-style: italic; margin-bottom: 10px; }
+        .gem-card p, .eat-card p { font-size: 14px; color: var(--text-secondary); }
+        
+        /* Traps */
+        .trap-card {
+            background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.15);
+            border-radius: var(--radius-md); padding: 24px; margin-bottom: 16px;
+        }
+        .trap-header { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+        .trap-tag {
+            background: #EF4444; color: #fff; font-size: 11px; font-weight: 700;
+            text-transform: uppercase; padding: 2px 8px; border-radius: 6px;
+        }
+        .trap-solution {
+            margin-top: 12px; padding: 12px 16px; background: rgba(16, 185, 129, 0.08);
+            border-left: 3px solid #10B981; border-radius: 4px; font-size: 13px; color: #D1D5DB;
+        }
+        
+        /* App CTA Banner */
+        .app-cta-banner {
+            background: linear-gradient(135deg, rgba(123, 110, 246, 0.15), rgba(236, 72, 153, 0.1));
+            border: 1px solid rgba(157, 147, 255, 0.3); border-radius: var(--radius-lg);
+            padding: 48px; text-align: center; margin: 60px 0; position: relative; overflow: hidden;
+        }
+        .app-cta-banner h3 { font-size: 32px; font-weight: 800; margin-bottom: 12px; }
+        .app-cta-banner p { color: var(--text-secondary); max-width: 600px; margin: 0 auto 28px; font-size: 16px; }
+        .store-btn-row { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+        .store-pill-btn {
+            display: inline-flex; align-items: center; gap: 12px; background: #fff; color: #000;
+            padding: 12px 24px; border-radius: 99px; font-weight: 700; font-size: 15px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .store-pill-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2); }
+        
+        /* Footer */
+        .footer { background: #0A0712; padding: 60px 0 30px; border-top: 1px solid var(--border-subtle); }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .footer-brand { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 700; margin-bottom: 12px; }
+        .footer-desc { font-size: 14px; color: var(--text-secondary); max-width: 320px; }
+        .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+        .footer-links a { color: var(--text-secondary); font-size: 14px; }
+        .footer-links a:hover { color: #fff; }
+        .footer-bottom { border-top: 1px solid var(--border-subtle); padding-top: 24px; display: flex; justify-content: space-between; font-size: 13px; color: #6B7280; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-cta-mobile { display: block; background: var(--primary); color: #fff; padding: 6px 16px; border-radius: 99px; font-size: 13px; font-weight: 600; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+            .app-cta-banner { padding: 32px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="/" class="nav-brand">
+                <img src="../images/app_icon.png" alt="MyWay" width="38" height="38">
+                <span>MyWay</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/guides/" class="active" style="color: var(--primary-light);">City Guides</a></li>
+                <li><a href="/#features">Features</a></li>
+                <li><a href="/support.html">Support</a></li>
+                <li><a href="/#download" class="nav-cta">Download App</a></li>
+            </ul>
+            <a href="/#download" class="nav-cta-mobile">Get App</a>
+        </div>
+    </nav>
+
+
+    <!-- Hero -->
+    <header class="guide-hero">
+        <img src="https://images.contentstack.io/v3/assets/blt06f605a34f1194ff/blt75a384a61f2efa5b/68848225e7cb649650cc2d81/BCC-2024-EXPLORER-SINTRA-BEST_PLACES_TO_VISIT-HEADER-MOBILE.jpg?format=webp&auto=avif&quality=60&crop=16%3A9&width=1440" alt="Sintra" class="guide-hero-bg">
+        <div class="guide-hero-overlay"></div>
+        <div class="container guide-hero-content">
+            <div class="city-badge">🇵🇹 Portugal &bull; Smart City Guide</div>
+            <h1 class="guide-title">Sintra</h1>
+            <p class="guide-tagline">A romantic fairytale in the palaces of a misty mountain</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Overview -->
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Overview</span>
+                <h2 class="section-title">The Vibe of Sintra</h2>
+            </div>
+            <p class="intro-text">Sintra is not a town but a state of mind: Atlantic mist winds through the mountain forests, ivy swallows the walls, and on every hilltop stands another dreamer's palace. Red-and-yellow-towered Pena floats above the clouds, the steps of Regaleira's well spiral into the earth, and the Moorish ramparts wander the ridges. Lord Byron called this place a 'glorious Eden', and he wasn't wrong. But even Eden has its rules: come early, go slowly, and treat the mist as scenery, not a flaw.</p>
+            
+        <div class="local-word-box">
+            <div class="word-title">🗣️ Local Concept: <strong>Serra</strong> <span class="pron">(seh-hra)</span></div>
+            <p>The short name of the Sintra Mountains: when someone says &#x27;the serra&#x27; they mean the forested granite mass that wraps the town. It makes its own microclimate — the serra can be misty while Lisbon basks in sun. For locals it isn&#x27;t weather, it&#x27;s character.</p>
+        </div>
+        
+        </section>
+
+        <!-- Quick Facts -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Essentials</span>
+                <h2 class="section-title">Quick Logistics</h2>
+            </div>
+            <div class="facts-grid">
+                
+        <div class="fact-card">
+            <div class="fact-icon">🚄</div>
+            <div>
+                <div class="fact-label">Getting there</div>
+                <div class="fact-val">Train from Lisbon 40 min</div>
+                <div class="fact-sub">Direct from Rossio station</div>
+            </div>
+        </div>
+        
+        <div class="fact-card">
+            <div class="fact-icon">🚌</div>
+            <div>
+                <div class="fact-label">In town</div>
+                <div class="fact-val">Buses 434/435 + on foot</div>
+                <div class="fact-sub">Forest paths between the palaces</div>
+            </div>
+        </div>
+        
+        <div class="fact-card">
+            <div class="fact-icon">🗣️</div>
+            <div>
+                <div class="fact-label">Language</div>
+                <div class="fact-val">Portuguese</div>
+                <div class="fact-sub">English common on the tourist trail</div>
+            </div>
+        </div>
+        
+        <div class="fact-card">
+            <div class="fact-icon">🏰</div>
+            <div>
+                <div class="fact-label">Signature</div>
+                <div class="fact-val">Pena Palace</div>
+                <div class="fact-sub">Timed tickets — book ahead</div>
+            </div>
+        </div>
+        
+            </div>
+        </section>
+        
+
+        <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Insider Advice</span>
+                <h2 class="section-title">3 Unwritten Rules for Sintra</h2>
+            </div>
+            <div class="rules-list">
+                
+        <div class="rule-card">
+            <div class="rule-num">1</div>
+            <div class="rule-content">
+                <h4>Come early, go against the current</h4>
+                <p>Sintra is Lisbon&#x27;s favourite day trip: the crowds arrive at 10.30. Take the first train, and while everyone runs to Pena, start at Regaleira — or do exactly the opposite. Whoever swims against the current sees the palaces empty.</p>
+            </div>
+        </div>
+        
+        <div class="rule-card">
+            <div class="rule-num">2</div>
+            <div class="rule-content">
+                <h4>Buy timed palace tickets in advance</h4>
+                <p>Pena Palace runs on timed tickets, and on summer days the ticket office sells out. Choose two, at most three sights — whoever tries to cram them all into one day ends up truly seeing none.</p>
+            </div>
+        </div>
+        
+        <div class="rule-card">
+            <div class="rule-num">3</div>
+            <div class="rule-content">
+                <h4>Forget the car — trust your feet and the bus</h4>
+                <p>The mountain roads are narrow, parking impossible, the tow truck merciless. Come by train; use buses 434 (Pena) and 435 (Regaleira-Monserrate) or the walking trails — the forest paths are the best part of the visit anyway.</p>
+            </div>
+        </div>
+        
+            </div>
+        </section>
+        
+
+        <!-- Hidden Gems -->
+        
+
+        <!-- What to Eat -->
+        
+
+        <!-- Tourist Traps -->
+        
+
+        <!-- CTA Banner -->
+        <section class="app-cta-banner">
+            <h3>Explore Sintra with MyWay</h3>
+            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without zigzagging across town.</p>
+            <div class="store-btn-row">
+                <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
+                     Download on App Store
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.anilaybakan-cyber.sehirkesif" class="store-pill-btn">
+                    ▶ Get on Google Play
+                </a>
+            </div>
+        </section>
+    </main>
+
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div>
+                <div class="footer-brand">
+                    <img src="../images/app_icon.png" alt="MyWay" width="36" height="36">
+                    <span>MyWay</span>
+                </div>
+                <p class="footer-desc">
+                    The ultimate smart travel companion. Discover, plan, and navigate without tourist traps or wasted steps.
+                </p>
+            </div>
+            <div>
+                <h4>Explore</h4>
+                <ul class="footer-links">
+                    <li><a href="/guides/">All City Guides</a></li>
+                    <li><a href="/#features">Smart Routing</a></li>
+                    <li><a href="/#screenshots">App Experience</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Legal & Support</h4>
+                <ul class="footer-links">
+                    <li><a href="/privacy.html">Privacy Policy</a></li>
+                    <li><a href="/terms.html">Terms of Use</a></li>
+                    <li><a href="/support.html">Support & Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
+            <p>Made for curious travelers worldwide.</p>
+        </div>
+    </footer>
+
+
+</body>
+</html>

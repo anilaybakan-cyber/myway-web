@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curated City Travel Guides & Smart Itineraries | MyWay</title>
+    <meta name="description" content="Explore in-depth city guides for 90+ top world destinations. Insider advice, hidden gems, local food tips, and smart routes.">
+    <link rel="icon" type="image/png" href="../images/app_icon.png">
+    
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
+         crossorigin="anonymous"></script>
+
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #7B6EF6;
+            --primary-light: #9D93FF;
+            --primary-dark: #5B4FD6;
+            --accent: #EC4899;
+            --bg-dark: #0F0B1A;
+            --bg-card: rgba(255, 255, 255, 0.04);
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --text-primary: #FFFFFF;
+            --text-secondary: #9CA3AF;
+            --radius-lg: 24px;
+            --radius-md: 16px;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { text-decoration: none; color: inherit; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        
+        /* Navbar */
+        .navbar {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(15, 11, 26, 0.85); backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-subtle); padding: 16px 0;
+        }
+        .navbar-inner {
+            max-width: 1200px; margin: 0 auto; padding: 0 24px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .nav-brand { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 20px; }
+        .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+        .nav-links a { color: var(--text-secondary); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: #fff; }
+        .nav-cta {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #fff !important; padding: 8px 20px; border-radius: 99px; font-weight: 600;
+        }
+        
+        /* Hub Hero */
+        .hub-hero {
+            text-align: center; padding: 120px 0 50px;
+            background: radial-gradient(circle at top center, rgba(123, 110, 246, 0.15) 0%, transparent 70%);
+        }
+        .hub-badge {
+            display: inline-block; font-size: 12px; text-transform: uppercase; letter-spacing: 2px;
+            color: var(--primary-light); font-weight: 700; margin-bottom: 16px;
+        }
+        .hub-title { font-size: clamp(36px, 5vw, 56px); font-weight: 800; line-height: 1.15; margin-bottom: 16px; }
+        .hub-subtitle { font-size: 18px; color: var(--text-secondary); max-width: 650px; margin: 0 auto 36px; }
+        
+        /* Search Bar */
+        .search-box {
+            max-width: 500px; margin: 0 auto; position: relative;
+        }
+        .search-input {
+            width: 100%; padding: 16px 24px; border-radius: 99px;
+            background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #fff; font-size: 15px; font-family: inherit; outline: none; transition: border-color 0.2s;
+        }
+        .search-input:focus { border-color: var(--primary-light); background: rgba(255, 255, 255, 0.09); }
+        
+        /* Cities Grid */
+        .cities-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px;
+            padding: 40px 0 80px;
+        }
+        .hub-city-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md); overflow: hidden; display: flex; flex-direction: column;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s, box-shadow 0.3s;
+        }
+        .hub-city-card:hover {
+            transform: translateY(-6px); border-color: rgba(157, 147, 255, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(123, 110, 246, 0.2);
+        }
+        .hub-card-media { position: relative; height: 180px; width: 100%; overflow: hidden; }
+        .hub-card-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+        .hub-city-card:hover .hub-card-media img { transform: scale(1.06); }
+        .hub-card-flag {
+            position: absolute; bottom: 12px; right: 12px; font-size: 22px;
+            background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(8px); padding: 4px 8px; border-radius: 8px;
+        }
+        .hub-card-body { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
+        .hub-card-country { font-size: 12px; color: var(--primary-light); text-transform: uppercase; font-weight: 700; margin-bottom: 4px; }
+        .hub-card-title { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+        .hub-card-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 16px; flex-grow: 1; }
+        .hub-card-link { font-size: 13px; font-weight: 600; color: var(--primary-light); display: flex; align-items: center; gap: 6px; }
+        
+        /* Footer */
+        .footer { background: #0A0712; padding: 60px 0 30px; border-top: 1px solid var(--border-subtle); }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .footer-brand { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 700; margin-bottom: 12px; }
+        .footer-desc { font-size: 14px; color: var(--text-secondary); max-width: 320px; }
+        .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+        .footer-links a { color: var(--text-secondary); font-size: 14px; }
+        .footer-links a:hover { color: #fff; }
+        .footer-bottom { border-top: 1px solid var(--border-subtle); padding-top: 24px; display: flex; justify-content: space-between; font-size: 13px; color: #6B7280; }
+        
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="/" class="nav-brand">
+                <img src="../images/app_icon.png" alt="MyWay" width="38" height="38">
+                <span>MyWay</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/guides/" class="active" style="color: var(--primary-light);">City Guides</a></li>
+                <li><a href="/#features">Features</a></li>
+                <li><a href="/support.html">Support</a></li>
+                <li><a href="/#download" class="nav-cta">Download App</a></li>
+            </ul>
+            <a href="/#download" class="nav-cta-mobile">Get App</a>
+        </div>
+    </nav>
+
+
+    <header class="hub-hero">
+        <div class="container">
+            <span class="hub-badge">Explore the World</span>
+            <h1 class="hub-title">Curated City Guides<br><span style="background: linear-gradient(135deg, var(--primary-light), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">For Modern Travelers.</span></h1>
+            <p class="hub-subtitle">In-depth local guides, secret spots, must-try food, and curated walking routes for 90+ global destinations.</p>
+            
+            <div class="search-box">
+                <input type="text" id="citySearch" class="search-input" placeholder="Search city or country (e.g. Rome, Tokyo, Spain)...">
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="cities-grid" id="citiesGrid">
+            
+    <a href="amalfi.html" class="hub-city-card" data-name="amalfi coast" data-country="italy">
+        <div class="hub-card-media">
+            <img src="https://images.unsplash.com/photo-1612698093158-e07ac200d44e?w=800" alt="Amalfi Coast" loading="lazy">
+            <span class="hub-card-flag">🇮🇹</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Italy</div>
+            <h3 class="hub-card-title">Amalfi Coast</h3>
+            <p class="hub-card-desc">Lemon groves, turquoise sea and villages hanging on the edge of cliffs — this view is more beautiful in real life than in any photograph</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="amsterdam.html" class="hub-city-card" data-name="amsterdam" data-country="netherlands">
+        <div class="hub-card-media">
+            <img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=800" alt="Amsterdam" loading="lazy">
+            <span class="hub-card-flag">🇳🇱</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Netherlands</div>
+            <h3 class="hub-card-title">Amsterdam</h3>
+            <p class="hub-card-desc">Freedom, canals, and more bicycles than people</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="antalya.html" class="hub-city-card" data-name="antalya" data-country="türkiye">
+        <div class="hub-card-media">
+            <img src="https://emaadmin.emahouses.com//Content/Blog/pVPrGzHbS\u0131dfdsfsd.jpg" alt="Antalya" loading="lazy">
+            <span class="hub-card-flag">🇹🇷</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Türkiye</div>
+            <h3 class="hub-card-title">Antalya</h3>
+            <p class="hub-card-desc">City of the cliffs: orange blossom, ancient theatres and a waterfall that falls into the sea</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="atina.html" class="hub-city-card" data-name="athens" data-country="greece">
+        <div class="hub-card-media">
+            <img src="https://firebasestorage.googleapis.com/v0/b/myway-3fe75.firebasestorage.app/o/cities%2Fatina%2Fakropolis.jpg?alt=media" alt="Athens" loading="lazy">
+            <span class="hub-card-flag">🇬🇷</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Greece</div>
+            <h3 class="hub-card-title">Athens</h3>
+            <p class="hub-card-desc">The hill of the gods, the chaos of the streets, and a kefi that never ends</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="atlanta.html" class="hub-city-card" data-name="atlanta" data-country="usa">
+        <div class="hub-card-media">
+            <img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=800" alt="Atlanta" loading="lazy">
+            <span class="hub-card-flag">📍</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">USA</div>
+            <h3 class="hub-card-title">Atlanta</h3>
+            <p class="hub-card-desc">Capital of the South: civil rights legacy, peach trees and soul food tables</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="bangkok.html" class="hub-city-card" data-name="bangkok" data-country="thailand">
+        <div class="hub-card-media">
+            <img src="https://storage.googleapis.com/myway-3fe75.firebasestorage.app/cities/bangkok/grand_palace.jpg" alt="Bangkok" loading="lazy">
+            <span class="hub-card-flag">🇹🇭</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Thailand</div>
+            <h3 class="hub-card-title">Bangkok</h3>
+            <p class="hub-card-desc">From golden temples to night stalls, the city that never stops</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="barcelona.html" class="hub-city-card" data-name="barcelona" data-country="spain">
+        <div class="hub-card-media">
+            <img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?w=800" alt="Barcelona" loading="lazy">
+            <span class="hub-card-flag">🇪🇸</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Spain</div>
+            <h3 class="hub-card-title">Barcelona</h3>
+            <p class="hub-card-desc">Gaudí, sun, sea — and always, always Catalan first</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="bari.html" class="hub-city-card" data-name="bari" data-country="italy">
+        <div class="hub-card-media">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Puglia_bari_old-town.jpg/1280px-Puglia_bari_old-town.jpg" alt="Bari" loading="lazy">
+            <span class="hub-card-flag">🇮🇹</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Italy</div>
+            <h3 class="hub-card-title">Bari</h3>
+            <p class="hub-card-desc">The capital of Puglia — and the street where grandmothers sit in their doorways making orecchiette (Puglia&#x27;s handmade pasta) by hand</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="belgrad.html" class="hub-city-card" data-name="belgrade" data-country="serbia">
+        <div class="hub-card-media">
+            <img src="https://cdnp.flypgs.com/files/Sehirler-long-tail/Belgrad/belgrad_otelleri.jpg" alt="Belgrade" loading="lazy">
+            <span class="hub-card-flag">🇷🇸</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Serbia</div>
+            <h3 class="hub-card-title">Belgrade</h3>
+            <p class="hub-card-desc">The Balkan capital where two rivers meet and nights never end</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="berlin.html" class="hub-city-card" data-name="berlin" data-country="germany">
+        <div class="hub-card-media">
+            <img src="https://images.unsplash.com/photo-1560969184-10fe8719e047?w=800" alt="Berlin" loading="lazy">
+            <span class="hub-card-flag">🇩🇪</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Germany</div>
+            <h3 class="hub-card-title">Berlin</h3>
+            <p class="hub-card-desc">Raw, free, forever unfinished — and proud of every crack</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="bodrum.html" class="hub-city-card" data-name="bodrum" data-country="türkiye">
+        <div class="hub-card-media">
+            <img src="https://firebasestorage.googleapis.com/v0/b/myway-3fe75.firebasestorage.app/o/cities%2Fbodrum%2Fhero.jpg?alt=media" alt="Bodrum" loading="lazy">
+            <span class="hub-card-flag">🇹🇷</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Türkiye</div>
+            <h3 class="hub-card-title">Bodrum</h3>
+            <p class="hub-card-desc">White houses, bougainvillea purple and the birthplace of the Blue Voyage</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="bologna.html" class="hub-city-card" data-name="bologna" data-country="italy">
+        <div class="hub-card-media">
+            <img src="https://www.datocms-assets.com/57243/1661342703-6245af628d40974c9ab5a7fd_petr-slovacek-sxk8bwkvoxe-unsplash-20-1.jpg?auto=compress%2Cformat" alt="Bologna" loading="lazy">
+            <span class="hub-card-flag">🇮🇹</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Italy</div>
+            <h3 class="hub-card-title">Bologna</h3>
+            <p class="hub-card-desc">La Rossa, La Dotta, La Grassa — the Red, the Learned, the Fat</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="boston.html" class="hub-city-card" data-name="boston" data-country="usa">
+        <div class="hub-card-media">
+            <img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=800" alt="Boston" loading="lazy">
+            <span class="hub-card-flag">📍</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">USA</div>
+            <h3 class="hub-card-title">Boston</h3>
+            <p class="hub-card-desc">Brick streets where revolution was born, chowder steam and wicked pride</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="brugge.html" class="hub-city-card" data-name="bruges" data-country="belgium">
+        <div class="hub-card-media">
+            <img src="https://gezimanya.com/sites/default/files/styles/800x600_/public/lokasyon-detay/2021-08/brugge-hakkinda-bilinmesi-gerekenler.jpg" alt="Bruges" loading="lazy">
+            <span class="hub-card-flag">🇧🇪</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Belgium</div>
+            <h3 class="hub-card-title">Bruges</h3>
+            <p class="hub-card-desc">Canals, a belfry and a medieval fairytale that smells of chocolate</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="bruksel.html" class="hub-city-card" data-name="brussels" data-country="belgium">
+        <div class="hub-card-media">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Grand_Place_Bruselas_2.jpg/1280px-Grand_Place_Bruselas_2.jpg" alt="Brussels" loading="lazy">
+            <span class="hub-card-flag">🇧🇪</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Belgium</div>
+            <h3 class="hub-card-title">Brussels</h3>
+            <p class="hub-card-desc">Art nouveau, comic-strip walls and Europe&#x27;s untidy but lovable capital</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="budapeste.html" class="hub-city-card" data-name="budapest" data-country="hungary">
+        <div class="hub-card-media">
+            <img src="https://images.contentstack.io/v3/assets/blt06f605a34f1194ff/bltfde92aef92ecf073/6787eae0bf32fe28813c50fe/BCC-2024-EXPLORER-BUDAPEST-LANDMARKS-HEADER-_MOBILE.jpg?fit=crop&disable=upscale&auto=webp&quality=60&crop=smart" alt="Budapest" loading="lazy">
+            <span class="hub-card-flag">🇭🇺</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Hungary</div>
+            <h3 class="hub-card-title">Budapest</h3>
+            <p class="hub-card-desc">Two banks of the Danube, thermal steam and the city of ruin bars</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="budva.html" class="hub-city-card" data-name="budva" data-country="montenegro">
+        <div class="hub-card-media">
+            <img src="https://www.visit-montenegro.com/wp-content/uploads/2026/01/budva-drone-01-scaled.jpg" alt="Budva" loading="lazy">
+            <span class="hub-card-flag">🇲🇪</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Montenegro</div>
+            <h3 class="hub-card-title">Budva</h3>
+            <p class="hub-card-desc">2,500-year-old walls, Adriatic coves and a coastline that never sleeps</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="cannes.html" class="hub-city-card" data-name="cannes" data-country="france">
+        <div class="hub-card-media">
+            <img src="https://www.rivieraloisirs.com/public/uploads/2021/05/Port-de-Cannes.jpg" alt="Cannes" loading="lazy">
+            <span class="hub-card-flag">🇫🇷</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">France</div>
+            <h3 class="hub-card-title">Cannes</h3>
+            <p class="hub-card-desc">The film festival lasts just one week — the real Cannes begins in the other 51</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="catania.html" class="hub-city-card" data-name="catania" data-country="italy">
+        <div class="hub-card-media">
+            <img src="https://images.ctfassets.net/80dqdqpre1qk/cckCqd5EJjW09siSdf6Xo/dacc69a5bffc0e3a145df995c8684fa3/Catania_overzicht.jpg?fm=webp" alt="Catania" loading="lazy">
+            <span class="hub-card-flag">🇮🇹</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Italy</div>
+            <h3 class="hub-card-title">Catania</h3>
+            <p class="hub-card-desc">Built from lava stone at the foot of Etna — a city that has never surrendered</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="cenevre.html" class="hub-city-card" data-name="geneva" data-country="switzerland">
+        <div class="hub-card-media">
+            <img src="https://storage.googleapis.com/myway-3fe75.firebasestorage.app/cities/cenevre/jet_deau.jpg" alt="Geneva" loading="lazy">
+            <span class="hub-card-flag">🇨🇭</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Switzerland</div>
+            <h3 class="hub-card-title">Geneva</h3>
+            <p class="hub-card-desc">One of the world&#x27;s most expensive cities — most of the best things are free</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="cesme.html" class="hub-city-card" data-name="cesme" data-country="turkey">
+        <div class="hub-card-media">
+            <img src="https://firebasestorage.googleapis.com/v0/b/myway-3fe75.firebasestorage.app/o/cities%2Fcesme%2FChIJJfjSQuB4uxQRZmr4XczsWXo.jpg?alt=media" alt="Cesme" loading="lazy">
+            <span class="hub-card-flag">🇹🇷</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Turkey</div>
+            <h3 class="hub-card-title">Cesme</h3>
+            <p class="hub-card-desc">A peninsula of wind, mastic and stone streets</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="colmar.html" class="hub-city-card" data-name="colmar" data-country="france">
+        <div class="hub-card-media">
+            <img src="https://images.goway.com/production/hero/iStock-1423136049.jpg" alt="Colmar" loading="lazy">
+            <span class="hub-card-flag">🇫🇷</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">France</div>
+            <h3 class="hub-card-title">Colmar</h3>
+            <p class="hub-card-desc">When the fairytale set turns out real: half-timber, canals and Riesling</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="dallas.html" class="hub-city-card" data-name="dallas" data-country="usa">
+        <div class="hub-card-media">
+            <img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=800" alt="Dallas" loading="lazy">
+            <span class="hub-card-flag">📍</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">USA</div>
+            <h3 class="hub-card-title">Dallas</h3>
+            <p class="hub-card-desc">Brisket smoke, neon cowboys and jazz-age walls under a big sky</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="dubai.html" class="hub-city-card" data-name="dubai" data-country="united arab emirates">
+        <div class="hub-card-media">
+            <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800" alt="Dubai" loading="lazy">
+            <span class="hub-card-flag">🇦🇪</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">United Arab Emirates</div>
+            <h3 class="hub-card-title">Dubai</h3>
+            <p class="hub-card-desc">A glass skyline rising from the desert, beside a one-dirham ferry</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="dublin.html" class="hub-city-card" data-name="dublin" data-country="ireland">
+        <div class="hub-card-media">
+            <img src="https://storage.googleapis.com/myway-3fe75.firebasestorage.app/cities/dublin/temple_bar.jpg" alt="Dublin" loading="lazy">
+            <span class="hub-card-flag">🇮🇪</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Ireland</div>
+            <h3 class="hub-card-title">Dublin</h3>
+            <p class="hub-card-desc">The city of literature, pub talk and rainbow-colored doors</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="dubrovnik.html" class="hub-city-card" data-name="dubrovnik" data-country="croatia">
+        <div class="hub-card-media">
+            <img src="https://images.unsplash.com/photo-1555990538-c48ed2061c43?w=800" alt="Dubrovnik" loading="lazy">
+            <span class="hub-card-flag">🇭🇷</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Croatia</div>
+            <h3 class="hub-card-title">Dubrovnik</h3>
+            <p class="hub-card-desc">Marble streets embraced by walls, the Adriatic at their feet</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="edinburgh.html" class="hub-city-card" data-name="edinburgh" data-country="scotland">
+        <div class="hub-card-media">
+            <img src="https://images.contentstack.io/v3/assets/blt06f605a34f1194ff/blt9d8daa2acc7bb33c/6797dc563b4101992b03092a/iStock-1153650218-MOBILE-HEADER.jpg?fit=crop&disable=upscale&auto=webp&quality=60&crop=smart" alt="Edinburgh" loading="lazy">
+            <span class="hub-card-flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Scotland</div>
+            <h3 class="hub-card-title">Edinburgh</h3>
+            <p class="hub-card-desc">Stone streets in the castle&#x27;s shadow, stories in the mist</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="fes.html" class="hub-city-card" data-name="fes" data-country="morocco">
+        <div class="hub-card-media">
+            <img src="https://images.unsplash.com/photo-1548013146-72479768bada?w=800" alt="Fes" loading="lazy">
+            <span class="hub-card-flag">🇲🇦</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Morocco</div>
+            <h3 class="hub-card-title">Fes</h3>
+            <p class="hub-card-desc">The world&#x27;s largest car-free labyrinth: medina, tanneries and a thousand years of learning</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="floransa.html" class="hub-city-card" data-name="florence" data-country="italy">
+        <div class="hub-card-media">
+            <img src="https://italien.expert/wp-content/uploads/2021/05/Florenz-Toskana-Italien0.jpg" alt="Florence" loading="lazy">
+            <span class="hub-card-flag">🇮🇹</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Italy</div>
+            <h3 class="hub-card-title">Florence</h3>
+            <p class="hub-card-desc">The Renaissance was born here — and the city reminds you of this on every corner, without ever becoming tiresome</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="gaziantep.html" class="hub-city-card" data-name="gaziantep" data-country="turkey">
+        <div class="hub-card-media">
+            <img src="https://www.brandlifemag.com/wp-content/uploads/2021/04/acilis-gaziantep-december-06gaziantep-coppersmith-bazaar-600w-549044518.jpg" alt="Gaziantep" loading="lazy">
+            <span class="hub-card-flag">🇹🇷</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Turkey</div>
+            <h3 class="hub-card-title">Gaziantep</h3>
+            <p class="hub-card-desc">The gastronomy capital of pistachios, copper and mosaics</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="giethoorn.html" class="hub-city-card" data-name="giethoorn" data-country="netherlands">
+        <div class="hub-card-media">
+            <img src="https://www.onedayinacity.com/wp-content/uploads/2021/03/Giethoorn-Village.png" alt="Giethoorn" loading="lazy">
+            <span class="hub-card-flag">🇳🇱</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Netherlands</div>
+            <h3 class="hub-card-title">Giethoorn</h3>
+            <p class="hub-card-desc">The roadless village: canals, thatched roofs and whisper boats</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="hallstatt.html" class="hub-city-card" data-name="hallstatt" data-country="austria">
+        <div class="hub-card-media">
+            <img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=800" alt="Hallstatt" loading="lazy">
+            <span class="hub-card-flag">📍</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Austria</div>
+            <h3 class="hub-card-title">Hallstatt</h3>
+            <p class="hub-card-desc">A postcard wedged between lake and mountain — and the real village behind it</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="heidelberg.html" class="hub-city-card" data-name="heidelberg" data-country="germany">
+        <div class="hub-card-media">
+            <img src="https://image.hurimg.com/i/hurriyet/90/1110x740/56b3325818c7730e3cdb6757.jpg" alt="Heidelberg" loading="lazy">
+            <span class="hub-card-flag">🇩🇪</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Germany</div>
+            <h3 class="hub-card-title">Heidelberg</h3>
+            <p class="hub-card-desc">A castle on the Neckar, a bridge and the capital of romanticism</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="hongkong.html" class="hub-city-card" data-name="hong kong" data-country="china (sar)">
+        <div class="hub-card-media">
+            <img src="https://storage.googleapis.com/myway-3fe75.firebasestorage.app/cities/hongkong/victoria_peak.jpg" alt="Hong Kong" loading="lazy">
+            <span class="hub-card-flag">🇭🇰</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">China (SAR)</div>
+            <h3 class="hub-card-title">Hong Kong</h3>
+            <p class="hub-card-desc">The harbour where skyscrapers meet mountains, and dim sum meets neon</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="houston.html" class="hub-city-card" data-name="houston" data-country="usa">
+        <div class="hub-card-media">
+            <img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=800" alt="Houston" loading="lazy">
+            <span class="hub-card-flag">📍</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">USA</div>
+            <h3 class="hub-card-title">Houston</h3>
+            <p class="hub-card-desc">The bayou city that commands space and sets the world&#x27;s table</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="ibiza.html" class="hub-city-card" data-name="ibiza" data-country="spain">
+        <div class="hub-card-media">
+            <img src="https://www.visitspain.info/en/wp-content/uploads/sites/162/cala-d-hort-ibiza-hd.jpg" alt="Ibiza" loading="lazy">
+            <span class="hub-card-flag">🇪🇸</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Spain</div>
+            <h3 class="hub-card-title">Ibiza</h3>
+            <p class="hub-card-desc">The White Isle: turquoise coves, hippie markets and sunset rituals</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="istanbul.html" class="hub-city-card" data-name="istanbul" data-country="türkiye">
+        <div class="hub-card-media">
+            <img src="https://bosporuscruise.com/wp-content/uploads/2025/09/Adsiz-tasarim-4.jpg" alt="Istanbul" loading="lazy">
+            <span class="hub-card-flag">🇹🇷</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Türkiye</div>
+            <h3 class="hub-card-title">Istanbul</h3>
+            <p class="hub-card-desc">Two continents, one Bosphorus: ferry horns, tea steam and eight thousand years of memory</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="kahire.html" class="hub-city-card" data-name="cairo" data-country="egypt">
+        <div class="hub-card-media">
+            <img src="https://gezimanya.com/sites/default/files/styles/800x600_/public/lokasyon-detay/2019-11/image-explore-ancient-egypt-merl.jpg" alt="Cairo" loading="lazy">
+            <span class="hub-card-flag">🇪🇬</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Egypt</div>
+            <h3 class="hub-card-title">Cairo</h3>
+            <p class="hub-card-desc">A megacity of a thousand minarets in the shadow of the pyramids</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="kansascity.html" class="hub-city-card" data-name="kansas city" data-country="usa">
+        <div class="hub-card-media">
+            <img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=800" alt="Kansas City" loading="lazy">
+            <span class="hub-card-flag">📍</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">USA</div>
+            <h3 class="hub-card-title">Kansas City</h3>
+            <p class="hub-card-desc">Barbecue smoke, jazz nights and fountain song — the Paris of the Plains</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="kapadokya.html" class="hub-city-card" data-name="cappadocia" data-country="turkey">
+        <div class="hub-card-media">
+            <img src="https://images.unsplash.com/photo-1641128324972-af3212f0f6bd?w=800" alt="Cappadocia" loading="lazy">
+            <span class="hub-card-flag">🇹🇷</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Turkey</div>
+            <h3 class="hub-card-title">Cappadocia</h3>
+            <p class="hub-card-desc">A rock-carved fairytale under the shadow of balloons</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="kas.html" class="hub-city-card" data-name="kas" data-country="turkey">
+        <div class="hub-card-media">
+            <img src="https://cdn.renticar.com/cms/Antalya_Kas_ta_Gezilecek_Yerler_1500x1000px_blog_goersel_kaputas_f9c367417e.jpg" alt="Kas" loading="lazy">
+            <span class="hub-card-flag">🇹🇷</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Turkey</div>
+            <h3 class="hub-card-title">Kas</h3>
+            <p class="hub-card-desc">From bougainvillea lanes to turquoise depths — Lycia&#x27;s calm harbor</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="kopenhag.html" class="hub-city-card" data-name="copenhagen" data-country="denmark">
+        <div class="hub-card-media">
+            <img src="https://images.unsplash.com/photo-1513622470522-26c3c8a854bc?w=800" alt="Copenhagen" loading="lazy">
+            <span class="hub-card-flag">🇩🇰</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Denmark</div>
+            <h3 class="hub-card-title">Copenhagen</h3>
+            <p class="hub-card-desc">The capital of bicycles, harbour water and hygge</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="kotor.html" class="hub-city-card" data-name="kotor" data-country="montenegro">
+        <div class="hub-card-media">
+            <img src="https://www.etstur.com/letsgo/wp-content/uploads/2025/12/montenegro-kotorda-gezilecek-yerler-en-populer-rotalar-guncel-liste-1024x576.png" alt="Kotor" loading="lazy">
+            <span class="hub-card-flag">🇲🇪</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Montenegro</div>
+            <h3 class="hub-card-title">Kotor</h3>
+            <p class="hub-card-desc">A fjord-like bay, medieval walls and the city&#x27;s true owners: the cats</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="ksamil.html" class="hub-city-card" data-name="ksamil" data-country="albania">
+        <div class="hub-card-media">
+            <img src="https://www.turizmtatilseyahat.com/wp-content/uploads/2020/07/ksamil-gezi-rehberi-.jpg" alt="Ksamil" loading="lazy">
+            <span class="hub-card-flag">🇦🇱</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Albania</div>
+            <h3 class="hub-card-title">Ksamil</h3>
+            <p class="hub-card-desc">Ionian turquoise, lagoon mussels and the pearl of the Albanian Riviera</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="lizbon.html" class="hub-city-card" data-name="lisbon" data-country="portugal">
+        <div class="hub-card-media">
+            <img src="https://images.unsplash.com/photo-1585208798174-6cedd86e019a?w=800" alt="Lisbon" loading="lazy">
+            <span class="hub-card-flag">🇵🇹</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Portugal</div>
+            <h3 class="hub-card-title">Lisbon</h3>
+            <p class="hub-card-desc">Seven hills, Atlantic light and the smell of freshly baked pastéis — the city rebuilds itself from scratch every morning</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="londra.html" class="hub-city-card" data-name="london" data-country="united kingdom">
+        <div class="hub-card-media">
+            <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800" alt="London" loading="lazy">
+            <span class="hub-card-flag">🇬🇧</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">United Kingdom</div>
+            <h3 class="hub-card-title">London</h3>
+            <p class="hub-card-desc">One city, a thousand cities inside it</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="losangeles.html" class="hub-city-card" data-name="los angeles" data-country="usa">
+        <div class="hub-card-media">
+            <img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=800" alt="Los Angeles" loading="lazy">
+            <span class="hub-card-flag">📍</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">USA</div>
+            <h3 class="hub-card-title">Los Angeles</h3>
+            <p class="hub-card-desc">The endless city of palms, golden-hour light and taco trucks</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="lucerne.html" class="hub-city-card" data-name="lucerne" data-country="switzerland">
+        <div class="hub-card-media">
+            <img src="https://storage.googleapis.com/myway-3fe75.firebasestorage.app/cities/lucerne/chapel_bridge_kapellbrucke.jpg" alt="Lucerne" loading="lazy">
+            <span class="hub-card-flag">🇨🇭</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Switzerland</div>
+            <h3 class="hub-card-title">Lucerne</h3>
+            <p class="hub-card-desc">A wooden bridge, a turquoise lake and a city in the mountains&#x27; box seat</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="lyon.html" class="hub-city-card" data-name="lyon" data-country="france">
+        <div class="hub-card-media">
+            <img src="https://storage.googleapis.com/myway-3fe75.firebasestorage.app/cities/lyon/basilica_of_notre_dame_de_fourviere.jpg" alt="Lyon" loading="lazy">
+            <span class="hub-card-flag">🇫🇷</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">France</div>
+            <h3 class="hub-card-title">Lyon</h3>
+            <p class="hub-card-desc">France&#x27;s stomach capital: two rivers, one hill, a thousand bouchons</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="madrid.html" class="hub-city-card" data-name="madrid" data-country="spain">
+        <div class="hub-card-media">
+            <img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=800" alt="Madrid" loading="lazy">
+            <span class="hub-card-flag">🇪🇸</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Spain</div>
+            <h3 class="hub-card-title">Madrid</h3>
+            <p class="hub-card-desc">Europe&#x27;s city that never sleeps — being out at 2am here needs no explanation</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="mallorca.html" class="hub-city-card" data-name="mallorca" data-country="spain">
+        <div class="hub-card-media">
+            <img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?auto=format&fit=crop&w=800&q=80" alt="Mallorca" loading="lazy">
+            <span class="hub-card-flag">🇪🇸</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Spain</div>
+            <h3 class="hub-card-title">Mallorca</h3>
+            <p class="hub-card-desc">Behind the crowded beaches, villages, olive groves and mountains that have kept their authenticity are still hiding</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="marakes.html" class="hub-city-card" data-name="marrakech" data-country="morocco">
+        <div class="hub-card-media">
+            <img src="https://storage.googleapis.com/myway-3fe75.firebasestorage.app/cities/marakes/jemaa_el_fna.jpg" alt="Marrakech" loading="lazy">
+            <span class="hub-card-flag">🇲🇦</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Morocco</div>
+            <h3 class="hub-card-title">Marrakech</h3>
+            <p class="hub-card-desc">The red city&#x27;s square, gardens and never-ending theatre</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="marsilya.html" class="hub-city-card" data-name="marseille" data-country="france">
+        <div class="hub-card-media">
+            <img src="https://images.contentstack.io/v3/assets/blt06f605a34f1194ff/blt0feb4d48a3fc134c/67c5fafa304ea9666082ff3e/iStock-956215674-2-Header_Mobile.jpg?fit=crop&disable=upscale&auto=webp&quality=60&crop=smart" alt="Marseille" loading="lazy">
+            <span class="hub-card-flag">🇫🇷</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">France</div>
+            <h3 class="hub-card-title">Marseille</h3>
+            <p class="hub-card-desc">France&#x27;s oldest city — and its most misunderstood</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="matera.html" class="hub-city-card" data-name="matera" data-country="italy">
+        <div class="hub-card-media">
+            <img src="https://ita.travel/user/blogimg/ostatni/aerial-view_matera_sunset.jpg" alt="Matera" loading="lazy">
+            <span class="hub-card-flag">🇮🇹</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Italy</div>
+            <h3 class="hub-card-title">Matera</h3>
+            <p class="hub-card-desc">A nine-thousand-year cave city: a story of stone, bread and rebirth</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="miami.html" class="hub-city-card" data-name="miami" data-country="usa">
+        <div class="hub-card-media">
+            <img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=800" alt="Miami" loading="lazy">
+            <span class="hub-card-flag">📍</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">USA</div>
+            <h3 class="hub-card-title">Miami</h3>
+            <p class="hub-card-desc">The tropical stage of art deco pastels, cafecito steam and turquoise water</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="midilli.html" class="hub-city-card" data-name="lesbos" data-country="greece">
+        <div class="hub-card-media">
+            <img src="https://cdn.agentis.com.tr/www.drabostravel.com/files/actv/148/115540_b-f.jpg" alt="Lesbos" loading="lazy">
+            <span class="hub-card-flag">🇬🇷</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Greece</div>
+            <h3 class="hub-card-title">Lesbos</h3>
+            <p class="hub-card-desc">Ouzo, olives and an island in no hurry</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="milano.html" class="hub-city-card" data-name="milano" data-country="italy">
+        <div class="hub-card-media">
+            <img src="https://images.unsplash.com/photo-1520440229-6469a149ac59?w=800" alt="Milano" loading="lazy">
+            <span class="hub-card-flag">🇮🇹</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Italy</div>
+            <h3 class="hub-card-title">Milano</h3>
+            <p class="hub-card-desc">Fashion, design, football and the best aperitivo on earth — in that order</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="mykonos.html" class="hub-city-card" data-name="mykonos" data-country="greece">
+        <div class="hub-card-media">
+            <img src="https://images.unsplash.com/photo-1601581875309-fafbf2d3ed3a?w=800" alt="Mykonos" loading="lazy">
+            <span class="hub-card-flag">🇬🇷</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Greece</div>
+            <h3 class="hub-card-title">Mykonos</h3>
+            <p class="hub-card-desc">One of the world&#x27;s most expensive islands — but this is also where you find the spirit of the Aegean islands in its purest form</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="napoli.html" class="hub-city-card" data-name="naples" data-country="italy">
+        <div class="hub-card-media">
+            <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=800" alt="Naples" loading="lazy">
+            <span class="hub-card-flag">🇮🇹</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Italy</div>
+            <h3 class="hub-card-title">Naples</h3>
+            <p class="hub-card-desc">Chaotic, noisy, full of life — the city that serves the world&#x27;s best pizza for the least money, wrapped in paper, eaten standing up</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="newyork.html" class="hub-city-card" data-name="new york" data-country="united states">
+        <div class="hub-card-media">
+            <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=800" alt="New York" loading="lazy">
+            <span class="hub-card-flag">🇺🇸</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">United States</div>
+            <h3 class="hub-card-title">New York</h3>
+            <p class="hub-card-desc">The city that doesn&#x27;t explain itself — and doesn&#x27;t need to</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="nice.html" class="hub-city-card" data-name="nice" data-country="france">
+        <div class="hub-card-media">
+            <img src="https://www.flypgs.com/blog/wp-content/uploads/2024/05/nice-sahilleri.jpeg" alt="Nice" loading="lazy">
+            <span class="hub-card-flag">🇫🇷</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">France</div>
+            <h3 class="hub-card-title">Nice</h3>
+            <p class="hub-card-desc">The French Riviera&#x27;s real city — not the postcard, the place</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="oslo.html" class="hub-city-card" data-name="oslo" data-country="norway">
+        <div class="hub-card-media">
+            <img src="https://www.journavel.com/wp-content/uploads/2024/10/IMG_1851-scaled.webp" alt="Oslo" loading="lazy">
+            <span class="hub-card-flag">🇳🇴</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Norway</div>
+            <h3 class="hub-card-title">Oslo</h3>
+            <p class="hub-card-desc">A capital between fjord and forest, with an opera roof you can walk on</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="palermo.html" class="hub-city-card" data-name="palermo" data-country="italy">
+        <div class="hub-card-media">
+            <img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?auto=format&fit=crop&w=800&q=80" alt="Palermo" loading="lazy">
+            <span class="hub-card-flag">🇮🇹</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Italy</div>
+            <h3 class="hub-card-title">Palermo</h3>
+            <p class="hub-card-desc">The only city where Arab, Norman, Byzantine and Baroque live side by side on the same street</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="paris.html" class="hub-city-card" data-name="paris" data-country="france">
+        <div class="hub-card-media">
+            <img src="https://www.royalcaribbean.com/media-assets/pmc/content/dam/shore-x/paris-le-havre-leh/lh17-paris-sightseeing-without-lunch/stock-photo-skyline-of-paris-with-eiffel-tower-at-sunset-in-paris-france-eiffel-tower-is-one-of-the-most-752725282.jpg?w=1920" alt="Paris" loading="lazy">
+            <span class="hub-card-flag">🇫🇷</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">France</div>
+            <h3 class="hub-card-title">Paris</h3>
+            <p class="hub-card-desc">The city everyone thinks they know — and almost no one does</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="philadelphia.html" class="hub-city-card" data-name="philadelphia" data-country="usa">
+        <div class="hub-card-media">
+            <img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=800" alt="Philadelphia" loading="lazy">
+            <span class="hub-card-flag">📍</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">USA</div>
+            <h3 class="hub-card-title">Philadelphia</h3>
+            <p class="hub-card-desc">Brick streets where independence was born, mural walls and a cheesesteak wit</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="porto.html" class="hub-city-card" data-name="porto" data-country="portugal">
+        <div class="hub-card-media">
+            <img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=800" alt="Porto" loading="lazy">
+            <span class="hub-card-flag">🇵🇹</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Portugal</div>
+            <h3 class="hub-card-title">Porto</h3>
+            <p class="hub-card-desc">Azulejo blue, the Douro&#x27;s wine and a city of bridges</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="prag.html" class="hub-city-card" data-name="prague" data-country="czech republic">
+        <div class="hub-card-media">
+            <img src="https://images.unsplash.com/photo-1541849546-216549ae216d?w=800" alt="Prague" loading="lazy">
+            <span class="hub-card-flag">🇨🇿</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Czech Republic</div>
+            <h3 class="hub-card-title">Prague</h3>
+            <p class="hub-card-desc">A city so beautiful it almost doesn&#x27;t seem real — and far deeper than it looks</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="rhodes.html" class="hub-city-card" data-name="rhodes" data-country="greece">
+        <div class="hub-card-media">
+            <img src="https://blog.obilet.com/wp-content/uploads/2024/04/ana-gorsel-min-scaled.jpeg" alt="Rhodes" loading="lazy">
+            <span class="hub-card-flag">🇬🇷</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Greece</div>
+            <h3 class="hub-card-title">Rhodes</h3>
+            <p class="hub-card-desc">Knights&#x27; walls, three hundred days of sun, and an island where two seas meet</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="roma.html" class="hub-city-card" data-name="rome" data-country="italy">
+        <div class="hub-card-media">
+            <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800" alt="Rome" loading="lazy">
+            <span class="hub-card-flag">🇮🇹</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Italy</div>
+            <h3 class="hub-card-title">Rome</h3>
+            <p class="hub-card-desc">Three thousand years of history — and a city that still belongs to the living</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="rovaniemi.html" class="hub-city-card" data-name="rovaniemi" data-country="finland">
+        <div class="hub-card-media">
+            <img src="https://www.visitfinland.com/dam/jcr:70734834-7ba2-4bf1-9f6e-bf185e014367/central-plaza-santa-claus-village-rovaniemi-lapland-finland%20(1).jpg" alt="Rovaniemi" loading="lazy">
+            <span class="hub-card-flag">🇫🇮</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Finland</div>
+            <h3 class="hub-card-title">Rovaniemi</h3>
+            <p class="hub-card-desc">The Arctic Circle, Santa&#x27;s village and lights that dance across the sky</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="saint_tropez.html" class="hub-city-card" data-name="saint-tropez" data-country="france">
+        <div class="hub-card-media">
+            <img src="https://cdn.sanity.io/images/nxpteyfv/goguides/3a6c92c8b52d99de1f3ef6d2fcebadfd646bf990-1600x1066.jpg" alt="Saint-Tropez" loading="lazy">
+            <span class="hub-card-flag">🇫🇷</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">France</div>
+            <h3 class="hub-card-title">Saint-Tropez</h3>
+            <p class="hub-card-desc">Behind the yachts and beach clubs, a fishing village is still hiding — finding it takes a little time</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="san_sebastian.html" class="hub-city-card" data-name="san sebastián" data-country="spain">
+        <div class="hub-card-media">
+            <img src="https://cdn.bunniktours.com.au/public/posts/images/Europe/Blog%20Header%20-%20Spain%20-%20San%20Sebastian%20-%20credit%20Raul%20Cacho%20Oses%20%28Unsplash%29-feature.jpg" alt="San Sebastián" loading="lazy">
+            <span class="hub-card-flag">🇪🇸</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Spain</div>
+            <h3 class="hub-card-title">San Sebastián</h3>
+            <p class="hub-card-desc">La Concha&#x27;s golden sand and the world&#x27;s finest standing-up cuisine</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="sanfrancisco.html" class="hub-city-card" data-name="san francisco" data-country="usa">
+        <div class="hub-card-media">
+            <img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=800" alt="San Francisco" loading="lazy">
+            <span class="hub-card-flag">📍</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">USA</div>
+            <h3 class="hub-card-title">San Francisco</h3>
+            <p class="hub-card-desc">The free-spirited city of fog, hills and the orange bridge</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="santorini.html" class="hub-city-card" data-name="santorini" data-country="greece">
+        <div class="hub-card-media">
+            <img src="https://www.kucukoteller.com.tr/storage/images/2024/07/14/5e7eaf11eb5ec2dda2f7a602232faa8961347f29.webp" alt="Santorini" loading="lazy">
+            <span class="hub-card-flag">🇬🇷</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Greece</div>
+            <h3 class="hub-card-title">Santorini</h3>
+            <p class="hub-card-desc">White villages on a volcano&#x27;s rim, wine below, the sunset across</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="saraybosna.html" class="hub-city-card" data-name="sarajevo" data-country="bosnia and herzegovina">
+        <div class="hub-card-media">
+            <img src="https://images.themagger.net/wp-content/uploads/2022/12/saraybosna-kapak-633x433.jpg" alt="Sarajevo" loading="lazy">
+            <span class="hub-card-flag">🇧🇦</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Bosnia and Herzegovina</div>
+            <h3 class="hub-card-title">Sarajevo</h3>
+            <p class="hub-card-desc">The city where East and West shake hands in a bazaar</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="sardinya.html" class="hub-city-card" data-name="sardinia" data-country="italy">
+        <div class="hub-card-media">
+            <img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=800" alt="Sardinia" loading="lazy">
+            <span class="hub-card-flag">📍</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Italy</div>
+            <h3 class="hub-card-title">Sardinia</h3>
+            <p class="hub-card-desc">Caribbean-blue sea, granite mountains, and an island that speaks its own language</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="seattle.html" class="hub-city-card" data-name="seattle" data-country="usa">
+        <div class="hub-card-media">
+            <img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=800" alt="Seattle" loading="lazy">
+            <span class="hub-card-flag">📍</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">USA</div>
+            <h3 class="hub-card-title">Seattle</h3>
+            <p class="hub-card-desc">The emerald city of coffee steam, ferry horns and mountain views</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="selanik.html" class="hub-city-card" data-name="thessaloniki" data-country="greece">
+        <div class="hub-card-media">
+            <img src="https://www.etstur.com/letsgo/wp-content/uploads/2025/09/01-selanik-letsgo.jpg" alt="Thessaloniki" loading="lazy">
+            <span class="hub-card-flag">🇬🇷</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Greece</div>
+            <h3 class="hub-card-title">Thessaloniki</h3>
+            <p class="hub-card-desc">The easygoing city of Byzantium, the waterfront and long tables</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="seul.html" class="hub-city-card" data-name="seoul" data-country="south korea">
+        <div class="hub-card-media">
+            <img src="https://www.agoda.com/wp-content/uploads/2019/03/Seoul-attractions-Gyeongbokgung-palace.jpg" alt="Seoul" loading="lazy">
+            <span class="hub-card-flag">🇰🇷</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">South Korea</div>
+            <h3 class="hub-card-title">Seoul</h3>
+            <p class="hub-card-desc">Where five-hundred-year-old palaces and neon streets live at once</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="sevilla.html" class="hub-city-card" data-name="seville" data-country="spain">
+        <div class="hub-card-media">
+            <img src="https://images.unsplash.com/photo-1558370781-d6196949e317?w=800" alt="Seville" loading="lazy">
+            <span class="hub-card-flag">🇪🇸</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Spain</div>
+            <h3 class="hub-card-title">Seville</h3>
+            <p class="hub-card-desc">The most Spanish city in Spain — and the one that earned it</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="singapur.html" class="hub-city-card" data-name="singapore" data-country="singapore">
+        <div class="hub-card-media">
+            <img src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=800" alt="Singapore" loading="lazy">
+            <span class="hub-card-flag">🇸🇬</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Singapore</div>
+            <h3 class="hub-card-title">Singapore</h3>
+            <p class="hub-card-desc">Hawker tables, supertrees and three cuisines in a garden city</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="sintra.html" class="hub-city-card" data-name="sintra" data-country="portugal">
+        <div class="hub-card-media">
+            <img src="https://images.contentstack.io/v3/assets/blt06f605a34f1194ff/blt75a384a61f2efa5b/68848225e7cb649650cc2d81/BCC-2024-EXPLORER-SINTRA-BEST_PLACES_TO_VISIT-HEADER-MOBILE.jpg?format=webp&auto=avif&quality=60&crop=16%3A9&width=1440" alt="Sintra" loading="lazy">
+            <span class="hub-card-flag">🇵🇹</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Portugal</div>
+            <h3 class="hub-card-title">Sintra</h3>
+            <p class="hub-card-desc">A romantic fairytale in the palaces of a misty mountain</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="stockholm.html" class="hub-city-card" data-name="stockholm" data-country="sweden">
+        <div class="hub-card-media">
+            <img src="https://images.unsplash.com/photo-1509356843151-3e7d96241e11?w=800" alt="Stockholm" loading="lazy">
+            <span class="hub-card-flag">🇸🇪</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Sweden</div>
+            <h3 class="hub-card-title">Stockholm</h3>
+            <p class="hub-card-desc">Elegance built on fourteen islands: water, design and fika</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="strazburg.html" class="hub-city-card" data-name="strasbourg" data-country="france">
+        <div class="hub-card-media">
+            <img src="https://www.avruparuyasi.com.tr/uploads/tour-gallery/36c44666-5e5a-4c2d-a341-2fa8285c3fb6.webp" alt="Strasbourg" loading="lazy">
+            <span class="hub-card-flag">🇫🇷</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">France</div>
+            <h3 class="hub-card-title">Strasbourg</h3>
+            <p class="hub-card-desc">Capital of Europe, homeland of Christmas, one city of two cultures</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="tokyo.html" class="hub-city-card" data-name="tokyo" data-country="japan">
+        <div class="hub-card-media">
+            <img src="https://img.piri.net/mnresize/900/-/resim/imagecrop/2023/01/17/11/54/resized_d9b02-8b17feafkapak2.jpg" alt="Tokyo" loading="lazy">
+            <span class="hub-card-flag">🇮🇹</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Japan</div>
+            <h3 class="hub-card-title">Tokyo</h3>
+            <p class="hub-card-desc">The quiet giant of order, neon and perfection</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="tromso.html" class="hub-city-card" data-name="tromsø" data-country="norway">
+        <div class="hub-card-media">
+            <img src="https://www.flightgift.com/media/wp/FG/2024/02/tromso.webp" alt="Tromsø" loading="lazy">
+            <span class="hub-card-flag">🇳🇴</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Norway</div>
+            <h3 class="hub-card-title">Tromsø</h3>
+            <p class="hub-card-desc">City of the polar night, the aurora and mountain-ringed fjords</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="valencia.html" class="hub-city-card" data-name="valencia" data-country="spain">
+        <div class="hub-card-media">
+            <img src="https://img.static-kl.com/transform/81017f83-1bd0-46c4-9459-c199cf4e1dd7/" alt="Valencia" loading="lazy">
+            <span class="hub-card-flag">🇪🇸</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Spain</div>
+            <h3 class="hub-card-title">Valencia</h3>
+            <p class="hub-card-desc">The birthplace of paella, a city shaped by oranges, and Spain&#x27;s most underrated metropolis</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="venedik.html" class="hub-city-card" data-name="venice" data-country="italy">
+        <div class="hub-card-media">
+            <img src="https://images.unsplash.com/photo-1514890547357-a9ee288728e0?w=800" alt="Venice" loading="lazy">
+            <span class="hub-card-flag">🇮🇹</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Italy</div>
+            <h3 class="hub-card-title">Venice</h3>
+            <p class="hub-card-desc">The impossible city built on water: get lost, drink an ombra, get lost again</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="viyana.html" class="hub-city-card" data-name="vienna" data-country="austria">
+        <div class="hub-card-media">
+            <img src="https://images.unsplash.com/photo-1516550893923-42d28e5677af?w=800" alt="Vienna" loading="lazy">
+            <span class="hub-card-flag">🇦🇹</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Austria</div>
+            <h3 class="hub-card-title">Vienna</h3>
+            <p class="hub-card-desc">Imperial elegance, coffeehouse philosophy and a slice of Sachertorte</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="zermatt.html" class="hub-city-card" data-name="zermatt" data-country="switzerland">
+        <div class="hub-card-media">
+            <img src="https://holidaystoswitzerland.com/wp-content/uploads/2020/07/Zermatt-and-the-Matterhorn-at-dawn.jpg" alt="Zermatt" loading="lazy">
+            <span class="hub-card-flag">🇨🇭</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Switzerland</div>
+            <h3 class="hub-card-title">Zermatt</h3>
+            <p class="hub-card-desc">A car-free village, glacier trains and the Matterhorn&#x27;s shadow</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+    <a href="zurih.html" class="hub-city-card" data-name="zurich" data-country="switzerland">
+        <div class="hub-card-media">
+            <img src="https://images.unsplash.com/photo-1515488764276-beab7607c1e6?w=800" alt="Zurich" loading="lazy">
+            <span class="hub-card-flag">🇨🇭</span>
+        </div>
+        <div class="hub-card-body">
+            <div class="hub-card-country">Switzerland</div>
+            <h3 class="hub-card-title">Zurich</h3>
+            <p class="hub-card-desc">The lake city hidden behind the banks: river swims, Dada and chocolate</p>
+            <div class="hub-card-link">Explore Guide &rarr;</div>
+        </div>
+    </a>
+    
+        </div>
+    </main>
+
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div>
+                <div class="footer-brand">
+                    <img src="../images/app_icon.png" alt="MyWay" width="36" height="36">
+                    <span>MyWay</span>
+                </div>
+                <p class="footer-desc">
+                    The ultimate smart travel companion. Discover, plan, and navigate without tourist traps or wasted steps.
+                </p>
+            </div>
+            <div>
+                <h4>Explore</h4>
+                <ul class="footer-links">
+                    <li><a href="/guides/">All City Guides</a></li>
+                    <li><a href="/#features">Smart Routing</a></li>
+                    <li><a href="/#screenshots">App Experience</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Legal & Support</h4>
+                <ul class="footer-links">
+                    <li><a href="/privacy.html">Privacy Policy</a></li>
+                    <li><a href="/terms.html">Terms of Use</a></li>
+                    <li><a href="/support.html">Support & Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
+            <p>Made for curious travelers worldwide.</p>
+        </div>
+    </footer>
+
+
+    <script>
+        const searchInput = document.getElementById('citySearch');
+        const cards = document.querySelectorAll('.hub-city-card');
+
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            cards.forEach(card => {
+                const name = card.getAttribute('data-name');
+                const country = card.getAttribute('data-country');
+                if (name.includes(query) || country.includes(query)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
