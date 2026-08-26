@@ -24,616 +24,233 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <link rel="icon" type="image/png" href="../../images/app_icon.png">
 
     <style>
+        
         :root {
-            --bg-dark: #0d0e15;
-            --bg-card: #161824;
-            --bg-card-hover: #1e2132;
-            --primary: #7b6ef6;
-            --primary-glow: rgba(123, 110, 246, 0.25);
-            --accent: #f59e0b;
-            --text-main: #ffffff;
-            --text-muted: #94a3b8;
-            --border: rgba(255, 255, 255, 0.08);
-            --border-hover: rgba(123, 110, 246, 0.4);
-            --green: #10b981;
-            --red: #ef4444;
-            --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-serif: 'Playfair Display', Georgia, serif;
+            --primary: #7B6EF6;
+            --primary-light: #9D93FF;
+            --primary-dark: #5B4FD6;
+            --accent: #EC4899;
+            --bg-dark: #0F0B1A;
+            --bg-section: #130F22;
+            --bg-card: rgba(255, 255, 255, 0.04);
+            --text-primary: #FFFFFF;
+            --text-secondary: #9CA3AF;
+            --text-muted: #6B7280;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --radius-sm: 12px;
+            --shadow-glow: 0 0 80px rgba(123, 110, 246, 0.15);
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            -webkit-font-smoothing: antialiased;
-        }
-
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            font-family: var(--font-sans);
-            line-height: 1.6;
-            padding-bottom: 60px;
+            background-color: var(--bg-dark); color: var(--text-primary);
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6; overflow-x: hidden;
         }
-
-        /* Navigation */
+        
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        
+        /* Navbar */
         .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: rgba(13, 14, 21, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-            height: 72px;
-            display: flex;
-            align-items: center;
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(15, 11, 26, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle); height: 72px; display: flex; align-items: center;
         }
-
         .navbar-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%;
+            display: flex; align-items: center; justify-content: space-between;
         }
-
         .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: white;
-            font-weight: 800;
-            font-size: 20px;
+            display: flex; align-items: center; gap: 12px; text-decoration: none;
+            color: #fff; font-weight: 700; font-size: 20px;
         }
-
-        .nav-brand img {
-            border-radius: 10px;
-            box-shadow: 0 4px 12px var(--primary-glow);
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-            list-style: none;
-        }
-
+        .nav-brand img { border-radius: 10px; }
+        .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
         .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            transition: color 0.2s;
+            color: var(--text-secondary); text-decoration: none; font-size: 14px;
+            font-weight: 500; transition: color 0.2s;
         }
-
-        .nav-links a:hover, .nav-links a.active {
-            color: white;
-        }
-
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        /* Modern Language Dropdown */
-        .lang-dropdown-wrapper {
-            position: relative;
-        }
-
+        .nav-links a:hover, .nav-links a.active { color: #fff; }
+        .nav-actions { display: flex; align-items: center; gap: 14px; }
+        
+        /* Globe Language Dropdown */
+        .lang-dropdown-wrapper { position: relative; }
         .lang-dropdown-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 7px 14px;
-            border-radius: 100px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: white;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
+            display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px;
+            background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s ease;
             font-family: inherit;
         }
-
-        .lang-dropdown-btn:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: var(--primary);
-        }
-
-        .lang-globe-icon {
-            width: 15px;
-            height: 15px;
-            fill: currentColor;
-        }
-
+        .lang-dropdown-btn:hover { background: rgba(255, 255, 255, 0.15); border-color: var(--primary); }
+        .lang-globe-icon { width: 15px; height: 15px; fill: currentColor; }
         .lang-dropdown-menu {
-            display: none;
-            position: absolute;
-            top: calc(100% + 8px);
-            right: 0;
-            background: #19142B;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 14px;
-            padding: 6px;
-            min-width: 130px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            z-index: 1001;
+            display: none; position: absolute; top: calc(100% + 8px); right: 0;
+            background: #19142B; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 14px;
+            padding: 6px; min-width: 130px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); z-index: 1001;
         }
-
         .lang-dropdown-wrapper:hover .lang-dropdown-menu,
         .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
+            display: flex; flex-direction: column; gap: 2px;
         }
-
         .lang-dropdown-item {
-            display: flex;
-            align-items: center;
-            padding: 8px 12px;
-            font-size: 13px;
-            font-weight: 600;
-            color: #CBD5E1;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: background 0.2s, color 0.2s;
+            display: flex; align-items: center; padding: 8px 12px; font-size: 13px; font-weight: 600;
+            color: #CBD5E1; text-decoration: none; border-radius: 8px; transition: background 0.2s, color 0.2s;
         }
-
-        .lang-dropdown-item:hover {
-            background: rgba(123, 110, 246, 0.2);
-            color: white;
-        }
-
-        .lang-dropdown-item.active {
-            background: var(--primary);
-            color: white;
-        }
+        .lang-dropdown-item:hover { background: rgba(123, 110, 246, 0.2); color: white; }
+        .lang-dropdown-item.active { background: var(--primary); color: white; }
 
         .nav-cta {
-            background: var(--primary);
-            color: white !important;
-            padding: 8px 18px;
-            border-radius: 100px;
-            font-size: 13px;
-            font-weight: 700;
-            text-decoration: none;
-            transition: transform 0.2s, box-shadow 0.2s;
+            background: var(--primary); color: #fff !important; padding: 8px 20px;
+            border-radius: 100px; font-size: 13px; font-weight: 600; text-decoration: none;
+            transition: all 0.2s ease;
         }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(123, 110, 246, 0.4); }
+        .nav-toggle { display: none; background: none; border: none; color: #fff; cursor: pointer; padding: 8px; }
 
-        .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px var(--primary-glow);
-        }
-
-        .nav-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            padding: 8px;
-        }
-
-        /* Hero */
+        /* Guide Hero */
         .guide-hero {
-            position: relative;
-            min-height: 480px;
-            display: flex;
-            align-items: flex-end;
-            padding: 120px 24px 60px;
-            background-size: cover;
-            background-position: center;
-            overflow: hidden;
+            position: relative; min-height: 440px; display: flex; align-items: flex-end;
+            padding: 120px 24px 44px; margin-top: 72px; overflow: hidden; background-color: #1A132F;
         }
-
         .guide-hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1;
-            transform: scale(1.02);
+            position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+            filter: brightness(0.65);
         }
-
         .guide-hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(13, 14, 21, 0.3) 0%, rgba(13, 14, 21, 0.85) 75%, var(--bg-dark) 100%);
-            z-index: 2;
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.4) 60%, transparent 100%);
         }
-
-        .guide-hero-content {
-            position: relative;
-            z-index: 3;
-            max-width: 900px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
+        .guide-hero-content { position: relative; z-index: 2; width: 100%; }
         .city-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 14px;
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            border-radius: 100px;
-            font-size: 13px;
-            font-weight: 700;
-            color: #cbd5e1;
-            margin-bottom: 16px;
+            display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px); padding: 6px 14px; border-radius: 99px; font-size: 13px;
+            font-weight: 600; margin-bottom: 14px; border: 1px solid rgba(255, 255, 255, 0.15);
         }
-
-        .guide-title {
-            font-size: clamp(38px, 6vw, 64px);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 12px;
-            letter-spacing: -1.5px;
+        .guide-title { font-size: clamp(32px, 6vw, 52px); font-weight: 800; line-height: 1.1; margin-bottom: 10px; }
+        .guide-tagline { font-size: 16px; color: var(--primary-light); max-width: 720px; font-weight: 500; line-height: 1.5; }
+        
+        /* Sections */
+        .section { padding: 42px 0; border-bottom: 1px solid var(--border-subtle); }
+        .section-header { margin-bottom: 24px; }
+        .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); font-weight: 700; }
+        .section-title { font-size: 24px; font-weight: 700; margin-top: 4px; }
+        
+        .intro-text { font-size: 15px; color: #D1D5DB; line-height: 1.8; margin-bottom: 20px; }
+        
+        /* Local Word */
+        .local-word-box {
+            background: rgba(123, 110, 246, 0.08); border-left: 4px solid var(--primary);
+            padding: 18px 22px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-top: 20px;
         }
-
-        .guide-tagline {
-            font-size: clamp(16px, 2.5vw, 20px);
-            color: #e2e8f0;
-            font-weight: 500;
-            max-width: 700px;
-            line-height: 1.5;
+        .word-title { font-size: 15px; color: #fff; margin-bottom: 4px; }
+        .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
+        .local-word-box p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        
+        /* Facts Grid */
+        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+        .fact-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
         }
-
-        /* Container */
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 24px;
+        .fact-icon { font-size: 24px; flex-shrink: 0; }
+        .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
+        .fact-val { font-size: 15px; font-weight: 600; color: #fff; margin: 2px 0; }
+        .fact-sub { font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
+        
+        /* Rules */
+        .rules-list { display: flex; flex-direction: column; gap: 14px; }
+        .rule-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md); padding: 20px; display: flex; gap: 16px; align-items: flex-start;
         }
-
-        .section {
-            margin-top: 56px;
+        .rule-num {
+            background: var(--primary); color: #fff; width: 32px; height: 32px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-weight: 700; flex-shrink: 0; font-size: 14px;
         }
-
-        .section-header {
-            margin-bottom: 24px;
+        .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
+        .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        
+        /* Hidden Gems & Eat Grid */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+        .gem-card, .eat-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md); padding: 22px; position: relative;
         }
-
-        .section-label {
-            font-size: 12px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--primary);
-            display: block;
-            margin-bottom: 4px;
-        }
-
-        .section-title {
-            font-size: clamp(24px, 4vw, 32px);
-            font-weight: 800;
-            letter-spacing: -0.8px;
-        }
-
-        .intro-text {
-            font-size: 17px;
-            line-height: 1.8;
-            color: #cbd5e1;
-            margin-bottom: 24px;
-        }
-
-        .highlight-box {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-left: 4px solid var(--accent);
-            padding: 22px 26px;
-            border-radius: 16px;
-            margin-top: 24px;
-        }
-
-        .highlight-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+        .gem-badge {
+            display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase;
+            color: #10B981; background: rgba(16, 185, 129, 0.12); padding: 4px 10px; border-radius: 99px;
             margin-bottom: 10px;
         }
-
-        .highlight-title {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--accent);
+        .gem-hook { font-size: 13px; color: var(--primary-light); font-style: italic; margin-bottom: 8px; }
+        .gem-card h4, .eat-card h4 { font-size: 16px; margin-bottom: 6px; }
+        .gem-card p, .eat-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        .card-tip-box {
+            margin-top: 10px; padding: 8px 12px; background: rgba(255, 255, 255, 0.04);
+            border-radius: 8px; font-size: 12px; color: #cbd5e1;
         }
-
-        .pron-badge {
-            font-size: 12px;
-            color: var(--text-muted);
-            background: rgba(255, 255, 255, 0.06);
-            padding: 3px 8px;
-            border-radius: 6px;
-        }
-
-        .word-def {
-            font-size: 15px;
-            color: #ffffff;
-            line-height: 1.6;
-            margin-bottom: 6px;
-        }
-
-        .word-context {
-            font-size: 14px;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        .facts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 16px;
-        }
-
-        .fact-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 20px;
-        }
-
-        .fact-icon {
-            font-size: 24px;
-            margin-bottom: 8px;
-        }
-
-        .fact-title {
-            font-size: 12px;
-            font-weight: 800;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 4px;
-        }
-
-        .fact-desc {
-            font-size: 16px;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 2px;
-        }
-
-        .fact-sub {
-            font-size: 12px;
-            color: var(--text-muted);
-            line-height: 1.4;
-        }
-
-        .rules-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .rule-item {
-            display: flex;
-            gap: 18px;
-            align-items: flex-start;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 22px;
-        }
-
-        .rule-num {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--primary);
-            flex-shrink: 0;
-        }
-
-        .rule-text strong {
-            display: block;
-            color: white;
-            font-size: 16px;
-            margin-bottom: 6px;
-        }
-
-        .rule-text span {
-            color: var(--text-muted);
-            font-size: 14px;
-            line-height: 1.65;
-        }
-
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 20px;
-        }
-
-        .content-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 24px;
-            transition: transform 0.2s, border-color 0.2s;
-        }
-
-        .content-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--border-hover);
-        }
-
-        .card-tag {
-            font-size: 11px;
-            font-weight: 800;
-            letter-spacing: 1px;
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
-
-        .card-name {
-            font-size: 18px;
-            font-weight: 800;
-            margin-bottom: 8px;
-            color: white;
-        }
-
-        .card-desc {
-            font-size: 14px;
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 12px;
-        }
-
-        .card-tip {
-            font-size: 13px;
-            color: #cbd5e1;
-            background: rgba(255, 255, 255, 0.04);
-            padding: 10px 14px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-        }
-
-        .traps-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
+        
+        /* Traps */
+        .traps-list { display: flex; flex-direction: column; gap: 14px; }
         .trap-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 22px;
+            background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.15);
+            border-radius: var(--radius-md); padding: 20px;
         }
-
-        .trap-bad {
-            font-size: 16px;
-            font-weight: 800;
-            color: #f87171;
-            margin-bottom: 6px;
+        .trap-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+        .trap-tag {
+            background: #EF4444; color: #fff; font-size: 11px; font-weight: 700;
+            text-transform: uppercase; padding: 2px 8px; border-radius: 6px;
         }
-
-        .trap-why {
-            font-size: 14px;
-            color: var(--text-muted);
-            margin-bottom: 12px;
-            line-height: 1.6;
+        .trap-header h4 { font-size: 16px; color: #fff; }
+        .trap-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        .trap-solution {
+            margin-top: 10px; padding: 10px 14px; background: rgba(16, 185, 129, 0.08);
+            border-left: 3px solid #10B981; border-radius: 4px; font-size: 13px; color: #D1D5DB; line-height: 1.5;
         }
-
-        .trap-good {
-            font-size: 14px;
-            color: #34d399;
-            background: rgba(16, 185, 129, 0.08);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            padding: 10px 14px;
-            border-radius: 10px;
-        }
-
+        
+        /* App CTA Banner */
         .app-cta-banner {
-            margin-top: 72px;
-            background: linear-gradient(135deg, rgba(123, 110, 246, 0.15), rgba(245, 158, 11, 0.1));
-            border: 1px solid var(--border-hover);
-            border-radius: 24px;
-            padding: 48px 32px;
-            text-align: center;
+            background: linear-gradient(135deg, rgba(123, 110, 246, 0.15), rgba(236, 72, 153, 0.1));
+            border: 1px solid rgba(157, 147, 255, 0.3); border-radius: var(--radius-lg);
+            padding: 44px 20px; text-align: center; margin: 50px 0; position: relative;
         }
-
-        .app-cta-banner h3 {
-            font-size: clamp(24px, 4vw, 32px);
-            font-weight: 800;
-            margin-bottom: 12px;
-        }
-
-        .app-cta-banner p {
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto 28px;
-            font-size: 16px;
-        }
-
-        .store-btn-row {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
+        .app-cta-banner h3 { font-size: clamp(22px, 4vw, 28px); font-weight: 800; margin-bottom: 10px; }
+        .app-cta-banner p { color: var(--text-secondary); max-width: 580px; margin: 0 auto 24px; font-size: 15px; }
+        .store-btn-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
         .store-pill-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 26px;
-            background: white;
-            color: #0f1016;
-            font-weight: 800;
-            font-size: 14px;
-            border-radius: 100px;
-            text-decoration: none;
+            display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: white;
+            color: #0f1016; font-weight: 700; font-size: 14px; border-radius: 100px; text-decoration: none;
             transition: transform 0.2s, box-shadow 0.2s;
         }
+        .store-pill-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2); }
 
-        .store-pill-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 24px rgba(255, 255, 255, 0.2);
-        }
-
-        footer {
-            border-top: 1px solid var(--border);
-            margin-top: 80px;
-            padding: 40px 24px 20px;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 14px;
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--border-subtle); padding: 40px 24px 30px;
+            color: var(--text-muted); font-size: 13px; text-align: center;
         }
 
         @media (max-width: 768px) {
-            .navbar {
-                height: 64px;
-            }
+            .navbar { height: 64px; }
             .nav-links {
-                display: none;
-                position: fixed;
-                top: 64px;
-                left: 0;
-                right: 0;
-                background: rgba(13, 14, 21, 0.98);
-                flex-direction: column;
-                padding: 24px;
-                border-bottom: 1px solid var(--border);
-                gap: 16px;
+                display: none; position: fixed; top: 64px; left: 0; right: 0;
+                background: rgba(15, 11, 26, 0.98); flex-direction: column;
+                padding: 24px; border-bottom: 1px solid var(--border-subtle); gap: 16px;
             }
-            .nav-links.active {
-                display: flex;
-            }
-            .nav-toggle {
-                display: block;
-            }
-            .guide-hero {
-                min-height: 400px;
-                padding-top: 100px;
-            }
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
-            .store-pill-btn {
-                width: 100%;
-                max-width: 280px;
-                justify-content: center;
-            }
+            .nav-links.active { display: flex; }
+            .nav-toggle { display: block; }
+            .guide-hero { min-height: 380px; padding-top: 90px; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
+
     </style>
 </head>
 <body>
@@ -693,13 +310,9 @@
             </div>
             <p class="intro-text">Marseille 2.600 yıllık bir şehir — Yunan denizcileri tarafından kurulmuş ve bu sürenin büyük bölümünü küçümsenerek geçirmiş. Paris ona yukarıdan bakıyor. Turistler atlıyor. Marsilyalılar umursamıyor. Vieux-Port, Yunanlıların MÖ 600 civarında geldiğinden bu yana şehrin kalbinde atıyor. Calanques kıyıları Avrupa&#x27;nın en dramatik doğal manzaralarından. Balık pazarı her sabah aynı tekne başında, aynı şekilde kuruluyor. MuCEM kıtanın en iyi tasarlanmış müzelerinden biri. Bunların hiçbiri sır değil. Sır olan şu: şehir çalışıyor — gürültülü, gururlu ve tamamen kendisi.</p>
             
-        <div class="highlight-box">
-            <div class="highlight-header">
-                <div class="highlight-title">💬 La Bonne Mère</div>
-                <span class="pron-badge">🗣️ /la bon MAIR/</span>
-            </div>
-            <p class="word-def"><strong>Her Marsilyalının Notre-Dame de la Garde&#x27;a, yani şehrin en yüksek tepesindeki bazilikaya verdiği isim. Limandan ayrılan gemiler ona bakardı. Dönen gemiler de bakardı. İçerideki duvarlara asılı eski adak levhalarında (ex-voto) her denizcinin izi var. &#x27;La Bonne Mère&#x27; &#x27;iyi anne&#x27; demek. Bu isim, şehrin denizle ve inançla kurduğu ilişkiyi tek başına anlatıyor. Giriş ücretsiz. Alacakaranlıkta git.</strong></p>
-            
+        <div class="local-word-box">
+            <div class="word-title">🗣️ Yerel Kavram: <strong>La Bonne Mère</strong> <span class="pron">(la bon MAIR)</span></div>
+            <p>Her Marsilyalının Notre-Dame de la Garde&#x27;a, yani şehrin en yüksek tepesindeki bazilikaya verdiği isim. Limandan ayrılan gemiler ona bakardı. Dönen gemiler de bakardı. İçerideki duvarlara asılı eski adak levhalarında (ex-voto) her denizcinin izi var. &#x27;La Bonne Mère&#x27; &#x27;iyi anne&#x27; demek. Bu isim, şehrin denizle ve inançla kurduğu ilişkiyi tek başına anlatıyor. Giriş ücretsiz. Alacakaranlıkta git.</p>
         </div>
         
         </section>
@@ -715,30 +328,38 @@
                 
             <div class="fact-card">
                 <div class="fact-icon">✈️</div>
-                <div class="fact-title">Havalimanı</div>
-                <div class="fact-desc">MRS — Marseille Provence Havalimanı</div>
-                <div class="fact-sub">Servis otobüsü → Saint-Charles garı, ~25 dk</div>
+                <div>
+                    <div class="fact-label">Havalimanı</div>
+                    <div class="fact-val">MRS — Marseille Provence Havalimanı</div>
+                    <div class="fact-sub">Servis otobüsü → Saint-Charles garı, ~25 dk</div>
+                </div>
             </div>
             
             <div class="fact-card">
                 <div class="fact-icon">🚌</div>
-                <div class="fact-title">Ulaşım</div>
-                <div class="fact-desc">Metro + otobüs + tramvay (RTM)</div>
-                <div class="fact-sub">Tek bilet 1,70 Euro · 24 saatlik 5,20 Euro · Le Vélo ilk 30 dk ücretsiz</div>
+                <div>
+                    <div class="fact-label">Ulaşım</div>
+                    <div class="fact-val">Metro + otobüs + tramvay (RTM)</div>
+                    <div class="fact-sub">Tek bilet 1,70 Euro · 24 saatlik 5,20 Euro · Le Vélo ilk 30 dk ücretsiz</div>
+                </div>
             </div>
             
             <div class="fact-card">
                 <div class="fact-icon">🌡️</div>
-                <div class="fact-title">Hava</div>
-                <div class="fact-desc">Yılda 300 güneşli gün</div>
-                <div class="fact-sub">May–Haz ideal · Tem–Ağu sıcak ve kalabalık · Eyl–Eki mükemmel · kış ılıman</div>
+                <div>
+                    <div class="fact-label">Hava</div>
+                    <div class="fact-val">Yılda 300 güneşli gün</div>
+                    <div class="fact-sub">May–Haz ideal · Tem–Ağu sıcak ve kalabalık · Eyl–Eki mükemmel · kış ılıman</div>
+                </div>
             </div>
             
             <div class="fact-card">
                 <div class="fact-icon">🐟</div>
-                <div class="fact-title">Balık pazarı</div>
-                <div class="fact-desc">Her sabah, Quai des Belges, Vieux-Port</div>
-                <div class="fact-sub">Balıkçılar tekne başında satıyor · 10:00&#x27;da bitiyor · gezmesi ücretsiz</div>
+                <div>
+                    <div class="fact-label">Balık pazarı</div>
+                    <div class="fact-val">Her sabah, Quai des Belges, Vieux-Port</div>
+                    <div class="fact-sub">Balıkçılar tekne başında satıyor · 10:00&#x27;da bitiyor · gezmesi ücretsiz</div>
+                </div>
             </div>
             
             </div>
@@ -750,31 +371,31 @@
         <section class="section">
             <div class="section-header">
                 <span class="section-label">Yerel Sırlar</span>
-                <h2 class="section-title">Marseille İçin Yazısız Kurallar</h2>
+                <h2 class="section-title">Marseille İçin 3 Yazısız Kural</h2>
             </div>
             <div class="rules-list">
                 
-            <div class="rule-item">
-                <div class="rule-num">#1</div>
-                <div class="rule-text">
-                    <strong>Balık pazarı 10:00&#x27;da bitiyor</strong>
-                    <span>Her sabah balıkçılar gece avladıklarını doğrudan Vieux-Port&#x27;taki Quai des Belges&#x27;de teknelerinin başında satıyor. Aracı yok, toptancı yok — Avrupa&#x27;da bu türden kalan son pazarlardan biri. 10:00&#x27;da bitiyor. 11:00&#x27;de rıhtım boşalıyor. Restoranlar satın almadan önce gelir — 08:00&#x27;de git. Gezmesi ücretsiz. Mutfağın yoksa alacak bir şey yok.</span>
+            <div class="rule-card">
+                <div class="rule-num">1</div>
+                <div class="rule-content">
+                    <h4>Balık pazarı 10:00&#x27;da bitiyor</h4>
+                    <p>Her sabah balıkçılar gece avladıklarını doğrudan Vieux-Port&#x27;taki Quai des Belges&#x27;de teknelerinin başında satıyor. Aracı yok, toptancı yok — Avrupa&#x27;da bu türden kalan son pazarlardan biri. 10:00&#x27;da bitiyor. 11:00&#x27;de rıhtım boşalıyor. Restoranlar satın almadan önce gelir — 08:00&#x27;de git. Gezmesi ücretsiz. Mutfağın yoksa alacak bir şey yok.</p>
                 </div>
             </div>
             
-            <div class="rule-item">
-                <div class="rule-num">#2</div>
-                <div class="rule-text">
-                    <strong>Bouillabaisse&#x27;in bir şartnamesi var — ve önemli</strong>
-                    <span>Gerçek bouillabaisse belirli Akdeniz balıklarını kullanıyor — rascasse (iskorpit), grondin, Saint-Pierre — ve Marseille restoranlarının imzaladığı Bouillabaisse Şartnamesi&#x27;ne uyuyor. İki aşamada ayrı tabaklar olarak servis ediliyor, saatler alıyor ve pahalı. 20 Euro&#x27;luk turist menüsündeki versiyon başka bir yemek. Bouillabaisse Şartnamesi&#x27;ne uyan bir restoranda bir kez ye ve neyin bu kadar konuşulduğunu anla. Bu yemeğin icat edildiği yer burası.</span>
+            <div class="rule-card">
+                <div class="rule-num">2</div>
+                <div class="rule-content">
+                    <h4>Bouillabaisse&#x27;in bir şartnamesi var — ve önemli</h4>
+                    <p>Gerçek bouillabaisse belirli Akdeniz balıklarını kullanıyor — rascasse (iskorpit), grondin, Saint-Pierre — ve Marseille restoranlarının imzaladığı Bouillabaisse Şartnamesi&#x27;ne uyuyor. İki aşamada ayrı tabaklar olarak servis ediliyor, saatler alıyor ve pahalı. 20 Euro&#x27;luk turist menüsündeki versiyon başka bir yemek. Bouillabaisse Şartnamesi&#x27;ne uyan bir restoranda bir kez ye ve neyin bu kadar konuşulduğunu anla. Bu yemeğin icat edildiği yer burası.</p>
                 </div>
             </div>
             
-            <div class="rule-item">
-                <div class="rule-num">#3</div>
-                <div class="rule-text">
-                    <strong>Marseille acele edilecek bir şehir değil</strong>
-                    <span>Calanques planlama gerektiriyor — yazın Sugiton koyuna erişim için önceden ücretsiz online rezervasyon şart. MuCEM öğlen saatinde kuyruğa giriyor; sabah erken veya geç git. Notre-Dame de la Garde limandan 30 dakika yokuş yukarı ya da Hôtel de Ville&#x27;den 60 numaralı otobüsle. Le Panier günübirlikçiler gelmeden önce — 11:00&#x27;den önce — en iyi hâlinde. En az üç gün ayır.</span>
+            <div class="rule-card">
+                <div class="rule-num">3</div>
+                <div class="rule-content">
+                    <h4>Marseille acele edilecek bir şehir değil</h4>
+                    <p>Calanques planlama gerektiriyor — yazın Sugiton koyuna erişim için önceden ücretsiz online rezervasyon şart. MuCEM öğlen saatinde kuyruğa giriyor; sabah erken veya geç git. Notre-Dame de la Garde limandan 30 dakika yokuş yukarı ya da Hôtel de Ville&#x27;den 60 numaralı otobüsle. Le Panier günübirlikçiler gelmeden önce — 11:00&#x27;den önce — en iyi hâlinde. En az üç gün ayır.</p>
                 </div>
             </div>
             
@@ -791,66 +412,27 @@
             </div>
             <div class="cards-grid">
                 
-            <div class="content-card">
-                <div class="card-tag">💎 GIZLI NOKTA</div>
-                <div class="card-name">Vallon des Auffes</div>
-                <div class="card-desc">Corniche&#x27;i taşıyan viyadüğün altından geçilerek ulaşılan küçük bir koy. Bir düzine renkli balıkçı teknesi, kayalara oyulmuş bir avuç ev, iki üç balık restoranı. Balıkçılar hâlâ orada — gösteri için değil. Yazın yerel halk gün batımında ellerinde şişeyle kayaların üzerine oturuyor. 83 numaralı otobüs tam üstten geçiyor; otobüs penceresinden aşağıya bak ve neden inmen gerektiğini anlayacaksın. Ücretsiz, her zaman açık.</div>
+            <div class="gem-card">
+                <div class="gem-badge">Gizli Köşe</div>
+                <h4>Vallon des Auffes</h4>
+                <div class="gem-hook">Gizli Mekan</div>
+                <p>Corniche&#x27;i taşıyan viyadüğün altından geçilerek ulaşılan küçük bir koy. Bir düzine renkli balıkçı teknesi, kayalara oyulmuş bir avuç ev, iki üç balık restoranı. Balıkçılar hâlâ orada — gösteri için değil. Yazın yerel halk gün batımında ellerinde şişeyle kayaların üzerine oturuyor. 83 numaralı otobüs tam üstten geçiyor; otobüs penceresinden aşağıya bak ve neden inmen gerektiğini anlayacaksın. Ücretsiz, her zaman açık.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">💎 GIZLI NOKTA</div>
-                <div class="card-name">L&#x27;Estaque</div>
-                <div class="card-desc">Merkezin 10 kilometre kuzeyinde, körfezin kıyısında. Cézanne 1870&#x27;ten 1882&#x27;ye kadar defalarca buraya geldi; Braque, Dufy ve Derain da aynı yolu izledi. Körfez ve fabrika bacaları, Kübizm&#x27;in temelini oluşturan onlarca eserde göründü. Köyde bugün küçük bir plaj, birkaç balıkçı restoranı ve neredeyse hiç ziyaretçi yok. Joliette metrosundan 35 numaralı otobüsle 25 dakika. Chichi frégi (liman yakınında tezgâhlardan satılan kızarmış hamur) yerel atıştırmalık. Hafta içi git.</div>
+            <div class="gem-card">
+                <div class="gem-badge">Gizli Köşe</div>
+                <h4>L&#x27;Estaque</h4>
+                <div class="gem-hook">Gizli Mekan</div>
+                <p>Merkezin 10 kilometre kuzeyinde, körfezin kıyısında. Cézanne 1870&#x27;ten 1882&#x27;ye kadar defalarca buraya geldi; Braque, Dufy ve Derain da aynı yolu izledi. Körfez ve fabrika bacaları, Kübizm&#x27;in temelini oluşturan onlarca eserde göründü. Köyde bugün küçük bir plaj, birkaç balıkçı restoranı ve neredeyse hiç ziyaretçi yok. Joliette metrosundan 35 numaralı otobüsle 25 dakika. Chichi frégi (liman yakınında tezgâhlardan satılan kızarmış hamur) yerel atıştırmalık. Hafta içi git.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">💎 GIZLI NOKTA</div>
-                <div class="card-name">La Vieille Charité — Le Panier</div>
-                <div class="card-desc">1671 ile 1749 arasında, Marseille&#x27;in en önemli Barok mimarı Pierre Puget tarafından, yoksullar için barınak olarak inşa edildi. Üç kat kemerli galeri, ortada küçük kubbeli bir şapel. Şimdi Akdeniz Arkeolojisi Müzesi ile Afrika, Okyanusya ve Amerika Sanatı Müzesi&#x27;ne ev sahipliği yapıyor. Mimari tek başına Le Panier&#x27;e tırmanışı haklı kılıyor. Avluya giriş ücretsiz; müzeler biletli.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">💎 GIZLI NOKTA</div>
-                <div class="card-name">La Friche la Belle de Mai</div>
-                <div class="card-desc">Belle de Mai mahallesinde, merkezden yürüyerek 15 dakika uzakta, 45.000 m²&#x27;lik eski bir SEITA tütün fabrikası. Kültür kompleksine dönüştürülmüş: sanatçı stüdyoları, gösteri salonları, sinema, sergi alanları, ortak bahçeler ve şehir manzaralı çatı terası. Çatı barı yazın açık — içecek, şehir manzarası, turist altyapısı yok. Standart güzergâhta değil çünkü liman bölgesini gerçekten terk etmeyi gerektiriyor. Réformés-Canebière&#x27;den 49 numaralı otobüsle.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">💎 GIZLI NOKTA</div>
-                <div class="card-name">Cathédrale de la Major</div>
-                <div class="card-desc">Fransa&#x27;nın en büyük kiliselerinden biri. 19. yüzyılın ikinci yarısında dönüşümlü yeşil ve beyaz taşla çizgili Romanesk-Bizans üslubunda inşa edilmiş — içeride altın mozaikler, yükselen kubbeler. MuCEM&#x27;in tam yanında duruyor ve ziyaretçilerin büyük çoğunluğu müzeye geçmek için önünden geçiyor. Giriş ücretsiz. İçerisi karanlık, serin ve neredeyse tamamen boş. Hemen dışarıdaki kalabalıkla yarattığı tezat mutlak.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">💎 GIZLI NOKTA</div>
-                <div class="card-name">Calanque de Sormiou</div>
-                <div class="card-desc">Şehre en yakın ve en erişilebilir kalanques — B1 otobüsü Castellane metrosundan doğrudan yürüyüş başlangıcına gidiyor. Beyaz kireçtaşı kayalıklarla çevrili turkuaz bir koya 30 dakika yürüyüş. Yazın araçla erişim kısıtlı; ilkbahar ve sonbaharda patika neredeyse boş. Aşağıda küçük mevsimlik bir restoran var. Su beş metre derinlikte dip görünecek kadar berrak. Ücretsiz.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">💎 GIZLI NOKTA</div>
-                <div class="card-name">Cours Julien</div>
-                <div class="card-desc">Vieux-Port&#x27;tan 15 dakika yürüyüş. Sokak sanatı, bağımsız kafeler, plak dükkanları, vintage mağazalar ve Fransa&#x27;nın en büyük açık hava sokak sanatı alanlarından biri. Çarşamba sabahları Place Jean Jaurès&#x27;de organik üretici pazarı kuruluyor — otuz kadar yerel çiftçi, Provence&#x27;tan taze ürünler. Akşamları barlar dolup taşıyor, kalabalık tamamen yerel. Vieux-Port&#x27;un yarı fiyatına yemek, iki katı atmosfer. Ücretsiz gezmek için, yemek için, oturmak için.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">💎 GIZLI NOKTA</div>
-                <div class="card-name">Palais Longchamp</div>
-                <div class="card-desc">1869&#x27;da şehre su getiren kanalı kutlamak için inşa edilmiş — su deposunun üstüne yapılmış bir saray. Orta kısımda büyük bir şelale ve heykel grubu, iki kanatta Güzel Sanatlar Müzesi ve Doğa Tarihi Müzesi. Arkasında geniş bir park: piknik alanları, oyun bahçeleri, gölge ağaçlar. Tramvay T2 ile Longchamp durağından 3 dakika. Bahçe ve dış alan her zaman ücretsiz; müzeler biletli, her ayın ilk Pazarı ücretsiz.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">💎 GIZLI NOKTA</div>
-                <div class="card-name">Notre-Dame de la Garde — La Bonne Mère</div>
-                <div class="card-desc">Marseille&#x27;nin en yüksek noktasında, 162 metre yükseklikte. Yokuşlu patikadan 30–40 dakika yürüyüş ya da Hôtel de Ville&#x27;den 60 numaralı otobüsle. Tepeden şehrin tamamı, Vieux-Port, adalar ve açık deniz görünüyor. İçeride: duvarlara asılı yüzlerce adak levhası (ex-voto) — gemicilerin, annelerin, hayatta kalanların bıraktığı. Bazilika 19. yüzyıldan kalma, Bizans-Romanesk karışımı. Giriş ücretsiz. Alacakaranlıkta git — ışık o saatte bambaşka.</div>
+            <div class="gem-card">
+                <div class="gem-badge">Gizli Köşe</div>
+                <h4>La Vieille Charité — Le Panier</h4>
+                <div class="gem-hook">Gizli Mekan</div>
+                <p>1671 ile 1749 arasında, Marseille&#x27;in en önemli Barok mimarı Pierre Puget tarafından, yoksullar için barınak olarak inşa edildi. Üç kat kemerli galeri, ortada küçük kubbeli bir şapel. Şimdi Akdeniz Arkeolojisi Müzesi ile Afrika, Okyanusya ve Amerika Sanatı Müzesi&#x27;ne ev sahipliği yapıyor. Mimari tek başına Le Panier&#x27;e tırmanışı haklı kılıyor. Avluya giriş ücretsiz; müzeler biletli.</p>
                 
             </div>
             
@@ -863,50 +445,31 @@
         <section class="section">
             <div class="section-header">
                 <span class="section-label">Yeme & İçme</span>
-                <h2 class="section-title">Mutlaka Tadılması Gereken Lezzetler</h2>
+                <h2 class="section-title">Mutlaka Tadılması Gerekenler</h2>
             </div>
-            <p class="intro-text">Marseille&#x27;nin mutfağı Akdenizli, doğrudan ve liman tarafından şekillendirilmiş. Malzemeler denizden ve oraya gelen toplulukların mutfaklarından geliyor.</p>
             <div class="cards-grid">
                 
-            <div class="content-card">
-                <div class="card-tag">🍴 LEZZET DURARI</div>
-                <div class="card-name">Bouillabaisse — orijinal</div>
-                <div class="card-desc">Bir çorba değil — bir yöntem. Belirli kaya balıkları (rascasse, grondin, Saint-Pierre, vive), safran, rezene ve zeytinyağı suyunda pişiriliyor, sonra iki aşamada ayrı tabaklar olarak servis ediliyor: önce rouille (sarımsak-safran mayonezi) sürülmüş kızarmış ekmek dilimlerine batırılarak içilen et suyu, sonra balıklar ayrıca. Bouillabaisse Şartnamesi gerekli balık türlerini tanımlıyor. Doğru yapılınca saatler alıyor ve fiyatı yüksek. Ucuz versiyonları balık çorbası. Bu ise mimari.</div>
+            <div class="eat-card">
+                <h4>🍴 Bouillabaisse — orijinal</h4>
+                <p>Bir çorba değil — bir yöntem. Belirli kaya balıkları (rascasse, grondin, Saint-Pierre, vive), safran, rezene ve zeytinyağı suyunda pişiriliyor, sonra iki aşamada ayrı tabaklar olarak servis ediliyor: önce rouille (sarımsak-safran mayonezi) sürülmüş kızarmış ekmek dilimlerine batırılarak içilen et suyu, sonra balıklar ayrıca. Bouillabaisse Şartnamesi gerekli balık türlerini tanımlıyor. Doğru yapılınca saatler alıyor ve fiyatı yüksek. Ucuz versiyonları balık çorbası. Bu ise mimari.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">🍴 LEZZET DURARI</div>
-                <div class="card-name">Panisse — Marseille sokak yemeği</div>
-                <div class="card-desc">Dışı çıtır içi yumuşak, kızartılmış kalın nohut unu keki — çubuk veya yuvarlak olarak servis ediliyor. Cenevizli göçmenler getirdi, Marseille benimsedi ve kendi malı yaptı. Marché de Noailles&#x27;de ve şehrin sokak tezgâhlarında bulunuyor. Sıcak, ucuz ve göründüğünden iyi. L&#x27;Estaque&#x27;ta soğuk birayla versiyonu doğru siparişin ta kendisi.</div>
+            <div class="eat-card">
+                <h4>🍴 Panisse — Marseille sokak yemeği</h4>
+                <p>Dışı çıtır içi yumuşak, kızartılmış kalın nohut unu keki — çubuk veya yuvarlak olarak servis ediliyor. Cenevizli göçmenler getirdi, Marseille benimsedi ve kendi malı yaptı. Marché de Noailles&#x27;de ve şehrin sokak tezgâhlarında bulunuyor. Sıcak, ucuz ve göründüğünden iyi. L&#x27;Estaque&#x27;ta soğuk birayla versiyonu doğru siparişin ta kendisi.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">🍴 LEZZET DURARI</div>
-                <div class="card-name">Rouille — vazgeçilmez sos</div>
-                <div class="card-desc">Sarımsak, safran ve zeytinyağından yapılan yoğun, parlak turuncu bir emülsiyon — aioli&#x27;den (sarımsaklı mayonez) daha keskin, mayonezden daha az narin. Bouillabaisse suyuna batırılan krutona sürülüyor. Aynı zamanda ızgara balık ve kızartılmış sebzeyle yeniyor. Rengi safrandan ve biberden geliyor; kuvveti sarımsaktan. Her Marseille restoranı kendi versiyonunu yapıyor. Kalitesi önemli ölçüde değişiyor.</div>
+            <div class="eat-card">
+                <h4>🍴 Rouille — vazgeçilmez sos</h4>
+                <p>Sarımsak, safran ve zeytinyağından yapılan yoğun, parlak turuncu bir emülsiyon — aioli&#x27;den (sarımsaklı mayonez) daha keskin, mayonezden daha az narin. Bouillabaisse suyuna batırılan krutona sürülüyor. Aynı zamanda ızgara balık ve kızartılmış sebzeyle yeniyor. Rengi safrandan ve biberden geliyor; kuvveti sarımsaktan. Her Marseille restoranı kendi versiyonunu yapıyor. Kalitesi önemli ölçüde değişiyor.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">🍴 LEZZET DURARI</div>
-                <div class="card-name">Navette — Saint-Victor&#x27;un bisküvisi</div>
-                <div class="card-desc">Portakal çiçeği suyu aromalı, tekne biçimli kuru bir bisküvi — 1781&#x27;den bu yana Abbaye Saint-Victor yakınındaki Four des Navettes fırınında yapılıyor. Şekil, Meryem Magdalena ve ilk Hristiyanları Provence&#x27;a taşıdığı söylenen küçük teknelere gönderme yapıyor. Fırında yıl boyu satılıyor. Sert ve kuru — kahveye veya pastis&#x27;e bandırılmak için yapılmış. Bir atıştırmalık değil; bir gelenek.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">🍴 LEZZET DURARI</div>
-                <div class="card-name">Tapenade ve anchoïade — Provence&#x27;ın temelleri</div>
-                <div class="card-desc">Tapenade: siyah zeytin, kapari, hamsi ve zeytinyağı ezilerek yapılan bir ezmedir — adı Provençal dilinde kapari anlamına gelen &#x27;tapeno&#x27;dan geliyor. Anchoïade: daha kaba ve daha keskin, hamsi ve sarımsaktan yapılmış bir ezme. İkisi de ekmeğe sürülüyor, yemeklerden önce servis ediliyor, şehrin her kafesinde masaya geliyor. Marseille Provence&#x27;ın kıyısında oturuyor; bu lezzetler uzun süredir var.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">🍴 LEZZET DURARI</div>
-                <div class="card-name">Barda kahve — gerçek Marseille ritmi</div>
-                <div class="card-desc">Barda dur. Bir petit café (küçük siyah kahve) söyle. Öde ve on dakika içinde ayrıl. Vieux-Port kafelerinde masada oturmanın fiyatı barda durmaktan belirgin biçimde yüksek — yerliler doğrudan tezgâha gider. Noailles pazarında bir sabah, bir tezgâhta kahve, mahallenin açılışını izlemek: şehrin en dürüst versiyonu bu. Bir Euro&#x27;dan az tutuyor ve Marseille&#x27;de başka hiçbir şey sana bunu anlatmaz.</div>
+            <div class="eat-card">
+                <h4>🍴 Navette — Saint-Victor&#x27;un bisküvisi</h4>
+                <p>Portakal çiçeği suyu aromalı, tekne biçimli kuru bir bisküvi — 1781&#x27;den bu yana Abbaye Saint-Victor yakınındaki Four des Navettes fırınında yapılıyor. Şekil, Meryem Magdalena ve ilk Hristiyanları Provence&#x27;a taşıdığı söylenen küçük teknelere gönderme yapıyor. Fırında yıl boyu satılıyor. Sert ve kuru — kahveye veya pastis&#x27;e bandırılmak için yapılmış. Bir atıştırmalık değil; bir gelenek.</p>
                 
             </div>
             
@@ -918,33 +481,27 @@
         
         <section class="section">
             <div class="section-header">
-                <span class="section-label">Dikkat Edilmesi Gerekenler</span>
+                <span class="section-label">Dikkat</span>
                 <h2 class="section-title">Turist Tuzakları & Kaçınılması Gerekenler</h2>
             </div>
             <div class="traps-list">
                 
             <div class="trap-card">
-                <div class="trap-bad">❌ </div>
-                <div class="trap-why">Gerçek bouillabaisse en az dört tür kayalık balığı ister ve iki serviste sunulur; ucuz menülerdeki turuncu çorba onun kılığına girmiş balık suyudur.</div>
-                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Şartnameye (charte) imza atmış klasiklerden birine git — Fonfon, Miramar gibi; pahalıdır ama bir kere gerçeğini ye.</div>
+                <div class="trap-header">
+                    <span class="trap-tag">Kaçının</span>
+                    <h4></h4>
+                </div>
+                <p>Gerçek bouillabaisse en az dört tür kayalık balığı ister ve iki serviste sunulur; ucuz menülerdeki turuncu çorba onun kılığına girmiş balık suyudur.</p>
+                <div class="trap-solution"><strong>Bunun yerine yapın:</strong> Şartnameye (charte) imza atmış klasiklerden birine git — Fonfon, Miramar gibi; pahalıdır ama bir kere gerçeğini ye.</div>
             </div>
             
             <div class="trap-card">
-                <div class="trap-bad">❌ </div>
-                <div class="trap-why">Liman manzaralı sıra sıra teraslar günün yorgun balığını turist fiyatına satar.</div>
-                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Limandan iki sokak içeri gir ya da Vallon des Auffes gibi küçük koylara in: aynı deniz, dürüst mutfak.</div>
-            </div>
-            
-            <div class="trap-card">
-                <div class="trap-bad">❌ </div>
-                <div class="trap-why">Hediyelik dükkanlardaki rengarenk parfümlü küpler çoğu zaman ithal taklit; gerçeği %72 yağ oranı damgası taşır ve sadece dört sabunhanede üretilir.</div>
-                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> %72 damgasını ara; tarihi sabunhanelerin kendi dükkanlarından ya da güvenilir satıcıdan al.</div>
-            </div>
-            
-            <div class="trap-card">
-                <div class="trap-bad">❌ </div>
-                <div class="trap-why">Yazın koylara araçla giriş kapanır, patikalar yangın riskiyle yasaklanabilir; hazırlıksız gelenler kızgın güneşte geri döner.</div>
-                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Sabah erken git, suyunu al, girip giremeyeceğini önceden kontrol et; ya da tekneyle denizden yaklaş — Sormiou&#x27;yu hak ederek gör.</div>
+                <div class="trap-header">
+                    <span class="trap-tag">Kaçının</span>
+                    <h4></h4>
+                </div>
+                <p>Liman manzaralı sıra sıra teraslar günün yorgun balığını turist fiyatına satar.</p>
+                <div class="trap-solution"><strong>Bunun yerine yapın:</strong> Limandan iki sokak içeri gir ya da Vallon des Auffes gibi küçük koylara in: aynı deniz, dürüst mutfak.</div>
             </div>
             
             </div>
@@ -966,7 +523,7 @@
         </section>
     </main>
 
-    <footer>
+    <footer class="footer">
         <div class="container">
             <p>&copy; 2026 MyWay Travel App. Tüm hakları saklıdır.</p>
         </div>

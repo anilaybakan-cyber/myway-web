@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seville City Guide & Smart Walking Routes | MyWay</title>
+    <title>Seville Travel Guide & Smart Walking Routes | MyWay</title>
     <meta name="description" content="Explore Seville with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
     
     <link rel="alternate" hreflang="en" href="/guides/sevilla.html">
@@ -24,616 +24,233 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <link rel="icon" type="image/png" href="../images/app_icon.png">
 
     <style>
+        
         :root {
-            --bg-dark: #0d0e15;
-            --bg-card: #161824;
-            --bg-card-hover: #1e2132;
-            --primary: #7b6ef6;
-            --primary-glow: rgba(123, 110, 246, 0.25);
-            --accent: #f59e0b;
-            --text-main: #ffffff;
-            --text-muted: #94a3b8;
-            --border: rgba(255, 255, 255, 0.08);
-            --border-hover: rgba(123, 110, 246, 0.4);
-            --green: #10b981;
-            --red: #ef4444;
-            --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-serif: 'Playfair Display', Georgia, serif;
+            --primary: #7B6EF6;
+            --primary-light: #9D93FF;
+            --primary-dark: #5B4FD6;
+            --accent: #EC4899;
+            --bg-dark: #0F0B1A;
+            --bg-section: #130F22;
+            --bg-card: rgba(255, 255, 255, 0.04);
+            --text-primary: #FFFFFF;
+            --text-secondary: #9CA3AF;
+            --text-muted: #6B7280;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --radius-sm: 12px;
+            --shadow-glow: 0 0 80px rgba(123, 110, 246, 0.15);
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            -webkit-font-smoothing: antialiased;
-        }
-
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            font-family: var(--font-sans);
-            line-height: 1.6;
-            padding-bottom: 60px;
+            background-color: var(--bg-dark); color: var(--text-primary);
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6; overflow-x: hidden;
         }
-
-        /* Navigation */
+        
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        
+        /* Navbar */
         .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: rgba(13, 14, 21, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-            height: 72px;
-            display: flex;
-            align-items: center;
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(15, 11, 26, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle); height: 72px; display: flex; align-items: center;
         }
-
         .navbar-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%;
+            display: flex; align-items: center; justify-content: space-between;
         }
-
         .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: white;
-            font-weight: 800;
-            font-size: 20px;
+            display: flex; align-items: center; gap: 12px; text-decoration: none;
+            color: #fff; font-weight: 700; font-size: 20px;
         }
-
-        .nav-brand img {
-            border-radius: 10px;
-            box-shadow: 0 4px 12px var(--primary-glow);
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-            list-style: none;
-        }
-
+        .nav-brand img { border-radius: 10px; }
+        .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
         .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            transition: color 0.2s;
+            color: var(--text-secondary); text-decoration: none; font-size: 14px;
+            font-weight: 500; transition: color 0.2s;
         }
-
-        .nav-links a:hover, .nav-links a.active {
-            color: white;
-        }
-
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        /* Modern Language Dropdown */
-        .lang-dropdown-wrapper {
-            position: relative;
-        }
-
+        .nav-links a:hover, .nav-links a.active { color: #fff; }
+        .nav-actions { display: flex; align-items: center; gap: 14px; }
+        
+        /* Globe Language Dropdown */
+        .lang-dropdown-wrapper { position: relative; }
         .lang-dropdown-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 7px 14px;
-            border-radius: 100px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: white;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
+            display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px;
+            background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s ease;
             font-family: inherit;
         }
-
-        .lang-dropdown-btn:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: var(--primary);
-        }
-
-        .lang-globe-icon {
-            width: 15px;
-            height: 15px;
-            fill: currentColor;
-        }
-
+        .lang-dropdown-btn:hover { background: rgba(255, 255, 255, 0.15); border-color: var(--primary); }
+        .lang-globe-icon { width: 15px; height: 15px; fill: currentColor; }
         .lang-dropdown-menu {
-            display: none;
-            position: absolute;
-            top: calc(100% + 8px);
-            right: 0;
-            background: #19142B;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 14px;
-            padding: 6px;
-            min-width: 130px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            z-index: 1001;
+            display: none; position: absolute; top: calc(100% + 8px); right: 0;
+            background: #19142B; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 14px;
+            padding: 6px; min-width: 130px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); z-index: 1001;
         }
-
         .lang-dropdown-wrapper:hover .lang-dropdown-menu,
         .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
+            display: flex; flex-direction: column; gap: 2px;
         }
-
         .lang-dropdown-item {
-            display: flex;
-            align-items: center;
-            padding: 8px 12px;
-            font-size: 13px;
-            font-weight: 600;
-            color: #CBD5E1;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: background 0.2s, color 0.2s;
+            display: flex; align-items: center; padding: 8px 12px; font-size: 13px; font-weight: 600;
+            color: #CBD5E1; text-decoration: none; border-radius: 8px; transition: background 0.2s, color 0.2s;
         }
-
-        .lang-dropdown-item:hover {
-            background: rgba(123, 110, 246, 0.2);
-            color: white;
-        }
-
-        .lang-dropdown-item.active {
-            background: var(--primary);
-            color: white;
-        }
+        .lang-dropdown-item:hover { background: rgba(123, 110, 246, 0.2); color: white; }
+        .lang-dropdown-item.active { background: var(--primary); color: white; }
 
         .nav-cta {
-            background: var(--primary);
-            color: white !important;
-            padding: 8px 18px;
-            border-radius: 100px;
-            font-size: 13px;
-            font-weight: 700;
-            text-decoration: none;
-            transition: transform 0.2s, box-shadow 0.2s;
+            background: var(--primary); color: #fff !important; padding: 8px 20px;
+            border-radius: 100px; font-size: 13px; font-weight: 600; text-decoration: none;
+            transition: all 0.2s ease;
         }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(123, 110, 246, 0.4); }
+        .nav-toggle { display: none; background: none; border: none; color: #fff; cursor: pointer; padding: 8px; }
 
-        .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px var(--primary-glow);
-        }
-
-        .nav-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            padding: 8px;
-        }
-
-        /* Hero */
+        /* Guide Hero */
         .guide-hero {
-            position: relative;
-            min-height: 480px;
-            display: flex;
-            align-items: flex-end;
-            padding: 120px 24px 60px;
-            background-size: cover;
-            background-position: center;
-            overflow: hidden;
+            position: relative; min-height: 440px; display: flex; align-items: flex-end;
+            padding: 120px 24px 44px; margin-top: 72px; overflow: hidden; background-color: #1A132F;
         }
-
         .guide-hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1;
-            transform: scale(1.02);
+            position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+            filter: brightness(0.65);
         }
-
         .guide-hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(13, 14, 21, 0.3) 0%, rgba(13, 14, 21, 0.85) 75%, var(--bg-dark) 100%);
-            z-index: 2;
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.4) 60%, transparent 100%);
         }
-
-        .guide-hero-content {
-            position: relative;
-            z-index: 3;
-            max-width: 900px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
+        .guide-hero-content { position: relative; z-index: 2; width: 100%; }
         .city-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 14px;
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            border-radius: 100px;
-            font-size: 13px;
-            font-weight: 700;
-            color: #cbd5e1;
-            margin-bottom: 16px;
+            display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px); padding: 6px 14px; border-radius: 99px; font-size: 13px;
+            font-weight: 600; margin-bottom: 14px; border: 1px solid rgba(255, 255, 255, 0.15);
         }
-
-        .guide-title {
-            font-size: clamp(38px, 6vw, 64px);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 12px;
-            letter-spacing: -1.5px;
+        .guide-title { font-size: clamp(32px, 6vw, 52px); font-weight: 800; line-height: 1.1; margin-bottom: 10px; }
+        .guide-tagline { font-size: 16px; color: var(--primary-light); max-width: 720px; font-weight: 500; line-height: 1.5; }
+        
+        /* Sections */
+        .section { padding: 42px 0; border-bottom: 1px solid var(--border-subtle); }
+        .section-header { margin-bottom: 24px; }
+        .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); font-weight: 700; }
+        .section-title { font-size: 24px; font-weight: 700; margin-top: 4px; }
+        
+        .intro-text { font-size: 15px; color: #D1D5DB; line-height: 1.8; margin-bottom: 20px; }
+        
+        /* Local Word */
+        .local-word-box {
+            background: rgba(123, 110, 246, 0.08); border-left: 4px solid var(--primary);
+            padding: 18px 22px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-top: 20px;
         }
-
-        .guide-tagline {
-            font-size: clamp(16px, 2.5vw, 20px);
-            color: #e2e8f0;
-            font-weight: 500;
-            max-width: 700px;
-            line-height: 1.5;
+        .word-title { font-size: 15px; color: #fff; margin-bottom: 4px; }
+        .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
+        .local-word-box p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        
+        /* Facts Grid */
+        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+        .fact-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
         }
-
-        /* Container */
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 24px;
+        .fact-icon { font-size: 24px; flex-shrink: 0; }
+        .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
+        .fact-val { font-size: 15px; font-weight: 600; color: #fff; margin: 2px 0; }
+        .fact-sub { font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
+        
+        /* Rules */
+        .rules-list { display: flex; flex-direction: column; gap: 14px; }
+        .rule-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md); padding: 20px; display: flex; gap: 16px; align-items: flex-start;
         }
-
-        .section {
-            margin-top: 56px;
+        .rule-num {
+            background: var(--primary); color: #fff; width: 32px; height: 32px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-weight: 700; flex-shrink: 0; font-size: 14px;
         }
-
-        .section-header {
-            margin-bottom: 24px;
+        .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
+        .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        
+        /* Hidden Gems & Eat Grid */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+        .gem-card, .eat-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md); padding: 22px; position: relative;
         }
-
-        .section-label {
-            font-size: 12px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--primary);
-            display: block;
-            margin-bottom: 4px;
-        }
-
-        .section-title {
-            font-size: clamp(24px, 4vw, 32px);
-            font-weight: 800;
-            letter-spacing: -0.8px;
-        }
-
-        .intro-text {
-            font-size: 17px;
-            line-height: 1.8;
-            color: #cbd5e1;
-            margin-bottom: 24px;
-        }
-
-        .highlight-box {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-left: 4px solid var(--accent);
-            padding: 22px 26px;
-            border-radius: 16px;
-            margin-top: 24px;
-        }
-
-        .highlight-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+        .gem-badge {
+            display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase;
+            color: #10B981; background: rgba(16, 185, 129, 0.12); padding: 4px 10px; border-radius: 99px;
             margin-bottom: 10px;
         }
-
-        .highlight-title {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--accent);
+        .gem-hook { font-size: 13px; color: var(--primary-light); font-style: italic; margin-bottom: 8px; }
+        .gem-card h4, .eat-card h4 { font-size: 16px; margin-bottom: 6px; }
+        .gem-card p, .eat-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        .card-tip-box {
+            margin-top: 10px; padding: 8px 12px; background: rgba(255, 255, 255, 0.04);
+            border-radius: 8px; font-size: 12px; color: #cbd5e1;
         }
-
-        .pron-badge {
-            font-size: 12px;
-            color: var(--text-muted);
-            background: rgba(255, 255, 255, 0.06);
-            padding: 3px 8px;
-            border-radius: 6px;
-        }
-
-        .word-def {
-            font-size: 15px;
-            color: #ffffff;
-            line-height: 1.6;
-            margin-bottom: 6px;
-        }
-
-        .word-context {
-            font-size: 14px;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        .facts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 16px;
-        }
-
-        .fact-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 20px;
-        }
-
-        .fact-icon {
-            font-size: 24px;
-            margin-bottom: 8px;
-        }
-
-        .fact-title {
-            font-size: 12px;
-            font-weight: 800;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 4px;
-        }
-
-        .fact-desc {
-            font-size: 16px;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 2px;
-        }
-
-        .fact-sub {
-            font-size: 12px;
-            color: var(--text-muted);
-            line-height: 1.4;
-        }
-
-        .rules-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .rule-item {
-            display: flex;
-            gap: 18px;
-            align-items: flex-start;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 22px;
-        }
-
-        .rule-num {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--primary);
-            flex-shrink: 0;
-        }
-
-        .rule-text strong {
-            display: block;
-            color: white;
-            font-size: 16px;
-            margin-bottom: 6px;
-        }
-
-        .rule-text span {
-            color: var(--text-muted);
-            font-size: 14px;
-            line-height: 1.65;
-        }
-
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 20px;
-        }
-
-        .content-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 24px;
-            transition: transform 0.2s, border-color 0.2s;
-        }
-
-        .content-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--border-hover);
-        }
-
-        .card-tag {
-            font-size: 11px;
-            font-weight: 800;
-            letter-spacing: 1px;
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
-
-        .card-name {
-            font-size: 18px;
-            font-weight: 800;
-            margin-bottom: 8px;
-            color: white;
-        }
-
-        .card-desc {
-            font-size: 14px;
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 12px;
-        }
-
-        .card-tip {
-            font-size: 13px;
-            color: #cbd5e1;
-            background: rgba(255, 255, 255, 0.04);
-            padding: 10px 14px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-        }
-
-        .traps-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
+        
+        /* Traps */
+        .traps-list { display: flex; flex-direction: column; gap: 14px; }
         .trap-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 22px;
+            background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.15);
+            border-radius: var(--radius-md); padding: 20px;
         }
-
-        .trap-bad {
-            font-size: 16px;
-            font-weight: 800;
-            color: #f87171;
-            margin-bottom: 6px;
+        .trap-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+        .trap-tag {
+            background: #EF4444; color: #fff; font-size: 11px; font-weight: 700;
+            text-transform: uppercase; padding: 2px 8px; border-radius: 6px;
         }
-
-        .trap-why {
-            font-size: 14px;
-            color: var(--text-muted);
-            margin-bottom: 12px;
-            line-height: 1.6;
+        .trap-header h4 { font-size: 16px; color: #fff; }
+        .trap-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        .trap-solution {
+            margin-top: 10px; padding: 10px 14px; background: rgba(16, 185, 129, 0.08);
+            border-left: 3px solid #10B981; border-radius: 4px; font-size: 13px; color: #D1D5DB; line-height: 1.5;
         }
-
-        .trap-good {
-            font-size: 14px;
-            color: #34d399;
-            background: rgba(16, 185, 129, 0.08);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            padding: 10px 14px;
-            border-radius: 10px;
-        }
-
+        
+        /* App CTA Banner */
         .app-cta-banner {
-            margin-top: 72px;
-            background: linear-gradient(135deg, rgba(123, 110, 246, 0.15), rgba(245, 158, 11, 0.1));
-            border: 1px solid var(--border-hover);
-            border-radius: 24px;
-            padding: 48px 32px;
-            text-align: center;
+            background: linear-gradient(135deg, rgba(123, 110, 246, 0.15), rgba(236, 72, 153, 0.1));
+            border: 1px solid rgba(157, 147, 255, 0.3); border-radius: var(--radius-lg);
+            padding: 44px 20px; text-align: center; margin: 50px 0; position: relative;
         }
-
-        .app-cta-banner h3 {
-            font-size: clamp(24px, 4vw, 32px);
-            font-weight: 800;
-            margin-bottom: 12px;
-        }
-
-        .app-cta-banner p {
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto 28px;
-            font-size: 16px;
-        }
-
-        .store-btn-row {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
+        .app-cta-banner h3 { font-size: clamp(22px, 4vw, 28px); font-weight: 800; margin-bottom: 10px; }
+        .app-cta-banner p { color: var(--text-secondary); max-width: 580px; margin: 0 auto 24px; font-size: 15px; }
+        .store-btn-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
         .store-pill-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 26px;
-            background: white;
-            color: #0f1016;
-            font-weight: 800;
-            font-size: 14px;
-            border-radius: 100px;
-            text-decoration: none;
+            display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: white;
+            color: #0f1016; font-weight: 700; font-size: 14px; border-radius: 100px; text-decoration: none;
             transition: transform 0.2s, box-shadow 0.2s;
         }
+        .store-pill-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2); }
 
-        .store-pill-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 24px rgba(255, 255, 255, 0.2);
-        }
-
-        footer {
-            border-top: 1px solid var(--border);
-            margin-top: 80px;
-            padding: 40px 24px 20px;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 14px;
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--border-subtle); padding: 40px 24px 30px;
+            color: var(--text-muted); font-size: 13px; text-align: center;
         }
 
         @media (max-width: 768px) {
-            .navbar {
-                height: 64px;
-            }
+            .navbar { height: 64px; }
             .nav-links {
-                display: none;
-                position: fixed;
-                top: 64px;
-                left: 0;
-                right: 0;
-                background: rgba(13, 14, 21, 0.98);
-                flex-direction: column;
-                padding: 24px;
-                border-bottom: 1px solid var(--border);
-                gap: 16px;
+                display: none; position: fixed; top: 64px; left: 0; right: 0;
+                background: rgba(15, 11, 26, 0.98); flex-direction: column;
+                padding: 24px; border-bottom: 1px solid var(--border-subtle); gap: 16px;
             }
-            .nav-links.active {
-                display: flex;
-            }
-            .nav-toggle {
-                display: block;
-            }
-            .guide-hero {
-                min-height: 400px;
-                padding-top: 100px;
-            }
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
-            .store-pill-btn {
-                width: 100%;
-                max-width: 280px;
-                justify-content: center;
-            }
+            .nav-links.active { display: flex; }
+            .nav-toggle { display: block; }
+            .guide-hero { min-height: 380px; padding-top: 90px; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
+
     </style>
 </head>
 <body>
@@ -693,13 +310,9 @@
             </div>
             <p class="intro-text">Seville is the city that invented late nights and hosts the Holy Week procession that stops the entire country for a week. In July, the hottest city in Europe. In April, during Semana Santa and Feria de Abril, it transforms into something that has to be witnessed to be understood. The Alcázar is one of the most beautiful palaces ever built. The Cathedral is the largest Gothic structure in the world. But that is not the point. The point is the bar on Calle Gerona — where the bill is chalked on the wood and the same dish has been served since the Moors.</p>
             
-        <div class="highlight-box">
-            <div class="highlight-header">
-                <div class="highlight-title">💬 Tapas</div>
-                <span class="pron-badge">🗣️ /TAH-pahs/</span>
-            </div>
-            <p class="word-def"><strong>In Seville, the tapas culture is specific: a small plate of food, ordered at the bar, eaten standing or perched on a high stool, accompanied by a caña (small beer) or a glass of fino sherry. The ritual is to move between bars — one drink and one tapa per bar, then on to the next. One drink, one plate, three or four bars, two streets, two hours. A Tuesday evening in Seville looks like this. No table, no reservation — just the bar counter and an evening passing by.</strong></p>
-            
+        <div class="local-word-box">
+            <div class="word-title">🗣️ Local Concept: <strong>Tapas</strong> <span class="pron">(TAH-pahs)</span></div>
+            <p>In Seville, the tapas culture is specific: a small plate of food, ordered at the bar, eaten standing or perched on a high stool, accompanied by a caña (small beer) or a glass of fino sherry. The ritual is to move between bars — one drink and one tapa per bar, then on to the next. One drink, one plate, three or four bars, two streets, two hours. A Tuesday evening in Seville looks like this. No table, no reservation — just the bar counter and an evening passing by.</p>
         </div>
         
         </section>
@@ -715,30 +328,38 @@
                 
             <div class="fact-card">
                 <div class="fact-icon">✈️</div>
-                <div class="fact-title">Airport</div>
-                <div class="fact-desc">SVQ — Seville Airport</div>
-                <div class="fact-sub">EA bus → Torre del Oro, ~35 min</div>
+                <div>
+                    <div class="fact-label">Airport</div>
+                    <div class="fact-val">SVQ — Seville Airport</div>
+                    <div class="fact-sub">EA bus → Torre del Oro, ~35 min</div>
+                </div>
             </div>
             
             <div class="fact-card">
                 <div class="fact-icon">🚌</div>
-                <div class="fact-title">Transport</div>
-                <div class="fact-desc">Bus + tram + bike (SEVIci)</div>
-                <div class="fact-sub">Single ticket €1.40 · 1-day pass €5 · 3-day pass €10 · contactless accepted</div>
+                <div>
+                    <div class="fact-label">Transport</div>
+                    <div class="fact-val">Bus + tram + bike (SEVIci)</div>
+                    <div class="fact-sub">Single ticket €1.40 · 1-day pass €5 · 3-day pass €10 · contactless accepted</div>
+                </div>
             </div>
             
             <div class="fact-card">
                 <div class="fact-icon">🌡️</div>
-                <div class="fact-title">Weather</div>
-                <div class="fact-desc">Hottest city in Europe in July</div>
-                <div class="fact-sub">Apr–Jun ideal · Jul–Aug brutal · Sep–Oct perfect · Dec–Feb mild</div>
+                <div>
+                    <div class="fact-label">Weather</div>
+                    <div class="fact-val">Hottest city in Europe in July</div>
+                    <div class="fact-sub">Apr–Jun ideal · Jul–Aug brutal · Sep–Oct perfect · Dec–Feb mild</div>
+                </div>
             </div>
             
             <div class="fact-card">
                 <div class="fact-icon">🍺</div>
-                <div class="fact-title">Tapa rule</div>
-                <div class="fact-desc">Tapas are paid, but cheap</div>
-                <div class="fact-sub">Order at the bar · caña + tapa · move between bars</div>
+                <div>
+                    <div class="fact-label">Tapa rule</div>
+                    <div class="fact-val">Tapas are paid, but cheap</div>
+                    <div class="fact-sub">Order at the bar · caña + tapa · move between bars</div>
+                </div>
             </div>
             
             </div>
@@ -750,31 +371,31 @@
         <section class="section">
             <div class="section-header">
                 <span class="section-label">Insider Advice</span>
-                <h2 class="section-title">Unwritten Rules for Seville</h2>
+                <h2 class="section-title">3 Unwritten Rules for Seville</h2>
             </div>
             <div class="rules-list">
                 
-            <div class="rule-item">
-                <div class="rule-num">#1</div>
-                <div class="rule-text">
-                    <strong>Book the Alcázar and the Cathedral weeks ahead</strong>
-                    <span>The Alcázar and Cathedral both run timed-entry systems that fill weeks ahead in April and May. No walk-ins. Book online before you arrive — the Alcázar especially. Its Mudejar interior makes a strong case for most beautiful palace in Spain that isn&#x27;t the Alhambra.</span>
+            <div class="rule-card">
+                <div class="rule-num">1</div>
+                <div class="rule-content">
+                    <h4>Book the Alcázar and the Cathedral weeks ahead</h4>
+                    <p>The Alcázar and Cathedral both run timed-entry systems that fill weeks ahead in April and May. No walk-ins. Book online before you arrive — the Alcázar especially. Its Mudejar interior makes a strong case for most beautiful palace in Spain that isn&#x27;t the Alhambra.</p>
                 </div>
             </div>
             
-            <div class="rule-item">
-                <div class="rule-num">#2</div>
-                <div class="rule-text">
-                    <strong>Lunch at 14:00, dinner at 21:00 — the city means it</strong>
-                    <span>Kitchens open at 14:00. They close at 16:00. Not as a suggestion. Dinner starts at 21:00 — that&#x27;s the opening time, not the peak. The table next to you at 22:30 will have three generations on it, including a child who should be asleep. Between 17:00 and 20:30: slow walk, café stop, glass of manzanilla on a terrace. That&#x27;s the hinge of the day.</span>
+            <div class="rule-card">
+                <div class="rule-num">2</div>
+                <div class="rule-content">
+                    <h4>Lunch at 14:00, dinner at 21:00 — the city means it</h4>
+                    <p>Kitchens open at 14:00. They close at 16:00. Not as a suggestion. Dinner starts at 21:00 — that&#x27;s the opening time, not the peak. The table next to you at 22:30 will have three generations on it, including a child who should be asleep. Between 17:00 and 20:30: slow walk, café stop, glass of manzanilla on a terrace. That&#x27;s the hinge of the day.</p>
                 </div>
             </div>
             
-            <div class="rule-item">
-                <div class="rule-num">#3</div>
-                <div class="rule-text">
-                    <strong>In summer, the city moves at night</strong>
-                    <span>July and August: regularly 42°C. The city doesn&#x27;t fight it — it rearranges around it. Empty streets at 3pm. Full streets at 11pm. Out by 9am, inside by 13:00, back out at 19:00, stay out until the city forces you home. Arrive expecting summer logic from home and Seville will be miserable. Follow the local pattern and it&#x27;s extraordinary.</span>
+            <div class="rule-card">
+                <div class="rule-num">3</div>
+                <div class="rule-content">
+                    <h4>In summer, the city moves at night</h4>
+                    <p>July and August: regularly 42°C. The city doesn&#x27;t fight it — it rearranges around it. Empty streets at 3pm. Full streets at 11pm. Out by 9am, inside by 13:00, back out at 19:00, stay out until the city forces you home. Arrive expecting summer logic from home and Seville will be miserable. Follow the local pattern and it&#x27;s extraordinary.</p>
                 </div>
             </div>
             
@@ -791,45 +412,27 @@
             </div>
             <div class="cards-grid">
                 
-            <div class="content-card">
-                <div class="card-tag">💎 HIDDEN GEM</div>
-                <div class="card-name">Casa de Pilatos — Santa Cruz</div>
-                <div class="card-desc">The Medinaceli family measured the distance from their door to a local chapel and found it matched Pontius Pilate&#x27;s house to Calvary. Named accordingly. Mudejar tilework, Gothic vaulting, Renaissance sculpture — shouldn&#x27;t cohere, entirely does. Lawrence of Arabia filmed here. The Crown filmed here. The Alcázar gets 90% of the visitors. Ticketed. Free Mondays 15:00–19:00 — queue at the door.</div>
+            <div class="gem-card">
+                <div class="gem-badge">Hidden Gem</div>
+                <h4>Casa de Pilatos — Santa Cruz</h4>
+                <div class="gem-hook">Hidden Spot</div>
+                <p>The Medinaceli family measured the distance from their door to a local chapel and found it matched Pontius Pilate&#x27;s house to Calvary. Named accordingly. Mudejar tilework, Gothic vaulting, Renaissance sculpture — shouldn&#x27;t cohere, entirely does. Lawrence of Arabia filmed here. The Crown filmed here. The Alcázar gets 90% of the visitors. Ticketed. Free Mondays 15:00–19:00 — queue at the door.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">💎 HIDDEN GEM</div>
-                <div class="card-name">Archivo General de Indias — Cathedral Square</div>
-                <div class="card-desc">Between the Cathedral and the Alcázar. Not a church, not a palace — a Renaissance archive with 80 million pages on Spain&#x27;s colonisation of the Americas. Columbus&#x27;s letters: behind glass, in his handwriting. Designed by Juan de Herrera (El Escorial&#x27;s architect). The visitors in the Cathedral queue next door largely don&#x27;t know it exists. Free Tuesday to Sunday.</div>
+            <div class="gem-card">
+                <div class="gem-badge">Hidden Gem</div>
+                <h4>Archivo General de Indias — Cathedral Square</h4>
+                <div class="gem-hook">Hidden Spot</div>
+                <p>Between the Cathedral and the Alcázar. Not a church, not a palace — a Renaissance archive with 80 million pages on Spain&#x27;s colonisation of the Americas. Columbus&#x27;s letters: behind glass, in his handwriting. Designed by Juan de Herrera (El Escorial&#x27;s architect). The visitors in the Cathedral queue next door largely don&#x27;t know it exists. Free Tuesday to Sunday.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">💎 HIDDEN GEM</div>
-                <div class="card-name">La Carbonería — Santa Cruz</div>
-                <div class="card-desc">No sign. Wooden door on Calle Levíes. Looks like a private courtyard — because it is. Inside: former coal yard, mismatched chairs, exposed brick, free flamenco every evening. Audience: mostly local. Performers: not on the tourist-tablao circuit. Informal — guitarist finishes, someone calls for another song, they agree. No ticket. No reservation. Arrive, order, sit, pay attention.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">💎 HIDDEN GEM</div>
-                <div class="card-name">Palacio de las Dueñas — La Macarena</div>
-                <div class="card-desc">The Duchess of Alba lived here until 2014. 15th century, Mudéjar-Renaissance — orange-tree courtyards, jasmine-covered arches. Antonio Machado born here in 1875. Rooms hold the personal collections of the most decorated family in Spanish history: Goyas, Rubens, Roman sculpture. Ticketed. Free Mondays from 16:00 — book online same morning.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">💎 HIDDEN GEM</div>
-                <div class="card-name">Plaza del Cabildo — Cathedral Square</div>
-                <div class="card-desc">South side of Cathedral square. Looks like a service entrance. Walk through — noise stops. 1572. A perfect semicircle of arches, designed for commerce, now a shortcut no one uses. Sunday mornings: a few stalls selling old coins and stamps. Otherwise: empty, quiet, surrounded by the highest tourist density in Andalusia. Seville in miniature. Free.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">💎 HIDDEN GEM</div>
-                <div class="card-name">Metropol Parasol (Las Setas) — Plaza de la Encarnación</div>
-                <div class="card-desc">Six mushroom-shaped laminated timber parasols, 28 metres up, dividing Seville since 2011. Locals call it Las Setas. Most have made peace with it. Rooftop walkway: Giralda, Alcázar gardens, Guadalquivir, the white barrios south. Go an hour before sunset — the light on the Cathedral from up there. Rooftop ticketed. Ground floor market and Antiquarium Roman ruins: free.</div>
+            <div class="gem-card">
+                <div class="gem-badge">Hidden Gem</div>
+                <h4>La Carbonería — Santa Cruz</h4>
+                <div class="gem-hook">Hidden Spot</div>
+                <p>No sign. Wooden door on Calle Levíes. Looks like a private courtyard — because it is. Inside: former coal yard, mismatched chairs, exposed brick, free flamenco every evening. Audience: mostly local. Performers: not on the tourist-tablao circuit. Informal — guitarist finishes, someone calls for another song, they agree. No ticket. No reservation. Arrive, order, sit, pay attention.</p>
                 
             </div>
             
@@ -844,48 +447,29 @@
                 <span class="section-label">Food & Flavors</span>
                 <h2 class="section-title">What to Taste</h2>
             </div>
-            <p class="intro-text">Sevillian food doesn&#x27;t try to impress. Invented by people with very little: olive oil, chickpeas, offal, fish from 80km away. Arrived, over centuries, at something quietly extraordinary.</p>
             <div class="cards-grid">
                 
-            <div class="content-card">
-                <div class="card-tag">🍴 MUST TASTE</div>
-                <div class="card-name">Espinacas con garbanzos — the Seville standard</div>
-                <div class="card-desc">Spinach and chickpeas in a sauce of fried bread, cumin, paprika, saffron, sherry vinegar. Moorish recipe, survived the Reconquista intact. Chickpeas absorb and thicken; spinach darkens and sweetens. Warm, with bread, in every traditional tapas bar. The version at El Rinconcillo (open 1670) made the same way since the bar opened. Never skip it.</div>
+            <div class="eat-card">
+                <h4>🍴 Espinacas con garbanzos — the Seville standard</h4>
+                <p>Spinach and chickpeas in a sauce of fried bread, cumin, paprika, saffron, sherry vinegar. Moorish recipe, survived the Reconquista intact. Chickpeas absorb and thicken; spinach darkens and sweetens. Warm, with bread, in every traditional tapas bar. The version at El Rinconcillo (open 1670) made the same way since the bar opened. Never skip it.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">🍴 MUST TASTE</div>
-                <div class="card-name">Jamón ibérico — the national obsession</div>
-                <div class="card-desc">Iberian pigs, acorn-fed in the dehesa forests of Extremadura. Two-year cure. The fat is oleic acid — same as olive oil. Melts at body temperature. In a good Seville bar it arrives with your drink, sliced thin on a small plate. Eat at room temperature. Cold is wrong.</div>
+            <div class="eat-card">
+                <h4>🍴 Jamón ibérico — the national obsession</h4>
+                <p>Iberian pigs, acorn-fed in the dehesa forests of Extremadura. Two-year cure. The fat is oleic acid — same as olive oil. Melts at body temperature. In a good Seville bar it arrives with your drink, sliced thin on a small plate. Eat at room temperature. Cold is wrong.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">🍴 MUST TASTE</div>
-                <div class="card-name">Pescaíto frito — fried fish, Andalusian style</div>
-                <div class="card-desc">Seville is 80km from the Atlantic. Fish arrives fresh. Andalusian technique: light flour coating, hot olive oil, a few seconds, out. Crisp outside, barely cooked within, no grease trace when done right. Boquerones, cazón en adobo, chocos. Standing in Triana, cold manzanilla, warm evening.</div>
+            <div class="eat-card">
+                <h4>🍴 Pescaíto frito — fried fish, Andalusian style</h4>
+                <p>Seville is 80km from the Atlantic. Fish arrives fresh. Andalusian technique: light flour coating, hot olive oil, a few seconds, out. Crisp outside, barely cooked within, no grease trace when done right. Boquerones, cazón en adobo, chocos. Standing in Triana, cold manzanilla, warm evening.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">🍴 MUST TASTE</div>
-                <div class="card-name">Salmorejo — Seville&#x27;s answer to gazpacho</div>
-                <div class="card-desc">Gazpacho but with water removed and bread added. Blended until smooth, chilled until thick. Diced jamón and sliced egg on top. Deep brick-red. Should hold a spoon upright. Every restaurant in Seville makes it. A few are extraordinary.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">🍴 MUST TASTE</div>
-                <div class="card-name">Fino sherry — the correct drink</div>
-                <div class="card-desc">Fino aged under flor yeast — stays pale, dry, saline instead of turning amber. Sea and cellar simultaneously. Order cold. Order another.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">🍴 MUST TASTE</div>
-                <div class="card-name">Torrijas and pestiños — convent sweets</div>
-                <div class="card-desc">During Semana Santa: convent tornos (revolving hatches) open. Place your order; the hatch turns; a hand you never see delivers it. Torrijas: wine-soaked bread, fried in olive oil, sugar and cinnamon. Heavier than French toast, better. Pestiños: honey-glazed dough with anise and sesame. Eaten warm outside the convent while processions pass.</div>
+            <div class="eat-card">
+                <h4>🍴 Salmorejo — Seville&#x27;s answer to gazpacho</h4>
+                <p>Gazpacho but with water removed and bread added. Blended until smooth, chilled until thick. Diced jamón and sliced egg on top. Deep brick-red. Should hold a spoon upright. Every restaurant in Seville makes it. A few are extraordinary.</p>
                 
             </div>
             
@@ -903,27 +487,21 @@
             <div class="traps-list">
                 
             <div class="trap-card">
-                <div class="trap-bad">❌ </div>
-                <div class="trap-why">At the shows staged for bus tourists, flamenco becomes background music: frozen paella, a miked-up act, no soul.</div>
-                <div class="trap-good">✅ <strong>Better Alternative:</strong> Watch flamenco where it was born: a small tablao or a place like La Carbonería, drink in hand, two metres from the stage.</div>
+                <div class="trap-header">
+                    <span class="trap-tag">Avoid</span>
+                    <h4></h4>
+                </div>
+                <p>At the shows staged for bus tourists, flamenco becomes background music: frozen paella, a miked-up act, no soul.</p>
+                <div class="trap-solution"><strong>Do this instead:</strong> Watch flamenco where it was born: a small tablao or a place like La Carbonería, drink in hand, two metres from the stage.</div>
             </div>
             
             <div class="trap-card">
-                <div class="trap-bad">❌ </div>
-                <div class="trap-why">The horse carriages are a lovely classic, but board without talking money and the tour shortens while the bill grows.</div>
-                <div class="trap-good">✅ <strong>Better Alternative:</strong> Ask for the official tariff and settle it before boarding; or walk the same route — Santa Cruz exists to be walked.</div>
-            </div>
-            
-            <div class="trap-card">
-                <div class="trap-bad">❌ </div>
-                <div class="trap-why">The photo menus at the monument exits mean microwave paella and a swollen bill; nothing to do with Seville&#x27;s tapas soul.</div>
-                <div class="trap-good">✅ <strong>Better Alternative:</strong> Walk two streets: lean on a bar in Alfalfa, El Arenal, or across the river in Triana, and order tapas.</div>
-            </div>
-            
-            <div class="trap-card">
-                <div class="trap-bad">❌ </div>
-                <div class="trap-why">In July and August the thermometer passes 40°C between 2 and 6 pm; queueing for monuments then melts your holiday.</div>
-                <div class="trap-good">✅ <strong>Better Alternative:</strong> Live like the city: sightsee early, take a long lunch and siesta somewhere cool, return to the streets at night — Seville blooms after dark.</div>
+                <div class="trap-header">
+                    <span class="trap-tag">Avoid</span>
+                    <h4></h4>
+                </div>
+                <p>The horse carriages are a lovely classic, but board without talking money and the tour shortens while the bill grows.</p>
+                <div class="trap-solution"><strong>Do this instead:</strong> Ask for the official tariff and settle it before boarding; or walk the same route — Santa Cruz exists to be walked.</div>
             </div>
             
             </div>
@@ -945,7 +523,7 @@
         </section>
     </main>
 
-    <footer>
+    <footer class="footer">
         <div class="container">
             <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
         </div>

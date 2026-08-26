@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boston City Guide & Smart Walking Routes | MyWay</title>
+    <title>Boston Travel Guide & Smart Walking Routes | MyWay</title>
     <meta name="description" content="Explore Boston with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
     
     <link rel="alternate" hreflang="en" href="/guides/boston.html">
@@ -24,616 +24,233 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <link rel="icon" type="image/png" href="../images/app_icon.png">
 
     <style>
+        
         :root {
-            --bg-dark: #0d0e15;
-            --bg-card: #161824;
-            --bg-card-hover: #1e2132;
-            --primary: #7b6ef6;
-            --primary-glow: rgba(123, 110, 246, 0.25);
-            --accent: #f59e0b;
-            --text-main: #ffffff;
-            --text-muted: #94a3b8;
-            --border: rgba(255, 255, 255, 0.08);
-            --border-hover: rgba(123, 110, 246, 0.4);
-            --green: #10b981;
-            --red: #ef4444;
-            --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-serif: 'Playfair Display', Georgia, serif;
+            --primary: #7B6EF6;
+            --primary-light: #9D93FF;
+            --primary-dark: #5B4FD6;
+            --accent: #EC4899;
+            --bg-dark: #0F0B1A;
+            --bg-section: #130F22;
+            --bg-card: rgba(255, 255, 255, 0.04);
+            --text-primary: #FFFFFF;
+            --text-secondary: #9CA3AF;
+            --text-muted: #6B7280;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --radius-sm: 12px;
+            --shadow-glow: 0 0 80px rgba(123, 110, 246, 0.15);
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            -webkit-font-smoothing: antialiased;
-        }
-
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            font-family: var(--font-sans);
-            line-height: 1.6;
-            padding-bottom: 60px;
+            background-color: var(--bg-dark); color: var(--text-primary);
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6; overflow-x: hidden;
         }
-
-        /* Navigation */
+        
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        
+        /* Navbar */
         .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: rgba(13, 14, 21, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-            height: 72px;
-            display: flex;
-            align-items: center;
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(15, 11, 26, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle); height: 72px; display: flex; align-items: center;
         }
-
         .navbar-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%;
+            display: flex; align-items: center; justify-content: space-between;
         }
-
         .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: white;
-            font-weight: 800;
-            font-size: 20px;
+            display: flex; align-items: center; gap: 12px; text-decoration: none;
+            color: #fff; font-weight: 700; font-size: 20px;
         }
-
-        .nav-brand img {
-            border-radius: 10px;
-            box-shadow: 0 4px 12px var(--primary-glow);
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-            list-style: none;
-        }
-
+        .nav-brand img { border-radius: 10px; }
+        .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
         .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            transition: color 0.2s;
+            color: var(--text-secondary); text-decoration: none; font-size: 14px;
+            font-weight: 500; transition: color 0.2s;
         }
-
-        .nav-links a:hover, .nav-links a.active {
-            color: white;
-        }
-
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        /* Modern Language Dropdown */
-        .lang-dropdown-wrapper {
-            position: relative;
-        }
-
+        .nav-links a:hover, .nav-links a.active { color: #fff; }
+        .nav-actions { display: flex; align-items: center; gap: 14px; }
+        
+        /* Globe Language Dropdown */
+        .lang-dropdown-wrapper { position: relative; }
         .lang-dropdown-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 7px 14px;
-            border-radius: 100px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: white;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
+            display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px;
+            background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s ease;
             font-family: inherit;
         }
-
-        .lang-dropdown-btn:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: var(--primary);
-        }
-
-        .lang-globe-icon {
-            width: 15px;
-            height: 15px;
-            fill: currentColor;
-        }
-
+        .lang-dropdown-btn:hover { background: rgba(255, 255, 255, 0.15); border-color: var(--primary); }
+        .lang-globe-icon { width: 15px; height: 15px; fill: currentColor; }
         .lang-dropdown-menu {
-            display: none;
-            position: absolute;
-            top: calc(100% + 8px);
-            right: 0;
-            background: #19142B;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 14px;
-            padding: 6px;
-            min-width: 130px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            z-index: 1001;
+            display: none; position: absolute; top: calc(100% + 8px); right: 0;
+            background: #19142B; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 14px;
+            padding: 6px; min-width: 130px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); z-index: 1001;
         }
-
         .lang-dropdown-wrapper:hover .lang-dropdown-menu,
         .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
+            display: flex; flex-direction: column; gap: 2px;
         }
-
         .lang-dropdown-item {
-            display: flex;
-            align-items: center;
-            padding: 8px 12px;
-            font-size: 13px;
-            font-weight: 600;
-            color: #CBD5E1;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: background 0.2s, color 0.2s;
+            display: flex; align-items: center; padding: 8px 12px; font-size: 13px; font-weight: 600;
+            color: #CBD5E1; text-decoration: none; border-radius: 8px; transition: background 0.2s, color 0.2s;
         }
-
-        .lang-dropdown-item:hover {
-            background: rgba(123, 110, 246, 0.2);
-            color: white;
-        }
-
-        .lang-dropdown-item.active {
-            background: var(--primary);
-            color: white;
-        }
+        .lang-dropdown-item:hover { background: rgba(123, 110, 246, 0.2); color: white; }
+        .lang-dropdown-item.active { background: var(--primary); color: white; }
 
         .nav-cta {
-            background: var(--primary);
-            color: white !important;
-            padding: 8px 18px;
-            border-radius: 100px;
-            font-size: 13px;
-            font-weight: 700;
-            text-decoration: none;
-            transition: transform 0.2s, box-shadow 0.2s;
+            background: var(--primary); color: #fff !important; padding: 8px 20px;
+            border-radius: 100px; font-size: 13px; font-weight: 600; text-decoration: none;
+            transition: all 0.2s ease;
         }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(123, 110, 246, 0.4); }
+        .nav-toggle { display: none; background: none; border: none; color: #fff; cursor: pointer; padding: 8px; }
 
-        .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px var(--primary-glow);
-        }
-
-        .nav-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            padding: 8px;
-        }
-
-        /* Hero */
+        /* Guide Hero */
         .guide-hero {
-            position: relative;
-            min-height: 480px;
-            display: flex;
-            align-items: flex-end;
-            padding: 120px 24px 60px;
-            background-size: cover;
-            background-position: center;
-            overflow: hidden;
+            position: relative; min-height: 440px; display: flex; align-items: flex-end;
+            padding: 120px 24px 44px; margin-top: 72px; overflow: hidden; background-color: #1A132F;
         }
-
         .guide-hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1;
-            transform: scale(1.02);
+            position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+            filter: brightness(0.65);
         }
-
         .guide-hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(13, 14, 21, 0.3) 0%, rgba(13, 14, 21, 0.85) 75%, var(--bg-dark) 100%);
-            z-index: 2;
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.4) 60%, transparent 100%);
         }
-
-        .guide-hero-content {
-            position: relative;
-            z-index: 3;
-            max-width: 900px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
+        .guide-hero-content { position: relative; z-index: 2; width: 100%; }
         .city-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 14px;
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            border-radius: 100px;
-            font-size: 13px;
-            font-weight: 700;
-            color: #cbd5e1;
-            margin-bottom: 16px;
+            display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px); padding: 6px 14px; border-radius: 99px; font-size: 13px;
+            font-weight: 600; margin-bottom: 14px; border: 1px solid rgba(255, 255, 255, 0.15);
         }
-
-        .guide-title {
-            font-size: clamp(38px, 6vw, 64px);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 12px;
-            letter-spacing: -1.5px;
+        .guide-title { font-size: clamp(32px, 6vw, 52px); font-weight: 800; line-height: 1.1; margin-bottom: 10px; }
+        .guide-tagline { font-size: 16px; color: var(--primary-light); max-width: 720px; font-weight: 500; line-height: 1.5; }
+        
+        /* Sections */
+        .section { padding: 42px 0; border-bottom: 1px solid var(--border-subtle); }
+        .section-header { margin-bottom: 24px; }
+        .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); font-weight: 700; }
+        .section-title { font-size: 24px; font-weight: 700; margin-top: 4px; }
+        
+        .intro-text { font-size: 15px; color: #D1D5DB; line-height: 1.8; margin-bottom: 20px; }
+        
+        /* Local Word */
+        .local-word-box {
+            background: rgba(123, 110, 246, 0.08); border-left: 4px solid var(--primary);
+            padding: 18px 22px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-top: 20px;
         }
-
-        .guide-tagline {
-            font-size: clamp(16px, 2.5vw, 20px);
-            color: #e2e8f0;
-            font-weight: 500;
-            max-width: 700px;
-            line-height: 1.5;
+        .word-title { font-size: 15px; color: #fff; margin-bottom: 4px; }
+        .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
+        .local-word-box p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        
+        /* Facts Grid */
+        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+        .fact-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
         }
-
-        /* Container */
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 24px;
+        .fact-icon { font-size: 24px; flex-shrink: 0; }
+        .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
+        .fact-val { font-size: 15px; font-weight: 600; color: #fff; margin: 2px 0; }
+        .fact-sub { font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
+        
+        /* Rules */
+        .rules-list { display: flex; flex-direction: column; gap: 14px; }
+        .rule-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md); padding: 20px; display: flex; gap: 16px; align-items: flex-start;
         }
-
-        .section {
-            margin-top: 56px;
+        .rule-num {
+            background: var(--primary); color: #fff; width: 32px; height: 32px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-weight: 700; flex-shrink: 0; font-size: 14px;
         }
-
-        .section-header {
-            margin-bottom: 24px;
+        .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
+        .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        
+        /* Hidden Gems & Eat Grid */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+        .gem-card, .eat-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md); padding: 22px; position: relative;
         }
-
-        .section-label {
-            font-size: 12px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--primary);
-            display: block;
-            margin-bottom: 4px;
-        }
-
-        .section-title {
-            font-size: clamp(24px, 4vw, 32px);
-            font-weight: 800;
-            letter-spacing: -0.8px;
-        }
-
-        .intro-text {
-            font-size: 17px;
-            line-height: 1.8;
-            color: #cbd5e1;
-            margin-bottom: 24px;
-        }
-
-        .highlight-box {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-left: 4px solid var(--accent);
-            padding: 22px 26px;
-            border-radius: 16px;
-            margin-top: 24px;
-        }
-
-        .highlight-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+        .gem-badge {
+            display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase;
+            color: #10B981; background: rgba(16, 185, 129, 0.12); padding: 4px 10px; border-radius: 99px;
             margin-bottom: 10px;
         }
-
-        .highlight-title {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--accent);
+        .gem-hook { font-size: 13px; color: var(--primary-light); font-style: italic; margin-bottom: 8px; }
+        .gem-card h4, .eat-card h4 { font-size: 16px; margin-bottom: 6px; }
+        .gem-card p, .eat-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        .card-tip-box {
+            margin-top: 10px; padding: 8px 12px; background: rgba(255, 255, 255, 0.04);
+            border-radius: 8px; font-size: 12px; color: #cbd5e1;
         }
-
-        .pron-badge {
-            font-size: 12px;
-            color: var(--text-muted);
-            background: rgba(255, 255, 255, 0.06);
-            padding: 3px 8px;
-            border-radius: 6px;
-        }
-
-        .word-def {
-            font-size: 15px;
-            color: #ffffff;
-            line-height: 1.6;
-            margin-bottom: 6px;
-        }
-
-        .word-context {
-            font-size: 14px;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        .facts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 16px;
-        }
-
-        .fact-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 20px;
-        }
-
-        .fact-icon {
-            font-size: 24px;
-            margin-bottom: 8px;
-        }
-
-        .fact-title {
-            font-size: 12px;
-            font-weight: 800;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 4px;
-        }
-
-        .fact-desc {
-            font-size: 16px;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 2px;
-        }
-
-        .fact-sub {
-            font-size: 12px;
-            color: var(--text-muted);
-            line-height: 1.4;
-        }
-
-        .rules-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .rule-item {
-            display: flex;
-            gap: 18px;
-            align-items: flex-start;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 22px;
-        }
-
-        .rule-num {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--primary);
-            flex-shrink: 0;
-        }
-
-        .rule-text strong {
-            display: block;
-            color: white;
-            font-size: 16px;
-            margin-bottom: 6px;
-        }
-
-        .rule-text span {
-            color: var(--text-muted);
-            font-size: 14px;
-            line-height: 1.65;
-        }
-
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 20px;
-        }
-
-        .content-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 24px;
-            transition: transform 0.2s, border-color 0.2s;
-        }
-
-        .content-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--border-hover);
-        }
-
-        .card-tag {
-            font-size: 11px;
-            font-weight: 800;
-            letter-spacing: 1px;
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
-
-        .card-name {
-            font-size: 18px;
-            font-weight: 800;
-            margin-bottom: 8px;
-            color: white;
-        }
-
-        .card-desc {
-            font-size: 14px;
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 12px;
-        }
-
-        .card-tip {
-            font-size: 13px;
-            color: #cbd5e1;
-            background: rgba(255, 255, 255, 0.04);
-            padding: 10px 14px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-        }
-
-        .traps-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
+        
+        /* Traps */
+        .traps-list { display: flex; flex-direction: column; gap: 14px; }
         .trap-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 22px;
+            background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.15);
+            border-radius: var(--radius-md); padding: 20px;
         }
-
-        .trap-bad {
-            font-size: 16px;
-            font-weight: 800;
-            color: #f87171;
-            margin-bottom: 6px;
+        .trap-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+        .trap-tag {
+            background: #EF4444; color: #fff; font-size: 11px; font-weight: 700;
+            text-transform: uppercase; padding: 2px 8px; border-radius: 6px;
         }
-
-        .trap-why {
-            font-size: 14px;
-            color: var(--text-muted);
-            margin-bottom: 12px;
-            line-height: 1.6;
+        .trap-header h4 { font-size: 16px; color: #fff; }
+        .trap-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        .trap-solution {
+            margin-top: 10px; padding: 10px 14px; background: rgba(16, 185, 129, 0.08);
+            border-left: 3px solid #10B981; border-radius: 4px; font-size: 13px; color: #D1D5DB; line-height: 1.5;
         }
-
-        .trap-good {
-            font-size: 14px;
-            color: #34d399;
-            background: rgba(16, 185, 129, 0.08);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            padding: 10px 14px;
-            border-radius: 10px;
-        }
-
+        
+        /* App CTA Banner */
         .app-cta-banner {
-            margin-top: 72px;
-            background: linear-gradient(135deg, rgba(123, 110, 246, 0.15), rgba(245, 158, 11, 0.1));
-            border: 1px solid var(--border-hover);
-            border-radius: 24px;
-            padding: 48px 32px;
-            text-align: center;
+            background: linear-gradient(135deg, rgba(123, 110, 246, 0.15), rgba(236, 72, 153, 0.1));
+            border: 1px solid rgba(157, 147, 255, 0.3); border-radius: var(--radius-lg);
+            padding: 44px 20px; text-align: center; margin: 50px 0; position: relative;
         }
-
-        .app-cta-banner h3 {
-            font-size: clamp(24px, 4vw, 32px);
-            font-weight: 800;
-            margin-bottom: 12px;
-        }
-
-        .app-cta-banner p {
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto 28px;
-            font-size: 16px;
-        }
-
-        .store-btn-row {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
+        .app-cta-banner h3 { font-size: clamp(22px, 4vw, 28px); font-weight: 800; margin-bottom: 10px; }
+        .app-cta-banner p { color: var(--text-secondary); max-width: 580px; margin: 0 auto 24px; font-size: 15px; }
+        .store-btn-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
         .store-pill-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 26px;
-            background: white;
-            color: #0f1016;
-            font-weight: 800;
-            font-size: 14px;
-            border-radius: 100px;
-            text-decoration: none;
+            display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: white;
+            color: #0f1016; font-weight: 700; font-size: 14px; border-radius: 100px; text-decoration: none;
             transition: transform 0.2s, box-shadow 0.2s;
         }
+        .store-pill-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2); }
 
-        .store-pill-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 24px rgba(255, 255, 255, 0.2);
-        }
-
-        footer {
-            border-top: 1px solid var(--border);
-            margin-top: 80px;
-            padding: 40px 24px 20px;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 14px;
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--border-subtle); padding: 40px 24px 30px;
+            color: var(--text-muted); font-size: 13px; text-align: center;
         }
 
         @media (max-width: 768px) {
-            .navbar {
-                height: 64px;
-            }
+            .navbar { height: 64px; }
             .nav-links {
-                display: none;
-                position: fixed;
-                top: 64px;
-                left: 0;
-                right: 0;
-                background: rgba(13, 14, 21, 0.98);
-                flex-direction: column;
-                padding: 24px;
-                border-bottom: 1px solid var(--border);
-                gap: 16px;
+                display: none; position: fixed; top: 64px; left: 0; right: 0;
+                background: rgba(15, 11, 26, 0.98); flex-direction: column;
+                padding: 24px; border-bottom: 1px solid var(--border-subtle); gap: 16px;
             }
-            .nav-links.active {
-                display: flex;
-            }
-            .nav-toggle {
-                display: block;
-            }
-            .guide-hero {
-                min-height: 400px;
-                padding-top: 100px;
-            }
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
-            .store-pill-btn {
-                width: 100%;
-                max-width: 280px;
-                justify-content: center;
-            }
+            .nav-links.active { display: flex; }
+            .nav-toggle { display: block; }
+            .guide-hero { min-height: 380px; padding-top: 90px; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
+
     </style>
 </head>
 <body>
@@ -693,13 +310,9 @@
             </div>
             <p class="intro-text">Boston is America&#x27;s most European city: brick sidewalks, gaslit streets and university rowers pulling along the river. Revolution fermented here — the red line of the Freedom Trail tells the whole story in four kilometers, from tea party to first shot. Across the river, Harvard and MIT run the world&#x27;s brain center; the North End&#x27;s Italian bakeries smell of cannoli, and oyster shells clink along the harbor. A Bostonian is &#x27;wicked&#x27; proud of the accent, the teams and the city — give it a few days and you will be too.</p>
             
-        <div class="highlight-box">
-            <div class="highlight-header">
-                <div class="highlight-title">💬 Wicked</div>
-                <span class="pron-badge">🗣️ /WIK-id/</span>
-            </div>
-            <p class="word-def"><strong>In Boston English it means &#x27;very&#x27;: &#x27;wicked good&#x27;, &#x27;wicked smaht&#x27;. Nothing to do with evil — it adds emphasis and pride. Once a Bostonian declares the chowder &#x27;wicked good&#x27;, the debate is over. Use the word in the right place and the city takes you in.</strong></p>
-            
+        <div class="local-word-box">
+            <div class="word-title">🗣️ Local Concept: <strong>Wicked</strong> <span class="pron">(WIK-id)</span></div>
+            <p>In Boston English it means &#x27;very&#x27;: &#x27;wicked good&#x27;, &#x27;wicked smaht&#x27;. Nothing to do with evil — it adds emphasis and pride. Once a Bostonian declares the chowder &#x27;wicked good&#x27;, the debate is over. Use the word in the right place and the city takes you in.</p>
         </div>
         
         </section>
@@ -715,30 +328,38 @@
                 
             <div class="fact-card">
                 <div class="fact-icon">✈️</div>
-                <div class="fact-title">Airport</div>
-                <div class="fact-desc">Logan (BOS)</div>
-                <div class="fact-sub">~15 min to town — even a water taxi</div>
+                <div>
+                    <div class="fact-label">Airport</div>
+                    <div class="fact-val">Logan (BOS)</div>
+                    <div class="fact-sub">~15 min to town — even a water taxi</div>
+                </div>
             </div>
             
             <div class="fact-card">
                 <div class="fact-icon">🔔</div>
-                <div class="fact-title">Signature</div>
-                <div class="fact-desc">The Freedom Trail</div>
-                <div class="fact-sub">A 4 km red line, 16 stops</div>
+                <div>
+                    <div class="fact-label">Signature</div>
+                    <div class="fact-val">The Freedom Trail</div>
+                    <div class="fact-sub">A 4 km red line, 16 stops</div>
+                </div>
             </div>
             
             <div class="fact-card">
                 <div class="fact-icon">💵</div>
-                <div class="fact-title">Currency</div>
-                <div class="fact-desc">Dollar (USD)</div>
-                <div class="fact-sub">Cards everywhere, tip 18–20%</div>
+                <div>
+                    <div class="fact-label">Currency</div>
+                    <div class="fact-val">Dollar (USD)</div>
+                    <div class="fact-sub">Cards everywhere, tip 18–20%</div>
+                </div>
             </div>
             
             <div class="fact-card">
                 <div class="fact-icon">🗣️</div>
-                <div class="fact-title">Language</div>
-                <div class="fact-desc">English</div>
-                <div class="fact-sub">The Rs go missing: &#x27;pahk the cah&#x27;</div>
+                <div>
+                    <div class="fact-label">Language</div>
+                    <div class="fact-val">English</div>
+                    <div class="fact-sub">The Rs go missing: &#x27;pahk the cah&#x27;</div>
+                </div>
             </div>
             
             </div>
@@ -750,31 +371,31 @@
         <section class="section">
             <div class="section-header">
                 <span class="section-label">Insider Advice</span>
-                <h2 class="section-title">Unwritten Rules for Boston</h2>
+                <h2 class="section-title">3 Unwritten Rules for Boston</h2>
             </div>
             <div class="rules-list">
                 
-            <div class="rule-item">
-                <div class="rule-num">#1</div>
-                <div class="rule-text">
-                    <strong>Walk the Freedom Trail on your own feet</strong>
-                    <span>The red brick line in the pavement links all 16 stops by itself: you don&#x27;t even need a map. You&#x27;re not obliged to pay for tours — follow the line; most stops are free. Start early: the Faneuil area gets crowded by noon.</span>
+            <div class="rule-card">
+                <div class="rule-num">1</div>
+                <div class="rule-content">
+                    <h4>Walk the Freedom Trail on your own feet</h4>
+                    <p>The red brick line in the pavement links all 16 stops by itself: you don&#x27;t even need a map. You&#x27;re not obliged to pay for tours — follow the line; most stops are free. Start early: the Faneuil area gets crowded by noon.</p>
                 </div>
             </div>
             
-            <div class="rule-item">
-                <div class="rule-num">#2</div>
-                <div class="rule-text">
-                    <strong>Befriend the T, forget the car</strong>
-                    <span>America&#x27;s oldest subway covers the city well enough; a car in Boston means narrow one-ways, aggressive drivers and a legendary parking problem. Get a CharlieCard, learn the green and red lines — the city is walkable anyway.</span>
+            <div class="rule-card">
+                <div class="rule-num">2</div>
+                <div class="rule-content">
+                    <h4>Befriend the T, forget the car</h4>
+                    <p>America&#x27;s oldest subway covers the city well enough; a car in Boston means narrow one-ways, aggressive drivers and a legendary parking problem. Get a CharlieCard, learn the green and red lines — the city is walkable anyway.</p>
                 </div>
             </div>
             
-            <div class="rule-item">
-                <div class="rule-num">#3</div>
-                <div class="rule-text">
-                    <strong>Visit both banks of the river</strong>
-                    <span>Boston is not only Boston: across the Charles lies Cambridge — Harvard&#x27;s yards, MIT&#x27;s corridors and the bookshops. Give the far bank half a day; the Esplanade riverside walk home is the city&#x27;s loveliest &#x27;bridge&#x27;.</span>
+            <div class="rule-card">
+                <div class="rule-num">3</div>
+                <div class="rule-content">
+                    <h4>Visit both banks of the river</h4>
+                    <p>Boston is not only Boston: across the Charles lies Cambridge — Harvard&#x27;s yards, MIT&#x27;s corridors and the bookshops. Give the far bank half a day; the Esplanade riverside walk home is the city&#x27;s loveliest &#x27;bridge&#x27;.</p>
                 </div>
             </div>
             
@@ -791,45 +412,27 @@
             </div>
             <div class="cards-grid">
                 
-            <div class="content-card">
-                <div class="card-tag">💎 HIDDEN GEM</div>
-                <div class="card-name">The Mapparium</div>
-                <div class="card-desc">You walk through the inside of a three-story stained-glass globe from 1935: standing on the glass bridge you study the borders of 1935, while the acoustics carry a whisper to the far shore. Boston&#x27;s strangest, most unforgettable half hour.</div>
+            <div class="gem-card">
+                <div class="gem-badge">Hidden Gem</div>
+                <h4>The Mapparium</h4>
+                <div class="gem-hook">Hidden Spot</div>
+                <p>You walk through the inside of a three-story stained-glass globe from 1935: standing on the glass bridge you study the borders of 1935, while the acoustics carry a whisper to the far shore. Boston&#x27;s strangest, most unforgettable half hour.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">💎 HIDDEN GEM</div>
-                <div class="card-name">Castle Island</div>
-                <div class="card-desc">A fort and shoreline reached on foot in South Boston: the lawns of Fort Independence, planes on approach, and a hot dog from the Sullivan&#x27;s stand. The locals&#x27; weekend classic — often missing from tourist maps.</div>
+            <div class="gem-card">
+                <div class="gem-badge">Hidden Gem</div>
+                <h4>Castle Island</h4>
+                <div class="gem-hook">Hidden Spot</div>
+                <p>A fort and shoreline reached on foot in South Boston: the lawns of Fort Independence, planes on approach, and a hot dog from the Sullivan&#x27;s stand. The locals&#x27; weekend classic — often missing from tourist maps.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">💎 HIDDEN GEM</div>
-                <div class="card-name">SoWa Open Market</div>
-                <div class="card-desc">On Sundays the South End&#x27;s old warehouse district opens with artist stalls, food trucks and a vintage market — and the gallery floors are open too. Boston&#x27;s most pleasant Sunday ritual.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">💎 HIDDEN GEM</div>
-                <div class="card-name">The Arnold Arboretum</div>
-                <div class="card-desc">Harvard&#x27;s 281-acre tree collection: the jewel of the Emerald Necklace park chain. Leaves in October, lilacs in May — entry free, crowds far away.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">💎 HIDDEN GEM</div>
-                <div class="card-name">Acorn Street at dawn</div>
-                <div class="card-desc">America&#x27;s most photographed street queues at midday and stands empty at 07:00: the cobbles, gas lamps and geraniums are yours. Pair it with Beacon Hill&#x27;s side lanes.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">💎 HIDDEN GEM</div>
-                <div class="card-name">The Harborwalk</div>
-                <div class="card-desc">The walking path wrapping the harbor: piers, parks and skyline views from the Seaport to the North End. The Fan Pier stretch at sunset — the city&#x27;s best walk nobody talks about.</div>
+            <div class="gem-card">
+                <div class="gem-badge">Hidden Gem</div>
+                <h4>SoWa Open Market</h4>
+                <div class="gem-hook">Hidden Spot</div>
+                <p>On Sundays the South End&#x27;s old warehouse district opens with artist stalls, food trucks and a vintage market — and the gallery floors are open too. Boston&#x27;s most pleasant Sunday ritual.</p>
                 
             </div>
             
@@ -844,48 +447,29 @@
                 <span class="section-label">Food & Flavors</span>
                 <h2 class="section-title">What to Taste</h2>
             </div>
-            <p class="intro-text">The Boston table is a partnership of sea and migration: chowder steam, lobster rolls, Italian bakeries and the Dunkin cup — all civic identity.</p>
             <div class="cards-grid">
                 
-            <div class="content-card">
-                <div class="card-tag">🍴 MUST TASTE</div>
-                <div class="card-name">New England clam chowder</div>
-                <div class="card-desc">Cream, clams and potato: the absolute answer to a cold day. In a bread bowl or a classic cup — crumble the oyster crackers on top and skip the debate: the white one is the real one.</div>
+            <div class="eat-card">
+                <h4>🍴 New England clam chowder</h4>
+                <p>Cream, clams and potato: the absolute answer to a cold day. In a bread bowl or a classic cup — crumble the oyster crackers on top and skip the debate: the white one is the real one.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">🍴 MUST TASTE</div>
-                <div class="card-name">Lobster roll</div>
-                <div class="card-desc">Lobster in a buttered, toasted roll: cold with mayo (Maine style) or warm with butter (Connecticut style). Beside the harbor with fries — the price is serious, the happiness guaranteed.</div>
+            <div class="eat-card">
+                <h4>🍴 Lobster roll</h4>
+                <p>Lobster in a buttered, toasted roll: cold with mayo (Maine style) or warm with butter (Connecticut style). Beside the harbor with fries — the price is serious, the happiness guaranteed.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">🍴 MUST TASTE</div>
-                <div class="card-name">The North End cannoli duel</div>
-                <div class="card-desc">Mike&#x27;s or Modern: the city&#x27;s sweetest feud. Crisp shell, ricotta filling and a queue — try both bakeries and choose your side. Espresso alongside is the Italian quarter&#x27;s etiquette.</div>
+            <div class="eat-card">
+                <h4>🍴 The North End cannoli duel</h4>
+                <p>Mike&#x27;s or Modern: the city&#x27;s sweetest feud. Crisp shell, ricotta filling and a queue — try both bakeries and choose your side. Espresso alongside is the Italian quarter&#x27;s etiquette.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">🍴 MUST TASTE</div>
-                <div class="card-name">The oyster bar ritual</div>
-                <div class="card-desc">Wellfleet and Island Creek oysters on ice with mignonette: Boston&#x27;s centuries-old oyster bars are among America&#x27;s oldest. At happy hour the counter prices turn friendly.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">🍴 MUST TASTE</div>
-                <div class="card-name">The Dunkin ritual</div>
-                <div class="card-desc">In Boston, Dunkin is not a chain but an identity: a shop on every corner, an iced coffee in every hand — even in winter. Order it &#x27;regulah&#x27; and it comes with cream and sugar; this is the cheapest way to blend in.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">🍴 MUST TASTE</div>
-                <div class="card-name">Boston cream pie</div>
-                <div class="card-desc">The cake that calls itself a pie: vanilla custard layers under chocolate glaze — the official dessert bearing the city&#x27;s name. The version at its birthplace hotel is a pilgrimage; bakery versions are the daily reward.</div>
+            <div class="eat-card">
+                <h4>🍴 The oyster bar ritual</h4>
+                <p>Wellfleet and Island Creek oysters on ice with mignonette: Boston&#x27;s centuries-old oyster bars are among America&#x27;s oldest. At happy hour the counter prices turn friendly.</p>
                 
             </div>
             
@@ -903,27 +487,21 @@
             <div class="traps-list">
                 
             <div class="trap-card">
-                <div class="trap-bad">❌ </div>
-                <div class="trap-why">The bar that &#x27;inspired&#x27; the show offers a tourist queue, a souvenir counter and an ordinary menu: the interior isn&#x27;t even the TV set.</div>
-                <div class="trap-good">✅ <strong>Better Alternative:</strong> Take the photo outside and drink your beer in Beacon Hill&#x27;s real neighborhood pubs. Boston&#x27;s true &#x27;everybody knows your name&#x27; bars are the storied dive bars on the corner.</div>
+                <div class="trap-header">
+                    <span class="trap-tag">Avoid</span>
+                    <h4></h4>
+                </div>
+                <p>The bar that &#x27;inspired&#x27; the show offers a tourist queue, a souvenir counter and an ordinary menu: the interior isn&#x27;t even the TV set.</p>
+                <div class="trap-solution"><strong>Do this instead:</strong> Take the photo outside and drink your beer in Beacon Hill&#x27;s real neighborhood pubs. Boston&#x27;s true &#x27;everybody knows your name&#x27; bars are the storied dive bars on the corner.</div>
             </div>
             
             <div class="trap-card">
-                <div class="trap-bad">❌ </div>
-                <div class="trap-why">The tourist market stalls sell a small lobster roll at peak price; you eat standing in a crowd and the flavor is average.</div>
-                <div class="trap-good">✅ <strong>Better Alternative:</strong> Walk a few blocks: the storied harborside oyster bars and Seaport restaurants serve serious lobster for the same money. Tour Quincy Market for its building, not your dinner.</div>
-            </div>
-            
-            <div class="trap-card">
-                <div class="trap-bad">❌ </div>
-                <div class="trap-why">Narrow one-way streets, an aggressive driving culture and $40–60-a-day parking: in Boston a car is a burden, not freedom.</div>
-                <div class="trap-good">✅ <strong>Better Alternative:</strong> The T + walking + ferries cover the city completely; rent a car only for the day of a New England excursion. The &#x27;pahk the cah&#x27; joke is grounded in fact — there is no parking.</div>
-            </div>
-            
-            <div class="trap-card">
-                <div class="trap-bad">❌ </div>
-                <div class="trap-why">Around Harvard Square some &#x27;official campus tour&#x27; sellers ticket you for yards that are free to roam; the storytelling is thin, the route short.</div>
-                <div class="trap-good">✅ <strong>Better Alternative:</strong> The campus yards are open to the public: walk them yourself and smile at the &#x27;three lies&#x27; of the John Harvard statue. The student-run free/tip-based tours tell the most entertaining version.</div>
+                <div class="trap-header">
+                    <span class="trap-tag">Avoid</span>
+                    <h4></h4>
+                </div>
+                <p>The tourist market stalls sell a small lobster roll at peak price; you eat standing in a crowd and the flavor is average.</p>
+                <div class="trap-solution"><strong>Do this instead:</strong> Walk a few blocks: the storied harborside oyster bars and Seaport restaurants serve serious lobster for the same money. Tour Quincy Market for its building, not your dinner.</div>
             </div>
             
             </div>
@@ -945,7 +523,7 @@
         </section>
     </main>
 
-    <footer>
+    <footer class="footer">
         <div class="container">
             <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
         </div>

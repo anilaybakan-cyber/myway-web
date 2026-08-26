@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zermatt City Guide & Smart Walking Routes | MyWay</title>
+    <title>Zermatt Travel Guide & Smart Walking Routes | MyWay</title>
     <meta name="description" content="Explore Zermatt with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
     
     <link rel="alternate" hreflang="en" href="/guides/zermatt.html">
@@ -24,616 +24,233 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <link rel="icon" type="image/png" href="../images/app_icon.png">
 
     <style>
+        
         :root {
-            --bg-dark: #0d0e15;
-            --bg-card: #161824;
-            --bg-card-hover: #1e2132;
-            --primary: #7b6ef6;
-            --primary-glow: rgba(123, 110, 246, 0.25);
-            --accent: #f59e0b;
-            --text-main: #ffffff;
-            --text-muted: #94a3b8;
-            --border: rgba(255, 255, 255, 0.08);
-            --border-hover: rgba(123, 110, 246, 0.4);
-            --green: #10b981;
-            --red: #ef4444;
-            --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-serif: 'Playfair Display', Georgia, serif;
+            --primary: #7B6EF6;
+            --primary-light: #9D93FF;
+            --primary-dark: #5B4FD6;
+            --accent: #EC4899;
+            --bg-dark: #0F0B1A;
+            --bg-section: #130F22;
+            --bg-card: rgba(255, 255, 255, 0.04);
+            --text-primary: #FFFFFF;
+            --text-secondary: #9CA3AF;
+            --text-muted: #6B7280;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --radius-sm: 12px;
+            --shadow-glow: 0 0 80px rgba(123, 110, 246, 0.15);
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            -webkit-font-smoothing: antialiased;
-        }
-
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            font-family: var(--font-sans);
-            line-height: 1.6;
-            padding-bottom: 60px;
+            background-color: var(--bg-dark); color: var(--text-primary);
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6; overflow-x: hidden;
         }
-
-        /* Navigation */
+        
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        
+        /* Navbar */
         .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: rgba(13, 14, 21, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-            height: 72px;
-            display: flex;
-            align-items: center;
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(15, 11, 26, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle); height: 72px; display: flex; align-items: center;
         }
-
         .navbar-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%;
+            display: flex; align-items: center; justify-content: space-between;
         }
-
         .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: white;
-            font-weight: 800;
-            font-size: 20px;
+            display: flex; align-items: center; gap: 12px; text-decoration: none;
+            color: #fff; font-weight: 700; font-size: 20px;
         }
-
-        .nav-brand img {
-            border-radius: 10px;
-            box-shadow: 0 4px 12px var(--primary-glow);
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-            list-style: none;
-        }
-
+        .nav-brand img { border-radius: 10px; }
+        .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
         .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            transition: color 0.2s;
+            color: var(--text-secondary); text-decoration: none; font-size: 14px;
+            font-weight: 500; transition: color 0.2s;
         }
-
-        .nav-links a:hover, .nav-links a.active {
-            color: white;
-        }
-
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        /* Modern Language Dropdown */
-        .lang-dropdown-wrapper {
-            position: relative;
-        }
-
+        .nav-links a:hover, .nav-links a.active { color: #fff; }
+        .nav-actions { display: flex; align-items: center; gap: 14px; }
+        
+        /* Globe Language Dropdown */
+        .lang-dropdown-wrapper { position: relative; }
         .lang-dropdown-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 7px 14px;
-            border-radius: 100px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: white;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
+            display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px;
+            background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s ease;
             font-family: inherit;
         }
-
-        .lang-dropdown-btn:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: var(--primary);
-        }
-
-        .lang-globe-icon {
-            width: 15px;
-            height: 15px;
-            fill: currentColor;
-        }
-
+        .lang-dropdown-btn:hover { background: rgba(255, 255, 255, 0.15); border-color: var(--primary); }
+        .lang-globe-icon { width: 15px; height: 15px; fill: currentColor; }
         .lang-dropdown-menu {
-            display: none;
-            position: absolute;
-            top: calc(100% + 8px);
-            right: 0;
-            background: #19142B;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 14px;
-            padding: 6px;
-            min-width: 130px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            z-index: 1001;
+            display: none; position: absolute; top: calc(100% + 8px); right: 0;
+            background: #19142B; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 14px;
+            padding: 6px; min-width: 130px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); z-index: 1001;
         }
-
         .lang-dropdown-wrapper:hover .lang-dropdown-menu,
         .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
+            display: flex; flex-direction: column; gap: 2px;
         }
-
         .lang-dropdown-item {
-            display: flex;
-            align-items: center;
-            padding: 8px 12px;
-            font-size: 13px;
-            font-weight: 600;
-            color: #CBD5E1;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: background 0.2s, color 0.2s;
+            display: flex; align-items: center; padding: 8px 12px; font-size: 13px; font-weight: 600;
+            color: #CBD5E1; text-decoration: none; border-radius: 8px; transition: background 0.2s, color 0.2s;
         }
-
-        .lang-dropdown-item:hover {
-            background: rgba(123, 110, 246, 0.2);
-            color: white;
-        }
-
-        .lang-dropdown-item.active {
-            background: var(--primary);
-            color: white;
-        }
+        .lang-dropdown-item:hover { background: rgba(123, 110, 246, 0.2); color: white; }
+        .lang-dropdown-item.active { background: var(--primary); color: white; }
 
         .nav-cta {
-            background: var(--primary);
-            color: white !important;
-            padding: 8px 18px;
-            border-radius: 100px;
-            font-size: 13px;
-            font-weight: 700;
-            text-decoration: none;
-            transition: transform 0.2s, box-shadow 0.2s;
+            background: var(--primary); color: #fff !important; padding: 8px 20px;
+            border-radius: 100px; font-size: 13px; font-weight: 600; text-decoration: none;
+            transition: all 0.2s ease;
         }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(123, 110, 246, 0.4); }
+        .nav-toggle { display: none; background: none; border: none; color: #fff; cursor: pointer; padding: 8px; }
 
-        .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px var(--primary-glow);
-        }
-
-        .nav-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            padding: 8px;
-        }
-
-        /* Hero */
+        /* Guide Hero */
         .guide-hero {
-            position: relative;
-            min-height: 480px;
-            display: flex;
-            align-items: flex-end;
-            padding: 120px 24px 60px;
-            background-size: cover;
-            background-position: center;
-            overflow: hidden;
+            position: relative; min-height: 440px; display: flex; align-items: flex-end;
+            padding: 120px 24px 44px; margin-top: 72px; overflow: hidden; background-color: #1A132F;
         }
-
         .guide-hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1;
-            transform: scale(1.02);
+            position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+            filter: brightness(0.65);
         }
-
         .guide-hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(13, 14, 21, 0.3) 0%, rgba(13, 14, 21, 0.85) 75%, var(--bg-dark) 100%);
-            z-index: 2;
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.4) 60%, transparent 100%);
         }
-
-        .guide-hero-content {
-            position: relative;
-            z-index: 3;
-            max-width: 900px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
+        .guide-hero-content { position: relative; z-index: 2; width: 100%; }
         .city-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 14px;
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            border-radius: 100px;
-            font-size: 13px;
-            font-weight: 700;
-            color: #cbd5e1;
-            margin-bottom: 16px;
+            display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px); padding: 6px 14px; border-radius: 99px; font-size: 13px;
+            font-weight: 600; margin-bottom: 14px; border: 1px solid rgba(255, 255, 255, 0.15);
         }
-
-        .guide-title {
-            font-size: clamp(38px, 6vw, 64px);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 12px;
-            letter-spacing: -1.5px;
+        .guide-title { font-size: clamp(32px, 6vw, 52px); font-weight: 800; line-height: 1.1; margin-bottom: 10px; }
+        .guide-tagline { font-size: 16px; color: var(--primary-light); max-width: 720px; font-weight: 500; line-height: 1.5; }
+        
+        /* Sections */
+        .section { padding: 42px 0; border-bottom: 1px solid var(--border-subtle); }
+        .section-header { margin-bottom: 24px; }
+        .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); font-weight: 700; }
+        .section-title { font-size: 24px; font-weight: 700; margin-top: 4px; }
+        
+        .intro-text { font-size: 15px; color: #D1D5DB; line-height: 1.8; margin-bottom: 20px; }
+        
+        /* Local Word */
+        .local-word-box {
+            background: rgba(123, 110, 246, 0.08); border-left: 4px solid var(--primary);
+            padding: 18px 22px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-top: 20px;
         }
-
-        .guide-tagline {
-            font-size: clamp(16px, 2.5vw, 20px);
-            color: #e2e8f0;
-            font-weight: 500;
-            max-width: 700px;
-            line-height: 1.5;
+        .word-title { font-size: 15px; color: #fff; margin-bottom: 4px; }
+        .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
+        .local-word-box p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        
+        /* Facts Grid */
+        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+        .fact-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
         }
-
-        /* Container */
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 24px;
+        .fact-icon { font-size: 24px; flex-shrink: 0; }
+        .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
+        .fact-val { font-size: 15px; font-weight: 600; color: #fff; margin: 2px 0; }
+        .fact-sub { font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
+        
+        /* Rules */
+        .rules-list { display: flex; flex-direction: column; gap: 14px; }
+        .rule-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md); padding: 20px; display: flex; gap: 16px; align-items: flex-start;
         }
-
-        .section {
-            margin-top: 56px;
+        .rule-num {
+            background: var(--primary); color: #fff; width: 32px; height: 32px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-weight: 700; flex-shrink: 0; font-size: 14px;
         }
-
-        .section-header {
-            margin-bottom: 24px;
+        .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
+        .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        
+        /* Hidden Gems & Eat Grid */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+        .gem-card, .eat-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md); padding: 22px; position: relative;
         }
-
-        .section-label {
-            font-size: 12px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--primary);
-            display: block;
-            margin-bottom: 4px;
-        }
-
-        .section-title {
-            font-size: clamp(24px, 4vw, 32px);
-            font-weight: 800;
-            letter-spacing: -0.8px;
-        }
-
-        .intro-text {
-            font-size: 17px;
-            line-height: 1.8;
-            color: #cbd5e1;
-            margin-bottom: 24px;
-        }
-
-        .highlight-box {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-left: 4px solid var(--accent);
-            padding: 22px 26px;
-            border-radius: 16px;
-            margin-top: 24px;
-        }
-
-        .highlight-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+        .gem-badge {
+            display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase;
+            color: #10B981; background: rgba(16, 185, 129, 0.12); padding: 4px 10px; border-radius: 99px;
             margin-bottom: 10px;
         }
-
-        .highlight-title {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--accent);
+        .gem-hook { font-size: 13px; color: var(--primary-light); font-style: italic; margin-bottom: 8px; }
+        .gem-card h4, .eat-card h4 { font-size: 16px; margin-bottom: 6px; }
+        .gem-card p, .eat-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        .card-tip-box {
+            margin-top: 10px; padding: 8px 12px; background: rgba(255, 255, 255, 0.04);
+            border-radius: 8px; font-size: 12px; color: #cbd5e1;
         }
-
-        .pron-badge {
-            font-size: 12px;
-            color: var(--text-muted);
-            background: rgba(255, 255, 255, 0.06);
-            padding: 3px 8px;
-            border-radius: 6px;
-        }
-
-        .word-def {
-            font-size: 15px;
-            color: #ffffff;
-            line-height: 1.6;
-            margin-bottom: 6px;
-        }
-
-        .word-context {
-            font-size: 14px;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        .facts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 16px;
-        }
-
-        .fact-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 20px;
-        }
-
-        .fact-icon {
-            font-size: 24px;
-            margin-bottom: 8px;
-        }
-
-        .fact-title {
-            font-size: 12px;
-            font-weight: 800;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 4px;
-        }
-
-        .fact-desc {
-            font-size: 16px;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 2px;
-        }
-
-        .fact-sub {
-            font-size: 12px;
-            color: var(--text-muted);
-            line-height: 1.4;
-        }
-
-        .rules-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .rule-item {
-            display: flex;
-            gap: 18px;
-            align-items: flex-start;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 22px;
-        }
-
-        .rule-num {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--primary);
-            flex-shrink: 0;
-        }
-
-        .rule-text strong {
-            display: block;
-            color: white;
-            font-size: 16px;
-            margin-bottom: 6px;
-        }
-
-        .rule-text span {
-            color: var(--text-muted);
-            font-size: 14px;
-            line-height: 1.65;
-        }
-
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 20px;
-        }
-
-        .content-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 24px;
-            transition: transform 0.2s, border-color 0.2s;
-        }
-
-        .content-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--border-hover);
-        }
-
-        .card-tag {
-            font-size: 11px;
-            font-weight: 800;
-            letter-spacing: 1px;
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
-
-        .card-name {
-            font-size: 18px;
-            font-weight: 800;
-            margin-bottom: 8px;
-            color: white;
-        }
-
-        .card-desc {
-            font-size: 14px;
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 12px;
-        }
-
-        .card-tip {
-            font-size: 13px;
-            color: #cbd5e1;
-            background: rgba(255, 255, 255, 0.04);
-            padding: 10px 14px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-        }
-
-        .traps-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
+        
+        /* Traps */
+        .traps-list { display: flex; flex-direction: column; gap: 14px; }
         .trap-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 22px;
+            background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.15);
+            border-radius: var(--radius-md); padding: 20px;
         }
-
-        .trap-bad {
-            font-size: 16px;
-            font-weight: 800;
-            color: #f87171;
-            margin-bottom: 6px;
+        .trap-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+        .trap-tag {
+            background: #EF4444; color: #fff; font-size: 11px; font-weight: 700;
+            text-transform: uppercase; padding: 2px 8px; border-radius: 6px;
         }
-
-        .trap-why {
-            font-size: 14px;
-            color: var(--text-muted);
-            margin-bottom: 12px;
-            line-height: 1.6;
+        .trap-header h4 { font-size: 16px; color: #fff; }
+        .trap-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        .trap-solution {
+            margin-top: 10px; padding: 10px 14px; background: rgba(16, 185, 129, 0.08);
+            border-left: 3px solid #10B981; border-radius: 4px; font-size: 13px; color: #D1D5DB; line-height: 1.5;
         }
-
-        .trap-good {
-            font-size: 14px;
-            color: #34d399;
-            background: rgba(16, 185, 129, 0.08);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            padding: 10px 14px;
-            border-radius: 10px;
-        }
-
+        
+        /* App CTA Banner */
         .app-cta-banner {
-            margin-top: 72px;
-            background: linear-gradient(135deg, rgba(123, 110, 246, 0.15), rgba(245, 158, 11, 0.1));
-            border: 1px solid var(--border-hover);
-            border-radius: 24px;
-            padding: 48px 32px;
-            text-align: center;
+            background: linear-gradient(135deg, rgba(123, 110, 246, 0.15), rgba(236, 72, 153, 0.1));
+            border: 1px solid rgba(157, 147, 255, 0.3); border-radius: var(--radius-lg);
+            padding: 44px 20px; text-align: center; margin: 50px 0; position: relative;
         }
-
-        .app-cta-banner h3 {
-            font-size: clamp(24px, 4vw, 32px);
-            font-weight: 800;
-            margin-bottom: 12px;
-        }
-
-        .app-cta-banner p {
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto 28px;
-            font-size: 16px;
-        }
-
-        .store-btn-row {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
+        .app-cta-banner h3 { font-size: clamp(22px, 4vw, 28px); font-weight: 800; margin-bottom: 10px; }
+        .app-cta-banner p { color: var(--text-secondary); max-width: 580px; margin: 0 auto 24px; font-size: 15px; }
+        .store-btn-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
         .store-pill-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 26px;
-            background: white;
-            color: #0f1016;
-            font-weight: 800;
-            font-size: 14px;
-            border-radius: 100px;
-            text-decoration: none;
+            display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: white;
+            color: #0f1016; font-weight: 700; font-size: 14px; border-radius: 100px; text-decoration: none;
             transition: transform 0.2s, box-shadow 0.2s;
         }
+        .store-pill-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2); }
 
-        .store-pill-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 24px rgba(255, 255, 255, 0.2);
-        }
-
-        footer {
-            border-top: 1px solid var(--border);
-            margin-top: 80px;
-            padding: 40px 24px 20px;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 14px;
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--border-subtle); padding: 40px 24px 30px;
+            color: var(--text-muted); font-size: 13px; text-align: center;
         }
 
         @media (max-width: 768px) {
-            .navbar {
-                height: 64px;
-            }
+            .navbar { height: 64px; }
             .nav-links {
-                display: none;
-                position: fixed;
-                top: 64px;
-                left: 0;
-                right: 0;
-                background: rgba(13, 14, 21, 0.98);
-                flex-direction: column;
-                padding: 24px;
-                border-bottom: 1px solid var(--border);
-                gap: 16px;
+                display: none; position: fixed; top: 64px; left: 0; right: 0;
+                background: rgba(15, 11, 26, 0.98); flex-direction: column;
+                padding: 24px; border-bottom: 1px solid var(--border-subtle); gap: 16px;
             }
-            .nav-links.active {
-                display: flex;
-            }
-            .nav-toggle {
-                display: block;
-            }
-            .guide-hero {
-                min-height: 400px;
-                padding-top: 100px;
-            }
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
-            .store-pill-btn {
-                width: 100%;
-                max-width: 280px;
-                justify-content: center;
-            }
+            .nav-links.active { display: flex; }
+            .nav-toggle { display: block; }
+            .guide-hero { min-height: 380px; padding-top: 90px; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
+
     </style>
 </head>
 <body>
@@ -693,13 +310,9 @@
             </div>
             <p class="intro-text">Zermatt resembles a devotion built around a single mountain: the Matterhorn&#x27;s crooked pyramid stands at the end of every street, opposite every balcony, in the corner of every photo. Petrol cars cannot enter the village — electric mini-taxis hum past, skiers walk from the railway station to the pistes, and centuries-old blackened wooden barns stand among the boutique hotels. In winter it is one of the world&#x27;s highest ski regions; in summer a paradise of trails. The moment the peak sheds its cloud, every head in the village turns the same way — yours will too.</p>
             
-        <div class="highlight-box">
-            <div class="highlight-header">
-                <div class="highlight-title">💬 Horu</div>
-                <span class="pron-badge">🗣️ /ho-roo/</span>
-            </div>
-            <p class="word-def"><strong>The Matterhorn&#x27;s name in the local Valais dialect: villagers call their mountain &#x27;ds Horu&#x27; — &#x27;the Horn&#x27;. A Zermatter&#x27;s question &#x27;is the Horu out?&#x27; is the national weather bulletin that sets the day&#x27;s plan.</strong></p>
-            
+        <div class="local-word-box">
+            <div class="word-title">🗣️ Local Concept: <strong>Horu</strong> <span class="pron">(ho-roo)</span></div>
+            <p>The Matterhorn&#x27;s name in the local Valais dialect: villagers call their mountain &#x27;ds Horu&#x27; — &#x27;the Horn&#x27;. A Zermatter&#x27;s question &#x27;is the Horu out?&#x27; is the national weather bulletin that sets the day&#x27;s plan.</p>
         </div>
         
         </section>
@@ -715,30 +328,38 @@
                 
             <div class="fact-card">
                 <div class="fact-icon">🚆</div>
-                <div class="fact-title">Getting there</div>
-                <div class="fact-desc">Shuttle train from Täsch</div>
-                <div class="fact-sub">Car-free village · ~1 hr from Visp</div>
+                <div>
+                    <div class="fact-label">Getting there</div>
+                    <div class="fact-val">Shuttle train from Täsch</div>
+                    <div class="fact-sub">Car-free village · ~1 hr from Visp</div>
+                </div>
             </div>
             
             <div class="fact-card">
                 <div class="fact-icon">🚡</div>
-                <div class="fact-title">In the village</div>
-                <div class="fact-desc">On foot + e-taxi</div>
-                <div class="fact-sub">Electric minibuses and walking streets</div>
+                <div>
+                    <div class="fact-label">In the village</div>
+                    <div class="fact-val">On foot + e-taxi</div>
+                    <div class="fact-sub">Electric minibuses and walking streets</div>
+                </div>
             </div>
             
             <div class="fact-card">
                 <div class="fact-icon">🗣️</div>
-                <div class="fact-title">Language</div>
-                <div class="fact-desc">German (Valais dialect)</div>
-                <div class="fact-sub">English works everywhere</div>
+                <div>
+                    <div class="fact-label">Language</div>
+                    <div class="fact-val">German (Valais dialect)</div>
+                    <div class="fact-sub">English works everywhere</div>
+                </div>
             </div>
             
             <div class="fact-card">
                 <div class="fact-icon">🏔️</div>
-                <div class="fact-title">Signature</div>
-                <div class="fact-desc">The Matterhorn (4,478 m)</div>
-                <div class="fact-sub">The Gornergrat railway is the best box seat</div>
+                <div>
+                    <div class="fact-label">Signature</div>
+                    <div class="fact-val">The Matterhorn (4,478 m)</div>
+                    <div class="fact-sub">The Gornergrat railway is the best box seat</div>
+                </div>
             </div>
             
             </div>
@@ -750,31 +371,31 @@
         <section class="section">
             <div class="section-header">
                 <span class="section-label">Insider Advice</span>
-                <h2 class="section-title">Unwritten Rules for Zermatt</h2>
+                <h2 class="section-title">3 Unwritten Rules for Zermatt</h2>
             </div>
             <div class="rules-list">
                 
-            <div class="rule-item">
-                <div class="rule-num">#1</div>
-                <div class="rule-text">
-                    <strong>Set the summit hour for morning</strong>
-                    <span>The Matterhorn often puts on its cloud cap in the afternoon: the odds of a clear view are highest in the morning. Put Gornergrat and the photo plans early — leave the afternoon to the village and valley.</span>
+            <div class="rule-card">
+                <div class="rule-num">1</div>
+                <div class="rule-content">
+                    <h4>Set the summit hour for morning</h4>
+                    <p>The Matterhorn often puts on its cloud cap in the afternoon: the odds of a clear view are highest in the morning. Put Gornergrat and the photo plans early — leave the afternoon to the village and valley.</p>
                 </div>
             </div>
             
-            <div class="rule-item">
-                <div class="rule-num">#2</div>
-                <div class="rule-text">
-                    <strong>Respect the altitude, trust the layers</strong>
-                    <span>The village sits at 1,600 metres, the summit stations at 3,000-3,900: the altitude is felt and the weather turns in minutes. Climb slowly, drink water, never skip sunscreen — mountain sun burns twice as hard off the snow.</span>
+            <div class="rule-card">
+                <div class="rule-num">2</div>
+                <div class="rule-content">
+                    <h4>Respect the altitude, trust the layers</h4>
+                    <p>The village sits at 1,600 metres, the summit stations at 3,000-3,900: the altitude is felt and the weather turns in minutes. Climb slowly, drink water, never skip sunscreen — mountain sun burns twice as hard off the snow.</p>
                 </div>
             </div>
             
-            <div class="rule-item">
-                <div class="rule-num">#3</div>
-                <div class="rule-text">
-                    <strong>Leave the car at Täsch</strong>
-                    <span>Private cars cannot enter Zermatt: drivers park at the Täsch terminal and ride the 12-minute shuttle train down. Luggage trolleys roll right onto the train — the system works flawlessly; don&#x27;t fight it.</span>
+            <div class="rule-card">
+                <div class="rule-num">3</div>
+                <div class="rule-content">
+                    <h4>Leave the car at Täsch</h4>
+                    <p>Private cars cannot enter Zermatt: drivers park at the Täsch terminal and ride the 12-minute shuttle train down. Luggage trolleys roll right onto the train — the system works flawlessly; don&#x27;t fight it.</p>
                 </div>
             </div>
             
@@ -791,45 +412,27 @@
             </div>
             <div class="cards-grid">
                 
-            <div class="content-card">
-                <div class="card-tag">💎 HIDDEN GEM</div>
-                <div class="card-name">The Riffelsee reflection</div>
-                <div class="card-desc">Five minutes from Rotenboden station: on a windless morning the Matterhorn finds its twin in the lake. The photographers&#x27; dawn watch is here — join it on the first train, then walk down to Riffelberg.</div>
+            <div class="gem-card">
+                <div class="gem-badge">Hidden Gem</div>
+                <h4>The Riffelsee reflection</h4>
+                <div class="gem-hook">Hidden Spot</div>
+                <p>Five minutes from Rotenboden station: on a windless morning the Matterhorn finds its twin in the lake. The photographers&#x27; dawn watch is here — join it on the first train, then walk down to Riffelberg.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">💎 HIDDEN GEM</div>
-                <div class="card-name">The Hinterdorf lane</div>
-                <div class="card-desc">Two steps behind the main street, blackened barns and stone-disc granaries: the village&#x27;s pre-tourism self is frozen here. When the lanterns come on at dusk, the lane becomes a time machine.</div>
+            <div class="gem-card">
+                <div class="gem-badge">Hidden Gem</div>
+                <h4>The Hinterdorf lane</h4>
+                <div class="gem-hook">Hidden Spot</div>
+                <p>Two steps behind the main street, blackened barns and stone-disc granaries: the village&#x27;s pre-tourism self is frozen here. When the lanterns come on at dusk, the lane becomes a time machine.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">💎 HIDDEN GEM</div>
-                <div class="card-name">The Mountaineers&#x27; Cemetery</div>
-                <div class="card-desc">In the churchyard rest the climbers who gave their lives to the Matterhorn and the surrounding peaks — among them traces of the 1865 first-ascent disaster. The village&#x27;s quietest, deepest corner.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">💎 HIDDEN GEM</div>
-                <div class="card-name">The Gorner Gorge (Gornerschlucht)</div>
-                <div class="card-desc">The glacier-water canyon at the village&#x27;s edge: wooden walkways hang above turquoise water. The half-hour loop is a cloudy afternoon&#x27;s best plan B.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">💎 HIDDEN GEM</div>
-                <div class="card-name">The Findeln hamlet</div>
-                <div class="card-desc">The old alpine hamlet on the path down from Sunnegga: blackened chalets, golden larches and mountain restaurants facing the Horu. Skiers in winter and hikers in summer meet on the same terraces.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">💎 HIDDEN GEM</div>
-                <div class="card-name">The 5-Seenweg&#x27;s quieter lakes</div>
-                <div class="card-desc">Stellisee is the five lakes route&#x27;s star, but Grindjisee&#x27;s larch frame and Leisee&#x27;s swimming jetty escape most visitors: complete the route — every lake gives a different portrait of the Horu.</div>
+            <div class="gem-card">
+                <div class="gem-badge">Hidden Gem</div>
+                <h4>The Mountaineers&#x27; Cemetery</h4>
+                <div class="gem-hook">Hidden Spot</div>
+                <p>In the churchyard rest the climbers who gave their lives to the Matterhorn and the surrounding peaks — among them traces of the 1865 first-ascent disaster. The village&#x27;s quietest, deepest corner.</p>
                 
             </div>
             
@@ -844,48 +447,29 @@
                 <span class="section-label">Food & Flavors</span>
                 <h2 class="section-title">What to Taste</h2>
             </div>
-            <p class="intro-text">Valais cooking is the mountain&#x27;s cooking: melted cheese, air-dried meat, rye bread and the wine of Europe&#x27;s highest vineyards.</p>
             <div class="cards-grid">
                 
-            <div class="content-card">
-                <div class="card-tag">🍴 MUST TASTE</div>
-                <div class="card-name">Raclette du Valais — in its homeland</div>
-                <div class="card-desc">You&#x27;re in raclette&#x27;s motherland: the wheel&#x27;s face is melted at the fire, scraped over potatoes, balanced with pickles. In the village restaurants the &#x27;AOP Valais&#x27; mark is the seal of the real thing.</div>
+            <div class="eat-card">
+                <h4>🍴 Raclette du Valais — in its homeland</h4>
+                <p>You&#x27;re in raclette&#x27;s motherland: the wheel&#x27;s face is melted at the fire, scraped over potatoes, balanced with pickles. In the village restaurants the &#x27;AOP Valais&#x27; mark is the seal of the real thing.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">🍴 MUST TASTE</div>
-                <div class="card-name">Fondue — the after-piste cauldron</div>
-                <div class="card-desc">The official close of a cold piste day: the pot in the middle, bread on the fork, white wine alongside. Whoever drops their bread in the pot has their forfeit decided at the table — the tradition is serious.</div>
+            <div class="eat-card">
+                <h4>🍴 Fondue — the after-piste cauldron</h4>
+                <p>The official close of a cold piste day: the pot in the middle, bread on the fork, white wine alongside. Whoever drops their bread in the pot has their forfeit decided at the table — the tradition is serious.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">🍴 MUST TASTE</div>
-                <div class="card-name">Walliserteller — the dried meat platter</div>
-                <div class="card-desc">Beef air-dried in mountain air, smoked ham, alpine cheese and rye bread: the Valais&#x27;s charcuterie pride on one plate. The classic opener with a glass of Fendant.</div>
+            <div class="eat-card">
+                <h4>🍴 Walliserteller — the dried meat platter</h4>
+                <p>Beef air-dried in mountain air, smoked ham, alpine cheese and rye bread: the Valais&#x27;s charcuterie pride on one plate. The classic opener with a glass of Fendant.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">🍴 MUST TASTE</div>
-                <div class="card-name">The Cholera pie</div>
-                <div class="card-desc">The potato-leek-apple-cheese quartet in pastry form: found in mountain huts and village bakeries. Don&#x27;t trip over the odd name — its sweet-savoury balance is surprisingly fine.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">🍴 MUST TASTE</div>
-                <div class="card-name">Wine of the high vineyards — Heida</div>
-                <div class="card-desc">The Heida white from Europe&#x27;s highest vineyards (Visperterminen, 1,150 m) and the Valais&#x27;s Fendant: the mountain table&#x27;s local glasses. &#x27;Mountain wine&#x27; here is not marketing — it&#x27;s geography.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">🍴 MUST TASTE</div>
-                <div class="card-name">The mountain hut break</div>
-                <div class="card-desc">Rösti, homemade tart and view-served hot chocolate in the trail-side huts (towards Findeln and Zum See): Zermatt&#x27;s best lunch address is often at 2,100 metres. A sunny-terrace booking is essential in season.</div>
+            <div class="eat-card">
+                <h4>🍴 The Cholera pie</h4>
+                <p>The potato-leek-apple-cheese quartet in pastry form: found in mountain huts and village bakeries. Don&#x27;t trip over the odd name — its sweet-savoury balance is surprisingly fine.</p>
                 
             </div>
             
@@ -903,27 +487,21 @@
             <div class="traps-list">
                 
             <div class="trap-card">
-                <div class="trap-bad">❌ </div>
-                <div class="trap-why">Cable tickets are serious money; at a cloud-bound summit there is nothing to see beyond the glacier palace.</div>
-                <div class="trap-good">✅ <strong>Better Alternative:</strong> Check the webcams in the morning (they run on every screen in the village): if the Horu is hidden, trade the day for gorge, museum, spa and fondue. The ticket won&#x27;t run away — the cloud will.</div>
+                <div class="trap-header">
+                    <span class="trap-tag">Avoid</span>
+                    <h4></h4>
+                </div>
+                <p>Cable tickets are serious money; at a cloud-bound summit there is nothing to see beyond the glacier palace.</p>
+                <div class="trap-solution"><strong>Do this instead:</strong> Check the webcams in the morning (they run on every screen in the village): if the Horu is hidden, trade the day for gorge, museum, spa and fondue. The ticket won&#x27;t run away — the cloud will.</div>
             </div>
             
             <div class="trap-card">
-                <div class="trap-bad">❌ </div>
-                <div class="trap-why">Whoever hunts ski equipment last-minute at season&#x27;s peak pays the leftover price for the leftover sizes.</div>
-                <div class="trap-good">✅ <strong>Better Alternative:</strong> Reserve equipment online in advance and ask for the multi-day discount. If you&#x27;re a hiker, don&#x27;t skimp on poles and boots — the trails are stony and knees come one per customer.</div>
-            </div>
-            
-            <div class="trap-card">
-                <div class="trap-bad">❌ </div>
-                <div class="trap-why">Bahnhofstrasse&#x27;s showcase restaurants run at tourist tempo: prices high, the kitchen sometimes average.</div>
-                <div class="trap-good">✅ <strong>Better Alternative:</strong> Turn one lane in, or eat lunch in a mountain hut: the same budget buys both view and kitchen. For dinner, ask a local for their raclette address.</div>
-            </div>
-            
-            <div class="trap-card">
-                <div class="trap-bad">❌ </div>
-                <div class="trap-why">Whoever arrives from sea level and rides to 3,800 metres on day one meets headache and breathlessness; whoever leaves the marked route in the glacier zone takes a serious risk.</div>
-                <div class="trap-good">✅ <strong>Better Alternative:</strong> Spend day one in the village and middle altitudes, climb gradually, drink plenty of water. Never leave the marked line in the glacier zone — those markers aren&#x27;t decoration, they&#x27;re insurance.</div>
+                <div class="trap-header">
+                    <span class="trap-tag">Avoid</span>
+                    <h4></h4>
+                </div>
+                <p>Whoever hunts ski equipment last-minute at season&#x27;s peak pays the leftover price for the leftover sizes.</p>
+                <div class="trap-solution"><strong>Do this instead:</strong> Reserve equipment online in advance and ask for the multi-day discount. If you&#x27;re a hiker, don&#x27;t skimp on poles and boots — the trails are stony and knees come one per customer.</div>
             </div>
             
             </div>
@@ -945,7 +523,7 @@
         </section>
     </main>
 
-    <footer>
+    <footer class="footer">
         <div class="container">
             <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
         </div>

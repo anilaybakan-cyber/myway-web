@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New York City Guide & Smart Walking Routes | MyWay</title>
+    <title>New York Travel Guide & Smart Walking Routes | MyWay</title>
     <meta name="description" content="Explore New York with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
     
     <link rel="alternate" hreflang="en" href="/guides/newyork.html">
@@ -24,616 +24,233 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <link rel="icon" type="image/png" href="../images/app_icon.png">
 
     <style>
+        
         :root {
-            --bg-dark: #0d0e15;
-            --bg-card: #161824;
-            --bg-card-hover: #1e2132;
-            --primary: #7b6ef6;
-            --primary-glow: rgba(123, 110, 246, 0.25);
-            --accent: #f59e0b;
-            --text-main: #ffffff;
-            --text-muted: #94a3b8;
-            --border: rgba(255, 255, 255, 0.08);
-            --border-hover: rgba(123, 110, 246, 0.4);
-            --green: #10b981;
-            --red: #ef4444;
-            --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-serif: 'Playfair Display', Georgia, serif;
+            --primary: #7B6EF6;
+            --primary-light: #9D93FF;
+            --primary-dark: #5B4FD6;
+            --accent: #EC4899;
+            --bg-dark: #0F0B1A;
+            --bg-section: #130F22;
+            --bg-card: rgba(255, 255, 255, 0.04);
+            --text-primary: #FFFFFF;
+            --text-secondary: #9CA3AF;
+            --text-muted: #6B7280;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --radius-sm: 12px;
+            --shadow-glow: 0 0 80px rgba(123, 110, 246, 0.15);
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            -webkit-font-smoothing: antialiased;
-        }
-
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            font-family: var(--font-sans);
-            line-height: 1.6;
-            padding-bottom: 60px;
+            background-color: var(--bg-dark); color: var(--text-primary);
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6; overflow-x: hidden;
         }
-
-        /* Navigation */
+        
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        
+        /* Navbar */
         .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: rgba(13, 14, 21, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-            height: 72px;
-            display: flex;
-            align-items: center;
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(15, 11, 26, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle); height: 72px; display: flex; align-items: center;
         }
-
         .navbar-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%;
+            display: flex; align-items: center; justify-content: space-between;
         }
-
         .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: white;
-            font-weight: 800;
-            font-size: 20px;
+            display: flex; align-items: center; gap: 12px; text-decoration: none;
+            color: #fff; font-weight: 700; font-size: 20px;
         }
-
-        .nav-brand img {
-            border-radius: 10px;
-            box-shadow: 0 4px 12px var(--primary-glow);
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-            list-style: none;
-        }
-
+        .nav-brand img { border-radius: 10px; }
+        .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
         .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            transition: color 0.2s;
+            color: var(--text-secondary); text-decoration: none; font-size: 14px;
+            font-weight: 500; transition: color 0.2s;
         }
-
-        .nav-links a:hover, .nav-links a.active {
-            color: white;
-        }
-
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        /* Modern Language Dropdown */
-        .lang-dropdown-wrapper {
-            position: relative;
-        }
-
+        .nav-links a:hover, .nav-links a.active { color: #fff; }
+        .nav-actions { display: flex; align-items: center; gap: 14px; }
+        
+        /* Globe Language Dropdown */
+        .lang-dropdown-wrapper { position: relative; }
         .lang-dropdown-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 7px 14px;
-            border-radius: 100px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: white;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
+            display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px;
+            background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s ease;
             font-family: inherit;
         }
-
-        .lang-dropdown-btn:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: var(--primary);
-        }
-
-        .lang-globe-icon {
-            width: 15px;
-            height: 15px;
-            fill: currentColor;
-        }
-
+        .lang-dropdown-btn:hover { background: rgba(255, 255, 255, 0.15); border-color: var(--primary); }
+        .lang-globe-icon { width: 15px; height: 15px; fill: currentColor; }
         .lang-dropdown-menu {
-            display: none;
-            position: absolute;
-            top: calc(100% + 8px);
-            right: 0;
-            background: #19142B;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 14px;
-            padding: 6px;
-            min-width: 130px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            z-index: 1001;
+            display: none; position: absolute; top: calc(100% + 8px); right: 0;
+            background: #19142B; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 14px;
+            padding: 6px; min-width: 130px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); z-index: 1001;
         }
-
         .lang-dropdown-wrapper:hover .lang-dropdown-menu,
         .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
+            display: flex; flex-direction: column; gap: 2px;
         }
-
         .lang-dropdown-item {
-            display: flex;
-            align-items: center;
-            padding: 8px 12px;
-            font-size: 13px;
-            font-weight: 600;
-            color: #CBD5E1;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: background 0.2s, color 0.2s;
+            display: flex; align-items: center; padding: 8px 12px; font-size: 13px; font-weight: 600;
+            color: #CBD5E1; text-decoration: none; border-radius: 8px; transition: background 0.2s, color 0.2s;
         }
-
-        .lang-dropdown-item:hover {
-            background: rgba(123, 110, 246, 0.2);
-            color: white;
-        }
-
-        .lang-dropdown-item.active {
-            background: var(--primary);
-            color: white;
-        }
+        .lang-dropdown-item:hover { background: rgba(123, 110, 246, 0.2); color: white; }
+        .lang-dropdown-item.active { background: var(--primary); color: white; }
 
         .nav-cta {
-            background: var(--primary);
-            color: white !important;
-            padding: 8px 18px;
-            border-radius: 100px;
-            font-size: 13px;
-            font-weight: 700;
-            text-decoration: none;
-            transition: transform 0.2s, box-shadow 0.2s;
+            background: var(--primary); color: #fff !important; padding: 8px 20px;
+            border-radius: 100px; font-size: 13px; font-weight: 600; text-decoration: none;
+            transition: all 0.2s ease;
         }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(123, 110, 246, 0.4); }
+        .nav-toggle { display: none; background: none; border: none; color: #fff; cursor: pointer; padding: 8px; }
 
-        .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px var(--primary-glow);
-        }
-
-        .nav-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            padding: 8px;
-        }
-
-        /* Hero */
+        /* Guide Hero */
         .guide-hero {
-            position: relative;
-            min-height: 480px;
-            display: flex;
-            align-items: flex-end;
-            padding: 120px 24px 60px;
-            background-size: cover;
-            background-position: center;
-            overflow: hidden;
+            position: relative; min-height: 440px; display: flex; align-items: flex-end;
+            padding: 120px 24px 44px; margin-top: 72px; overflow: hidden; background-color: #1A132F;
         }
-
         .guide-hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1;
-            transform: scale(1.02);
+            position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+            filter: brightness(0.65);
         }
-
         .guide-hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(13, 14, 21, 0.3) 0%, rgba(13, 14, 21, 0.85) 75%, var(--bg-dark) 100%);
-            z-index: 2;
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.4) 60%, transparent 100%);
         }
-
-        .guide-hero-content {
-            position: relative;
-            z-index: 3;
-            max-width: 900px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
+        .guide-hero-content { position: relative; z-index: 2; width: 100%; }
         .city-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 14px;
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            border-radius: 100px;
-            font-size: 13px;
-            font-weight: 700;
-            color: #cbd5e1;
-            margin-bottom: 16px;
+            display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px); padding: 6px 14px; border-radius: 99px; font-size: 13px;
+            font-weight: 600; margin-bottom: 14px; border: 1px solid rgba(255, 255, 255, 0.15);
         }
-
-        .guide-title {
-            font-size: clamp(38px, 6vw, 64px);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 12px;
-            letter-spacing: -1.5px;
+        .guide-title { font-size: clamp(32px, 6vw, 52px); font-weight: 800; line-height: 1.1; margin-bottom: 10px; }
+        .guide-tagline { font-size: 16px; color: var(--primary-light); max-width: 720px; font-weight: 500; line-height: 1.5; }
+        
+        /* Sections */
+        .section { padding: 42px 0; border-bottom: 1px solid var(--border-subtle); }
+        .section-header { margin-bottom: 24px; }
+        .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); font-weight: 700; }
+        .section-title { font-size: 24px; font-weight: 700; margin-top: 4px; }
+        
+        .intro-text { font-size: 15px; color: #D1D5DB; line-height: 1.8; margin-bottom: 20px; }
+        
+        /* Local Word */
+        .local-word-box {
+            background: rgba(123, 110, 246, 0.08); border-left: 4px solid var(--primary);
+            padding: 18px 22px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-top: 20px;
         }
-
-        .guide-tagline {
-            font-size: clamp(16px, 2.5vw, 20px);
-            color: #e2e8f0;
-            font-weight: 500;
-            max-width: 700px;
-            line-height: 1.5;
+        .word-title { font-size: 15px; color: #fff; margin-bottom: 4px; }
+        .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
+        .local-word-box p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        
+        /* Facts Grid */
+        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+        .fact-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
         }
-
-        /* Container */
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 24px;
+        .fact-icon { font-size: 24px; flex-shrink: 0; }
+        .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
+        .fact-val { font-size: 15px; font-weight: 600; color: #fff; margin: 2px 0; }
+        .fact-sub { font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
+        
+        /* Rules */
+        .rules-list { display: flex; flex-direction: column; gap: 14px; }
+        .rule-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md); padding: 20px; display: flex; gap: 16px; align-items: flex-start;
         }
-
-        .section {
-            margin-top: 56px;
+        .rule-num {
+            background: var(--primary); color: #fff; width: 32px; height: 32px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-weight: 700; flex-shrink: 0; font-size: 14px;
         }
-
-        .section-header {
-            margin-bottom: 24px;
+        .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
+        .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        
+        /* Hidden Gems & Eat Grid */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+        .gem-card, .eat-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md); padding: 22px; position: relative;
         }
-
-        .section-label {
-            font-size: 12px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--primary);
-            display: block;
-            margin-bottom: 4px;
-        }
-
-        .section-title {
-            font-size: clamp(24px, 4vw, 32px);
-            font-weight: 800;
-            letter-spacing: -0.8px;
-        }
-
-        .intro-text {
-            font-size: 17px;
-            line-height: 1.8;
-            color: #cbd5e1;
-            margin-bottom: 24px;
-        }
-
-        .highlight-box {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-left: 4px solid var(--accent);
-            padding: 22px 26px;
-            border-radius: 16px;
-            margin-top: 24px;
-        }
-
-        .highlight-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+        .gem-badge {
+            display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase;
+            color: #10B981; background: rgba(16, 185, 129, 0.12); padding: 4px 10px; border-radius: 99px;
             margin-bottom: 10px;
         }
-
-        .highlight-title {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--accent);
+        .gem-hook { font-size: 13px; color: var(--primary-light); font-style: italic; margin-bottom: 8px; }
+        .gem-card h4, .eat-card h4 { font-size: 16px; margin-bottom: 6px; }
+        .gem-card p, .eat-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        .card-tip-box {
+            margin-top: 10px; padding: 8px 12px; background: rgba(255, 255, 255, 0.04);
+            border-radius: 8px; font-size: 12px; color: #cbd5e1;
         }
-
-        .pron-badge {
-            font-size: 12px;
-            color: var(--text-muted);
-            background: rgba(255, 255, 255, 0.06);
-            padding: 3px 8px;
-            border-radius: 6px;
-        }
-
-        .word-def {
-            font-size: 15px;
-            color: #ffffff;
-            line-height: 1.6;
-            margin-bottom: 6px;
-        }
-
-        .word-context {
-            font-size: 14px;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        .facts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 16px;
-        }
-
-        .fact-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 20px;
-        }
-
-        .fact-icon {
-            font-size: 24px;
-            margin-bottom: 8px;
-        }
-
-        .fact-title {
-            font-size: 12px;
-            font-weight: 800;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 4px;
-        }
-
-        .fact-desc {
-            font-size: 16px;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 2px;
-        }
-
-        .fact-sub {
-            font-size: 12px;
-            color: var(--text-muted);
-            line-height: 1.4;
-        }
-
-        .rules-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .rule-item {
-            display: flex;
-            gap: 18px;
-            align-items: flex-start;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 22px;
-        }
-
-        .rule-num {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--primary);
-            flex-shrink: 0;
-        }
-
-        .rule-text strong {
-            display: block;
-            color: white;
-            font-size: 16px;
-            margin-bottom: 6px;
-        }
-
-        .rule-text span {
-            color: var(--text-muted);
-            font-size: 14px;
-            line-height: 1.65;
-        }
-
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 20px;
-        }
-
-        .content-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 24px;
-            transition: transform 0.2s, border-color 0.2s;
-        }
-
-        .content-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--border-hover);
-        }
-
-        .card-tag {
-            font-size: 11px;
-            font-weight: 800;
-            letter-spacing: 1px;
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
-
-        .card-name {
-            font-size: 18px;
-            font-weight: 800;
-            margin-bottom: 8px;
-            color: white;
-        }
-
-        .card-desc {
-            font-size: 14px;
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 12px;
-        }
-
-        .card-tip {
-            font-size: 13px;
-            color: #cbd5e1;
-            background: rgba(255, 255, 255, 0.04);
-            padding: 10px 14px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-        }
-
-        .traps-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
+        
+        /* Traps */
+        .traps-list { display: flex; flex-direction: column; gap: 14px; }
         .trap-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 22px;
+            background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.15);
+            border-radius: var(--radius-md); padding: 20px;
         }
-
-        .trap-bad {
-            font-size: 16px;
-            font-weight: 800;
-            color: #f87171;
-            margin-bottom: 6px;
+        .trap-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+        .trap-tag {
+            background: #EF4444; color: #fff; font-size: 11px; font-weight: 700;
+            text-transform: uppercase; padding: 2px 8px; border-radius: 6px;
         }
-
-        .trap-why {
-            font-size: 14px;
-            color: var(--text-muted);
-            margin-bottom: 12px;
-            line-height: 1.6;
+        .trap-header h4 { font-size: 16px; color: #fff; }
+        .trap-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        .trap-solution {
+            margin-top: 10px; padding: 10px 14px; background: rgba(16, 185, 129, 0.08);
+            border-left: 3px solid #10B981; border-radius: 4px; font-size: 13px; color: #D1D5DB; line-height: 1.5;
         }
-
-        .trap-good {
-            font-size: 14px;
-            color: #34d399;
-            background: rgba(16, 185, 129, 0.08);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            padding: 10px 14px;
-            border-radius: 10px;
-        }
-
+        
+        /* App CTA Banner */
         .app-cta-banner {
-            margin-top: 72px;
-            background: linear-gradient(135deg, rgba(123, 110, 246, 0.15), rgba(245, 158, 11, 0.1));
-            border: 1px solid var(--border-hover);
-            border-radius: 24px;
-            padding: 48px 32px;
-            text-align: center;
+            background: linear-gradient(135deg, rgba(123, 110, 246, 0.15), rgba(236, 72, 153, 0.1));
+            border: 1px solid rgba(157, 147, 255, 0.3); border-radius: var(--radius-lg);
+            padding: 44px 20px; text-align: center; margin: 50px 0; position: relative;
         }
-
-        .app-cta-banner h3 {
-            font-size: clamp(24px, 4vw, 32px);
-            font-weight: 800;
-            margin-bottom: 12px;
-        }
-
-        .app-cta-banner p {
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto 28px;
-            font-size: 16px;
-        }
-
-        .store-btn-row {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
+        .app-cta-banner h3 { font-size: clamp(22px, 4vw, 28px); font-weight: 800; margin-bottom: 10px; }
+        .app-cta-banner p { color: var(--text-secondary); max-width: 580px; margin: 0 auto 24px; font-size: 15px; }
+        .store-btn-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
         .store-pill-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 26px;
-            background: white;
-            color: #0f1016;
-            font-weight: 800;
-            font-size: 14px;
-            border-radius: 100px;
-            text-decoration: none;
+            display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: white;
+            color: #0f1016; font-weight: 700; font-size: 14px; border-radius: 100px; text-decoration: none;
             transition: transform 0.2s, box-shadow 0.2s;
         }
+        .store-pill-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2); }
 
-        .store-pill-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 24px rgba(255, 255, 255, 0.2);
-        }
-
-        footer {
-            border-top: 1px solid var(--border);
-            margin-top: 80px;
-            padding: 40px 24px 20px;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 14px;
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--border-subtle); padding: 40px 24px 30px;
+            color: var(--text-muted); font-size: 13px; text-align: center;
         }
 
         @media (max-width: 768px) {
-            .navbar {
-                height: 64px;
-            }
+            .navbar { height: 64px; }
             .nav-links {
-                display: none;
-                position: fixed;
-                top: 64px;
-                left: 0;
-                right: 0;
-                background: rgba(13, 14, 21, 0.98);
-                flex-direction: column;
-                padding: 24px;
-                border-bottom: 1px solid var(--border);
-                gap: 16px;
+                display: none; position: fixed; top: 64px; left: 0; right: 0;
+                background: rgba(15, 11, 26, 0.98); flex-direction: column;
+                padding: 24px; border-bottom: 1px solid var(--border-subtle); gap: 16px;
             }
-            .nav-links.active {
-                display: flex;
-            }
-            .nav-toggle {
-                display: block;
-            }
-            .guide-hero {
-                min-height: 400px;
-                padding-top: 100px;
-            }
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
-            .store-pill-btn {
-                width: 100%;
-                max-width: 280px;
-                justify-content: center;
-            }
+            .nav-links.active { display: flex; }
+            .nav-toggle { display: block; }
+            .guide-hero { min-height: 380px; padding-top: 90px; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
+
     </style>
 </head>
 <body>
@@ -693,13 +310,9 @@
             </div>
             <p class="intro-text">New York doesn&#x27;t have a single centre — it has five boroughs, hundreds of neighbourhoods, and more than eight million people who are completely indifferent to your being there. That is the point. The subway runs 24 hours. The delis have been open since before your parents were born. New York bagels are made with the city&#x27;s naturally soft water — bakers elsewhere can&#x27;t replicate the texture. The pizza is folded in half and eaten while walking. There is always something happening three blocks away that no travel guide will tell you about. The city rewards the curious and punishes anyone who expects it to be convenient.</p>
             
-        <div class="highlight-box">
-            <div class="highlight-header">
-                <div class="highlight-title">💬 Bodega</div>
-                <span class="pron-badge">🗣️ /bo-DAY-ga/</span>
-            </div>
-            <p class="word-def"><strong>A small neighbourhood convenience store — open at all hours, often with a deli counter, definitely with a cat somewhere inside. The bodega bacon, egg, and cheese on a roll is New York&#x27;s breakfast. Not the restaurant version: the version made on a flat-top grill behind the counter, wrapped in foil, eaten on the kerb or the subway.  It is one of the greatest things the city has produced.</strong></p>
-            
+        <div class="local-word-box">
+            <div class="word-title">🗣️ Local Concept: <strong>Bodega</strong> <span class="pron">(bo-DAY-ga)</span></div>
+            <p>A small neighbourhood convenience store — open at all hours, often with a deli counter, definitely with a cat somewhere inside. The bodega bacon, egg, and cheese on a roll is New York&#x27;s breakfast. Not the restaurant version: the version made on a flat-top grill behind the counter, wrapped in foil, eaten on the kerb or the subway.  It is one of the greatest things the city has produced.</p>
         </div>
         
         </section>
@@ -715,30 +328,38 @@
                 
             <div class="fact-card">
                 <div class="fact-icon">✈️</div>
-                <div class="fact-title">Airports</div>
-                <div class="fact-desc">JFK · LGA · EWR</div>
-                <div class="fact-sub">JFK AirTrain (ticketed) + subway ~60 min · Newark train ~45 min</div>
+                <div>
+                    <div class="fact-label">Airports</div>
+                    <div class="fact-val">JFK · LGA · EWR</div>
+                    <div class="fact-sub">JFK AirTrain (ticketed) + subway ~60 min · Newark train ~45 min</div>
+                </div>
             </div>
             
             <div class="fact-card">
                 <div class="fact-icon">🚇</div>
-                <div class="fact-title">Subway</div>
-                <div class="fact-desc">OMNY — tap any contactless card or phone</div>
-                <div class="fact-sub">Single ride $3.25 · 7-day cap $35 · runs 24/7</div>
+                <div>
+                    <div class="fact-label">Subway</div>
+                    <div class="fact-val">OMNY — tap any contactless card or phone</div>
+                    <div class="fact-sub">Single ride $3.25 · 7-day cap $35 · runs 24/7</div>
+                </div>
             </div>
             
             <div class="fact-card">
                 <div class="fact-icon">🌡️</div>
-                <div class="fact-title">Weather</div>
-                <div class="fact-desc">Four real seasons</div>
-                <div class="fact-sub">Sep–Nov ideal · Dec–Feb cold · Mar–May unpredictable · Jun–Aug hot and humid</div>
+                <div>
+                    <div class="fact-label">Weather</div>
+                    <div class="fact-val">Four real seasons</div>
+                    <div class="fact-sub">Sep–Nov ideal · Dec–Feb cold · Mar–May unpredictable · Jun–Aug hot and humid</div>
+                </div>
             </div>
             
             <div class="fact-card">
                 <div class="fact-icon">🍕</div>
-                <div class="fact-title">Dollar slice</div>
-                <div class="fact-desc">Fold it in half, eat while walking</div>
-                <div class="fact-sub">The city&#x27;s most honest meal · cash preferred · ticketed</div>
+                <div>
+                    <div class="fact-label">Dollar slice</div>
+                    <div class="fact-val">Fold it in half, eat while walking</div>
+                    <div class="fact-sub">The city&#x27;s most honest meal · cash preferred · ticketed</div>
+                </div>
             </div>
             
             </div>
@@ -750,31 +371,31 @@
         <section class="section">
             <div class="section-header">
                 <span class="section-label">Insider Advice</span>
-                <h2 class="section-title">Unwritten Rules for New York</h2>
+                <h2 class="section-title">3 Unwritten Rules for New York</h2>
             </div>
             <div class="rules-list">
                 
-            <div class="rule-item">
-                <div class="rule-num">#1</div>
-                <div class="rule-text">
-                    <strong>The subway goes everywhere — use it</strong>
-                    <span>472 stations, 24 hours a day, 365 days a year. Single ride $3.00, tap with any contactless card or phone — no MetroCard needed. Weekly fare cap $35: after 12 rides in a week, the rest are free. The subway is not always clean or quiet or on time. It is always faster than a taxi in Manhattan. Stand clear of the closing doors.</span>
+            <div class="rule-card">
+                <div class="rule-num">1</div>
+                <div class="rule-content">
+                    <h4>The subway goes everywhere — use it</h4>
+                    <p>472 stations, 24 hours a day, 365 days a year. Single ride $3.00, tap with any contactless card or phone — no MetroCard needed. Weekly fare cap $35: after 12 rides in a week, the rest are free. The subway is not always clean or quiet or on time. It is always faster than a taxi in Manhattan. Stand clear of the closing doors.</p>
                 </div>
             </div>
             
-            <div class="rule-item">
-                <div class="rule-num">#2</div>
-                <div class="rule-text">
-                    <strong>Manhattan is smaller than you think — Brooklyn is larger</strong>
-                    <span>Manhattan is 21 kilometres long and 4 kilometres wide at its widest. You can walk from the Lower East Side to Central Park in under an hour. Brooklyn, by contrast, contains entire worlds — Williamsburg, DUMBO, Park Slope, Crown Heights, Coney Island — each with its own character, none of them close to each other. Don&#x27;t underestimate the distances in the outer boroughs.</span>
+            <div class="rule-card">
+                <div class="rule-num">2</div>
+                <div class="rule-content">
+                    <h4>Manhattan is smaller than you think — Brooklyn is larger</h4>
+                    <p>Manhattan is 21 kilometres long and 4 kilometres wide at its widest. You can walk from the Lower East Side to Central Park in under an hour. Brooklyn, by contrast, contains entire worlds — Williamsburg, DUMBO, Park Slope, Crown Heights, Coney Island — each with its own character, none of them close to each other. Don&#x27;t underestimate the distances in the outer boroughs.</p>
                 </div>
             </div>
             
-            <div class="rule-item">
-                <div class="rule-num">#3</div>
-                <div class="rule-text">
-                    <strong>Book restaurants; don&#x27;t book views</strong>
-                    <span>The best views in New York are free or cheap: Brooklyn Bridge (walk across, free), Staten Island Ferry (free), Roosevelt Island Tram (subway fare), High Line (free). The Empire State Building and One World Observatory are ticketed and expensive — try the free options first. To visit the Statue of Liberty up close requires a separate ferry ticket; seeing it from the Staten Island Ferry is free and often enough. Times Square: overwhelming in the daytime, worth one evening for the lights — but eat somewhere else. The best restaurant tables — Via Carota, Don Angie, Lilia — book weeks ahead.</span>
+            <div class="rule-card">
+                <div class="rule-num">3</div>
+                <div class="rule-content">
+                    <h4>Book restaurants; don&#x27;t book views</h4>
+                    <p>The best views in New York are free or cheap: Brooklyn Bridge (walk across, free), Staten Island Ferry (free), Roosevelt Island Tram (subway fare), High Line (free). The Empire State Building and One World Observatory are ticketed and expensive — try the free options first. To visit the Statue of Liberty up close requires a separate ferry ticket; seeing it from the Staten Island Ferry is free and often enough. Times Square: overwhelming in the daytime, worth one evening for the lights — but eat somewhere else. The best restaurant tables — Via Carota, Don Angie, Lilia — book weeks ahead.</p>
                 </div>
             </div>
             
@@ -791,45 +412,27 @@
             </div>
             <div class="cards-grid">
                 
-            <div class="content-card">
-                <div class="card-tag">💎 HIDDEN GEM</div>
-                <div class="card-name">Grand Central Whispering Gallery</div>
-                <div class="card-desc">In the lower level of Grand Central Terminal, near the entrance to the Oyster Bar restaurant, four tiled arches meet at a corner. Stand at one corner, face the wall, and whisper. Someone standing at the diagonally opposite corner — 15 metres away — will hear you clearly, while no one in between will hear anything. The arches create a focused acoustic path. The effect is immediate and completely real. Free, no sign, no queue. Most of the thousands of people who walk through Grand Central every day have no idea it exists.</div>
+            <div class="gem-card">
+                <div class="gem-badge">Hidden Gem</div>
+                <h4>Grand Central Whispering Gallery</h4>
+                <div class="gem-hook">Hidden Spot</div>
+                <p>In the lower level of Grand Central Terminal, near the entrance to the Oyster Bar restaurant, four tiled arches meet at a corner. Stand at one corner, face the wall, and whisper. Someone standing at the diagonally opposite corner — 15 metres away — will hear you clearly, while no one in between will hear anything. The arches create a focused acoustic path. The effect is immediate and completely real. Free, no sign, no queue. Most of the thousands of people who walk through Grand Central every day have no idea it exists.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">💎 HIDDEN GEM</div>
-                <div class="card-name">The High Line</div>
-                <div class="card-desc">A 2.3-kilometre elevated park built on a disused freight rail line on Manhattan&#x27;s west side, running from the Meatpacking District to Hudson Yards. Open since 2009, free, and genuinely well-designed — native plantings, art installations, views across the Hudson River. The best section is the stretch between 14th and 20th Streets, where the old rail tracks are preserved in the planting. Go early in the morning before the crowds arrive, or in winter when it&#x27;s empty.</div>
+            <div class="gem-card">
+                <div class="gem-badge">Hidden Gem</div>
+                <h4>The High Line</h4>
+                <div class="gem-hook">Hidden Spot</div>
+                <p>A 2.3-kilometre elevated park built on a disused freight rail line on Manhattan&#x27;s west side, running from the Meatpacking District to Hudson Yards. Open since 2009, free, and genuinely well-designed — native plantings, art installations, views across the Hudson River. The best section is the stretch between 14th and 20th Streets, where the old rail tracks are preserved in the planting. Go early in the morning before the crowds arrive, or in winter when it&#x27;s empty.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">💎 HIDDEN GEM</div>
-                <div class="card-name">Governors Island</div>
-                <div class="card-desc">A 172-acre island in New York Harbor, open May to October. The ferry leaves from Pier 6 in lower Manhattan and the Battery Maritime Building in Brooklyn — ticketed; free on Saturdays and Sundays before 11am. Car-free, mostly open green space, with historic fortifications, art installations, and food vendors. The Hills — artificial mounds built from construction debris — offer elevated 360-degree views of the harbour, the Statue of Liberty, and the lower Manhattan skyline. Bike rentals available.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">💎 HIDDEN GEM</div>
-                <div class="card-name">The Met Cloisters — Fort Tryon Park</div>
-                <div class="card-desc">The Metropolitan Museum&#x27;s medieval art collection, housed in a purpose-built monastery assembled from five actual 12th–15th century French cloisters, transported stone by stone and reconstructed in Fort Tryon Park at the northern tip of Manhattan. The Unicorn Tapestries — seven 15th-century woven panels depicting a unicorn hunt — are here. So are Romanesque chapels, Gothic halls, a medieval herb garden, and views over the Hudson River to the New Jersey Palisades. Admission is covered by the standard Met ticket. Take the A train to 190th Street — about 45 minutes from Midtown. Almost nobody goes.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">💎 HIDDEN GEM</div>
-                <div class="card-name">Greenacre Park — East 51st Street</div>
-                <div class="card-desc">A privately owned, publicly accessible pocket park on East 51st Street between Second and Third Avenues — marked by a small gate that most people walk past without noticing. Inside: a 12-metre waterfall, honey locust trees, moveable chairs, and a snack bar. The waterfall is loud enough to block the sound of Midtown traffic almost completely. A quiet, shaded place to sit in the middle of the loudest part of the city. Free. Open weekdays.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">💎 HIDDEN GEM</div>
-                <div class="card-name">Sylvan Terrace — Washington Heights</div>
-                <div class="card-desc">A single block of wooden rowhouses in Washington Heights, built in 1882, that survived the 20th century almost unchanged. Twenty houses, two storeys each, original wooden façades painted in pastels. The street is cobblestone. It sits next to the Morris-Jumel Mansion, the oldest house in Manhattan, in a neighbourhood that most visitors never reach. Take the C train to 163rd Street. The street is free and always open. The Morris-Jumel Mansion next door is ticketed.</div>
+            <div class="gem-card">
+                <div class="gem-badge">Hidden Gem</div>
+                <h4>Governors Island</h4>
+                <div class="gem-hook">Hidden Spot</div>
+                <p>A 172-acre island in New York Harbor, open May to October. The ferry leaves from Pier 6 in lower Manhattan and the Battery Maritime Building in Brooklyn — ticketed; free on Saturdays and Sundays before 11am. Car-free, mostly open green space, with historic fortifications, art installations, and food vendors. The Hills — artificial mounds built from construction debris — offer elevated 360-degree views of the harbour, the Statue of Liberty, and the lower Manhattan skyline. Bike rentals available.</p>
                 
             </div>
             
@@ -844,48 +447,29 @@
                 <span class="section-label">Food & Flavors</span>
                 <h2 class="section-title">What to Taste</h2>
             </div>
-            <p class="intro-text">New York has every cuisine on earth and opinions about all of them. Start with what the city invented.</p>
             <div class="cards-grid">
                 
-            <div class="content-card">
-                <div class="card-tag">🍴 MUST TASTE</div>
-                <div class="card-name">Pastrami on rye — Katz&#x27;s Delicatessen</div>
-                <div class="card-desc">Katz&#x27;s has been at 205 East Houston Street since 1888. You take a ticket at the door, walk to the counter, and ask the man to slice the pastrami for you. He will. The sandwich arrives piled obscenely high on rye bread with mustard. You eat it at a Formica table under fluorescent lights and signed celebrity photographs. The pastrami is hand-carved, fatty, and slow-cured. This is not a restaurant recommendation — it is an obligation.</div>
+            <div class="eat-card">
+                <h4>🍴 Pastrami on rye — Katz&#x27;s Delicatessen</h4>
+                <p>Katz&#x27;s has been at 205 East Houston Street since 1888. You take a ticket at the door, walk to the counter, and ask the man to slice the pastrami for you. He will. The sandwich arrives piled obscenely high on rye bread with mustard. You eat it at a Formica table under fluorescent lights and signed celebrity photographs. The pastrami is hand-carved, fatty, and slow-cured. This is not a restaurant recommendation — it is an obligation.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">🍴 MUST TASTE</div>
-                <div class="card-name">Bagel with lox — Russ &amp; Daughters</div>
-                <div class="card-desc">Two blocks away, open since 1914. Russ &amp; Daughters is a smoked fish shop — the counter displays salmon, herring and sturgeon, and customers take their choices seriously. The bagel is hand-rolled, boiled and baked; you notice the difference when you bite into it. The Classic Board: smoked salmon, cream cheese, bagel. Wrapped in paper. Come for breakfast.</div>
+            <div class="eat-card">
+                <h4>🍴 Bagel with lox — Russ &amp; Daughters</h4>
+                <p>Two blocks away, open since 1914. Russ &amp; Daughters is a smoked fish shop — the counter displays salmon, herring and sturgeon, and customers take their choices seriously. The bagel is hand-rolled, boiled and baked; you notice the difference when you bite into it. The Classic Board: smoked salmon, cream cheese, bagel. Wrapped in paper. Come for breakfast.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">🍴 MUST TASTE</div>
-                <div class="card-name">Bacon, egg and cheese — any bodega</div>
-                <div class="card-desc">Egg, American cheese and bacon cooked on a flat-top griddle, served on a Kaiser roll or bagel, wrapped in foil. The cheese should be fully melted into everything — that&#x27;s the standard. Restaurants make the same thing but the bodega version has its own character.</div>
+            <div class="eat-card">
+                <h4>🍴 Bacon, egg and cheese — any bodega</h4>
+                <p>Egg, American cheese and bacon cooked on a flat-top griddle, served on a Kaiser roll or bagel, wrapped in foil. The cheese should be fully melted into everything — that&#x27;s the standard. Restaurants make the same thing but the bodega version has its own character.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">🍴 MUST TASTE</div>
-                <div class="card-name">Chopped cheese — Harlem and the Bronx</div>
-                <div class="card-desc">A bodega sandwich specific to Harlem and the Bronx — ground beef, onions and cheese chopped together on a griddle and served on a hoagie roll. Less famous than the pastrami but equally essential to understanding New York. The original is at Hajji&#x27;s, also known as the Blue Sky Deli, on First Avenue at 110th Street in East Harlem. Simple, fast and exactly what it should be.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">🍴 MUST TASTE</div>
-                <div class="card-name">Pizza by the slice — Joe&#x27;s Pizza</div>
-                <div class="card-desc">On Carmine Street in the West Village since 1975 — the reference point. Thin crust, foldable, the right amount of grease. There are tens of thousands of pizza places in the city; Joe&#x27;s is the standard everything else is measured against. Avoid the lunch rush — go just before or after. Take a slice, fold it, walk.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">🍴 MUST TASTE</div>
-                <div class="card-name">Dim sum — Flushing, Queens</div>
-                <div class="card-desc">Manhattan Chinatown is for tourists; Flushing is the real thing. 30 minutes on the 7 train, Main Street: the largest Chinese community outside China. Most regional cuisines never made it to Manhattan. The basement food court of New World Mall alone is worth the trip. Korean supermarkets, Taiwanese desserts, Malaysian curry — all on the same street.</div>
+            <div class="eat-card">
+                <h4>🍴 Chopped cheese — Harlem and the Bronx</h4>
+                <p>A bodega sandwich specific to Harlem and the Bronx — ground beef, onions and cheese chopped together on a griddle and served on a hoagie roll. Less famous than the pastrami but equally essential to understanding New York. The original is at Hajji&#x27;s, also known as the Blue Sky Deli, on First Avenue at 110th Street in East Harlem. Simple, fast and exactly what it should be.</p>
                 
             </div>
             
@@ -903,27 +487,21 @@
             <div class="traps-list">
                 
             <div class="trap-card">
-                <div class="trap-bad">❌ </div>
-                <div class="trap-why">The photo with Elmo or a superhero starts &#x27;free&#x27; and ends with an aggressive tip demand. The square&#x27;s chain restaurants are the same game in food form.</div>
-                <div class="trap-good">✅ <strong>Better Alternative:</strong> See the square, take your photo, leave in five minutes; eat two avenues over in Hell&#x27;s Kitchen.</div>
+                <div class="trap-header">
+                    <span class="trap-tag">Avoid</span>
+                    <h4></h4>
+                </div>
+                <p>The photo with Elmo or a superhero starts &#x27;free&#x27; and ends with an aggressive tip demand. The square&#x27;s chain restaurants are the same game in food form.</p>
+                <div class="trap-solution"><strong>Do this instead:</strong> See the square, take your photo, leave in five minutes; eat two avenues over in Hell&#x27;s Kitchen.</div>
             </div>
             
             <div class="trap-card">
-                <div class="trap-bad">❌ </div>
-                <div class="trap-why">Hand-sold tickets are fake or void; the tourist always loses.</div>
-                <div class="trap-good">✅ <strong>Better Alternative:</strong> For same-day discounts use the official TKTS booth, or try the shows&#x27; own lottery apps.</div>
-            </div>
-            
-            <div class="trap-card">
-                <div class="trap-bad">❌ </div>
-                <div class="trap-why">The boats touted around Battery Park don&#x27;t even get close; imitations of the official ferry are pricey disappointments.</div>
-                <div class="trap-good">✅ <strong>Better Alternative:</strong> Go official with Statue City Cruises, or take the zero-dollar classic: the Staten Island Ferry passes the statue for free.</div>
-            </div>
-            
-            <div class="trap-card">
-                <div class="trap-bad">❌ </div>
-                <div class="trap-why">The unlicensed drivers who approach you at JFK charge triple; the real taxi line is outside with a flat rate.</div>
-                <div class="trap-good">✅ <strong>Better Alternative:</strong> Use the official taxi line (JFK–Manhattan is a flat fare) or ride AirTrain + subway into town: cheapest, and often fastest.</div>
+                <div class="trap-header">
+                    <span class="trap-tag">Avoid</span>
+                    <h4></h4>
+                </div>
+                <p>Hand-sold tickets are fake or void; the tourist always loses.</p>
+                <div class="trap-solution"><strong>Do this instead:</strong> For same-day discounts use the official TKTS booth, or try the shows&#x27; own lottery apps.</div>
             </div>
             
             </div>
@@ -945,7 +523,7 @@
         </section>
     </main>
 
-    <footer>
+    <footer class="footer">
         <div class="container">
             <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
         </div>

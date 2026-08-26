@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kas City Guide & Smart Walking Routes | MyWay</title>
+    <title>Kas Travel Guide & Smart Walking Routes | MyWay</title>
     <meta name="description" content="Explore Kas with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
     
     <link rel="alternate" hreflang="en" href="/guides/kas.html">
@@ -24,616 +24,233 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <link rel="icon" type="image/png" href="../images/app_icon.png">
 
     <style>
+        
         :root {
-            --bg-dark: #0d0e15;
-            --bg-card: #161824;
-            --bg-card-hover: #1e2132;
-            --primary: #7b6ef6;
-            --primary-glow: rgba(123, 110, 246, 0.25);
-            --accent: #f59e0b;
-            --text-main: #ffffff;
-            --text-muted: #94a3b8;
-            --border: rgba(255, 255, 255, 0.08);
-            --border-hover: rgba(123, 110, 246, 0.4);
-            --green: #10b981;
-            --red: #ef4444;
-            --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-serif: 'Playfair Display', Georgia, serif;
+            --primary: #7B6EF6;
+            --primary-light: #9D93FF;
+            --primary-dark: #5B4FD6;
+            --accent: #EC4899;
+            --bg-dark: #0F0B1A;
+            --bg-section: #130F22;
+            --bg-card: rgba(255, 255, 255, 0.04);
+            --text-primary: #FFFFFF;
+            --text-secondary: #9CA3AF;
+            --text-muted: #6B7280;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --radius-sm: 12px;
+            --shadow-glow: 0 0 80px rgba(123, 110, 246, 0.15);
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            -webkit-font-smoothing: antialiased;
-        }
-
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            font-family: var(--font-sans);
-            line-height: 1.6;
-            padding-bottom: 60px;
+            background-color: var(--bg-dark); color: var(--text-primary);
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6; overflow-x: hidden;
         }
-
-        /* Navigation */
+        
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        
+        /* Navbar */
         .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: rgba(13, 14, 21, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-            height: 72px;
-            display: flex;
-            align-items: center;
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(15, 11, 26, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle); height: 72px; display: flex; align-items: center;
         }
-
         .navbar-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%;
+            display: flex; align-items: center; justify-content: space-between;
         }
-
         .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: white;
-            font-weight: 800;
-            font-size: 20px;
+            display: flex; align-items: center; gap: 12px; text-decoration: none;
+            color: #fff; font-weight: 700; font-size: 20px;
         }
-
-        .nav-brand img {
-            border-radius: 10px;
-            box-shadow: 0 4px 12px var(--primary-glow);
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-            list-style: none;
-        }
-
+        .nav-brand img { border-radius: 10px; }
+        .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
         .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            transition: color 0.2s;
+            color: var(--text-secondary); text-decoration: none; font-size: 14px;
+            font-weight: 500; transition: color 0.2s;
         }
-
-        .nav-links a:hover, .nav-links a.active {
-            color: white;
-        }
-
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        /* Modern Language Dropdown */
-        .lang-dropdown-wrapper {
-            position: relative;
-        }
-
+        .nav-links a:hover, .nav-links a.active { color: #fff; }
+        .nav-actions { display: flex; align-items: center; gap: 14px; }
+        
+        /* Globe Language Dropdown */
+        .lang-dropdown-wrapper { position: relative; }
         .lang-dropdown-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 7px 14px;
-            border-radius: 100px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: white;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
+            display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px;
+            background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s ease;
             font-family: inherit;
         }
-
-        .lang-dropdown-btn:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: var(--primary);
-        }
-
-        .lang-globe-icon {
-            width: 15px;
-            height: 15px;
-            fill: currentColor;
-        }
-
+        .lang-dropdown-btn:hover { background: rgba(255, 255, 255, 0.15); border-color: var(--primary); }
+        .lang-globe-icon { width: 15px; height: 15px; fill: currentColor; }
         .lang-dropdown-menu {
-            display: none;
-            position: absolute;
-            top: calc(100% + 8px);
-            right: 0;
-            background: #19142B;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 14px;
-            padding: 6px;
-            min-width: 130px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            z-index: 1001;
+            display: none; position: absolute; top: calc(100% + 8px); right: 0;
+            background: #19142B; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 14px;
+            padding: 6px; min-width: 130px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); z-index: 1001;
         }
-
         .lang-dropdown-wrapper:hover .lang-dropdown-menu,
         .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
+            display: flex; flex-direction: column; gap: 2px;
         }
-
         .lang-dropdown-item {
-            display: flex;
-            align-items: center;
-            padding: 8px 12px;
-            font-size: 13px;
-            font-weight: 600;
-            color: #CBD5E1;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: background 0.2s, color 0.2s;
+            display: flex; align-items: center; padding: 8px 12px; font-size: 13px; font-weight: 600;
+            color: #CBD5E1; text-decoration: none; border-radius: 8px; transition: background 0.2s, color 0.2s;
         }
-
-        .lang-dropdown-item:hover {
-            background: rgba(123, 110, 246, 0.2);
-            color: white;
-        }
-
-        .lang-dropdown-item.active {
-            background: var(--primary);
-            color: white;
-        }
+        .lang-dropdown-item:hover { background: rgba(123, 110, 246, 0.2); color: white; }
+        .lang-dropdown-item.active { background: var(--primary); color: white; }
 
         .nav-cta {
-            background: var(--primary);
-            color: white !important;
-            padding: 8px 18px;
-            border-radius: 100px;
-            font-size: 13px;
-            font-weight: 700;
-            text-decoration: none;
-            transition: transform 0.2s, box-shadow 0.2s;
+            background: var(--primary); color: #fff !important; padding: 8px 20px;
+            border-radius: 100px; font-size: 13px; font-weight: 600; text-decoration: none;
+            transition: all 0.2s ease;
         }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(123, 110, 246, 0.4); }
+        .nav-toggle { display: none; background: none; border: none; color: #fff; cursor: pointer; padding: 8px; }
 
-        .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px var(--primary-glow);
-        }
-
-        .nav-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            padding: 8px;
-        }
-
-        /* Hero */
+        /* Guide Hero */
         .guide-hero {
-            position: relative;
-            min-height: 480px;
-            display: flex;
-            align-items: flex-end;
-            padding: 120px 24px 60px;
-            background-size: cover;
-            background-position: center;
-            overflow: hidden;
+            position: relative; min-height: 440px; display: flex; align-items: flex-end;
+            padding: 120px 24px 44px; margin-top: 72px; overflow: hidden; background-color: #1A132F;
         }
-
         .guide-hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1;
-            transform: scale(1.02);
+            position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+            filter: brightness(0.65);
         }
-
         .guide-hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(13, 14, 21, 0.3) 0%, rgba(13, 14, 21, 0.85) 75%, var(--bg-dark) 100%);
-            z-index: 2;
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.4) 60%, transparent 100%);
         }
-
-        .guide-hero-content {
-            position: relative;
-            z-index: 3;
-            max-width: 900px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
+        .guide-hero-content { position: relative; z-index: 2; width: 100%; }
         .city-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 14px;
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            border-radius: 100px;
-            font-size: 13px;
-            font-weight: 700;
-            color: #cbd5e1;
-            margin-bottom: 16px;
+            display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px); padding: 6px 14px; border-radius: 99px; font-size: 13px;
+            font-weight: 600; margin-bottom: 14px; border: 1px solid rgba(255, 255, 255, 0.15);
         }
-
-        .guide-title {
-            font-size: clamp(38px, 6vw, 64px);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 12px;
-            letter-spacing: -1.5px;
+        .guide-title { font-size: clamp(32px, 6vw, 52px); font-weight: 800; line-height: 1.1; margin-bottom: 10px; }
+        .guide-tagline { font-size: 16px; color: var(--primary-light); max-width: 720px; font-weight: 500; line-height: 1.5; }
+        
+        /* Sections */
+        .section { padding: 42px 0; border-bottom: 1px solid var(--border-subtle); }
+        .section-header { margin-bottom: 24px; }
+        .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); font-weight: 700; }
+        .section-title { font-size: 24px; font-weight: 700; margin-top: 4px; }
+        
+        .intro-text { font-size: 15px; color: #D1D5DB; line-height: 1.8; margin-bottom: 20px; }
+        
+        /* Local Word */
+        .local-word-box {
+            background: rgba(123, 110, 246, 0.08); border-left: 4px solid var(--primary);
+            padding: 18px 22px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-top: 20px;
         }
-
-        .guide-tagline {
-            font-size: clamp(16px, 2.5vw, 20px);
-            color: #e2e8f0;
-            font-weight: 500;
-            max-width: 700px;
-            line-height: 1.5;
+        .word-title { font-size: 15px; color: #fff; margin-bottom: 4px; }
+        .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
+        .local-word-box p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        
+        /* Facts Grid */
+        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+        .fact-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
         }
-
-        /* Container */
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 24px;
+        .fact-icon { font-size: 24px; flex-shrink: 0; }
+        .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
+        .fact-val { font-size: 15px; font-weight: 600; color: #fff; margin: 2px 0; }
+        .fact-sub { font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
+        
+        /* Rules */
+        .rules-list { display: flex; flex-direction: column; gap: 14px; }
+        .rule-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md); padding: 20px; display: flex; gap: 16px; align-items: flex-start;
         }
-
-        .section {
-            margin-top: 56px;
+        .rule-num {
+            background: var(--primary); color: #fff; width: 32px; height: 32px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-weight: 700; flex-shrink: 0; font-size: 14px;
         }
-
-        .section-header {
-            margin-bottom: 24px;
+        .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
+        .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        
+        /* Hidden Gems & Eat Grid */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+        .gem-card, .eat-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md); padding: 22px; position: relative;
         }
-
-        .section-label {
-            font-size: 12px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--primary);
-            display: block;
-            margin-bottom: 4px;
-        }
-
-        .section-title {
-            font-size: clamp(24px, 4vw, 32px);
-            font-weight: 800;
-            letter-spacing: -0.8px;
-        }
-
-        .intro-text {
-            font-size: 17px;
-            line-height: 1.8;
-            color: #cbd5e1;
-            margin-bottom: 24px;
-        }
-
-        .highlight-box {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-left: 4px solid var(--accent);
-            padding: 22px 26px;
-            border-radius: 16px;
-            margin-top: 24px;
-        }
-
-        .highlight-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+        .gem-badge {
+            display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase;
+            color: #10B981; background: rgba(16, 185, 129, 0.12); padding: 4px 10px; border-radius: 99px;
             margin-bottom: 10px;
         }
-
-        .highlight-title {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--accent);
+        .gem-hook { font-size: 13px; color: var(--primary-light); font-style: italic; margin-bottom: 8px; }
+        .gem-card h4, .eat-card h4 { font-size: 16px; margin-bottom: 6px; }
+        .gem-card p, .eat-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        .card-tip-box {
+            margin-top: 10px; padding: 8px 12px; background: rgba(255, 255, 255, 0.04);
+            border-radius: 8px; font-size: 12px; color: #cbd5e1;
         }
-
-        .pron-badge {
-            font-size: 12px;
-            color: var(--text-muted);
-            background: rgba(255, 255, 255, 0.06);
-            padding: 3px 8px;
-            border-radius: 6px;
-        }
-
-        .word-def {
-            font-size: 15px;
-            color: #ffffff;
-            line-height: 1.6;
-            margin-bottom: 6px;
-        }
-
-        .word-context {
-            font-size: 14px;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        .facts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 16px;
-        }
-
-        .fact-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 20px;
-        }
-
-        .fact-icon {
-            font-size: 24px;
-            margin-bottom: 8px;
-        }
-
-        .fact-title {
-            font-size: 12px;
-            font-weight: 800;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 4px;
-        }
-
-        .fact-desc {
-            font-size: 16px;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 2px;
-        }
-
-        .fact-sub {
-            font-size: 12px;
-            color: var(--text-muted);
-            line-height: 1.4;
-        }
-
-        .rules-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .rule-item {
-            display: flex;
-            gap: 18px;
-            align-items: flex-start;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 22px;
-        }
-
-        .rule-num {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--primary);
-            flex-shrink: 0;
-        }
-
-        .rule-text strong {
-            display: block;
-            color: white;
-            font-size: 16px;
-            margin-bottom: 6px;
-        }
-
-        .rule-text span {
-            color: var(--text-muted);
-            font-size: 14px;
-            line-height: 1.65;
-        }
-
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 20px;
-        }
-
-        .content-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 24px;
-            transition: transform 0.2s, border-color 0.2s;
-        }
-
-        .content-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--border-hover);
-        }
-
-        .card-tag {
-            font-size: 11px;
-            font-weight: 800;
-            letter-spacing: 1px;
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
-
-        .card-name {
-            font-size: 18px;
-            font-weight: 800;
-            margin-bottom: 8px;
-            color: white;
-        }
-
-        .card-desc {
-            font-size: 14px;
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 12px;
-        }
-
-        .card-tip {
-            font-size: 13px;
-            color: #cbd5e1;
-            background: rgba(255, 255, 255, 0.04);
-            padding: 10px 14px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-        }
-
-        .traps-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
+        
+        /* Traps */
+        .traps-list { display: flex; flex-direction: column; gap: 14px; }
         .trap-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 22px;
+            background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.15);
+            border-radius: var(--radius-md); padding: 20px;
         }
-
-        .trap-bad {
-            font-size: 16px;
-            font-weight: 800;
-            color: #f87171;
-            margin-bottom: 6px;
+        .trap-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+        .trap-tag {
+            background: #EF4444; color: #fff; font-size: 11px; font-weight: 700;
+            text-transform: uppercase; padding: 2px 8px; border-radius: 6px;
         }
-
-        .trap-why {
-            font-size: 14px;
-            color: var(--text-muted);
-            margin-bottom: 12px;
-            line-height: 1.6;
+        .trap-header h4 { font-size: 16px; color: #fff; }
+        .trap-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        .trap-solution {
+            margin-top: 10px; padding: 10px 14px; background: rgba(16, 185, 129, 0.08);
+            border-left: 3px solid #10B981; border-radius: 4px; font-size: 13px; color: #D1D5DB; line-height: 1.5;
         }
-
-        .trap-good {
-            font-size: 14px;
-            color: #34d399;
-            background: rgba(16, 185, 129, 0.08);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            padding: 10px 14px;
-            border-radius: 10px;
-        }
-
+        
+        /* App CTA Banner */
         .app-cta-banner {
-            margin-top: 72px;
-            background: linear-gradient(135deg, rgba(123, 110, 246, 0.15), rgba(245, 158, 11, 0.1));
-            border: 1px solid var(--border-hover);
-            border-radius: 24px;
-            padding: 48px 32px;
-            text-align: center;
+            background: linear-gradient(135deg, rgba(123, 110, 246, 0.15), rgba(236, 72, 153, 0.1));
+            border: 1px solid rgba(157, 147, 255, 0.3); border-radius: var(--radius-lg);
+            padding: 44px 20px; text-align: center; margin: 50px 0; position: relative;
         }
-
-        .app-cta-banner h3 {
-            font-size: clamp(24px, 4vw, 32px);
-            font-weight: 800;
-            margin-bottom: 12px;
-        }
-
-        .app-cta-banner p {
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto 28px;
-            font-size: 16px;
-        }
-
-        .store-btn-row {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
+        .app-cta-banner h3 { font-size: clamp(22px, 4vw, 28px); font-weight: 800; margin-bottom: 10px; }
+        .app-cta-banner p { color: var(--text-secondary); max-width: 580px; margin: 0 auto 24px; font-size: 15px; }
+        .store-btn-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
         .store-pill-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 26px;
-            background: white;
-            color: #0f1016;
-            font-weight: 800;
-            font-size: 14px;
-            border-radius: 100px;
-            text-decoration: none;
+            display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: white;
+            color: #0f1016; font-weight: 700; font-size: 14px; border-radius: 100px; text-decoration: none;
             transition: transform 0.2s, box-shadow 0.2s;
         }
+        .store-pill-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2); }
 
-        .store-pill-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 24px rgba(255, 255, 255, 0.2);
-        }
-
-        footer {
-            border-top: 1px solid var(--border);
-            margin-top: 80px;
-            padding: 40px 24px 20px;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 14px;
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--border-subtle); padding: 40px 24px 30px;
+            color: var(--text-muted); font-size: 13px; text-align: center;
         }
 
         @media (max-width: 768px) {
-            .navbar {
-                height: 64px;
-            }
+            .navbar { height: 64px; }
             .nav-links {
-                display: none;
-                position: fixed;
-                top: 64px;
-                left: 0;
-                right: 0;
-                background: rgba(13, 14, 21, 0.98);
-                flex-direction: column;
-                padding: 24px;
-                border-bottom: 1px solid var(--border);
-                gap: 16px;
+                display: none; position: fixed; top: 64px; left: 0; right: 0;
+                background: rgba(15, 11, 26, 0.98); flex-direction: column;
+                padding: 24px; border-bottom: 1px solid var(--border-subtle); gap: 16px;
             }
-            .nav-links.active {
-                display: flex;
-            }
-            .nav-toggle {
-                display: block;
-            }
-            .guide-hero {
-                min-height: 400px;
-                padding-top: 100px;
-            }
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
-            .store-pill-btn {
-                width: 100%;
-                max-width: 280px;
-                justify-content: center;
-            }
+            .nav-links.active { display: flex; }
+            .nav-toggle { display: block; }
+            .guide-hero { min-height: 380px; padding-top: 90px; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
+
     </style>
 </head>
 <body>
@@ -693,13 +310,9 @@
             </div>
             <p class="intro-text">Kas is an old Lycian town where the Taurus mountains drop straight into the sea, its bougainvillea-wrapped white houses facing the harbor like an amphitheater. There are no big hotels, no crowded beaches; instead there are turquoise coves, ancient rock tombs, the Lycian Way passing the door, and Turkey&#x27;s clearest diving waters. The Greek island of Kastellorizo sits a stone&#x27;s throw across the water, and a little further along, the sunken city of Kekova sleeps beneath the surface. Kas is a town for the unhurried: you swim in the morning, stretch out in the shade at noon, and in the evening life begins again on the square.</p>
             
-        <div class="highlight-box">
-            <div class="highlight-header">
-                <div class="highlight-title">💬 Keyif</div>
-                <span class="pron-badge">🗣️ /kay-EEF/</span>
-            </div>
-            <p class="word-def"><strong>Turkish&#x27;s untranslatable word: the conscious, contented state of doing nothing. Kas is its capital — tea at the harbor, a book in bougainvillea shade, silence at sunset. If someone says &#x27;keyfine bak&#x27; (&#x27;mind your keyif&#x27;), they&#x27;ve just recited the town&#x27;s constitution to you.</strong></p>
-            
+        <div class="local-word-box">
+            <div class="word-title">🗣️ Local Concept: <strong>Keyif</strong> <span class="pron">(kay-EEF)</span></div>
+            <p>Turkish&#x27;s untranslatable word: the conscious, contented state of doing nothing. Kas is its capital — tea at the harbor, a book in bougainvillea shade, silence at sunset. If someone says &#x27;keyfine bak&#x27; (&#x27;mind your keyif&#x27;), they&#x27;ve just recited the town&#x27;s constitution to you.</p>
         </div>
         
         </section>
@@ -715,30 +328,38 @@
                 
             <div class="fact-card">
                 <div class="fact-icon">✈️</div>
-                <div class="fact-title">Airport</div>
-                <div class="fact-desc">Dalaman (DLM) / Antalya (AYT)</div>
-                <div class="fact-sub">Both ~2.5–3 hrs by road</div>
+                <div>
+                    <div class="fact-label">Airport</div>
+                    <div class="fact-val">Dalaman (DLM) / Antalya (AYT)</div>
+                    <div class="fact-sub">Both ~2.5–3 hrs by road</div>
+                </div>
             </div>
             
             <div class="fact-card">
                 <div class="fact-icon">🤿</div>
-                <div class="fact-title">Signature</div>
-                <div class="fact-desc">Diving + Kekova</div>
-                <div class="fact-sub">Sunken city and 30 m visibility</div>
+                <div>
+                    <div class="fact-label">Signature</div>
+                    <div class="fact-val">Diving + Kekova</div>
+                    <div class="fact-sub">Sunken city and 30 m visibility</div>
+                </div>
             </div>
             
             <div class="fact-card">
                 <div class="fact-icon">🚶</div>
-                <div class="fact-title">Scale</div>
-                <div class="fact-desc">Walkable town</div>
-                <div class="fact-sub">Square, harbor, beach — all on foot</div>
+                <div>
+                    <div class="fact-label">Scale</div>
+                    <div class="fact-val">Walkable town</div>
+                    <div class="fact-sub">Square, harbor, beach — all on foot</div>
+                </div>
             </div>
             
             <div class="fact-card">
                 <div class="fact-icon">🗣️</div>
-                <div class="fact-title">Language</div>
-                <div class="fact-desc">Turkish</div>
-                <div class="fact-sub">English widely spoken in tourism</div>
+                <div>
+                    <div class="fact-label">Language</div>
+                    <div class="fact-val">Turkish</div>
+                    <div class="fact-sub">English widely spoken in tourism</div>
+                </div>
             </div>
             
             </div>
@@ -750,31 +371,31 @@
         <section class="section">
             <div class="section-header">
                 <span class="section-label">Insider Advice</span>
-                <h2 class="section-title">Unwritten Rules for Kas</h2>
+                <h2 class="section-title">3 Unwritten Rules for Kas</h2>
             </div>
             <div class="rules-list">
                 
-            <div class="rule-item">
-                <div class="rule-num">#1</div>
-                <div class="rule-text">
-                    <strong>Go to Kaputas early or don&#x27;t rush at all</strong>
-                    <span>Turkey&#x27;s most photographed beach fills by noon: between 08:00 and 10:00 the turquoise is all yours. If you arrive at midday, don&#x27;t force it — quiet coves with the same water are nearby; save Kaputas for tomorrow morning.</span>
+            <div class="rule-card">
+                <div class="rule-num">1</div>
+                <div class="rule-content">
+                    <h4>Go to Kaputas early or don&#x27;t rush at all</h4>
+                    <p>Turkey&#x27;s most photographed beach fills by noon: between 08:00 and 10:00 the turquoise is all yours. If you arrive at midday, don&#x27;t force it — quiet coves with the same water are nearby; save Kaputas for tomorrow morning.</p>
                 </div>
             </div>
             
-            <div class="rule-item">
-                <div class="rule-num">#2</div>
-                <div class="rule-text">
-                    <strong>Look beneath the sea at least once</strong>
-                    <span>Kas is Turkey&#x27;s diving capital: visibility reaches 30 meters, and wrecks and reefs are next-door neighbors. Never dived? A discovery dive is the perfect place to start — at minimum, take a mask and snorkel out to the Limanagzi coves; the underwater world is half of Kas.</span>
+            <div class="rule-card">
+                <div class="rule-num">2</div>
+                <div class="rule-content">
+                    <h4>Look beneath the sea at least once</h4>
+                    <p>Kas is Turkey&#x27;s diving capital: visibility reaches 30 meters, and wrecks and reefs are next-door neighbors. Never dived? A discovery dive is the perfect place to start — at minimum, take a mask and snorkel out to the Limanagzi coves; the underwater world is half of Kas.</p>
                 </div>
             </div>
             
-            <div class="rule-item">
-                <div class="rule-num">#3</div>
-                <div class="rule-text">
-                    <strong>Walk one trail, and let Lycia walk with you</strong>
-                    <span>The Lycian Way passes through town: marked routes lead to the ancient theater, cliff views and olive-grove paths. Give one morning to a hike — in shoes, not sandals, with water in your bag. Lycia&#x27;s stones tell stories.</span>
+            <div class="rule-card">
+                <div class="rule-num">3</div>
+                <div class="rule-content">
+                    <h4>Walk one trail, and let Lycia walk with you</h4>
+                    <p>The Lycian Way passes through town: marked routes lead to the ancient theater, cliff views and olive-grove paths. Give one morning to a hike — in shoes, not sandals, with water in your bag. Lycia&#x27;s stones tell stories.</p>
                 </div>
             </div>
             
@@ -791,45 +412,27 @@
             </div>
             <div class="cards-grid">
                 
-            <div class="content-card">
-                <div class="card-tag">💎 HIDDEN GEM</div>
-                <div class="card-name">Limanagzi</div>
-                <div class="card-desc">The coves on the peninsula across the harbor, reached only by boat or footpath: small jetty beaches, crystal water, Lycian rock tombs on the ridge behind. Five minutes by water taxi — the antidote to crowds.</div>
+            <div class="gem-card">
+                <div class="gem-badge">Hidden Gem</div>
+                <h4>Limanagzi</h4>
+                <div class="gem-hook">Hidden Spot</div>
+                <p>The coves on the peninsula across the harbor, reached only by boat or footpath: small jetty beaches, crystal water, Lycian rock tombs on the ridge behind. Five minutes by water taxi — the antidote to crowds.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">💎 HIDDEN GEM</div>
-                <div class="card-name">Kalekoy (Simena)</div>
-                <div class="card-desc">A coastal village with no road, unreachable without a boat: a path climbing to a Lycian castle, sarcophagi half-sunk in the sea, gozleme scenting the jetty. The Kekova view from the castle is among the Mediterranean&#x27;s finest frames.</div>
+            <div class="gem-card">
+                <div class="gem-badge">Hidden Gem</div>
+                <h4>Kalekoy (Simena)</h4>
+                <div class="gem-hook">Hidden Spot</div>
+                <p>A coastal village with no road, unreachable without a boat: a path climbing to a Lycian castle, sarcophagi half-sunk in the sea, gozleme scenting the jetty. The Kekova view from the castle is among the Mediterranean&#x27;s finest frames.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">💎 HIDDEN GEM</div>
-                <div class="card-name">Aperlai</div>
-                <div class="card-desc">An ancient Lycian harbor reached on foot or by boat on the Sicak peninsula: city walls, quay stones half underwater, and barely a boat in sight. Snorkeling above an ancient quay — the Kas version of time travel.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">💎 HIDDEN GEM</div>
-                <div class="card-name">Meis (Kastellorizo)</div>
-                <div class="card-desc">The colorful Greek town on the opposite shore: twenty minutes by ferry, a day trip with a passport. Harbor tavernas, the blue cave boat and pastel facades — the island you keep gazing at from Kas is even lovelier up close.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">💎 HIDDEN GEM</div>
-                <div class="card-name">Patara</div>
-                <div class="card-desc">Half an hour away, 12 kilometers of unbroken sand: the columns of ancient Patara stand at the beach&#x27;s gate. Kept unbuilt as a loggerhead turtle nesting ground — at sunset the dunes turn to gold.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">💎 HIDDEN GEM</div>
-                <div class="card-name">Sunset at the ancient theater</div>
-                <div class="card-desc">The steps of the Hellenistic theater in the middle of town face the sea: at dusk, locals and those in the know gather quietly. No ticket, no gate — just stone, sea and the sinking sun.</div>
+            <div class="gem-card">
+                <div class="gem-badge">Hidden Gem</div>
+                <h4>Aperlai</h4>
+                <div class="gem-hook">Hidden Spot</div>
+                <p>An ancient Lycian harbor reached on foot or by boat on the Sicak peninsula: city walls, quay stones half underwater, and barely a boat in sight. Snorkeling above an ancient quay — the Kas version of time travel.</p>
                 
             </div>
             
@@ -844,48 +447,29 @@
                 <span class="section-label">Food & Flavors</span>
                 <h2 class="section-title">What to Taste</h2>
             </div>
-            <p class="intro-text">The Kas table is the Mediterranean itself: the day&#x27;s fish, olive-oil wild greens, meze plates and evenings that stretch long under the bougainvillea.</p>
             <div class="cards-grid">
                 
-            <div class="content-card">
-                <div class="card-tag">🍴 MUST TASTE</div>
-                <div class="card-name">Catch of the day</div>
-                <div class="card-desc">Grouper, sea bream, sea bass or gurnard in season: chosen from the display, cooked over coals. The lokantas behind the harbor sell by weight — ask the price before the scale, order it simple with lemon.</div>
+            <div class="eat-card">
+                <h4>🍴 Catch of the day</h4>
+                <p>Grouper, sea bream, sea bass or gurnard in season: chosen from the display, cooked over coals. The lokantas behind the harbor sell by weight — ask the price before the scale, order it simple with lemon.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">🍴 MUST TASTE</div>
-                <div class="card-name">Olive-oil wild greens</div>
-                <div class="card-desc">Sea beans, şevketibostan, pickled rock samphire: Mediterranean greens in olive oil are the table&#x27;s foundation. Ask to see the meze fridge — the season&#x27;s greens are announced by the fridge, not the menu.</div>
+            <div class="eat-card">
+                <h4>🍴 Olive-oil wild greens</h4>
+                <p>Sea beans, şevketibostan, pickled rock samphire: Mediterranean greens in olive oil are the table&#x27;s foundation. Ask to see the meze fridge — the season&#x27;s greens are announced by the fridge, not the menu.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">🍴 MUST TASTE</div>
-                <div class="card-name">Calamari and octopus</div>
-                <div class="card-desc">A diving town takes its seafood seriously: grilled octopus and crisp calamari are every meyhane&#x27;s pride plate. Grilled beats fried — squeeze the lemon, take your time.</div>
+            <div class="eat-card">
+                <h4>🍴 Calamari and octopus</h4>
+                <p>A diving town takes its seafood seriously: grilled octopus and crisp calamari are every meyhane&#x27;s pride plate. Grilled beats fried — squeeze the lemon, take your time.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">🍴 MUST TASTE</div>
-                <div class="card-name">Village breakfast</div>
-                <div class="card-desc">A spread breakfast in the courtyard: goat cheese, olive varieties, homemade jams, griddle borek and well-steeped tea. The long ritual of a Kas morning — a second round after a swim is entirely legitimate.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">🍴 MUST TASTE</div>
-                <div class="card-name">Cop sis and village kebab</div>
-                <div class="card-desc">Marinated lamb on the thinnest skewers: the craft of village lokantas along the D400 and the town&#x27;s masters. A carnivorous pause between sea meals — with charred peppers and tandoor bread alongside.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">🍴 MUST TASTE</div>
-                <div class="card-name">Semolina halva with ice cream</div>
-                <div class="card-desc">Hot semolina halva meeting cold ice cream: the classic close of a Kas evening. With pistachios for those who want them — this is the last plate before the square stroll.</div>
+            <div class="eat-card">
+                <h4>🍴 Village breakfast</h4>
+                <p>A spread breakfast in the courtyard: goat cheese, olive varieties, homemade jams, griddle borek and well-steeped tea. The long ritual of a Kas morning — a second round after a swim is entirely legitimate.</p>
                 
             </div>
             
@@ -903,27 +487,21 @@
             <div class="traps-list">
                 
             <div class="trap-card">
-                <div class="trap-bad">❌ </div>
-                <div class="trap-why">Turkey&#x27;s most photographed beach becomes a staircase-to-sunbed queue in the midday hours; the turquoise is the same, the experience is not.</div>
-                <div class="trap-good">✅ <strong>Better Alternative:</strong> Go between 08:00 and 10:00: clear water, empty sand, ideal light. If it&#x27;s already noon, turn around and take the Limanagzi water taxi — the same blue, a tenth of the crowd.</div>
+                <div class="trap-header">
+                    <span class="trap-tag">Avoid</span>
+                    <h4></h4>
+                </div>
+                <p>Turkey&#x27;s most photographed beach becomes a staircase-to-sunbed queue in the midday hours; the turquoise is the same, the experience is not.</p>
+                <div class="trap-solution"><strong>Do this instead:</strong> Go between 08:00 and 10:00: clear water, empty sand, ideal light. If it&#x27;s already noon, turn around and take the Limanagzi water taxi — the same blue, a tenth of the crowd.</div>
             </div>
             
             <div class="trap-card">
-                <div class="trap-bad">❌ </div>
-                <div class="trap-why">On hundred-person boats, the Kekova tour becomes a loudspeaker parade; boats queue up over the sunken city.</div>
-                <div class="trap-good">✅ <strong>Better Alternative:</strong> Choose a small boat from the cooperative or share a private one with a few people: fewer passengers, longer swim stops, a calmer route. A morning departure always beats noon.</div>
-            </div>
-            
-            <div class="trap-card">
-                <div class="trap-bad">❌ </div>
-                <div class="trap-why">On airport and cove transfers the price sometimes turns into a &#x27;surprise&#x27; after you&#x27;re in; the night tariff can be creatively interpreted.</div>
-                <div class="trap-good">✅ <strong>Better Alternative:</strong> Fix the price before you get in, or arrange transfers through your hotel: shared airport shuttles are far more economical. Within town, everything is walking distance anyway.</div>
-            </div>
-            
-            <div class="trap-card">
-                <div class="trap-bad">❌ </div>
-                <div class="trap-why">In July–August the pansiyons fill months ahead; last-minute arrivals are left with expensive, soulless options outside town.</div>
-                <div class="trap-good">✅ <strong>Better Alternative:</strong> Book summer accommodation early; if you&#x27;re flexible, choose the May–June or September–October window. The same Kas awaits you at half the price and a quarter of the crowd.</div>
+                <div class="trap-header">
+                    <span class="trap-tag">Avoid</span>
+                    <h4></h4>
+                </div>
+                <p>On hundred-person boats, the Kekova tour becomes a loudspeaker parade; boats queue up over the sunken city.</p>
+                <div class="trap-solution"><strong>Do this instead:</strong> Choose a small boat from the cooperative or share a private one with a few people: fewer passengers, longer swim stops, a calmer route. A morning departure always beats noon.</div>
             </div>
             
             </div>
@@ -945,7 +523,7 @@
         </section>
     </main>
 
-    <footer>
+    <footer class="footer">
         <div class="container">
             <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
         </div>

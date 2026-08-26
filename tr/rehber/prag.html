@@ -24,616 +24,233 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <link rel="icon" type="image/png" href="../../images/app_icon.png">
 
     <style>
+        
         :root {
-            --bg-dark: #0d0e15;
-            --bg-card: #161824;
-            --bg-card-hover: #1e2132;
-            --primary: #7b6ef6;
-            --primary-glow: rgba(123, 110, 246, 0.25);
-            --accent: #f59e0b;
-            --text-main: #ffffff;
-            --text-muted: #94a3b8;
-            --border: rgba(255, 255, 255, 0.08);
-            --border-hover: rgba(123, 110, 246, 0.4);
-            --green: #10b981;
-            --red: #ef4444;
-            --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-serif: 'Playfair Display', Georgia, serif;
+            --primary: #7B6EF6;
+            --primary-light: #9D93FF;
+            --primary-dark: #5B4FD6;
+            --accent: #EC4899;
+            --bg-dark: #0F0B1A;
+            --bg-section: #130F22;
+            --bg-card: rgba(255, 255, 255, 0.04);
+            --text-primary: #FFFFFF;
+            --text-secondary: #9CA3AF;
+            --text-muted: #6B7280;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --radius-sm: 12px;
+            --shadow-glow: 0 0 80px rgba(123, 110, 246, 0.15);
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            -webkit-font-smoothing: antialiased;
-        }
-
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            font-family: var(--font-sans);
-            line-height: 1.6;
-            padding-bottom: 60px;
+            background-color: var(--bg-dark); color: var(--text-primary);
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6; overflow-x: hidden;
         }
-
-        /* Navigation */
+        
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        
+        /* Navbar */
         .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: rgba(13, 14, 21, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-            height: 72px;
-            display: flex;
-            align-items: center;
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(15, 11, 26, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle); height: 72px; display: flex; align-items: center;
         }
-
         .navbar-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%;
+            display: flex; align-items: center; justify-content: space-between;
         }
-
         .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: white;
-            font-weight: 800;
-            font-size: 20px;
+            display: flex; align-items: center; gap: 12px; text-decoration: none;
+            color: #fff; font-weight: 700; font-size: 20px;
         }
-
-        .nav-brand img {
-            border-radius: 10px;
-            box-shadow: 0 4px 12px var(--primary-glow);
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-            list-style: none;
-        }
-
+        .nav-brand img { border-radius: 10px; }
+        .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
         .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            transition: color 0.2s;
+            color: var(--text-secondary); text-decoration: none; font-size: 14px;
+            font-weight: 500; transition: color 0.2s;
         }
-
-        .nav-links a:hover, .nav-links a.active {
-            color: white;
-        }
-
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        /* Modern Language Dropdown */
-        .lang-dropdown-wrapper {
-            position: relative;
-        }
-
+        .nav-links a:hover, .nav-links a.active { color: #fff; }
+        .nav-actions { display: flex; align-items: center; gap: 14px; }
+        
+        /* Globe Language Dropdown */
+        .lang-dropdown-wrapper { position: relative; }
         .lang-dropdown-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 7px 14px;
-            border-radius: 100px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: white;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
+            display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px;
+            background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s ease;
             font-family: inherit;
         }
-
-        .lang-dropdown-btn:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: var(--primary);
-        }
-
-        .lang-globe-icon {
-            width: 15px;
-            height: 15px;
-            fill: currentColor;
-        }
-
+        .lang-dropdown-btn:hover { background: rgba(255, 255, 255, 0.15); border-color: var(--primary); }
+        .lang-globe-icon { width: 15px; height: 15px; fill: currentColor; }
         .lang-dropdown-menu {
-            display: none;
-            position: absolute;
-            top: calc(100% + 8px);
-            right: 0;
-            background: #19142B;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 14px;
-            padding: 6px;
-            min-width: 130px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            z-index: 1001;
+            display: none; position: absolute; top: calc(100% + 8px); right: 0;
+            background: #19142B; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 14px;
+            padding: 6px; min-width: 130px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); z-index: 1001;
         }
-
         .lang-dropdown-wrapper:hover .lang-dropdown-menu,
         .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
+            display: flex; flex-direction: column; gap: 2px;
         }
-
         .lang-dropdown-item {
-            display: flex;
-            align-items: center;
-            padding: 8px 12px;
-            font-size: 13px;
-            font-weight: 600;
-            color: #CBD5E1;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: background 0.2s, color 0.2s;
+            display: flex; align-items: center; padding: 8px 12px; font-size: 13px; font-weight: 600;
+            color: #CBD5E1; text-decoration: none; border-radius: 8px; transition: background 0.2s, color 0.2s;
         }
-
-        .lang-dropdown-item:hover {
-            background: rgba(123, 110, 246, 0.2);
-            color: white;
-        }
-
-        .lang-dropdown-item.active {
-            background: var(--primary);
-            color: white;
-        }
+        .lang-dropdown-item:hover { background: rgba(123, 110, 246, 0.2); color: white; }
+        .lang-dropdown-item.active { background: var(--primary); color: white; }
 
         .nav-cta {
-            background: var(--primary);
-            color: white !important;
-            padding: 8px 18px;
-            border-radius: 100px;
-            font-size: 13px;
-            font-weight: 700;
-            text-decoration: none;
-            transition: transform 0.2s, box-shadow 0.2s;
+            background: var(--primary); color: #fff !important; padding: 8px 20px;
+            border-radius: 100px; font-size: 13px; font-weight: 600; text-decoration: none;
+            transition: all 0.2s ease;
         }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(123, 110, 246, 0.4); }
+        .nav-toggle { display: none; background: none; border: none; color: #fff; cursor: pointer; padding: 8px; }
 
-        .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px var(--primary-glow);
-        }
-
-        .nav-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            padding: 8px;
-        }
-
-        /* Hero */
+        /* Guide Hero */
         .guide-hero {
-            position: relative;
-            min-height: 480px;
-            display: flex;
-            align-items: flex-end;
-            padding: 120px 24px 60px;
-            background-size: cover;
-            background-position: center;
-            overflow: hidden;
+            position: relative; min-height: 440px; display: flex; align-items: flex-end;
+            padding: 120px 24px 44px; margin-top: 72px; overflow: hidden; background-color: #1A132F;
         }
-
         .guide-hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1;
-            transform: scale(1.02);
+            position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+            filter: brightness(0.65);
         }
-
         .guide-hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(13, 14, 21, 0.3) 0%, rgba(13, 14, 21, 0.85) 75%, var(--bg-dark) 100%);
-            z-index: 2;
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.4) 60%, transparent 100%);
         }
-
-        .guide-hero-content {
-            position: relative;
-            z-index: 3;
-            max-width: 900px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
+        .guide-hero-content { position: relative; z-index: 2; width: 100%; }
         .city-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 14px;
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            border-radius: 100px;
-            font-size: 13px;
-            font-weight: 700;
-            color: #cbd5e1;
-            margin-bottom: 16px;
+            display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px); padding: 6px 14px; border-radius: 99px; font-size: 13px;
+            font-weight: 600; margin-bottom: 14px; border: 1px solid rgba(255, 255, 255, 0.15);
         }
-
-        .guide-title {
-            font-size: clamp(38px, 6vw, 64px);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 12px;
-            letter-spacing: -1.5px;
+        .guide-title { font-size: clamp(32px, 6vw, 52px); font-weight: 800; line-height: 1.1; margin-bottom: 10px; }
+        .guide-tagline { font-size: 16px; color: var(--primary-light); max-width: 720px; font-weight: 500; line-height: 1.5; }
+        
+        /* Sections */
+        .section { padding: 42px 0; border-bottom: 1px solid var(--border-subtle); }
+        .section-header { margin-bottom: 24px; }
+        .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); font-weight: 700; }
+        .section-title { font-size: 24px; font-weight: 700; margin-top: 4px; }
+        
+        .intro-text { font-size: 15px; color: #D1D5DB; line-height: 1.8; margin-bottom: 20px; }
+        
+        /* Local Word */
+        .local-word-box {
+            background: rgba(123, 110, 246, 0.08); border-left: 4px solid var(--primary);
+            padding: 18px 22px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-top: 20px;
         }
-
-        .guide-tagline {
-            font-size: clamp(16px, 2.5vw, 20px);
-            color: #e2e8f0;
-            font-weight: 500;
-            max-width: 700px;
-            line-height: 1.5;
+        .word-title { font-size: 15px; color: #fff; margin-bottom: 4px; }
+        .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
+        .local-word-box p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        
+        /* Facts Grid */
+        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+        .fact-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
         }
-
-        /* Container */
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 24px;
+        .fact-icon { font-size: 24px; flex-shrink: 0; }
+        .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
+        .fact-val { font-size: 15px; font-weight: 600; color: #fff; margin: 2px 0; }
+        .fact-sub { font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
+        
+        /* Rules */
+        .rules-list { display: flex; flex-direction: column; gap: 14px; }
+        .rule-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md); padding: 20px; display: flex; gap: 16px; align-items: flex-start;
         }
-
-        .section {
-            margin-top: 56px;
+        .rule-num {
+            background: var(--primary); color: #fff; width: 32px; height: 32px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-weight: 700; flex-shrink: 0; font-size: 14px;
         }
-
-        .section-header {
-            margin-bottom: 24px;
+        .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
+        .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        
+        /* Hidden Gems & Eat Grid */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+        .gem-card, .eat-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md); padding: 22px; position: relative;
         }
-
-        .section-label {
-            font-size: 12px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--primary);
-            display: block;
-            margin-bottom: 4px;
-        }
-
-        .section-title {
-            font-size: clamp(24px, 4vw, 32px);
-            font-weight: 800;
-            letter-spacing: -0.8px;
-        }
-
-        .intro-text {
-            font-size: 17px;
-            line-height: 1.8;
-            color: #cbd5e1;
-            margin-bottom: 24px;
-        }
-
-        .highlight-box {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-left: 4px solid var(--accent);
-            padding: 22px 26px;
-            border-radius: 16px;
-            margin-top: 24px;
-        }
-
-        .highlight-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+        .gem-badge {
+            display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase;
+            color: #10B981; background: rgba(16, 185, 129, 0.12); padding: 4px 10px; border-radius: 99px;
             margin-bottom: 10px;
         }
-
-        .highlight-title {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--accent);
+        .gem-hook { font-size: 13px; color: var(--primary-light); font-style: italic; margin-bottom: 8px; }
+        .gem-card h4, .eat-card h4 { font-size: 16px; margin-bottom: 6px; }
+        .gem-card p, .eat-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        .card-tip-box {
+            margin-top: 10px; padding: 8px 12px; background: rgba(255, 255, 255, 0.04);
+            border-radius: 8px; font-size: 12px; color: #cbd5e1;
         }
-
-        .pron-badge {
-            font-size: 12px;
-            color: var(--text-muted);
-            background: rgba(255, 255, 255, 0.06);
-            padding: 3px 8px;
-            border-radius: 6px;
-        }
-
-        .word-def {
-            font-size: 15px;
-            color: #ffffff;
-            line-height: 1.6;
-            margin-bottom: 6px;
-        }
-
-        .word-context {
-            font-size: 14px;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        .facts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 16px;
-        }
-
-        .fact-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 20px;
-        }
-
-        .fact-icon {
-            font-size: 24px;
-            margin-bottom: 8px;
-        }
-
-        .fact-title {
-            font-size: 12px;
-            font-weight: 800;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 4px;
-        }
-
-        .fact-desc {
-            font-size: 16px;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 2px;
-        }
-
-        .fact-sub {
-            font-size: 12px;
-            color: var(--text-muted);
-            line-height: 1.4;
-        }
-
-        .rules-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .rule-item {
-            display: flex;
-            gap: 18px;
-            align-items: flex-start;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 22px;
-        }
-
-        .rule-num {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--primary);
-            flex-shrink: 0;
-        }
-
-        .rule-text strong {
-            display: block;
-            color: white;
-            font-size: 16px;
-            margin-bottom: 6px;
-        }
-
-        .rule-text span {
-            color: var(--text-muted);
-            font-size: 14px;
-            line-height: 1.65;
-        }
-
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 20px;
-        }
-
-        .content-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 24px;
-            transition: transform 0.2s, border-color 0.2s;
-        }
-
-        .content-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--border-hover);
-        }
-
-        .card-tag {
-            font-size: 11px;
-            font-weight: 800;
-            letter-spacing: 1px;
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
-
-        .card-name {
-            font-size: 18px;
-            font-weight: 800;
-            margin-bottom: 8px;
-            color: white;
-        }
-
-        .card-desc {
-            font-size: 14px;
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 12px;
-        }
-
-        .card-tip {
-            font-size: 13px;
-            color: #cbd5e1;
-            background: rgba(255, 255, 255, 0.04);
-            padding: 10px 14px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-        }
-
-        .traps-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
+        
+        /* Traps */
+        .traps-list { display: flex; flex-direction: column; gap: 14px; }
         .trap-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 22px;
+            background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.15);
+            border-radius: var(--radius-md); padding: 20px;
         }
-
-        .trap-bad {
-            font-size: 16px;
-            font-weight: 800;
-            color: #f87171;
-            margin-bottom: 6px;
+        .trap-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+        .trap-tag {
+            background: #EF4444; color: #fff; font-size: 11px; font-weight: 700;
+            text-transform: uppercase; padding: 2px 8px; border-radius: 6px;
         }
-
-        .trap-why {
-            font-size: 14px;
-            color: var(--text-muted);
-            margin-bottom: 12px;
-            line-height: 1.6;
+        .trap-header h4 { font-size: 16px; color: #fff; }
+        .trap-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        .trap-solution {
+            margin-top: 10px; padding: 10px 14px; background: rgba(16, 185, 129, 0.08);
+            border-left: 3px solid #10B981; border-radius: 4px; font-size: 13px; color: #D1D5DB; line-height: 1.5;
         }
-
-        .trap-good {
-            font-size: 14px;
-            color: #34d399;
-            background: rgba(16, 185, 129, 0.08);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            padding: 10px 14px;
-            border-radius: 10px;
-        }
-
+        
+        /* App CTA Banner */
         .app-cta-banner {
-            margin-top: 72px;
-            background: linear-gradient(135deg, rgba(123, 110, 246, 0.15), rgba(245, 158, 11, 0.1));
-            border: 1px solid var(--border-hover);
-            border-radius: 24px;
-            padding: 48px 32px;
-            text-align: center;
+            background: linear-gradient(135deg, rgba(123, 110, 246, 0.15), rgba(236, 72, 153, 0.1));
+            border: 1px solid rgba(157, 147, 255, 0.3); border-radius: var(--radius-lg);
+            padding: 44px 20px; text-align: center; margin: 50px 0; position: relative;
         }
-
-        .app-cta-banner h3 {
-            font-size: clamp(24px, 4vw, 32px);
-            font-weight: 800;
-            margin-bottom: 12px;
-        }
-
-        .app-cta-banner p {
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto 28px;
-            font-size: 16px;
-        }
-
-        .store-btn-row {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
+        .app-cta-banner h3 { font-size: clamp(22px, 4vw, 28px); font-weight: 800; margin-bottom: 10px; }
+        .app-cta-banner p { color: var(--text-secondary); max-width: 580px; margin: 0 auto 24px; font-size: 15px; }
+        .store-btn-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
         .store-pill-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 26px;
-            background: white;
-            color: #0f1016;
-            font-weight: 800;
-            font-size: 14px;
-            border-radius: 100px;
-            text-decoration: none;
+            display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: white;
+            color: #0f1016; font-weight: 700; font-size: 14px; border-radius: 100px; text-decoration: none;
             transition: transform 0.2s, box-shadow 0.2s;
         }
+        .store-pill-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2); }
 
-        .store-pill-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 24px rgba(255, 255, 255, 0.2);
-        }
-
-        footer {
-            border-top: 1px solid var(--border);
-            margin-top: 80px;
-            padding: 40px 24px 20px;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 14px;
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--border-subtle); padding: 40px 24px 30px;
+            color: var(--text-muted); font-size: 13px; text-align: center;
         }
 
         @media (max-width: 768px) {
-            .navbar {
-                height: 64px;
-            }
+            .navbar { height: 64px; }
             .nav-links {
-                display: none;
-                position: fixed;
-                top: 64px;
-                left: 0;
-                right: 0;
-                background: rgba(13, 14, 21, 0.98);
-                flex-direction: column;
-                padding: 24px;
-                border-bottom: 1px solid var(--border);
-                gap: 16px;
+                display: none; position: fixed; top: 64px; left: 0; right: 0;
+                background: rgba(15, 11, 26, 0.98); flex-direction: column;
+                padding: 24px; border-bottom: 1px solid var(--border-subtle); gap: 16px;
             }
-            .nav-links.active {
-                display: flex;
-            }
-            .nav-toggle {
-                display: block;
-            }
-            .guide-hero {
-                min-height: 400px;
-                padding-top: 100px;
-            }
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
-            .store-pill-btn {
-                width: 100%;
-                max-width: 280px;
-                justify-content: center;
-            }
+            .nav-links.active { display: flex; }
+            .nav-toggle { display: block; }
+            .guide-hero { min-height: 380px; padding-top: 90px; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
+
     </style>
 </head>
 <body>
@@ -693,13 +310,9 @@
             </div>
             <p class="intro-text">Prag, Avrupa&#x27;nın en iyi korunmuş ortaçağ şehirlerinden biri; ve her yıl gelen on iki milyon ziyaretçiye kendini göstermeyi çok iyi öğrendi. Çoğu ziyaretçinin gördüğü Prag: Eski Şehir Meydanı&#x27;ndaki aşırı pahalı bira tuzakları, Karlova Sokağı&#x27;ndaki hediyelik eşyacılar, organize pub crawl&#x27;lar. Gerçek Prag ise onun hemen altında akıyor: Vinohrady&#x27;nin mahalle şarap barlarında, Cuma akşamları Náplavka kıyısında, turistlerin kaleye giderken önünden geçtiği Barok bahçelerde, şehri her türlü hava koşulunda taşıyan tramvaylarda. Burası dünyanın mimari açıdan en olağanüstü şehirlerinden biri; Gotik, Rönesans, Barok, Art Nouveau ve Komünist Brutalizm birbirine yürüme mesafesinde. Soru kaleyi görüp görmemek değil — asıl soru kalabalıktan sıyrıldıktan sonra hangi Prag&#x27;ı bulacağın.</p>
             
-        <div class="highlight-box">
-            <div class="highlight-header">
-                <div class="highlight-title">💬 Hospoda</div>
-                <span class="pron-badge">🗣️ /HOS-po-da/</span>
-            </div>
-            <p class="word-def"><strong>Geleneksel Çek birahanesi — ne bir bar, ne bir gastropub, sadece bir hospoda. Koyu ahşap, uzun masalar, yirmi yıldır aynı sandalyede oturan müdavimler, sormadan getirilen Pilsner Urquell ya da Kozel. Hospoda, Çek mahalle hayatının sosyal merkezi. Haberlerin değiş tokuş edildiği, futbolun izlendiği ve ülkenin kendi tarihiyle karmaşık ilişkisinin sessizce müzakere edildiği yer. İyi bir hospodanın İngilizce menüsü ve turistlere yönelik dekorasyonu olmaz. Birini bulmak gerçek şehre açılan kapıdır.</strong></p>
-            
+        <div class="local-word-box">
+            <div class="word-title">🗣️ Yerel Kavram: <strong>Hospoda</strong> <span class="pron">(HOS-po-da)</span></div>
+            <p>Geleneksel Çek birahanesi — ne bir bar, ne bir gastropub, sadece bir hospoda. Koyu ahşap, uzun masalar, yirmi yıldır aynı sandalyede oturan müdavimler, sormadan getirilen Pilsner Urquell ya da Kozel. Hospoda, Çek mahalle hayatının sosyal merkezi. Haberlerin değiş tokuş edildiği, futbolun izlendiği ve ülkenin kendi tarihiyle karmaşık ilişkisinin sessizce müzakere edildiği yer. İyi bir hospodanın İngilizce menüsü ve turistlere yönelik dekorasyonu olmaz. Birini bulmak gerçek şehre açılan kapıdır.</p>
         </div>
         
         </section>
@@ -715,30 +328,38 @@
                 
             <div class="fact-card">
                 <div class="fact-icon">✈️</div>
-                <div class="fact-title">Havalimanı</div>
-                <div class="fact-desc">Václav Havel Havalimanı (PRG)</div>
-                <div class="fact-sub">119 otobüs → Nádraží Veleslavín (Metro A) → merkez, ~35 dk</div>
+                <div>
+                    <div class="fact-label">Havalimanı</div>
+                    <div class="fact-val">Václav Havel Havalimanı (PRG)</div>
+                    <div class="fact-sub">119 otobüs → Nádraží Veleslavín (Metro A) → merkez, ~35 dk</div>
+                </div>
             </div>
             
             <div class="fact-card">
                 <div class="fact-icon">🚇</div>
-                <div class="fact-title">Ulaşım</div>
-                <div class="fact-desc">Metro (3 hat) + tramvay + otobüs</div>
-                <div class="fact-sub">90 dk bilet 40 CZK · 24 saatlik kart 120 CZK · binişte damgala</div>
+                <div>
+                    <div class="fact-label">Ulaşım</div>
+                    <div class="fact-val">Metro (3 hat) + tramvay + otobüs</div>
+                    <div class="fact-sub">90 dk bilet 40 CZK · 24 saatlik kart 120 CZK · binişte damgala</div>
+                </div>
             </div>
             
             <div class="fact-card">
                 <div class="fact-icon">💰</div>
-                <div class="fact-title">Para Birimi</div>
-                <div class="fact-desc">Çek Kronu (CZK / Kč)</div>
-                <div class="fact-sub">Euro değil — yalnızca banka ATM&#x27;lerinden nakit çek</div>
+                <div>
+                    <div class="fact-label">Para Birimi</div>
+                    <div class="fact-val">Çek Kronu (CZK / Kč)</div>
+                    <div class="fact-sub">Euro değil — yalnızca banka ATM&#x27;lerinden nakit çek</div>
+                </div>
             </div>
             
             <div class="fact-card">
                 <div class="fact-icon">🍺</div>
-                <div class="fact-title">Bira kuralı</div>
-                <div class="fact-desc">Bira sormadan yenilenir</div>
-                <div class="fact-sub">Bardağa altlık = dur · altlık yok = devam et</div>
+                <div>
+                    <div class="fact-label">Bira kuralı</div>
+                    <div class="fact-val">Bira sormadan yenilenir</div>
+                    <div class="fact-sub">Bardağa altlık = dur · altlık yok = devam et</div>
+                </div>
             </div>
             
             </div>
@@ -750,31 +371,31 @@
         <section class="section">
             <div class="section-header">
                 <span class="section-label">Yerel Sırlar</span>
-                <h2 class="section-title">Prag İçin Yazısız Kurallar</h2>
+                <h2 class="section-title">Prag İçin 3 Yazısız Kural</h2>
             </div>
             <div class="rules-list">
                 
-            <div class="rule-item">
-                <div class="rule-num">#1</div>
-                <div class="rule-text">
-                    <strong>Çek birahanesinde biranın yenisi sormadan gelir</strong>
-                    <span>Geleneksel bir hospodada garson, biran bitmeden sormadan yenisini getirir. Bu doğru davranıştır. Durdurmak için bira bardağının üzerine bira altlığı koy. Bu sistemi bilmemek, öğleden sonra kazara altı bira içmenin en güvenilir yoludur. Çek Cumhuriyeti kişi başına bira tüketiminde dünya birincisi. Tesadüf değil.</span>
+            <div class="rule-card">
+                <div class="rule-num">1</div>
+                <div class="rule-content">
+                    <h4>Çek birahanesinde biranın yenisi sormadan gelir</h4>
+                    <p>Geleneksel bir hospodada garson, biran bitmeden sormadan yenisini getirir. Bu doğru davranıştır. Durdurmak için bira bardağının üzerine bira altlığı koy. Bu sistemi bilmemek, öğleden sonra kazara altı bira içmenin en güvenilir yoludur. Çek Cumhuriyeti kişi başına bira tüketiminde dünya birincisi. Tesadüf değil.</p>
                 </div>
             </div>
             
-            <div class="rule-item">
-                <div class="rule-num">#2</div>
-                <div class="rule-text">
-                    <strong>Tramvay sistemi olağanüstü</strong>
-                    <span>Prag, Avrupa&#x27;nın en iyi tramvay ağlarından birine sahip; tarihi merkez, Malá Strana ve kaleye giden yol dahil tüm şehri kapsayan 26 hat. Tek bir 90 dakikalık bilet (40 Çek Kronu) sınırsız aktarmayla tüm metro, tramvay ve otobüste geçerli. Biletler metro istasyonlarındaki sarı otomatlarda, her gazete bayisinde (trafika) veya PID Lítačka uygulamasından satın alınabilir. Binerken sarı makinede damgalamak zorunlu — damgalanmamış bilet geçersiz sayılır. Cezası 1.500 Çek Kronu. 24 saatlik kart (120 Çek Kronu) çoğu ziyaretçi için doğru tercih.</span>
+            <div class="rule-card">
+                <div class="rule-num">2</div>
+                <div class="rule-content">
+                    <h4>Tramvay sistemi olağanüstü</h4>
+                    <p>Prag, Avrupa&#x27;nın en iyi tramvay ağlarından birine sahip; tarihi merkez, Malá Strana ve kaleye giden yol dahil tüm şehri kapsayan 26 hat. Tek bir 90 dakikalık bilet (40 Çek Kronu) sınırsız aktarmayla tüm metro, tramvay ve otobüste geçerli. Biletler metro istasyonlarındaki sarı otomatlarda, her gazete bayisinde (trafika) veya PID Lítačka uygulamasından satın alınabilir. Binerken sarı makinede damgalamak zorunlu — damgalanmamış bilet geçersiz sayılır. Cezası 1.500 Çek Kronu. 24 saatlik kart (120 Çek Kronu) çoğu ziyaretçi için doğru tercih.</p>
                 </div>
             </div>
             
-            <div class="rule-item">
-                <div class="rule-num">#3</div>
-                <div class="rule-text">
-                    <strong>Çek Kronu — kartlar her yerde geçmez</strong>
-                    <span>Prag euro değil Çek Kronu (CZK / Kč) kullanıyor. Pek çok mahalle hospodası, pazar tezgâhı ve küçük restoran hâlâ nakit istiyor. Döviz kuru önemli: havalimanı döviz büroları şehrin en kötü kurunu sunuyor. Şehir merkezindeki banka ATM&#x27;lerinden nakit çekmek en doğrusu. Yanıp sönen tabelaları olan özel döviz bürolarını kesinlikle kullanma — kurlar hileli, masraflar gizli.</span>
+            <div class="rule-card">
+                <div class="rule-num">3</div>
+                <div class="rule-content">
+                    <h4>Çek Kronu — kartlar her yerde geçmez</h4>
+                    <p>Prag euro değil Çek Kronu (CZK / Kč) kullanıyor. Pek çok mahalle hospodası, pazar tezgâhı ve küçük restoran hâlâ nakit istiyor. Döviz kuru önemli: havalimanı döviz büroları şehrin en kötü kurunu sunuyor. Şehir merkezindeki banka ATM&#x27;lerinden nakit çekmek en doğrusu. Yanıp sönen tabelaları olan özel döviz bürolarını kesinlikle kullanma — kurlar hileli, masraflar gizli.</p>
                 </div>
             </div>
             
@@ -791,45 +412,27 @@
             </div>
             <div class="cards-grid">
                 
-            <div class="content-card">
-                <div class="card-tag">💎 GIZLI NOKTA</div>
-                <div class="card-name">Wallenstein Garden (Valdštejnská zahrada) — Malá Strana</div>
-                <div class="card-desc">Prag Kalesi&#x27;ni geride bırakacak bir bahçe isteyen askeri komutan Wallenstein için 1623–1630 yılları arasında inşa edilen bu bahçe, Orta Avrupa&#x27;nın en güzel erken Barok bahçelerinden biri. Beyaz tavus kuşları Grek tanrılarının bronz heykelleri arasında serbestçe dolaşıyor; sazan gölü, yapay sarkıtlı bir grottan duvarı ve Truva Savaşı freskolarıyla süslenmiş bir sala terrena pavyonu var. Malostranska metro çıkışının hemen arkasında. Neredeyse hiçbir turist buluyor. Giriş ücretsiz. Nisan–Ekim arası açık.</div>
+            <div class="gem-card">
+                <div class="gem-badge">Gizli Köşe</div>
+                <h4>Wallenstein Garden (Valdštejnská zahrada) — Malá Strana</h4>
+                <div class="gem-hook">Gizli Mekan</div>
+                <p>Prag Kalesi&#x27;ni geride bırakacak bir bahçe isteyen askeri komutan Wallenstein için 1623–1630 yılları arasında inşa edilen bu bahçe, Orta Avrupa&#x27;nın en güzel erken Barok bahçelerinden biri. Beyaz tavus kuşları Grek tanrılarının bronz heykelleri arasında serbestçe dolaşıyor; sazan gölü, yapay sarkıtlı bir grottan duvarı ve Truva Savaşı freskolarıyla süslenmiş bir sala terrena pavyonu var. Malostranska metro çıkışının hemen arkasında. Neredeyse hiçbir turist buluyor. Giriş ücretsiz. Nisan–Ekim arası açık.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">💎 GIZLI NOKTA</div>
-                <div class="card-name">Vyšehrad — unutulan kale</div>
-                <div class="card-desc">Turistler Prag Kalesi için kuyruk beklerken Vyšehrad, şehrin güneyinde Vltava&#x27;nın üzerindeki bir yalıçıkta oturuyor; en iyi panoramik Prag manzarasıyla 10. yüzyıldan kalma bir kale, Romanesque bir rotunda, Dvořák ve Smetana&#x27;nın gömülü olduğu Ulusal Mezarlık ve piknik yapan yerel halkla dolu bir park. Alanın kendisi tamamen ücretsiz. İçerideki St. Peter ve Paul Bazilikası bilet gerektiriyor. Alacakaranlıkta surlarda yürü ve altındaki şehri izle.</div>
+            <div class="gem-card">
+                <div class="gem-badge">Gizli Köşe</div>
+                <h4>Vyšehrad — unutulan kale</h4>
+                <div class="gem-hook">Gizli Mekan</div>
+                <p>Turistler Prag Kalesi için kuyruk beklerken Vyšehrad, şehrin güneyinde Vltava&#x27;nın üzerindeki bir yalıçıkta oturuyor; en iyi panoramik Prag manzarasıyla 10. yüzyıldan kalma bir kale, Romanesque bir rotunda, Dvořák ve Smetana&#x27;nın gömülü olduğu Ulusal Mezarlık ve piknik yapan yerel halkla dolu bir park. Alanın kendisi tamamen ücretsiz. İçerideki St. Peter ve Paul Bazilikası bilet gerektiriyor. Alacakaranlıkta surlarda yürü ve altındaki şehri izle.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">💎 GIZLI NOKTA</div>
-                <div class="card-name">Nový Svět — unutulan sokak</div>
-                <div class="card-desc">Nový Svět (&#x27;Yeni Dünya&#x27;), Hradčany&#x27;de kale duvarlarının altına gizlenmiş dar, arnavut kaldırımlı bir sokak; 14. yüzyıldan itibaren kale hizmetkarlarını barındıran küçük ortaçağ evlerinden oluşan bir sıra. Kale girişinden üç dakika uzakta ve ziyaretçilere neredeyse tamamen bilinmiyor. Günün her saatinde sakin. Kale kalabalığı gelmeden sabah erkenden, Avrupa&#x27;nın en atmosferik sokaklarından biri. Yürümek ücretsiz. Sabah 09:00&#x27;dan önce git.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">💎 GIZLI NOKTA</div>
-                <div class="card-name">Vrtba Garden (Vrtbovská zahrada) — Malá Strana</div>
-                <div class="card-desc">Karmelitská Sokağı&#x27;ndaki işaretsiz bir kapının ardında saklı olan Vrtba Bahçesi, 1720&#x27;de inşa edilmiş basamaklı bir Barok şaheser; Matyáš Bernard Braun&#x27;un heykelleri, Václav Vavřinec Reiner&#x27;in freskoları ve Prag Kalesi ile Malá Strana çatılarının en iyi manzaralarından birine açılan bir teras. Avrupa&#x27;nın ikinci en güzel tarihi bahçesi seçildi. Biletli giriş. Neredeyse kimse gitmiyor; zirve sezonda bile neredeyse ıssız bulabilirsin.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">💎 GIZLI NOKTA</div>
-                <div class="card-name">Café Imperial — Na Příkopě</div>
-                <div class="card-desc">1914&#x27;te açılan Café Imperial&#x27;ın yemek salonunun duvarları, sütunları ve tavanı el yapımı Art Nouveau seramik karolarla kaplı; Prag&#x27;da hiçbir eşdeğeri olmayan bir iç mekan. Kafka yakında çalışırdı; Einstein bir yıl Prag&#x27;da yaşadı. Kafe, kahve ve pastanın yanı sıra geleneksel Çek yemekleri de sunuyor. Daha sakin olduğu sabah ortasında git ve mekanı gereği gibi inceleyecek kadar uzun otur. Giriş ücretsiz; sadece bir şeyler söyle.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">💎 GIZLI NOKTA</div>
-                <div class="card-name">Náplavka — Vltava rıhtımı</div>
-                <div class="card-desc">Náplavka, Vltava&#x27;nın sol kıyısında Ulusal Tiyatro&#x27;nun güneyinde bir nehir rıhtımı. Gündüzleri güzel bir yürüyüş. İlkbahardan sonbahara Cuma akşamları ise bambaşka bir hal alıyor; yemek tezgahları, çiftçi pazarı, taş duvar boyunca şarap ve bira içen insanlar, zaman zaman DJ&#x27;ler, şehrin tamamı buradaymış gibi. Ücretsiz. Rezervasyon yok. Prag&#x27;ın sunduğu en iyi akşamlardan biri. Giriş ücretsiz.</div>
+            <div class="gem-card">
+                <div class="gem-badge">Gizli Köşe</div>
+                <h4>Nový Svět — unutulan sokak</h4>
+                <div class="gem-hook">Gizli Mekan</div>
+                <p>Nový Svět (&#x27;Yeni Dünya&#x27;), Hradčany&#x27;de kale duvarlarının altına gizlenmiş dar, arnavut kaldırımlı bir sokak; 14. yüzyıldan itibaren kale hizmetkarlarını barındıran küçük ortaçağ evlerinden oluşan bir sıra. Kale girişinden üç dakika uzakta ve ziyaretçilere neredeyse tamamen bilinmiyor. Günün her saatinde sakin. Kale kalabalığı gelmeden sabah erkenden, Avrupa&#x27;nın en atmosferik sokaklarından biri. Yürümek ücretsiz. Sabah 09:00&#x27;dan önce git.</p>
                 
             </div>
             
@@ -842,64 +445,31 @@
         <section class="section">
             <div class="section-header">
                 <span class="section-label">Yeme & İçme</span>
-                <h2 class="section-title">Mutlaka Tadılması Gereken Lezzetler</h2>
+                <h2 class="section-title">Mutlaka Tadılması Gerekenler</h2>
             </div>
-            <p class="intro-text">Çek mutfağı şöhretinin önerdiğinden daha ağır, daha dürüst ve daha ilginç. Hedef Michelin yıldızlı bir tatma menüsü değil. Hedef, 1950&#x27;lerden beri orada olan bir hospodada düzgün bir svíčková ya da Batı Avrupa&#x27;da bir kahvenin fiyatına aldığın fırın sosisli ekmek eşliğinde bir tabak kavrulmuş domuz.</p>
             <div class="cards-grid">
                 
-            <div class="content-card">
-                <div class="card-tag">🍴 LEZZET DURARI</div>
-                <div class="card-name">Svíčková na smetaně — ulusal yemek</div>
-                <div class="card-desc">Kök sebze krema sosunda yavaşça pişirilmiş dana bonfile; ekmek köftesi, limon, krem şanti ve kızılcık sosuyla geliyor. İyi bir svíčková hazırlanması saatler alır; sos kalın, amber renginde ve hafifçe tatlı-ekşi olmalı. Eski Şehir&#x27;den uzakta, gerçek birahanelerde ve geleneksel Çek restoranlarında en iyi versiyonlar.</div>
+            <div class="eat-card">
+                <h4>🍴 Svíčková na smetaně — ulusal yemek</h4>
+                <p>Kök sebze krema sosunda yavaşça pişirilmiş dana bonfile; ekmek köftesi, limon, krem şanti ve kızılcık sosuyla geliyor. İyi bir svíčková hazırlanması saatler alır; sos kalın, amber renginde ve hafifçe tatlı-ekşi olmalı. Eski Şehir&#x27;den uzakta, gerçek birahanelerde ve geleneksel Çek restoranlarında en iyi versiyonlar.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">🍴 LEZZET DURARI</div>
-                <div class="card-name">Gulaş — Çek usulü</div>
-                <div class="card-desc">Çek gulaşı Macar orijinalinin daha yoğun, daha koyu bir versiyonu; dana ya da domuz eti kırmızı biber ve baharatlarla saatlerce pişirilir, kalın bir sos içinde servis edilir. Yanında neredeyse zorunlu olarak ekmek köftesi (houskový knedlík) gelir. Her birahane menüsünün vazgeçilmezi. Bir kase gulaş ve bir bira; Prag&#x27;ın en iyi öğle yemeği.</div>
+            <div class="eat-card">
+                <h4>🍴 Gulaş — Çek usulü</h4>
+                <p>Çek gulaşı Macar orijinalinin daha yoğun, daha koyu bir versiyonu; dana ya da domuz eti kırmızı biber ve baharatlarla saatlerce pişirilir, kalın bir sos içinde servis edilir. Yanında neredeyse zorunlu olarak ekmek köftesi (houskový knedlík) gelir. Her birahane menüsünün vazgeçilmezi. Bir kase gulaş ve bir bira; Prag&#x27;ın en iyi öğle yemeği.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">🍴 LEZZET DURARI</div>
-                <div class="card-name">Çek birası — dünyanın en iyisi</div>
-                <div class="card-desc">Çek Cumhuriyeti, 1842&#x27;de Plzeň&#x27;de (Pilsen) Pilsner&#x27;ı icat etti. Pilsner Urquell orijinal ve hâlâ standart. Kozel tercih edilen koyu lager. Staropramen Prag&#x27;ın yerel markası. Bernard bağımsız alternatif. Çek birası doğru sıcaklıkta, doğru bardakta, zorunlu olan yoğun köpükle servis edilir. Gerçek bir hospodada yarım litre bira 40–60 CZK; neredeyse her Avrupa başkentinden ucuz.</div>
+            <div class="eat-card">
+                <h4>🍴 Çek birası — dünyanın en iyisi</h4>
+                <p>Çek Cumhuriyeti, 1842&#x27;de Plzeň&#x27;de (Pilsen) Pilsner&#x27;ı icat etti. Pilsner Urquell orijinal ve hâlâ standart. Kozel tercih edilen koyu lager. Staropramen Prag&#x27;ın yerel markası. Bernard bağımsız alternatif. Çek birası doğru sıcaklıkta, doğru bardakta, zorunlu olan yoğun köpükle servis edilir. Gerçek bir hospodada yarım litre bira 40–60 CZK; neredeyse her Avrupa başkentinden ucuz.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">🍴 LEZZET DURARI</div>
-                <div class="card-name">Trdelník — bir kez ye</div>
-                <div class="card-desc">Her turist sokağında satılan boru kek aslında geleneksel bir Çek yemeği değil; 2000&#x27;lerde Prag&#x27;ın turist simgesi haline gelmiş Macar/Slovak bir pasta. İyidir. Ama bir kez ye, tarçınlı şeker versiyonuyla (Nutella&#x27;lı değil), sonra daha ilginç bir şey bul. Gerçek Çek sokak yemeği langos (peynirli ve ekşi kremayla kızarmış hamur) ya da sokak tezgahlarından párek v rohlíku (ekmek içinde sosis).</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">🍴 LEZZET DURARI</div>
-                <div class="card-name">Kavrulmuş domuz, köfte, lahana</div>
-                <div class="card-desc">Vepřo knedlo zelo; ekmek köftesi ve lahanayla kavrulmuş domuz, ikinci ulusal standart. Basit, doyurucu ve ucuz. Domuz yağlı ve yavaş pişirilmiş olmalı, köfteler sosu emmeli, lahana her ikisini de keserek geçecek kadar keskin olmalı. Her gerçek Çek restoranında mevcut. Fotoğraf gibi görünen yerleri tercih etme; en iyi versiyonlar hiçbir zaman fotojenik değil.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">🍴 LEZZET DURARI</div>
-                <div class="card-name">Fırın ördek — sonbaharın özel yemeği</div>
-                <div class="card-desc">Pečená kachna (fırın ördek), Çek sonbahar ve kış mutfağının baş tacı. Derisi parlak ve çıtır çıtır olana kadar yavaşça pişiriliyor; kırmızı lahana, ekşi lahana ve ekmek ya da patates köftesiyle servis ediliyor. Zengin ördek yağı, keskin lahana ve sosu emen köftelerden oluşan bu kombinasyon, Orta Avrupa mutfağının en iyi tabağından biri. Yıl boyunca bulunsa da Eylül&#x27;den itibaren en iyi halinde; Çek restoranları onu mevsimlik bir baş yemek olarak öne çıkarıyor. Gerçek bir Çek restoranında söyle, turist menüsünde değil.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">🍴 LEZZET DURARI</div>
-                <div class="card-name">Moravya şarabı — gizli kalmış</div>
-                <div class="card-desc">Çekya&#x27;nın doğu bölgesi Moravya, ülke dışında neredeyse hiç bilinmeyen şaraplar üretiyor. Welschriesling, Müller-Thurgau, Grüner Veltliner, Palava; mineral, hafifçe oksidatif karakterde beyaz şaraplar. Vinohrady&#x27;nin şarap barları onları bulmak için en iyi yer. Moravské víno (Moravya şarabı) iste ve serverin seni yönlendirmesine izin ver. Vinohrady&#x27;deki bir şarap barında ev şarabının sürahisi, Paris&#x27;teki bir kadehten ucuz.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">🍴 LEZZET DURARI</div>
-                <div class="card-name">Çek kahve kültürü</div>
-                <div class="card-desc">Prag son on yılda ciddi bir üçüncü dalga kahve sahnesi geliştirdi; EMA Espresso Bar, Kavárna Místo, Můj šálek kávy ve diğerleri. Ama geleneksel Çek kafesi (kavárna) farklı ve eşit derecede değerli bir kurum: geniş, hafif soluk Art Nouveau iç mekanlar, ahşap tutamaçlı gazeteler, uzun kahve çeşitleri menüsü ve pastalar. Na Příkopě&#x27;deki Café Imperial en görkemli örnek. Her iki gelenek bir arada yaşıyor ve ikisi de yaşanmaya değer.</div>
+            <div class="eat-card">
+                <h4>🍴 Trdelník — bir kez ye</h4>
+                <p>Her turist sokağında satılan boru kek aslında geleneksel bir Çek yemeği değil; 2000&#x27;lerde Prag&#x27;ın turist simgesi haline gelmiş Macar/Slovak bir pasta. İyidir. Ama bir kez ye, tarçınlı şeker versiyonuyla (Nutella&#x27;lı değil), sonra daha ilginç bir şey bul. Gerçek Çek sokak yemeği langos (peynirli ve ekşi kremayla kızarmış hamur) ya da sokak tezgahlarından párek v rohlíku (ekmek içinde sosis).</p>
                 
             </div>
             
@@ -911,33 +481,27 @@
         
         <section class="section">
             <div class="section-header">
-                <span class="section-label">Dikkat Edilmesi Gerekenler</span>
+                <span class="section-label">Dikkat</span>
                 <h2 class="section-title">Turist Tuzakları & Kaçınılması Gerekenler</h2>
             </div>
             <div class="traps-list">
                 
             <div class="trap-card">
-                <div class="trap-bad">❌ </div>
-                <div class="trap-why">Şehrin en ünlü tuzağı: tabelada komisyon sıfır, kurda felaket. Bazı bürolar turist başına yüzde 20-30 kaybettirir.</div>
-                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Parayı ATM&#x27;den kron olarak çek (kendi bankanın kuruyla; &#x27;kendi para biriminde çek&#x27; DCC seçeneğini asla kabul etme) ya da kur karşılaştıran bilinen bürolara git.</div>
+                <div class="trap-header">
+                    <span class="trap-tag">Kaçının</span>
+                    <h4></h4>
+                </div>
+                <p>Şehrin en ünlü tuzağı: tabelada komisyon sıfır, kurda felaket. Bazı bürolar turist başına yüzde 20-30 kaybettirir.</p>
+                <div class="trap-solution"><strong>Bunun yerine yapın:</strong> Parayı ATM&#x27;den kron olarak çek (kendi bankanın kuruyla; &#x27;kendi para biriminde çek&#x27; DCC seçeneğini asla kabul etme) ya da kur karşılaştıran bilinen bürolara git.</div>
             </div>
             
             <div class="trap-card">
-                <div class="trap-bad">❌ </div>
-                <div class="trap-why">O dönen hamur turistler için pazarlanan bir icat; Çek büyükanneler trdelník yapmaz. Bir kez fotoğraf için tamam, ama Çek mutfağı bu değil.</div>
-                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Gerçek tatlı istersen koláče veya větrník dene; bir pastane (cukrárna) bul, fark hemen anlaşılır.</div>
-            </div>
-            
-            <div class="trap-card">
-                <div class="trap-bad">❌ </div>
-                <div class="trap-why">Astronomik saat manzaralı masalar astronomik hesap getirir; mutfak çoğunlukla donuk, servis aceleci.</div>
-                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Meydanı gez, yemeği Vinohrady veya Žižkov&#x27;da ye: yarı fiyata iki kat iyi svíčková.</div>
-            </div>
-            
-            <div class="trap-card">
-                <div class="trap-bad">❌ </div>
-                <div class="trap-why">Prag&#x27;ın serbest taksileri turist tarifesiyle meşhur; gece yarısı istasyon önünde pazarlık kaybedilmiş demektir.</div>
-                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Uygulama kullan (Liftago, Bolt) ya da zaten mükemmel olan tramvaya bin; gece tramvayları sabaha kadar çalışır.</div>
+                <div class="trap-header">
+                    <span class="trap-tag">Kaçının</span>
+                    <h4></h4>
+                </div>
+                <p>O dönen hamur turistler için pazarlanan bir icat; Çek büyükanneler trdelník yapmaz. Bir kez fotoğraf için tamam, ama Çek mutfağı bu değil.</p>
+                <div class="trap-solution"><strong>Bunun yerine yapın:</strong> Gerçek tatlı istersen koláče veya větrník dene; bir pastane (cukrárna) bul, fark hemen anlaşılır.</div>
             </div>
             
             </div>
@@ -959,7 +523,7 @@
         </section>
     </main>
 
-    <footer>
+    <footer class="footer">
         <div class="container">
             <p>&copy; 2026 MyWay Travel App. Tüm hakları saklıdır.</p>
         </div>

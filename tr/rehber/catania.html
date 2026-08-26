@@ -24,616 +24,233 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <link rel="icon" type="image/png" href="../../images/app_icon.png">
 
     <style>
+        
         :root {
-            --bg-dark: #0d0e15;
-            --bg-card: #161824;
-            --bg-card-hover: #1e2132;
-            --primary: #7b6ef6;
-            --primary-glow: rgba(123, 110, 246, 0.25);
-            --accent: #f59e0b;
-            --text-main: #ffffff;
-            --text-muted: #94a3b8;
-            --border: rgba(255, 255, 255, 0.08);
-            --border-hover: rgba(123, 110, 246, 0.4);
-            --green: #10b981;
-            --red: #ef4444;
-            --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-serif: 'Playfair Display', Georgia, serif;
+            --primary: #7B6EF6;
+            --primary-light: #9D93FF;
+            --primary-dark: #5B4FD6;
+            --accent: #EC4899;
+            --bg-dark: #0F0B1A;
+            --bg-section: #130F22;
+            --bg-card: rgba(255, 255, 255, 0.04);
+            --text-primary: #FFFFFF;
+            --text-secondary: #9CA3AF;
+            --text-muted: #6B7280;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --radius-sm: 12px;
+            --shadow-glow: 0 0 80px rgba(123, 110, 246, 0.15);
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            -webkit-font-smoothing: antialiased;
-        }
-
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            font-family: var(--font-sans);
-            line-height: 1.6;
-            padding-bottom: 60px;
+            background-color: var(--bg-dark); color: var(--text-primary);
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6; overflow-x: hidden;
         }
-
-        /* Navigation */
+        
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        
+        /* Navbar */
         .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: rgba(13, 14, 21, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-            height: 72px;
-            display: flex;
-            align-items: center;
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(15, 11, 26, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle); height: 72px; display: flex; align-items: center;
         }
-
         .navbar-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%;
+            display: flex; align-items: center; justify-content: space-between;
         }
-
         .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: white;
-            font-weight: 800;
-            font-size: 20px;
+            display: flex; align-items: center; gap: 12px; text-decoration: none;
+            color: #fff; font-weight: 700; font-size: 20px;
         }
-
-        .nav-brand img {
-            border-radius: 10px;
-            box-shadow: 0 4px 12px var(--primary-glow);
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-            list-style: none;
-        }
-
+        .nav-brand img { border-radius: 10px; }
+        .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
         .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            transition: color 0.2s;
+            color: var(--text-secondary); text-decoration: none; font-size: 14px;
+            font-weight: 500; transition: color 0.2s;
         }
-
-        .nav-links a:hover, .nav-links a.active {
-            color: white;
-        }
-
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        /* Modern Language Dropdown */
-        .lang-dropdown-wrapper {
-            position: relative;
-        }
-
+        .nav-links a:hover, .nav-links a.active { color: #fff; }
+        .nav-actions { display: flex; align-items: center; gap: 14px; }
+        
+        /* Globe Language Dropdown */
+        .lang-dropdown-wrapper { position: relative; }
         .lang-dropdown-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 7px 14px;
-            border-radius: 100px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: white;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
+            display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px;
+            background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s ease;
             font-family: inherit;
         }
-
-        .lang-dropdown-btn:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: var(--primary);
-        }
-
-        .lang-globe-icon {
-            width: 15px;
-            height: 15px;
-            fill: currentColor;
-        }
-
+        .lang-dropdown-btn:hover { background: rgba(255, 255, 255, 0.15); border-color: var(--primary); }
+        .lang-globe-icon { width: 15px; height: 15px; fill: currentColor; }
         .lang-dropdown-menu {
-            display: none;
-            position: absolute;
-            top: calc(100% + 8px);
-            right: 0;
-            background: #19142B;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 14px;
-            padding: 6px;
-            min-width: 130px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            z-index: 1001;
+            display: none; position: absolute; top: calc(100% + 8px); right: 0;
+            background: #19142B; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 14px;
+            padding: 6px; min-width: 130px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); z-index: 1001;
         }
-
         .lang-dropdown-wrapper:hover .lang-dropdown-menu,
         .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
+            display: flex; flex-direction: column; gap: 2px;
         }
-
         .lang-dropdown-item {
-            display: flex;
-            align-items: center;
-            padding: 8px 12px;
-            font-size: 13px;
-            font-weight: 600;
-            color: #CBD5E1;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: background 0.2s, color 0.2s;
+            display: flex; align-items: center; padding: 8px 12px; font-size: 13px; font-weight: 600;
+            color: #CBD5E1; text-decoration: none; border-radius: 8px; transition: background 0.2s, color 0.2s;
         }
-
-        .lang-dropdown-item:hover {
-            background: rgba(123, 110, 246, 0.2);
-            color: white;
-        }
-
-        .lang-dropdown-item.active {
-            background: var(--primary);
-            color: white;
-        }
+        .lang-dropdown-item:hover { background: rgba(123, 110, 246, 0.2); color: white; }
+        .lang-dropdown-item.active { background: var(--primary); color: white; }
 
         .nav-cta {
-            background: var(--primary);
-            color: white !important;
-            padding: 8px 18px;
-            border-radius: 100px;
-            font-size: 13px;
-            font-weight: 700;
-            text-decoration: none;
-            transition: transform 0.2s, box-shadow 0.2s;
+            background: var(--primary); color: #fff !important; padding: 8px 20px;
+            border-radius: 100px; font-size: 13px; font-weight: 600; text-decoration: none;
+            transition: all 0.2s ease;
         }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(123, 110, 246, 0.4); }
+        .nav-toggle { display: none; background: none; border: none; color: #fff; cursor: pointer; padding: 8px; }
 
-        .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px var(--primary-glow);
-        }
-
-        .nav-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            padding: 8px;
-        }
-
-        /* Hero */
+        /* Guide Hero */
         .guide-hero {
-            position: relative;
-            min-height: 480px;
-            display: flex;
-            align-items: flex-end;
-            padding: 120px 24px 60px;
-            background-size: cover;
-            background-position: center;
-            overflow: hidden;
+            position: relative; min-height: 440px; display: flex; align-items: flex-end;
+            padding: 120px 24px 44px; margin-top: 72px; overflow: hidden; background-color: #1A132F;
         }
-
         .guide-hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1;
-            transform: scale(1.02);
+            position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+            filter: brightness(0.65);
         }
-
         .guide-hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(13, 14, 21, 0.3) 0%, rgba(13, 14, 21, 0.85) 75%, var(--bg-dark) 100%);
-            z-index: 2;
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.4) 60%, transparent 100%);
         }
-
-        .guide-hero-content {
-            position: relative;
-            z-index: 3;
-            max-width: 900px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
+        .guide-hero-content { position: relative; z-index: 2; width: 100%; }
         .city-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 14px;
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            border-radius: 100px;
-            font-size: 13px;
-            font-weight: 700;
-            color: #cbd5e1;
-            margin-bottom: 16px;
+            display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px); padding: 6px 14px; border-radius: 99px; font-size: 13px;
+            font-weight: 600; margin-bottom: 14px; border: 1px solid rgba(255, 255, 255, 0.15);
         }
-
-        .guide-title {
-            font-size: clamp(38px, 6vw, 64px);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 12px;
-            letter-spacing: -1.5px;
+        .guide-title { font-size: clamp(32px, 6vw, 52px); font-weight: 800; line-height: 1.1; margin-bottom: 10px; }
+        .guide-tagline { font-size: 16px; color: var(--primary-light); max-width: 720px; font-weight: 500; line-height: 1.5; }
+        
+        /* Sections */
+        .section { padding: 42px 0; border-bottom: 1px solid var(--border-subtle); }
+        .section-header { margin-bottom: 24px; }
+        .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); font-weight: 700; }
+        .section-title { font-size: 24px; font-weight: 700; margin-top: 4px; }
+        
+        .intro-text { font-size: 15px; color: #D1D5DB; line-height: 1.8; margin-bottom: 20px; }
+        
+        /* Local Word */
+        .local-word-box {
+            background: rgba(123, 110, 246, 0.08); border-left: 4px solid var(--primary);
+            padding: 18px 22px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-top: 20px;
         }
-
-        .guide-tagline {
-            font-size: clamp(16px, 2.5vw, 20px);
-            color: #e2e8f0;
-            font-weight: 500;
-            max-width: 700px;
-            line-height: 1.5;
+        .word-title { font-size: 15px; color: #fff; margin-bottom: 4px; }
+        .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
+        .local-word-box p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        
+        /* Facts Grid */
+        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+        .fact-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
         }
-
-        /* Container */
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 24px;
+        .fact-icon { font-size: 24px; flex-shrink: 0; }
+        .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
+        .fact-val { font-size: 15px; font-weight: 600; color: #fff; margin: 2px 0; }
+        .fact-sub { font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
+        
+        /* Rules */
+        .rules-list { display: flex; flex-direction: column; gap: 14px; }
+        .rule-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md); padding: 20px; display: flex; gap: 16px; align-items: flex-start;
         }
-
-        .section {
-            margin-top: 56px;
+        .rule-num {
+            background: var(--primary); color: #fff; width: 32px; height: 32px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-weight: 700; flex-shrink: 0; font-size: 14px;
         }
-
-        .section-header {
-            margin-bottom: 24px;
+        .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
+        .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        
+        /* Hidden Gems & Eat Grid */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+        .gem-card, .eat-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md); padding: 22px; position: relative;
         }
-
-        .section-label {
-            font-size: 12px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--primary);
-            display: block;
-            margin-bottom: 4px;
-        }
-
-        .section-title {
-            font-size: clamp(24px, 4vw, 32px);
-            font-weight: 800;
-            letter-spacing: -0.8px;
-        }
-
-        .intro-text {
-            font-size: 17px;
-            line-height: 1.8;
-            color: #cbd5e1;
-            margin-bottom: 24px;
-        }
-
-        .highlight-box {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-left: 4px solid var(--accent);
-            padding: 22px 26px;
-            border-radius: 16px;
-            margin-top: 24px;
-        }
-
-        .highlight-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+        .gem-badge {
+            display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase;
+            color: #10B981; background: rgba(16, 185, 129, 0.12); padding: 4px 10px; border-radius: 99px;
             margin-bottom: 10px;
         }
-
-        .highlight-title {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--accent);
+        .gem-hook { font-size: 13px; color: var(--primary-light); font-style: italic; margin-bottom: 8px; }
+        .gem-card h4, .eat-card h4 { font-size: 16px; margin-bottom: 6px; }
+        .gem-card p, .eat-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        .card-tip-box {
+            margin-top: 10px; padding: 8px 12px; background: rgba(255, 255, 255, 0.04);
+            border-radius: 8px; font-size: 12px; color: #cbd5e1;
         }
-
-        .pron-badge {
-            font-size: 12px;
-            color: var(--text-muted);
-            background: rgba(255, 255, 255, 0.06);
-            padding: 3px 8px;
-            border-radius: 6px;
-        }
-
-        .word-def {
-            font-size: 15px;
-            color: #ffffff;
-            line-height: 1.6;
-            margin-bottom: 6px;
-        }
-
-        .word-context {
-            font-size: 14px;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        .facts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 16px;
-        }
-
-        .fact-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 20px;
-        }
-
-        .fact-icon {
-            font-size: 24px;
-            margin-bottom: 8px;
-        }
-
-        .fact-title {
-            font-size: 12px;
-            font-weight: 800;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 4px;
-        }
-
-        .fact-desc {
-            font-size: 16px;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 2px;
-        }
-
-        .fact-sub {
-            font-size: 12px;
-            color: var(--text-muted);
-            line-height: 1.4;
-        }
-
-        .rules-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .rule-item {
-            display: flex;
-            gap: 18px;
-            align-items: flex-start;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 22px;
-        }
-
-        .rule-num {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--primary);
-            flex-shrink: 0;
-        }
-
-        .rule-text strong {
-            display: block;
-            color: white;
-            font-size: 16px;
-            margin-bottom: 6px;
-        }
-
-        .rule-text span {
-            color: var(--text-muted);
-            font-size: 14px;
-            line-height: 1.65;
-        }
-
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 20px;
-        }
-
-        .content-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 24px;
-            transition: transform 0.2s, border-color 0.2s;
-        }
-
-        .content-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--border-hover);
-        }
-
-        .card-tag {
-            font-size: 11px;
-            font-weight: 800;
-            letter-spacing: 1px;
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
-
-        .card-name {
-            font-size: 18px;
-            font-weight: 800;
-            margin-bottom: 8px;
-            color: white;
-        }
-
-        .card-desc {
-            font-size: 14px;
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 12px;
-        }
-
-        .card-tip {
-            font-size: 13px;
-            color: #cbd5e1;
-            background: rgba(255, 255, 255, 0.04);
-            padding: 10px 14px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-        }
-
-        .traps-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
+        
+        /* Traps */
+        .traps-list { display: flex; flex-direction: column; gap: 14px; }
         .trap-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 22px;
+            background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.15);
+            border-radius: var(--radius-md); padding: 20px;
         }
-
-        .trap-bad {
-            font-size: 16px;
-            font-weight: 800;
-            color: #f87171;
-            margin-bottom: 6px;
+        .trap-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+        .trap-tag {
+            background: #EF4444; color: #fff; font-size: 11px; font-weight: 700;
+            text-transform: uppercase; padding: 2px 8px; border-radius: 6px;
         }
-
-        .trap-why {
-            font-size: 14px;
-            color: var(--text-muted);
-            margin-bottom: 12px;
-            line-height: 1.6;
+        .trap-header h4 { font-size: 16px; color: #fff; }
+        .trap-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        .trap-solution {
+            margin-top: 10px; padding: 10px 14px; background: rgba(16, 185, 129, 0.08);
+            border-left: 3px solid #10B981; border-radius: 4px; font-size: 13px; color: #D1D5DB; line-height: 1.5;
         }
-
-        .trap-good {
-            font-size: 14px;
-            color: #34d399;
-            background: rgba(16, 185, 129, 0.08);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            padding: 10px 14px;
-            border-radius: 10px;
-        }
-
+        
+        /* App CTA Banner */
         .app-cta-banner {
-            margin-top: 72px;
-            background: linear-gradient(135deg, rgba(123, 110, 246, 0.15), rgba(245, 158, 11, 0.1));
-            border: 1px solid var(--border-hover);
-            border-radius: 24px;
-            padding: 48px 32px;
-            text-align: center;
+            background: linear-gradient(135deg, rgba(123, 110, 246, 0.15), rgba(236, 72, 153, 0.1));
+            border: 1px solid rgba(157, 147, 255, 0.3); border-radius: var(--radius-lg);
+            padding: 44px 20px; text-align: center; margin: 50px 0; position: relative;
         }
-
-        .app-cta-banner h3 {
-            font-size: clamp(24px, 4vw, 32px);
-            font-weight: 800;
-            margin-bottom: 12px;
-        }
-
-        .app-cta-banner p {
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto 28px;
-            font-size: 16px;
-        }
-
-        .store-btn-row {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
+        .app-cta-banner h3 { font-size: clamp(22px, 4vw, 28px); font-weight: 800; margin-bottom: 10px; }
+        .app-cta-banner p { color: var(--text-secondary); max-width: 580px; margin: 0 auto 24px; font-size: 15px; }
+        .store-btn-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
         .store-pill-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 26px;
-            background: white;
-            color: #0f1016;
-            font-weight: 800;
-            font-size: 14px;
-            border-radius: 100px;
-            text-decoration: none;
+            display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: white;
+            color: #0f1016; font-weight: 700; font-size: 14px; border-radius: 100px; text-decoration: none;
             transition: transform 0.2s, box-shadow 0.2s;
         }
+        .store-pill-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2); }
 
-        .store-pill-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 24px rgba(255, 255, 255, 0.2);
-        }
-
-        footer {
-            border-top: 1px solid var(--border);
-            margin-top: 80px;
-            padding: 40px 24px 20px;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 14px;
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--border-subtle); padding: 40px 24px 30px;
+            color: var(--text-muted); font-size: 13px; text-align: center;
         }
 
         @media (max-width: 768px) {
-            .navbar {
-                height: 64px;
-            }
+            .navbar { height: 64px; }
             .nav-links {
-                display: none;
-                position: fixed;
-                top: 64px;
-                left: 0;
-                right: 0;
-                background: rgba(13, 14, 21, 0.98);
-                flex-direction: column;
-                padding: 24px;
-                border-bottom: 1px solid var(--border);
-                gap: 16px;
+                display: none; position: fixed; top: 64px; left: 0; right: 0;
+                background: rgba(15, 11, 26, 0.98); flex-direction: column;
+                padding: 24px; border-bottom: 1px solid var(--border-subtle); gap: 16px;
             }
-            .nav-links.active {
-                display: flex;
-            }
-            .nav-toggle {
-                display: block;
-            }
-            .guide-hero {
-                min-height: 400px;
-                padding-top: 100px;
-            }
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
-            .store-pill-btn {
-                width: 100%;
-                max-width: 280px;
-                justify-content: center;
-            }
+            .nav-links.active { display: flex; }
+            .nav-toggle { display: block; }
+            .guide-hero { min-height: 380px; padding-top: 90px; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
+
     </style>
 </head>
 <body>
@@ -693,13 +310,9 @@
             </div>
             <p class="intro-text">Catania dünyanın en aktif yanardağının eteğinde, Sicilya&#x27;nın doğu kıyısında kurulu ve bunu her gün hissettiren bir şehir. 1693 depreminde Etna her şeyi yıktı — Catanialılar kalkıp aynı lav taşından yeniden inşa etti. O kararlılık bugün hala sokakların dokusunda: siyah bazalt taş döşemeler, katedraller, aynı taştan merdivenler. La Pescheria sabah 07:00&#x27;de açılıyor ve Sicilya&#x27;nın en canlı balık pazarı bu — satıcılar bağırıyor, kalamar, kılıç balığı ve kirpi balığı buz üzerinde serilmiş. Vincenzo Bellini burada doğdu, pasta alla Norma burada icat edildi. Palermo&#x27;nun kargaşasına kıyasla biraz daha az kalabalık, biraz daha yerel — ama Sicilya enerjisinin hiçbirini kaybetmemiş.</p>
             
-        <div class="highlight-box">
-            <div class="highlight-header">
-                <div class="highlight-title">💬 Arancino</div>
-                <span class="pron-badge">🗣️ /a-ran-CI-no/</span>
-            </div>
-            <p class="word-def"><strong>Dikkat: Catania&#x27;da &#x27;arancino&#x27; — eril, sivri uçlu ve piramit şeklinde. Palermo&#x27;da &#x27;arancina&#x27; — dişil ve yuvarlak. Bu fark iki şehir arasında neredeyse siyasi bir meseledir ve Catanialılarla tartışmaya girme. İçi et ragù, bezelye ve yumurta ile dolu. Kızarmış pirinç topunun çıtır dışı, sıcak ve dolu içi. Her kafe ve fırında 1,50-3 euro — sabah kahvaltısında bile yenebilir, Catanialılar öyle yapıyor.</strong></p>
-            
+        <div class="local-word-box">
+            <div class="word-title">🗣️ Yerel Kavram: <strong>Arancino</strong> <span class="pron">(a-ran-CI-no)</span></div>
+            <p>Dikkat: Catania&#x27;da &#x27;arancino&#x27; — eril, sivri uçlu ve piramit şeklinde. Palermo&#x27;da &#x27;arancina&#x27; — dişil ve yuvarlak. Bu fark iki şehir arasında neredeyse siyasi bir meseledir ve Catanialılarla tartışmaya girme. İçi et ragù, bezelye ve yumurta ile dolu. Kızarmış pirinç topunun çıtır dışı, sıcak ve dolu içi. Her kafe ve fırında 1,50-3 euro — sabah kahvaltısında bile yenebilir, Catanialılar öyle yapıyor.</p>
         </div>
         
         </section>
@@ -715,30 +328,38 @@
                 
             <div class="fact-card">
                 <div class="fact-icon">✈️</div>
-                <div class="fact-title">Havalimanı</div>
-                <div class="fact-desc">CTA — Catania Fontanarossa</div>
-                <div class="fact-sub">Alibus 4€ · merkeze 20-25 dk · taksi ~20-25€</div>
+                <div>
+                    <div class="fact-label">Havalimanı</div>
+                    <div class="fact-val">CTA — Catania Fontanarossa</div>
+                    <div class="fact-sub">Alibus 4€ · merkeze 20-25 dk · taksi ~20-25€</div>
+                </div>
             </div>
             
             <div class="fact-card">
                 <div class="fact-icon">🚌</div>
-                <div class="fact-title">Şehir içi</div>
-                <div class="fact-desc">AMT otobüs + tek hat metro</div>
-                <div class="fact-sub">Bilet 1€ (90 dk) · Etna otobüsü AST 6,60€ gidiş-dönüş</div>
+                <div>
+                    <div class="fact-label">Şehir içi</div>
+                    <div class="fact-val">AMT otobüs + tek hat metro</div>
+                    <div class="fact-sub">Bilet 1€ (90 dk) · Etna otobüsü AST 6,60€ gidiş-dönüş</div>
+                </div>
             </div>
             
             <div class="fact-card">
                 <div class="fact-icon">🌡️</div>
-                <div class="fact-title">Hava</div>
-                <div class="fact-desc">Akdeniz — yaz sıcak, Etna her zaman var</div>
-                <div class="fact-sub">Nis–Haz ve Eyl–Eki ideal · Tem–Ağu çok sıcak · Ara–Şub ılık</div>
+                <div>
+                    <div class="fact-label">Hava</div>
+                    <div class="fact-val">Akdeniz — yaz sıcak, Etna her zaman var</div>
+                    <div class="fact-sub">Nis–Haz ve Eyl–Eki ideal · Tem–Ağu çok sıcak · Ara–Şub ılık</div>
+                </div>
             </div>
             
             <div class="fact-card">
                 <div class="fact-icon">🍊</div>
-                <div class="fact-title">Yemek</div>
-                <div class="fact-desc">Arancino, granita e brioche, pasta alla Norma</div>
-                <div class="fact-sub">Sokak yemeği 1,50-5€ · trattoria öğle 10-15€ · taze balık 12-25€</div>
+                <div>
+                    <div class="fact-label">Yemek</div>
+                    <div class="fact-val">Arancino, granita e brioche, pasta alla Norma</div>
+                    <div class="fact-sub">Sokak yemeği 1,50-5€ · trattoria öğle 10-15€ · taze balık 12-25€</div>
+                </div>
             </div>
             
             </div>
@@ -750,31 +371,31 @@
         <section class="section">
             <div class="section-header">
                 <span class="section-label">Yerel Sırlar</span>
-                <h2 class="section-title">Catania İçin Yazısız Kurallar</h2>
+                <h2 class="section-title">Catania İçin 3 Yazısız Kural</h2>
             </div>
             <div class="rules-list">
                 
-            <div class="rule-item">
-                <div class="rule-num">#1</div>
-                <div class="rule-text">
-                    <strong>La Pescheria&#x27;ya sabah 07:00&#x27;de git — Pazar günü kapalı</strong>
-                    <span>Catania&#x27;nın balık pazarı La Pescheria, Piazza del Duomo&#x27;nun hemen arkasında sabah 06:00-13:00 arası işliyor, Pazar günü kapalı. 07:00-09:00 arası hem tezgahlar en dolu hem kalabalık henüz tolere edilebilir. Kalamar, kılıç balığı, ahtapot, kirpi balığı — satıcılar Sicilya diyalektiyle bağırıyor, buz üzerinde her şey serilmiş. Dil bilmesen bile anlarsın. Bu pazarı görmeden Catania eksik kalır.</span>
+            <div class="rule-card">
+                <div class="rule-num">1</div>
+                <div class="rule-content">
+                    <h4>La Pescheria&#x27;ya sabah 07:00&#x27;de git — Pazar günü kapalı</h4>
+                    <p>Catania&#x27;nın balık pazarı La Pescheria, Piazza del Duomo&#x27;nun hemen arkasında sabah 06:00-13:00 arası işliyor, Pazar günü kapalı. 07:00-09:00 arası hem tezgahlar en dolu hem kalabalık henüz tolere edilebilir. Kalamar, kılıç balığı, ahtapot, kirpi balığı — satıcılar Sicilya diyalektiyle bağırıyor, buz üzerinde her şey serilmiş. Dil bilmesen bile anlarsın. Bu pazarı görmeden Catania eksik kalır.</p>
                 </div>
             </div>
             
-            <div class="rule-item">
-                <div class="rule-num">#2</div>
-                <div class="rule-text">
-                    <strong>Etna için sabah 08:15 otobüsünü kaçırma — günün tek seferi</strong>
-                    <span>AST otobüsü Piazza Giovanni XXIII&#x27;ten (Catania Centrale&#x27;nin hemen yanı) Etna&#x27;nın güney tarafındaki Rifugio Sapienza&#x27;ya sabah 08:15&#x27;te kalkıyor, dönüşü 16:30&#x27;da. Gidiş-dönüş 6,60 euro. Bu otobüsü kaçırırsan aynı günün geri kalanında Etna&#x27;ya otobüsle çıkman mümkün değil. Teleferikle 2.500 metreye çıkış ayrıca yaklaşık 50 euro. Şapka, güneş kremi ve mont şart — zirveye yakın hava çok soğuk.</span>
+            <div class="rule-card">
+                <div class="rule-num">2</div>
+                <div class="rule-content">
+                    <h4>Etna için sabah 08:15 otobüsünü kaçırma — günün tek seferi</h4>
+                    <p>AST otobüsü Piazza Giovanni XXIII&#x27;ten (Catania Centrale&#x27;nin hemen yanı) Etna&#x27;nın güney tarafındaki Rifugio Sapienza&#x27;ya sabah 08:15&#x27;te kalkıyor, dönüşü 16:30&#x27;da. Gidiş-dönüş 6,60 euro. Bu otobüsü kaçırırsan aynı günün geri kalanında Etna&#x27;ya otobüsle çıkman mümkün değil. Teleferikle 2.500 metreye çıkış ayrıca yaklaşık 50 euro. Şapka, güneş kremi ve mont şart — zirveye yakın hava çok soğuk.</p>
                 </div>
             </div>
             
-            <div class="rule-item">
-                <div class="rule-num">#3</div>
-                <div class="rule-text">
-                    <strong>Granita e brioche ile güne başla — bu konuda Sicilya&#x27;yı dinle</strong>
-                    <span>Catania&#x27;da sabah kahvaltısı ne çay ne Türk kahvesi: yarı donmuş granita ve tereyağlı brioche. Granita — badem, antep fıstığı, limon, dut veya kahve — sıcak brioşun içine ya da yanına. Her kafe sabah 07:00-10:00 arası sunuyor, 3-5 euro. Badem granita Catania&#x27;nın klasiği — ilk gün bunu denedin mi, o sabahtaki Catania&#x27;yı anlarsın.</span>
+            <div class="rule-card">
+                <div class="rule-num">3</div>
+                <div class="rule-content">
+                    <h4>Granita e brioche ile güne başla — bu konuda Sicilya&#x27;yı dinle</h4>
+                    <p>Catania&#x27;da sabah kahvaltısı ne çay ne Türk kahvesi: yarı donmuş granita ve tereyağlı brioche. Granita — badem, antep fıstığı, limon, dut veya kahve — sıcak brioşun içine ya da yanına. Her kafe sabah 07:00-10:00 arası sunuyor, 3-5 euro. Badem granita Catania&#x27;nın klasiği — ilk gün bunu denedin mi, o sabahtaki Catania&#x27;yı anlarsın.</p>
                 </div>
             </div>
             
@@ -791,45 +412,27 @@
             </div>
             <div class="cards-grid">
                 
-            <div class="content-card">
-                <div class="card-tag">💎 GIZLI NOKTA</div>
-                <div class="card-name">Etna</div>
-                <div class="card-desc">AST otobüsüyle güneyden Rifugio Sapienza&#x27;ya (1.910 metre), oradan teleferikle 2.500 metreye (~50€). Aktif kraterler 3.320 metrede — orası için lisanslı rehber zorunlu, tek başına giriş yasak. Ama 2.500 metredeki manzara bile nefes kesiyor: önde Catania ve Sicilya kıyısı, yanda lav alanları. Sabah 08:15 otobüsunu kaçırma — günün tek seferi bu.</div>
+            <div class="gem-card">
+                <div class="gem-badge">Gizli Köşe</div>
+                <h4>Etna</h4>
+                <div class="gem-hook">Gizli Mekan</div>
+                <p>AST otobüsüyle güneyden Rifugio Sapienza&#x27;ya (1.910 metre), oradan teleferikle 2.500 metreye (~50€). Aktif kraterler 3.320 metrede — orası için lisanslı rehber zorunlu, tek başına giriş yasak. Ama 2.500 metredeki manzara bile nefes kesiyor: önde Catania ve Sicilya kıyısı, yanda lav alanları. Sabah 08:15 otobüsunu kaçırma — günün tek seferi bu.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">💎 GIZLI NOKTA</div>
-                <div class="card-name">La Pescheria</div>
-                <div class="card-desc">Piazza del Duomo&#x27;nun hemen arkasındaki merdivenlerden aşağı inince La Pescheria başlıyor. Sabah 06:00-13:00, Pazar kapalı. Kalamar, kirpi balığı, kılıç balığı, ahtapot — satıcılar Sicilya diyalektiyle bağırıyor, buz üzerinde her şey serilmiş. Fotoğraf çekmeden önce izin iste — çoğu satıcı mutlu oluyor. Pazarı çevreleyen trattorialarda öğle yemeği hem taze hem ucuz.</div>
+            <div class="gem-card">
+                <div class="gem-badge">Gizli Köşe</div>
+                <h4>La Pescheria</h4>
+                <div class="gem-hook">Gizli Mekan</div>
+                <p>Piazza del Duomo&#x27;nun hemen arkasındaki merdivenlerden aşağı inince La Pescheria başlıyor. Sabah 06:00-13:00, Pazar kapalı. Kalamar, kirpi balığı, kılıç balığı, ahtapot — satıcılar Sicilya diyalektiyle bağırıyor, buz üzerinde her şey serilmiş. Fotoğraf çekmeden önce izin iste — çoğu satıcı mutlu oluyor. Pazarı çevreleyen trattorialarda öğle yemeği hem taze hem ucuz.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">💎 GIZLI NOKTA</div>
-                <div class="card-name">Teatro Massimo Bellini ve Via Crociferi</div>
-                <div class="card-desc">Vincenzo Bellini (1801-1835) Catania&#x27;da doğdu ve en ünlü operası Norma burada sahnelendi. Teatro Massimo Bellini hem opera evi hem müze — içi görülmeye değer. Via Crociferi ise şehrin en güzel Barok sokağı: yan yana dört kilise, lav taşı döşeli dar yol, sarmaşıklar. Sabah erkenden neredeyse boş. Sant&#x27;Benedetto Manastırı bu sokakta — içi görkemli ve az kalabalık.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">💎 GIZLI NOKTA</div>
-                <div class="card-name">Aci Trezza ve Aci Castello</div>
-                <div class="card-desc">Catania&#x27;dan 15-20 dakika otobüsle, ama başka bir dünyaya geliyor gibi hissettiriyor. Aci Trezza&#x27;da Kyklopların taşı olarak bilinen siyah bazalt kayalıklar denizden yükseliyor — Homer&#x27;in Odysseia&#x27;sında Polyphemos&#x27;un Odysseus&#x27;a fırlattığı taşlar bunlar. Küçük balıkçı köyü, akşam güneşi ve inanılmaz taze balık trattorialar. Aci Castello&#x27;da Norman kalesi doğrudan kayalığın üstünde, denize uzanıyor. İkisi birlikte tam bir gün ediyor.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">💎 GIZLI NOKTA</div>
-                <div class="card-name">Piazza Stesicoro — Roma Amfitiyatrosu kalıntıları</div>
-                <div class="card-desc">Via Etnea üzerinde, Piazza Stesicoro&#x27;nun ortasında, kaldırımın altında görünen Roma amfitiyatrosu kalıntıları. Koruma kafesi arkasında, açıkta, ücretsiz. 2. yüzyıldan kalma ve yaklaşık 15.000 kişi kapasiteli olduğu düşünülüyor. Yanındaki Belvedere&#x27;den Etna ile aynı karede. Şehrin üzerine inşa edildiği tarihin en somut kanıtı.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">💎 GIZLI NOKTA</div>
-                <div class="card-name">Etna eteğindeki kan portakalı bahçeleri</div>
-                <div class="card-desc">Catania çevresinde Etna&#x27;nın volkanik, mineral açısından zengin toprakları dünyanın en iyi kan portakallarını yetiştiriyor. Kasım-Mart arası pazarlarda taze sıkılmış kan portakalı suyu 1-2 euro. Rengi koyu kırmızı ve şarap tonlarında, tadı derin ve karmaşık. Etna&#x27;nın güney yamacındaki köyler (Zafferana Etnea, Viagrande) bu bahçelerin içinde — araçla Etna yolunda uğranabilir.</div>
+            <div class="gem-card">
+                <div class="gem-badge">Gizli Köşe</div>
+                <h4>Teatro Massimo Bellini ve Via Crociferi</h4>
+                <div class="gem-hook">Gizli Mekan</div>
+                <p>Vincenzo Bellini (1801-1835) Catania&#x27;da doğdu ve en ünlü operası Norma burada sahnelendi. Teatro Massimo Bellini hem opera evi hem müze — içi görülmeye değer. Via Crociferi ise şehrin en güzel Barok sokağı: yan yana dört kilise, lav taşı döşeli dar yol, sarmaşıklar. Sabah erkenden neredeyse boş. Sant&#x27;Benedetto Manastırı bu sokakta — içi görkemli ve az kalabalık.</p>
                 
             </div>
             
@@ -842,50 +445,31 @@
         <section class="section">
             <div class="section-header">
                 <span class="section-label">Yeme & İçme</span>
-                <h2 class="section-title">Mutlaka Tadılması Gereken Lezzetler</h2>
+                <h2 class="section-title">Mutlaka Tadılması Gerekenler</h2>
             </div>
-            <p class="intro-text">Catania&#x27;nın mutfağı Palermo&#x27;ya kıyasla biraz daha incelikli ama aynı derecede cömert ve kendine güvenli. Sokak yemeği sabahın işi, taze balık öğlenin, Bellini&#x27;nin akşamının makarnası.</p>
             <div class="cards-grid">
                 
-            <div class="content-card">
-                <div class="card-tag">🍴 LEZZET DURARI</div>
-                <div class="card-name">Granita e brioche</div>
-                <div class="card-desc">Sicilya&#x27;nın en özgün sabah geleneği ve Catania&#x27;nın kahvaltı ritüeli. Yarı donmuş granita — badem, antep fıstığı, limon, çilek veya dut — sıcak tereyağlı brioşun içine veya yanına. Sabah 07:00-10:00 arası her kafede taze. Badem granita Catania&#x27;nın klasiği; Caffè del Duomo veya Via Etnea üzerindeki kafelerden 3-5 euro.</div>
+            <div class="eat-card">
+                <h4>🍴 Granita e brioche</h4>
+                <p>Sicilya&#x27;nın en özgün sabah geleneği ve Catania&#x27;nın kahvaltı ritüeli. Yarı donmuş granita — badem, antep fıstığı, limon, çilek veya dut — sıcak tereyağlı brioşun içine veya yanına. Sabah 07:00-10:00 arası her kafede taze. Badem granita Catania&#x27;nın klasiği; Caffè del Duomo veya Via Etnea üzerindeki kafelerden 3-5 euro.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">🍴 LEZZET DURARI</div>
-                <div class="card-name">Arancino</div>
-                <div class="card-desc">Catania&#x27;nın sivri uçlu, piramit şeklinde kızarmış pirinç topu — içi et ragù, bezelye ve yumurta ile dolu. Her kafe ve fırında 1,50-3 euro. Sabah kahvaltısında, öğle arası veya yürürken yenebilir. Burada adı arancino, eril ve sivri — &#x27;arancina&#x27; dersen Palermo ile karıştırmış olursun.</div>
+            <div class="eat-card">
+                <h4>🍴 Arancino</h4>
+                <p>Catania&#x27;nın sivri uçlu, piramit şeklinde kızarmış pirinç topu — içi et ragù, bezelye ve yumurta ile dolu. Her kafe ve fırında 1,50-3 euro. Sabah kahvaltısında, öğle arası veya yürürken yenebilir. Burada adı arancino, eril ve sivri — &#x27;arancina&#x27; dersen Palermo ile karıştırmış olursun.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">🍴 LEZZET DURARI</div>
-                <div class="card-name">Pasta alla Norma</div>
-                <div class="card-desc">Catania&#x27;nın icat edip İtalya&#x27;nın sahiplendiği makarna. Taze kızarmış patlıcan, yoğun domates sosu, tuzlu ricotta rendesi ve fesleğen. Malzeme kalitesi her şeyi belirliyor — ısıtılmış patlıcan veya yaşlı ricottayla yapılanı hayal kırıklığı. Via Crociferi çevresi ve Piazza del Duomo&#x27;nun arka sokaklarındaki trattorialarda 8-12 euro.</div>
+            <div class="eat-card">
+                <h4>🍴 Pasta alla Norma</h4>
+                <p>Catania&#x27;nın icat edip İtalya&#x27;nın sahiplendiği makarna. Taze kızarmış patlıcan, yoğun domates sosu, tuzlu ricotta rendesi ve fesleğen. Malzeme kalitesi her şeyi belirliyor — ısıtılmış patlıcan veya yaşlı ricottayla yapılanı hayal kırıklığı. Via Crociferi çevresi ve Piazza del Duomo&#x27;nun arka sokaklarındaki trattorialarda 8-12 euro.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">🍴 LEZZET DURARI</div>
-                <div class="card-name">Taze balık — La Pescheria&#x27;dan sofraya</div>
-                <div class="card-desc">La Pescheria çevresindeki küçük trattorialarda öğle yemeği hem tazesi hem en ucuzu. Kılıç balığı (pesce spada) Catania&#x27;nın sembolü — Akdeniz&#x27;in bu sularında yetişen en lezzetli türlerden biri. Ahtapot, midye, kirpi balığı da bolca var. 12-20 euro arası deniz ürünleri porsiyonu. Öğle vakti git — akşama kadar taze stok tükeniyor.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">🍴 LEZZET DURARI</div>
-                <div class="card-name">Scacciata ve pizzolo</div>
-                <div class="card-desc">Catania&#x27;nın kendine özgü, Palermo&#x27;da rastlamayacağın sokak yemeği. Scacciata: iki kat hamur arasına lahana ve sosis veya patates ve peynir doldurulup fırınlanan kapalı pide. Pizzolo: Catania&#x27;nın çift katlı taş fırın pizzası. Her ikisi de hem öğle hem akşam için. Küçük fırın ve rosticceria&#x27;larda 3-6 euro.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">🍴 LEZZET DURARI</div>
-                <div class="card-name">Cannolo ve cassata</div>
-                <div class="card-desc">Sicilya tatlı mirası Catania&#x27;da en iyi halinde. Cannolo: kızarmış hamur tüpü, taze ricotta dolgu, şekerlenmiş meyve ve antep fıstığı. Cassata: pandispanya, ricotta kreması, yeşil badem ezmesi ve şekerlenmiş meyve. İkisinde de kritik nokta taze ricotta — dünden kalma ricottayla yapılanı alma. Pasticceria Savia, Via Etnea&#x27;da, 1897&#x27;den beri aynı yerde. 2-4 euro.</div>
+            <div class="eat-card">
+                <h4>🍴 Taze balık — La Pescheria&#x27;dan sofraya</h4>
+                <p>La Pescheria çevresindeki küçük trattorialarda öğle yemeği hem tazesi hem en ucuzu. Kılıç balığı (pesce spada) Catania&#x27;nın sembolü — Akdeniz&#x27;in bu sularında yetişen en lezzetli türlerden biri. Ahtapot, midye, kirpi balığı da bolca var. 12-20 euro arası deniz ürünleri porsiyonu. Öğle vakti git — akşama kadar taze stok tükeniyor.</p>
                 
             </div>
             
@@ -897,33 +481,27 @@
         
         <section class="section">
             <div class="section-header">
-                <span class="section-label">Dikkat Edilmesi Gerekenler</span>
+                <span class="section-label">Dikkat</span>
                 <h2 class="section-title">Turist Tuzakları & Kaçınılması Gerekenler</h2>
             </div>
             <div class="traps-list">
                 
             <div class="trap-card">
-                <div class="trap-bad">❌ </div>
-                <div class="trap-why">Meydanda broşür sallayan &#x27;tur satıcıları&#x27; vasat bir minibüs gezisini zirve turu diye satar; krater bölgesine yetkisiz çıkış ayrıca tehlikelidir.</div>
-                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Etna&#x27;yı ya teleferik + yetkili rehberle ya da bilinen operatörlerin gündoğumu/günbatımı turlarıyla yap; dağ ciddiyet ister.</div>
+                <div class="trap-header">
+                    <span class="trap-tag">Kaçının</span>
+                    <h4></h4>
+                </div>
+                <p>Meydanda broşür sallayan &#x27;tur satıcıları&#x27; vasat bir minibüs gezisini zirve turu diye satar; krater bölgesine yetkisiz çıkış ayrıca tehlikelidir.</p>
+                <div class="trap-solution"><strong>Bunun yerine yapın:</strong> Etna&#x27;yı ya teleferik + yetkili rehberle ya da bilinen operatörlerin gündoğumu/günbatımı turlarıyla yap; dağ ciddiyet ister.</div>
             </div>
             
             <div class="trap-card">
-                <div class="trap-bad">❌ </div>
-                <div class="trap-why">Pazarın etrafındaki bazı restoranlar &#x27;taze balık&#x27; diyip kilo fiyatını sonradan açıklar; hesap sürpriz olur.</div>
-                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Tartıyı ve fiyatı sipariş etmeden sor; ya da pazarın kendi tezgahlarından alıp pişirten küçük lokantaları seç.</div>
-            </div>
-            
-            <div class="trap-card">
-                <div class="trap-bad">❌ </div>
-                <div class="trap-why">Kıyı yolu ve Taormina otoparkları yaz öğleninde kilitlenir; teras kasabası selfie kuyruğuna döner.</div>
-                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Taormina&#x27;ya sabah ilk trenle git ya da akşamüstü çık; öğlen saatlerini Catania&#x27;nın gölgeli avlularına sakla.</div>
-            </div>
-            
-            <div class="trap-card">
-                <div class="trap-bad">❌ </div>
-                <div class="trap-why">Endüstriyel şuruplu &#x27;granita&#x27; bu şehre hakarettir; gerçeği el yapımıdır ve sabah taze çekilir.</div>
-                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Köklü pastanelerde iç (badem + kahve karışımı dene), yanında sıcak brioche col tuppo — Catania kahvaltısının anayasası.</div>
+                <div class="trap-header">
+                    <span class="trap-tag">Kaçının</span>
+                    <h4></h4>
+                </div>
+                <p>Pazarın etrafındaki bazı restoranlar &#x27;taze balık&#x27; diyip kilo fiyatını sonradan açıklar; hesap sürpriz olur.</p>
+                <div class="trap-solution"><strong>Bunun yerine yapın:</strong> Tartıyı ve fiyatı sipariş etmeden sor; ya da pazarın kendi tezgahlarından alıp pişirten küçük lokantaları seç.</div>
             </div>
             
             </div>
@@ -945,7 +523,7 @@
         </section>
     </main>
 
-    <footer>
+    <footer class="footer">
         <div class="container">
             <p>&copy; 2026 MyWay Travel App. Tüm hakları saklıdır.</p>
         </div>

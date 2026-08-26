@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saint-Tropez City Guide & Smart Walking Routes | MyWay</title>
+    <title>Saint-Tropez Travel Guide & Smart Walking Routes | MyWay</title>
     <meta name="description" content="Explore Saint-Tropez with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
     
     <link rel="alternate" hreflang="en" href="/guides/saint_tropez.html">
@@ -24,616 +24,233 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <link rel="icon" type="image/png" href="../images/app_icon.png">
 
     <style>
+        
         :root {
-            --bg-dark: #0d0e15;
-            --bg-card: #161824;
-            --bg-card-hover: #1e2132;
-            --primary: #7b6ef6;
-            --primary-glow: rgba(123, 110, 246, 0.25);
-            --accent: #f59e0b;
-            --text-main: #ffffff;
-            --text-muted: #94a3b8;
-            --border: rgba(255, 255, 255, 0.08);
-            --border-hover: rgba(123, 110, 246, 0.4);
-            --green: #10b981;
-            --red: #ef4444;
-            --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-serif: 'Playfair Display', Georgia, serif;
+            --primary: #7B6EF6;
+            --primary-light: #9D93FF;
+            --primary-dark: #5B4FD6;
+            --accent: #EC4899;
+            --bg-dark: #0F0B1A;
+            --bg-section: #130F22;
+            --bg-card: rgba(255, 255, 255, 0.04);
+            --text-primary: #FFFFFF;
+            --text-secondary: #9CA3AF;
+            --text-muted: #6B7280;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --radius-sm: 12px;
+            --shadow-glow: 0 0 80px rgba(123, 110, 246, 0.15);
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            -webkit-font-smoothing: antialiased;
-        }
-
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            font-family: var(--font-sans);
-            line-height: 1.6;
-            padding-bottom: 60px;
+            background-color: var(--bg-dark); color: var(--text-primary);
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6; overflow-x: hidden;
         }
-
-        /* Navigation */
+        
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        
+        /* Navbar */
         .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: rgba(13, 14, 21, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-            height: 72px;
-            display: flex;
-            align-items: center;
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(15, 11, 26, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle); height: 72px; display: flex; align-items: center;
         }
-
         .navbar-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%;
+            display: flex; align-items: center; justify-content: space-between;
         }
-
         .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: white;
-            font-weight: 800;
-            font-size: 20px;
+            display: flex; align-items: center; gap: 12px; text-decoration: none;
+            color: #fff; font-weight: 700; font-size: 20px;
         }
-
-        .nav-brand img {
-            border-radius: 10px;
-            box-shadow: 0 4px 12px var(--primary-glow);
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-            list-style: none;
-        }
-
+        .nav-brand img { border-radius: 10px; }
+        .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
         .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            transition: color 0.2s;
+            color: var(--text-secondary); text-decoration: none; font-size: 14px;
+            font-weight: 500; transition: color 0.2s;
         }
-
-        .nav-links a:hover, .nav-links a.active {
-            color: white;
-        }
-
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        /* Modern Language Dropdown */
-        .lang-dropdown-wrapper {
-            position: relative;
-        }
-
+        .nav-links a:hover, .nav-links a.active { color: #fff; }
+        .nav-actions { display: flex; align-items: center; gap: 14px; }
+        
+        /* Globe Language Dropdown */
+        .lang-dropdown-wrapper { position: relative; }
         .lang-dropdown-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 7px 14px;
-            border-radius: 100px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: white;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
+            display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px;
+            background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s ease;
             font-family: inherit;
         }
-
-        .lang-dropdown-btn:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: var(--primary);
-        }
-
-        .lang-globe-icon {
-            width: 15px;
-            height: 15px;
-            fill: currentColor;
-        }
-
+        .lang-dropdown-btn:hover { background: rgba(255, 255, 255, 0.15); border-color: var(--primary); }
+        .lang-globe-icon { width: 15px; height: 15px; fill: currentColor; }
         .lang-dropdown-menu {
-            display: none;
-            position: absolute;
-            top: calc(100% + 8px);
-            right: 0;
-            background: #19142B;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 14px;
-            padding: 6px;
-            min-width: 130px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            z-index: 1001;
+            display: none; position: absolute; top: calc(100% + 8px); right: 0;
+            background: #19142B; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 14px;
+            padding: 6px; min-width: 130px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); z-index: 1001;
         }
-
         .lang-dropdown-wrapper:hover .lang-dropdown-menu,
         .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
+            display: flex; flex-direction: column; gap: 2px;
         }
-
         .lang-dropdown-item {
-            display: flex;
-            align-items: center;
-            padding: 8px 12px;
-            font-size: 13px;
-            font-weight: 600;
-            color: #CBD5E1;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: background 0.2s, color 0.2s;
+            display: flex; align-items: center; padding: 8px 12px; font-size: 13px; font-weight: 600;
+            color: #CBD5E1; text-decoration: none; border-radius: 8px; transition: background 0.2s, color 0.2s;
         }
-
-        .lang-dropdown-item:hover {
-            background: rgba(123, 110, 246, 0.2);
-            color: white;
-        }
-
-        .lang-dropdown-item.active {
-            background: var(--primary);
-            color: white;
-        }
+        .lang-dropdown-item:hover { background: rgba(123, 110, 246, 0.2); color: white; }
+        .lang-dropdown-item.active { background: var(--primary); color: white; }
 
         .nav-cta {
-            background: var(--primary);
-            color: white !important;
-            padding: 8px 18px;
-            border-radius: 100px;
-            font-size: 13px;
-            font-weight: 700;
-            text-decoration: none;
-            transition: transform 0.2s, box-shadow 0.2s;
+            background: var(--primary); color: #fff !important; padding: 8px 20px;
+            border-radius: 100px; font-size: 13px; font-weight: 600; text-decoration: none;
+            transition: all 0.2s ease;
         }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(123, 110, 246, 0.4); }
+        .nav-toggle { display: none; background: none; border: none; color: #fff; cursor: pointer; padding: 8px; }
 
-        .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px var(--primary-glow);
-        }
-
-        .nav-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            padding: 8px;
-        }
-
-        /* Hero */
+        /* Guide Hero */
         .guide-hero {
-            position: relative;
-            min-height: 480px;
-            display: flex;
-            align-items: flex-end;
-            padding: 120px 24px 60px;
-            background-size: cover;
-            background-position: center;
-            overflow: hidden;
+            position: relative; min-height: 440px; display: flex; align-items: flex-end;
+            padding: 120px 24px 44px; margin-top: 72px; overflow: hidden; background-color: #1A132F;
         }
-
         .guide-hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1;
-            transform: scale(1.02);
+            position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+            filter: brightness(0.65);
         }
-
         .guide-hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(13, 14, 21, 0.3) 0%, rgba(13, 14, 21, 0.85) 75%, var(--bg-dark) 100%);
-            z-index: 2;
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.4) 60%, transparent 100%);
         }
-
-        .guide-hero-content {
-            position: relative;
-            z-index: 3;
-            max-width: 900px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
+        .guide-hero-content { position: relative; z-index: 2; width: 100%; }
         .city-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 14px;
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            border-radius: 100px;
-            font-size: 13px;
-            font-weight: 700;
-            color: #cbd5e1;
-            margin-bottom: 16px;
+            display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px); padding: 6px 14px; border-radius: 99px; font-size: 13px;
+            font-weight: 600; margin-bottom: 14px; border: 1px solid rgba(255, 255, 255, 0.15);
         }
-
-        .guide-title {
-            font-size: clamp(38px, 6vw, 64px);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 12px;
-            letter-spacing: -1.5px;
+        .guide-title { font-size: clamp(32px, 6vw, 52px); font-weight: 800; line-height: 1.1; margin-bottom: 10px; }
+        .guide-tagline { font-size: 16px; color: var(--primary-light); max-width: 720px; font-weight: 500; line-height: 1.5; }
+        
+        /* Sections */
+        .section { padding: 42px 0; border-bottom: 1px solid var(--border-subtle); }
+        .section-header { margin-bottom: 24px; }
+        .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); font-weight: 700; }
+        .section-title { font-size: 24px; font-weight: 700; margin-top: 4px; }
+        
+        .intro-text { font-size: 15px; color: #D1D5DB; line-height: 1.8; margin-bottom: 20px; }
+        
+        /* Local Word */
+        .local-word-box {
+            background: rgba(123, 110, 246, 0.08); border-left: 4px solid var(--primary);
+            padding: 18px 22px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-top: 20px;
         }
-
-        .guide-tagline {
-            font-size: clamp(16px, 2.5vw, 20px);
-            color: #e2e8f0;
-            font-weight: 500;
-            max-width: 700px;
-            line-height: 1.5;
+        .word-title { font-size: 15px; color: #fff; margin-bottom: 4px; }
+        .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
+        .local-word-box p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        
+        /* Facts Grid */
+        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+        .fact-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
         }
-
-        /* Container */
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 24px;
+        .fact-icon { font-size: 24px; flex-shrink: 0; }
+        .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
+        .fact-val { font-size: 15px; font-weight: 600; color: #fff; margin: 2px 0; }
+        .fact-sub { font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
+        
+        /* Rules */
+        .rules-list { display: flex; flex-direction: column; gap: 14px; }
+        .rule-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md); padding: 20px; display: flex; gap: 16px; align-items: flex-start;
         }
-
-        .section {
-            margin-top: 56px;
+        .rule-num {
+            background: var(--primary); color: #fff; width: 32px; height: 32px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-weight: 700; flex-shrink: 0; font-size: 14px;
         }
-
-        .section-header {
-            margin-bottom: 24px;
+        .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
+        .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        
+        /* Hidden Gems & Eat Grid */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+        .gem-card, .eat-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md); padding: 22px; position: relative;
         }
-
-        .section-label {
-            font-size: 12px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--primary);
-            display: block;
-            margin-bottom: 4px;
-        }
-
-        .section-title {
-            font-size: clamp(24px, 4vw, 32px);
-            font-weight: 800;
-            letter-spacing: -0.8px;
-        }
-
-        .intro-text {
-            font-size: 17px;
-            line-height: 1.8;
-            color: #cbd5e1;
-            margin-bottom: 24px;
-        }
-
-        .highlight-box {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-left: 4px solid var(--accent);
-            padding: 22px 26px;
-            border-radius: 16px;
-            margin-top: 24px;
-        }
-
-        .highlight-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+        .gem-badge {
+            display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase;
+            color: #10B981; background: rgba(16, 185, 129, 0.12); padding: 4px 10px; border-radius: 99px;
             margin-bottom: 10px;
         }
-
-        .highlight-title {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--accent);
+        .gem-hook { font-size: 13px; color: var(--primary-light); font-style: italic; margin-bottom: 8px; }
+        .gem-card h4, .eat-card h4 { font-size: 16px; margin-bottom: 6px; }
+        .gem-card p, .eat-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        .card-tip-box {
+            margin-top: 10px; padding: 8px 12px; background: rgba(255, 255, 255, 0.04);
+            border-radius: 8px; font-size: 12px; color: #cbd5e1;
         }
-
-        .pron-badge {
-            font-size: 12px;
-            color: var(--text-muted);
-            background: rgba(255, 255, 255, 0.06);
-            padding: 3px 8px;
-            border-radius: 6px;
-        }
-
-        .word-def {
-            font-size: 15px;
-            color: #ffffff;
-            line-height: 1.6;
-            margin-bottom: 6px;
-        }
-
-        .word-context {
-            font-size: 14px;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        .facts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 16px;
-        }
-
-        .fact-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 20px;
-        }
-
-        .fact-icon {
-            font-size: 24px;
-            margin-bottom: 8px;
-        }
-
-        .fact-title {
-            font-size: 12px;
-            font-weight: 800;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 4px;
-        }
-
-        .fact-desc {
-            font-size: 16px;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 2px;
-        }
-
-        .fact-sub {
-            font-size: 12px;
-            color: var(--text-muted);
-            line-height: 1.4;
-        }
-
-        .rules-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .rule-item {
-            display: flex;
-            gap: 18px;
-            align-items: flex-start;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 22px;
-        }
-
-        .rule-num {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--primary);
-            flex-shrink: 0;
-        }
-
-        .rule-text strong {
-            display: block;
-            color: white;
-            font-size: 16px;
-            margin-bottom: 6px;
-        }
-
-        .rule-text span {
-            color: var(--text-muted);
-            font-size: 14px;
-            line-height: 1.65;
-        }
-
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 20px;
-        }
-
-        .content-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 24px;
-            transition: transform 0.2s, border-color 0.2s;
-        }
-
-        .content-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--border-hover);
-        }
-
-        .card-tag {
-            font-size: 11px;
-            font-weight: 800;
-            letter-spacing: 1px;
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
-
-        .card-name {
-            font-size: 18px;
-            font-weight: 800;
-            margin-bottom: 8px;
-            color: white;
-        }
-
-        .card-desc {
-            font-size: 14px;
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 12px;
-        }
-
-        .card-tip {
-            font-size: 13px;
-            color: #cbd5e1;
-            background: rgba(255, 255, 255, 0.04);
-            padding: 10px 14px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-        }
-
-        .traps-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
+        
+        /* Traps */
+        .traps-list { display: flex; flex-direction: column; gap: 14px; }
         .trap-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 22px;
+            background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.15);
+            border-radius: var(--radius-md); padding: 20px;
         }
-
-        .trap-bad {
-            font-size: 16px;
-            font-weight: 800;
-            color: #f87171;
-            margin-bottom: 6px;
+        .trap-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+        .trap-tag {
+            background: #EF4444; color: #fff; font-size: 11px; font-weight: 700;
+            text-transform: uppercase; padding: 2px 8px; border-radius: 6px;
         }
-
-        .trap-why {
-            font-size: 14px;
-            color: var(--text-muted);
-            margin-bottom: 12px;
-            line-height: 1.6;
+        .trap-header h4 { font-size: 16px; color: #fff; }
+        .trap-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        .trap-solution {
+            margin-top: 10px; padding: 10px 14px; background: rgba(16, 185, 129, 0.08);
+            border-left: 3px solid #10B981; border-radius: 4px; font-size: 13px; color: #D1D5DB; line-height: 1.5;
         }
-
-        .trap-good {
-            font-size: 14px;
-            color: #34d399;
-            background: rgba(16, 185, 129, 0.08);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            padding: 10px 14px;
-            border-radius: 10px;
-        }
-
+        
+        /* App CTA Banner */
         .app-cta-banner {
-            margin-top: 72px;
-            background: linear-gradient(135deg, rgba(123, 110, 246, 0.15), rgba(245, 158, 11, 0.1));
-            border: 1px solid var(--border-hover);
-            border-radius: 24px;
-            padding: 48px 32px;
-            text-align: center;
+            background: linear-gradient(135deg, rgba(123, 110, 246, 0.15), rgba(236, 72, 153, 0.1));
+            border: 1px solid rgba(157, 147, 255, 0.3); border-radius: var(--radius-lg);
+            padding: 44px 20px; text-align: center; margin: 50px 0; position: relative;
         }
-
-        .app-cta-banner h3 {
-            font-size: clamp(24px, 4vw, 32px);
-            font-weight: 800;
-            margin-bottom: 12px;
-        }
-
-        .app-cta-banner p {
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto 28px;
-            font-size: 16px;
-        }
-
-        .store-btn-row {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
+        .app-cta-banner h3 { font-size: clamp(22px, 4vw, 28px); font-weight: 800; margin-bottom: 10px; }
+        .app-cta-banner p { color: var(--text-secondary); max-width: 580px; margin: 0 auto 24px; font-size: 15px; }
+        .store-btn-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
         .store-pill-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 26px;
-            background: white;
-            color: #0f1016;
-            font-weight: 800;
-            font-size: 14px;
-            border-radius: 100px;
-            text-decoration: none;
+            display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: white;
+            color: #0f1016; font-weight: 700; font-size: 14px; border-radius: 100px; text-decoration: none;
             transition: transform 0.2s, box-shadow 0.2s;
         }
+        .store-pill-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2); }
 
-        .store-pill-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 24px rgba(255, 255, 255, 0.2);
-        }
-
-        footer {
-            border-top: 1px solid var(--border);
-            margin-top: 80px;
-            padding: 40px 24px 20px;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 14px;
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--border-subtle); padding: 40px 24px 30px;
+            color: var(--text-muted); font-size: 13px; text-align: center;
         }
 
         @media (max-width: 768px) {
-            .navbar {
-                height: 64px;
-            }
+            .navbar { height: 64px; }
             .nav-links {
-                display: none;
-                position: fixed;
-                top: 64px;
-                left: 0;
-                right: 0;
-                background: rgba(13, 14, 21, 0.98);
-                flex-direction: column;
-                padding: 24px;
-                border-bottom: 1px solid var(--border);
-                gap: 16px;
+                display: none; position: fixed; top: 64px; left: 0; right: 0;
+                background: rgba(15, 11, 26, 0.98); flex-direction: column;
+                padding: 24px; border-bottom: 1px solid var(--border-subtle); gap: 16px;
             }
-            .nav-links.active {
-                display: flex;
-            }
-            .nav-toggle {
-                display: block;
-            }
-            .guide-hero {
-                min-height: 400px;
-                padding-top: 100px;
-            }
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
-            .store-pill-btn {
-                width: 100%;
-                max-width: 280px;
-                justify-content: center;
-            }
+            .nav-links.active { display: flex; }
+            .nav-toggle { display: block; }
+            .guide-hero { min-height: 380px; padding-top: 90px; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
+
     </style>
 </head>
 <body>
@@ -693,13 +310,9 @@
             </div>
             <p class="intro-text">When you hear Saint-Tropez, you think yachts, beach clubs and Brigitte Bardot. All true — but in summer this face of the city is so dominant that the real Saint-Tropez becomes hard to see. Until the 1950s this was a small fishing village nobody knew about. The traces of that village are still here today: colourfully painted fishing boats in the old harbour, elderly men playing pétanque under the plane trees of Place des Lices, the stone streets of La Ponche neighbourhood. To reach them, skip the peak season or set out very early in the morning. Saint-Tropez is small — everything is within walking distance. But getting here is another story: no train station, and traffic seizes up completely in summer.</p>
             
-        <div class="highlight-box">
-            <div class="highlight-header">
-                <div class="highlight-title">💬 Pétanque</div>
-                <span class="pron-badge">🗣️ /peh-TANK/</span>
-            </div>
-            <p class="word-def"><strong>The French boules game — metal balls thrown to land closest to the target ball, a game that can be played for hours. Under the plane trees of Place des Lices, elderly Tropéziens play in the mornings and late afternoons. Watching is free; to join you need to wait for an invitation. One of Saint-Tropez&#x27;s most authentic and accessible local experiences — just a few steps from the yacht harbour.</strong></p>
-            
+        <div class="local-word-box">
+            <div class="word-title">🗣️ Local Concept: <strong>Pétanque</strong> <span class="pron">(peh-TANK)</span></div>
+            <p>The French boules game — metal balls thrown to land closest to the target ball, a game that can be played for hours. Under the plane trees of Place des Lices, elderly Tropéziens play in the mornings and late afternoons. Watching is free; to join you need to wait for an invitation. One of Saint-Tropez&#x27;s most authentic and accessible local experiences — just a few steps from the yacht harbour.</p>
         </div>
         
         </section>
@@ -715,30 +328,38 @@
                 
             <div class="fact-card">
                 <div class="fact-icon">⛴️</div>
-                <div class="fact-title">Transport</div>
-                <div class="fact-desc">No train — ferry or car</div>
-                <div class="fact-sub">Ferry from Sainte-Maxime 25 min · bus from Saint-Raphaël 1–1.5 hrs</div>
+                <div>
+                    <div class="fact-label">Transport</div>
+                    <div class="fact-val">No train — ferry or car</div>
+                    <div class="fact-sub">Ferry from Sainte-Maxime 25 min · bus from Saint-Raphaël 1–1.5 hrs</div>
+                </div>
             </div>
             
             <div class="fact-card">
                 <div class="fact-icon">🏖️</div>
-                <div class="fact-title">Beach</div>
-                <div class="fact-desc">Pampelonne — 5km stretch of beach</div>
-                <div class="fact-sub">Beach clubs are paid · free sections also available · by bike or car</div>
+                <div>
+                    <div class="fact-label">Beach</div>
+                    <div class="fact-val">Pampelonne — 5km stretch of beach</div>
+                    <div class="fact-sub">Beach clubs are paid · free sections also available · by bike or car</div>
+                </div>
             </div>
             
             <div class="fact-card">
                 <div class="fact-icon">🌡️</div>
-                <div class="fact-title">Weather</div>
-                <div class="fact-desc">Mediterranean — hot and sunny summers</div>
-                <div class="fact-sub">Apr–Jun and Sep–Oct ideal · Jul–Aug crowded and expensive · Dec–Feb quiet</div>
+                <div>
+                    <div class="fact-label">Weather</div>
+                    <div class="fact-val">Mediterranean — hot and sunny summers</div>
+                    <div class="fact-sub">Apr–Jun and Sep–Oct ideal · Jul–Aug crowded and expensive · Dec–Feb quiet</div>
+                </div>
             </div>
             
             <div class="fact-card">
                 <div class="fact-icon">🎂</div>
-                <div class="fact-title">Food</div>
-                <div class="fact-desc">Tarte Tropézienne, ratatouille, fresh fish</div>
-                <div class="fact-sub">Harbour front expensive · La Ponche and side streets reasonable</div>
+                <div>
+                    <div class="fact-label">Food</div>
+                    <div class="fact-val">Tarte Tropézienne, ratatouille, fresh fish</div>
+                    <div class="fact-sub">Harbour front expensive · La Ponche and side streets reasonable</div>
+                </div>
             </div>
             
             </div>
@@ -750,31 +371,31 @@
         <section class="section">
             <div class="section-header">
                 <span class="section-label">Insider Advice</span>
-                <h2 class="section-title">Unwritten Rules for Saint-Tropez</h2>
+                <h2 class="section-title">3 Unwritten Rules for Saint-Tropez</h2>
             </div>
             <div class="rules-list">
                 
-            <div class="rule-item">
-                <div class="rule-num">#1</div>
-                <div class="rule-text">
-                    <strong>If you must come in July-August, book well in advance</strong>
-                    <span>In midsummer the roads around Saint-Tropez are gridlocked for hours, beaches overflow and prices peak. If you have to come during this period, book at least three months ahead. If coming by car, leave it in the out-of-town car parks and take the shuttle bus into the centre. Very early morning and after 7pm the town gets a little breathing room.</span>
+            <div class="rule-card">
+                <div class="rule-num">1</div>
+                <div class="rule-content">
+                    <h4>If you must come in July-August, book well in advance</h4>
+                    <p>In midsummer the roads around Saint-Tropez are gridlocked for hours, beaches overflow and prices peak. If you have to come during this period, book at least three months ahead. If coming by car, leave it in the out-of-town car parks and take the shuttle bus into the centre. Very early morning and after 7pm the town gets a little breathing room.</p>
                 </div>
             </div>
             
-            <div class="rule-item">
-                <div class="rule-num">#2</div>
-                <div class="rule-text">
-                    <strong>Plan your transport — there&#x27;s no train station</strong>
-                    <span>No train goes to Saint-Tropez. The nearest train station is Saint-Raphaël, then a bus ride of 1-1.5 hours. Ferry from Sainte-Maxime is 25 minutes — much more enjoyable. Summer season ferry from Nice is about 2.5 hours. If you hire a car, traffic in midsummer is very bad; people who don&#x27;t plan their transport in advance lose a lot of time.</span>
+            <div class="rule-card">
+                <div class="rule-num">2</div>
+                <div class="rule-content">
+                    <h4>Plan your transport — there&#x27;s no train station</h4>
+                    <p>No train goes to Saint-Tropez. The nearest train station is Saint-Raphaël, then a bus ride of 1-1.5 hours. Ferry from Sainte-Maxime is 25 minutes — much more enjoyable. Summer season ferry from Nice is about 2.5 hours. If you hire a car, traffic in midsummer is very bad; people who don&#x27;t plan their transport in advance lose a lot of time.</p>
                 </div>
             </div>
             
-            <div class="rule-item">
-                <div class="rule-num">#3</div>
-                <div class="rule-text">
-                    <strong>Not the harbour front — go to La Ponche and the Citadelle side</strong>
-                    <span>The cafés and restaurants on the harbour front are Saint-Tropez&#x27;s most expensive and most touristy spots. La Ponche neighbourhood, the Citadelle slope and the area around Place aux Herbes are both cheaper and far more local. Go to Place des Lices for Tarte Tropézienne; for food, explore the streets behind the harbour.</span>
+            <div class="rule-card">
+                <div class="rule-num">3</div>
+                <div class="rule-content">
+                    <h4>Not the harbour front — go to La Ponche and the Citadelle side</h4>
+                    <p>The cafés and restaurants on the harbour front are Saint-Tropez&#x27;s most expensive and most touristy spots. La Ponche neighbourhood, the Citadelle slope and the area around Place aux Herbes are both cheaper and far more local. Go to Place des Lices for Tarte Tropézienne; for food, explore the streets behind the harbour.</p>
                 </div>
             </div>
             
@@ -791,45 +412,27 @@
             </div>
             <div class="cards-grid">
                 
-            <div class="content-card">
-                <div class="card-tag">💎 HIDDEN GEM</div>
-                <div class="card-name">La Ponche — the old fishing quarter</div>
-                <div class="card-desc">Just behind the harbour square, a few steps in. Narrow stone streets, colourfully painted windows, old fishermen&#x27;s houses. Bardot filmed And God Created Woman here in 1956 and introduced Saint-Tropez to the world. It still carries the spirit of that film. In the early morning hours there&#x27;s almost no one here. Small restaurants and cafés exist but most open in the afternoon.</div>
+            <div class="gem-card">
+                <div class="gem-badge">Hidden Gem</div>
+                <h4>La Ponche — the old fishing quarter</h4>
+                <div class="gem-hook">Hidden Spot</div>
+                <p>Just behind the harbour square, a few steps in. Narrow stone streets, colourfully painted windows, old fishermen&#x27;s houses. Bardot filmed And God Created Woman here in 1956 and introduced Saint-Tropez to the world. It still carries the spirit of that film. In the early morning hours there&#x27;s almost no one here. Small restaurants and cafés exist but most open in the afternoon.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">💎 HIDDEN GEM</div>
-                <div class="card-name">Gassin — medieval village overlooking the bay</div>
-                <div class="card-desc">7km from Saint-Tropez, 15 minutes by car. On France&#x27;s &#x27;Les Plus Beaux Villages&#x27; list. The village with the best panoramic view of the bay — nothing obstructing it, just sea. Small church, narrow streets, a few restaurants. Coming here for dinner means escaping the crowds below and gaining the view.</div>
+            <div class="gem-card">
+                <div class="gem-badge">Hidden Gem</div>
+                <h4>Gassin — medieval village overlooking the bay</h4>
+                <div class="gem-hook">Hidden Spot</div>
+                <p>7km from Saint-Tropez, 15 minutes by car. On France&#x27;s &#x27;Les Plus Beaux Villages&#x27; list. The village with the best panoramic view of the bay — nothing obstructing it, just sea. Small church, narrow streets, a few restaurants. Coming here for dinner means escaping the crowds below and gaining the view.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">💎 HIDDEN GEM</div>
-                <div class="card-name">Citadelle de Saint-Tropez</div>
-                <div class="card-desc">A 17th-century castle on the hill east of town. Contains a maritime history museum inside. But the real reason: the panoramic view of Saint-Tropez bay from the moat and ramparts around the castle. Ticketed but reasonably priced. Quietest in the early morning hours. Standing here looking out at the harbour, Pampelonne and the distant Estérel mountains, you understand why the town became so beloved.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">💎 HIDDEN GEM</div>
-                <div class="card-name">Sentier du Littoral — coastal path</div>
-                <div class="card-desc">A coastal walking trail from Saint-Tropez extending to Pampelonne and Ramatuelle. 35km in total but can be done in sections. Rocky shores, small coves, pine forests and Mediterranean views. Hot in July-August; spring and autumn are ideal. Walking it, you find your own secret cove — an experience far beyond Saint-Tropez&#x27;s beach club facade.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">💎 HIDDEN GEM</div>
-                <div class="card-name">Musée de l&#x27;Annonciade</div>
-                <div class="card-desc">Five minutes from the harbour square, in a former chapel. Signac, Matisse, Derain, Bonnard — Post-Impressionist and Fauvist painters lived and worked in Saint-Tropez at the start of the 20th century. This museum holds their works. If it&#x27;s very hot outside or the harbour is too crowded, stepping into this museum means both cooling down and seeing genuinely fine art. Little-known but of real quality.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">💎 HIDDEN GEM</div>
-                <div class="card-name">Port Grimaud</div>
-                <div class="card-desc">8km from Saint-Tropez, a canal city built from scratch in the 1960s by architect François Spoerry. Venice-like but Provençal — every house has a boat mooring out front, colourfully painted facades. Boat tours are ticketed; the outer area is free to explore. Perfect for stopping before or after the Sainte-Maxime ferry.</div>
+            <div class="gem-card">
+                <div class="gem-badge">Hidden Gem</div>
+                <h4>Citadelle de Saint-Tropez</h4>
+                <div class="gem-hook">Hidden Spot</div>
+                <p>A 17th-century castle on the hill east of town. Contains a maritime history museum inside. But the real reason: the panoramic view of Saint-Tropez bay from the moat and ramparts around the castle. Ticketed but reasonably priced. Quietest in the early morning hours. Standing here looking out at the harbour, Pampelonne and the distant Estérel mountains, you understand why the town became so beloved.</p>
                 
             </div>
             
@@ -844,48 +447,29 @@
                 <span class="section-label">Food & Flavors</span>
                 <h2 class="section-title">What to Taste</h2>
             </div>
-            <p class="intro-text">Eating in Saint-Tropez is expensive — but find the right place and it&#x27;s both delicious and reasonable. Avoid the harbour front, step into the side streets.</p>
             <div class="cards-grid">
                 
-            <div class="content-card">
-                <div class="card-tag">🍴 MUST TASTE</div>
-                <div class="card-name">Tarte Tropézienne</div>
-                <div class="card-desc">Buy it from the original La Tarte Tropézienne shop at Place des Lices. Whole tart €25-35, a slice €5-8. Fresh in the morning. The orange blossom aroma is subtle, the filling creamy. Eating this pastry here is one of Saint-Tropez&#x27;s most local and most accessible rituals.</div>
+            <div class="eat-card">
+                <h4>🍴 Tarte Tropézienne</h4>
+                <p>Buy it from the original La Tarte Tropézienne shop at Place des Lices. Whole tart €25-35, a slice €5-8. Fresh in the morning. The orange blossom aroma is subtle, the filling creamy. Eating this pastry here is one of Saint-Tropez&#x27;s most local and most accessible rituals.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">🍴 MUST TASTE</div>
-                <div class="card-name">Fresh fish — at Place aux Herbes</div>
-                <div class="card-desc">The small fish market at Place aux Herbes runs in the mornings — the Tropézien fishermen&#x27;s daily catch is sold here. If you want fresher and cheaper fish than the tourist restaurants on the harbour front, go to the small bistros around Place aux Herbes. Get there early before it sells out.</div>
+            <div class="eat-card">
+                <h4>🍴 Fresh fish — at Place aux Herbes</h4>
+                <p>The small fish market at Place aux Herbes runs in the mornings — the Tropézien fishermen&#x27;s daily catch is sold here. If you want fresher and cheaper fish than the tourist restaurants on the harbour front, go to the small bistros around Place aux Herbes. Get there early before it sells out.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">🍴 MUST TASTE</div>
-                <div class="card-name">Ratatouille</div>
-                <div class="card-desc">Courgette, aubergine, tomatoes, peppers, onions and garlic — Provence&#x27;s most pure vegetable dish. Every local restaurant in Saint-Tropez makes it; both as a main dish and alongside meat and fish. In summer, the version made with vegetables from the local market is the finest. Can also be eaten cold in the summer heat.</div>
+            <div class="eat-card">
+                <h4>🍴 Ratatouille</h4>
+                <p>Courgette, aubergine, tomatoes, peppers, onions and garlic — Provence&#x27;s most pure vegetable dish. Every local restaurant in Saint-Tropez makes it; both as a main dish and alongside meat and fish. In summer, the version made with vegetables from the local market is the finest. Can also be eaten cold in the summer heat.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">🍴 MUST TASTE</div>
-                <div class="card-name">Daube Provençale</div>
-                <div class="card-desc">Provence&#x27;s beef stew slow-cooked in red wine. Prepared with olive oil, onions, garlic, thyme and bay leaf, simmered slowly for hours. A winter and spring dish — rarely seen on summer menus. Between September and May, findable at small restaurants around La Ponche.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">🍴 MUST TASTE</div>
-                <div class="card-name">Côtes de Provence rosé</div>
-                <div class="card-desc">From the vineyards surrounding Saint-Tropez, France&#x27;s most famous rosé. Pale in colour, light in aroma, dry in character — Provence rosé is exported around the world. But the best is drunk here. A glass at cafés on Place des Lices or the bars near the harbour: €6-10.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">🍴 MUST TASTE</div>
-                <div class="card-name">Socca and pissaladière — at Place des Lices market</div>
-                <div class="card-desc">At the Tuesday and Thursday morning market, local stalls sell chickpea flour pancake (socca) and onion tart slices (pissaladière). €2-4, the best morning snack. Try both as you browse the market stalls — the cheapest and most delicious way to have a Provençal breakfast.</div>
+            <div class="eat-card">
+                <h4>🍴 Daube Provençale</h4>
+                <p>Provence&#x27;s beef stew slow-cooked in red wine. Prepared with olive oil, onions, garlic, thyme and bay leaf, simmered slowly for hours. A winter and spring dish — rarely seen on summer menus. Between September and May, findable at small restaurants around La Ponche.</p>
                 
             </div>
             
@@ -903,27 +487,21 @@
             <div class="traps-list">
                 
             <div class="trap-card">
-                <div class="trap-bad">❌ </div>
-                <div class="trap-why">At the famous beach clubs, a sunbed plus lunch easily reaches hundreds of euros; the sea is the same sea for everyone.</div>
-                <div class="trap-good">✅ <strong>Better Alternative:</strong> Lay your towel on Pampelonne&#x27;s public stretches or pick the path-access coves; if the clubs intrigue you, go for just a drink.</div>
+                <div class="trap-header">
+                    <span class="trap-tag">Avoid</span>
+                    <h4></h4>
+                </div>
+                <p>At the famous beach clubs, a sunbed plus lunch easily reaches hundreds of euros; the sea is the same sea for everyone.</p>
+                <div class="trap-solution"><strong>Do this instead:</strong> Lay your towel on Pampelonne&#x27;s public stretches or pick the path-access coves; if the clubs intrigue you, go for just a drink.</div>
             </div>
             
             <div class="trap-card">
-                <div class="trap-bad">❌ </div>
-                <div class="trap-why">The quay cafés add the superyacht view to the menu: an ordinary salad, an extraordinary bill.</div>
-                <div class="trap-good">✅ <strong>Better Alternative:</strong> Watch the yachts for free walking the quay; eat two streets in, on the La Ponche side.</div>
-            </div>
-            
-            <div class="trap-card">
-                <div class="trap-bad">❌ </div>
-                <div class="trap-why">In July and August the single access road is an hours-long queue; parking is a separate war.</div>
-                <div class="trap-good">✅ <strong>Better Alternative:</strong> Park in Sainte-Maxime and cross the gulf in 15 minutes by sea shuttle (bateau vert): the view is a bonus, the calm is free.</div>
-            </div>
-            
-            <div class="trap-card">
-                <div class="trap-bad">❌ </div>
-                <div class="trap-why">The boat tours pointing at star villas from afar are an expensive disappointment; celebrities are on the port anyway when they want to be seen.</div>
-                <div class="trap-good">✅ <strong>Better Alternative:</strong> Spend the same money on the coastal path (Sentier du Littoral): coves, headlands and the real Saint-Tropez view.</div>
+                <div class="trap-header">
+                    <span class="trap-tag">Avoid</span>
+                    <h4></h4>
+                </div>
+                <p>The quay cafés add the superyacht view to the menu: an ordinary salad, an extraordinary bill.</p>
+                <div class="trap-solution"><strong>Do this instead:</strong> Watch the yachts for free walking the quay; eat two streets in, on the La Ponche side.</div>
             </div>
             
             </div>
@@ -945,7 +523,7 @@
         </section>
     </main>
 
-    <footer>
+    <footer class="footer">
         <div class="container">
             <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
         </div>

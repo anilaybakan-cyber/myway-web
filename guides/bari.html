@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bari City Guide & Smart Walking Routes | MyWay</title>
+    <title>Bari Travel Guide & Smart Walking Routes | MyWay</title>
     <meta name="description" content="Explore Bari with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
     
     <link rel="alternate" hreflang="en" href="/guides/bari.html">
@@ -24,616 +24,233 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <link rel="icon" type="image/png" href="../images/app_icon.png">
 
     <style>
+        
         :root {
-            --bg-dark: #0d0e15;
-            --bg-card: #161824;
-            --bg-card-hover: #1e2132;
-            --primary: #7b6ef6;
-            --primary-glow: rgba(123, 110, 246, 0.25);
-            --accent: #f59e0b;
-            --text-main: #ffffff;
-            --text-muted: #94a3b8;
-            --border: rgba(255, 255, 255, 0.08);
-            --border-hover: rgba(123, 110, 246, 0.4);
-            --green: #10b981;
-            --red: #ef4444;
-            --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-serif: 'Playfair Display', Georgia, serif;
+            --primary: #7B6EF6;
+            --primary-light: #9D93FF;
+            --primary-dark: #5B4FD6;
+            --accent: #EC4899;
+            --bg-dark: #0F0B1A;
+            --bg-section: #130F22;
+            --bg-card: rgba(255, 255, 255, 0.04);
+            --text-primary: #FFFFFF;
+            --text-secondary: #9CA3AF;
+            --text-muted: #6B7280;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --radius-sm: 12px;
+            --shadow-glow: 0 0 80px rgba(123, 110, 246, 0.15);
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            -webkit-font-smoothing: antialiased;
-        }
-
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            font-family: var(--font-sans);
-            line-height: 1.6;
-            padding-bottom: 60px;
+            background-color: var(--bg-dark); color: var(--text-primary);
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6; overflow-x: hidden;
         }
-
-        /* Navigation */
+        
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        
+        /* Navbar */
         .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: rgba(13, 14, 21, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-            height: 72px;
-            display: flex;
-            align-items: center;
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(15, 11, 26, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle); height: 72px; display: flex; align-items: center;
         }
-
         .navbar-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%;
+            display: flex; align-items: center; justify-content: space-between;
         }
-
         .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: white;
-            font-weight: 800;
-            font-size: 20px;
+            display: flex; align-items: center; gap: 12px; text-decoration: none;
+            color: #fff; font-weight: 700; font-size: 20px;
         }
-
-        .nav-brand img {
-            border-radius: 10px;
-            box-shadow: 0 4px 12px var(--primary-glow);
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-            list-style: none;
-        }
-
+        .nav-brand img { border-radius: 10px; }
+        .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
         .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            transition: color 0.2s;
+            color: var(--text-secondary); text-decoration: none; font-size: 14px;
+            font-weight: 500; transition: color 0.2s;
         }
-
-        .nav-links a:hover, .nav-links a.active {
-            color: white;
-        }
-
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        /* Modern Language Dropdown */
-        .lang-dropdown-wrapper {
-            position: relative;
-        }
-
+        .nav-links a:hover, .nav-links a.active { color: #fff; }
+        .nav-actions { display: flex; align-items: center; gap: 14px; }
+        
+        /* Globe Language Dropdown */
+        .lang-dropdown-wrapper { position: relative; }
         .lang-dropdown-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 7px 14px;
-            border-radius: 100px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: white;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
+            display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px;
+            background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s ease;
             font-family: inherit;
         }
-
-        .lang-dropdown-btn:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: var(--primary);
-        }
-
-        .lang-globe-icon {
-            width: 15px;
-            height: 15px;
-            fill: currentColor;
-        }
-
+        .lang-dropdown-btn:hover { background: rgba(255, 255, 255, 0.15); border-color: var(--primary); }
+        .lang-globe-icon { width: 15px; height: 15px; fill: currentColor; }
         .lang-dropdown-menu {
-            display: none;
-            position: absolute;
-            top: calc(100% + 8px);
-            right: 0;
-            background: #19142B;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 14px;
-            padding: 6px;
-            min-width: 130px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            z-index: 1001;
+            display: none; position: absolute; top: calc(100% + 8px); right: 0;
+            background: #19142B; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 14px;
+            padding: 6px; min-width: 130px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); z-index: 1001;
         }
-
         .lang-dropdown-wrapper:hover .lang-dropdown-menu,
         .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
+            display: flex; flex-direction: column; gap: 2px;
         }
-
         .lang-dropdown-item {
-            display: flex;
-            align-items: center;
-            padding: 8px 12px;
-            font-size: 13px;
-            font-weight: 600;
-            color: #CBD5E1;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: background 0.2s, color 0.2s;
+            display: flex; align-items: center; padding: 8px 12px; font-size: 13px; font-weight: 600;
+            color: #CBD5E1; text-decoration: none; border-radius: 8px; transition: background 0.2s, color 0.2s;
         }
-
-        .lang-dropdown-item:hover {
-            background: rgba(123, 110, 246, 0.2);
-            color: white;
-        }
-
-        .lang-dropdown-item.active {
-            background: var(--primary);
-            color: white;
-        }
+        .lang-dropdown-item:hover { background: rgba(123, 110, 246, 0.2); color: white; }
+        .lang-dropdown-item.active { background: var(--primary); color: white; }
 
         .nav-cta {
-            background: var(--primary);
-            color: white !important;
-            padding: 8px 18px;
-            border-radius: 100px;
-            font-size: 13px;
-            font-weight: 700;
-            text-decoration: none;
-            transition: transform 0.2s, box-shadow 0.2s;
+            background: var(--primary); color: #fff !important; padding: 8px 20px;
+            border-radius: 100px; font-size: 13px; font-weight: 600; text-decoration: none;
+            transition: all 0.2s ease;
         }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(123, 110, 246, 0.4); }
+        .nav-toggle { display: none; background: none; border: none; color: #fff; cursor: pointer; padding: 8px; }
 
-        .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px var(--primary-glow);
-        }
-
-        .nav-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            padding: 8px;
-        }
-
-        /* Hero */
+        /* Guide Hero */
         .guide-hero {
-            position: relative;
-            min-height: 480px;
-            display: flex;
-            align-items: flex-end;
-            padding: 120px 24px 60px;
-            background-size: cover;
-            background-position: center;
-            overflow: hidden;
+            position: relative; min-height: 440px; display: flex; align-items: flex-end;
+            padding: 120px 24px 44px; margin-top: 72px; overflow: hidden; background-color: #1A132F;
         }
-
         .guide-hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1;
-            transform: scale(1.02);
+            position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+            filter: brightness(0.65);
         }
-
         .guide-hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(13, 14, 21, 0.3) 0%, rgba(13, 14, 21, 0.85) 75%, var(--bg-dark) 100%);
-            z-index: 2;
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.4) 60%, transparent 100%);
         }
-
-        .guide-hero-content {
-            position: relative;
-            z-index: 3;
-            max-width: 900px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
+        .guide-hero-content { position: relative; z-index: 2; width: 100%; }
         .city-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 14px;
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            border-radius: 100px;
-            font-size: 13px;
-            font-weight: 700;
-            color: #cbd5e1;
-            margin-bottom: 16px;
+            display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px); padding: 6px 14px; border-radius: 99px; font-size: 13px;
+            font-weight: 600; margin-bottom: 14px; border: 1px solid rgba(255, 255, 255, 0.15);
         }
-
-        .guide-title {
-            font-size: clamp(38px, 6vw, 64px);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 12px;
-            letter-spacing: -1.5px;
+        .guide-title { font-size: clamp(32px, 6vw, 52px); font-weight: 800; line-height: 1.1; margin-bottom: 10px; }
+        .guide-tagline { font-size: 16px; color: var(--primary-light); max-width: 720px; font-weight: 500; line-height: 1.5; }
+        
+        /* Sections */
+        .section { padding: 42px 0; border-bottom: 1px solid var(--border-subtle); }
+        .section-header { margin-bottom: 24px; }
+        .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); font-weight: 700; }
+        .section-title { font-size: 24px; font-weight: 700; margin-top: 4px; }
+        
+        .intro-text { font-size: 15px; color: #D1D5DB; line-height: 1.8; margin-bottom: 20px; }
+        
+        /* Local Word */
+        .local-word-box {
+            background: rgba(123, 110, 246, 0.08); border-left: 4px solid var(--primary);
+            padding: 18px 22px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-top: 20px;
         }
-
-        .guide-tagline {
-            font-size: clamp(16px, 2.5vw, 20px);
-            color: #e2e8f0;
-            font-weight: 500;
-            max-width: 700px;
-            line-height: 1.5;
+        .word-title { font-size: 15px; color: #fff; margin-bottom: 4px; }
+        .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
+        .local-word-box p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        
+        /* Facts Grid */
+        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+        .fact-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
         }
-
-        /* Container */
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 24px;
+        .fact-icon { font-size: 24px; flex-shrink: 0; }
+        .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
+        .fact-val { font-size: 15px; font-weight: 600; color: #fff; margin: 2px 0; }
+        .fact-sub { font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
+        
+        /* Rules */
+        .rules-list { display: flex; flex-direction: column; gap: 14px; }
+        .rule-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md); padding: 20px; display: flex; gap: 16px; align-items: flex-start;
         }
-
-        .section {
-            margin-top: 56px;
+        .rule-num {
+            background: var(--primary); color: #fff; width: 32px; height: 32px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-weight: 700; flex-shrink: 0; font-size: 14px;
         }
-
-        .section-header {
-            margin-bottom: 24px;
+        .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
+        .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        
+        /* Hidden Gems & Eat Grid */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+        .gem-card, .eat-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md); padding: 22px; position: relative;
         }
-
-        .section-label {
-            font-size: 12px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--primary);
-            display: block;
-            margin-bottom: 4px;
-        }
-
-        .section-title {
-            font-size: clamp(24px, 4vw, 32px);
-            font-weight: 800;
-            letter-spacing: -0.8px;
-        }
-
-        .intro-text {
-            font-size: 17px;
-            line-height: 1.8;
-            color: #cbd5e1;
-            margin-bottom: 24px;
-        }
-
-        .highlight-box {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-left: 4px solid var(--accent);
-            padding: 22px 26px;
-            border-radius: 16px;
-            margin-top: 24px;
-        }
-
-        .highlight-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+        .gem-badge {
+            display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase;
+            color: #10B981; background: rgba(16, 185, 129, 0.12); padding: 4px 10px; border-radius: 99px;
             margin-bottom: 10px;
         }
-
-        .highlight-title {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--accent);
+        .gem-hook { font-size: 13px; color: var(--primary-light); font-style: italic; margin-bottom: 8px; }
+        .gem-card h4, .eat-card h4 { font-size: 16px; margin-bottom: 6px; }
+        .gem-card p, .eat-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        .card-tip-box {
+            margin-top: 10px; padding: 8px 12px; background: rgba(255, 255, 255, 0.04);
+            border-radius: 8px; font-size: 12px; color: #cbd5e1;
         }
-
-        .pron-badge {
-            font-size: 12px;
-            color: var(--text-muted);
-            background: rgba(255, 255, 255, 0.06);
-            padding: 3px 8px;
-            border-radius: 6px;
-        }
-
-        .word-def {
-            font-size: 15px;
-            color: #ffffff;
-            line-height: 1.6;
-            margin-bottom: 6px;
-        }
-
-        .word-context {
-            font-size: 14px;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        .facts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 16px;
-        }
-
-        .fact-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 20px;
-        }
-
-        .fact-icon {
-            font-size: 24px;
-            margin-bottom: 8px;
-        }
-
-        .fact-title {
-            font-size: 12px;
-            font-weight: 800;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 4px;
-        }
-
-        .fact-desc {
-            font-size: 16px;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 2px;
-        }
-
-        .fact-sub {
-            font-size: 12px;
-            color: var(--text-muted);
-            line-height: 1.4;
-        }
-
-        .rules-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .rule-item {
-            display: flex;
-            gap: 18px;
-            align-items: flex-start;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 22px;
-        }
-
-        .rule-num {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--primary);
-            flex-shrink: 0;
-        }
-
-        .rule-text strong {
-            display: block;
-            color: white;
-            font-size: 16px;
-            margin-bottom: 6px;
-        }
-
-        .rule-text span {
-            color: var(--text-muted);
-            font-size: 14px;
-            line-height: 1.65;
-        }
-
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 20px;
-        }
-
-        .content-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 24px;
-            transition: transform 0.2s, border-color 0.2s;
-        }
-
-        .content-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--border-hover);
-        }
-
-        .card-tag {
-            font-size: 11px;
-            font-weight: 800;
-            letter-spacing: 1px;
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
-
-        .card-name {
-            font-size: 18px;
-            font-weight: 800;
-            margin-bottom: 8px;
-            color: white;
-        }
-
-        .card-desc {
-            font-size: 14px;
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 12px;
-        }
-
-        .card-tip {
-            font-size: 13px;
-            color: #cbd5e1;
-            background: rgba(255, 255, 255, 0.04);
-            padding: 10px 14px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-        }
-
-        .traps-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
+        
+        /* Traps */
+        .traps-list { display: flex; flex-direction: column; gap: 14px; }
         .trap-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 22px;
+            background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.15);
+            border-radius: var(--radius-md); padding: 20px;
         }
-
-        .trap-bad {
-            font-size: 16px;
-            font-weight: 800;
-            color: #f87171;
-            margin-bottom: 6px;
+        .trap-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+        .trap-tag {
+            background: #EF4444; color: #fff; font-size: 11px; font-weight: 700;
+            text-transform: uppercase; padding: 2px 8px; border-radius: 6px;
         }
-
-        .trap-why {
-            font-size: 14px;
-            color: var(--text-muted);
-            margin-bottom: 12px;
-            line-height: 1.6;
+        .trap-header h4 { font-size: 16px; color: #fff; }
+        .trap-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        .trap-solution {
+            margin-top: 10px; padding: 10px 14px; background: rgba(16, 185, 129, 0.08);
+            border-left: 3px solid #10B981; border-radius: 4px; font-size: 13px; color: #D1D5DB; line-height: 1.5;
         }
-
-        .trap-good {
-            font-size: 14px;
-            color: #34d399;
-            background: rgba(16, 185, 129, 0.08);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            padding: 10px 14px;
-            border-radius: 10px;
-        }
-
+        
+        /* App CTA Banner */
         .app-cta-banner {
-            margin-top: 72px;
-            background: linear-gradient(135deg, rgba(123, 110, 246, 0.15), rgba(245, 158, 11, 0.1));
-            border: 1px solid var(--border-hover);
-            border-radius: 24px;
-            padding: 48px 32px;
-            text-align: center;
+            background: linear-gradient(135deg, rgba(123, 110, 246, 0.15), rgba(236, 72, 153, 0.1));
+            border: 1px solid rgba(157, 147, 255, 0.3); border-radius: var(--radius-lg);
+            padding: 44px 20px; text-align: center; margin: 50px 0; position: relative;
         }
-
-        .app-cta-banner h3 {
-            font-size: clamp(24px, 4vw, 32px);
-            font-weight: 800;
-            margin-bottom: 12px;
-        }
-
-        .app-cta-banner p {
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto 28px;
-            font-size: 16px;
-        }
-
-        .store-btn-row {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
+        .app-cta-banner h3 { font-size: clamp(22px, 4vw, 28px); font-weight: 800; margin-bottom: 10px; }
+        .app-cta-banner p { color: var(--text-secondary); max-width: 580px; margin: 0 auto 24px; font-size: 15px; }
+        .store-btn-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
         .store-pill-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 26px;
-            background: white;
-            color: #0f1016;
-            font-weight: 800;
-            font-size: 14px;
-            border-radius: 100px;
-            text-decoration: none;
+            display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: white;
+            color: #0f1016; font-weight: 700; font-size: 14px; border-radius: 100px; text-decoration: none;
             transition: transform 0.2s, box-shadow 0.2s;
         }
+        .store-pill-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2); }
 
-        .store-pill-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 24px rgba(255, 255, 255, 0.2);
-        }
-
-        footer {
-            border-top: 1px solid var(--border);
-            margin-top: 80px;
-            padding: 40px 24px 20px;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 14px;
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--border-subtle); padding: 40px 24px 30px;
+            color: var(--text-muted); font-size: 13px; text-align: center;
         }
 
         @media (max-width: 768px) {
-            .navbar {
-                height: 64px;
-            }
+            .navbar { height: 64px; }
             .nav-links {
-                display: none;
-                position: fixed;
-                top: 64px;
-                left: 0;
-                right: 0;
-                background: rgba(13, 14, 21, 0.98);
-                flex-direction: column;
-                padding: 24px;
-                border-bottom: 1px solid var(--border);
-                gap: 16px;
+                display: none; position: fixed; top: 64px; left: 0; right: 0;
+                background: rgba(15, 11, 26, 0.98); flex-direction: column;
+                padding: 24px; border-bottom: 1px solid var(--border-subtle); gap: 16px;
             }
-            .nav-links.active {
-                display: flex;
-            }
-            .nav-toggle {
-                display: block;
-            }
-            .guide-hero {
-                min-height: 400px;
-                padding-top: 100px;
-            }
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
-            .store-pill-btn {
-                width: 100%;
-                max-width: 280px;
-                justify-content: center;
-            }
+            .nav-links.active { display: flex; }
+            .nav-toggle { display: block; }
+            .guide-hero { min-height: 380px; padding-top: 90px; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
+
     </style>
 </head>
 <body>
@@ -693,13 +310,9 @@
             </div>
             <p class="intro-text">Bari sits on the Adriatic coast in southern Italy, the capital of the Puglia region. It&#x27;s different from northern Italy&#x27;s polished cities — life here is lived on the street. In the labyrinthine alleys of Bari Vecchia, grandmothers roll orecchiette in their doorways, focaccia aromas drift from bakeries in the morning, and fishermen sell the morning catch at the harbour. The city is raw and alive, and that energy draws you in. Tourist pressure hasn&#x27;t reached Venice or Rome levels yet — which means it still offers a genuinely local experience. It&#x27;s also the perfect base for exploring Puglia: Alberobello, Matera and the Adriatic coves are all day-trip distance.</p>
             
-        <div class="highlight-box">
-            <div class="highlight-header">
-                <div class="highlight-title">💬 Orecchiette</div>
-                <span class="pron-badge">🗣️ /o-re-KYE-te/</span>
-            </div>
-            <p class="word-def"><strong>Puglia&#x27;s handmade pasta — the name means &#x27;little ears&#x27; in Italian. Shaped by pressing with the thumb, producing small pasta pieces thin in the middle and thicker at the edges. The classic version served with cime di rapa (turnip tops), garlic, chilli and sometimes anchovies is the most representative dish of Puglia. Watching the local women on Strada delle Orecchiette make this pasta by hand — and buying it fresh — is both a meal and an experience.</strong></p>
-            
+        <div class="local-word-box">
+            <div class="word-title">🗣️ Local Concept: <strong>Orecchiette</strong> <span class="pron">(o-re-KYE-te)</span></div>
+            <p>Puglia&#x27;s handmade pasta — the name means &#x27;little ears&#x27; in Italian. Shaped by pressing with the thumb, producing small pasta pieces thin in the middle and thicker at the edges. The classic version served with cime di rapa (turnip tops), garlic, chilli and sometimes anchovies is the most representative dish of Puglia. Watching the local women on Strada delle Orecchiette make this pasta by hand — and buying it fresh — is both a meal and an experience.</p>
         </div>
         
         </section>
@@ -715,30 +328,38 @@
                 
             <div class="fact-card">
                 <div class="fact-icon">✈️</div>
-                <div class="fact-title">Airport</div>
-                <div class="fact-desc">BRI — Bari Karol Wojtyla</div>
-                <div class="fact-sub">Ferrotramviaria train to centre ~20 min · ticket ~€5 · taxi ~€25</div>
+                <div>
+                    <div class="fact-label">Airport</div>
+                    <div class="fact-val">BRI — Bari Karol Wojtyla</div>
+                    <div class="fact-sub">Ferrotramviaria train to centre ~20 min · ticket ~€5 · taxi ~€25</div>
+                </div>
             </div>
             
             <div class="fact-card">
                 <div class="fact-icon">🚌</div>
-                <div class="fact-title">Transport</div>
-                <div class="fact-desc">AMTAB bus + regional train</div>
-                <div class="fact-sub">AMTAB ticket €1-1.20 (75 min) · train ideal for all of Puglia</div>
+                <div>
+                    <div class="fact-label">Transport</div>
+                    <div class="fact-val">AMTAB bus + regional train</div>
+                    <div class="fact-sub">AMTAB ticket €1-1.20 (75 min) · train ideal for all of Puglia</div>
+                </div>
             </div>
             
             <div class="fact-card">
                 <div class="fact-icon">🌡️</div>
-                <div class="fact-title">Weather</div>
-                <div class="fact-desc">Mediterranean — hot summers, mild winters</div>
-                <div class="fact-sub">Apr–Jun and Sep–Oct ideal · Jul–Aug hot · Dec–Feb mild and rainy</div>
+                <div>
+                    <div class="fact-label">Weather</div>
+                    <div class="fact-val">Mediterranean — hot summers, mild winters</div>
+                    <div class="fact-sub">Apr–Jun and Sep–Oct ideal · Jul–Aug hot · Dec–Feb mild and rainy</div>
+                </div>
             </div>
             
             <div class="fact-card">
                 <div class="fact-icon">🍝</div>
-                <div class="fact-title">Food</div>
-                <div class="fact-desc">Focaccia barese, orecchiette, panzerotti, sgagliozze</div>
-                <div class="fact-sub">Street food €2–5 · trattoria lunch €10–15 · seafood €15–25</div>
+                <div>
+                    <div class="fact-label">Food</div>
+                    <div class="fact-val">Focaccia barese, orecchiette, panzerotti, sgagliozze</div>
+                    <div class="fact-sub">Street food €2–5 · trattoria lunch €10–15 · seafood €15–25</div>
+                </div>
             </div>
             
             </div>
@@ -750,31 +371,31 @@
         <section class="section">
             <div class="section-header">
                 <span class="section-label">Insider Advice</span>
-                <h2 class="section-title">Unwritten Rules for Bari</h2>
+                <h2 class="section-title">3 Unwritten Rules for Bari</h2>
             </div>
             <div class="rules-list">
                 
-            <div class="rule-item">
-                <div class="rule-num">#1</div>
-                <div class="rule-text">
-                    <strong>Enter Bari Vecchia in the early morning hours</strong>
-                    <span>Bari&#x27;s historic old neighbourhood is completely different in the morning. Street vendors are setting up their stalls, bakeries are opening, grandmothers are beginning to roll orecchiette. Tourists and crowds grow in the afternoon. Between 8am and 10am is both the quietest and most authentic moment. For focaccia barese, getting it fresh from the bakery at this hour is essential.</span>
+            <div class="rule-card">
+                <div class="rule-num">1</div>
+                <div class="rule-content">
+                    <h4>Enter Bari Vecchia in the early morning hours</h4>
+                    <p>Bari&#x27;s historic old neighbourhood is completely different in the morning. Street vendors are setting up their stalls, bakeries are opening, grandmothers are beginning to roll orecchiette. Tourists and crowds grow in the afternoon. Between 8am and 10am is both the quietest and most authentic moment. For focaccia barese, getting it fresh from the bakery at this hour is essential.</p>
                 </div>
             </div>
             
-            <div class="rule-item">
-                <div class="rule-num">#2</div>
-                <div class="rule-text">
-                    <strong>Don&#x27;t skip Strada delle Orecchiette</strong>
-                    <span>A narrow street inside Bari Vecchia, also known as Arco Basso. Local women have been rolling handmade orecchiette here in their doorways for centuries and selling it. Taking fresh orecchiette home or simply watching on the spot — this street is one of Bari&#x27;s most authentic experiences. Most lively between 9am and 12pm. €3-5 per packet.</span>
+            <div class="rule-card">
+                <div class="rule-num">2</div>
+                <div class="rule-content">
+                    <h4>Don&#x27;t skip Strada delle Orecchiette</h4>
+                    <p>A narrow street inside Bari Vecchia, also known as Arco Basso. Local women have been rolling handmade orecchiette here in their doorways for centuries and selling it. Taking fresh orecchiette home or simply watching on the spot — this street is one of Bari&#x27;s most authentic experiences. Most lively between 9am and 12pm. €3-5 per packet.</p>
                 </div>
             </div>
             
-            <div class="rule-item">
-                <div class="rule-num">#3</div>
-                <div class="rule-text">
-                    <strong>Use it as a base for exploring Puglia</strong>
-                    <span>From Bari: Alberobello 1 hour (by FSE bus), Matera 1.5 hours, Polignano a Mare 30-45 minutes, Lecce 1.5 hours. All these destinations are reachable by train or bus and ideal for day trip planning. Staying in Bari and exploring the surroundings is both practical and economical.</span>
+            <div class="rule-card">
+                <div class="rule-num">3</div>
+                <div class="rule-content">
+                    <h4>Use it as a base for exploring Puglia</h4>
+                    <p>From Bari: Alberobello 1 hour (by FSE bus), Matera 1.5 hours, Polignano a Mare 30-45 minutes, Lecce 1.5 hours. All these destinations are reachable by train or bus and ideal for day trip planning. Staying in Bari and exploring the surroundings is both practical and economical.</p>
                 </div>
             </div>
             
@@ -791,45 +412,27 @@
             </div>
             <div class="cards-grid">
                 
-            <div class="content-card">
-                <div class="card-tag">💎 HIDDEN GEM</div>
-                <div class="card-name">Strada delle Orecchiette (Arco Basso)</div>
-                <div class="card-desc">A narrow street inside Bari Vecchia, known as Arco Basso. Local women have been rolling orecchiette, cavatelli and other handmade pasta here in their doorways for centuries. Ask permission before taking photos, buy fresh pasta. Most lively between 9am and 12pm. €3-5 per packet — the finest Puglia souvenir.</div>
+            <div class="gem-card">
+                <div class="gem-badge">Hidden Gem</div>
+                <h4>Strada delle Orecchiette (Arco Basso)</h4>
+                <div class="gem-hook">Hidden Spot</div>
+                <p>A narrow street inside Bari Vecchia, known as Arco Basso. Local women have been rolling orecchiette, cavatelli and other handmade pasta here in their doorways for centuries. Ask permission before taking photos, buy fresh pasta. Most lively between 9am and 12pm. €3-5 per packet — the finest Puglia souvenir.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">💎 HIDDEN GEM</div>
-                <div class="card-name">Basilica di San Nicola</div>
-                <div class="card-desc">An 11th-century Norman-Romanesque basilica in the heart of Bari Vecchia. It&#x27;s believed that the relics of Saint Nicholas — who inspired Father Christmas — are kept here. Free entry. Downstairs to the crypt — dim light, columns and Saint Nicholas&#x27;s sarcophagus. Go early for the morning service.</div>
+            <div class="gem-card">
+                <div class="gem-badge">Hidden Gem</div>
+                <h4>Basilica di San Nicola</h4>
+                <div class="gem-hook">Hidden Spot</div>
+                <p>An 11th-century Norman-Romanesque basilica in the heart of Bari Vecchia. It&#x27;s believed that the relics of Saint Nicholas — who inspired Father Christmas — are kept here. Free entry. Downstairs to the crypt — dim light, columns and Saint Nicholas&#x27;s sarcophagus. Go early for the morning service.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">💎 HIDDEN GEM</div>
-                <div class="card-name">Polignano a Mare</div>
-                <div class="card-desc">Cave beaches carved into Adriatic rock, crystal water, narrow white streets. 30 minutes from Bari by train. Very crowded in the afternoon — quiet between 8am and 10am. Lama Monachile cove is the finest photo spot. Free entry.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">💎 HIDDEN GEM</div>
-                <div class="card-name">Alberobello — Trulli village</div>
-                <div class="card-desc">1 hour 20 minutes from Bari by train. UNESCO World Heritage Site. White trulli houses with conical stone roofs — this architecture exists only here, in the Valle d&#x27;Itria. Rione Monti neighbourhood: hundreds of trulli side by side. Empty and impressive in the early morning hours. Easy day trip from Bari.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">💎 HIDDEN GEM</div>
-                <div class="card-name">Matera</div>
-                <div class="card-desc">About 1.5-2 hours from Bari by train and bus. UNESCO World Heritage Site and 2019 European Capital of Culture. Sassi (cave houses) carved into the rock face — people have lived here for 9,000 years. Rocky panorama facing the Gravina valley, cave churches, restaurants in stone streets. A day trip is possible from Bari but staying overnight is better.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">💎 HIDDEN GEM</div>
-                <div class="card-name">Castel del Monte</div>
-                <div class="card-desc">1 hour from Bari by car, near Andria on a hilltop. An octagonal castle from the 13th century — built by Holy Roman Emperor Frederick II. Why octagonal? The courtyard is octagonal, eight towers are octagonal, eight rooms on each floor. The answer is still debated. On the UNESCO list, a symbol of Puglia. The interior is relatively plain but the architecture and views are impressive. Ticketed.</div>
+            <div class="gem-card">
+                <div class="gem-badge">Hidden Gem</div>
+                <h4>Polignano a Mare</h4>
+                <div class="gem-hook">Hidden Spot</div>
+                <p>Cave beaches carved into Adriatic rock, crystal water, narrow white streets. 30 minutes from Bari by train. Very crowded in the afternoon — quiet between 8am and 10am. Lama Monachile cove is the finest photo spot. Free entry.</p>
                 
             </div>
             
@@ -844,48 +447,29 @@
                 <span class="section-label">Food & Flavors</span>
                 <h2 class="section-title">What to Taste</h2>
             </div>
-            <p class="intro-text">Food in Bari is both cheap and delicious — street food culture is strong, focaccia is the morning ritual, orecchiette is made by hand.</p>
             <div class="cards-grid">
                 
-            <div class="content-card">
-                <div class="card-tag">🍴 MUST TASTE</div>
-                <div class="card-name">Focaccia barese</div>
-                <div class="card-desc">Bari&#x27;s defining food. Panificio Fiore (Via Calefati) comes out fresh from the wood-fired oven at 8:30am — go early for this address. Alternative: small bakeries inside Bari Vecchia. Eat it hot — still delicious when cool but there&#x27;s a difference. €2-4. Walking out of the shop and eating in the street is the true Barese way.</div>
+            <div class="eat-card">
+                <h4>🍴 Focaccia barese</h4>
+                <p>Bari&#x27;s defining food. Panificio Fiore (Via Calefati) comes out fresh from the wood-fired oven at 8:30am — go early for this address. Alternative: small bakeries inside Bari Vecchia. Eat it hot — still delicious when cool but there&#x27;s a difference. €2-4. Walking out of the shop and eating in the street is the true Barese way.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">🍴 MUST TASTE</div>
-                <div class="card-name">Panzerotto</div>
-                <div class="card-desc">Bari&#x27;s own fried dough — tomato and mozzarella filling inside. Puffs up in the frying oil and turns golden. Crispy outside, hot and yielding inside. Venezia 40 (on the Lungomare, facing the Adriatic) is the most famous address. Can have a queue from 6pm onwards. €3-5.</div>
+            <div class="eat-card">
+                <h4>🍴 Panzerotto</h4>
+                <p>Bari&#x27;s own fried dough — tomato and mozzarella filling inside. Puffs up in the frying oil and turns golden. Crispy outside, hot and yielding inside. Venezia 40 (on the Lungomare, facing the Adriatic) is the most famous address. Can have a queue from 6pm onwards. €3-5.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">🍴 MUST TASTE</div>
-                <div class="card-name">Orecchiette con cime di rapa</div>
-                <div class="card-desc">Puglia&#x27;s most representative dish — handmade little-ear pasta, turnip tops, garlic and chilli. The essence of the dish is simple but ingredient quality changes everything. Turnip tops are at their finest in winter. €8-12 at local trattorias in Bari Vecchia and Murat.</div>
+            <div class="eat-card">
+                <h4>🍴 Orecchiette con cime di rapa</h4>
+                <p>Puglia&#x27;s most representative dish — handmade little-ear pasta, turnip tops, garlic and chilli. The essence of the dish is simple but ingredient quality changes everything. Turnip tops are at their finest in winter. €8-12 at local trattorias in Bari Vecchia and Murat.</p>
                 
             </div>
             
-            <div class="content-card">
-                <div class="card-tag">🍴 MUST TASTE</div>
-                <div class="card-name">Sgagliozze</div>
-                <div class="card-desc">Fried polenta slices made from cornmeal — the evening street food of Bari Vecchia. A stall sets up and sells them at Largo Albicocca at certain hours. Crispy outside, soft inside, with salt on top. €1-2. Simple but addictive. Perfect alongside a glass of Primitivo at aperitivo hour.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">🍴 MUST TASTE</div>
-                <div class="card-name">Crudo di mare — raw seafood</div>
-                <div class="card-desc">Eating raw seafood at the Adriatic&#x27;s edge is a Barese tradition. At the N&#x27;dranghet fish market near the old harbour, fresh mussels, sea urchins and octopus can be eaten straight from the morning catch. Fresh and cheap — it may take some courage. Also available at fish stalls within Bari Vecchia.</div>
-                
-            </div>
-            
-            <div class="content-card">
-                <div class="card-tag">🍴 MUST TASTE</div>
-                <div class="card-name">Pasticciotto and sporcamuss</div>
-                <div class="card-desc">Puglia&#x27;s pastry culture: pasticciotto (a small shortcrust tart with custard filling, originally from Lecce but everywhere), sporcamuss (a flaky pastry with sugar and custard — the name means &#x27;dirty your mouth&#x27;). Both ideal for breakfast or an afternoon café break. €1.50-3 at pastry shops.</div>
+            <div class="eat-card">
+                <h4>🍴 Sgagliozze</h4>
+                <p>Fried polenta slices made from cornmeal — the evening street food of Bari Vecchia. A stall sets up and sells them at Largo Albicocca at certain hours. Crispy outside, soft inside, with salt on top. €1-2. Simple but addictive. Perfect alongside a glass of Primitivo at aperitivo hour.</p>
                 
             </div>
             
@@ -903,27 +487,21 @@
             <div class="traps-list">
                 
             <div class="trap-card">
-                <div class="trap-bad">❌ </div>
-                <div class="trap-why">The nonnas of Arco Basso truly roll pasta at their doorsteps; but some stalls sell factory pasta as &#x27;handmade&#x27;.</div>
-                <div class="trap-good">✅ <strong>Better Alternative:</strong> Buy from the stall where you watched it being made; fresh lasts two days refrigerated — ask for the dried kind to travel.</div>
+                <div class="trap-header">
+                    <span class="trap-tag">Avoid</span>
+                    <h4></h4>
+                </div>
+                <p>The nonnas of Arco Basso truly roll pasta at their doorsteps; but some stalls sell factory pasta as &#x27;handmade&#x27;.</p>
+                <div class="trap-solution"><strong>Do this instead:</strong> Buy from the stall where you watched it being made; fresh lasts two days refrigerated — ask for the dried kind to travel.</div>
             </div>
             
             <div class="trap-card">
-                <div class="trap-bad">❌ </div>
-                <div class="trap-why">Raw seafood is a Bari tradition, but never from a stall waiting in the heat; don&#x27;t let your stomach end the holiday early.</div>
-                <div class="trap-good">✅ <strong>Better Alternative:</strong> Eat crudo at established addresses: the fishermen&#x27;s own stand by the harbour or known ristorantes — fresh, on ice, safe.</div>
-            </div>
-            
-            <div class="trap-card">
-                <div class="trap-bad">❌ </div>
-                <div class="trap-why">The trulli village becomes a tour-bus flood at midday; the fairytale set turns into a selfie queue.</div>
-                <div class="trap-good">✅ <strong>Better Alternative:</strong> Take the first morning train or sleep there: at sunrise the trulli lanes are yours alone.</div>
-            </div>
-            
-            <div class="trap-card">
-                <div class="trap-bad">❌ </div>
-                <div class="trap-why">Parking in Polignano is near-impossible in summer; steering a car into Bari Vecchia&#x27;s lanes is a mistake in itself.</div>
-                <div class="trap-good">✅ <strong>Better Alternative:</strong> The train to Polignano takes 20 minutes; in Bari, walk the old town — it&#x27;s no bigger than your palm anyway.</div>
+                <div class="trap-header">
+                    <span class="trap-tag">Avoid</span>
+                    <h4></h4>
+                </div>
+                <p>Raw seafood is a Bari tradition, but never from a stall waiting in the heat; don&#x27;t let your stomach end the holiday early.</p>
+                <div class="trap-solution"><strong>Do this instead:</strong> Eat crudo at established addresses: the fishermen&#x27;s own stand by the harbour or known ristorantes — fresh, on ice, safe.</div>
             </div>
             
             </div>
@@ -945,7 +523,7 @@
         </section>
     </main>
 
-    <footer>
+    <footer class="footer">
         <div class="container">
             <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
         </div>
