@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>90+ Şehir Gezi Rehberi & Akıllı Rotalar | MyWay</title>
+    <meta name="description" content="Avrupa ve dünyanın en popüler 90+ şehri için yerel sırlar, gizli mekanlar ve adım adım yürüyüş rotaları.">
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
+         crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="icon" type="image/png" href="../../images/app_icon.png">
+
+    <style>
+        :root {
+            --bg-dark: #0d0e15;
+            --bg-card: #161824;
+            --bg-card-hover: #1e2132;
+            --primary: #7b6ef6;
+            --primary-glow: rgba(123, 110, 246, 0.25);
+            --accent: #f59e0b;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(123, 110, 246, 0.4);
+            --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        .navbar {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(13, 14, 21, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            height: 72px; display: flex; align-items: center;
+        }
+
+        .navbar-inner {
+            max-width: 1200px; margin: 0 auto; padding: 0 24px;
+            width: 100%; display: flex; align-items: center; justify-content: space-between;
+        }
+
+        .nav-brand {
+            display: flex; align-items: center; gap: 12px;
+            text-decoration: none; color: white; font-weight: 800; font-size: 20px;
+        }
+
+        .nav-brand img { border-radius: 10px; box-shadow: 0 4px 12px var(--primary-glow); }
+
+        .nav-links { display: flex; align-items: center; gap: 20px; list-style: none; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 600; }
+        .nav-links a:hover { color: white; }
+
+        .lang-switch-btn {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 6px 12px; border-radius: 20px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border);
+            color: white !important; font-size: 13px !important; font-weight: 700 !important;
+        }
+
+        .nav-cta {
+            background: var(--primary); color: white !important;
+            padding: 8px 18px; border-radius: 100px; font-size: 13px; font-weight: 700;
+            text-decoration: none;
+        }
+
+        .nav-toggle { display: none; background: none; border: none; color: white; cursor: pointer; padding: 8px; }
+
+        .hub-header {
+            padding: 140px 24px 40px; text-align: center; max-width: 800px; margin: 0 auto;
+        }
+
+        .hub-header h1 { font-size: clamp(36px, 5vw, 56px); font-weight: 800; margin-bottom: 12px; }
+        .hub-header p { font-size: clamp(16px, 2.5vw, 18px); color: var(--text-muted); }
+
+        .search-bar-wrap { max-width: 600px; margin: 28px auto 0; position: relative; }
+        .search-input {
+            width: 100%; padding: 16px 20px 16px 52px;
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 100px; color: white; font-size: 15px; outline: none;
+            font-family: inherit; transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .search-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-glow);
+        }
+        .search-icon {
+            position: absolute; left: 20px; top: 50%; transform: translateY(-50%);
+            color: var(--text-muted); font-size: 18px;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        .hub-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .hub-city-card {
+            position: relative; height: 320px; border-radius: 20px;
+            overflow: hidden; text-decoration: none; color: white;
+            border: 1px solid var(--border);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+            background: var(--bg-card); display: block;
+        }
+
+        .hub-city-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-hover);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        .hub-city-card img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .hub-city-card:hover img { transform: scale(1.05); }
+
+        .hub-card-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(13, 14, 21, 0.95) 0%, rgba(13, 14, 21, 0.3) 60%, transparent 100%);
+        }
+
+        .hub-card-content {
+            position: absolute; bottom: 0; left: 0; right: 0; padding: 20px;
+        }
+
+        .hub-card-flag {
+            font-size: 13px; font-weight: 700; color: #cbd5e1; margin-bottom: 6px;
+        }
+
+        .hub-card-title {
+            font-size: 24px; font-weight: 800; margin-bottom: 8px;
+        }
+
+        .hub-card-action {
+            font-size: 13px; font-weight: 700; color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .navbar { height: 64px; }
+            .nav-links {
+                display: none; position: fixed; top: 64px; left: 0; right: 0;
+                background: rgba(13, 14, 21, 0.98); flex-direction: column;
+                padding: 24px; border-bottom: 1px solid var(--border); gap: 16px;
+            }
+            .nav-links.active { display: flex; }
+            .nav-toggle { display: block; }
+            .hub-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .hub-city-card { height: 220px; }
+            .hub-card-title { font-size: 18px; }
+        }
+
+        @media (max-width: 480px) {
+            .hub-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .hub-city-card { height: 190px; border-radius: 14px; }
+            .hub-card-content { padding: 12px; }
+            .hub-card-title { font-size: 16px; margin-bottom: 2px; }
+            .hub-card-flag { font-size: 11px; }
+            .hub-card-action { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="../" class="nav-brand">
+                <img src="../../images/app_icon.png" alt="MyWay" width="38" height="38">
+                <span>MyWay</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../#features">Özellikler</a></li>
+                <li><a href="../../guides/" class="lang-switch-btn">🇬🇧 English</a></li>
+                <li><a href="../#hero" class="nav-cta">İndir</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="hub-header">
+        <h1>90+ Şehir Rehberi</h1>
+        <p>Zikzak çizmeden gezin. Adım adım yürüyüş rotaları, gizli lezzetler ve yerel ipuçları.</p>
+        <div class="search-bar-wrap">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="citySearch" class="search-input" placeholder="Şehir veya ülke ara (Örn: Roma, İtalya)..." autocomplete="off">
+        </div>
+    </header>
+
+    <!-- Grid -->
+    <main class="container">
+        <div class="hub-grid" id="cityGrid">
+            
+        <a href="amalfi.html" class="hub-city-card" data-name="amalfi kıyısı" data-country="i̇talya">
+            <img src="../../images/cities/amalfi.jpg" alt="Amalfi Kıyısı" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇮🇹 İtalya</div>
+                <h3 class="hub-card-title">Amalfi Kıyısı</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="amsterdam.html" class="hub-city-card" data-name="amsterdam" data-country="hollanda">
+            <img src="../../images/cities/amsterdam.jpg" alt="Amsterdam" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇳🇱 Hollanda</div>
+                <h3 class="hub-card-title">Amsterdam</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="antalya.html" class="hub-city-card" data-name="antalya" data-country="türkiye">
+            <img src="../../images/cities/antalya.jpg" alt="Antalya" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇹🇷 Türkiye</div>
+                <h3 class="hub-card-title">Antalya</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="atina.html" class="hub-city-card" data-name="atina" data-country="yunanistan">
+            <img src="../../images/cities/atina.jpg" alt="Atina" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇬🇷 Yunanistan</div>
+                <h3 class="hub-card-title">Atina</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="atlanta.html" class="hub-city-card" data-name="atlanta" data-country="abd">
+            <img src="../../images/cities/atlanta.jpg" alt="Atlanta" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇺🇸 ABD</div>
+                <h3 class="hub-card-title">Atlanta</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="bangkok.html" class="hub-city-card" data-name="bangkok" data-country="tayland">
+            <img src="../../images/cities/bangkok.jpg" alt="Bangkok" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇹🇭 Tayland</div>
+                <h3 class="hub-card-title">Bangkok</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="barcelona.html" class="hub-city-card" data-name="barcelona" data-country="i̇spanya">
+            <img src="../../images/cities/barcelona.jpg" alt="Barcelona" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇪🇸 İspanya</div>
+                <h3 class="hub-card-title">Barcelona</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="bari.html" class="hub-city-card" data-name="bari" data-country="i̇talya">
+            <img src="../../images/cities/bari.jpg" alt="Bari" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇮🇹 İtalya</div>
+                <h3 class="hub-card-title">Bari</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="belgrad.html" class="hub-city-card" data-name="belgrad" data-country="sırbistan">
+            <img src="../../images/cities/belgrad.jpg" alt="Belgrad" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇷🇸 Sırbistan</div>
+                <h3 class="hub-card-title">Belgrad</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="berlin.html" class="hub-city-card" data-name="berlin" data-country="almanya">
+            <img src="../../images/cities/berlin.jpg" alt="Berlin" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇩🇪 Almanya</div>
+                <h3 class="hub-card-title">Berlin</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="bodrum.html" class="hub-city-card" data-name="bodrum" data-country="türkiye">
+            <img src="../../images/cities/bodrum.jpg" alt="Bodrum" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇹🇷 Türkiye</div>
+                <h3 class="hub-card-title">Bodrum</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="bologna.html" class="hub-city-card" data-name="bologna" data-country="i̇talya">
+            <img src="../../images/cities/bologna.jpg" alt="Bologna" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇮🇹 İtalya</div>
+                <h3 class="hub-card-title">Bologna</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="boston.html" class="hub-city-card" data-name="boston" data-country="abd">
+            <img src="../../images/cities/boston.jpg" alt="Boston" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇺🇸 ABD</div>
+                <h3 class="hub-card-title">Boston</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="brugge.html" class="hub-city-card" data-name="brugge" data-country="belçika">
+            <img src="../../images/cities/brugge.jpg" alt="Brugge" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇧🇪 Belçika</div>
+                <h3 class="hub-card-title">Brugge</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="bruksel.html" class="hub-city-card" data-name="brüksel" data-country="belçika">
+            <img src="../../images/cities/bruksel.jpg" alt="Brüksel" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇧🇪 Belçika</div>
+                <h3 class="hub-card-title">Brüksel</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="budapeste.html" class="hub-city-card" data-name="budapeşte" data-country="macaristan">
+            <img src="../../images/cities/budapeste.jpg" alt="Budapeşte" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇭🇺 Macaristan</div>
+                <h3 class="hub-card-title">Budapeşte</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="budva.html" class="hub-city-card" data-name="budva" data-country="karadağ">
+            <img src="../../images/cities/budva.jpg" alt="Budva" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇲🇪 Karadağ</div>
+                <h3 class="hub-card-title">Budva</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="cannes.html" class="hub-city-card" data-name="cannes" data-country="fransa">
+            <img src="../../images/cities/cannes.jpg" alt="Cannes" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇫🇷 Fransa</div>
+                <h3 class="hub-card-title">Cannes</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="catania.html" class="hub-city-card" data-name="catania" data-country="i̇talya">
+            <img src="../../images/cities/catania.jpg" alt="Catania" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇮🇹 İtalya</div>
+                <h3 class="hub-card-title">Catania</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="cenevre.html" class="hub-city-card" data-name="cenevre" data-country="i̇sviçre">
+            <img src="../../images/cities/cenevre.jpg" alt="Cenevre" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇨🇭 İsviçre</div>
+                <h3 class="hub-card-title">Cenevre</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="cesme.html" class="hub-city-card" data-name="çeşme" data-country="türkiye">
+            <img src="../../images/cities/cesme.jpg" alt="Çeşme" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇹🇷 Türkiye</div>
+                <h3 class="hub-card-title">Çeşme</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="colmar.html" class="hub-city-card" data-name="colmar" data-country="fransa">
+            <img src="../../images/cities/colmar.jpg" alt="Colmar" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇫🇷 Fransa</div>
+                <h3 class="hub-card-title">Colmar</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="dallas.html" class="hub-city-card" data-name="dallas" data-country="abd">
+            <img src="../../images/cities/dallas.jpg" alt="Dallas" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇺🇸 ABD</div>
+                <h3 class="hub-card-title">Dallas</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="dubai.html" class="hub-city-card" data-name="dubai" data-country="birleşik arap emirlikleri">
+            <img src="../../images/cities/dubai.jpg" alt="Dubai" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇦🇪 Birleşik Arap Emirlikleri</div>
+                <h3 class="hub-card-title">Dubai</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="dublin.html" class="hub-city-card" data-name="dublin" data-country="i̇rlanda">
+            <img src="../../images/cities/dublin.jpg" alt="Dublin" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇮🇪 İrlanda</div>
+                <h3 class="hub-card-title">Dublin</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="dubrovnik.html" class="hub-city-card" data-name="dubrovnik" data-country="hırvatistan">
+            <img src="../../images/cities/dubrovnik.jpg" alt="Dubrovnik" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇭🇷 Hırvatistan</div>
+                <h3 class="hub-card-title">Dubrovnik</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="edinburgh.html" class="hub-city-card" data-name="edinburgh" data-country="i̇skoçya">
+            <img src="../../images/cities/edinburgh.jpg" alt="Edinburgh" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿 İskoçya</div>
+                <h3 class="hub-card-title">Edinburgh</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="fes.html" class="hub-city-card" data-name="fes" data-country="fas">
+            <img src="../../images/cities/fes.jpg" alt="Fes" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇲🇦 Fas</div>
+                <h3 class="hub-card-title">Fes</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="floransa.html" class="hub-city-card" data-name="floransa" data-country="i̇talya">
+            <img src="../../images/cities/floransa.jpg" alt="Floransa" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇮🇹 İtalya</div>
+                <h3 class="hub-card-title">Floransa</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="gaziantep.html" class="hub-city-card" data-name="gaziantep" data-country="türkiye">
+            <img src="../../images/cities/gaziantep.jpg" alt="Gaziantep" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇹🇷 Türkiye</div>
+                <h3 class="hub-card-title">Gaziantep</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="giethoorn.html" class="hub-city-card" data-name="giethoorn" data-country="hollanda">
+            <img src="../../images/cities/giethoorn.jpg" alt="Giethoorn" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇳🇱 Hollanda</div>
+                <h3 class="hub-card-title">Giethoorn</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="hallstatt.html" class="hub-city-card" data-name="hallstatt" data-country="avusturya">
+            <img src="../../images/cities/hallstatt.jpg" alt="Hallstatt" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇦🇹 Avusturya</div>
+                <h3 class="hub-card-title">Hallstatt</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="heidelberg.html" class="hub-city-card" data-name="heidelberg" data-country="almanya">
+            <img src="../../images/cities/heidelberg.jpg" alt="Heidelberg" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇩🇪 Almanya</div>
+                <h3 class="hub-card-title">Heidelberg</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="hongkong.html" class="hub-city-card" data-name="hong kong" data-country="çin (öi̇b)">
+            <img src="../../images/cities/hongkong.jpg" alt="Hong Kong" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🌍 Çin (ÖİB)</div>
+                <h3 class="hub-card-title">Hong Kong</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="houston.html" class="hub-city-card" data-name="houston" data-country="abd">
+            <img src="../../images/cities/houston.jpg" alt="Houston" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇺🇸 ABD</div>
+                <h3 class="hub-card-title">Houston</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="ibiza.html" class="hub-city-card" data-name="ibiza" data-country="i̇spanya">
+            <img src="../../images/cities/ibiza.jpg" alt="Ibiza" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇪🇸 İspanya</div>
+                <h3 class="hub-card-title">Ibiza</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="istanbul.html" class="hub-city-card" data-name="i̇stanbul" data-country="türkiye">
+            <img src="../../images/cities/istanbul.jpg" alt="İstanbul" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇹🇷 Türkiye</div>
+                <h3 class="hub-card-title">İstanbul</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="kahire.html" class="hub-city-card" data-name="kahire" data-country="mısır">
+            <img src="../../images/cities/kahire.jpg" alt="Kahire" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇪🇬 Mısır</div>
+                <h3 class="hub-card-title">Kahire</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="kansascity.html" class="hub-city-card" data-name="kansas city" data-country="abd">
+            <img src="../../images/cities/kansascity.jpg" alt="Kansas City" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇺🇸 ABD</div>
+                <h3 class="hub-card-title">Kansas City</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="kapadokya.html" class="hub-city-card" data-name="kapadokya" data-country="türkiye">
+            <img src="../../images/cities/kapadokya.jpg" alt="Kapadokya" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇹🇷 Türkiye</div>
+                <h3 class="hub-card-title">Kapadokya</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="kas.html" class="hub-city-card" data-name="kaş" data-country="türkiye">
+            <img src="../../images/cities/kas.jpg" alt="Kaş" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇹🇷 Türkiye</div>
+                <h3 class="hub-card-title">Kaş</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="kopenhag.html" class="hub-city-card" data-name="kopenhag" data-country="danimarka">
+            <img src="../../images/cities/kopenhag.jpg" alt="Kopenhag" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇩🇰 Danimarka</div>
+                <h3 class="hub-card-title">Kopenhag</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="kotor.html" class="hub-city-card" data-name="kotor" data-country="karadağ">
+            <img src="../../images/cities/kotor.jpg" alt="Kotor" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇲🇪 Karadağ</div>
+                <h3 class="hub-card-title">Kotor</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="ksamil.html" class="hub-city-card" data-name="ksamil" data-country="arnavutluk">
+            <img src="../../images/cities/ksamil.jpg" alt="Ksamil" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇦🇱 Arnavutluk</div>
+                <h3 class="hub-card-title">Ksamil</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="lizbon.html" class="hub-city-card" data-name="lizbon" data-country="portekiz">
+            <img src="../../images/cities/lizbon.jpg" alt="Lizbon" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇵🇹 Portekiz</div>
+                <h3 class="hub-card-title">Lizbon</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="londra.html" class="hub-city-card" data-name="london" data-country="birleşik krallık">
+            <img src="../../images/cities/londra.jpg" alt="London" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇬🇧 Birleşik Krallık</div>
+                <h3 class="hub-card-title">London</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="losangeles.html" class="hub-city-card" data-name="los angeles" data-country="abd">
+            <img src="../../images/cities/losangeles.jpg" alt="Los Angeles" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇺🇸 ABD</div>
+                <h3 class="hub-card-title">Los Angeles</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="lucerne.html" class="hub-city-card" data-name="lucerne" data-country="i̇sviçre">
+            <img src="../../images/cities/lucerne.jpg" alt="Lucerne" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇨🇭 İsviçre</div>
+                <h3 class="hub-card-title">Lucerne</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="lyon.html" class="hub-city-card" data-name="lyon" data-country="fransa">
+            <img src="../../images/cities/lyon.jpg" alt="Lyon" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇫🇷 Fransa</div>
+                <h3 class="hub-card-title">Lyon</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="madrid.html" class="hub-city-card" data-name="madrid" data-country="i̇spanya">
+            <img src="../../images/cities/madrid.jpg" alt="Madrid" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇪🇸 İspanya</div>
+                <h3 class="hub-card-title">Madrid</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="mallorca.html" class="hub-city-card" data-name="mallorca" data-country="i̇spanya">
+            <img src="../../images/cities/mallorca.jpg" alt="Mallorca" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇪🇸 İspanya</div>
+                <h3 class="hub-card-title">Mallorca</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="marakes.html" class="hub-city-card" data-name="marakeş" data-country="fas">
+            <img src="../../images/cities/marakes.jpg" alt="Marakeş" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇲🇦 Fas</div>
+                <h3 class="hub-card-title">Marakeş</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="marsilya.html" class="hub-city-card" data-name="marseille" data-country="fransa">
+            <img src="../../images/cities/marsilya.jpg" alt="Marseille" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇫🇷 Fransa</div>
+                <h3 class="hub-card-title">Marseille</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="matera.html" class="hub-city-card" data-name="matera" data-country="i̇talya">
+            <img src="../../images/cities/matera.jpg" alt="Matera" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇮🇹 İtalya</div>
+                <h3 class="hub-card-title">Matera</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="miami.html" class="hub-city-card" data-name="miami" data-country="abd">
+            <img src="../../images/cities/miami.jpg" alt="Miami" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇺🇸 ABD</div>
+                <h3 class="hub-card-title">Miami</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="midilli.html" class="hub-city-card" data-name="midilli" data-country="yunanistan">
+            <img src="../../images/cities/midilli.jpg" alt="Midilli" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇬🇷 Yunanistan</div>
+                <h3 class="hub-card-title">Midilli</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="milano.html" class="hub-city-card" data-name="milano" data-country="i̇talya">
+            <img src="../../images/cities/milano.jpg" alt="Milano" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇮🇹 İtalya</div>
+                <h3 class="hub-card-title">Milano</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="mykonos.html" class="hub-city-card" data-name="mykonos" data-country="yunanistan">
+            <img src="../../images/cities/mykonos.jpg" alt="Mykonos" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇬🇷 Yunanistan</div>
+                <h3 class="hub-card-title">Mykonos</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="napoli.html" class="hub-city-card" data-name="napoli" data-country="i̇talya">
+            <img src="../../images/cities/napoli.jpg" alt="Napoli" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇮🇹 İtalya</div>
+                <h3 class="hub-card-title">Napoli</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="newyork.html" class="hub-city-card" data-name="new york" data-country="abd">
+            <img src="../../images/cities/newyork.jpg" alt="New York" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇺🇸 ABD</div>
+                <h3 class="hub-card-title">New York</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="nice.html" class="hub-city-card" data-name="nice" data-country="fransa">
+            <img src="../../images/cities/nice.jpg" alt="Nice" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇫🇷 Fransa</div>
+                <h3 class="hub-card-title">Nice</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="oslo.html" class="hub-city-card" data-name="oslo" data-country="norveç">
+            <img src="../../images/cities/oslo.jpg" alt="Oslo" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇳🇴 Norveç</div>
+                <h3 class="hub-card-title">Oslo</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="palermo.html" class="hub-city-card" data-name="palermo" data-country="i̇talya">
+            <img src="../../images/cities/palermo.jpg" alt="Palermo" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇮🇹 İtalya</div>
+                <h3 class="hub-card-title">Palermo</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="paris.html" class="hub-city-card" data-name="paris" data-country="fransa">
+            <img src="../../images/cities/paris.jpg" alt="Paris" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇫🇷 Fransa</div>
+                <h3 class="hub-card-title">Paris</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="philadelphia.html" class="hub-city-card" data-name="philadelphia" data-country="abd">
+            <img src="../../images/cities/philadelphia.jpg" alt="Philadelphia" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇺🇸 ABD</div>
+                <h3 class="hub-card-title">Philadelphia</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="porto.html" class="hub-city-card" data-name="porto" data-country="portekiz">
+            <img src="../../images/cities/porto.jpg" alt="Porto" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇵🇹 Portekiz</div>
+                <h3 class="hub-card-title">Porto</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="prag.html" class="hub-city-card" data-name="prag" data-country="çek cumhuriyeti">
+            <img src="../../images/cities/prag.jpg" alt="Prag" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🌍 Çek Cumhuriyeti</div>
+                <h3 class="hub-card-title">Prag</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="rhodes.html" class="hub-city-card" data-name="rodos" data-country="yunanistan">
+            <img src="../../images/cities/rhodes.jpg" alt="Rodos" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇬🇷 Yunanistan</div>
+                <h3 class="hub-card-title">Rodos</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="roma.html" class="hub-city-card" data-name="roma" data-country="i̇talya">
+            <img src="../../images/cities/roma.jpg" alt="Roma" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇮🇹 İtalya</div>
+                <h3 class="hub-card-title">Roma</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="rovaniemi.html" class="hub-city-card" data-name="rovaniemi" data-country="finlandiya">
+            <img src="../../images/cities/rovaniemi.jpg" alt="Rovaniemi" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇫🇮 Finlandiya</div>
+                <h3 class="hub-card-title">Rovaniemi</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="saint_tropez.html" class="hub-city-card" data-name="saint-tropez" data-country="fransa">
+            <img src="../../images/cities/saint_tropez.jpg" alt="Saint-Tropez" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇫🇷 Fransa</div>
+                <h3 class="hub-card-title">Saint-Tropez</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="san_sebastian.html" class="hub-city-card" data-name="san sebastián" data-country="i̇spanya">
+            <img src="../../images/cities/san_sebastian.jpg" alt="San Sebastián" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇪🇸 İspanya</div>
+                <h3 class="hub-card-title">San Sebastián</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="sanfrancisco.html" class="hub-city-card" data-name="san francisco" data-country="abd">
+            <img src="../../images/cities/sanfrancisco.jpg" alt="San Francisco" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇺🇸 ABD</div>
+                <h3 class="hub-card-title">San Francisco</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="santorini.html" class="hub-city-card" data-name="santorini" data-country="yunanistan">
+            <img src="../../images/cities/santorini.jpg" alt="Santorini" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇬🇷 Yunanistan</div>
+                <h3 class="hub-card-title">Santorini</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="saraybosna.html" class="hub-city-card" data-name="saraybosna" data-country="bosna-hersek">
+            <img src="../../images/cities/saraybosna.jpg" alt="Saraybosna" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇧🇦 Bosna-Hersek</div>
+                <h3 class="hub-card-title">Saraybosna</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="sardinya.html" class="hub-city-card" data-name="sardinya" data-country="i̇talya">
+            <img src="../../images/cities/sardinya.jpg" alt="Sardinya" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇮🇹 İtalya</div>
+                <h3 class="hub-card-title">Sardinya</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="seattle.html" class="hub-city-card" data-name="seattle" data-country="abd">
+            <img src="../../images/cities/seattle.jpg" alt="Seattle" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇺🇸 ABD</div>
+                <h3 class="hub-card-title">Seattle</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="selanik.html" class="hub-city-card" data-name="selanik" data-country="yunanistan">
+            <img src="../../images/cities/selanik.jpg" alt="Selanik" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇬🇷 Yunanistan</div>
+                <h3 class="hub-card-title">Selanik</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="seul.html" class="hub-city-card" data-name="seul" data-country="güney kore">
+            <img src="../../images/cities/seul.jpg" alt="Seul" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇰🇷 Güney Kore</div>
+                <h3 class="hub-card-title">Seul</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="sevilla.html" class="hub-city-card" data-name="sevilla" data-country="i̇spanya">
+            <img src="../../images/cities/sevilla.jpg" alt="Sevilla" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇪🇸 İspanya</div>
+                <h3 class="hub-card-title">Sevilla</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="singapur.html" class="hub-city-card" data-name="singapur" data-country="singapur">
+            <img src="../../images/cities/singapur.jpg" alt="Singapur" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇸🇬 Singapur</div>
+                <h3 class="hub-card-title">Singapur</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="sintra.html" class="hub-city-card" data-name="sintra" data-country="portekiz">
+            <img src="../../images/cities/sintra.jpg" alt="Sintra" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇵🇹 Portekiz</div>
+                <h3 class="hub-card-title">Sintra</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="stockholm.html" class="hub-city-card" data-name="stokholm" data-country="i̇sveç">
+            <img src="../../images/cities/stockholm.jpg" alt="Stokholm" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇸🇪 İsveç</div>
+                <h3 class="hub-card-title">Stokholm</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="strazburg.html" class="hub-city-card" data-name="strazburg" data-country="fransa">
+            <img src="../../images/cities/strazburg.jpg" alt="Strazburg" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇫🇷 Fransa</div>
+                <h3 class="hub-card-title">Strazburg</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="tokyo.html" class="hub-city-card" data-name="tokyo" data-country="japonya">
+            <img src="../../images/cities/tokyo.jpg" alt="Tokyo" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇯🇵 Japonya</div>
+                <h3 class="hub-card-title">Tokyo</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="tromso.html" class="hub-city-card" data-name="tromsø" data-country="norveç">
+            <img src="../../images/cities/tromso.jpg" alt="Tromsø" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇳🇴 Norveç</div>
+                <h3 class="hub-card-title">Tromsø</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="valencia.html" class="hub-city-card" data-name="valensiya" data-country="i̇spanya">
+            <img src="../../images/cities/valencia.jpg" alt="Valensiya" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇪🇸 İspanya</div>
+                <h3 class="hub-card-title">Valensiya</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="venedik.html" class="hub-city-card" data-name="venedik" data-country="i̇talya">
+            <img src="../../images/cities/venedik.jpg" alt="Venedik" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇮🇹 İtalya</div>
+                <h3 class="hub-card-title">Venedik</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="viyana.html" class="hub-city-card" data-name="viyana" data-country="avusturya">
+            <img src="../../images/cities/viyana.jpg" alt="Viyana" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇦🇹 Avusturya</div>
+                <h3 class="hub-card-title">Viyana</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="zermatt.html" class="hub-city-card" data-name="zermatt" data-country="i̇sviçre">
+            <img src="../../images/cities/zermatt.jpg" alt="Zermatt" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇨🇭 İsviçre</div>
+                <h3 class="hub-card-title">Zermatt</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        <a href="zurih.html" class="hub-city-card" data-name="zürih" data-country="i̇sviçre">
+            <img src="../../images/cities/zurih.jpg" alt="Zürih" loading="lazy">
+            <div class="hub-card-overlay"></div>
+            <div class="hub-card-content">
+                <div class="hub-card-flag">🇨🇭 İsviçre</div>
+                <h3 class="hub-card-title">Zürih</h3>
+                <div class="hub-card-action">Rehberi İncele &rarr;</div>
+            </div>
+        </a>
+        
+        </div>
+    </main>
+
+    <script>
+        const searchInput = document.getElementById('citySearch');
+        const cards = document.querySelectorAll('.hub-city-card');
+
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                const q = e.target.value.toLowerCase().trim();
+                cards.forEach(card => {
+                    const name = card.getAttribute('data-name') || '';
+                    const country = card.getAttribute('data-country') || '';
+                    if (name.includes(q) || country.includes(q)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        }
+
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        if (navToggle && navLinks) {
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
+</html>
