@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyWay - Akıllı Seyahat & Günlük Rota Planlayıcı</title>
+    <title>MyWay – Akıllı Seyahat & Günlük Rota Planlayıcı</title>
     <meta name="description" content="Arkadaşlarınızla ortak seyahat planlayın, rotalarınızı tek tıkla paylaşın. 90+ şehir için akıllı yürüyüş rotaları ve yerel gezi rehberi.">
-    <meta name="keywords" content="travel app, city guide, smart routes, travel planner, AI travel, itinerary builder">
-    <meta property="og:title" content="MyWay – Smart Travel Routes & City Guide">
-    <meta property="og:description" content="Discover hidden gems, create smart routes, and explore cities like a local.">
+    <meta name="keywords" content="travel app, city guide, smart routes, travel planner, seyahat rehberi, rota planlayıcı">
+    <meta property="og:title" content="MyWay – Akıllı Seyahat & Günlük Rota Planlayıcı">
+    <meta property="og:description" content="Arkadaşlarınızla ortak seyahat planlayın, rotalarınızı tek tıkla paylaşın. 90+ şehir için akıllı yürüyüş rotaları ve yerel gezi rehberi.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://mywaytravelapp.com">
     <link rel="icon" type="image/png" href="../images/app_icon.png">
@@ -18,7 +18,6 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'AW-17973398305');
     </script>
 
@@ -32,12 +31,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <style>
-        /* ===== RESET & BASE ===== */
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
             --primary: #7B6EF6;
@@ -50,18 +44,14 @@
             --text-primary: #FFFFFF;
             --text-secondary: #9CA3AF;
             --text-muted: #6B7280;
-            --border-subtle: rgba(255, 255, 255, 0.06);
+            --border-subtle: rgba(255, 255, 255, 0.08);
             --radius-lg: 24px;
             --radius-md: 16px;
             --radius-sm: 12px;
             --shadow-glow: 0 0 80px rgba(123, 110, 246, 0.15);
         }
 
-        html {
-            scroll-behavior: smooth;
-            -webkit-text-size-adjust: 100%;
-        }
-
+        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
         body {
             font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background-color: var(--bg-dark);
@@ -69,1101 +59,343 @@
             line-height: 1.6;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+        a { text-decoration: none; color: inherit; }
+        img { display: block; max-width: 100%; }
 
-        img {
-            display: block;
-            max-width: 100%;
-        }
-
-        /* ===== UTILITY ===== */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
         .section-label {
-            display: inline-block;
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--primary-light);
+            display: inline-block; font-size: 12px; font-weight: 700;
+            letter-spacing: 2px; text-transform: uppercase; color: var(--primary-light);
             margin-bottom: 16px;
         }
-
         .section-title {
-            font-size: clamp(32px, 5vw, 48px);
-            font-weight: 800;
-            line-height: 1.15;
-            letter-spacing: -0.02em;
-            margin-bottom: 16px;
+            font-size: clamp(32px, 5vw, 48px); font-weight: 800;
+            line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 16px;
         }
-
         .section-subtitle {
-            font-size: 18px;
-            color: var(--text-secondary);
-            max-width: 560px;
-            line-height: 1.7;
+            font-size: 18px; color: var(--text-secondary); max-width: 560px; line-height: 1.7;
         }
 
-        /* ===== NAVIGATION ===== */
+        /* Navbar */
         .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 100;
-            padding: 0 24px;
-            transition: background 0.3s ease, box-shadow 0.3s ease;
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+            padding: 0 24px; transition: background 0.3s ease, box-shadow 0.3s ease;
         }
-
         .navbar.scrolled {
             background: rgba(15, 11, 26, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             box-shadow: 0 1px 0 var(--border-subtle);
         }
-
         .navbar-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            height: 72px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            max-width: 1200px; margin: 0 auto; height: 72px;
+            display: flex; align-items: center; justify-content: space-between;
         }
-
-        .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .nav-brand img {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-        }
-
-        .nav-brand span {
-            font-size: 20px;
-            font-weight: 700;
-            letter-spacing: -0.01em;
-        }
+        .nav-brand { display: flex; align-items: center; gap: 12px; }
+        .nav-brand img { width: 40px; height: 40px; border-radius: 10px; }
+        .nav-brand span { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; }
 
         .nav-links {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 36px;
-            list-style: none;
-            flex: 1;
+            display: flex; align-items: center; justify-content: center;
+            gap: 32px; list-style: none; flex: 1;
         }
-
         .nav-links a {
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--text-secondary);
-            transition: color 0.2s ease;
+            font-size: 14px; font-weight: 500; color: var(--text-secondary); transition: color 0.2s ease;
+        }
+        .nav-links a:hover { color: var(--text-primary); }
+
+        /* Top Right Actions (Globe Dropdown + CTA) */
+        .nav-actions {
+            display: flex; align-items: center; gap: 16px;
         }
 
-        .nav-links a:hover {
-            color: var(--text-primary);
+        /* Custom Globe Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+        .lang-dropdown-btn {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 8px 14px; border-radius: 100px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white; font-size: 13px; font-weight: 600;
+            cursor: pointer; transition: all 0.2s ease;
+        }
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--primary);
+        }
+        .lang-globe-icon {
+            width: 16px; height: 16px; fill: currentColor;
+        }
+        .lang-dropdown-menu {
+            display: none; position: absolute; top: calc(100% + 8px); right: 0;
+            background: #181329; border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px; min-width: 140px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            padding: 6px; z-index: 150; backdrop-filter: blur(12px);
+        }
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper.active .lang-dropdown-menu {
+            display: block;
+        }
+        .lang-dropdown-item {
+            display: flex; align-items: center; gap: 8px;
+            padding: 8px 12px; border-radius: 8px; font-size: 13px; font-weight: 600;
+            color: var(--text-secondary); text-decoration: none; transition: all 0.2s;
+        }
+        .lang-dropdown-item:hover, .lang-dropdown-item.active {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
         }
 
         .nav-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background: var(--primary);
-            color: white;
-            font-size: 14px;
-            font-weight: 600;
-            border-radius: 100px;
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 9px 20px; background: var(--primary); color: white;
+            font-size: 14px; font-weight: 600; border-radius: 100px;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-
         .nav-cta:hover {
             transform: translateY(-1px);
             box-shadow: 0 8px 24px rgba(123, 110, 246, 0.3);
         }
 
-        /* Mobile menu */
-        .nav-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            padding: 8px;
-        }
+        .nav-toggle { display: none; background: none; border: none; color: white; cursor: pointer; padding: 8px; }
 
-        .nav-toggle svg {
-            width: 24px;
-            height: 24px;
-        }
-
-        /* ===== HERO SECTION ===== */
-        .hero {
-            position: relative;
-            padding: 160px 24px 80px;
-            text-align: center;
-            overflow: hidden;
-        }
-
+        /* Background Video */
         .site-video-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -10;
-            overflow: hidden;
-            background-color: var(--bg-dark);
-            pointer-events: none;
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -10; overflow: hidden; background-color: var(--bg-dark); pointer-events: none;
         }
-
         .site-video-bg {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.18; /* Optimal visibility */
-            pointer-events: none;
-            filter: saturate(1.15) brightness(0.8) blur(1px); /* Low blur for crisp landscape video */
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 100%; height: 100%; object-fit: cover; opacity: 0.18;
+            filter: saturate(1.15) brightness(0.8) blur(1px); pointer-events: none;
         }
-
         .site-video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: radial-gradient(circle at 50% 30%, rgba(15, 11, 26, 0.15) 0%, var(--bg-dark) 85%),
                         linear-gradient(to bottom, rgba(15, 11, 26, 0.1) 0%, var(--bg-dark) 100%);
-            z-index: -9;
-            pointer-events: none;
+            z-index: -9; pointer-events: none;
         }
 
+        /* Hero */
+        .hero {
+            position: relative; padding: 160px 24px 80px; text-align: center; overflow: hidden;
+        }
         .hero-glow {
-            position: absolute;
-            width: 800px;
-            height: 800px;
-            border-radius: 50%;
+            position: absolute; width: 800px; height: 800px; border-radius: 50%;
             background: radial-gradient(circle, rgba(123, 110, 246, 0.12) 0%, transparent 70%);
-            top: -200px;
-            left: 50%;
-            transform: translateX(-50%);
-            pointer-events: none;
-            z-index: 3;
+            top: -200px; left: 50%; transform: translateX(-50%); pointer-events: none; z-index: 3;
         }
-
-        .hero-glow-2 {
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(236, 72, 153, 0.08) 0%, transparent 70%);
-            bottom: 0;
-            right: 10%;
-            pointer-events: none;
-            z-index: 3;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 4;
-            max-width: 720px;
-            margin: 0 auto;
-        }
-
+        .hero-content { position: relative; z-index: 4; max-width: 720px; margin: 0 auto; }
         .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 18px;
-            background: rgba(123, 110, 246, 0.12);
-            border: 1px solid rgba(123, 110, 246, 0.2);
-            border-radius: 100px;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--primary-light);
-            margin-bottom: 32px;
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 8px 18px; background: rgba(123, 110, 246, 0.12);
+            border: 1px solid rgba(123, 110, 246, 0.2); border-radius: 100px;
+            font-size: 13px; font-weight: 600; color: var(--primary-light); margin-bottom: 32px;
         }
-
         .hero-badge-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #34D399;
+            width: 8px; height: 8px; border-radius: 50%; background: #34D399;
             animation: pulse-dot 2s ease-in-out infinite;
         }
-
-        @keyframes pulse-dot {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
-        }
+        @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
         .hero h1 {
-            font-size: clamp(40px, 7vw, 72px);
-            font-weight: 800;
-            line-height: 1.08;
-            letter-spacing: -0.03em;
-            margin-bottom: 24px;
+            font-size: clamp(38px, 6.5vw, 68px); font-weight: 800;
+            line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 24px;
         }
-
-        .gradient-text {
-            color: var(--primary);
-        }
-
+        .gradient-text { color: var(--primary); }
         .hero-description {
-            font-size: 18px;
-            line-height: 1.7;
-            color: var(--text-secondary);
-            max-width: 520px;
-            margin: 0 auto 40px;
+            font-size: 18px; line-height: 1.7; color: var(--text-secondary);
+            max-width: 540px; margin: 0 auto 40px;
         }
 
-        /* Store Buttons */
         .store-buttons {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
+            display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;
         }
-
         .store-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 14px 28px;
-            border-radius: 14px;
-            font-size: 15px;
-            font-weight: 600;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            cursor: pointer;
-            border: none;
+            display: inline-flex; align-items: center; gap: 12px;
+            padding: 14px 28px; border-radius: 14px; font-size: 15px; font-weight: 600;
+            transition: transform 0.2s ease, box-shadow 0.2s ease; cursor: pointer; border: none;
         }
-
-        .store-btn:hover {
-            transform: translateY(-2px);
-        }
-
-        .store-btn svg {
-            width: 24px;
-            height: 24px;
-            flex-shrink: 0;
-        }
-
-        .store-btn-label {
-            text-align: left;
-        }
-
+        .store-btn:hover { transform: translateY(-2px); }
+        .store-btn svg { width: 24px; height: 24px; flex-shrink: 0; }
+        .store-btn-label { text-align: left; }
         .store-btn-label small {
-            display: block;
-            font-size: 10px;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            opacity: 0.7;
-            line-height: 1;
-            margin-bottom: 2px;
+            display: block; font-size: 10px; font-weight: 500; text-transform: uppercase;
+            letter-spacing: 0.5px; opacity: 0.7; line-height: 1; margin-bottom: 2px;
         }
-
-        .store-btn-label span {
-            display: block;
-            font-size: 16px;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-
+        .store-btn-label span { display: block; font-size: 16px; font-weight: 700; line-height: 1.2; }
         .store-btn--apple {
-            background: #FFFFFF;
-            color: #000000;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+            background: #FFFFFF; color: #000000; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
         }
-
-        .store-btn--apple:hover {
-            box-shadow: 0 8px 32px rgba(123, 110, 246, 0.2);
-        }
-
         .store-btn--google {
-            background: rgba(255, 255, 255, 0.08);
-            color: #FFFFFF;
+            background: rgba(255, 255, 255, 0.08); color: #FFFFFF;
             border: 1px solid rgba(255, 255, 255, 0.12);
         }
 
-        .store-btn--google:hover {
-            background: rgba(255, 255, 255, 0.12);
-            box-shadow: 0 8px 32px rgba(255, 255, 255, 0.05);
+        .hero-guides-btn {
+            display: inline-flex; align-items: center; gap: 10px; margin-top: 28px;
+            padding: 12px 28px; border-radius: 99px;
+            background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(255, 255, 255, 0.16);
+            color: #fff; font-size: 14px; font-weight: 600; backdrop-filter: blur(12px);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .hero-guides-btn:hover {
+            background: rgba(123, 110, 246, 0.2); border-color: var(--primary-light);
+            transform: translateY(-2px); box-shadow: 0 10px 25px rgba(123, 110, 246, 0.25);
         }
 
-        /* ===== SCREENSHOT CAROUSEL ===== */
-        .screenshots {
-            padding: 40px 0 100px;
-            position: relative;
-        }
-
-        .screenshots-header {
-            text-align: center;
-            margin-bottom: 48px;
-            padding: 0 24px;
-        }
-
-        .carousel-wrapper {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-        }
-
+        /* Carousel */
+        .screenshots { padding: 40px 0 100px; position: relative; }
+        .screenshots-header { text-align: center; margin-bottom: 48px; padding: 0 24px; }
+        .carousel-wrapper { position: relative; width: 100%; overflow: hidden; }
         .carousel-track {
-            display: flex;
-            gap: 24px;
-            padding: 20px 24px;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            scroll-behavior: smooth;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-            /* Center the first/last items */
+            display: flex; gap: 24px; padding: 20px 24px; overflow-x: auto;
+            scroll-snap-type: x mandatory; scroll-behavior: smooth;
+            scrollbar-width: none; -ms-overflow-style: none;
             padding-left: max(24px, calc((100vw - 240px) / 2));
             padding-right: max(24px, calc((100vw - 240px) / 2));
         }
-
-        .carousel-track::-webkit-scrollbar {
-            display: none;
-        }
-
+        .carousel-track::-webkit-scrollbar { display: none; }
         .carousel-item {
-            flex: 0 0 240px;
-            scroll-snap-align: center;
+            flex: 0 0 240px; scroll-snap-align: center;
             transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.4s ease, filter 0.4s ease;
-            opacity: 0.82;
-            transform: scale(0.93);
-            filter: brightness(0.9) saturate(0.95);
-            cursor: pointer;
-            position: relative;
+            opacity: 0.82; transform: scale(0.93); filter: brightness(0.9) saturate(0.95);
+            cursor: pointer; position: relative;
         }
-
         .carousel-item.active {
-            opacity: 1;
-            transform: scale(1.05);
-            filter: brightness(1.05) saturate(1.08);
-            z-index: 3;
+            opacity: 1; transform: scale(1.05); filter: brightness(1.05) saturate(1.08); z-index: 3;
         }
-
         .carousel-item img {
-            width: 240px;
-            height: auto;
-            border-radius: 22px;
+            width: 240px; height: auto; border-radius: 22px;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
-
         .carousel-item.active img {
             border: 2px solid rgba(157, 147, 255, 0.85);
             box-shadow: 0 25px 70px rgba(0, 0, 0, 0.7), 0 0 60px rgba(123, 110, 246, 0.45);
         }
-
-        .carousel-item:hover:not(.active) {
-            opacity: 0.95;
-            transform: scale(0.96);
-            filter: brightness(0.98);
-        }
-
-        /* Carousel navigation dots */
-        .carousel-dots {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 32px;
-        }
-
+        .carousel-dots { display: flex; justify-content: center; gap: 10px; margin-top: 32px; }
         .carousel-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.15);
-            border: none;
-            cursor: pointer;
-            transition: background 0.3s ease, transform 0.3s ease;
-            padding: 0;
+            width: 10px; height: 10px; border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15); border: none; cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease; padding: 0;
         }
+        .carousel-dot.active { background: var(--primary); transform: scale(1.2); }
 
-        .carousel-dot.active {
-            background: var(--primary);
-            transform: scale(1.2);
+        /* Stats */
+        .stats {
+            padding: 80px 24px; border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);
         }
-
-        /* Carousel nav arrows */
-        .carousel-nav {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 24px;
+        .stats-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
+            max-width: 1000px; margin: 0 auto; text-align: center;
         }
-
-        .carousel-arrow {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(255, 255, 255, 0.05);
-            color: white;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.2s ease, border-color 0.2s ease;
+        .stat-item h3 {
+            font-size: clamp(32px, 4vw, 48px); font-weight: 800; color: var(--primary); margin-bottom: 8px;
         }
+        .stat-item p { font-size: 14px; color: var(--text-muted); font-weight: 500; }
 
-        .carousel-arrow:hover {
-            background: rgba(123, 110, 246, 0.2);
-            border-color: rgba(123, 110, 246, 0.3);
-        }
-
-        .carousel-arrow svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        /* ===== FEATURES SECTION ===== */
-        .features {
-            padding: 100px 24px;
-            position: relative;
-        }
-
-        .features-header {
-            text-align: center;
-            margin-bottom: 64px;
-        }
-
-        .features-header .section-subtitle {
-            margin: 0 auto;
-        }
-
+        /* Features */
+        .features { padding: 100px 24px; position: relative; }
+        .features-header { text-align: center; margin-bottom: 64px; }
+        .features-header .section-subtitle { margin: 0 auto; }
         .features-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-            max-width: 1200px;
-            margin: 0 auto;
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 1200px; margin: 0 auto;
         }
-
         .feature-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-lg);
-            padding: 32px;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg); padding: 32px; backdrop-filter: blur(12px);
             transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-            gap: 24px;
-            min-height: 380px;
-            height: auto;
+            position: relative; overflow: hidden; display: flex; flex-direction: row;
+            align-items: center; justify-content: space-between; gap: 24px; min-height: 380px;
         }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(123, 110, 246, 0.3), transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
         .feature-card:hover {
-            border-color: rgba(123, 110, 246, 0.15);
-            transform: translateY(-4px);
+            border-color: rgba(123, 110, 246, 0.3); transform: translateY(-4px);
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
         }
-
-        .feature-card:hover::before {
-            opacity: 1;
-        }
-
-        .feature-card-text {
-            padding-bottom: 32px;
-            flex: 1;
-        }
-
+        .feature-card-text { flex: 1; }
         .feature-icon {
-            width: 52px;
-            height: 52px;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
+            width: 52px; height: 52px; border-radius: 14px; display: flex;
+            align-items: center; justify-content: center; margin-bottom: 20px;
         }
+        .feature-icon img { width: 32px; height: 32px; object-fit: contain; }
+        .feature-icon--purple { background: rgba(123, 110, 246, 0.15); }
+        .feature-icon--pink { background: rgba(236, 72, 153, 0.15); }
+        .feature-icon--green { background: rgba(52, 211, 153, 0.15); }
+        .feature-icon--blue { background: rgba(56, 189, 248, 0.15); }
+        .feature-icon--orange { background: rgba(251, 146, 60, 0.15); }
+        .feature-icon--indigo { background: rgba(165, 130, 252, 0.15); }
+        .feature-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+        .feature-card p { font-size: 15px; line-height: 1.7; color: var(--text-secondary); }
 
-        .feature-icon img {
-            width: 32px;
-            height: 32px;
-            object-fit: contain;
-        }
-
-        .feature-icon--purple {
-            background: rgba(123, 110, 246, 0.15);
-        }
-
-        .feature-icon--pink {
-            background: rgba(236, 72, 153, 0.15);
-        }
-
-        .feature-icon--green {
-            background: rgba(52, 211, 153, 0.15);
-        }
-
-        .feature-icon--blue {
-            background: rgba(56, 189, 248, 0.15);
-        }
-
-        .feature-icon--orange {
-            background: rgba(251, 146, 60, 0.15);
-        }
-
-        .feature-icon--indigo {
-            background: rgba(165, 130, 252, 0.15);
-        }
-
-        .feature-card h3 {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            letter-spacing: -0.01em;
-        }
-
-        .feature-card p {
-            font-size: 15px;
-            line-height: 1.7;
-            color: var(--text-secondary);
-        }
-
-        /* App Store mockups — already framed, do not wrap in CSS phone */
         .store-mockup {
-            width: 148px;
-            flex-shrink: 0;
-            align-self: center;
-            border-radius: 18px;
-            overflow: hidden;
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
-            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+            width: 148px; flex-shrink: 0; align-self: center; border-radius: 18px;
+            overflow: hidden; box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
+        .store-mockup img { width: 100%; height: auto; display: block; }
+        .feature-card:hover .store-mockup { transform: translateY(-6px) scale(1.02); }
 
-        .store-mockup img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .feature-card:hover .store-mockup {
-            transform: translateY(-6px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(123, 110, 246, 0.2);
-        }
-
-
-        /* ===== STATS SECTION ===== */
-        .stats {
-            padding: 80px 24px;
-            border-top: 1px solid var(--border-subtle);
-            border-bottom: 1px solid var(--border-subtle);
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-            max-width: 1000px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .stat-item h3 {
-            font-size: clamp(32px, 4vw, 48px);
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
-
-        .stat-item p {
-            font-size: 14px;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        /* ===== CTA SECTION ===== */
-        .cta {
-            padding: 120px 24px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
+        /* CTA */
+        .cta { padding: 120px 24px; text-align: center; position: relative; overflow: hidden; }
         .cta-glow {
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            border-radius: 50%;
+            position: absolute; width: 600px; height: 600px; border-radius: 50%;
             background: radial-gradient(circle, rgba(123, 110, 246, 0.1) 0%, transparent 70%);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
+            top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none;
         }
+        .cta-content { position: relative; z-index: 2; }
+        .cta h2 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; margin-bottom: 20px; }
 
-        .cta-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .cta h2 {
-            font-size: clamp(32px, 5vw, 52px);
-            font-weight: 800;
-            line-height: 1.1;
-            letter-spacing: -0.03em;
-            margin-bottom: 20px;
-        }
-
-        .hero-guides-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 24px;
-            padding: 12px 28px;
-            border-radius: 99px;
-            background: rgba(255, 255, 255, 0.07);
-            border: 1px solid rgba(255, 255, 255, 0.16);
-            color: #fff;
-            font-size: 14px;
-            font-weight: 600;
-            backdrop-filter: blur(12px);
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .hero-guides-btn:hover {
-            background: rgba(123, 110, 246, 0.2);
-            border-color: var(--primary-light);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(123, 110, 246, 0.25);
-        }
-        .hero-guides-btn span {
-            color: var(--primary-light);
-        }
-
-        /* Home Guides Grid Section */
-        .home-guides {
-            padding: 100px 24px;
-            background: var(--bg-section);
-            border-top: 1px solid var(--border-subtle);
-            border-bottom: 1px solid var(--border-subtle);
-        }
-        .home-guides-header {
-            text-align: center;
-            max-width: 650px;
-            margin: 0 auto 48px;
-        }
-        .home-guides-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-            max-width: 1200px;
-            margin: 0 auto 40px;
-        }
-        .home-guide-card {
-            position: relative;
-            height: 260px;
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            border: 1px solid var(--border-subtle);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 24px;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .home-guide-card img {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.4s ease;
-            filter: brightness(0.7);
-        }
-        .home-guide-card:hover img {
-            transform: scale(1.06);
-            filter: brightness(0.85);
-        }
-        .home-guide-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(15, 11, 26, 0.95) 15%, rgba(15, 11, 26, 0.3) 60%, transparent 100%);
-        }
-        .home-guide-content {
-            position: relative;
-            z-index: 2;
-        }
-        .home-guide-country {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--primary-light);
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-        .home-guide-title {
-            font-size: 22px;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 6px;
-        }
-        .home-guide-desc {
-            font-size: 13px;
-            color: #D1D5DB;
-            line-height: 1.4;
-        }
-        .home-guides-all-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 14px 32px;
-            border-radius: 99px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            color: #fff;
-            font-weight: 700;
-            font-size: 15px;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .home-guides-all-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(123, 110, 246, 0.4);
-        }
-
-        /* ===== FOOTER ===== */
-        .footer {
-            padding: 64px 24px 32px;
-            border-top: 1px solid var(--border-subtle);
-        }
-
+        /* Footer */
+        .footer { padding: 64px 24px 32px; border-top: 1px solid var(--border-subtle); }
         .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 48px;
-            max-width: 1200px;
-            margin: 0 auto 48px;
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px;
+            max-width: 1200px; margin: 0 auto 48px;
         }
-
-        .footer-brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
-        }
-
-        .footer-brand img {
-            width: 36px;
-            height: 36px;
-            border-radius: 8px;
-        }
-
-        .footer-brand span {
-            font-size: 18px;
-            font-weight: 700;
-        }
-
-        .footer-desc {
-            font-size: 14px;
-            color: var(--text-muted);
-            line-height: 1.7;
-            max-width: 300px;
-        }
-
+        .footer-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+        .footer-brand img { width: 36px; height: 36px; border-radius: 8px; }
+        .footer-brand span { font-size: 18px; font-weight: 700; }
+        .footer-desc { font-size: 14px; color: var(--text-muted); line-height: 1.7; max-width: 300px; }
         .footer h4 {
-            font-size: 13px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--text-secondary);
-            margin-bottom: 20px;
+            font-size: 13px; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 1.5px; color: var(--text-secondary); margin-bottom: 20px;
         }
-
-        .footer-links {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .footer-links a {
-            font-size: 14px;
-            color: var(--text-muted);
-            transition: color 0.2s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--text-primary);
-        }
-
+        .footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+        .footer-links a { font-size: 14px; color: var(--text-muted); transition: color 0.2s ease; }
+        .footer-links a:hover { color: var(--text-primary); }
         .footer-bottom {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-top: 32px;
-            border-top: 1px solid var(--border-subtle);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            max-width: 1200px; margin: 0 auto; padding-top: 32px;
+            border-top: 1px solid var(--border-subtle); display: flex;
+            justify-content: space-between; align-items: center;
         }
-
-        .footer-bottom p {
-            font-size: 13px;
-            color: var(--text-muted);
-        }
-
-        /* ===== ANIMATIONS ===== */
-        @keyframes fade-in-up {
-            from {
-                opacity: 0;
-                transform: translateY(24px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(24px);
-        }
-
-        .animate-on-scroll.visible {
-            animation: fade-in-up 0.7s ease-out forwards;
-        }
-
-        /* Stagger children animations */
-        .stagger-children .animate-on-scroll:nth-child(1) { animation-delay: 0ms; }
-        .stagger-children .animate-on-scroll:nth-child(2) { animation-delay: 100ms; }
-        .stagger-children .animate-on-scroll:nth-child(3) { animation-delay: 200ms; }
-        .stagger-children .animate-on-scroll:nth-child(4) { animation-delay: 300ms; }
-        .stagger-children .animate-on-scroll:nth-child(5) { animation-delay: 400ms; }
-        .stagger-children .animate-on-scroll:nth-child(6) { animation-delay: 500ms; }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 1024px) {
-            .features-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 40px;
-            }
-        }
+        .footer-bottom p { font-size: 13px; color: var(--text-muted); }
 
         @media (max-width: 768px) {
-            .navbar {
-                padding: 0 16px;
-            }
-
-            .navbar-inner {
-                height: 64px;
-            }
-
-            .nav-actions {
-                display: none;
-            }
-
+            .navbar { padding: 0 16px; }
+            .navbar-inner { height: 64px; }
             .nav-links {
-                display: none;
-                position: fixed;
-                top: 64px;
-                left: 0;
-                right: 0;
-                background: rgba(15, 11, 26, 0.98);
-                backdrop-filter: blur(25px);
-                -webkit-backdrop-filter: blur(25px);
-                flex-direction: column;
-                padding: 24px;
-                gap: 18px;
-                border-bottom: 1px solid var(--border-subtle);
-                z-index: 99;
-                box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+                display: none; position: fixed; top: 64px; left: 0; right: 0;
+                background: rgba(15, 11, 26, 0.98); backdrop-filter: blur(25px);
+                flex-direction: column; padding: 24px; gap: 18px;
+                border-bottom: 1px solid var(--border-subtle); z-index: 99;
             }
-
-            .nav-links.open {
-                display: flex;
-            }
-
-            .nav-toggle {
-                display: block;
-            }
-
-            .hero {
-                padding: 110px 16px 50px;
-            }
-
-            .hero h1 {
-                font-size: clamp(30px, 8vw, 42px);
-                line-height: 1.15;
-            }
-
-            .hero-description {
-                font-size: 15px;
-                line-height: 1.6;
-            }
-
-            .feature-card {
-                flex-direction: column;
-                height: auto;
-                padding: 32px 20px;
-                align-items: flex-start;
-            }
-
-            .feature-card-text {
-                padding-bottom: 0;
-            }
-
-            .store-mockup {
-                align-self: center;
-                width: 168px;
-                margin-top: 24px;
-            }
-
-            .store-buttons {
-                flex-direction: column;
-                gap: 12px;
-                width: 100%;
-                max-width: 280px;
-                margin: 0 auto;
-            }
-
-            .store-btn {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .hero-guides-btn {
-                width: 100%;
-                max-width: 280px;
-                justify-content: center;
-                box-sizing: border-box;
-                font-size: 13px;
-                padding: 12px 20px;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                gap: 16px;
-                text-align: center;
-            }
-
-            .carousel-item {
-                flex: 0 0 240px;
-            }
-
-            .carousel-item img {
-                width: 240px;
-            }
-
-            .carousel-track {
-                padding-left: max(24px, calc((100vw - 240px) / 2));
-                padding-right: max(24px, calc((100vw - 240px) / 2));
-            }
+            .nav-links.open { display: flex; }
+            .nav-toggle { display: block; }
+            .hero { padding: 110px 16px 50px; }
+            .feature-card { flex-direction: column; padding: 32px 20px; }
+            .store-mockup { width: 168px; margin-top: 24px; }
+            .features-grid, .stats-grid, .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
         }
-
-        @media (max-width: 480px) {
-            .carousel-item {
-                flex: 0 0 220px;
-            }
-
-            .carousel-item img {
-                width: 220px;
-            }
-
-            .carousel-track {
-                padding-left: max(16px, calc((100vw - 220px) / 2));
-                padding-right: max(16px, calc((100vw - 220px) / 2));
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
-                gap: 24px;
-            }
-        }
-
-        /* Reduce motion for accessibility */
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-                scroll-behavior: auto !important;
-            }
-        }
-    
-        .lang-toggle-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 14px;
-            border-radius: 100px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
-            transition: all 0.2s ease;
-            text-decoration: none;
-        }
-        .lang-toggle-btn:hover {
-            background: rgba(255, 255, 255, 0.18);
-            border-color: var(--primary);
-        }
-
     </style>
 </head>
-
 <body>
 
-    <!-- Global Background Video -->
+    <!-- Background Video -->
     <div class="site-video-container">
         <video class="site-video-bg" autoplay loop muted playsinline>
             <source src="../images/amalfi_bg_landscape.mp4" type="video/mp4">
@@ -1174,19 +406,32 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="navbar-inner">
-            <a href="/" class="nav-brand">
+            <a href="../" class="nav-brand">
                 <img src="../images/app_icon.png" alt="MyWay" width="40" height="40">
                 <span>MyWay</span>
             </a>
             <ul class="nav-links">
-                <li><a href="/guides/">Şehir Rehberleri</a></li>
-                <li><a href="rehber/">Şehir Rehberleri</a></li>
+                <li><a href="/tr/rehber/">Şehir Rehberleri</a></li>
                 <li><a href="#features">Özellikler</a></li>
-                <li><a href="../" class="lang-toggle-btn">🇬🇧 English</a></li>
-                <li><a href="#screenshots">Gallery</a></li>
-                <li><a href="support.html">Support</a></li>
+                <li><a href="#screenshots">Galeri</a></li>
+                <li><a href="../support.html">Destek</a></li>
             </ul>
             <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper" id="langDropdown">
+                    <button class="lang-dropdown-btn" aria-label="Change Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇹🇷 TR</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/" class="lang-dropdown-item ">🇬🇧 English</a>
+                        <a href="/tr/" class="lang-dropdown-item active">🇹🇷 Türkçe</a>
+                    </div>
+                </div>
+
                 <a href="#download" class="nav-cta">İndir</a>
             </div>
             <button class="nav-toggle" id="navToggle" aria-label="Open menu">
@@ -1200,51 +445,41 @@
     <!-- Hero Section -->
     <section class="hero" id="hero">
         <div class="hero-glow"></div>
-        <div class="hero-glow-2"></div>
-
         <div class="hero-content">
             <div class="hero-badge">
                 <span class="hero-badge-dot"></span>
-                Available on iOS & Android
+                iOS ve Android'de Yayında
             </div>
 
-            <h1>
-                The Smartest Way<br>
-                <span class="gradient-text">To Explore.</span>
-            </h1>
+            <h1>Şehirleri Keşfetmenin<br><span class="gradient-text">En Akıllı Yolu.</span></h1>
 
-            <p class="hero-description">
-                Discover hidden gems, create smart routes, and navigate cities
-                like a local. Your AI-powered travel companion.
-            </p>
+            <p class="hero-description">Gizli mekanları keşfedin, akıllı rotalar oluşturun ve şehri bir yerli gibi gezin. Arkadaşlarınızla ortak planlayabileceğiniz yapay zeka destekli seyahat rehberiniz.</p>
 
             <div class="store-buttons" id="download">
-                <!-- Apple App Store -->
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-btn store-btn--apple" id="appStoreBtn">
                     <svg viewBox="0 0 24 24" fill="currentColor">
                         <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.17c.66-.81 1.11-1.93.99-3.06-1 .04-2.22.67-2.94 1.51-.64.73-1.2 1.88-1.05 2.99 1.12.09 2.26-.55 3-.14"/>
                     </svg>
                     <div class="store-btn-label">
-                        <small>Download on the</small>
+                        <small>Şuradan İndirin</small>
                         <span>App Store</span>
                     </div>
                 </a>
 
-                <!-- Google Play Store -->
                 <a href="https://play.google.com/store/apps/details?id=com.anilaybakan.sehirkesif" class="store-btn store-btn--google" id="playStoreBtn">
                     <svg viewBox="0 0 512 512" fill="currentColor">
                         <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58 33.3-60.1-60.1L472.2 216c16.2 9.3 16.2 27.9 0 37.2zm-96.6 86.3L104.6 499l220.7-126.7-60.1-60.4z"/>
                     </svg>
                     <div class="store-btn-label">
-                        <small>Get it on</small>
+                        <small>Hemen Edinin</small>
                         <span>Google Play</span>
                     </div>
                 </a>
             </div>
 
             <div>
-                <a href="/guides/" class="hero-guides-btn">
-                    <span>🗺️</span> Explore 90+ Curated City Guides &rarr;
+                <a href="/tr/rehber/" class="hero-guides-btn">
+                    🗺️ 90+ Özenle Hazırlanmış Şehir Rehberini İnceleyin &rarr;
                 </a>
             </div>
         </div>
@@ -1253,78 +488,34 @@
     <!-- Screenshots Carousel -->
     <section class="screenshots" id="screenshots">
         <div class="screenshots-header">
-            <span class="section-label">App Preview</span>
-            <h2 class="section-title">See It in Action</h2>
-            <p class="section-subtitle" style="margin: 0 auto;">
-                From personalized discoveries to smart route planning — everything you need for the perfect trip.
-            </p>
+            <span class="section-label">Uygulama Önizleme</span>
+            <h2 class="section-title">Uygulamayı İnceleyin</h2>
+            <p class="section-subtitle" style="margin: 0 auto;">Kişiselleştirilmiş önerilerden akıllı rota planlamaya — mükemmel bir seyahat için ihtiyacınız olan her şey.</p>
         </div>
 
         <div class="carousel-wrapper">
             <div class="carousel-track" id="carouselTrack">
-                <div class="carousel-item">
-                    <img src="../images/screenshots/store_tr_01.jpg" alt="MyWay Daily Itinerary – Generate timed daily plans in seconds" loading="lazy" width="240" height="522">
-                </div>
-                <div class="carousel-item">
-                    <img src="../images/screenshots/store_tr_02.jpg" alt="MyWay Personalize – Tailor your journey to your travel style" loading="lazy" width="240" height="522">
-                </div>
-                <div class="carousel-item">
-                    <img src="../images/screenshots/store_tr_03.jpg" alt="MyWay Explore – Plan your route, stay, and city rhythm" loading="lazy" width="240" height="522">
-                </div>
-                <div class="carousel-item">
-                    <img src="../images/screenshots/store_tr_04.jpg" alt="MyWay Memories – Keep your travels alive in one place" loading="lazy" width="240" height="522">
-                </div>
-                <div class="carousel-item">
-                    <img src="../images/screenshots/store_tr_05.jpg" alt="MyWay Curated Routes – Expert walking routes through food, history, and culture" loading="lazy" width="240" height="522">
-                </div>
-                <div class="carousel-item">
-                    <img src="../images/screenshots/store_tr_06.jpg" alt="MyWay Plan Together – Invite friends and plan every day together" loading="lazy" width="240" height="522">
-                </div>
-                <div class="carousel-item">
-                    <img src="../images/screenshots/store_tr_07.jpg" alt="MyWay Hotels – Find a stay that fits your budget and style" loading="lazy" width="240" height="522">
-                </div>
-                <div class="carousel-item">
-                    <img src="../images/screenshots/store_tr_08.jpg" alt="MyWay Nearby – Discover food, coffee, and culture around you" loading="lazy" width="240" height="522">
-                </div>
-                <div class="carousel-item">
-                    <img src="../images/screenshots/store_tr_09.jpg" alt="MyWay City Guides – Local food, culture, and hidden secrets" loading="lazy" width="240" height="522">
-                </div>
-                <div class="carousel-item">
-                    <img src="../images/screenshots/store_tr_10.jpg" alt="MyWay City Overview – Local tips before you arrive" loading="lazy" width="240" height="522">
-                </div>
+                <div class="carousel-item"><img src="../images/screenshots/store_tr_01.jpg" alt="MyWay Screenshot 1" loading="lazy" width="240" height="522"></div><div class="carousel-item"><img src="../images/screenshots/store_tr_02.jpg" alt="MyWay Screenshot 2" loading="lazy" width="240" height="522"></div><div class="carousel-item"><img src="../images/screenshots/store_tr_03.jpg" alt="MyWay Screenshot 3" loading="lazy" width="240" height="522"></div><div class="carousel-item"><img src="../images/screenshots/store_tr_04.jpg" alt="MyWay Screenshot 4" loading="lazy" width="240" height="522"></div><div class="carousel-item"><img src="../images/screenshots/store_tr_05.jpg" alt="MyWay Screenshot 5" loading="lazy" width="240" height="522"></div><div class="carousel-item"><img src="../images/screenshots/store_tr_06.jpg" alt="MyWay Screenshot 6" loading="lazy" width="240" height="522"></div><div class="carousel-item"><img src="../images/screenshots/store_tr_07.jpg" alt="MyWay Screenshot 7" loading="lazy" width="240" height="522"></div><div class="carousel-item"><img src="../images/screenshots/store_tr_08.jpg" alt="MyWay Screenshot 8" loading="lazy" width="240" height="522"></div><div class="carousel-item"><img src="../images/screenshots/store_tr_09.jpg" alt="MyWay Screenshot 9" loading="lazy" width="240" height="522"></div><div class="carousel-item"><img src="../images/screenshots/store_tr_10.jpg" alt="MyWay Screenshot 10" loading="lazy" width="240" height="522"></div>
             </div>
         </div>
 
         <div class="carousel-dots" id="carouselDots"></div>
-
-        <div class="carousel-nav">
-            <button class="carousel-arrow" id="prevBtn" aria-label="Previous screenshot">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                    <path d="M15 18l-6-6 6-6"/>
-                </svg>
-            </button>
-            <button class="carousel-arrow" id="nextBtn" aria-label="Next screenshot">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                    <path d="M9 18l6-6-6-6"/>
-                </svg>
-            </button>
-        </div>
     </section>
 
     <!-- Stats Section -->
     <section class="stats">
-        <div class="stats-grid stagger-children">
-            <div class="stat-item animate-on-scroll">
+        <div class="stats-grid">
+            <div class="stat-item">
                 <h3>90+</h3>
-                <p>Cities Covered</p>
+                <p>Kapsanan Şehir</p>
             </div>
-            <div class="stat-item animate-on-scroll">
-                <h3>14,000+</h3>
-                <p>Curated Places</p>
+            <div class="stat-item">
+                <h3>14.000+</h3>
+                <p>Özenle Seçilmiş Mekan</p>
             </div>
-            <div class="stat-item animate-on-scroll">
+            <div class="stat-item">
                 <h3>600+</h3>
-                <p>Ready Routes</p>
+                <p>Hazır Rota</p>
             </div>
         </div>
     </section>
@@ -1332,95 +523,93 @@
     <!-- Features Section -->
     <section class="features" id="features">
         <div class="features-header">
-            <span class="section-label">Why MyWay</span>
-            <h2 class="section-title">Everything You Need<br>to Explore a City</h2>
-            <p class="section-subtitle">
-                Stop being a tourist. Start exploring like a local with tools that actually make a difference.
-            </p>
+            <span class="section-label">Neden MyWay</span>
+            <h2 class="section-title">Bir Şehri Gezmek İçin<br>İhtiyacınız Olan Her Şey</h2>
+            <p class="section-subtitle">Turist gibi değil, bir yerli gibi gezin. Seyahatinizi kolaylaştıran akıllı araçlarla keşfe başlayın.</p>
         </div>
 
-        <div class="features-grid stagger-children">
-            <!-- Feature 1: AI Concierge -->
-            <div class="feature-card animate-on-scroll">
+        <div class="features-grid">
+            <!-- Feature 1: AI Suggestions -->
+            <div class="feature-card">
                 <div class="feature-card-text">
                     <div class="feature-icon feature-icon--purple">
-                        <img src="../images/icon_oneri.png" alt="AI Suggestions Icon">
+                        <img src="../images/icon_oneri.png" alt="AI Icon">
                     </div>
                     <h3>Kişiselleştirilmiş Öneriler</h3>
-                    <p>MyWay learns your travel style and curates hidden gems, local favorites, and secret spots tailored just for you. Personalized recommendations that go beyond any guidebook.</p>
+                    <p>MyWay seyahat tarzınızı öğrenir; sadece sizin ilgi alanlarınıza özel gizli lezzet duraklarını, tarihi mekanları ve saklı köşeleri önünüze getirir.</p>
                 </div>
                 <div class="store-mockup">
-                    <img src="../images/screenshots/store_tr_02.jpg" alt="AI suggestions in MyWay" loading="lazy">
+                    <img src="../images/screenshots/store_tr_02.jpg" alt="Kişiselleştirilmiş Öneriler" loading="lazy">
                 </div>
             </div>
 
             <!-- Feature 2: Smart Routes -->
-            <div class="feature-card animate-on-scroll">
+            <div class="feature-card">
                 <div class="feature-card-text">
                     <div class="feature-icon feature-icon--pink">
-                        <img src="../images/icon_myroute.png" alt="Smart Route Builder Icon">
+                        <img src="../images/icon_myroute.png" alt="Routes Icon">
                     </div>
-                    <h3>Smart Route Builder</h3>
-                    <p>Build optimized multi-day itineraries with drag-and-drop simplicity. See walking times, distances, and daily maps at a glance.</p>
+                    <h3>Akıllı Günlük Rota Planlayıcı</h3>
+                    <p>Sürükle-bırak kolaylığıyla gün gün optimize edilmiş rotalar oluşturun. Yürüme sürelerini, mesafeleri ve günlük haritanızı tek ekranda görün.</p>
                 </div>
                 <div class="store-mockup">
-                    <img src="../images/screenshots/store_tr_01.jpg" alt="Smart Route Builder in MyWay" loading="lazy">
+                    <img src="../images/screenshots/store_tr_01.jpg" alt="Akıllı Günlük Rota Planlayıcı" loading="lazy">
                 </div>
             </div>
 
             <!-- Feature 3: Ready Routes -->
-            <div class="feature-card animate-on-scroll">
+            <div class="feature-card">
                 <div class="feature-card-text">
                     <div class="feature-icon feature-icon--green">
-                        <img src="../images/icon_readyroute.png" alt="Hazır Tematik Rotalar Icon">
+                        <img src="../images/icon_readyroute.png" alt="Ready Routes Icon">
                     </div>
                     <h3>Hazır Tematik Rotalar</h3>
-                    <p>Follow expert-curated routes designed to show you the soul of each city — from Gothic Quarter walks to architecture trails.</p>
+                    <p>Şehrin ruhunu yansıtan uzman rotaları takip edin — Gotik Mahalle yürüyüşlerinden tarihi mimari ve lezzet turlarına kadar.</p>
                 </div>
                 <div class="store-mockup">
-                    <img src="../images/screenshots/store_tr_05.jpg" alt="Hazır Tematik Rotalar in MyWay" loading="lazy">
+                    <img src="../images/screenshots/store_tr_05.jpg" alt="Hazır Tematik Rotalar" loading="lazy">
                 </div>
             </div>
 
             <!-- Feature 4: Nearby -->
-            <div class="feature-card animate-on-scroll">
+            <div class="feature-card">
                 <div class="feature-card-text">
                     <div class="feature-icon feature-icon--blue">
-                        <img src="../images/icon_nearby.png" alt="Yakınımdaki Mekanlar Icon">
+                        <img src="../images/icon_nearby.png" alt="Nearby Icon">
                     </div>
                     <h3>Yakınımdaki Mekanlar</h3>
-                    <p>Find the best restaurants, cafes, bars, and attractions near you. Filter by category, distance, and ratings.</p>
+                    <p>Bulunduğunuz konuma en yakın en iyi restoranları, kafeleri ve tarihi noktaları bulun. Kategoriye ve mesafeye göre kolayca filtreleyin.</p>
                 </div>
                 <div class="store-mockup">
-                    <img src="../images/screenshots/store_tr_08.jpg" alt="Yakınımdaki Mekanlar in MyWay" loading="lazy">
+                    <img src="../images/screenshots/store_tr_08.jpg" alt="Yakınımdaki Mekanlar" loading="lazy">
                 </div>
             </div>
 
             <!-- Feature 5: City Guides -->
-            <div class="feature-card animate-on-scroll">
+            <div class="feature-card">
                 <div class="feature-card-text">
                     <div class="feature-icon feature-icon--orange">
-                        <img src="../images/icon_guide.png" alt="City Guides Icon">
+                        <img src="../images/icon_guide.png" alt="Guides Icon">
                     </div>
-                    <h3>Şehir Rehberleri</h3>
-                    <p>In-depth travel guides with seasonal recommendations, local tips, and themed collections for every type of traveler.</p>
+                    <h3>Detaylı Şehir Rehberleri</h3>
+                    <p>Mevsimsel öneriler, yerel sırlar, turist tuzakları ve pratik ulaşım ipuçları içeren kapsamlı rehberler.</p>
                 </div>
                 <div class="store-mockup">
-                    <img src="../images/screenshots/store_tr_10.jpg" alt="City Guides in MyWay" loading="lazy">
+                    <img src="../images/screenshots/store_tr_10.jpg" alt="Detaylı Şehir Rehberleri" loading="lazy">
                 </div>
             </div>
 
             <!-- Feature 6: Travel Profile -->
-            <div class="feature-card animate-on-scroll">
+            <div class="feature-card">
                 <div class="feature-card-text">
                     <div class="feature-icon feature-icon--indigo">
-                        <img src="../images/icon_profile.png" alt="Travel Profile Icon">
+                        <img src="../images/icon_profile.png" alt="Profile Icon">
                     </div>
-                    <h3>Travel Profile</h3>
-                    <p>Track your trips, save memories, and build your travel history. Your personal travel journal, always with you.</p>
+                    <h3>Seyahat Profili & Anılar</h3>
+                    <p>Gezdiğiniz şehirleri işaretleyin, anılarınızı kaydedin ve seyahat geçmişinizi oluşturun. Kişisel seyahat günlüğünüz her zaman cebinizde.</p>
                 </div>
                 <div class="store-mockup">
-                    <img src="../images/screenshots/store_tr_04.jpg" alt="Travel Profile in MyWay" loading="lazy">
+                    <img src="../images/screenshots/store_tr_04.jpg" alt="Seyahat Profili & Anılar" loading="lazy">
                 </div>
             </div>
         </div>
@@ -1430,25 +619,25 @@
     <section class="cta" id="cta">
         <div class="cta-glow"></div>
         <div class="cta-content">
-            <span class="section-label">Start Exploring</span>
-            <h2>Ready to Travel<br><span class="gradient-text">Your Way?</span></h2>
-            <p>Join thousands of travelers who explore smarter, not harder. Download MyWay and start planning your next adventure.</p>
-            <div class="store-buttons">
+            <span class="section-label">Keşfe Başlayın</span>
+            <h2>Kendi Tarzınızla<br><span class="gradient-text">Gezmeye Hazır Mısınız?</span></h2>
+            <p>Zaman kaybetmeden, akıllıca gezen binlerce gezgine katılın. MyWay'i indirin ve bir sonraki maceranızı planlayın.</p>
+            <div class="store-buttons" style="margin-top: 32px;">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-btn store-btn--apple">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
                         <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.17c.66-.81 1.11-1.93.99-3.06-1 .04-2.22.67-2.94 1.51-.64.73-1.2 1.88-1.05 2.99 1.12.09 2.26-.55 3-.14"/>
                     </svg>
                     <div class="store-btn-label">
-                        <small>Download on the</small>
+                        <small>Şuradan İndirin</small>
                         <span>App Store</span>
                     </div>
                 </a>
                 <a href="https://play.google.com/store/apps/details?id=com.anilaybakan.sehirkesif" class="store-btn store-btn--google">
-                    <svg viewBox="0 0 512 512" fill="currentColor" width="24" height="24">
+                    <svg viewBox="0 0 512 512" fill="currentColor">
                         <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58 33.3-60.1-60.1L472.2 216c16.2 9.3 16.2 27.9 0 37.2zm-96.6 86.3L104.6 499l220.7-126.7-60.1-60.4z"/>
                     </svg>
                     <div class="store-btn-label">
-                        <small>Get it on</small>
+                        <small>Hemen Edinin</small>
                         <span>Google Play</span>
                     </div>
                 </a>
@@ -1464,197 +653,118 @@
                     <img src="../images/app_icon.png" alt="MyWay" width="36" height="36">
                     <span>MyWay</span>
                 </div>
-                <p class="footer-desc">
-                    The ultimate travel companion for the modern explorer. Discover, plan, and navigate — all in one app.
-                </p>
+                <p class="footer-desc">Modern kaşifler için nihai seyahat arkadaşı. Keşfet, planla ve gez — hepsi tek bir uygulamada.</p>
             </div>
             <div>
-                <h4>Explore</h4>
+                <h4>Keşfet</h4>
                 <ul class="footer-links">
-                    <li><a href="/guides/">All City Guides</a></li>
-                    <li><a href="#features">Smart Routing</a></li>
-                    <li><a href="#screenshots">App Experience</a></li>
+                    <li><a href="/tr/rehber/">Şehir Rehberleri</a></li>
+                    <li><a href="#features">Özellikler</a></li>
+                    <li><a href="#screenshots">Galeri</a></li>
                 </ul>
             </div>
             <div>
-                <h4>Legal</h4>
+                <h4>Yasal</h4>
                 <ul class="footer-links">
-                    <li><a href="privacy.html">Privacy Policy</a></li>
-                    <li><a href="privacy-tr.html">Gizlilik Politikasi</a></li>
-                    <li><a href="terms.html">Terms of Use</a></li>
-                    <li><a href="terms-tr.html">Kullanim Kosullari</a></li>
+                    <li><a href="../privacy.html">Gizlilik Politikası</a></li>
+                    <li><a href="../terms.html">Kullanım Koşulları</a></li>
                 </ul>
             </div>
             <div>
-                <h4>Connect</h4>
+                <h4>İletişim</h4>
                 <ul class="footer-links">
-                    <li><a href="support.html">Support</a></li>
+                    <li><a href="../support.html">Destek</a></li>
                     <li><a href="mailto:support@mywaytravelapp.com">support@mywaytravelapp.com</a></li>
                     <li><a href="https://www.instagram.com/mywaytravelapp/" target="_blank" rel="noopener">Instagram</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 MyWay Travel App. All rights reserved.</p>
-            <p>Made with care for travelers worldwide.</p>
+            <p>© 2026 MyWay Travel App. Tüm hakları saklıdır.</p>
+            <p>Dünya çapındaki tüm gezginler için özenle üretildi.</p>
         </div>
     </footer>
 
-    <!-- JavaScript -->
+    <!-- Scripts -->
     <script>
-        // Navbar scroll effect
         const navbar = document.getElementById('navbar');
-        let lastScroll = 0;
-
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 40) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
+            if (window.scrollY > 40) { navbar.classList.add('scrolled'); }
+            else { navbar.classList.remove('scrolled'); }
         }, { passive: true });
 
-        // Carousel functionality
+        // Carousel
         const track = document.getElementById('carouselTrack');
-        const items = track.querySelectorAll('.carousel-item');
+        const items = track ? track.querySelectorAll('.carousel-item') : [];
         const dotsContainer = document.getElementById('carouselDots');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
         let currentIndex = 0;
 
-        // Create dots
-        items.forEach((_, i) => {
-            const dot = document.createElement('button');
-            dot.classList.add('carousel-dot');
-            if (i === 0) dot.classList.add('active');
-            dot.setAttribute('aria-label', `Go to screenshot ${i + 1}`);
-            dot.addEventListener('click', () => scrollToItem(i));
-            dotsContainer.appendChild(dot);
-        });
-
-        const dots = dotsContainer.querySelectorAll('.carousel-dot');
-
-        function updateActiveState(index) {
-            currentIndex = Math.max(0, Math.min(index, items.length - 1));
-            items.forEach((item, i) => {
-                item.classList.toggle('active', i === currentIndex);
+        if (items.length && dotsContainer) {
+            items.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.classList.add('carousel-dot');
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => scrollToItem(i));
+                dotsContainer.appendChild(dot);
             });
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === currentIndex);
-            });
-        }
 
-        function scrollToItem(index) {
-            if (index < 0) index = 0;
-            if (index >= items.length) index = items.length - 1;
+            const dots = dotsContainer.querySelectorAll('.carousel-dot');
 
-            const item = items[index];
-            if (item && track) {
-                const trackWidth = track.clientWidth;
-                const itemLeft = item.offsetLeft;
-                const itemWidth = item.offsetWidth;
-                const scrollTarget = itemLeft - (trackWidth / 2) + (itemWidth / 2);
-
-                track.scrollTo({
-                    left: scrollTarget,
-                    behavior: 'smooth'
-                });
+            function updateActiveState(index) {
+                currentIndex = Math.max(0, Math.min(index, items.length - 1));
+                items.forEach((item, i) => item.classList.toggle('active', i === currentIndex));
+                dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
             }
 
-            updateActiveState(index);
+            function scrollToItem(index) {
+                if (!track) return;
+                const item = items[index];
+                if (item) {
+                    const scrollTarget = item.offsetLeft - (track.clientWidth / 2) + (item.offsetWidth / 2);
+                    track.scrollTo({ left: scrollTarget, behavior: 'smooth' });
+                }
+                updateActiveState(index);
+            }
+
+            items.forEach((item, i) => item.addEventListener('click', () => scrollToItem(i)));
+
+            let scrollTimeout;
+            track.addEventListener('scroll', () => {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    const trackRect = track.getBoundingClientRect();
+                    const centerX = trackRect.left + trackRect.width / 2;
+                    let closestIndex = 0;
+                    let closestDistance = Infinity;
+                    items.forEach((item, i) => {
+                        const itemRect = item.getBoundingClientRect();
+                        const distance = Math.abs(centerX - (itemRect.left + itemRect.width / 2));
+                        if (distance < closestDistance) {
+                            closestDistance = distance;
+                            closestIndex = i;
+                        }
+                    });
+                    updateActiveState(closestIndex);
+                }, 40);
+            }, { passive: true });
+
+            updateActiveState(0);
         }
-
-        // Allow clicking any card to center and spotlight it
-        items.forEach((item, i) => {
-            item.addEventListener('click', () => scrollToItem(i));
-        });
-
-        prevBtn.addEventListener('click', () => scrollToItem(currentIndex - 1));
-        nextBtn.addEventListener('click', () => scrollToItem(currentIndex + 1));
-
-        // Update spotlight dynamically on scroll
-        let scrollTimeout;
-        const onScroll = () => {
-            const trackRect = track.getBoundingClientRect();
-            const centerX = trackRect.left + trackRect.width / 2;
-            let closestIndex = 0;
-            let closestDistance = Infinity;
-
-            items.forEach((item, i) => {
-                const itemRect = item.getBoundingClientRect();
-                const itemCenterX = itemRect.left + itemRect.width / 2;
-                const distance = Math.abs(centerX - itemCenterX);
-                if (distance < closestDistance) {
-                    closestDistance = distance;
-                    closestIndex = i;
-                }
-            });
-
-            updateActiveState(closestIndex);
-        };
-
-        track.addEventListener('scroll', () => {
-            clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(onScroll, 40);
-        }, { passive: true });
-
-        // Initialize first item as active spotlight
-        updateActiveState(0);
-        window.addEventListener('load', () => updateActiveState(0));
-
-        // Intersection Observer for scroll animations
-        const observerOptions = {
-            threshold: 0.15,
-            rootMargin: '0px 0px -60px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.animate-on-scroll').forEach(el => {
-            observer.observe(el);
-        });
 
         // Mobile nav toggle
         const navToggle = document.getElementById('navToggle');
         const navLinks = document.querySelector('.nav-links');
-
         if (navToggle && navLinks) {
-            navToggle.addEventListener('click', () => {
-                navLinks.classList.toggle('open');
-            });
-            navLinks.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => navLinks.classList.remove('open'));
-            });
+            navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
         }
 
-        // Smooth scroll to top Hero download area
-        document.querySelectorAll('a[href="#download"], a[href="#hero"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
+        // Language Dropdown Click for Mobile
+        const langDropdown = document.getElementById('langDropdown');
+        if (langDropdown) {
+            langDropdown.addEventListener('click', (e) => {
+                langDropdown.classList.toggle('active');
             });
-        });
-
-        if (window.location.hash === '#download' || window.location.hash === '#hero') {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-
-        // Keyboard navigation for carousel
-        track.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') scrollToItem(currentIndex - 1);
-            if (e.key === 'ArrowRight') scrollToItem(currentIndex + 1);
-        });
     </script>
-
 </body>
 </html>
