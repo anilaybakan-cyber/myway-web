@@ -21,6 +21,31 @@
       gtag('config', 'AW-17973398305');
     </script>
 
+    <!-- Smart Geo & Language Detection (Türkiye'den gelenleri otomatik /tr/ sayfasına yönlendirir) -->
+    <script>
+      (function() {
+        try {
+          var userChoice = localStorage.getItem('myway_user_lang');
+          if (userChoice === 'en') return; // Kullanıcı İngilizce seçmişse yönlendirme
+          if (userChoice === 'tr') {
+            window.location.replace('/tr/');
+            return;
+          }
+          // Arama motoru botlarını yönlendirme
+          if (/bot|googlebot|crawler|spider|robot|crawling/i.test(navigator.userAgent)) return;
+          
+          // Tarayıcı dili Türkçe veya saat dilimi Türkiye ise
+          var userLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+          var tz = '';
+          try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch(e) {}
+          
+          if (userLang.indexOf('tr') === 0 || tz.indexOf('Istanbul') !== -1 || tz.indexOf('Turkey') !== -1) {
+            window.location.replace('/tr/');
+          }
+        } catch(e) {}
+      })();
+    </script>
+
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
          crossorigin="anonymous"></script>
@@ -427,8 +452,8 @@
                         <span style="font-size: 10px; opacity: 0.7;">▼</span>
                     </button>
                     <div class="lang-dropdown-menu">
-                        <a href="/" class="lang-dropdown-item active">🇬🇧 English</a>
-                        <a href="/tr/" class="lang-dropdown-item ">🇹🇷 Türkçe</a>
+                        <a href="/" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item active">🇬🇧 English</a>
+                        <a href="/tr/" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item ">🇹🇷 Türkçe</a>
                     </div>
                 </div>
 
