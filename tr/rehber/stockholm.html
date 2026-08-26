@@ -6,8 +6,17 @@
     <title>Stokholm Gezi Rehberi & Akıllı Rotalar | MyWay</title>
     <meta name="description" content="Stokholm için adım adım yürüyüş rotaları, gizli mekanlar, turist tuzakları ve lezzet durakları. Stokholm gezi rehberi MyWay'de.">
     
-    <link rel="alternate" hreflang="en" href="../../guides/stockholm.html">
-    <link rel="alternate" hreflang="tr" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/stockholm.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/stockholm.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -527,7 +641,7 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="navbar-inner">
-            <a href="../" class="nav-brand">
+            <a href="/tr/" class="nav-brand">
                 <img src="../../images/app_icon.png" alt="MyWay" width="38" height="38">
                 <span>MyWay</span>
             </a>
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../rehber/">Rehberler</a></li>
-                <li><a href="../#features">Özellikler</a></li>
+                <li><a href="/tr/rehber/" class="active">Şehir Rehberleri</a></li>
+                <li><a href="/tr/#features">Özellikler</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../../guides/stockholm.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇬🇧 English</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇹🇷 TR</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/stockholm.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item ">🇬🇧 English</a>
+                        <a href="/tr/rehber/stockholm.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item active">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="../#hero" class="nav-cta">İndir</a>
+
+                <a href="/tr/#download" class="nav-cta">Hemen İndir</a>
             </div>
         </div>
     </nav>
@@ -555,7 +678,7 @@
         <img src="../../images/cities/stockholm.jpg" alt="Stokholm" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
-            <div class="city-badge">🇸🇪 İsveç &bull; Rehberler</div>
+            <div class="city-badge">🇸🇪 İsveç &bull; Şehir Rehberleri</div>
             <h1 class="guide-title">Stokholm</h1>
             <p class="guide-tagline">On dört adaya kurulmuş zarafet: su, tasarım ve fika</p>
         </div>
@@ -568,29 +691,249 @@
                 <span class="section-label">Genel Bakış</span>
                 <h2 class="section-title">Stokholm Atmosferi</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Stokholm suyun üstüne değil, suyun arasına kurulmuş: on dört ada, elli yedi köprü ve her köşede parlayan bir su aynası. Gamla Stan&#x27;ın turuncu-sarı cepheleri ortaçağdan kalma, Södermalm&#x27;ın kayalık terasları genç ve özgür, saraylar vakur, metro istasyonları yeraltı sanat galerisi. Şehir zarafetini yüksek sesle söylemez — &#x27;lagom&#x27; der, kararında. Bir kanelbulle al, su kenarına otur ve şehrin sana ayarlanmasına izin ver: Stokholm acele edenle konuşmaz.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 Lagom</div>
+                <span class="pron-badge">🗣️ /lagom/</span>
+            </div>
+            <p class="word-def"><strong>&#x27;Ne az ne çok, tam kararında&#x27;: İsveç yaşam felsefesinin tek kelimelik anayasası. Kahvenin sütü de, çalışma saati de, konuşmanın sesi de lagom olmalıdır. Şehri anlamanın şifresi bu ölçülülüktedir.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Temel Bilgiler</span>
+                <h2 class="section-title">Pratik İpuçları & Lojistik</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Havalimanı</div>
+                <div class="fact-desc">Arlanda (ARN)</div>
+                <div class="fact-sub">Arlanda Express 18 dk · banliyö treni ucuz</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🚇</div>
+                <div class="fact-title">Şehir içi</div>
+                <div class="fact-desc">Metro + feribot + yayan</div>
+                <div class="fact-sub">SL kartı hepsinde geçer</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🗣️</div>
+                <div class="fact-title">Dil</div>
+                <div class="fact-desc">İsveççe</div>
+                <div class="fact-sub">İngilizce ana dil gibi akıcı</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">☕</div>
+                <div class="fact-title">İmza</div>
+                <div class="fact-desc">Fika kültürü</div>
+                <div class="fact-sub">Kanelbulle + kahve ritüeli</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yerel Sırlar</span>
+                <h2 class="section-title">Stokholm İçin Yazısız Kurallar</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>Fika kutsaldır, katıl</strong>
+                    <span>Günde en az bir kez kahve + tatlı molası (fika) İsveç&#x27;te sosyal kurumdur: aceleyle ayakta içilen kahve fika sayılmaz. Bir kafede otur, kanelbulle söyle, telefonu ters çevir — şehrin ritmine buradan girilir.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Nakit unutuldu, kart bile eskidi</strong>
+                    <span>İsveç dünyanın en nakitsiz ülkesidir: birçok kafe nakit kabul etmez, her şey kart ve telefonla döner. Cüzdanında kron arama — temassız kartın şehrin anahtarıdır.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Takımadaları plansız bırakma</strong>
+                    <span>Stokholm&#x27;ün önünde 30 bin adalık bir takımada yatar: feribotla bir saatte kırmızı kulübeli ada köylerine varırsın. Şehri görmek yarım hikayedir — en az bir ada, programın demirbaşı olsun.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Gizli Köşeler</span>
+                <h2 class="section-title">Stokholm'deki Saklı Hazineler</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Monteliusvägen</div>
+                <div class="card-desc">Södermalm&#x27;ın kayalık sırtında 500 metrelik ahşap korkuluklu patika: Riddarfjärden, belediye binası ve Gamla Stan ayaklarının altında. Gün batımında yerliler elinde termosla gelir — sen de öyle yap.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Skogskyrkogården</div>
+                <div class="card-desc">UNESCO listesindeki &#x27;Orman Mezarlığı&#x27;: çam ormanına serilmiş minimalist şapeller ve Greta Garbo&#x27;nun mezarı. Mimarlık hacılarının rotası — huzur ve tasarımın buluştuğu yer, metroyla 20 dakika.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Fjäderholmarna</div>
+                <div class="card-desc">Merkezden 25 dakikalık feribotla mini takımada: zanaat atölyeleri, kayalıkta deniz kenarı restoranlar ve şehir silüetine karşı yüzme. Büyük takımadaya vaktin yoksa cep boy provası.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Tunnelbana sanat turu</div>
+                <div class="card-desc">Mavi hattın mağara istasyonları — T-Centralen&#x27;in sarmaşıkları, Solna&#x27;nın kızıl ormanı, Kungsträdgården&#x27;in arkeolojik bahçesi: dünyanın en uzun sanat galerisi bilet fiyatına gezilir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Rosendals Trädgård</div>
+                <div class="card-desc">Djurgården&#x27;in derinliğinde bağ-bahçeli sera kafe: elma ağaçları arasında fika, fırından ekşi mayalı ekmek, çiçek tarhları. Şehirdeki en pastoral öğleden sonranın adresi.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Skinnarviksberget</div>
+                <div class="card-desc">Şehrin en yüksek doğal noktası: Södermalm&#x27;ın çıplak kayalığında piknik battaniyeleri serilir, gün batımında gençlik toplanır. Tırmanışı kısa, manzarası tam Stokholm.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yeme & İçme</span>
+                <h2 class="section-title">Mutlaka Tadılması Gereken Lezzetler</h2>
+            </div>
+            <p class="intro-text">İsveç mutfağı sadeliğin zarafetidir: köfte ve yaban mersini, çavdar ve ringa, tarçın ve kakule — hepsi fika kültürünün gölgesinde.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Köttbullar — gerçek İsveç köftesi</div>
+                <div class="card-desc">Krema soslu köfte, patates püresi, kızılcık reçeli ve turşu: mobilya mağazasından değil, tarihi lokantadan tat. Kızılcığın ekşisi sosun kremasıyla dengelenince anlarsın — bu tabak ciddi iştir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Kanelbulle ve kardemummabulle</div>
+                <div class="card-desc">Tarçınlı ve kakuleli çörekler fika&#x27;nın iki direğidir: 4 Ekim resmi Kanelbulle Günü&#x27;dür. İyi fırında kakuleli olanı dene — yerliler onun daha üstün olduğuna gizlice inanır.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Ringa tezgahı — sill ve strömming</div>
+                <div class="card-desc">Marine ringa (sill) çeşitleriyle smörgåsbord&#x27;un kalbidir; kızarmış strömming ise ayaküstü klasik. Hötorget ya da Östermalm saluhall tezgahlarında çavdar ekmeği üstünde tat.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Räksmörgås — karides dağı</div>
+                <div class="card-desc">Tereyağlı ekmek üstünde mayonezli karides tepesi, yumurta ve dereotu: İsveç&#x27;in açık sandviç şaheseri. Su kenarı kafelerde öğle klasiği — çatal bıçakla yenir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Prinsesstårta ve semla</div>
+                <div class="card-desc">Yeşil badem ezmeli &#x27;prenses pastası&#x27; yıl boyu; kakule çöreğinin badem kremalı hali semla ise ocak-şubat sezonluk yıldızıdır. İkisi de fika&#x27;nın bayramlık halidir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Craft bira ve snaps kültürü</div>
+                <div class="card-desc">Södermalm&#x27;ın mikro birahaneleri güçlü bir sahne kurdu; kutlama sofralarında ise dereotlu-kimyonlu snaps kadehi şarkıyla kalkar. Systembolaget (devlet tekeli) erken kapanır — planlı ol.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Dikkat Edilmesi Gerekenler</span>
+                <h2 class="section-title">Turist Tuzakları & Kaçınılması Gerekenler</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">İsveç&#x27;te taksi ücretleri serbesttir: yanlış firmayla Arlanda-merkez yolu şok edici rakamlara çıkabilir.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Arlanda Express (18 dk) ya da pendeltåg banliyö treni (yarı fiyat) — ikisi de gara iner. Taksi şartsa kapıdaki sarı fiyat etiketini oku: &#x27;jämförpris&#x27; karşılaştırma fiyatıdır.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Västerlånggatan&#x27;ın turist menüleri ortalama yemeği yüksek fiyata satar; iki sokak ötede aynı para daha iyi mutfak alır.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Ara sokaklara sap ya da köprüyü geçip Södermalm&#x27;da ye. Gamla Stan&#x27;da sadece fika yap — atmosfer bedava, çörek her yerde aynı fiyat.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Restoran içki fiyatları sert, market rafında ise sadece hafif bira vardır; akşam planını bilmeyen bütçesini bara bırakır.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Systembolaget&#x27;ten (devlet tekeli) gündüz alışverişini yap — cumartesi erken kapanır, pazar kapalıdır. Barlarda happy hour ve &#x27;dagens öl&#x27; yazan tahtaları takip et.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Şehir kartı ancak günde üç ücretli mekan gezene kâr eder; yürüyüş ve park ağırlıklı programda boşa gider.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Müze listeni yaz, giriş ücretlerini topla, sonra karar ver. Unutma: birçok devlet müzesinin daimi koleksiyonu zaten ücretsizdir — önce onların listesine bak.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Stokholm'yi MyWay ile Keşfedin</h3>
-            <p>Zikzak çizmeden adım adım akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
+            <p>Adım adım optimize edilmiş akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      App Store'dan Hemen İndirin
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. Tüm hakları saklıdır.</p>
+            <p>&copy; 2026 MyWay Travel App. Tüm hakları saklıdır.</p>
         </div>
     </footer>
 

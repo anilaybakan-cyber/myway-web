@@ -6,8 +6,17 @@
     <title>Palermo City Guide & Smart Walking Routes | MyWay</title>
     <meta name="description" content="Explore Palermo with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
     
-    <link rel="alternate" hreflang="tr" href="../tr/rehber/palermo.html">
-    <link rel="alternate" hreflang="en" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/palermo.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/palermo.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../guides/">City Guides</a></li>
+                <li><a href="/guides/" class="active">City Guides</a></li>
                 <li><a href="/#features">Features</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../tr/rehber/palermo.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇹🇷 Türkçe</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇬🇧 EN</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/palermo.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item active">🇬🇧 English</a>
+                        <a href="/tr/rehber/palermo.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item ">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="/#hero" class="nav-cta">Download</a>
+
+                <a href="/#download" class="nav-cta">Download</a>
             </div>
         </div>
     </nav>
@@ -568,29 +691,249 @@
                 <span class="section-label">Overview</span>
                 <h2 class="section-title">The Vibe of Palermo</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Palermo is one of Italy&#x27;s most underestimated major cities. The capital of Sicily, right at the centre of the Mediterranean — Arabs, Normans, Byzantines, Spaniards have all left their mark here. This history has seeped into the city&#x27;s streets, churches, food and people. Ballarò Market is Italy&#x27;s most lively, loudest and most authentic open-air market. Cappella Palatina is one of the finest mosaic-decorated spaces in the world. Street food culture is both the cheapest and the most delicious. Palermo is still raw, a little chaotic — but within that chaos there&#x27;s an incredible energy. Two hours after arriving you understand why those who live here never want to leave.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 Arancina</div>
+                <span class="pron-badge">🗣️ /a-ran-CI-na/</span>
+            </div>
+            <p class="word-def"><strong>Sicily&#x27;s globally known street food — fried rice balls. Note: in Palermo it&#x27;s &#x27;arancina&#x27; (feminine), in Catania &#x27;arancino&#x27; (masculine), and this is a serious point of civic pride between the two cities. Palermo&#x27;s arancina is round, Catania&#x27;s is pointed. Filled with meat ragù, béchamel or pistachio. At Ballarò Market or at the Ke Palle stall on Via Maqueda, €2-3. You could leave your entire lunch to this.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Essentials</span>
+                <h2 class="section-title">Quick Logistics</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Airport</div>
+                <div class="fact-desc">PMO — Palermo Falcone-Borsellino</div>
+                <div class="fact-sub">Trinacria Express train €6.50 · bus €6 · centre ~35-45 min</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🚌</div>
+                <div class="fact-title">Transport</div>
+                <div class="fact-desc">AMAT bus and tram</div>
+                <div class="fact-sub">Single fare €1.40 (90 min valid) · day pass €3.50 · on bus €1.80</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🌡️</div>
+                <div class="fact-title">Weather</div>
+                <div class="fact-desc">Mediterranean — Sicilian summers very hot</div>
+                <div class="fact-sub">Apr–Jun and Sep–Oct ideal · Jul–Aug very hot · Dec–Feb mild and rainy</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🍊</div>
+                <div class="fact-title">Food</div>
+                <div class="fact-desc">Arancina, pani ca meusa, cannoli, pasta alla Norma</div>
+                <div class="fact-sub">Street food €1-4 · trattoria set lunch €12-18</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Insider Advice</span>
+                <h2 class="section-title">Unwritten Rules for Palermo</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>Street food here is not an option — it&#x27;s a culture</strong>
+                    <span>Not eating street food in Palermo means only half-seeing the city. Pani ca meusa (spleen sandwich), stigghiola (grilled lamb intestines), panelle (chickpea flour fritters), arancina (fried rice ball) — these are not touristy; they are the Palermitans&#x27; everyday meal. Ballarò, Vucciria and Capo markets are the best spots. Prices €1-4. Go to the morning market, get used to the vendors shouting, and try something.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Always book Cappella Palatina in advance</strong>
+                    <span>Cappella Palatina is Palermo&#x27;s most valuable architectural and artistic work — 12th-century Byzantine mosaics, Arab-Norman architecture, gold-worked ceilings. But entry capacity is limited and in summer days fill up well in advance. Online booking is essential for Palazzo dei Normanni + Cappella Palatina. The first session at 8:30-9am is the quietest.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Walk — the historic centre is small and compact</strong>
+                    <span>Palermo&#x27;s historic centre is compact with a grid plan from Quattro Canti. From Cappella Palatina to Ballarò is 10 minutes, Vucciria 15 minutes, Teatro Massimo 10 minutes. Everything is within walking distance. Streets are narrow and busy — scooters and cars everywhere — but walking is the best option. A free shuttle called Free Centro Storico also runs within the historic centre.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Off the Beaten Path</span>
+                <h2 class="section-title">Hidden Gems in Palermo</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Cappella Palatina</div>
+                <div class="card-desc">Inside the Norman Palace, a masterpiece from the 12th century. Gold-worked wooden ceiling, Byzantine mosaics covering floor and walls, Arab-Norman-Byzantine architecture all in one space. Nowhere else in the world is there such a successful synthesis of so many different cultures in a single building. Online booking essential in advance — fills days ahead in summer. First session 8:30-9am is the quietest.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Monastero di Santa Caterina d&#x27;Alessandria</div>
+                <div class="card-desc">Right above Piazza Pretoria (next to the Fountain of Shame). The monastery of the nuns&#x27; order was closed for decades, now open to visitors. The Baroque church inside is magnificent. But the real secret: the monastery nuns make cannoli, cassata and other Sicilian pastries by hand following centuries-old recipes — the small shop at the door and the terrace café sell them. The terrace looking over Piazza Pretoria is both scenic and peaceful.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Vucciria Market and its nights</div>
+                <div class="card-desc">No longer as lively as Ballarò during the day — but it completely transforms after dark. From 8pm the streets fill with young Palermitans, tables move outside, music starts. Cheap wine, pani ca meusa, street musicians. Palermo&#x27;s most free-spirited and liveliest night venue. Not touristy — this is a local evening.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Monte Pellegrino and Santa Rosalia Sanctuary</div>
+                <div class="card-desc">A 600-metre rock mass rising on the north of Palermo bay. At the top, the Santa Rosalia Sanctuary — built inside a cave, dedicated to Palermo&#x27;s patron saint. Reachable by AMAT bus 812. From the top: Palermo city, the bay and Mondello beach visible 360 degrees. The sanctuary interior is impressive. Walking up is also possible — about 1.5 hours.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Catacombe dei Cappuccini</div>
+                <div class="card-desc">2 kilometres west of the city centre. The basement of the Capuchin friar monastery where Palermitans were mummified and put on display between 1599 and 1871. Men, women, children, priests — over 8,000 corpses still standing here in their clothing. Unsettling but unique. You can&#x27;t quite decide what to think about this place, but you understand that Palermo has a different relationship with death. Go early in the morning.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Mondello beach</div>
+                <div class="card-desc">30-40 minutes from Palermo city centre by AMAT bus 806. Long white sandy beach, an Art Nouveau period fishing pavilion. Fresh fish restaurants both delicious and relatively affordable. On weekday middays the beach is nearly empty. If you don&#x27;t have time to go as far as Cefalù, Mondello is a good alternative.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Food & Flavors</span>
+                <h2 class="section-title">What to Taste</h2>
+            </div>
+            <p class="intro-text">Palermo&#x27;s street food culture is the strongest in Italy. Arancina, pani ca meusa, panelle — these aren&#x27;t found on restaurant menus; they&#x27;re at market stalls and street carts.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Arancina</div>
+                <div class="card-desc">Fried rice ball — with meat ragù, béchamel or pistachio filling. Palermo&#x27;s best-known street food. The Ke Palle stall on Via Maqueda or Ballarò Market are the best addresses. Fresh in the morning and at lunch. €2-3. Note: round in Palermo, pointed in Catania — and this difference is a matter of civic pride.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Pani ca meusa</div>
+                <div class="card-desc">Cooked beef spleen and trachea in a warm bread roll. It sounds unusual but this is Palermo&#x27;s most characteristic flavour. Noni Franchino — near Vucciria, in the same spot since 1945. The maritata (with added cheese) version is a gentler introduction for first-timers. €3-4, filling.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Panelle e crocchè</div>
+                <div class="card-desc">Chickpea flour fritters (panelle) and potato croquettes (crocchè) — both placed together inside a round bread roll. Sicily&#x27;s cheapest and most delicious snack. Friggitorie (frying shops) open from morning until midday. On every corner at Ballarò and Capo markets. €1-2. Both breakfast and mid-morning snack.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Pasta alla Norma</div>
+                <div class="card-desc">Pasta made with fried aubergine, tomato sauce, salted ricotta and basil. Originally from Catania but found all across Sicily. Named after Bellini&#x27;s opera. €8-12 at local trattorias. Available everywhere but quality varies — fresh fried aubergine and good salted ricotta are essential.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Granita e brioche</div>
+                <div class="card-desc">Sicily&#x27;s breakfast — semi-frozen granita (lemon, almond, pistachio or coffee) and buttery brioche. Fresh at patisseries 7-9am. In Palermo, lemon and almond are the most classic flavours. Eaten by dipping the brioche or with a spoon alongside. €2-3. Without this breakfast, Palermo is incomplete.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Cannoli and cassata</div>
+                <div class="card-desc">Cannoli: crispy fried pastry tube filled with fresh ricotta cream, candied fruit and pistachio. Cassata: sponge cake, ricotta cream, green marzipan and candied fruit. Both are very different when freshly made. Pasticceria Cappello or Antica Focacceria San Francesco are the most reliable addresses. €2-4.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Watch Out</span>
+                <h2 class="section-title">Tourist Traps to Avoid</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Godfather-hat magnets and &#x27;mafia tour&#x27; kitsch touch Palermitans&#x27; dignity; the city gave decades to fighting that shadow.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Shop at Addiopizzo-labelled businesses: you support traders who refuse protection money — that is the real Palermo story.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">The tourist restaurants around the baroque crossroads sell frozen pasta at view prices.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Eat in the markets: panelle at a Ballarò stall, arancina at Capo — here street food is the cuisine itself.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">A taxi bargained at Falcone-Borsellino ends at the tourist tariff.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> The Prestia e Comandè bus reaches the centre in half an hour; there&#x27;s a train too. If it must be a taxi, confirm the official flat fare.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">In summer most of the beach is carved into paying lidos; arrive unaware and there&#x27;s no sand left for you.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Use the free public stretches (toward the ends) or come early; in June and September the beach is half empty anyway.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Explore Palermo with MyWay</h3>
-            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without zigzagging across town.</p>
+            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without wasted steps.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      Download on App Store
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. All rights reserved.</p>
+            <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
         </div>
     </footer>
 

@@ -6,8 +6,17 @@
     <title>London Gezi Rehberi & Akıllı Rotalar | MyWay</title>
     <meta name="description" content="London için adım adım yürüyüş rotaları, gizli mekanlar, turist tuzakları ve lezzet durakları. London gezi rehberi MyWay'de.">
     
-    <link rel="alternate" hreflang="en" href="../../guides/londra.html">
-    <link rel="alternate" hreflang="tr" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/londra.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/londra.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -527,7 +641,7 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="navbar-inner">
-            <a href="../" class="nav-brand">
+            <a href="/tr/" class="nav-brand">
                 <img src="../../images/app_icon.png" alt="MyWay" width="38" height="38">
                 <span>MyWay</span>
             </a>
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../rehber/">Rehberler</a></li>
-                <li><a href="../#features">Özellikler</a></li>
+                <li><a href="/tr/rehber/" class="active">Şehir Rehberleri</a></li>
+                <li><a href="/tr/#features">Özellikler</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../../guides/londra.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇬🇧 English</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇹🇷 TR</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/londra.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item ">🇬🇧 English</a>
+                        <a href="/tr/rehber/londra.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item active">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="../#hero" class="nav-cta">İndir</a>
+
+                <a href="/tr/#download" class="nav-cta">Hemen İndir</a>
             </div>
         </div>
     </nav>
@@ -555,7 +678,7 @@
         <img src="../../images/cities/londra.jpg" alt="London" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
-            <div class="city-badge">🇬🇧 Birleşik Krallık &bull; Rehberler</div>
+            <div class="city-badge">🇬🇧 Birleşik Krallık &bull; Şehir Rehberleri</div>
             <h1 class="guide-title">London</h1>
             <p class="guide-tagline">33 ilçe, milyonlarca hikâye — ve hepsini görmeye çalışma</p>
         </div>
@@ -568,29 +691,270 @@
                 <span class="section-label">Genel Bakış</span>
                 <h2 class="section-title">London Atmosferi</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">London kendini hemen açmaz. Tek bir şehir bekliyorsun; onlarca şehir buluyorsun. Ortaçağ meydanları cam gökdelenlerin yanı başında, kadim pazarlar Michelin yıldızlı restoranların komşusu, sakin Gürcü dönem sokakları dünyanın en kalabalık alışveriş caddelerinden sadece iki blok ötede. Dünyanın en çok ziyaret edilen şehri ve bir şekilde neredeyse kimsenin görmediği şeylerle hâlâ dolu. Sır şu: nereye bakacağını ve nasıl hareket edeceğini bilmek.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 The Local</div>
+                <span class="pron-badge">🗣️ /dö LO-kıl/</span>
+            </div>
+            <p class="word-def"><strong>Sadece bir pub değil; senin pub&#x27;ın. London&#x27;ın her mahallesinde bir tane var: müdavimlerin aynı koltuğa oturduğu, barmenin siparişi ezberlediği, hiçbir turistin adım atmadığı yer. Ziyaretçi olarak bile o pub&#x27;ı bulmak London&#x27;ın en sade ve en büyük zevklerinden biri.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Temel Bilgiler</span>
+                <h2 class="section-title">Pratik İpuçları & Lojistik</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Havalimanı</div>
+                <div class="fact-desc">Heathrow (LHR)</div>
+                <div class="fact-sub">Elizabeth line · 35 dk · merkeze direkt</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">💳</div>
+                <div class="fact-title">Ulaşım</div>
+                <div class="fact-desc">Temassız ödeme</div>
+                <div class="fact-sub">Günlük azami ücret uygulanıyor; ne çok gidersen o kadar avantajlı</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🏛️</div>
+                <div class="fact-title">Müzeler</div>
+                <div class="fact-desc">En iyileri ücretsiz</div>
+                <div class="fact-sub">British Museum · V&amp;A · Tate Modern</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🍺</div>
+                <div class="fact-title">Pub saatleri</div>
+                <div class="fact-desc">Genellikle 23:00&#x27;e kadar</div>
+                <div class="fact-sub">Son sipariş 22:45</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yerel Sırlar</span>
+                <h2 class="section-title">London İçin Yazısız Kurallar</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>Tube (London metrosu) için bilet alma</strong>
+                    <span>Tube, London&#x27;ın efsanevi yeraltı metro sistemi. Standart bilet aynı yolculuk için temassız ödemenin iki katından fazlasına mal oluyor. Banka kartın, Apple Pay veya Google Pay kullan; en ucuz, en kolay, en hızlı yöntem bu. Sistem günlük azami ücret uyguluyor; o noktaya ulaştığında o günkü kalan tüm yolculuklar ücretsiz.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Yürüyen merdivenler: solda yürü, sağda dur</strong>
+                    <span>Solda yürü, sağda dur. Bu bir öneri değil; London&#x27;ın en ciddiye alınan yazılı olmayan kurallarından biri. Yoğun saatlerde bunu çiğnemek, bir an önce her şeyde son derece kibar olan insanlardan gerçek bir tepki almak demek.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>London&#x27;ın en iyi müzeleri tamamen ücretsiz</strong>
+                    <span>British Museum, Natural History Museum, V&amp;A, Science Museum, National Gallery, Tate Modern: hepsi ücretsiz ve sonsuza kadar öyle kalacak. Bu UK yasası, bir kampanya değil. Senden giriş ücreti isteyen herhangi biri dolandırıcılık yapıyor demektir. İçeri gir, tüm gün kal.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Gizli Köşeler</span>
+                <h2 class="section-title">London'deki Saklı Hazineler</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">King&#x27;s Cross İstasyonu — Platform 9¾</div>
+                <div class="card-desc">Harry Potter&#x27;ın Hogwarts Ekspresi&#x27;ne bindiği efsanevi platform. King&#x27;s Cross İstasyonu&#x27;nun içinde gerçek bir kurulum var: yarısı duvara gömülmüş bir bagaj arabası ve üzerinde &#x27;9¾&#x27; tabelası. Fotoğraf çektirmek için sıra oluşuyor ama kısa sürüyor. Harry Potter hayranı olsan da olmasan da uğramaya değiyor. Ücretsiz.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Leadenhall Market</div>
+                <div class="card-desc">City of London&#x27;ın kalbinde, 14. yüzyıldan kalma bu görkemli kapalı pazar Harry Potter filmlerinde Diagon Alley olarak çekildi. Viktorya dönemi demir ve cam tavan, renkli boyalı duvarlar. Film olmasa bile London&#x27;ın en güzel iç mekanlarından biri. Ücretsiz, her gün açık. Öğle aralarında çalışanlarla, akşamları ise neredeyse tamamen sessiz.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">St Dunstan in the East</div>
+                <div class="card-desc">12. yüzyıldan kalma kilise, 1941&#x27;de İkinci Dünya Savaşı&#x27;ndaki Alman hava bombardımanı (Blitz) sırasında yerle bir edildi. Yıkıntılar olduğu gibi bırakıldı ve kamusal bahçeye dönüştürüldü: bombalanmış duvarları tırmanan sarmaşıklar, pencere kemerlerinden büyüyen ağaçlar, bir zamanlar şefon olan yerde banklar. London&#x27;ın en olağanüstü mekanlarından biri. Ücretsiz, her gün açık. Bilenlerin sırrı olmaya devam ediyor.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Primrose Hill&#x27;de Günbatımı</div>
+                <div class="card-desc">Kuzey London&#x27;da 64 metrelik tepe; tüm şehir silüetine panoramik manzara sunuyor. Bilet yok, kuyruk yok, ticari hiçbir şey yok. Yaz akşamları Londralılar şarap ve piknik sepetleriyle geliyor. Günbatımında dünyanın en güzel kentsel manzaralarından biri. Burası bedava.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Postman&#x27;s Park — Kahramanca Fedakârlık Anıtı</div>
+                <div class="card-desc">St Paul&#x27;s Katedrali yakınında sakin bir park; içinde olağanüstü bir anıt var. Başkalarını kurtarırken hayatını kaybeden sıradan insanları anlatan kısa ve yürek burkan hikâyelerle dolu seramik karolar. 1900&#x27;de yapıldı. London&#x27;ın en etkileyici ve en az bilinen anıtlarından biri. Gören her insanı yerinde durduruyor.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Sky Garden at 20 Fenchurch Street</div>
+                <div class="card-desc">&quot;Walkie-Talkie&quot; binasının tepesinde London&#x27;ın 360 derece manzarasına sahip görkemli bir kamusal bahçe; tamamen ücretsiz ama önceden online rezervasyon gerekiyor. Sky Garden sitesinden birkaç gün önceden rezervasyon yap; gittiğinde pişman olmayacaksın.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">The Hill Garden &amp; Pergola — Hampstead</div>
+                <div class="card-desc">Hampstead Heath&#x27;in üzerinde gizlenmiş olağanüstü bir Edwardian pergola (yükseltilmiş sütunlu yürüyüş yolu): sarkık glisinya ve tırmanıcı güller dökülen taş kemerler boyunca uzanıyor. 1904&#x27;te inşa edildi. Girişi ücretsiz, neredeyse tamamen bilinmiyor. Glisinyanın çiçek açtığı Mayıs sonunda git; İngiltere&#x27;nin en romantik mekanlarından birine dönüşüyor.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Ye Olde Cheshire Cheese — Fleet Street</div>
+                <div class="card-desc">1666 Büyük Yangını&#x27;ndan sonra yeniden inşa edilmiş London&#x27;ın en eski pub&#x27;larından biri. Koyu ahşap, alçak tavanlar, zeminde testere talaşı. Dickens, Samuel Johnson ve Mark Twain burada içti. Fleet Street&#x27;ten dar bir geçitle bulunuyor; küçük bir tabela ve başka hiçbir şey. London pub&#x27;ının gerçekte ne olduğu bu.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yeme & İçme</span>
+                <h2 class="section-title">Mutlaka Tadılması Gereken Lezzetler</h2>
+            </div>
+            <p class="intro-text">London dünyanın büyük yemek şehirlerinden biri. Çeşitliliği sayesinde yeryüzündeki her mutfağı gerçekten yüksek bir seviyede bulabiliyorsun; en iyisi de nadiren beklenen yerlerde.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Full English Breakfast — gerçek olanı</div>
+                <div class="card-desc">Pastırma, yumurta, sosis, fırında fasulye, közlenmiş domates, mantar, kan sucuğu ve tost. Britanya&#x27;nın dünya mutfağına en büyük katkısı. Düzgün bir &quot;caff&quot; (greasy spoon: küçük, bağımsız, gösterişsiz kafe) bulmaya çalış. İyi bir caff&#x27;ta hem uygun hem lezzetli. Lokalden birine &quot;caff&#x27;ın nerede?&quot; diye sor; cevabın o olsun.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Brick Lane ve curry house&#x27;lar</div>
+                <div class="card-desc">London, Hint Yarımadası dışındaki en iyi Hint ve Bangladeş yemeğine sahip şehir. Shoreditch&#x27;teki Brick Lane tarihi merkez; ama tüm East End olağanüstü. Dishoom (birden fazla şubesi var) en çok sevilen: kahvaltıda bacon naan için gerçek bir kuyruk oluşuyor. Beklemeye değiyor.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Borough Market — gerçek olanı</div>
+                <div class="card-desc">London&#x27;ın en eski ve en iyi yemek pazarı; London Bridge yakınındaki demiryolu kemerlerinin altında. Salı–Cumartesi açık. London&#x27;ın en iyi şefleri buradan alışveriş yapıyor. Buradaki Monmouth Coffee London&#x27;ın en iyileri arasında. Aç git. Her şeyden tat. Ertesi gün tekrar gel.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Fish &amp; chips — ama düzgün şekilde</div>
+                <div class="card-desc">Gerçek fish &amp; chips için şehrin içine gir; turistik yerlerden uzak dur. Gerçeği: kalın kesilmiş patates, taze hamurlu morina ya da mezgit, mushy peas (ezilmiş bezelye) ve malt sirkesi. Spitalfields&#x27;da Poppies veya Covent Garden&#x27;da Rock &amp; Sole Plaice iyi seçenekler. Kâğıda sarılmış ye. London&#x27;ın en dürüst yemeği.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Pub — bir Britanya kurumu</div>
+                <div class="card-desc">Masada servis bekleme; barda sipariş ver. Bir bardak gerçek ale, bitter (geleneksel İngiliz birasının hafif ve aromatlı türleri) veya London Pride. Gastropub (yemek odaklı pub) İngiliz mutfağını dönüştürdü; bazıları Michelin yıldızı kalitesinde yemek sunuyor. Geleneksel bir Viktorya dönemi pub&#x27;ı bul ve bir öğleden sonrasını içinde geçir. London gerçekte bu.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Specialty coffee sahnesi</div>
+                <div class="card-desc">London dünyanın en iyi specialty coffee sahnelerinden birine sahip. Monmouth Coffee, Ozone, Workshop ve Allpress referans noktaları. Bu sahne büyük ölçüde 2000&#x27;lerde gelen ve kafe kültürünü kalıcı olarak dönüştüren Avustralyalı ve Yeni Zelandalı expat&#x27;lar tarafından kuruldu.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Afternoon tea — düzgün şekilde</div>
+                <div class="card-desc">Küçük sandviçler, sıcak scone&#x27;lar (geleneksel İngiliz ekmeği), kaymak ve reçel (önce kaymak, sonra reçel; Devon geleneği bu — Cornwall&#x27;da tam tersi) ve gerçek yaprak çay. Fortnum &amp; Mason klasik. Önceden rezervasyon yap. Biraz özel ama gerçekten buna değen bir deneyim.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Dikkat Edilmesi Gerekenler</span>
+                <h2 class="section-title">Turist Tuzakları & Kaçınılması Gerekenler</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Rengarenk vitrinli candy shop&#x27;lar şehrin en bilinen tuzağı: fahiş fiyatlar, şaibeli ürünler. Aynı şey turistik &#x27;İngiliz hediyelik&#x27; zincirlerinin çoğu için geçerli.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Hediyelik için müze dükkanlarına bak (ücretsiz müzelerin dükkanları harikadır) ya da bir marketten İngiliz çayı al.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Piccadilly ile Leicester Square arasındaki &#x27;Angus Steakhouse&#x27; tarzı restoranlar ve zincirler, London&#x27;ın en vasat ve en pahalı yemeğini satar.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> On dakika yürü: Soho&#x27;nun ara sokakları, Chinatown ya da Borough Market. Aynı para, bambaşka bir şehir.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Kapı fiyatı yüksek, kuyruk uzun ve manzaranın daha iyisi ücretsiz alternatiflerde var.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Sky Garden&#x27;a haftalar önceden ücretsiz bilet ayırt ya da günbatımında Primrose Hill&#x27;e çık.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Saatler önce yer kapma savaşı, omuz üstünden telefon ekranı izleme deneyimi. Çoğu gün buna değmez.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Horse Guards Parade&#x27;deki atlı nöbet değişimine git: daha yakın, daha sakin, en az onun kadar görkemli.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>London'yi MyWay ile Keşfedin</h3>
-            <p>Zikzak çizmeden adım adım akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
+            <p>Adım adım optimize edilmiş akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      App Store'dan Hemen İndirin
@@ -604,7 +968,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. Tüm hakları saklıdır.</p>
+            <p>&copy; 2026 MyWay Travel App. Tüm hakları saklıdır.</p>
         </div>
     </footer>
 

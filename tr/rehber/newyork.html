@@ -6,8 +6,17 @@
     <title>New York Gezi Rehberi & Akıllı Rotalar | MyWay</title>
     <meta name="description" content="New York için adım adım yürüyüş rotaları, gizli mekanlar, turist tuzakları ve lezzet durakları. New York gezi rehberi MyWay'de.">
     
-    <link rel="alternate" hreflang="en" href="../../guides/newyork.html">
-    <link rel="alternate" hreflang="tr" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/newyork.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/newyork.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -527,7 +641,7 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="navbar-inner">
-            <a href="../" class="nav-brand">
+            <a href="/tr/" class="nav-brand">
                 <img src="../../images/app_icon.png" alt="MyWay" width="38" height="38">
                 <span>MyWay</span>
             </a>
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../rehber/">Rehberler</a></li>
-                <li><a href="../#features">Özellikler</a></li>
+                <li><a href="/tr/rehber/" class="active">Şehir Rehberleri</a></li>
+                <li><a href="/tr/#features">Özellikler</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../../guides/newyork.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇬🇧 English</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇹🇷 TR</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/newyork.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item ">🇬🇧 English</a>
+                        <a href="/tr/rehber/newyork.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item active">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="../#hero" class="nav-cta">İndir</a>
+
+                <a href="/tr/#download" class="nav-cta">Hemen İndir</a>
             </div>
         </div>
     </nav>
@@ -555,7 +678,7 @@
         <img src="../../images/cities/newyork.jpg" alt="New York" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
-            <div class="city-badge">🇺🇸 ABD &bull; Rehberler</div>
+            <div class="city-badge">🇺🇸 ABD &bull; Şehir Rehberleri</div>
             <h1 class="guide-title">New York</h1>
             <p class="guide-tagline">Gerçekten buradayım hissi — başka hiçbir şehirde bu kadar ani gelmiyor</p>
         </div>
@@ -568,29 +691,249 @@
                 <span class="section-label">Genel Bakış</span>
                 <h2 class="section-title">New York Atmosferi</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Taksiler sarı, sokaklar gürültülü, herkes bir yere koşuyor ve sen kaldırımda donup kalıyorsun — çünkü tam da filmde gördüğün gibi. Bu his geçmiyor, sadece yerleşiyor. New York böyle çalışıyor: önce kendini gösteriyor, sonra içine çekiyor. Metro hiç durmuyor. Bodega&#x27;lar hiç kapanmıyor. Gökdelenlerin arasında bir pizzacı var; tezgâhtan bir dilim al, ikiye kat, yürü. Bu şehirde doğru olan bu. Üç blok ötede her zaman bir şey oluyor. Her zaman.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 Bodega</div>
+                <span class="pron-badge">🗣️ /bo-DAY-ga/</span>
+            </div>
+            <p class="word-def"><strong>Köşe bakkalı, ama daha fazlası. Her saat açık, içeride mutlaka bir kedi var, arkasında sandviç tezgâhı. Pastırmalı-yumurtalı-peynirli sandviç düz ızgarada yapılıyor, folyoya sarılıyor, kapıda ya da metroda yeniyor. New York’un kahvaltısı bu. Bodega olmadan New York olmaz.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Temel Bilgiler</span>
+                <h2 class="section-title">Pratik İpuçları & Lojistik</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Havalimanları</div>
+                <div class="fact-desc">JFK · LGA · EWR</div>
+                <div class="fact-sub">JFK: AirTrain (biletli) + metro ~60 dk · Newark: tren ~45 dk</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🚇</div>
+                <div class="fact-title">Metro</div>
+                <div class="fact-desc">OMNY — temassız kart veya telefonla dokun</div>
+                <div class="fact-sub">Tek biniş 3,25 dolar · haftada en fazla 35 dolar ödüyorsun bu şekilde · 24 saat</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🌡️</div>
+                <div class="fact-title">Hava</div>
+                <div class="fact-desc">Dört gerçek mevsim</div>
+                <div class="fact-sub">Eyl–Kas ideal · Ara–Şub soğuk · Haz–Ağu sıcak ve nemli</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🍕</div>
+                <div class="fact-title">Pizza</div>
+                <div class="fact-desc">Tezgâhtan al, ikiye kat, yürü</div>
+                <div class="fact-sub">Nakit tercih edilir · yan sokaklar daha ucuz</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yerel Sırlar</span>
+                <h2 class="section-title">New York İçin Yazısız Kurallar</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>Metroyu kullan — her yere gider, her saat çalışır</strong>
+                    <span>472 istasyon, günde 24 saat, yılın 365 günü. Temassız kartınla veya telefonunla turnike okuyucusuna dokun. MetroCard artık gerekmiyor. Tek biniş 3,25 dolar. Haftada 12 binişten sonra o haftaki tüm binişler ücretsiz; haftalık üst sınır 35 dolar. Kirli olabilir, geç gelebilir. Yine de Manhattan’da her zaman taksiden hızlı.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Manhattan küçük, Brooklyn büyük — ama dış ilçeleri de küçümseme.</strong>
+                    <span>Manhattan 21 kilometre uzunluğunda. Lower East Side&#x27;dan Central Park&#x27;a yürüyerek bir saat. Brooklyn bambaşka: Williamsburg, Park Slope, Crown Heights, Coney Island — hepsinin ayrı bir ruhu var ve birbirine yakın değil. En iyi yemek ve en iyi mahalle hayatı için metroya binip Manhattan&#x27;dan çıkman gerekiyor.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>En iyi manzaralar ücretsiz — en pahalılar buna değmez</strong>
+                    <span>Brooklyn Köprüsü yürüyüş yolu: ücretsiz, gün doğumunda ise başka bir dünya. Staten Island Feribotu: ücretsiz, Özgürlük Heykeli tam yanından geçiyor. Roosevelt Island Tram: metro bileti kadar, nehrin 76 metre üstünden Manhattan ve Queens silueti. High Line: ücretsiz. Empire State Building biletli ve pahalı. Önce ücretsizleri dene, diğerleri için kararı sonraya bırak. Times Square&#x27;e bir kez, akşam, ışıkları görmek için uğramaya değer. Ama orada yemek yeme.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Gizli Köşeler</span>
+                <h2 class="section-title">New York'deki Saklı Hazineler</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Grand Central Fısıltı Galerisi</div>
+                <div class="card-desc">Grand Central Terminal’in alt katı, Oyster Bar girişi yakınında. Dört çini kemer köşede buluşuyor. Bir köşeye geç, duvara dön, fısılda. 15 metre karşıdaki köşedeki kişi duyar, aradaki kimse duymaz. Kemerler odaklanmış bir ses yolu oluşturuyor. Mimari kaza mı, kasıt mı tartışılıyor. Üretsiz, tabela yok, kuyruk yok.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">The High Line</div>
+                <div class="card-desc">Manhattan&#x27;ın batı yakasında, Meatpacking District&#x27;ten Hudson Yards&#x27;a 2,3 km. Kullanılmayan yük demiryolu hattı üzerinde inşa edilmiş, 2009&#x27;dan beri açık, ücretsiz. Eski raylar bitkilerin içinde korunmuş; 14. ile 20. Caddeler arası en güzel bölüm. Hudson Nehri görünüyor. Sabah erken ya da kışın git — kalabalık henüz gelmemiş olur.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Governors Island</div>
+                <div class="card-desc">Pier 6&#x27;dan feribotle 10 dakika; biletli, Cumartesi ve Pazar 11:00 öncesi ücretsiz. 172 dönüm, araçsız, açık yeşil alan. The Hills tepelerinden 360 derece: liman, Özgürlük Heykeli, aşağı Manhattan silueti. Bisiklet kiralama var. Yıl boyunca açık.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">The Met Cloisters — Fort Tryon Parkı</div>
+                <div class="card-desc">Metropolitan Müzesi’nin Orta Çağ koleksiyonu, beş gerçek 12-15. yüzyıl Fransız manastır avlusundan taş taş taşınıp Manhattan’ın kuzey ucunda yeniden inşa edilmiş. Unicorn Tapestries burada. Tek boynuzlu at sahnelerini gösteren 15. yüzyıl dokumaları. Romanesk şapeller, Gotik salonlar, şifalı bitki bahçesi. Standart Met biletine dahil. A treniyle 190. Cadde, Midtown’dan 45 dakika.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Greenacre Park — Doğu 51. Cadde</div>
+                <div class="card-desc">2. ve 3. Bulvar arasında, Doğu 51. Cadde. Kapısı küçük ve sıradan görünüyor — içinde ne olduğunu bilmeden geçip gidersin. İçeride 12 metrelik şelale, bal kestanesi ağaçları, taşınabilir sandalyeler. Şelale Midtown trafiğinin sesini neredeyse tamamen kesiyor. Şehrin en gürültülü yerinde bir sessizlik adası. Ücretsiz. Hafta içi açık.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Sylvan Terrace — Washington Heights</div>
+                <div class="card-desc">Washington Heights&#x27;ta bir blok: 1882&#x27;de inşa edilmiş yirmi ahşap sıra ev, orijinal cepheleri pastel renklerde, arnavut kaldırımlı sokak. Manhattan&#x27;ın en eski evi Morris-Jumel Mansion&#x27;ın yanında; çoğu turistin hiç ulaşamadığı mahallede. C treniyle 163. Cadde. Sokak ücretsiz, her zaman açık. Mansion biletli.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yeme & İçme</span>
+                <h2 class="section-title">Mutlaka Tadılması Gereken Lezzetler</h2>
+            </div>
+            <p class="intro-text">New York&#x27;ta her mutfak var. Ama şehrin kendi icat ettiği şeyler başka.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Pastrami on rye — Katz&#x27;s Delicatessen</div>
+                <div class="card-desc">1888&#x27;den beri 205 East Houston Caddesi&#x27;nde. Kapıda fiş alıyorsun, tezgâha yürüyorsun, adam pastırmayı bizzat dilimlıyor. Çavdar ekmeğinin üzerinde saçma derecede yüksek bir yığınla geliyor. Florasan ışıklar, formika masa, duvarda imzalı fotoğraflar. Pastırma el yapımı, yavaş kürlü, yağlı. New York&#x27;a gelip bunu atlamak için geçerli bir neden yok.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Füme somonlu bagel — Russ &amp; Daughters</div>
+                <div class="card-desc">İki blok ötede, 1914&#x27;ten beri. Russ &amp; Daughters bir füme balık dükkanı — vitrin füme somon, ringa ve sturgeon ile dolu, tezgâhta müşteriler hangisini alacaklarına ciddiyetle karar veriyor. Bagel el yapımı, haşlanmış ve fırınlanmış; çiğnediğinde farkı anlıyorsun. Classic Board: füme somon, krem peynir, bagel. Kâğıda sarılıp veriliyor. Kahvaltı için gel.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Pastırmalı yumurtalı peynirli — herhangi bir bodega</div>
+                <div class="card-desc">Yumurta, Amerikan peyniri ve pastırma düz ızgarada pişirilip Kaiser ekmeği veya bagele konuluyor, folyoya sarılıyor. Peynir tam eriyip içine işlemiş olacak — bu şart. Restoranda da yapıyorlar ama bodega versiyonunun ayrı bir karakteri var.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Chopped cheese — Harlem ve Bronx</div>
+                <div class="card-desc">Harlem ve Bronx&#x27;a özgü bir bodega sandviçi — kıyma, soğan ve peynir ızgarada birlikte kıyılıp uzun ekmeğe konuluyor. Pastırmalı sandviç kadar ünlü değil ama New York&#x27;u anlamak için aynı derecede önemli. Orijinalini Hajji&#x27;s&#x27;te yiyebilirsin, Mavi Gökyüzü Deli diye de biliniyor. Sade, hızlı, tam kendisi.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Dilim pizza — Joe&#x27;s Pizza</div>
+                <div class="card-desc">1975&#x27;ten beri aynı yerde, şehrin referans pizzası. İnce hamur, katlanabiliyor, doğru oranda yağlı. On binlerce pizza yeri var ama Joe&#x27;s standart kabul ediliyor. Öğle saatinde kuyruğa girme, az önce ya da sonra git. Tezgâhtan al, kat, yürüyerek ye.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Dim sum ve dumplings — Flushing, Queens</div>
+                <div class="card-desc">Manhattan Chinatown turistler için; Flushing asıl olan. 7 treniyle 30 dakika, Main Street: Çin dışındaki en büyük Çin topluluğu. Bölgesel mutfakların büyük bölümü Manhattan&#x27;a hiç geçmedi. New World Mall&#x27;ın bodrum katı yemek mahkemesi tek başına bir deneyim. Kore süpermarketleri, Tayvan tatlıları, Malezya köri de aynı sokakta.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Dikkat Edilmesi Gerekenler</span>
+                <h2 class="section-title">Turist Tuzakları & Kaçınılması Gerekenler</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Elmo&#x27;yla, süper kahramanla fotoğraf &#x27;ücretsiz&#x27; başlar, agresif bahşiş talebiyle biter. Meydanın zincir restoranları da aynı oyunun yemek hali.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Meydanı gör, fotoğrafını çek, beş dakikada çık; yemeği iki cadde ötede Hell&#x27;s Kitchen&#x27;da ye.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Elden satılan biletler ya sahte ya geçersiz; kaybeden hep turist.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Aynı gün indirimli bilet için resmi TKTS gişesine git ya da şovların kendi lotarya uygulamalarını dene.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Battery Park çevresinde bilet sallayan tekneler heykele yaklaşmaz bile; resmi feribotun taklitleri pahalı ve hayal kırıklığıdır.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Ya resmi Statue City Cruises ile git ya da sıfır dolarlık klasik: Staten Island Ferry — heykelin önünden geçer, ücretsizdir.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">JFK&#x27;de sana yaklaşan korsan sürücüler üç kat fiyat ister; gerçek taksi kuyruğu dışarıdadır ve tarifesi sabittir.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Resmi taksi kuyruğunu kullan (JFK-Manhattan sabit tarife) ya da AirTrain + metro ile şehre in: en ucuz ve çoğu saatte en hızlısı.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>New York'yi MyWay ile Keşfedin</h3>
-            <p>Zikzak çizmeden adım adım akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
+            <p>Adım adım optimize edilmiş akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      App Store'dan Hemen İndirin
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. Tüm hakları saklıdır.</p>
+            <p>&copy; 2026 MyWay Travel App. Tüm hakları saklıdır.</p>
         </div>
     </footer>
 

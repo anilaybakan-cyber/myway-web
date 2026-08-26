@@ -6,8 +6,17 @@
     <title>Ibiza Gezi Rehberi & Akıllı Rotalar | MyWay</title>
     <meta name="description" content="Ibiza için adım adım yürüyüş rotaları, gizli mekanlar, turist tuzakları ve lezzet durakları. Ibiza gezi rehberi MyWay'de.">
     
-    <link rel="alternate" hreflang="en" href="../../guides/ibiza.html">
-    <link rel="alternate" hreflang="tr" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/ibiza.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/ibiza.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -527,7 +641,7 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="navbar-inner">
-            <a href="../" class="nav-brand">
+            <a href="/tr/" class="nav-brand">
                 <img src="../../images/app_icon.png" alt="MyWay" width="38" height="38">
                 <span>MyWay</span>
             </a>
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../rehber/">Rehberler</a></li>
-                <li><a href="../#features">Özellikler</a></li>
+                <li><a href="/tr/rehber/" class="active">Şehir Rehberleri</a></li>
+                <li><a href="/tr/#features">Özellikler</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../../guides/ibiza.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇬🇧 English</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇹🇷 TR</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/ibiza.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item ">🇬🇧 English</a>
+                        <a href="/tr/rehber/ibiza.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item active">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="../#hero" class="nav-cta">İndir</a>
+
+                <a href="/tr/#download" class="nav-cta">Hemen İndir</a>
             </div>
         </div>
     </nav>
@@ -555,7 +678,7 @@
         <img src="../../images/cities/ibiza.jpg" alt="Ibiza" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
-            <div class="city-badge">🇪🇸 İspanya &bull; Rehberler</div>
+            <div class="city-badge">🇪🇸 İspanya &bull; Şehir Rehberleri</div>
             <h1 class="guide-title">Ibiza</h1>
             <p class="guide-tagline">Beyaz ada: turkuaz koylar, hippi pazarları ve gün batımı ritüelleri</p>
         </div>
@@ -568,29 +691,249 @@
                 <span class="section-label">Genel Bakış</span>
                 <h2 class="section-title">Ibiza Atmosferi</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Ibiza&#x27;nın şöhreti gece kulüpleriyle yazıldı ama adanın asıl hikayesi daha eskidir: Fenikeliler liman kurdu, korsanlara karşı surlar yükseldi, 60&#x27;ların hippileri çam ormanlı koylara yerleşti ve hepsi bu beyaz adada iz bıraktı. Bugün Dalt Vila&#x27;nın taş sokaklarında tarih, kuzey koylarında sessizlik, Es Vedrà karşısında gün batımı ayini, gecede ise dünyanın en ünlü dans pistleri yaşar. İki Ibiza vardır — hangi dozda karıştıracağın tamamen sana kalmış.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 Eivissa</div>
+                <span class="pron-badge">🗣️ /eyvisa/</span>
+            </div>
+            <p class="word-def"><strong>Adanın Katalanca ve resmi adı: tabelalarda &#x27;Ibiza&#x27; değil &#x27;Eivissa&#x27; yazar. Yerli kendini &#x27;eivissenc&#x27; diye tanıtır — bu adı kullanman, adaya turist broşüründen değil kapısından girdiğini gösterir.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Temel Bilgiler</span>
+                <h2 class="section-title">Pratik İpuçları & Lojistik</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Havalimanı</div>
+                <div class="fact-desc">Ibiza (IBZ)</div>
+                <div class="fact-sub">Merkeze 10 dk · sezonda direkt uçuşlar</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🚗</div>
+                <div class="fact-title">Ada içi</div>
+                <div class="fact-desc">Kiralık araç önerilir</div>
+                <div class="fact-sub">Otobüs ana hatlarda, koylara zayıf</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🗣️</div>
+                <div class="fact-title">Dil</div>
+                <div class="fact-desc">Katalanca + İspanyolca</div>
+                <div class="fact-sub">İngilizce turistik her yerde</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🌅</div>
+                <div class="fact-title">İmza</div>
+                <div class="fact-desc">Gün batımı + Es Vedrà</div>
+                <div class="fact-sub">Batı kıyısı ritüeli</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yerel Sırlar</span>
+                <h2 class="section-title">Ibiza İçin Yazısız Kurallar</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>İki adayı da tanı</strong>
+                    <span>Güney gece, kuzey sessizlik demektir: San Antonio ve Playa d&#x27;en Bossa parti, kuzeyin Portinatx ve Benirràs tarafı çam ve koy. Tek yüzüyle yetinen, adanın yarısını görmemiş sayılır.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Kulüp biletini kapıda alma</strong>
+                    <span>Büyük kulüplerin kapı fiyatı cezalandırıcıdır: biletler online ve erken satışta belirgin ucuzdur, çoğu otel-bar ön satış yapar. Tek gecede iki kulüp hayali ise bütçe ve enerji intiharıdır.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Koylara erken, gün batımına yerinde</strong>
+                    <span>Ünlü calalar öğlen dolar, otoparklar taşar: sabah 10 koyun en güzel saatidir. Gün batımı içinse saat değil yer önemli — Es Vedrà karşısı ya da batı kayalıkları, plan gerektirir.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Gizli Köşeler</span>
+                <h2 class="section-title">Ibiza'deki Saklı Hazineler</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Es Vedrà izleme noktaları</div>
+                <div class="card-desc">Denizden 380 metre yükselen ıssız kaya, adanın bütün efsanelerinin merkezidir: sirenler, manyetik alanlar, Tanit&#x27;in evi. Cala d&#x27;Hort üstündeki kayalıklardan ya da Savinar kulesinden gün batımında izle — kalabalık plajda, sen yukarıda.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Benirràs</div>
+                <div class="card-desc">Kuzeyin çam kuşaklı koyu, pazar akşamları davul çemberiyle gün batımını uğurlar: hippi mirasının hâlâ nefes aldığı yer. Erken git — koy küçük, ritüel ünlü.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Las Dalias ve hippi pazarları</div>
+                <div class="card-desc">Sant Carles&#x27;teki efsane pazar 1954&#x27;ten beri kurulur: el yapımı takılar, adanın son gerçek hippileri ve canlı müzik. Cumartesi ana gün — sabah git, öğlen kalabalığından önce çık.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Ses Salines tuzlaları</div>
+                <div class="card-desc">Fenikelilerden beri işleyen tuz havuzları gün batımında pembeye döner; flamingolar sığ suda gezinir. Plajının şöhreti tuzlaların sessiz güzelliğini gölgeler — bisikletle tur at.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Torre des Savinar (Torre del Pirata)</div>
+                <div class="card-desc">Es Vedrà&#x27;nın tam karşısındaki 18. yüzyıl gözcü kulesi: kısa ama dik patikayla çıkılır, ödülü adanın en dramatik manzarasıdır. Gün batımından bir saat önce zirvede ol.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Santa Gertrudis akşamı</div>
+                <div class="card-desc">Ada içinin beyaz köyü: meydan çevresinde tapas barları, galeriler ve ağaç altı masalar. Kıyı gürültüsünden bir akşamlık mola — jamón tabağı ve soğuk beyazla köy Ibiza&#x27;sı.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yeme & İçme</span>
+                <h2 class="section-title">Mutlaka Tadılması Gereken Lezzetler</h2>
+            </div>
+            <p class="intro-text">Ada mutfağı balıkçı tencerelerinden çıkar: safranlı balık güveçleri, köy usulü etler ve yüz yıllık likör tarifleri — plaj kulübü menülerinin arkasındaki gerçek Ibiza.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Bullit de peix — iki perdelik balık</div>
+                <div class="card-desc">Önce safranlı suda pişmiş balık ve patates, ikinci perdede aynı suyun pilavı arroz a banda: adanın en büyük gastronomik gururu. Balıkçı koylarındaki aile lokantalarında, mümkünse rezervasyonla.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Sofrit pagès — köy tenceresi</div>
+                <div class="card-desc">Tavuk, kuzu, sosis ve patatesin ağır ateşte buluştuğu köy klasiği: kış sofrasının kalbi, yazın da menülerde. Doyurucu ve dürüst — agroturismo mutfaklarının imzası.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Flaó ve greixonera</div>
+                <div class="card-desc">Flaó: naneli taze peynirli tart, İbiza&#x27;nın yüzyıllardır değişmeyen tatlısı. Greixonera ise dünkü ensaimada&#x27;dan yapılan tarçınlı puding — israf etmeyen ada aklının şaheseri.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Hierbas ibicencas</div>
+                <div class="card-desc">Adanın çam, rezene ve nane dahil onlarca bitkisiyle demlenen anason likörü: yemek sonu buzlu servis edilir. Her ailenin kendi şişesi, her lokantanın kendi tarifi vardır — hediyelik olarak da klasik.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Ensalada payesa ve peix sec</div>
+                <div class="card-desc">Köy salatasının Ibiza hali: patates, kırmızı biber ve güneşte kurutulmuş balık (peix sec) ile. Tuzlu, taze ve plaj öğlenin en hafif zaferi.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Chiringuito gün batımı sofrası</div>
+                <div class="card-desc">Plaj barlarında ızgara balık, sangria ve ayak kumda akşam: menü basit, sahne muhteşem. Batı kıyısı chiringuito&#x27;larında masayı gün batımından bir saat önce kap.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Dikkat Edilmesi Gerekenler</span>
+                <h2 class="section-title">Turist Tuzakları & Kaçınılması Gerekenler</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Kapı fiyatı ön satışın hayli üstündedir; içeride su bile ciddi paradır ve &#x27;ücretsiz giriş&#x27; flyer&#x27;ları çoğu zaman içki şartına bağlıdır.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Bileti resmi satıştan erken al, tek geceye tek kulüp planla. İçki bütçesini bilerek gir — ada gecesinin gerçek maliyeti bilettir + üç içkidir.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Ön sıra yatakların minimum harcaması öğle yemeği fiyatına ulaşır; oturduktan sonra pazarlık yoktur.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Minimum harcamayı oturmadan sor ya da halk plajı tarafına serilen havluyla aynı denizi bedava yaşa. Beach club&#x27;ı deneyim olarak bilinçli seç, varsayılan yapma.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Ada taksisi azdır ve zirve sezonda gece kuyrukları saati aşar; kulüp çıkışı &#x27;hemen taksi&#x27; planı çöker.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Disco Bus hatlarını öğren, dönüşü önceden ayarla ya da grup transferi kapat. Araç kiraladıysan gece şoförlüğünü baştan tek kişiye emanet et.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Ucuz görünen tekne partileri kalabalık güverte, kısıtlı içki ve uzak koylara kısa demir atma formülüyle çalışır.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Küçük grup gün batımı turu ya da özel şarter böl: rota Es Vedrà&#x27;ya, mola gerçek bir koya olsun. Fiyatı kişi başı değil, tekne başı kıyasla.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Ibiza'yi MyWay ile Keşfedin</h3>
-            <p>Zikzak çizmeden adım adım akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
+            <p>Adım adım optimize edilmiş akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      App Store'dan Hemen İndirin
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. Tüm hakları saklıdır.</p>
+            <p>&copy; 2026 MyWay Travel App. Tüm hakları saklıdır.</p>
         </div>
     </footer>
 

@@ -6,8 +6,17 @@
     <title>Sevilla Gezi Rehberi & Akıllı Rotalar | MyWay</title>
     <meta name="description" content="Sevilla için adım adım yürüyüş rotaları, gizli mekanlar, turist tuzakları ve lezzet durakları. Sevilla gezi rehberi MyWay'de.">
     
-    <link rel="alternate" hreflang="en" href="../../guides/sevilla.html">
-    <link rel="alternate" hreflang="tr" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/sevilla.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/sevilla.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -527,7 +641,7 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="navbar-inner">
-            <a href="../" class="nav-brand">
+            <a href="/tr/" class="nav-brand">
                 <img src="../../images/app_icon.png" alt="MyWay" width="38" height="38">
                 <span>MyWay</span>
             </a>
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../rehber/">Rehberler</a></li>
-                <li><a href="../#features">Özellikler</a></li>
+                <li><a href="/tr/rehber/" class="active">Şehir Rehberleri</a></li>
+                <li><a href="/tr/#features">Özellikler</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../../guides/sevilla.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇬🇧 English</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇹🇷 TR</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/sevilla.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item ">🇬🇧 English</a>
+                        <a href="/tr/rehber/sevilla.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item active">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="../#hero" class="nav-cta">İndir</a>
+
+                <a href="/tr/#download" class="nav-cta">Hemen İndir</a>
             </div>
         </div>
     </nav>
@@ -555,7 +678,7 @@
         <img src="../../images/cities/sevilla.jpg" alt="Sevilla" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
-            <div class="city-badge">🇪🇸 İspanya &bull; Rehberler</div>
+            <div class="city-badge">🇪🇸 İspanya &bull; Şehir Rehberleri</div>
             <h1 class="guide-title">Sevilla</h1>
             <p class="guide-tagline">İspanya'nın en İspanyol şehri — ve bunu hak etmiş olan</p>
         </div>
@@ -568,29 +691,249 @@
                 <span class="section-label">Genel Bakış</span>
                 <h2 class="section-title">Sevilla Atmosferi</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Sevilla, geç geceleri icat eden ve tüm ülkeyi bir hafta boyunca durduran Kutsal Hafta alayına ev sahipliği yapan şehir. Temmuz&#x27;da Avrupa&#x27;nın en sıcağı. Nisan&#x27;da, Semana Santa ve Feria de Abril döneminde, görmeden anlaşılması mümkün olmayan bir şeye dönüşüyor. Alcázar, inşa edilmiş en güzel saraylardan biri. Katedral, dünyanın en büyük Gotik yapısı. Ama mesele bunlar değil. Mesele Calle Gerona&#x27;daki bar — hesabın ahşaba tebeşirle yazıldığı, Moorlar&#x27;dan bu yana aynı yemeğin servis edildiği yer.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 Tapas</div>
+                <span class="pron-badge">🗣️ /TAH-pas/</span>
+            </div>
+            <p class="word-def"><strong>Sevilla&#x27;da tapas kültürü özgündür: barda söylenen, ayakta ya da yüksek taburede yenen, bir bardak caña (küçük bira) veya fino şerriyle tamamlanan küçük tabak. Ritüel barlar arasında dolaşmaktır — her barda bir içki, bir tapa, sonra bir sonrakine. Bir içki, bir tabak, üç dört bar, iki sokak, iki saat. Sıradan bir Salı akşamı akşam yemeği Sevilla&#x27;da böyle görünür. Masa yok, rezervasyon yok — sadece bar tezgahı ve geçip giden bir akşam.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Temel Bilgiler</span>
+                <h2 class="section-title">Pratik İpuçları & Lojistik</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Havalimanı</div>
+                <div class="fact-desc">SVQ — Sevilla Havalimanı</div>
+                <div class="fact-sub">EA otobüsü → Torre del Oro, yaklaşık 35 dk</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🚌</div>
+                <div class="fact-title">Ulaşım</div>
+                <div class="fact-desc">Otobüs + tramvay + bisiklet (SEVIci)</div>
+                <div class="fact-sub">Tek bilet 1,40 Euro · 1 günlük 5 Euro · 3 günlük 10 Euro · temassız ödeme kabul</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🌡️</div>
+                <div class="fact-title">Hava</div>
+                <div class="fact-desc">Temmuz&#x27;da Avrupa&#x27;nın en sıcak şehri</div>
+                <div class="fact-sub">Nis–Haz ideal · Tem–Ağu kavurucu · Eyl–Eki mükemmel · Ara–Şub ılık</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🍺</div>
+                <div class="fact-title">Tapa kuralı</div>
+                <div class="fact-desc">Tapas ücretli, ama ucuz</div>
+                <div class="fact-sub">Her barda barda söyle · caña + tapa · barlar arasında dolaş</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yerel Sırlar</span>
+                <h2 class="section-title">Sevilla İçin Yazısız Kurallar</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>Alcázar ve Katedrali haftalar öncesinden rezerve et</strong>
+                    <span>Alcázar ve Katedral, Nisan–Mayıs&#x27;ta haftalar öncesinden dolup taşan zaman dilimli giriş sistemiyle işliyor. Kapıdan giriş kabul edilmiyor. Gelmeden önce online rezervasyon yap — özellikle Alcázar için. İçerisi, Arap-Endülüs mirasından gelen çini işlemeleri, at nalı kemerler ve yansıtıcı havuzlarıyla İspanya&#x27;nın Granada dışındaki en etkileyici sarayı.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Öğle yemeği 14:00&#x27;te, akşam yemeği 21:00&#x27;de — şehir bunu ciddiye alır</strong>
+                    <span>Mutfaklar 14:00&#x27;te açılır, 16:00&#x27;da kapanır. Bu bir öneri değil. Akşam yemeği 21:00&#x27;de başlar — bu açılış saati, zirve değil. 22:30&#x27;daki komşu masada üç kuşak oturuyor olacak, uyuması gereken bir çocuk dahil. 17:00–20:30 arası yavaş yürüyüş, kafe molası, bir teras kadeh fino zamanı. Bu saatler boş zaman değil — Sevilla&#x27;nın günü bu şekilde geçer.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Yazın şehir geceleri canlanır</strong>
+                    <span>Temmuz–Ağustos: düzenli olarak 42°C. Şehir bununla savaşmıyor — kendini ona göre yeniden düzenliyor. Öğleden sonra 15:00&#x27;te sokaklar boş, gece 23:00&#x27;te dolu. 09:00&#x27;da dışarı çık, 13:00&#x27;te içeri gir, 19:00&#x27;da tekrar dışarı çık, şehir kapanana kadar kal. Kendi ülkendeki yaz alışkanlıklarını getirirsen Sevilla ağır gelir. Yerel ritmi takip edersen olağanüstü olur.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Gizli Köşeler</span>
+                <h2 class="section-title">Sevilla'deki Saklı Hazineler</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Casa de Pilatos — Santa Cruz</div>
+                <div class="card-desc">Adını bir efsaneden alıyor: Medinaceli ailesi, kapılarından karşıdaki şapeleye olan mesafenin Pontius Pilate&#x27;in evinden Calvary&#x27;ye olan mesafeyle birebir eşleştiğini keşfetti. Arap-Endülüs çini işlemeleri, Gotik tonozlama ve Rönesans heykeli aynı avluda yan yana duruyor — bir arada tutmaması gerekirdi, ama tutuyor. Arabistanlı Lawrence ve The Crown burada çekildi. Alcázar&#x27;ın gölgesinde kaldığı için ziyaretçilerin yüzde doksanı varlığından bile habersiz. Biletli. Pazartesi 15:00–19:00 ücretsiz — kapıda sıraya gir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Archivo General de Indias — Katedral Meydanı</div>
+                <div class="card-desc">Katedral ile Alcázar arasında. Kilise değil, saray değil — İspanya&#x27;nın Amerika&#x27;yı kolonileştirmesiyle ilgili 80 milyon sayfalık Rönesans arşivi. Kolomb&#x27;un mektupları: cam arkasında, kendi el yazısıyla. Juan de Herrera tarafından tasarlanmış (El Escorial&#x27;ın mimarı). Katedral kuyruğundaki ziyaretçilerin büyük çoğunluğu varlığından habersiz. Salı&#x27;dan Pazar&#x27;a ücretsiz.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">La Carbonería — Santa Cruz</div>
+                <div class="card-desc">Tabelası yok. Calle Levíes&#x27;te sıradan görünen bir tahta kapı — özel bir avluya açılıyor gibi duruyor, çünkü gerçekten öyle. İçeride: eski bir kömür deposu, uyumsuz sandalyeler, açık tuğla duvarlar ve her akşam ücretsiz flamenko. Seyirci çoğunlukla yerel halk. Sanatçılar turist tablao devresinin dışında. Performans serbest akışlı — gitarist bir parçayı bitirir, seyirciden biri başka bir şey ister, kabul ederler. Bilet yok. Rezervasyon yok. Gel, içki söyle, otur, izle.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Palacio de las Dueñas — La Macarena</div>
+                <div class="card-desc">Alba Düşesi 2014&#x27;e kadar burada yaşadı. 15. yüzyıldan kalma saray; Arap-Endülüs ve Rönesans mimarisinin bir arada göründüğü portakal ağacı avluları ve yasemin kaplı kemerler. Şair Antonio Machado 1875&#x27;te burada doğdu. Odalar İspanya&#x27;nın en seçkin asil ailesinin kişisel koleksiyonlarını barındırıyor: Goya&#x27;lar, Rubens&#x27;ler, Roma heykelleri. Biletli. Pazartesi 16:00&#x27;dan itibaren ücretsiz — aynı sabah online rezervasyon yap.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Plaza del Cabildo — Katedral Meydanı</div>
+                <div class="card-desc">Katedral meydanının güney tarafında servis girişi gibi görünen bir geçit. İçinden geç — gürültü aniden kesiliyor. 1572&#x27;den kalma mükemmel yarı daire kemerler; ticaret için tasarlanmış, şimdi kimsenin kullanmadığı bir alan. Pazar sabahları birkaç tezgah eski sikke ve pul satıyor. Geri kalan vakitlerde boş ve sessiz — çevresindeki turistlerin varlığından bihaber. Ücretsiz.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Metropol Parasol (Las Setas) — Plaza de la Encarnación</div>
+                <div class="card-desc">2011&#x27;den bu yana Sevilla&#x27;yı tartışmaya açan altı adet mantar biçimli, 28 metre yüksekliğindeki lamine ahşap yapı. Yerliler Las Setas diyor. Çoğu artık benimsedi. Çatı yürüyüş yolundan görünenler: Giralda, Alcázar bahçeleri, Guadalquivir ve güneye uzanan beyaz barrio&#x27;lar. Gün batımından bir saat önce git — oradan Katedral üzerindeki ışık eşsiz. Çatı biletli. Zemin kattaki pazar ve Antiquarium&#x27;daki Roma kalıntıları ücretsiz.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yeme & İçme</span>
+                <h2 class="section-title">Mutlaka Tadılması Gereken Lezzetler</h2>
+            </div>
+            <p class="intro-text">Sevilla mutfağı etkilemek için çabalamıyor. Elinde çok azıyla — zeytinyağı, nohut, sakatat, 80 km&#x27;deki balık — pişiren insanlar tarafından icat edildi. Yüzyıllar içinde sessizce olağanüstü bir noktaya ulaştı.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Espinacas con garbanzos — Sevilla standardı</div>
+                <div class="card-desc">Kızarmış ekmek, kimyon, kırmızı biber, safran ve şeri sirkesiyle yapılan bir sosun içinde pişirilmiş ıspanak ve nohut. Moorlardan kalma bir tarif — Reconquista&#x27;dan bu yana aynı malzemelerle, 800 yıldır aynı teknik ve aynı tarif. Nohutlar sosu emip koyulaştırıyor; ıspanak koyulaşıp tatlanıyor. Ilık ve ekmekle, şehrin her geleneksel tapas barında servis ediliyor. El Rinconcillo&#x27;daki versiyon, bar 1670&#x27;te açıldığından beri aynı şekilde yapılıyor. Atlanmaz.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Jamón ibérico — ulusal takıntı</div>
+                <div class="card-desc">Extremadura meşe ormanlarında palamutla beslenen Iberya domuzlarından yapılıyor. İki yıllık kürleme süreci var. Etin içindeki yağ, zeytinyağıyla aynı bileşen olan oleik asit; vücut sıcaklığında eriyor. İyi bir Sevilla barında içkinle birlikte geliyor, küçük bir tabakta kağıt gibi ince dilimlenmiş. Oda sıcaklığında ye. Soğuk yemek yanlış.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Pescaíto frito — Endülüs usulü kızartma balık</div>
+                <div class="card-desc">Sevilla Atlantik&#x27;ten 80 km uzakta. Balık taze geliyor. Endülüs tekniği: hafif un kaplaması, sıcak zeytinyağı, birkaç saniye, dışarı. Dışı çıtır, içi zar zor pişmiş, doğru yapılınca yağ izi yok. Boquerones (hamsi), cazón en adobo (marine edilmiş köpekbalığı), chocos (kalamar). Triana&#x27;da bir barda ayakta, soğuk bir kadeh manzanilla şerisiyle, ılık bir akşamda yenir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Salmorejo — Sevilla&#x27;nın gazpachoya yanıtı</div>
+                <div class="card-desc">Suyu çıkarılıp ekmek eklenmiş gazpacho. Pürüzsüz kıvama gelinceye kadar blenderlaniyor, koyulaşana kadar soğutulup üstüne küçük doğranmış jamón ve dilimlenmiş haşlanmış yumurta konuluyor. Derin tuğla kırmızısı rengi olmalı; kıvamı o kadar yoğun olmalı ki kaşık içinde dik durabilsin. Her Sevilla restoranı yapıyor. Birkaçı gerçekten olağanüstü.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Fino şerri — doğru içki</div>
+                <div class="card-desc">Flor mayası altında olgunlaşan fino, amber rengine dönmek yerine soluk sarısında, kuru ve hafif tuzlu kalıyor. Tadında aynı anda deniz ve mahzen var. Soğuk söyle. Bir tane daha söyle.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Torrijas ve pestiños — manastır tatlıları</div>
+                <div class="card-desc">Semana Santa&#x27;da manastır tornoları açılıyor — duvardaki küçük döner kapaklardan içeri sipariş veriyorsun, hiç görmediğin bir el teslim ediyor. Torrijas: şarapta bekletilmiş ekmek dilimleri zeytinyağında kızartılıyor, üstüne şeker ve tarçın serpiliyor. French toast&#x27;tan daha ağır ve daha iyi. Pestiños: anason ve susamla tatlandırılmış, bal sürülmüş kızarmış hamur. Semana Santa&#x27;da manastır kapısından sıcak alınır, alay geçerken sokakta yenir.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Dikkat Edilmesi Gerekenler</span>
+                <h2 class="section-title">Turist Tuzakları & Kaçınılması Gerekenler</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Otobüs turistlerine kurulan yemekli şovlarda flamenko fona düşer: donuk paella, mikrofonlu gösteri, ruhsuz performans.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Flamenkoyu doğduğu yerde izle: küçük bir tablao ya da La Carbonería gibi mekanlarda içki eşliğinde, sahneye iki metre mesafeden.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">At arabaları güzel bir klasik ama fiyat konuşulmadan binilirse tur kısalır, hesap uzar.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Resmi tarifeyi sor ve binmeden netleştir; ya da aynı rotayı yürü — Santa Cruz zaten yürünmek için var.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Anıt çıkışlarındaki fotoğraflı menüler mikrodalga paella ve şişkin hesap demek; Sevilla&#x27;nın tapas ruhuyla ilgisi yok.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> İki sokak yürü: Alfalfa, El Arenal veya nehrin karşısında Triana&#x27;da tezgaha yaslan, tapa söyle.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Temmuz-ağustosta 14:00-18:00 arası termometre 40°C&#x27;yi aşar; bu saatlerde anıt kuyruğunda beklemek tatili eritir.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Şehir gibi yaşa: sabah erken gez, öğlen serin bir yerde uzun öğle + siesta, akşam sokaklara geri dön — Sevilla geceleri açar.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Sevilla'yi MyWay ile Keşfedin</h3>
-            <p>Zikzak çizmeden adım adım akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
+            <p>Adım adım optimize edilmiş akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      App Store'dan Hemen İndirin
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. Tüm hakları saklıdır.</p>
+            <p>&copy; 2026 MyWay Travel App. Tüm hakları saklıdır.</p>
         </div>
     </footer>
 

@@ -6,8 +6,17 @@
     <title>Lesbos City Guide & Smart Walking Routes | MyWay</title>
     <meta name="description" content="Explore Lesbos with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
     
-    <link rel="alternate" hreflang="tr" href="../tr/rehber/midilli.html">
-    <link rel="alternate" hreflang="en" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/midilli.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/midilli.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../guides/">City Guides</a></li>
+                <li><a href="/guides/" class="active">City Guides</a></li>
                 <li><a href="/#features">Features</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../tr/rehber/midilli.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇹🇷 Türkçe</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇬🇧 EN</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/midilli.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item active">🇬🇧 English</a>
+                        <a href="/tr/rehber/midilli.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item ">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="/#hero" class="nav-cta">Download</a>
+
+                <a href="/#download" class="nav-cta">Download</a>
             </div>
         </div>
     </nav>
@@ -568,29 +691,249 @@
                 <span class="section-label">Overview</span>
                 <h2 class="section-title">The Vibe of Lesbos</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">When the ferry docks at Mytilene, what greets you is not a tourist island but a living Greek province. Lesbos is Greece&#x27;s third-largest island: eleven million olive trees, the world&#x27;s best ouzo, hot springs, and villages that never surrendered to tourism. Nobody here tries to sell you anything; you sip your coffee, swim, and get pulled into the conversation at the next table. The island is big and unhurried — be unhurried too.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 Siga siga</div>
+                <span class="pron-badge">🗣️ /SEE-gah SEE-gah/</span>
+            </div>
+            <p class="word-def"><strong>Greek for &#x27;slowly, slowly&#x27;: the tempo of Lesbos and its official philosophy. Service running late, ferry delayed? Siga siga. Adopting these two words is the only way to tune into the island.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Essentials</span>
+                <h2 class="section-title">Quick Logistics</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">⛴️</div>
+                <div class="fact-title">Getting there</div>
+                <div class="fact-desc">Ferry from Ayvalık</div>
+                <div class="fact-sub">≈40 min · daily in summer</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🚗</div>
+                <div class="fact-title">On the island</div>
+                <div class="fact-desc">Rental car</div>
+                <div class="fact-sub">Buses sparse, distances long</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🗣️</div>
+                <div class="fact-title">Language</div>
+                <div class="fact-desc">Greek</div>
+                <div class="fact-sub">English in tourist spots, sometimes Turkish</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🥃</div>
+                <div class="fact-title">Signature</div>
+                <div class="fact-desc">Plomari ouzo</div>
+                <div class="fact-sub">The world capital of ouzo</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Insider Advice</span>
+                <h2 class="section-title">Unwritten Rules for Lesbos</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>Rent a car — the island is bigger than it looks</strong>
+                    <span>Lesbos covers 1,600 km²: Mytilene to Molyvos takes over an hour. Buses are sparse; to really see the island you need wheels. The roads are good but winding — no rushing between the olive groves.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Never drink ouzo without food</strong>
+                    <span>Plomari ouzo is the world&#x27;s finest, but it&#x27;s drunk the Greek way: always with meze, ice and water. Everyone at the table can spot the tourist who downs the glass in one.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Sort your ferry and passport logistics early</strong>
+                    <span>Coming from Turkey, visa-on-arrival practice and ferry schedules change with the season. Book the Ayvalık–Mytilene crossing ahead and check your return sailing on day one.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Off the Beaten Path</span>
+                <h2 class="section-title">Hidden Gems in Lesbos</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Sigri Petrified Forest</div>
+                <div class="card-desc">At the island&#x27;s western tip, sequoia trunks sealed in volcanic ash 20 million years ago: a UNESCO geopark, an open-air museum and a landscape like the moon. Few places on Earth compare.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Skala Sikamnias</div>
+                <div class="card-desc">The north coast&#x27;s tiny fishing harbour: the Panagia Gorgona chapel on its rock, tavernas shaded by a mulberry tree, and the atmosphere the writer Stratis Myrivilis carried into literature. Island calm, distilled.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Eftalou Hot Springs</div>
+                <div class="card-desc">Near Molyvos, an Ottoman-era stone-domed bathhouse above a pebble beach: healing water at 43 degrees, the cool Aegean two steps away. The hot-cold ritual costs a symbolic entrance fee.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Moni Limonos</div>
+                <div class="card-desc">The island&#x27;s largest monastery: peacocks in the courtyard, manuscripts in the library, centuries in the silence. Just off the Kalloni road, a world most visitors never turn into.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Kalloni Salt Pans</div>
+                <div class="card-desc">Thousands of flamingos and over 250 bird species in spring and autumn: one of Europe&#x27;s finest birdwatching sites. Bring binoculars, take a hide, wait.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Agiasos</div>
+                <div class="card-desc">A mountain village in the chestnut forest on the slopes of Mount Olympos: ceramic workshops, a centuries-old church of the Virgin, cool stone lanes. The island&#x27;s freshest escape in high summer.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Food & Flavors</span>
+                <h2 class="section-title">What to Taste</h2>
+            </div>
+            <p class="intro-text">The cuisine of Lesbos rests on two pillars: olive oil and the sea. The third arrives at the table with the ouzo.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Kalloni sardines (sardeles pastes)</div>
+                <div class="card-desc">The famous sardines of Kalloni Bay are salt-cured for a few hours and served almost raw-fresh; counted among Greece&#x27;s most celebrated meze. The star of the August sardine festival.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Plomari ouzo</div>
+                <div class="card-desc">The anise national drink finds its finest form on this island; the distilleries of Plomari and Mytilene export it to the world. It clouds over ice, opens with meze, ends in conversation.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Ladotyri — cheese aged in olive oil</div>
+                <div class="card-desc">The island&#x27;s protected sheep&#x27;s cheese matures in jars of olive oil; hard, salty, full of character. Grilled as saganaki it becomes a feast of its own.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Olives and olive oil</div>
+                <div class="card-desc">On an island of eleven million trees, the oil is fresh enough to drink. Buy a bottle of cold-pressed from a village market; it will be the most precious gift in your suitcase.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Grilled octopus and calamari</div>
+                <div class="card-desc">The octopus drying in the sun outside the harbour tavernas is the evening&#x27;s menu: char-grilled, with lemon, by the water. Molyvos and Skala Sikamnias harbours are the classic addresses.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Baklava and amygdalota</div>
+                <div class="card-desc">The Ottoman-heritage sweet tradition is alive and well: pistachio baklava, almond amygdalota and kadayif with ice cream. The patisseries of Mytilene&#x27;s bazaar are a century old.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Watch Out</span>
+                <h2 class="section-title">Tourist Traps to Avoid</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">The Ayvalık line fills up in summer and cancels in wind; hearing &#x27;no seats tomorrow&#x27; at the counter is the classic end to a holiday.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Buy the round trip up front and confirm the time a day before returning; stay flexible — the island deserves an extra night anyway.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Small on the map, the island is a real journey on the ground; attempting Molyvos + Plomari + Sigri in one day is a holiday spent at the wheel.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Split the island into regions: one day north (Molyvos–Petra), one day south (Plomari–Agiasos), one day west (Kalloni–Sigri).</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">The fancy bottles at the airport and gift shops are usually the island&#x27;s ordinary line; you&#x27;re paying for packaging.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Buy ouzo from a distillery&#x27;s own shop or a village grocer; tasting and choosing in Plomari is half the fun.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Staying at the hotel beach because it&#x27;s easy means missing the island&#x27;s coastal variety: every cove has a different character.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Try a new cove daily: the clarity of Agios Isidoros, the sand of Skala Eresou, the red pebbles of Tsonia — the car is already rented.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Explore Lesbos with MyWay</h3>
-            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without zigzagging across town.</p>
+            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without wasted steps.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      Download on App Store
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. All rights reserved.</p>
+            <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
         </div>
     </footer>
 

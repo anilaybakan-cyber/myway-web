@@ -6,8 +6,17 @@
     <title>Heidelberg Gezi Rehberi & Akıllı Rotalar | MyWay</title>
     <meta name="description" content="Heidelberg için adım adım yürüyüş rotaları, gizli mekanlar, turist tuzakları ve lezzet durakları. Heidelberg gezi rehberi MyWay'de.">
     
-    <link rel="alternate" hreflang="en" href="../../guides/heidelberg.html">
-    <link rel="alternate" hreflang="tr" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/heidelberg.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/heidelberg.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -527,7 +641,7 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="navbar-inner">
-            <a href="../" class="nav-brand">
+            <a href="/tr/" class="nav-brand">
                 <img src="../../images/app_icon.png" alt="MyWay" width="38" height="38">
                 <span>MyWay</span>
             </a>
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../rehber/">Rehberler</a></li>
-                <li><a href="../#features">Özellikler</a></li>
+                <li><a href="/tr/rehber/" class="active">Şehir Rehberleri</a></li>
+                <li><a href="/tr/#features">Özellikler</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../../guides/heidelberg.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇬🇧 English</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇹🇷 TR</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/heidelberg.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item ">🇬🇧 English</a>
+                        <a href="/tr/rehber/heidelberg.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item active">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="../#hero" class="nav-cta">İndir</a>
+
+                <a href="/tr/#download" class="nav-cta">Hemen İndir</a>
             </div>
         </div>
     </nav>
@@ -555,7 +678,7 @@
         <img src="../../images/cities/heidelberg.jpg" alt="Heidelberg" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
-            <div class="city-badge">🇩🇪 Almanya &bull; Rehberler</div>
+            <div class="city-badge">🇩🇪 Almanya &bull; Şehir Rehberleri</div>
             <h1 class="guide-title">Heidelberg</h1>
             <p class="guide-tagline">Neckar kıyısında bir şato, bir köprü ve romantizmin başkenti</p>
         </div>
@@ -568,29 +691,249 @@
                 <span class="section-label">Genel Bakış</span>
                 <h2 class="section-title">Heidelberg Atmosferi</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Heidelberg, şairlerin şehri olarak anılır ve sebebini ilk bakışta anlarsın: kızıl kumtaşından yarı yıkık şato yamaçtan eski şehre bakar, Neckar nehri taş köprünün kemerlerinden süzülür, karşı yakada Filozoflar Yolu bağların arasından kıvrılır. Goethe burada kalbini kaybetti, Twain buraya sayfalar ayırdı. Almanya&#x27;nın en eski üniversitesi şehri hâlâ genç tutar: öğrenci meyhaneleri, bisikletler ve nehir kıyısı piknikleri. Romantizm burada dekor değil, günlük hayattır.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 Gemütlichkeit</div>
+                <span class="pron-badge">🗣️ /gemütlihkayt/</span>
+            </div>
+            <p class="word-def"><strong>Çevrilemeyen Almanca kelime: sıcaklık, rahatlık ve ait olma hissinin toplamı. Ahşap masalı bir öğrenci meyhanesinde, mum ışığında bira bardağını kaldırdığın an — işte o his Gemütlichkeit&#x27;tır.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Temel Bilgiler</span>
+                <h2 class="section-title">Pratik İpuçları & Lojistik</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Havalimanı</div>
+                <div class="fact-desc">Frankfurt (FRA)</div>
+                <div class="fact-sub">Trenle ~1 saat · direkt shuttle var</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🚋</div>
+                <div class="fact-title">Şehir içi</div>
+                <div class="fact-desc">Yayan + tramvay</div>
+                <div class="fact-sub">Eski şehir baştan başa yürünür</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🗣️</div>
+                <div class="fact-title">Dil</div>
+                <div class="fact-desc">Almanca</div>
+                <div class="fact-sub">Üniversite şehri — İngilizce yaygın</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🏰</div>
+                <div class="fact-title">İmza</div>
+                <div class="fact-desc">Heidelberg Şatosu</div>
+                <div class="fact-sub">Bergbahn füniküleriyle çıkılır</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yerel Sırlar</span>
+                <h2 class="section-title">Heidelberg İçin Yazısız Kurallar</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>Şatoya çıkmadan şehri, şehirden şatoyu gör</strong>
+                    <span>Şato hem sahne hem locadır: önce Bergbahn ya da merdivenle çıkıp terastan şehre bak, sonra Filozoflar Yolu&#x27;ndan şatonun kendisini izle. İki açı birbirini tamamlar — tek taraf eksik kalır.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Öğrenci şehrinin ritmine uy</strong>
+                    <span>Heidelberg&#x27;in ruhu üniversitededir: meyhaneler yüzyıllardır öğrenci masalarıyla dolu, Karzer duvarları eski cezalıların karalamalarıyla kaplı. Turist menüsü yerine öğrenci klasiklerini seç — hem ucuz hem sahici.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Ana caddeden sapmayı unutma</strong>
+                    <span>Hauptstraße Avrupa&#x27;nın en uzun yaya caddelerindendir ama Heidelberg&#x27;in sırları yan sokaklarında saklıdır: sessiz avlular, küçük meydanlar, barok kapılar. Ana caddeyi omurga yap, kaburgaları keşfet.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Gizli Köşeler</span>
+                <h2 class="section-title">Heidelberg'deki Saklı Hazineler</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Studentenkarzer</div>
+                <div class="card-desc">Üniversitenin 1914&#x27;e dek kullanılan öğrenci hapishanesi: kabahatli öğrenciler duvarları siluet portreler ve şiirlerle doldurmuş. Cezaevi değil, gençlik anıtı — Heidelberg&#x27;in en tuhaf ve sevimli müzesi.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Philosophenweg</div>
+                <div class="card-desc">Karşı yamaçta bağların arasından kıvrılan patika: şato, köprü ve eski şehir en iyi açısını buradan verir. Mikro klimasında incir bile yetişir — gün batımında çık, bankların birinde uzun otur.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Thingstätte</div>
+                <div class="card-desc">Heiligenberg tepesindeki devasa açık hava amfisi ve yanı başında ortaçağ manastır kalıntıları: ormanın sessizliğinde tuhaf, güçlü bir yer. Filozoflar Yolu&#x27;nun devamındaki patikayla çıkılır.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Şatonun Büyük Fıçısı ve Eczane Müzesi</div>
+                <div class="card-desc">Şatonun mahzenindeki 220 bin litrelik dev şarap fıçısı ile Alman Eczane Müzesi çoğu ziyaretçinin atladığı iki sürprizdir: fıçının üstüne merdivenle çıkılır, müzede simya kokusu vardır.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Neckarwiese</div>
+                <div class="card-desc">Neuenheim yakasındaki uzun çimen şerit: şehrin plajı, pikniği ve gün batımı locası. Karşıda şato silüeti — mangal kokusu ve öğrenci gitarları dahil.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Köprü Maymunu ve Karl Theodor Köprüsü</div>
+                <div class="card-desc">Alte Brücke&#x27;nin girişindeki bronz maymun aynasını tutar: dokunana şehre dönüş, parmaklarına dokunana bolluk vaat eder. Köprünün kendisi ise sabah sisinde şehrin en iyi fotoğrafını verir.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yeme & İçme</span>
+                <h2 class="section-title">Mutlaka Tadılması Gereken Lezzetler</h2>
+            </div>
+            <p class="intro-text">Heidelberg mutfağı öğrenci meyhanelerinde yazılmıştır: doyurucu Baden-Pfalz klasikleri, bölge şarapları ve yüz elli yıllık bir çikolata öpücüğü.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Schnitzel — meyhane boyu</div>
+                <div class="card-desc">Tabaktan taşan schnitzel, yanında patates salatası: öğrenci meyhanelerinin değişmez klasiği. Jäger (mantar soslu) varyasyonu sonbaharın favorisidir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Käsespätzle ve Maultaschen</div>
+                <div class="card-desc">Güney Almanya&#x27;nın makarna cevabı: kızarmış soğanlı peynirli spätzle ile &#x27;Alman mantısı&#x27; Maultaschen. İkisi de doyurucu, ikisi de bira dostudur.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Pfalz ve Baden şarapları</div>
+                <div class="card-desc">Almanya&#x27;nın en güneşli bağ bölgeleri iki adımda: Riesling&#x27;den Spätburgunder&#x27;e yerel kadehler meyhane fiyatına. &#x27;Schoppen&#x27; (büyük kadeh) usulü söyle — bölge geleneğidir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Studentenkuss molası</div>
+                <div class="card-desc">Tarihi şekerlemecide çikolata öpücüğü + filtre kahve: 160 yıllık flört hikayesini tadarak dinlersin. Kutusu Heidelberg&#x27;in en zarif hediyesidir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Brezel ve fırın kültürü</div>
+                <div class="card-desc">Sabah fırınından sıcak brezel, üstüne tereyağı: Alman güne başlama ritüeli. Öğlen fırın tezgahlarındaki belegte Brötchen (malzemeli sandviç) bütçe dostu öğündür.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Meyhane birası ve fıçı kültürü</div>
+                <div class="card-desc">Yüzyıllık öğrenci meyhanelerinde yerel bira fıçıdan gelir; duvarlar eski kılıç izleri ve armalarla doludur. Uzun ahşap masada yabancıyla omuz omuza oturmak kural değil, keyiftir.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Dikkat Edilmesi Gerekenler</span>
+                <h2 class="section-title">Turist Tuzakları & Kaçınılması Gerekenler</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Avlu ve teraslar normal biletle gezilir ama iç mekanlar yalnız saatli rehberli turla açılır; bunu bilmeyen kapıda bozulur.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Avlu + fıçı + eczane müzesi çoğu ziyaretçiye yeter; iç mekan istiyorsan tur saatini girişte hemen ayırt. Bergbahn kombine bileti şato girişini zaten kapsar.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Ana caddenin fotoğraflı menüleri turist fiyatına ortalama mutfak satar; aynı schnitzel iki sokak içeride hem iyi hem ucuzdur.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Yan sokak meyhanelerini ve üniversite çevresini seç; öğlenleri Mittagstisch (günün menüsü) yazan tahtalar bütçenin dostudur.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Günübirlik otobüsler 11-16 arası şato ve köprüyü doldurur: kuyruk, kalabalık ve gölgesiz bekleyiş.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Şatoyu açılış saatinde ya da 16 sonrası gez; öğlen saatlerini Neuenheim, müzeler ve meyhane molasına ayır. Işık da akşamüstü daha güzeldir.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Altstadt büyük ölçüde yayalaştırılmıştır, park azdır ve otoparklar pahalıdır; yanlış giriş cezayla tanıştırır.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Aracı çevre otoparklarında (P işaretli garajlar) bırak ya da hiç getirme: tren + tramvay + ayak üçlüsü bu şehirde her işi görür.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Heidelberg'yi MyWay ile Keşfedin</h3>
-            <p>Zikzak çizmeden adım adım akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
+            <p>Adım adım optimize edilmiş akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      App Store'dan Hemen İndirin
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. Tüm hakları saklıdır.</p>
+            <p>&copy; 2026 MyWay Travel App. Tüm hakları saklıdır.</p>
         </div>
     </footer>
 

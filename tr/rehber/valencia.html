@@ -6,8 +6,17 @@
     <title>Valensiya Gezi Rehberi & Akıllı Rotalar | MyWay</title>
     <meta name="description" content="Valensiya için adım adım yürüyüş rotaları, gizli mekanlar, turist tuzakları ve lezzet durakları. Valensiya gezi rehberi MyWay'de.">
     
-    <link rel="alternate" hreflang="en" href="../../guides/valencia.html">
-    <link rel="alternate" hreflang="tr" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/valencia.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/valencia.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -527,7 +641,7 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="navbar-inner">
-            <a href="../" class="nav-brand">
+            <a href="/tr/" class="nav-brand">
                 <img src="../../images/app_icon.png" alt="MyWay" width="38" height="38">
                 <span>MyWay</span>
             </a>
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../rehber/">Rehberler</a></li>
-                <li><a href="../#features">Özellikler</a></li>
+                <li><a href="/tr/rehber/" class="active">Şehir Rehberleri</a></li>
+                <li><a href="/tr/#features">Özellikler</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../../guides/valencia.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇬🇧 English</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇹🇷 TR</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/valencia.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item ">🇬🇧 English</a>
+                        <a href="/tr/rehber/valencia.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item active">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="../#hero" class="nav-cta">İndir</a>
+
+                <a href="/tr/#download" class="nav-cta">Hemen İndir</a>
             </div>
         </div>
     </nav>
@@ -555,7 +678,7 @@
         <img src="../../images/cities/valencia.jpg" alt="Valensiya" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
-            <div class="city-badge">🇪🇸 İspanya &bull; Rehberler</div>
+            <div class="city-badge">🇪🇸 İspanya &bull; Şehir Rehberleri</div>
             <h1 class="guide-title">Valensiya</h1>
             <p class="guide-tagline">Paellanın anavatanı, portakalın şehre dönüşmüş hali ve İspanya'nın en az konuşulan metropolü</p>
         </div>
@@ -568,29 +691,249 @@
                 <span class="section-label">Genel Bakış</span>
                 <h2 class="section-title">Valensiya Atmosferi</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Plaj mı, tarih mi, mimari mi, yemek mi? Valensiya bu soruların hiçbirini seçmek zorunda bırakmayan şehir. Aynı gün içinde Akdeniz&#x27;de yüzüp Orta Çağ sokaklarında kaybolabilir, birkaç dakika sonra kendini fütüristik müzelerin arasında bulabilir; üstüne dünyanın en iyi paellasının doğduğu yerde öğle yemeğine oturabilirsin. Şehrin ortasından geçen Turia Nehri ise Valensiya&#x27;nın ruhunu tamamen değiştiren detay: 1957&#x27;deki büyük sel felaketinden sonra nehir yatağı kurutulup 9 kilometrelik dev bir yeşil parka dönüştürüldü. Bugün insanlar buradan geçerek işe bisikletle gidiyor, koşuyor, çocuklarıyla burada vakit geçiriyor. Belki de Valensiya&#x27;yı bu kadar iyi hissettiren şey tam olarak bu. Büyük ama yorucu değil, canlı ama kaotik değil, üstelik İspanya&#x27;nın diğer büyük şehirlerine kıyasla fiyatlar da hala makul hissettiriyor.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 L&#x27;Horta</div>
+                <span class="pron-badge">🗣️ /lor-TA/</span>
+            </div>
+            <p class="word-def"><strong>Valensiya&#x27;nın çevresindeki verimli tarım arazileri. Portakal bahçeleri, pirinç tarlaları, kestane tarlaları. Valensiya paellası bu topraklardan çıkıyor: tavuk, tavşan, taze fasulye, zeytinyağı ve bomba pirinci (suyu bol emen kısa taneli yerel pirinç). Deniz ürünleri yok — gerçek Valensiya paellası tarım topraklarının yemeği. Bu ayrımı bilmek, şehirde doğru yerde doğru şeyi yemek anlamına geliyor.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Temel Bilgiler</span>
+                <h2 class="section-title">Pratik İpuçları & Lojistik</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Havalimanı</div>
+                <div class="fact-desc">VLC — Valensiya Havalimanı</div>
+                <div class="fact-sub">Metro Line 3/5 ile merkeze ~20 dk · 5,60€</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🚇</div>
+                <div class="fact-title">Ulaşım</div>
+                <div class="fact-desc">Metro, otobüs, tramvay — SUMA kartı</div>
+                <div class="fact-sub">Tek biniş ~1,50€ · SUMA 10 bilet 8,90€ (Zone A)</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🌡️</div>
+                <div class="fact-title">Hava</div>
+                <div class="fact-desc">Akdeniz — İspanya&#x27;nın en güneşli şehri</div>
+                <div class="fact-sub">Nis–Haz ve Eyl–Eki ideal · Tem–Ağu sıcak · Ara–Şub ılık</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🥘</div>
+                <div class="fact-title">Yemek</div>
+                <div class="fact-desc">Paella valenciana, orxata, agua de Valencia</div>
+                <div class="fact-sub">Öğle menüsü 10-14€ · paella kişi başı 15-25€</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yerel Sırlar</span>
+                <h2 class="section-title">Valensiya İçin Yazısız Kurallar</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>Paella öğle yemeğidir — akşam değil</strong>
+                    <span>Valensiyalılar paellayı öğle yemeğinde yiyor, 14:00-16:00 arası. Akşam paella servisi yapan restoranlar genellikle turistik ve büyük ihtimalle öğlen için pişirilmiş olanı yeniden ısıtarak servis ediyorlar. Gerçek paella yapımı sabahtan başlıyor, ortalama 40-50 dakika pişiriliyor. Paella yemek istiyorsan öğle yemeğini planla, grubu bu ziyafet için erkenden uyar.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Orxata (horchata) süpermarketten içme</strong>
+                    <span>Orxata şehrin içeceği — kofaya benzer yumrulardan (chufa) yapılan tatlı, kremalı bir içecek. Süpermarketteki pastörize versiyonuyla alakası yok. Taze orxata için tabelada &#x27;orxata artesana&#x27; yazan bir horchatería ara. Horchatería Santa Catalina Mercado Central yakınında, tarihi bir mekan ve en iyilerinden. Yanında farton (batırmak için uzun tatlı poğaça) söyle.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Las Fallas için Mart&#x27;ta gel — ama fiyatlara ve kalabalığa hazır ol</strong>
+                    <span>Las Fallas (12-19 Mart) Valensiya&#x27;nın UNESCO listesindeki festivali — şehir genelinde devasa heykel grupları kurulur, son gece hepsi yakılır. Bu dönemde oteller iki-üç katı fiyat istiyor ve şehir tıkış tıkış. Ama Valensiya&#x27;yı bu haliyle görmek sadece Mart&#x27;ta mümkün — başka hiçbir zaman değil.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Gizli Köşeler</span>
+                <h2 class="section-title">Valensiya'deki Saklı Hazineler</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Estación del Norte</div>
+                <div class="card-desc">1917&#x27;de inşa edilmiş Modernist tren istasyonu — Valensiya&#x27;nın en önemli mimari yapılarından biri ama ziyaretçilerin büyük bölümü içine girmeden geçiyor. Portakal çiçeği, portakal ağacı ve Valensiya sembolleriyle işlenmiş vitray pencereler, seramik paneller ve demir işçiliği. Valensiya&#x27;nın tarım kültürü bu binanın duvarlarına işlenmiş. Trende yolculuğun olmasa bile içine gir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Jardines del Turia</div>
+                <div class="card-desc">1957&#x27;deki sel felaketinden sonra Turia Nehri&#x27;nin yatağı kurutulup şehrin tam ortasına 9 kilometrelik yeşil parka dönüştürüldü. Bisiklet yolları, yürüyüş parkurları, oyun alanları ve Gulliver Parkı bu koridorda. Valensiyalılar burada koşuyor, bisiklete biniyor, piknik yapıyor. Tamamen ücretsiz.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Albufera Gölü</div>
+                <div class="card-desc">Valensiya&#x27;nın 20 kilometre güneyinde, Akdeniz kıyısında doğal kum bariyerleriyle ayrılmış tatlı su gölü. 21.000 hektarlık doğal bir park. El Palmar köyü gölün ortasında ve tahta teknelerle gezilebiliyor. Gün batımında ise kırmızı renge bürünen göl tam bir görsel şölen sunuyor. Buraya ulaşmak ise şehir merkezinden otobüsle sadece 40 dakika.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">El Carmen mahallesi</div>
+                <div class="card-desc">Ciudat Vella içinde, Orta Çağ surlarıyla çevrili dar sokaklar. Gündüz sanatçı atölyeleri, alternatif kafeler ve sokak sanatı; gece bar ve konser mekanları. Torres de Quart ve Torres de Serranos — şehrin en iyi panorama noktalarından biri, ücretsiz — bu mahallede. Sabahın erken saatleri en sakin, gece hayatı Cuma-Cumartesi.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">La Lonja de la Seda (İpek Borsası)</div>
+                <div class="card-desc">1482-1548 yılları arasında inşa edilmiş, UNESCO Dünya Mirası. Geç Gotik mimarinin İspanya&#x27;daki en iyi örneklerinden biri. İçindeki Salon de Contratación&#x27;un spiral sütunları ve tonozlu tavanı Valensiya&#x27;nın ticaretteki altın çağını anlatıyor. Mercado Central&#x27;e 3 dakika yürüyüş ama çok az kalabalık.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Bioparc Valencia</div>
+                <div class="card-desc">Turia Bahçeleri&#x27;nin batı ucunda, geleneksel bir hayvanat bahçesi değil — tüm canlılar doğal habitatlarını andıran açık alanlarda ve ziyaretçilerle neredeyse aynı seviyede. Goriller, şempanzeler, filler ve suaygırları bu şekilde gözlemlemek başka bir his. Çocuklar için Valensiya&#x27;nın en iyi durağı ama yetişkinler de aynı şekilde etkileniyor.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yeme & İçme</span>
+                <h2 class="section-title">Mutlaka Tadılması Gereken Lezzetler</h2>
+            </div>
+            <p class="intro-text">Valensiya&#x27;da yanlış paella yemek çok kolay, doğru paella yemek biraz araştırma istiyor. Gerisini şehir kendisi halleder.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Paella Valenciana</div>
+                <div class="card-desc">Şehrin en ikonik yemeği ve aynı zamanda en çok tahrif edileni. Menüde 10 çeşit paella varsa, fotoğraf menüsü varsa, akşam da servis ediyorsa — içeri girme. Gerçek paella öğle yemeği, odun ateşinde, 40-50 dakika pişirilir. La Pepica (Malvarrosa plajında, 1898&#x27;den beri) veya El Palmar köyündeki restoranlar en güvenilir seçenekler. Kişi başı 15-25 euro.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Orxata con fartons</div>
+                <div class="card-desc">Kofaya benzer yumrulardan (chufa) yapılan tatlı ve soğuk içecek. Süt değil, gluten yok ve vegan. Yanında da mutlaka bir &#x27;farton&#x27; yani içine batırmak için yapılmış uzun, hafif tatlı bir poğaça. Öğleden sonra 17:00-19:00 arası Valensiyalılar bu ikili için oturuyor. Horchatería Santa Catalina veya &#x27;orxata artesana&#x27; tabelası olan herhangi bir yerde mutlaka dene. Süpermarketteki pastörize versiyonundan uzak dur.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Agua de Valencia</div>
+                <div class="card-desc">Taze portakal suyu, cava (İspanyol köpüklü şarabı), votka veya cin, şeker — büyük carafta servis edilen Valensiya&#x27;nın kokteyli. 1959&#x27;da Café Madrid&#x27;de icat edilmiş. Taze portakal suyu ile yapılan gerçeği ile konsantreden yapılan turistik versiyonu çok farklı. Fiyatı bunu söylüyor: 8-12 euro/karaf.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Tapas — El Cabanyal&#x27;da</div>
+                <div class="card-desc">El Cabanyal eski balıkçı mahallesi — Valensiya&#x27;nın en taze deniz ürünleri buradan. Clóchinas (Valensiya midyesi, küçük ve yoğun aromalı, Mayıs-Ağustos sezonu), coquilles (tarak), pulpo (ahtapot). Bar Casa Montaña 1836&#x27;dan beri açık — küçük tabaklar 3-5 euro, şarap seçkisi zengin.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Buñuelo</div>
+                <div class="card-desc">Yağda kızartılmış, dışı çıtır içi yumuşak hamur topu. Tatlı versiyonu pudra şekeriyle servis ediliyor. Mercado Central içinde veya sokak tezgahlarında 1-2 euro. Las Fallas döneminde şehrin her köşesinde bulunuyor.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Arroz al horno</div>
+                <div class="card-desc">Paella&#x27;nın kardeşi ama bir o kadar da farklı: nohut, patlıcan, domates, sosis ve domuz kaburgasıyla fırında pişirilen pilav, toprak kaplarda servis ediliyor. Kış aylarının yemeği — Ekim&#x27;den Mart&#x27;a. Paella&#x27;nın gölgesinde kalan ama en az onun kadar lezzetli.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Dikkat Edilmesi Gerekenler</span>
+                <h2 class="section-title">Turist Tuzakları & Kaçınılması Gerekenler</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Tavuklu-karidesli &#x27;mixta&#x27; turist icadıdır ve akşam servis edilen paella çoğu kez öğlenden kalmadır; Valensiyalı ikisine de gülümser, oturmaz.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Paellayı öğlen, arrocería&#x27;da ve en az iki kişilik söyle; deniz kenarında Casa Carmela tarzı odun ateşli klasikler ayrı bir ders.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Malvarrosa yürüyüş yolunda menü sallayan restoranlar günün yorgun tavasını turiste satar.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Bir sokak içeri, El Cabanyal&#x27;ın azulejo cepheli sokaklarına gir: Casa Montaña gibi asırlık bodegalarda hem tapa hem tarih var.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Kompleksin tüm binalarına tek günde bilet almak hem pahalı hem yorucudur; yarısı zaten dışarıdan en güzelidir.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Bir bina seç (Oceanogràfic en dolusu), gerisini mimariyi dışarıdan gezerek yaşa — gün batımında beton ve su aynası bedava şov.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Şehrin kokteyli her yerde satılır ama çoğu yerde ucuz köpüklüyle sulandırılmış halidir.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Doğduğu yere yakın iç: Café de las Horas tarzı köklü barlarda, cava ve taze portakalla — bir sürahi iki kişiye yeter, inan.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Valensiya'yi MyWay ile Keşfedin</h3>
-            <p>Zikzak çizmeden adım adım akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
+            <p>Adım adım optimize edilmiş akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      App Store'dan Hemen İndirin
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. Tüm hakları saklıdır.</p>
+            <p>&copy; 2026 MyWay Travel App. Tüm hakları saklıdır.</p>
         </div>
     </footer>
 

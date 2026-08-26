@@ -6,8 +6,17 @@
     <title>Berlin City Guide & Smart Walking Routes | MyWay</title>
     <meta name="description" content="Explore Berlin with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
     
-    <link rel="alternate" hreflang="tr" href="../tr/rehber/berlin.html">
-    <link rel="alternate" hreflang="en" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/berlin.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/berlin.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../guides/">City Guides</a></li>
+                <li><a href="/guides/" class="active">City Guides</a></li>
                 <li><a href="/#features">Features</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../tr/rehber/berlin.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇹🇷 Türkçe</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇬🇧 EN</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/berlin.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item active">🇬🇧 English</a>
+                        <a href="/tr/rehber/berlin.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item ">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="/#hero" class="nav-cta">Download</a>
+
+                <a href="/#download" class="nav-cta">Download</a>
             </div>
         </div>
     </nav>
@@ -568,29 +691,249 @@
                 <span class="section-label">Overview</span>
                 <h2 class="section-title">The Vibe of Berlin</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Berlin doesn&#x27;t try to impress you. It doesn&#x27;t need to. This is a city that was bombed flat, split in two, and reunited — and somehow came out the most creatively free capital in Europe. The walls still show bullet holes. The gaps between buildings still tell the story. But side by side with all that weight is the world&#x27;s best club scene, legendary street food, and a culture of radical openness that makes every kind of person feel at home.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 Kiez</div>
+                <span class="pron-badge">🗣️ /keets/</span>
+            </div>
+            <p class="word-def"><strong>Your neighbourhood — specifically, the few blocks around you that feel like your village within the city. Every Berliner has a Kiez. Finding yours is how you stop being a tourist and start actually living here.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Essentials</span>
+                <h2 class="section-title">Quick Logistics</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Airport</div>
+                <div class="fact-desc">BER (Brandenburg)</div>
+                <div class="fact-sub">FEX train · ~30 min · Zone ABC</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🚇</div>
+                <div class="fact-title">Transport</div>
+                <div class="fact-desc">U-Bahn + S-Bahn</div>
+                <div class="fact-sub">Single journey from city center · Day pass available</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">💶</div>
+                <div class="fact-title">Payment</div>
+                <div class="fact-desc">Cash preferred</div>
+                <div class="fact-sub">Many places are cash-only</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🏪</div>
+                <div class="fact-title">Night life</div>
+                <div class="fact-desc">Späti open 24/7</div>
+                <div class="fact-sub">Your late-night corner shop</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Insider Advice</span>
+                <h2 class="section-title">Unwritten Rules for Berlin</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>Always validate your ticket</strong>
+                    <span>Berlin runs on an honour system — no barriers, no gates. But inspectors do random checks and the fine is significant, no exceptions. Validate at the yellow or red machines on the platform before every journey. No excuses accepted.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Cash is still king here</strong>
+                    <span>Unlike Amsterdam or Barcelona, many Berlin restaurants, bars, and markets are cash-only. Always carry euros. &#x27;Nur Barzahlung&#x27; (cash only) is a sign you&#x27;ll see constantly.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>The airport is Zone C — buy the right ticket</strong>
+                    <span>BER Airport sits outside the city in Zone C. A standard AB ticket won&#x27;t get you there. Buy an ABC ticket from the airport. If you already have an AB ticket for the city, you need an extension ticket (Anschlussfahrausweis) for Zone C — cheaper than a full ABC.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Off the Beaten Path</span>
+                <h2 class="section-title">Hidden Gems in Berlin</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Tempelhofer Feld — the Former Airport</div>
+                <div class="card-desc">Hitler&#x27;s monumental 1930s airport, decommissioned in 2008 and handed to the city. Now the largest urban open space in the world — Berliners cycle, barbecue, fly kites, and garden on the runways. The brutalist terminal still stands. Entry is free. Nothing like it exists anywhere else on earth.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Boros Collection</div>
+                <div class="card-desc">A WWII air-raid bunker in the center of Berlin, converted into one of the world&#x27;s most extraordinary private art collections. Tours must be booked weeks in advance online. Contemporary art inside raw concrete WWII architecture — unlike anything else.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Room of Silence (Raum der Stille)</div>
+                <div class="card-desc">Behind an unmarked door steps from the Brandenburg Gate — a small room of complete tranquility open to all, for quiet reflection regardless of religion or belief. Almost no tourist knows it exists. Free, open daily. In one of the most photographed squares in the world, finding total silence here is extraordinary.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Berliner Philharmonie Lunchtime Concert</div>
+                <div class="card-desc">Every Wednesday from September to June, the Berlin Philharmonie hosts a free 45-minute lunchtime concert at 1 PM. No ticket, no dress code. Just arrive before 1 PM and take a seat. One of the best free cultural experiences in any European city.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Arminiusmarkthalle — Moabit</div>
+                <div class="card-desc">While tourists queue at Markthalle Neun, locals in Moabit have their own beautiful 19th-century market hall — completely under the tourist radar. Fresh produce, local butchers, international food stalls, coffee. Open Monday to Saturday. The most authentic market experience in Berlin.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Lindwerder Island — Grunewald</div>
+                <div class="card-desc">A tiny island in the Havel lake, accessible only by a small private ferry — you ring a bell on the shore and the ferryman comes. Lime trees, swimming spots, a terrace restaurant when open. Barely known even to most Berliners. Takes 30 minutes from the center but feels like another world.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Food & Flavors</span>
+                <h2 class="section-title">What to Taste</h2>
+            </div>
+            <p class="intro-text">Berlin&#x27;s food scene is one of the most diverse and affordable in Europe. Legendary street food to world-class dining — often steps apart.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Currywurst — the Berlin institution</div>
+                <div class="card-desc">Pork sausage, sliced, smothered in curried ketchup, dusted with curry powder. Sounds simple. Tastes like Berlin. Get it at Curry 36 in Kreuzberg — not the tourist-trap stand at Checkpoint Charlie.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Döner Kebab — Berlin&#x27;s true signature</div>
+                <div class="card-desc">Berlin has the largest Turkish population outside Turkey. The döner here is genuinely different — thicker bread, more meat, better sauce. Mustafa&#x27;s Gemüse Kebap in Kreuzberg has a famous queue. Local Imbiss spots are often just as good.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Vollkornbrot — real German bread</div>
+                <div class="card-desc">Germany has over 3,200 registered bread varieties. Berlin&#x27;s bakeries take this seriously. Dense, dark seeded rye bread with butter and cheese for breakfast — what Berliners actually eat. Find a good Bäckerei in your Kiez on day one.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Berliner Weiße — the local beer</div>
+                <div class="card-desc">A sour wheat beer served with a shot of raspberry (rot) or woodruff (grün) syrup. Very refreshing, very Berlin. Order it at any traditional Kneipe — always mit Schuss (with syrup).</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Späti Culture — the Berlin ritual</div>
+                <div class="card-desc">Spätkauf — open until very late or all night, selling cold beer, snacks, everything you need at 2 AM. Buy a cold Pfand beer, sit on the pavement outside, talk to strangers. Berlin&#x27;s most authentic social institution. Every neighbourhood has its Späti.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Markthalle Neun — Thursday Street Food</div>
+                <div class="card-desc">A gorgeous 19th-century market hall in Kreuzberg. Every Thursday evening: Street Food Thursday, where local vendors fill the hall. Diverse, affordable, packed with locals. Saturday morning is the regular organic market. One of Berlin&#x27;s best food experiences.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Watch Out</span>
+                <h2 class="section-title">Tourist Traps to Avoid</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Costumed &#x27;soldiers&#x27; posing for money, ringed by souvenir shops. The Cold War&#x27;s most dramatic spot is now the city&#x27;s most artificial corner.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> For the Wall&#x27;s real story go to the Berlin Wall Memorial on Bernauer Straße: free, harrowing, genuine.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Restaurants around Unter den Linden and Pariser Platz sell the view, not the food. High prices, mediocre kitchens.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> The same money eats twice as well in Kreuzberg or Neukölln; Markthalle Neun on a Thursday is a destination in itself.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">There is no guarantee those painted concrete chunks ever saw the Wall; most are rubble coloured afterwards.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Take the Wall by foot, not by wallet: walk the East Side Gallery end to end, for free.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">A two-hour line outside a Berlin institution doesn&#x27;t make the food two hours better; every Kiez has its own legend.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> If the queue is over 20 minutes, walk to the next corner; Berlin&#x27;s second-best beats most cities&#x27; best.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Explore Berlin with MyWay</h3>
-            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without zigzagging across town.</p>
+            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without wasted steps.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      Download on App Store
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. All rights reserved.</p>
+            <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
         </div>
     </footer>
 

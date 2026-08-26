@@ -6,8 +6,17 @@
     <title>Amsterdam Gezi Rehberi & Akıllı Rotalar | MyWay</title>
     <meta name="description" content="Amsterdam için adım adım yürüyüş rotaları, gizli mekanlar, turist tuzakları ve lezzet durakları. Amsterdam gezi rehberi MyWay'de.">
     
-    <link rel="alternate" hreflang="en" href="../../guides/amsterdam.html">
-    <link rel="alternate" hreflang="tr" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/amsterdam.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/amsterdam.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -527,7 +641,7 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="navbar-inner">
-            <a href="../" class="nav-brand">
+            <a href="/tr/" class="nav-brand">
                 <img src="../../images/app_icon.png" alt="MyWay" width="38" height="38">
                 <span>MyWay</span>
             </a>
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../rehber/">Rehberler</a></li>
-                <li><a href="../#features">Özellikler</a></li>
+                <li><a href="/tr/rehber/" class="active">Şehir Rehberleri</a></li>
+                <li><a href="/tr/#features">Özellikler</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../../guides/amsterdam.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇬🇧 English</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇹🇷 TR</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/amsterdam.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item ">🇬🇧 English</a>
+                        <a href="/tr/rehber/amsterdam.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item active">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="../#hero" class="nav-cta">İndir</a>
+
+                <a href="/tr/#download" class="nav-cta">Hemen İndir</a>
             </div>
         </div>
     </nav>
@@ -555,7 +678,7 @@
         <img src="../../images/cities/amsterdam.jpg" alt="Amsterdam" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
-            <div class="city-badge">🇳🇱 Hollanda &bull; Rehberler</div>
+            <div class="city-badge">🇳🇱 Hollanda &bull; Şehir Rehberleri</div>
             <h1 class="guide-title">Amsterdam</h1>
             <p class="guide-tagline">Özgürlük kanallardan akar, bisiklet her zaman haklıdır</p>
         </div>
@@ -568,29 +691,256 @@
                 <span class="section-label">Genel Bakış</span>
                 <h2 class="section-title">Amsterdam Atmosferi</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Trenden iner inmez Amsterdam seni farklı karşılar. Evler yana eğik, kasıtlı olarak, 17. yüzyıldan bu yana ve bununla gurur duyuyorlar. Kanallar şehrin içinden labirent gibi kıvrılıp geçiyor. Bir şekilde her köşe özgür hissettiriyor: kuralsız değil, ama rahat. Bisiklet sürmeyi bilmesen bile burada bir bisikletçi gibi düşünmeyi öğreniyorsun. Yavaş, dikkatli, gözlerin açık.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 Gezellig</div>
+                <span class="pron-badge">🗣️ /heh-ZEL-ikh/</span>
+            </div>
+            <p class="word-def"><strong>Felemenkçe&#x27;de tam karşılığı olmayan o sıcak, içten his: kanalın kenarında kahveni tutup geçen tekneleri izlemek gibi. Bir kelime, bir felsefe, Amsterdam&#x27;ın tüm ruhu. Şehirde geçirdiğin her güzel an aslında bu.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Temel Bilgiler</span>
+                <h2 class="section-title">Pratik İpuçları & Lojistik</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Havalimanı</div>
+                <div class="fact-desc">Schiphol (AMS)</div>
+                <div class="fact-sub">Doğrudan tren · 15–20 dk · her 10–15 dk</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🚲</div>
+                <div class="fact-title">Ulaşım</div>
+                <div class="fact-desc">Bisiklet veya tramvay</div>
+                <div class="fact-sub">Binişte ve çıkışta kart okut</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🗣️</div>
+                <div class="fact-title">Dil</div>
+                <div class="fact-desc">Felemenkçe</div>
+                <div class="fact-sub">Neredeyse herkes İngilizce biliyor</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">⛵</div>
+                <div class="fact-title">Ücretsiz feribot</div>
+                <div class="fact-desc">Noord&#x27;a her zaman</div>
+                <div class="fact-sub">Merkez İstasyonu arkasından</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yerel Sırlar</span>
+                <h2 class="section-title">Amsterdam İçin Yazısız Kurallar</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>Kırmızı bisiklet yollarına asla basma</strong>
+                    <span>Bisikletçiler bu şehirde tartışmasız öncelikli ve senin için yavaşlamayacaklar. Kaldırım gri, bisiklet yolu kırmızı; aralarındaki fark hayati. Amsterdam&#x27;da turistlerin yaptığı en büyük ve en yaygın hata bu.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Nakit değil, kart şehri</strong>
+                    <span>Küçük fırınlardan sokak pazarlarına kadar pek çok yer yalnızca kartla çalışıyor. &quot;Pin only&quot; ya da &quot;Alleen pin&quot; tabelasını görünce şaşırma; kartını uzat ve geç. Nakit taşısan da çok işe yaramayabilir.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Tramvayda hem binişte hem çıkışta kart okut</strong>
+                    <span>İkisi de zorunlu. Çıkışta okutmazsan sistem seni en uzak durağa gitmiş gibi değerlendiriyor ve maksimum ücreti kesiyor. Basit ama kritik: in, okut; çık, okut.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Gizli Köşeler</span>
+                <h2 class="section-title">Amsterdam'deki Saklı Hazineler</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Ons&#x27; Lieve Heer op Solder</div>
+                <div class="card-desc">Dışarıdan sıradan bir kanal evi. İçeri girince en üst katta tam anlamıyla korunmuş bir 17. yüzyıl Katolik kilisesiyle karşılaşıyorsun; Katolik ibadetin yasaklandığı dönemde gizlice inşa edilmiş. Neredeyse kimse orada olduğunu bilmiyor. Fark eden her zaman şaşırıyor.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Begijnhof</div>
+                <div class="card-desc">Spui meydanında işaretsiz bir kapının ardında saklı ortaçağ avlusu. İçeri adım atınca şehrin gürültüsü bir anda kayboluyor. 14. yüzyıldan beri burada. Kapıda tabela yok; duvardaki küçük ahşap kapıyı bulmak sana kalmış.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Tuschinski Tiyatrosu</div>
+                <div class="card-desc">Dünyanın en güzel Art Deco binalarından biri. Film izlemesen bile lobiye gir: halılar, tavan, avizeler. 1921 Amsterdam&#x27;ına açılan bir kapı. Turistlerin çoğu cepheye bakıp geçiyor; içerisi asıl hikâye.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">NDSM Werf + Hafta Sonu Bit Pazarı</div>
+                <div class="card-desc">Ücretsiz feribotla ulaşılan eski tersane, şimdi sokak sanatı cennetine dönüşmüş. Dev hurdadan heykeller, büyük duvar resimleri, yaratıcı stüdyolar. Hafta sonları NDSM bit pazarı kuruluyor: sanatçılar, yemek kamyonları, vintage tezgâhlar. Merkezden çok farklı, keşfedilmeye değer.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Hofjes — Gizli Bahçe Avluları</div>
+                <div class="card-desc">Amsterdam&#x27;ın onlarca gizli bahçesi işaretsiz ahşap kapıların ardında saklı. Karthuizerhofje, Sint Andrieshofje; Jordaan&#x27;da birkaçı var. Duvarlardaki küçük levhaları takip et, kapı aralandığında içeri gir. Kimse seni durdurmaz.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Winkel 43</div>
+                <div class="card-desc">Kalın, tarçınlı, sıcak servis ve üstünde dağ gibi taze çırpılmış krema. Sıraya girmeye değiyor, her dakikası. Yağmurlu bir günün öğleden sonrasında pencere kenarına geç ve dışarıya bak. En gezellig anlarından biri bu olacak.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yeme & İçme</span>
+                <h2 class="section-title">Mutlaka Tadılması Gereken Lezzetler</h2>
+            </div>
+            <p class="intro-text">Amsterdam&#x27;da yemek kültürü Hollanda&#x27;nın kendisi gibi: mütevazı görünümlü, içten zengin ve çoğunlukla beklediğinden çok daha iyi.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Vlaamse Frites + Patat Oorlog</div>
+                <div class="card-desc">Kalın kesilmiş, çift kızartılmış, kağıt konide servis. Patat Oorlog yani Savaş Patatesi ısmarla: fıstık sosu, mayonez ve çiğ soğan. Kaotik görünüyor, muhteşem oluyor. Kağıt konide, tabakta değil; bu kural değişmez.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Stroopwafel — taze, paketli değil</div>
+                <div class="card-desc">İki ince gofret arası karamel. Albert Cuypmarkt&#x27;tan sıcak ve taze al, yürürken ye, karamel ağzında erirken. Süpermarketteki paketli versiyonuyla kıyaslanmaz bile. Deneyim burada başlayıp bitiyor.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Hollanda Peyniri (Kaas)</div>
+                <div class="card-desc">Gouda ülkesinin tam merkezindesin. Peynir dükkanları ücretsiz tadım sunuyor: genç, yaşlı, tütsülenmiş, otlu. Henri Willig veya Old Amsterdam&#x27;ı dene. Satın almak zorunda değilsin ama tadımı atlamak olmaz.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Bitterballen + Borrel</div>
+                <div class="card-desc">Kremalı et ragusunu içinde saklayan çıtır kızartma topları, hardalla yenir, öğleden sonra birayla. Bu Borrel, Amsterdam&#x27;ın iş çıkışı ritüeli. Bir bruin kafenin masasına otur, siparişi ver; saatlerin nasıl geçtiğini fark etmeyeceksin.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Haring (Çiğ Ringa Balığı)</div>
+                <div class="card-desc">Geleneksel yol: kuyruğundan tut, başını geri eğ, yavaşça bırak. Çok cesur geliyorsa broodje haring, yani ekmek arasında ısmarla. Her iki şekilde de en az bir kez denenmeli. Bu şehirde yaşayan herkes bu tadı bilir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Rijsttafel — Endonezya Şöleni</div>
+                <div class="card-desc">15–20 küçük Endonezya yemeği aynı anda sofrada: baharatlı, zengin, Amsterdam&#x27;daki başka hiçbir şeye benzemiyor. Hollanda&#x27;nın sömürge geçmişinin mutfağa yansıması. Bir akşamını buna ayır, önceden rezervasyon yap.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Poffertjes</div>
+                <div class="card-desc">Pudra şekeri ve tereyağıyla servis edilen minik, kabarık mini pankekler. Hollanda&#x27;nın çocukluk klasiği ama yetişkinler de sıraya giriyor. Her sokak pazarında bulunur; taze yapılmışı ayrı bir şey.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Dikkat Edilmesi Gerekenler</span>
+                <h2 class="section-title">Turist Tuzakları & Kaçınılması Gerekenler</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">İstasyondan çıkınca seni karşılayan neon ışıklı, kapıda garson bekleyen, menüsü 12 dilde olan restoranlar. Pahalı, vasat ve Hollandalıların asla oturmadığı yerler.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> İki sokak içeri gir: Jordaan veya De Pijp&#x27;te aynı paraya iki kat iyi yersin.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Kayıtlı ses anonsuyla 70 kişi birden gezdiren büyük tekneler kanalları hissettirmez, sadece gösterir. Camların arkasından fotoğraf bile zor.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Küçük, açık, kaptanı canlı anlatan bir tekne seç; günbatımı saatine denk getir.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Vakumlu &#x27;Gouda&#x27; ve çiçek açmayacak lale soğanları. Fiyatlar şişkin, kalite düşük, çoğu üretim yerel bile değil.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Peyniri gerçek bir kaas dükkanından tadarak al; lale soğanını Bloemenmarkt&#x27;ta sertifikalı (gümrük onaylı) tezgahlardan seç.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">60–70 € öder, trafikte trenin iki katı sürede varırsın. Havalimanı taksi kuyruğu Amsterdam&#x27;ın en pahalı bekleme salonudur.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Tren 15–20 dakikada Centraal&#x27;a götürüyor; peronlar terminalin tam altında.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Amsterdam'yi MyWay ile Keşfedin</h3>
-            <p>Zikzak çizmeden adım adım akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
+            <p>Adım adım optimize edilmiş akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      App Store'dan Hemen İndirin
@@ -604,7 +954,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. Tüm hakları saklıdır.</p>
+            <p>&copy; 2026 MyWay Travel App. Tüm hakları saklıdır.</p>
         </div>
     </footer>
 

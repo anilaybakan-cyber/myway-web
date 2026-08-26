@@ -6,8 +6,17 @@
     <title>Saint-Tropez City Guide & Smart Walking Routes | MyWay</title>
     <meta name="description" content="Explore Saint-Tropez with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
     
-    <link rel="alternate" hreflang="tr" href="../tr/rehber/saint_tropez.html">
-    <link rel="alternate" hreflang="en" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/saint_tropez.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/saint_tropez.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../guides/">City Guides</a></li>
+                <li><a href="/guides/" class="active">City Guides</a></li>
                 <li><a href="/#features">Features</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../tr/rehber/saint_tropez.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇹🇷 Türkçe</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇬🇧 EN</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/saint_tropez.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item active">🇬🇧 English</a>
+                        <a href="/tr/rehber/saint_tropez.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item ">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="/#hero" class="nav-cta">Download</a>
+
+                <a href="/#download" class="nav-cta">Download</a>
             </div>
         </div>
     </nav>
@@ -568,29 +691,249 @@
                 <span class="section-label">Overview</span>
                 <h2 class="section-title">The Vibe of Saint-Tropez</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">When you hear Saint-Tropez, you think yachts, beach clubs and Brigitte Bardot. All true — but in summer this face of the city is so dominant that the real Saint-Tropez becomes hard to see. Until the 1950s this was a small fishing village nobody knew about. The traces of that village are still here today: colourfully painted fishing boats in the old harbour, elderly men playing pétanque under the plane trees of Place des Lices, the stone streets of La Ponche neighbourhood. To reach them, skip the peak season or set out very early in the morning. Saint-Tropez is small — everything is within walking distance. But getting here is another story: no train station, and traffic seizes up completely in summer.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 Pétanque</div>
+                <span class="pron-badge">🗣️ /peh-TANK/</span>
+            </div>
+            <p class="word-def"><strong>The French boules game — metal balls thrown to land closest to the target ball, a game that can be played for hours. Under the plane trees of Place des Lices, elderly Tropéziens play in the mornings and late afternoons. Watching is free; to join you need to wait for an invitation. One of Saint-Tropez&#x27;s most authentic and accessible local experiences — just a few steps from the yacht harbour.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Essentials</span>
+                <h2 class="section-title">Quick Logistics</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">⛴️</div>
+                <div class="fact-title">Transport</div>
+                <div class="fact-desc">No train — ferry or car</div>
+                <div class="fact-sub">Ferry from Sainte-Maxime 25 min · bus from Saint-Raphaël 1–1.5 hrs</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🏖️</div>
+                <div class="fact-title">Beach</div>
+                <div class="fact-desc">Pampelonne — 5km stretch of beach</div>
+                <div class="fact-sub">Beach clubs are paid · free sections also available · by bike or car</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🌡️</div>
+                <div class="fact-title">Weather</div>
+                <div class="fact-desc">Mediterranean — hot and sunny summers</div>
+                <div class="fact-sub">Apr–Jun and Sep–Oct ideal · Jul–Aug crowded and expensive · Dec–Feb quiet</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🎂</div>
+                <div class="fact-title">Food</div>
+                <div class="fact-desc">Tarte Tropézienne, ratatouille, fresh fish</div>
+                <div class="fact-sub">Harbour front expensive · La Ponche and side streets reasonable</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Insider Advice</span>
+                <h2 class="section-title">Unwritten Rules for Saint-Tropez</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>If you must come in July-August, book well in advance</strong>
+                    <span>In midsummer the roads around Saint-Tropez are gridlocked for hours, beaches overflow and prices peak. If you have to come during this period, book at least three months ahead. If coming by car, leave it in the out-of-town car parks and take the shuttle bus into the centre. Very early morning and after 7pm the town gets a little breathing room.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Plan your transport — there&#x27;s no train station</strong>
+                    <span>No train goes to Saint-Tropez. The nearest train station is Saint-Raphaël, then a bus ride of 1-1.5 hours. Ferry from Sainte-Maxime is 25 minutes — much more enjoyable. Summer season ferry from Nice is about 2.5 hours. If you hire a car, traffic in midsummer is very bad; people who don&#x27;t plan their transport in advance lose a lot of time.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Not the harbour front — go to La Ponche and the Citadelle side</strong>
+                    <span>The cafés and restaurants on the harbour front are Saint-Tropez&#x27;s most expensive and most touristy spots. La Ponche neighbourhood, the Citadelle slope and the area around Place aux Herbes are both cheaper and far more local. Go to Place des Lices for Tarte Tropézienne; for food, explore the streets behind the harbour.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Off the Beaten Path</span>
+                <h2 class="section-title">Hidden Gems in Saint-Tropez</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">La Ponche — the old fishing quarter</div>
+                <div class="card-desc">Just behind the harbour square, a few steps in. Narrow stone streets, colourfully painted windows, old fishermen&#x27;s houses. Bardot filmed And God Created Woman here in 1956 and introduced Saint-Tropez to the world. It still carries the spirit of that film. In the early morning hours there&#x27;s almost no one here. Small restaurants and cafés exist but most open in the afternoon.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Gassin — medieval village overlooking the bay</div>
+                <div class="card-desc">7km from Saint-Tropez, 15 minutes by car. On France&#x27;s &#x27;Les Plus Beaux Villages&#x27; list. The village with the best panoramic view of the bay — nothing obstructing it, just sea. Small church, narrow streets, a few restaurants. Coming here for dinner means escaping the crowds below and gaining the view.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Citadelle de Saint-Tropez</div>
+                <div class="card-desc">A 17th-century castle on the hill east of town. Contains a maritime history museum inside. But the real reason: the panoramic view of Saint-Tropez bay from the moat and ramparts around the castle. Ticketed but reasonably priced. Quietest in the early morning hours. Standing here looking out at the harbour, Pampelonne and the distant Estérel mountains, you understand why the town became so beloved.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Sentier du Littoral — coastal path</div>
+                <div class="card-desc">A coastal walking trail from Saint-Tropez extending to Pampelonne and Ramatuelle. 35km in total but can be done in sections. Rocky shores, small coves, pine forests and Mediterranean views. Hot in July-August; spring and autumn are ideal. Walking it, you find your own secret cove — an experience far beyond Saint-Tropez&#x27;s beach club facade.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Musée de l&#x27;Annonciade</div>
+                <div class="card-desc">Five minutes from the harbour square, in a former chapel. Signac, Matisse, Derain, Bonnard — Post-Impressionist and Fauvist painters lived and worked in Saint-Tropez at the start of the 20th century. This museum holds their works. If it&#x27;s very hot outside or the harbour is too crowded, stepping into this museum means both cooling down and seeing genuinely fine art. Little-known but of real quality.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Port Grimaud</div>
+                <div class="card-desc">8km from Saint-Tropez, a canal city built from scratch in the 1960s by architect François Spoerry. Venice-like but Provençal — every house has a boat mooring out front, colourfully painted facades. Boat tours are ticketed; the outer area is free to explore. Perfect for stopping before or after the Sainte-Maxime ferry.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Food & Flavors</span>
+                <h2 class="section-title">What to Taste</h2>
+            </div>
+            <p class="intro-text">Eating in Saint-Tropez is expensive — but find the right place and it&#x27;s both delicious and reasonable. Avoid the harbour front, step into the side streets.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Tarte Tropézienne</div>
+                <div class="card-desc">Buy it from the original La Tarte Tropézienne shop at Place des Lices. Whole tart €25-35, a slice €5-8. Fresh in the morning. The orange blossom aroma is subtle, the filling creamy. Eating this pastry here is one of Saint-Tropez&#x27;s most local and most accessible rituals.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Fresh fish — at Place aux Herbes</div>
+                <div class="card-desc">The small fish market at Place aux Herbes runs in the mornings — the Tropézien fishermen&#x27;s daily catch is sold here. If you want fresher and cheaper fish than the tourist restaurants on the harbour front, go to the small bistros around Place aux Herbes. Get there early before it sells out.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Ratatouille</div>
+                <div class="card-desc">Courgette, aubergine, tomatoes, peppers, onions and garlic — Provence&#x27;s most pure vegetable dish. Every local restaurant in Saint-Tropez makes it; both as a main dish and alongside meat and fish. In summer, the version made with vegetables from the local market is the finest. Can also be eaten cold in the summer heat.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Daube Provençale</div>
+                <div class="card-desc">Provence&#x27;s beef stew slow-cooked in red wine. Prepared with olive oil, onions, garlic, thyme and bay leaf, simmered slowly for hours. A winter and spring dish — rarely seen on summer menus. Between September and May, findable at small restaurants around La Ponche.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Côtes de Provence rosé</div>
+                <div class="card-desc">From the vineyards surrounding Saint-Tropez, France&#x27;s most famous rosé. Pale in colour, light in aroma, dry in character — Provence rosé is exported around the world. But the best is drunk here. A glass at cafés on Place des Lices or the bars near the harbour: €6-10.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Socca and pissaladière — at Place des Lices market</div>
+                <div class="card-desc">At the Tuesday and Thursday morning market, local stalls sell chickpea flour pancake (socca) and onion tart slices (pissaladière). €2-4, the best morning snack. Try both as you browse the market stalls — the cheapest and most delicious way to have a Provençal breakfast.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Watch Out</span>
+                <h2 class="section-title">Tourist Traps to Avoid</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">At the famous beach clubs, a sunbed plus lunch easily reaches hundreds of euros; the sea is the same sea for everyone.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Lay your towel on Pampelonne&#x27;s public stretches or pick the path-access coves; if the clubs intrigue you, go for just a drink.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">The quay cafés add the superyacht view to the menu: an ordinary salad, an extraordinary bill.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Watch the yachts for free walking the quay; eat two streets in, on the La Ponche side.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">In July and August the single access road is an hours-long queue; parking is a separate war.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Park in Sainte-Maxime and cross the gulf in 15 minutes by sea shuttle (bateau vert): the view is a bonus, the calm is free.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">The boat tours pointing at star villas from afar are an expensive disappointment; celebrities are on the port anyway when they want to be seen.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Spend the same money on the coastal path (Sentier du Littoral): coves, headlands and the real Saint-Tropez view.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Explore Saint-Tropez with MyWay</h3>
-            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without zigzagging across town.</p>
+            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without wasted steps.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      Download on App Store
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. All rights reserved.</p>
+            <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
         </div>
     </footer>
 

@@ -6,8 +6,17 @@
     <title>Seattle Gezi Rehberi & Akıllı Rotalar | MyWay</title>
     <meta name="description" content="Seattle için adım adım yürüyüş rotaları, gizli mekanlar, turist tuzakları ve lezzet durakları. Seattle gezi rehberi MyWay'de.">
     
-    <link rel="alternate" hreflang="en" href="../../guides/seattle.html">
-    <link rel="alternate" hreflang="tr" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/seattle.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/seattle.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -527,7 +641,7 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="navbar-inner">
-            <a href="../" class="nav-brand">
+            <a href="/tr/" class="nav-brand">
                 <img src="../../images/app_icon.png" alt="MyWay" width="38" height="38">
                 <span>MyWay</span>
             </a>
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../rehber/">Rehberler</a></li>
-                <li><a href="../#features">Özellikler</a></li>
+                <li><a href="/tr/rehber/" class="active">Şehir Rehberleri</a></li>
+                <li><a href="/tr/#features">Özellikler</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../../guides/seattle.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇬🇧 English</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇹🇷 TR</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/seattle.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item ">🇬🇧 English</a>
+                        <a href="/tr/rehber/seattle.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item active">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="../#hero" class="nav-cta">İndir</a>
+
+                <a href="/tr/#download" class="nav-cta">Hemen İndir</a>
             </div>
         </div>
     </nav>
@@ -555,7 +678,7 @@
         <img src="../../images/cities/seattle.jpg" alt="Seattle" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
-            <div class="city-badge">🇺🇸 ABD &bull; Rehberler</div>
+            <div class="city-badge">🇺🇸 ABD &bull; Şehir Rehberleri</div>
             <h1 class="guide-title">Seattle</h1>
             <p class="guide-tagline">Kahve buharı, feribot düdüğü ve dağ manzarasıyla zümrüt şehir</p>
         </div>
@@ -568,29 +691,249 @@
                 <span class="section-label">Genel Bakış</span>
                 <h2 class="section-title">Seattle Atmosferi</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Seattle iki su arasına sıkışmış bir zümrüt şerididir: bir yanda Puget Sound&#x27;un feribotları, öbür yanda Washington Gölü, ufukta ise bulutların arasından bir görünüp bir kaybolan Rainier Dağı. Bu şehir dünyaya kahve kültürünü, grunge müziğini ve yazılım devlerini verdi ama gündelik hayatı hâlâ pazar tezgahında, feribot güvertesinde ve mahalle kahvecisinde akar. Yağmur şöhreti abartılıdır — çiseler, geçer; yerli şemsiye bile taşımaz. &#x27;Dağ çıktıysa&#x27; o gün her şey güzeldir.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 The Mountain is out</div>
+                <span class="pron-badge">🗣️ /dı mauntın iz aut/</span>
+            </div>
+            <p class="word-def"><strong>&#x27;Dağ çıktı&#x27;: Rainier&#x27;in bulutların arkasından görünmesini haber veren yerel deyiş. 4.392 metrelik volkan çoğu gün gizlidir; göründüğü sabah ofislerde, otobüslerde, kahvecilerde bu cümle dolaşır. Duyduğunda pencereye koş — Seattle&#x27;ın en güzel günleri bu cümleyle açılır.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Temel Bilgiler</span>
+                <h2 class="section-title">Pratik İpuçları & Lojistik</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Havalimanı</div>
+                <div class="fact-desc">Sea-Tac (SEA)</div>
+                <div class="fact-sub">Link treniyle merkeze ~40 dk</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">⛰️</div>
+                <div class="fact-title">İmza</div>
+                <div class="fact-desc">Pike Place + Rainier</div>
+                <div class="fact-sub">Pazar tezgahı ve volkan silüeti</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">💵</div>
+                <div class="fact-title">Para birimi</div>
+                <div class="fact-desc">Dolar (USD)</div>
+                <div class="fact-sub">Kart her yerde, bahşiş %18-20</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🗣️</div>
+                <div class="fact-title">Dil</div>
+                <div class="fact-desc">İngilizce</div>
+                <div class="fact-sub">Kibar ama mesafeli: Seattle Freeze</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yerel Sırlar</span>
+                <h2 class="section-title">Seattle İçin Yazısız Kurallar</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>Pike Place&#x27;e sabah git, ilk Starbucks kuyruğunu atla</strong>
+                    <span>Pazar 09.00&#x27;da tezgah kurulumuyla capcanlıdır, öğlen ise omuz omuzadır: balık fırlatmayı, çiçekçileri ve zanaat tezgahlarını sabah sakinliğinde gör. &#x27;İlk Starbucks&#x27; kuyruğu bir saat sürebilir — içerisi sıradan bir şubedir; kahveni şehrin bağımsız kavurucularında iç.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Şemsiyeyi bırak, katman giy</strong>
+                    <span>Seattle yağmuru sağanak değil çiseleyiştir: yerli kapüşonlu mont giyer, şemsiye turist işaretidir. Su geçirmez bir katman ve yürüyüş ayakkabısı yeter — yağmur programı iptal ettirmez, kahve molasına çevirir.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Bir feribota bin — nereye olduğu önemli değil</strong>
+                    <span>Puget Sound feribotları şehrin en güzel &#x27;turudur&#x27;: Bainbridge seferi 35 dakikada silüeti, dağları ve martıları sunar. Yaya bilet ucuzdur — karşıya geç, kasabada kahve iç, dönüşte gün batımını güvertede karşıla.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Gizli Köşeler</span>
+                <h2 class="section-title">Seattle'deki Saklı Hazineler</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Gas Works Park</div>
+                <div class="card-desc">Eski gaz fabrikasının paslı kuleleri göl kıyısında heykele dönüşmüş: tepesinden silüet, yelkenliler ve gün batımı izlenir. Seattle&#x27;ın en sevilen çimi — uçurtma ve piknik yerlisiyle paylaşılır.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Kerry Park</div>
+                <div class="card-desc">Queen Anne tepesinin küçük terası: Space Needle, silüet ve açık günde Rainier aynı karede. Kartpostalların çekildiği nokta — gün batımından yirmi dakika önce yerini al.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Ballard Kilitleri</div>
+                <div class="card-desc">Deniz ile göl arasındaki gemi kilitleri ve balık merdiveni: tekneler yükselirken camın ardında somonlar tırmanır. Ücretsiz, mühendislik ve doğa aynı sahnede — botanik bahçesi de cabası.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Discovery Park</div>
+                <div class="card-desc">Şehrin en büyük parkı: orman patikaları klifli sahile iner, West Point fenerinde Sound açılır. İki saatlik döngü rotası şehirden çıkmadan vahşi doğa verir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Fremont Trolü</div>
+                <div class="card-desc">Aurora köprüsünün altında gerçek bir Volkswagen&#x27;i avuçlayan beton dev: mahallenin mizah anıtı. Fremont pazarı ve Lenin heykeliyle birleştir — &#x27;evrenin merkezi&#x27; turu yarım gün ister.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Bainbridge Adası</div>
+                <div class="card-desc">35 dakikalık feribotla ada kasabası: ana caddede kitapçı, şarap tadım odaları ve sakin koylar. Dönüş güvertesinde silüet manzarası — Seattle&#x27;ın en keyifli yarım günü.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yeme & İçme</span>
+                <h2 class="section-title">Mutlaka Tadılması Gereken Lezzetler</h2>
+            </div>
+            <p class="intro-text">Seattle sofrası soğuk suların bereketidir: somon ve istiridye, pazar tezgahının taze uğultusu ve dünyanın en ciddi kahve bardağı.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Kahve ritüeli</div>
+                <div class="card-desc">Starbucks burada doğdu ama şehrin kalbi bağımsız kavurucularda atar: single origin, pour over ve latte art ciddiyeti. Baristaya &#x27;bugün ne demliyorsun&#x27; diye sor — Seattle&#x27;da bu soru saygı işaretidir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Pike Place tezgah turu</div>
+                <div class="card-desc">Balık fırlatan tezgahlar, piroshky fırını, chowder kasesi ve taze meyve: pazarın içinde ayaküstü tur en iyi öğle yemeğidir. Sabah git — tezgahların kurulumu gösterinin kendisidir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Teriyaki dükkanı klasiği</div>
+                <div class="card-desc">Tatlı-soyalı ızgara tavuk, buharlı pirinç ve lahana salatası: mahalle teriyaki dükkanının tabldotu. Gösterişsiz vitrin, dolu masalar — Seattle&#x27;ın gündelik lezzet demokrasisi.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">İstiridye ve somon sofrası</div>
+                <div class="card-desc">Puget Sound istiridyeleri buz üstünde, kızıl somon közde: soğuk suların bereketi tabakta. İstiridye barlarının happy hour&#x27;ı şehrin en iyi ekonomik lüksüdür — mevsim somonu sorulur, geçiştirilmez.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">ID District&#x27;te pho ve dim sum</div>
+                <div class="card-desc">Chinatown-International District&#x27;in köklü mutfakları: buharlı pho kaseleri, dim sum arabaları ve Filipin fırınları. Çiseli günün en sıcak cevabı bu mahallededir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Doughnut ve dondurma sahnesi</div>
+                <div class="card-desc">Artizan doughnut dükkanları ve yerel dondurmacılar tatlı rekabeti ciddiye alır: lavantalı ya da tuzlu karamelli top, kahvenin yanında imza kapanıştır.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Dikkat Edilmesi Gerekenler</span>
+                <h2 class="section-title">Turist Tuzakları & Kaçınılması Gerekenler</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Pike Place&#x27;teki tarihi şube önünde bir saatlik kuyruk: içeride sıradan menü ve hediyelik bardak satışı vardır — kahve deneyimi değil, fotoğraf molasıdır.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Cepheyi dışarıdan fotoğrafla ve iki sokak ötedeki bağımsız kavurucuya geç: Seattle kahvesinin gerçeği orada demleniyor. Pazar içindeki köklü tezgahlar da kuyruksuz ve üstündür.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Needle bileti pahalıdır ve manzarasında Needle&#x27;ın kendisi yoktur; kuyruk yaz günlerinde uzar.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Silüeti Needle&#x27;LA birlikte görmek için Kerry Park ücretsizdir; Smith Tower&#x27;ın tarihi gözlem katı daha ucuz ve karakterlidir. Needle&#x27;a çıkacaksan gün batımı seansını önceden biletle.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Seattle çisesi şemsiyeyi işe yaramaz kılar: rüzgar ters çevirir, yerli tuhaf bakar, elin meşgul olur.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Kapüşonlu su geçirmez mont ve yürüyüş ayakkabısı: yerli üniforması budur. Çise programı bozmaz — &#x27;sunbreak&#x27; gelince zaten güneş açar, sen yoluna devam et.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Pazar çevresinin dar sokakları ve pahalı otoparkları öğlen kilitlenir: park arayışı pazar keyfini yutar.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Link ya da yürüyüşle gel; araç şartsa sahil otoparklarını kullan. Pazar sabah 09.00&#x27;da hem park hem tezgah sakinliği sunar — geç kalan kalabalığı, erken gelen pazarı görür.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Seattle'yi MyWay ile Keşfedin</h3>
-            <p>Zikzak çizmeden adım adım akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
+            <p>Adım adım optimize edilmiş akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      App Store'dan Hemen İndirin
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. Tüm hakları saklıdır.</p>
+            <p>&copy; 2026 MyWay Travel App. Tüm hakları saklıdır.</p>
         </div>
     </footer>
 

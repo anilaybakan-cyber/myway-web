@@ -6,8 +6,17 @@
     <title>Kansas City Gezi Rehberi & Akıllı Rotalar | MyWay</title>
     <meta name="description" content="Kansas City için adım adım yürüyüş rotaları, gizli mekanlar, turist tuzakları ve lezzet durakları. Kansas City gezi rehberi MyWay'de.">
     
-    <link rel="alternate" hreflang="en" href="../../guides/kansascity.html">
-    <link rel="alternate" hreflang="tr" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/kansascity.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/kansascity.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -527,7 +641,7 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="navbar-inner">
-            <a href="../" class="nav-brand">
+            <a href="/tr/" class="nav-brand">
                 <img src="../../images/app_icon.png" alt="MyWay" width="38" height="38">
                 <span>MyWay</span>
             </a>
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../rehber/">Rehberler</a></li>
-                <li><a href="../#features">Özellikler</a></li>
+                <li><a href="/tr/rehber/" class="active">Şehir Rehberleri</a></li>
+                <li><a href="/tr/#features">Özellikler</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../../guides/kansascity.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇬🇧 English</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇹🇷 TR</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/kansascity.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item ">🇬🇧 English</a>
+                        <a href="/tr/rehber/kansascity.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item active">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="../#hero" class="nav-cta">İndir</a>
+
+                <a href="/tr/#download" class="nav-cta">Hemen İndir</a>
             </div>
         </div>
     </nav>
@@ -555,7 +678,7 @@
         <img src="../../images/cities/kansascity.jpg" alt="Kansas City" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
-            <div class="city-badge">🇺🇸 ABD &bull; Rehberler</div>
+            <div class="city-badge">🇺🇸 ABD &bull; Şehir Rehberleri</div>
             <h1 class="guide-title">Kansas City</h1>
             <p class="guide-tagline">Barbekü dumanı, caz gecesi ve çeşme sesleriyle ovaların Paris'i</p>
         </div>
@@ -568,29 +691,249 @@
                 <span class="section-label">Genel Bakış</span>
                 <h2 class="section-title">Kansas City Atmosferi</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Kansas City Amerika&#x27;nın tam ortasında, kendi halinde bir efsanedir: dünyanın en iyi barbeküsünü kimseye ispatlamaya çalışmadan pişirir, cazın swing çağını 18th &amp; Vine&#x27;ın kulüplerinde doğurmuş olmasını mütevazı bir gururla anar. Şehirde iki yüzden fazla çeşme şarıldar — &#x27;Ovaların Paris&#x27;i&#x27; lakabı buradan gelir. Nehrin iki yakasında iki eyalete yayılır ama ruhu tektir: Midwest sıcaklığı, &#x27;ope!&#x27; diyerek özür dileyen nezaket ve masana kendiliğinden gelen ikinci kahve. KC&#x27;yi sevmek kolaydır; unutmak zordur.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 Ovaların Paris&#x27;i</div>
+                <span class="pron-badge">🗣️ /paris of the plains/</span>
+            </div>
+            <p class="word-def"><strong>Kansas City&#x27;nin yüzyıllık lakabı: bulvarları, çeşmeleri ve caz çağının gece hayatıyla hak edilmiş bir unvan. 1920&#x27;lerde içki yasağının gevşek uygulandığı bu şehir, gece hayatıyla Paris&#x27;e benzetildi. Bugün lakap çeşmelerde ve bulvar ağaçlarında yaşar — yerliye sor, gururla anlatır.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Temel Bilgiler</span>
+                <h2 class="section-title">Pratik İpuçları & Lojistik</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Havalimanı</div>
+                <div class="fact-desc">Kansas City (MCI)</div>
+                <div class="fact-sub">Yeni terminal, merkeze ~25 dk</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🍖</div>
+                <div class="fact-title">İmza</div>
+                <div class="fact-desc">Burnt ends + caz</div>
+                <div class="fact-sub">Barbekünün ve swing&#x27;in başkenti</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">💵</div>
+                <div class="fact-title">Para birimi</div>
+                <div class="fact-desc">Dolar (USD)</div>
+                <div class="fact-sub">Kart her yerde, bahşiş %18-20</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🗣️</div>
+                <div class="fact-title">Dil</div>
+                <div class="fact-desc">İngilizce</div>
+                <div class="fact-sub">Midwest nezaketi: herkes yardım eder</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yerel Sırlar</span>
+                <h2 class="section-title">Kansas City İçin Yazısız Kurallar</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>Barbeküyü plan yap, tek isme kilitlenme</strong>
+                    <span>KC barbeküsü bir tarz değil evrendir: burnt ends burada icat edildi, soslar tatlı-dumanlı, sıralar uzundur. En meşhur salona saatlik kuyruk yerine ikinci ve üçüncü isimleri de listene al — bu şehirde &#x27;vasat&#x27; barbekü bile başka yerin şampiyonudur.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>İki eyalet gerçeğini öğren</strong>
+                    <span>Kansas City hem Missouri&#x27;de hem Kansas&#x27;ta vardır: gezdiğin şehir büyük oranda Missouri tarafıdır (KCMO). Navigasyona adres yazarken eyalete dikkat et — &#x27;yanlış Kansas City&#x27; klasik turist hikayesidir.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Cazı yerinde, gece dinle</strong>
+                    <span>18th &amp; Vine tarihi caz bölgesidir ama müzik müzeyle sınırlı değildir: şehrin kulüplerinde hafta içi bile canlı caz çalar. Cover ücreti mütevazıdır, ilk set 19.00-20.00 civarı başlar — bir geceni mutlaka caza ver.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Gizli Köşeler</span>
+                <h2 class="section-title">Kansas City'deki Saklı Hazineler</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Liberty Memorial kulesi</div>
+                <div class="card-desc">Birinci Dünya Savaşı anıtının 66 metrelik kulesine asansörle çık: Union Station ve silüet ayaklarının altında. Aşağıdaki müze, ABD&#x27;nin en kapsamlı 1. Dünya Savaşı koleksiyonudur — ikisini birleştir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Green Lady Lounge</div>
+                <div class="card-desc">Kırmızı kadife duvarlı salonda her gece canlı KC cazı: cover mütevazı, müzik ciddi, atmosfer film gibidir. 18th &amp; Vine müzeleriyle aynı gün planla — gündüz tarih, gece swing.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">City Market</div>
+                <div class="card-desc">1857&#x27;den beri kurulan pazar: çiftçi tezgahları, Ortadoğu marketleri ve empanada standları. Cumartesi sabahı tramvayla gel — kahvaltını tezgahtan topla, nehir kıyısında ye.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Loose Park</div>
+                <div class="card-desc">Plaza&#x27;nın yanı başında gül bahçeli, gölet kenarlı klasik park: yerlinin piknik ve düğün fotoğrafı adresi. Yaz sabahı gül bahçesi, güz öğleden sonrası ağaç şöleni sunar.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">West Bottoms</div>
+                <div class="card-desc">Eski depo bölgesi ayın ilk hafta sonlarında dev vintage-antika pazarına dönüşür: beş katlı binalar, kat kat hazine. Tuğla sokakları fotojenik — kahveci ve bira imalathaneleri molayı kurtarır.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Kauffman Center</div>
+                <div class="card-desc">Moshe Safdie imzalı performans merkezi: cam dalga cephesi gün batımında yanar. Bilet alamasan bile mimarisi ziyarete değer — tepeden şehir silüeti de cabası.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yeme & İçme</span>
+                <h2 class="section-title">Mutlaka Tadılması Gereken Lezzetler</h2>
+            </div>
+            <p class="intro-text">KC sofrası dumandan sorulur: burnt ends&#x27;in karamel kabuğu, tatlı-dumanlı sos ve yanında caz gibi kaynayan yan lezzetler.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Burnt ends</div>
+                <div class="card-desc">Karamelize duman küpleri: beyaz ekmek, turşu ve KC sosuyla. Bu şehirde icat edildi ve hâlâ en iyisi burada — tabak geldiğinde önce sade tat, sosu sonra ekle.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Ribs ve KC sosu</div>
+                <div class="card-desc">Tatlı-dumanlı, domates-melas bazlı KC sosu dünya standardını belirledi: ribs&#x27;in üstünde parlarken kemikten sıyrılışı seremonidir. Islak mendil masada bekler — kullanmaktan çekinme.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">KC strip steak</div>
+                <div class="card-desc">Şehre adını veren kesim: KC strip (New York strip&#x27;in asıl memleketi burasıdır, yerliye sorarsan). Köklü steak evlerinde közlenmiş hali, hayvancılık borsası mirasının sofradaki özeti.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Cheesy corn ve yan ordusu</div>
+                <div class="card-desc">Barbekünün yanında KC&#x27;nin gizli yıldızları: peynirli mısır, fırın fasulyesi ve turşu. Ana etin gölgesinde kalmasınlar — cheesy corn bazı salonlarda etten çok konuşulur.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Boulevard bira tadımı</div>
+                <div class="card-desc">Şehrin adını taşıyan bağımsız bira fabrikası: Tank 7 saison&#x27;u ülke çapında efsanedir. Fabrika turu ve tadım salonu — barbekü sonrası doğal durak.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Chili + tarçınlı rulo</div>
+                <div class="card-desc">Midwest&#x27;in tuhaf-harika ikilisi: acı chili kasesinin yanında tatlı tarçınlı rulo. Okul yemekhanesinden çıkıp şehir klasiğine dönüştü — sorgulamadan dene, sonra teşekkür et.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Dikkat Edilmesi Gerekenler</span>
+                <h2 class="section-title">Turist Tuzakları & Kaçınılması Gerekenler</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Kansas City, Missouri ile Kansas City, Kansas ayrı şehirlerdir: yanlış eyalete yazılan adres, seni nehrin öbür yakasında bambaşka bir yere götürür.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Adreslerde &#x27;MO&#x27; ve &#x27;KS&#x27; kısaltmasına bak: gezilecek yerlerin çoğu Missouri tarafındadır (KCMO). Navigasyona tam adres yaz — &#x27;Kansas City&#x27; tek başına yeterli değildir.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">En meşhur salonun önünde bir saat beklerken, iki sokak ötede aynı ligde bir usta sakin sakin servis yapıyordur.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Barbekü listeni üç isimli yap ve kuyruğa göre karar ver; öğlen erken git — burnt ends biter. Benzinci bitişiğindeki efsaneyi küçümseme: KC&#x27;de görünüş yanıltır.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Tramvay hattı dışında kalan mahalleler (Plaza-Westport-stadyumlar) yürüyerek bağlanmaz: mesafeler Midwest ölçeğindedir.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Tramvay aksını omurga yap, kalan geçişleri uygulama aracı ya da kiralık araçla kur. Stadyum kompleksi merkeze uzaktır — maç günü ulaşımını önceden planla.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Işıklı Plaza güzeldir ama KC&#x27;nin ruhu tek mahalleye sığmaz: sadece orada kalan, cazı ve pazar sabahını kaçırır.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Plaza&#x27;ya bir akşam ver, kalan zamanı Crossroads, River Market, 18th &amp; Vine ve Westport&#x27;a dağıt. KC mahalle mahalle açılan bir şehirdir — tramvay bu turun yarısını bedavaya yapar.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Kansas City'yi MyWay ile Keşfedin</h3>
-            <p>Zikzak çizmeden adım adım akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
+            <p>Adım adım optimize edilmiş akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      App Store'dan Hemen İndirin
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. Tüm hakları saklıdır.</p>
+            <p>&copy; 2026 MyWay Travel App. Tüm hakları saklıdır.</p>
         </div>
     </footer>
 

@@ -6,8 +6,17 @@
     <title>London City Guide & Smart Walking Routes | MyWay</title>
     <meta name="description" content="Explore London with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
     
-    <link rel="alternate" hreflang="tr" href="../tr/rehber/londra.html">
-    <link rel="alternate" hreflang="en" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/londra.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/londra.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../guides/">City Guides</a></li>
+                <li><a href="/guides/" class="active">City Guides</a></li>
                 <li><a href="/#features">Features</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../tr/rehber/londra.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇹🇷 Türkçe</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇬🇧 EN</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/londra.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item active">🇬🇧 English</a>
+                        <a href="/tr/rehber/londra.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item ">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="/#hero" class="nav-cta">Download</a>
+
+                <a href="/#download" class="nav-cta">Download</a>
             </div>
         </div>
     </nav>
@@ -568,29 +691,270 @@
                 <span class="section-label">Overview</span>
                 <h2 class="section-title">The Vibe of London</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">London doesn&#x27;t reveal itself all at once. You arrive expecting one city and discover it&#x27;s actually dozens — medieval square miles next to glass skyscrapers, ancient markets next to Michelin stars, quiet Georgian terraces two streets from the world&#x27;s busiest shopping streets. It is the most visited city on earth, and somehow still full of things almost no one sees. The trick is knowing where to look, and how to move.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 The Local</div>
+                <span class="pron-badge">🗣️ /thuh LOH-kul/</span>
+            </div>
+            <p class="word-def"><strong>Not just a pub — your pub. Every neighbourhood in London has one: a place where regulars have the same seat, the landlord knows their order, and no tourist has ever walked in. Finding yours, even as a visitor, is one of London&#x27;s greatest simple pleasures.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Essentials</span>
+                <h2 class="section-title">Quick Logistics</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Main airport</div>
+                <div class="fact-desc">Heathrow (LHR)</div>
+                <div class="fact-sub">Elizabeth line · 35 min · direct to central London</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">💳</div>
+                <div class="fact-title">Best transport</div>
+                <div class="fact-desc">Contactless card</div>
+                <div class="fact-sub">Daily cap applies — the more you travel, the better value</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🏛️</div>
+                <div class="fact-title">Museums</div>
+                <div class="fact-desc">All major ones free</div>
+                <div class="fact-sub">British Museum · V&amp;A · Tate Modern</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🍺</div>
+                <div class="fact-title">Pub hours</div>
+                <div class="fact-desc">Usually 11am–11pm</div>
+                <div class="fact-sub">Last orders at 10:45 PM</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Insider Advice</span>
+                <h2 class="section-title">Unwritten Rules for London</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>Never buy a paper ticket for the Tube</strong>
+                    <span>A paper ticket in Zone 1 costs more than double the same journey with contactless. Use your bank card, Apple Pay or Google Pay — it&#x27;s the cheapest, easiest, fastest method. The system automatically applies a daily cap, so once you hit it, all further journeys that day are free.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Stand on the right on escalators</strong>
+                    <span>Walk on the left, stand on the right. This is not a suggestion — it is one of London&#x27;s most seriously observed unwritten rules. Breaking it during rush hour will earn you genuine hostility from people who are otherwise perfectly polite.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>London&#x27;s best museums are completely free</strong>
+                    <span>The British Museum, Natural History Museum, V&amp;A, Science Museum, National Gallery, Tate Modern — all free, forever. This is UK law, not a promotion. Anyone who charges you to enter any of these has committed fraud. Walk in. Stay all day.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Off the Beaten Path</span>
+                <h2 class="section-title">Hidden Gems in London</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">King&#x27;s Cross Station — Platform 9¾</div>
+                <div class="card-desc">The legendary platform where Harry Potter boards the Hogwarts Express. Inside King&#x27;s Cross there&#x27;s a real installation: a luggage trolley disappearing into the wall with a &#x27;9¾&#x27; sign above it. There&#x27;s a queue for photos but it moves fast. Worth visiting whether you&#x27;re a Harry Potter fan or not. Free.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Leadenhall Market</div>
+                <div class="card-desc">This magnificent Victorian covered market in the heart of the City of London was filmed as Diagon Alley in the Harry Potter films. Victorian iron and glass ceiling, richly painted walls. Even without the film connection it&#x27;s one of the most beautiful interiors in London. Free, open daily. Packed with city workers at lunch, almost entirely silent in the evenings.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">St Dunstan in the East</div>
+                <div class="card-desc">A 12th-century church devastated in the Blitz in 1941. The ruins were left standing and turned into a public garden — vines climbing over bombed walls, trees growing through window arches, benches in what was once the nave. One of the most extraordinary spaces in London. Free, open daily. Almost no tourist ever finds it.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Primrose Hill at sunset</div>
+                <div class="card-desc">A 64-metre hill in north London with a panoramic view across the entire city skyline. No ticket, no queue, no commercial processing. On summer evenings, Londoners bring wine and picnics. At sunset it is one of the most beautiful urban views in the world. The London Eye charges a significant fee for an inferior perspective. This costs nothing.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Postman&#x27;s Park — Memorial to Heroic Self Sacrifice</div>
+                <div class="card-desc">A quiet park near St Paul&#x27;s Cathedral containing an extraordinary memorial — ceramic tiles commemorating ordinary people who died saving others, each with a brief, heartbreaking story. Created in 1900. One of London&#x27;s most affecting and least-known monuments. The tiles stop every single person who sees them.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Sky Garden at 20 Fenchurch Street</div>
+                <div class="card-desc">The top of the &#x27;Walkie-Talkie&#x27; building houses a stunning public garden with 360-degree views of London — completely free but requires booking online in advance. Far better views than the London Eye at no cost. Book a few days ahead on the Sky Garden website.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">The Hill Garden &amp; Pergola — Hampstead</div>
+                <div class="card-desc">Hidden above Hampstead Heath, an extraordinary Edwardian pergola — a raised walkway of stone arches dripping with wisteria and climbing roses. Built for Lord Leverhulme in 1904. Free to enter, almost entirely unknown. Go in late May when the wisteria blooms and it becomes one of the most romantic spaces in England.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Ye Olde Cheshire Cheese — Fleet Street</div>
+                <div class="card-desc">One of the oldest pubs in London, rebuilt after the Great Fire of 1666. Dark wood, low ceilings, sawdust on the floor. Dickens, Samuel Johnson, and Mark Twain all drank here. Find it through a narrow alleyway off Fleet Street — a small sign and nothing else. This is what a London pub actually is.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Food & Flavors</span>
+                <h2 class="section-title">What to Taste</h2>
+            </div>
+            <p class="intro-text">London is one of the world&#x27;s great food cities. Its diversity means you can eat every cuisine on earth at a genuinely high level — and the best of it is rarely in the obvious places.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Full English Breakfast — the real one</div>
+                <div class="card-desc">Bacon, eggs, sausages, baked beans, grilled tomato, mushrooms, black pudding, and toast. Britain&#x27;s greatest contribution to world cuisine. The key: find a proper &#x27;caff&#x27; (greasy spoon) — a small, independent, no-frills café. At a good caff it&#x27;s very affordable. At a tourist spot near a major attraction the same thing costs several times more and is inferior. Ask a local where their caff is. That&#x27;s your answer.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Brick Lane &amp; the curry houses</div>
+                <div class="card-desc">London has the best Indian and Bangladeshi food outside the subcontinent. Brick Lane in Shoreditch is the historic center but the whole East End is extraordinary. Dishoom (multiple locations) is the most celebrated — the bacon naan at breakfast has a genuine queue. Worth every minute.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Borough Market — the real one</div>
+                <div class="card-desc">London&#x27;s oldest and finest food market, under the railway arches near London Bridge. Open Tuesday–Saturday. This is where London&#x27;s best chefs shop. Monmouth Coffee here is among the best in London. Go hungry. Eat everything. Come back the next day.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Fish &amp; chips — but properly</div>
+                <div class="card-desc">Not the tourist chip shops near Leicester Square. The real thing: thick-cut chips, fresh battered cod or haddock, mushy peas, malt vinegar. Poppies in Spitalfields or Rock &amp; Sole Plaice in Covent Garden. Eat it wrapped in paper. London&#x27;s most honest food.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">The pub — a British institution</div>
+                <div class="card-desc">Order at the bar — never wait to be served at a table unless it&#x27;s a food order. A pint of real ale, bitter, or London Pride. The gastropub has transformed pub food — some serve Michelin-star quality. Find a traditional Victorian pub and spend an afternoon in it. This is what London actually is.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">The specialty coffee scene</div>
+                <div class="card-desc">London has one of the world&#x27;s best specialty coffee scenes. Monmouth Coffee, Ozone, Workshop, and Allpress are the benchmarks. The scene was largely built by Australian and New Zealand expats who arrived in the 2000s and transformed café culture here permanently.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Afternoon tea — done properly</div>
+                <div class="card-desc">Finger sandwiches, warm scones with clotted cream and jam (cream first, then jam — the correct order), and proper loose-leaf tea. Fortnum &amp; Mason is the classic. Book ahead. One experience that genuinely earns its tourist status.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Watch Out</span>
+                <h2 class="section-title">Tourist Traps to Avoid</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">The garish candy shops are the city&#x27;s best-known trap: outrageous prices, dubious products. The same goes for most of the touristy &#x27;British gifts&#x27; chains.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> For souvenirs try the museum shops (the free museums have brilliant ones), or just buy proper English tea from a supermarket.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">The &#x27;Angus Steakhouse&#x27;-style restaurants and chains between Piccadilly and Leicester Square sell London&#x27;s most mediocre, most expensive food.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Walk ten minutes: Soho&#x27;s side streets, Chinatown, or Borough Market. Same money, different city.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">High walk-up prices, long queues — and better views exist for free.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Book a free Sky Garden slot weeks ahead, or climb Primrose Hill at sunset.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">A turf war that starts hours early, then watching it through someone else&#x27;s phone screen. Most days it is not worth it.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Go to the mounted guard change at Horse Guards Parade: closer, calmer, and every bit as ceremonial.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Explore London with MyWay</h3>
-            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without zigzagging across town.</p>
+            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without wasted steps.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      Download on App Store
@@ -604,7 +968,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. All rights reserved.</p>
+            <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
         </div>
     </footer>
 

@@ -6,8 +6,17 @@
     <title>Rome City Guide & Smart Walking Routes | MyWay</title>
     <meta name="description" content="Explore Rome with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
     
-    <link rel="alternate" hreflang="tr" href="../tr/rehber/roma.html">
-    <link rel="alternate" hreflang="en" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/roma.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/roma.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../guides/">City Guides</a></li>
+                <li><a href="/guides/" class="active">City Guides</a></li>
                 <li><a href="/#features">Features</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../tr/rehber/roma.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇹🇷 Türkçe</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇬🇧 EN</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/roma.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item active">🇬🇧 English</a>
+                        <a href="/tr/rehber/roma.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item ">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="/#hero" class="nav-cta">Download</a>
+
+                <a href="/#download" class="nav-cta">Download</a>
             </div>
         </div>
     </nav>
@@ -568,29 +691,249 @@
                 <span class="section-label">Overview</span>
                 <h2 class="section-title">The Vibe of Rome</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Rome is the most layered city on earth. A Republican temple sits beneath a medieval church beneath a Baroque piazza. Ancient aqueducts run beneath traffic. The Forum was a cattle market before it was an archaeological site. Most visitors spend their time moving between the headline monuments — the Colosseum, the Vatican, the Trevi Fountain — and miss the city that lives inside and between them. The real Rome is not a museum. It is a functioning, chaotic, magnificent city of three million people who eat lunch at 13:30, drink espresso standing up, and treat the ruins around them as background. The question is not whether to see the Colosseum. It is what you do when you look up from the map.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 Aperitivo</div>
+                <span class="pron-badge">🗣️ /ah-peh-REE-tee-voh/</span>
+            </div>
+            <p class="word-def"><strong>The early evening ritual before dinner — a drink (Aperol Spritz, Campari, Negroni) taken between roughly 18:00 and 20:00 in a bar or piazza. Not a meal. Not a party. A decompression of the day. In Rome this happens outdoors wherever possible — on steps, on piazza walls, at small tables spilling onto cobblestones. It is the best single hour of the Roman day and it costs the price of a drink.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Essentials</span>
+                <h2 class="section-title">Quick Logistics</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Airports</div>
+                <div class="fact-desc">Fiumicino (FCO) · Ciampino (CIA)</div>
+                <div class="fact-sub">FCO: Leonardo Express train 32 min to Termini · CIA: bus to Termini</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🚌</div>
+                <div class="fact-title">Transport</div>
+                <div class="fact-desc">Bus + tram + metro (2 lines)</div>
+                <div class="fact-sub">Validate ticket before boarding · inspectors check regularly</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🗺️</div>
+                <div class="fact-title">Neighbourhoods</div>
+                <div class="fact-desc">Trastevere · Testaccio · Monti · Prati</div>
+                <div class="fact-sub">Each rione has its own rhythm — choose wisely</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🍝</div>
+                <div class="fact-title">Lunch rule</div>
+                <div class="fact-desc">13:00–15:00 · dinner 20:00–22:00</div>
+                <div class="fact-sub">Restaurants close between service — don&#x27;t arrive at 17:00</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Insider Advice</span>
+                <h2 class="section-title">Unwritten Rules for Rome</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>Never eat on the main tourist street</strong>
+                    <span>Every tourist neighbourhood in Rome has a main street lined with restaurants displaying photographs of pasta and waiters hailing you from the door. Walk past all of them. Turn down a side street, find something with no English menu and no photograph of the food, and eat there. The price will be lower and the food will be better. This is one of the most reliable rules in Rome.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Espresso at the bar, always standing</strong>
+                    <span>An espresso in Rome is drunk standing at the bar counter, not sitting at a table. Sitting doubles or triples the price — you are paying for the table, not the coffee. A standing espresso at the bar costs around €1–1.50. Ask for un caffè. Drink it in two sips. Leave. This is how Rome operates before 10am.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Book the big things in advance</strong>
+                    <span>The Vatican Museums, the Borghese Gallery, and the Colosseum all require advance booking — some weeks or months ahead in peak season. Showing up without a reservation at the Vatican Museums in July means hours in a queue. The Borghese Gallery allows only two-hour timed slots and turns away walk-ins. Book before you arrive, not the night before.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Off the Beaten Path</span>
+                <h2 class="section-title">Hidden Gems in Rome</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Aventine Keyhole (Knights of Malta Priory)</div>
+                <div class="card-desc">On the Aventine Hill, in the gate of the Priory of the Knights of Malta, is a keyhole. Peer through it and the perfectly framed dome of St. Peter&#x27;s Basilica appears at the end of a manicured garden path — three countries visible at once: Italy, the garden of the Sovereign Order of Malta, and the Vatican. Designed in the 18th century by architect and engraver Giovanni Battista Piranesi. The alignment may or may not be intentional — no one has ever been entirely certain. Free entry, accessible at all hours. Queue of one at a time.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Basilica di San Clemente — near the Colosseum</div>
+                <div class="card-desc">Three minutes from the Colosseum, an unremarkable-looking church hides one of the most extraordinary layered sites in Rome. The ground-floor 12th-century basilica is beautiful and free to enter. Below it is a 4th-century early Christian basilica with medieval frescoes. Below that, a 2nd-century Roman house and a functioning Mithraic temple — you can still hear an ancient stream running underground. The experience of descending through twenty centuries in one building is unlike anything else in Rome. Upper church free. Underground excavations ticketed (€10), advance booking required online.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Palazzo Doria Pamphilj — Via del Corso</div>
+                <div class="card-desc">On the Via del Corso, the most central street in Rome, a door leads into the largest privately-owned palace in the city — still occupied by the Doria Pamphilj family, whose ancestor commissioned Velázquez&#x27;s Portrait of Pope Innocent X. The gallery holds Caravaggio, Raphael, Titian, and Velázquez. The audioguide is narrated by Prince Jonathan Doria Pamphilj himself. Unlike the Vatican, there are no crowds. Unlike the Borghese, it is almost unknown to non-Italian visitors. Ticketed entry (€16), advance booking required.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Quartiere Coppedè — Trieste neighbourhood</div>
+                <div class="card-desc">Between 1913 and 1926, architect Gino Coppedè built a neighbourhood of 26 small palaces and 17 villas in the Trieste district — a collision of Art Nouveau, Baroque, Gothic, and Greek revival so extreme it looks like a film set. Swagged stone garlands, bronze spiders, fairy-tale arches, elaborate ironwork. An entire tram stop away from any tourist route. Almost no one goes. Completely free to walk through. Enter through the arch on Via Tagliamento.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Giardino degli Aranci — Aventine Hill</div>
+                <div class="card-desc">The Garden of Oranges on the Aventine Hill is a formal garden of bitter orange trees, pine umbrella trees, and rose bushes, with a terrace at one end that offers one of the finest panoramic views of Rome — the dome of St. Peter&#x27;s above the city&#x27;s terracotta rooftops and the Tiber below. Almost entirely unknown to non-Italian visitors. Two minutes from the Aventine Keyhole. Free entry. Open from early morning to sunset.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Largo di Torre Argentina — Historic Centre</div>
+                <div class="card-desc">In the middle of central Rome, surrounded by traffic, a sunken square reveals four Republican-era temples from the 3rd and 2nd centuries BC — among the oldest ruins visible in the city. This is the site where Julius Caesar was assassinated on 15 March 44 BC. A cat sanctuary, run by volunteers, houses over a hundred cats among the ruins. The cats have been there for generations. The archaeological site is ticketed. The cats can be seen for free from the street level.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Food & Flavors</span>
+                <h2 class="section-title">What to Taste</h2>
+            </div>
+            <p class="intro-text">Roman cuisine is the oldest continuously evolving urban food tradition in the Western world — and also the most specific. The ingredients, the techniques, the cuts of meat, the pasta shapes, and the sequence of a Roman meal are all defined by centuries of tradition. The goal is not fusion. It is not innovation. It is a bowl of cacio e pepe made correctly, in a restaurant where the cook&#x27;s grandmother made the same dish.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Cacio e pepe — the Roman standard</div>
+                <div class="card-desc">Pecorino Romano, black pepper, pasta water, tonnarelli. Nothing else. The correct version is silky, not clumped. A great cacio e pepe is one of the finest things Italy produces. Order it at Tonnarello in Trastevere, Da Enzo al 29, or — if you can get a reservation — Felice a Testaccio. Do not order it in a restaurant with a photograph menu.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Carbonara — not what you think it is</div>
+                <div class="card-desc">Roman carbonara has four ingredients: guanciale (cured pork cheek), Pecorino Romano, egg yolk, and black pepper. No cream. No pancetta. No bacon. No parmesan. The cream version served in tourist restaurants across Europe is not carbonara; it is an approximation built for people who have never tasted the real thing. A correct carbonara is rich, unctuous, and slightly sticky. Ask for guanciale if you are not sure what you are being served.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Quinto quarto — the fifth quarter</div>
+                <div class="card-desc">Roman cuisine was built around the quinto quarto — the offal left after the four prime cuts went to the wealthy: tripe (trippa), oxtail (coda alla vaccinara), sweetbreads, offal pasta. This is not nose-to-tail adventurism; it is the original Roman diet. Trippa alla romana (tripe in tomato sauce with mint and Pecorino) is served on Saturdays at neighbourhood trattorias. Coda alla vaccinara (oxtail braised with tomato, celery, and dark chocolate) is one of the great slow-cooked dishes of Europe. Order it in Testaccio.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Carciofi alla giudia — Jewish artichoke</div>
+                <div class="card-desc">The deep-fried artichoke of the Jewish Ghetto — opened like a flower, submerged twice in hot oil until the leaves are crisp and golden and the heart is tender. A dish with a history of nearly 500 years in the same streets. Served only in season (October through spring). The best versions are at Da Giggetto and Sora Margherita in the Ghetto. One of the dishes that defines Rome.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Pizza al taglio — by the slice</div>
+                <div class="card-desc">Roman pizza is not Neapolitan. It is thin, crisp-based, cut into rectangles, sold by weight, and eaten standing up or walking. A Roman morning includes a slice of pizza bianca (plain, oiled, salted flatbread) from the forno around the corner. The best pizza al taglio in Rome is at Roscioli, Bonci (Pizzarium), and Forno di Campo de&#x27; Fiori. It is the correct breakfast, the correct lunch, and the correct late-night snack.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Coffee — standing, at the bar</div>
+                <div class="card-desc">An espresso in Rome is €1–1.50 at the bar. Sitting doubles the price. Cappuccino is a morning drink — ordering one after lunch is understood but mildly noted. A macchiato (espresso with a drop of milk) is the local midday coffee. Sant&#x27;Eustachio il Caffè near the Pantheon serves what many consider the best espresso in Rome. The queue moves fast. Drink it standing.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Watch Out</span>
+                <h2 class="section-title">Tourist Traps to Avoid</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Costumed gladiators demand an outrageous &#x27;tip&#x27; after the photo — and make a scene if you refuse. The city banned it; the species survives.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Have a friend take your photo; the best Colosseum shot is from the park on Oppian Hill anyway.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Around the Pantheon and Navona, the fixed-price &#x27;tourist menu&#x27; plus a waiter calling you in equals frozen pasta and a swollen bill.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Never eat where you&#x27;re invited in; pick short-menu, Italian-language places in Trastevere&#x27;s back streets, Testaccio and Monti.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">The roaming &#x27;skip-the-line tour&#x27; sellers charge several times the official ticket; some tickets turn out invalid.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Buy museum tickets only from the official site, dated and timed; to avoid queues take the first morning slot or the Friday night opening.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">The pirate taxis that approach you at the station start with a bargain and end with a fleecing.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Only white, metered official taxis; the airport-city ride is a fixed fare — confirm it as you get in.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Explore Rome with MyWay</h3>
-            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without zigzagging across town.</p>
+            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without wasted steps.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      Download on App Store
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. All rights reserved.</p>
+            <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
         </div>
     </footer>
 

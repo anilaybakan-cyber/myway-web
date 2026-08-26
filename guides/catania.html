@@ -6,8 +6,17 @@
     <title>Catania City Guide & Smart Walking Routes | MyWay</title>
     <meta name="description" content="Explore Catania with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
     
-    <link rel="alternate" hreflang="tr" href="../tr/rehber/catania.html">
-    <link rel="alternate" hreflang="en" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/catania.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/catania.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../guides/">City Guides</a></li>
+                <li><a href="/guides/" class="active">City Guides</a></li>
                 <li><a href="/#features">Features</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../tr/rehber/catania.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇹🇷 Türkçe</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇬🇧 EN</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/catania.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item active">🇬🇧 English</a>
+                        <a href="/tr/rehber/catania.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item ">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="/#hero" class="nav-cta">Download</a>
+
+                <a href="/#download" class="nav-cta">Download</a>
             </div>
         </div>
     </nav>
@@ -568,29 +691,249 @@
                 <span class="section-label">Overview</span>
                 <h2 class="section-title">The Vibe of Catania</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Catania is a city on Sicily&#x27;s eastern coast built at the foot of one of the world&#x27;s most active volcanoes — and it makes you feel that every single day. Etna destroyed everything in the 1693 earthquake and the Catanians got up and rebuilt from the same lava stone. That determination is still woven into the fabric of the streets: black basalt paving stones, cathedrals, staircases — all from the same stone. La Pescheria opens at 07:00 and is the most vivid fish market in Sicily: vendors shouting, squid, swordfish and sea urchins laid on ice. Vincenzo Bellini was born here, pasta alla Norma was invented here. Compared to Palermo&#x27;s chaos it&#x27;s slightly quieter and slightly more local — but none of that Sicilian energy is lost.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 Arancino</div>
+                <span class="pron-badge">🗣️ /a-ran-CI-no/</span>
+            </div>
+            <p class="word-def"><strong>Note: in Catania it&#x27;s &#x27;arancino&#x27; — masculine, pointed and pyramid-shaped. In Palermo it&#x27;s &#x27;arancina&#x27; — feminine and round. This difference is practically a political matter between the two cities, and don&#x27;t try arguing with a Catanian about it. Filled with meat ragù, peas and egg. Crispy outside, hot and generous inside. In every café and bakery for €1.50-3 — even eaten for breakfast, as Catanians do.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Essentials</span>
+                <h2 class="section-title">Quick Logistics</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Airport</div>
+                <div class="fact-desc">CTA — Catania Fontanarossa</div>
+                <div class="fact-sub">Alibus €4 · centre 20-25 min · taxi ~€20-25</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🚌</div>
+                <div class="fact-title">City transport</div>
+                <div class="fact-desc">AMT bus + single-line metro</div>
+                <div class="fact-sub">Ticket €1 (90 min) · Etna bus AST €6.60 return</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🌡️</div>
+                <div class="fact-title">Weather</div>
+                <div class="fact-desc">Mediterranean — hot summers, Etna always present</div>
+                <div class="fact-sub">Apr–Jun and Sep–Oct ideal · Jul–Aug very hot · Dec–Feb mild</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🍊</div>
+                <div class="fact-title">Food</div>
+                <div class="fact-desc">Arancino, granita e brioche, pasta alla Norma</div>
+                <div class="fact-sub">Street food €1.50–5 · trattoria lunch €10–15 · fresh fish €12–25</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Insider Advice</span>
+                <h2 class="section-title">Unwritten Rules for Catania</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>Get to La Pescheria at 07:00 — closed on Sundays</strong>
+                    <span>Catania&#x27;s fish market La Pescheria runs behind Piazza del Duomo from 06:00 to 13:00, closed Sundays. Between 07:00 and 09:00 the stalls are fullest and the crowds are still manageable. Squid, swordfish, octopus, sea urchins — vendors shouting in Sicilian dialect, everything laid on ice. You don&#x27;t need the language to understand. Catania without this market is incomplete.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Don&#x27;t miss the 08:15 bus to Etna — it&#x27;s the only one</strong>
+                    <span>The AST company bus departs from Piazza Giovanni XXIII (right next to Catania Centrale) at 08:15 for Rifugio Sapienza on Etna&#x27;s south side, arriving at 10:15. Return at 16:30. Return ticket €6.60 cash from the driver. No other service. If you miss it, there&#x27;s no way to reach Etna by bus for the rest of that day. The cable car up to 2,500 metres costs an additional ~€50. Hat, sunscreen and a jacket are essential — near the summit it gets very cold.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Start the day with granita e brioche — let Sicily train you on this</strong>
+                    <span>Breakfast in Catania is neither tea nor espresso: semi-frozen granita and buttery brioche. Granita — almond, pistachio, lemon, mulberry or coffee — inside or alongside a warm brioche. Every café serves it between 07:00 and 10:00, €3-5. Almond granita is the Catanian classic. Try it on the first morning and you understand that particular Catania.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Off the Beaten Path</span>
+                <h2 class="section-title">Hidden Gems in Catania</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Etna</div>
+                <div class="card-desc">AST bus from the south to Rifugio Sapienza (1,910 m), then cable car to 2,500 m (~€50). Active craters at 3,320 m — licensed guide mandatory, independent access prohibited. But even the view at 2,500 m takes your breath away: Catania and the Sicilian coast spread out below, lava fields alongside. Don&#x27;t miss the 08:15 bus — it&#x27;s the only one.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">La Pescheria</div>
+                <div class="card-desc">Down the steps right behind Piazza del Duomo, La Pescheria begins. Open 06:00-13:00, closed Sundays. Squid, sea urchin, swordfish, octopus — vendors shouting in Sicilian dialect, everything laid on ice. Ask before taking photos — most vendors are happy. Lunch at the trattorias surrounding the market is both the freshest and cheapest option.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Teatro Massimo Bellini and Via Crociferi</div>
+                <div class="card-desc">Vincenzo Bellini (1801-1835) was born in Catania and his most famous opera Norma premiered here. Teatro Massimo Bellini is both opera house and museum — worth seeing inside. Via Crociferi is the city&#x27;s most beautiful Baroque street: four churches in succession, narrow lava-paved road, climbing plants. Nearly empty early in the morning. Sant&#x27;Benedetto Monastery on this street — its interior is magnificent and rarely crowded.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Aci Trezza and Aci Castello</div>
+                <div class="card-desc">15-20 minutes from Catania by bus, but it feels like arriving somewhere entirely different. At Aci Trezza, the black basalt rocks known as the Cyclops&#x27; stones rise from the sea — the very rocks Homer says Polyphemos hurled at Odysseus in the Odyssey. Small fishing village, evening sun and extraordinary fresh fish trattorias. At Aci Castello, a Norman castle sits directly on the rock, reaching into the sea. Both together make a full day.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Piazza Stesicoro — Roman amphitheatre remains</div>
+                <div class="card-desc">On Via Etnea, in the middle of Piazza Stesicoro, the remains of a Roman amphitheatre are visible beneath the pavement. Behind a protective fence, in the open air, free. Believed to date from the 2nd century with a capacity of around 15,000. Etna visible in the same frame from the nearby Belvedere. The most tangible evidence of the history the city was built on top of.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Etna&#x27;s blood orange groves</div>
+                <div class="card-desc">Around Catania, Etna&#x27;s volcanic, mineral-rich soil produces the world&#x27;s finest blood oranges. From November to March, freshly squeezed blood orange juice at the markets for €1-2. The colour is deep red with wine tones, the taste complex and intense. Villages on Etna&#x27;s southern slopes (Zafferana Etnea, Viagrande) sit among these orchards — worth stopping at on the Etna road if travelling by car.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Food & Flavors</span>
+                <h2 class="section-title">What to Taste</h2>
+            </div>
+            <p class="intro-text">Catania&#x27;s cuisine is slightly more refined than Palermo&#x27;s but equally generous and self-assured. Street food is morning business, fresh fish is midday, and Bellini&#x27;s pasta belongs to the evening.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Granita e brioche</div>
+                <div class="card-desc">Sicily&#x27;s most original morning tradition and Catania&#x27;s breakfast ritual. Semi-frozen granita — almond, pistachio, lemon, strawberry or mulberry — inside or alongside a warm buttery brioche. Fresh in every café from 07:00 to 10:00. Almond granita is the Catanian classic; from Caffè del Duomo or cafés on Via Etnea, €3-5.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Arancino</div>
+                <div class="card-desc">Catania&#x27;s pointed, pyramid-shaped fried rice ball — filled with meat ragù, peas and egg. In every café and bakery for €1.50-3. Can be eaten for breakfast, at lunch or while walking. Here it&#x27;s called arancino, masculine and pointed — call it arancina and you&#x27;re confusing it with Palermo&#x27;s version.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Pasta alla Norma</div>
+                <div class="card-desc">The pasta Catania invented and Italy adopted. Fresh fried aubergine, intense tomato sauce, grated salted ricotta and basil. Ingredient quality determines everything — reheated aubergine or aged ricotta is a disappointment. Trattorias around Via Crociferi and the back streets off Piazza del Duomo: €8-12.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Fresh fish — from La Pescheria to your table</div>
+                <div class="card-desc">Lunch at the small trattorias surrounding La Pescheria is both the freshest and most affordable option. Swordfish (pesce spada) is Catania&#x27;s symbol — one of the finest varieties from these Mediterranean waters. Octopus, mussels and sea urchin also in abundance. Seafood portions €12-20. Go at midday — fresh stock runs out by evening.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Scacciata and pizzolo</div>
+                <div class="card-desc">Catania&#x27;s own street food, not found in Palermo. Scacciata: a closed flatbread baked with cabbage and sausage or potato and cheese filling between two layers of dough. Pizzolo: Catania&#x27;s double-layered stone-oven pizza. Both work for lunch and dinner. From small bakeries and rosticcerias, €3-6.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Cannolo and cassata</div>
+                <div class="card-desc">Sicilian pastry heritage at its finest in Catania. Cannolo: fried pastry tube, fresh ricotta filling, candied fruit and pistachio. Cassata: sponge cake, ricotta cream, green marzipan and candied fruit. Fresh ricotta is the critical point in both — don&#x27;t accept day-old ricotta. Pasticceria Savia on Via Etnea, in the same spot since 1897. €2-4.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Watch Out</span>
+                <h2 class="section-title">Tourist Traps to Avoid</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">The brochure-waving &#x27;tour sellers&#x27; on the squares sell a mediocre minibus ride as a summit tour; unauthorised trips to the crater zone are dangerous besides.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Do Etna by cable car + authorised guide, or with known operators&#x27; sunrise/sunset tours; the mountain demands seriousness.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Some restaurants around the market say &#x27;fresh fish&#x27; and reveal the per-kilo price afterwards; the bill becomes a surprise.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Ask the weight and the price before ordering; or pick the small eateries that cook what you buy from the market stalls.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">The coast road and Taormina&#x27;s car parks lock up at summer midday; the terrace town becomes a selfie queue.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Take the first morning train to Taormina or go late afternoon; save midday for Catania&#x27;s shaded courtyards.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Industrial-syrup &#x27;granita&#x27; is an insult to this city; the real thing is handmade and fresh each morning.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Drink it at the historic pastry shops (try almond + coffee mixed), with a warm brioche col tuppo — the constitution of a Catania breakfast.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Explore Catania with MyWay</h3>
-            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without zigzagging across town.</p>
+            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without wasted steps.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      Download on App Store
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. All rights reserved.</p>
+            <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
         </div>
     </footer>
 

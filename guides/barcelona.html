@@ -6,8 +6,17 @@
     <title>Barcelona City Guide & Smart Walking Routes | MyWay</title>
     <meta name="description" content="Explore Barcelona with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
     
-    <link rel="alternate" hreflang="tr" href="../tr/rehber/barcelona.html">
-    <link rel="alternate" hreflang="en" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/barcelona.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/barcelona.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../guides/">City Guides</a></li>
+                <li><a href="/guides/" class="active">City Guides</a></li>
                 <li><a href="/#features">Features</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../tr/rehber/barcelona.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇹🇷 Türkçe</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇬🇧 EN</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/barcelona.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item active">🇬🇧 English</a>
+                        <a href="/tr/rehber/barcelona.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item ">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="/#hero" class="nav-cta">Download</a>
+
+                <a href="/#download" class="nav-cta">Download</a>
             </div>
         </div>
     </nav>
@@ -568,29 +691,256 @@
                 <span class="section-label">Overview</span>
                 <h2 class="section-title">The Vibe of Barcelona</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Walking through Barcelona, you might find yourself inside a fairy tale, a medieval castle, or a massive beach party — sometimes all three in the same afternoon. This is a proud city that identifies itself not as Spanish, but Catalan first. There are no straight lines here. Gaudí saw to that. Time moves differently. Dinner starts at 9 PM. The party begins after midnight.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 Bon dia</div>
+                <span class="pron-badge">🗣️ /bon DEE-ah/</span>
+            </div>
+            <p class="word-def"><strong>Good morning in Catalan — not Spanish. Say this when you walk into any shop and watch the doors open. This one small word signals that you see Barcelona as it sees itself.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Essentials</span>
+                <h2 class="section-title">Quick Logistics</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Airport</div>
+                <div class="fact-desc">El Prat (BCN)</div>
+                <div class="fact-sub">Aerobús · ~35 min · direct to center</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🚇</div>
+                <div class="fact-title">Best ticket</div>
+                <div class="fact-desc">T-Casual card</div>
+                <div class="fact-sub">Metro, bus &amp; train · personal use only</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🗣️</div>
+                <div class="fact-title">Language</div>
+                <div class="fact-desc">Catalan + Spanish</div>
+                <div class="fact-sub">Say Bon dia — not Buenos días</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🌙</div>
+                <div class="fact-title">Dinner time</div>
+                <div class="fact-desc">9 PM minimum</div>
+                <div class="fact-sub">Siesta closes shops 2–5 PM</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Insider Advice</span>
+                <h2 class="section-title">Unwritten Rules for Barcelona</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>Guard your belongings — always</strong>
+                    <span>Barcelona is one of the pickpocket capitals of Europe. La Rambla and the Gothic Quarter are the hotspots. Bag in front, phone in pocket. This isn&#x27;t paranoia — it&#x27;s the golden rule.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Never eat on La Rambla</strong>
+                    <span>Frozen paellas and overpriced drinks. Two streets back into any neighbourhood and the food transforms completely. Always walk away from the main boulevard to eat.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Book Gaudí tickets weeks ahead</strong>
+                    <span>Sagrada Família and Park Güell sell out constantly. No ticket = turned away at the door. Buy online, pick your time slot. No exceptions.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Off the Beaten Path</span>
+                <h2 class="section-title">Hidden Gems in Barcelona</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Bunkers del Carmel</div>
+                <div class="card-desc">Ruins of a Spanish Civil War anti-aircraft battery on a hill above the city. 360-degree views of Barcelona and the Mediterranean — better than any paid viewpoint. Locals come here with Cava and music. Free entry, steep climb, completely worth it. Note: as of 2025, police close the site before sunset due to overcrowding issues — go in the morning or early afternoon for the best experience.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">El Jardí — Bar in a Gothic Courtyard</div>
+                <div class="card-desc">Tucked inside the courtyard of an old Gothic hospital in El Raval. Step through an unmarked door and find a bar under orange trees and medieval arches. Cheap, quiet, and completely hidden from the street. Barcelona&#x27;s most peaceful corner.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Recinte Modernista de Sant Pau</div>
+                <div class="card-desc">A few blocks from Sagrada Família — the world&#x27;s largest Art Nouveau complex, designed by Gaudí&#x27;s great rival Domènech i Montaner. Colourful mosaics, vast gardens, fairytale pavilions. Far fewer crowds than any Gaudí site.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Parc del Laberint d&#x27;Horta</div>
+                <div class="card-desc">An 18th-century neoclassical garden — Barcelona&#x27;s oldest conserved green space. Contains a real hedge maze made from cypress where you can genuinely get lost. Almost never crowded. Small entry fee.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Santa Caterina &amp; Sant Antoni Markets</div>
+                <div class="card-desc">La Boqueria is overrun and overpriced. Mercat de Santa Caterina has a magnificent wavy coloured roof and real local shoppers. Sant Antoni hosts a legendary Sunday second-hand book and stamp market. These are where Barcelona actually shops.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Quimet &amp; Quimet — Poble-sec</div>
+                <div class="card-desc">A bar the size of a wardrobe. Walls stacked floor to ceiling with tins and bottles. The montaditos here — mini open sandwiches with smoked fish, cured meats, pickled everything — are extraordinary. No reservation, no menu, no seats. Just point and hold your glass.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Food & Flavors</span>
+                <h2 class="section-title">What to Taste</h2>
+            </div>
+            <p class="intro-text">Eating in Barcelona is a social ritual. Tables are crowded, plates are shared, and every meal turns into a feast.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Pa amb Tomàquet — the Catalan foundation</div>
+                <div class="card-desc">Toasted bread rubbed with fresh garlic, ripe tomato, and top-quality olive oil. Comes with almost every meal and should. Order it everywhere, always. The simplest genius of Catalan cuisine.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Pinchos at Carrer de Blai</div>
+                <div class="card-desc">Poble-sec&#x27;s legendary pinchos street. Hop from bar to bar, order skewered bites and wine. A full evening of food and drink for very little money. This is exactly how Barcelonans eat at night.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Paella de Marisco — at lunch only</div>
+                <div class="card-desc">Barcelona&#x27;s seafood paella is legendary — but only eaten at lunch, never dinner. Eating paella for dinner marks you as a tourist immediately. Always avoid places with microwave signs. Authentic paella is cooked fresh in a copper pan.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Crema Catalana</div>
+                <div class="card-desc">The original crème brûlée — more aromatic, more Catalan, more proud of itself. Breaking the burnt sugar crust with your spoon is one of those small joys that stays with you long after you leave.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Cava — not Sangria</div>
+                <div class="card-desc">Sangria is a tourist drink. Catalans drink Cava — Spain&#x27;s sparkling wine produced just outside the city. Ordering Cava instead of Sangria will earn you a genuine nod of respect from any local.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Menu del Día — the local lunch secret</div>
+                <div class="card-desc">Monday to Friday, most restaurants serve three courses with a drink included at a very reasonable price. Starter, main, dessert, wine — the whole thing. This is how locals eat well at lunch without spending much. Almost no tourist knows about it.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Jamón Ibérico — Pata Negra</div>
+                <div class="card-desc">The world&#x27;s finest ham, from acorn-fed black-hoof pigs. It melts. Find it at Santa Caterina or Sant Antoni market — not just La Boqueria. Ask specifically for Pata Negra.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Watch Out</span>
+                <h2 class="section-title">Tourist Traps to Avoid</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Giant photo menus, waiters calling you in, frozen paella out of a microwave. The most expensive and worst meal in the city is probably eaten here.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> For paella, go to a seaside classic in Barceloneta at lunchtime; for the evening, head to Carrer de Blai for pinchos.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Those who figure they&#x27;ll &#x27;sort out a ticket at the door&#x27; either wait in line for hours or pay scalpers double. In summer, same-day tickets are nearly impossible.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Buy from the official site weeks ahead; pick the first morning slots or the sessions close to sunset.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">The mojitos sold hand-to-hand on Barceloneta are unhygienic and overpriced; some &#x27;free-looking&#x27; sunbeds start charging the moment you sit.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Get your drink from a chiringuito (beach bar); ask the sunbed price before you sit down.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Flamenco is an Andalusian art; most dinner-package shows around La Rambla are soulless productions staged for bus tourists.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> If you must have flamenco, choose an established tablao; otherwise give that evening to Catalan rumba or the live-music bars.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Explore Barcelona with MyWay</h3>
-            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without zigzagging across town.</p>
+            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without wasted steps.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      Download on App Store
@@ -604,7 +954,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. All rights reserved.</p>
+            <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
         </div>
     </footer>
 

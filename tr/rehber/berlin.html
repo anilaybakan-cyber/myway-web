@@ -6,8 +6,17 @@
     <title>Berlin Gezi Rehberi & Akıllı Rotalar | MyWay</title>
     <meta name="description" content="Berlin için adım adım yürüyüş rotaları, gizli mekanlar, turist tuzakları ve lezzet durakları. Berlin gezi rehberi MyWay'de.">
     
-    <link rel="alternate" hreflang="en" href="../../guides/berlin.html">
-    <link rel="alternate" hreflang="tr" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/berlin.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/berlin.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -527,7 +641,7 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="navbar-inner">
-            <a href="../" class="nav-brand">
+            <a href="/tr/" class="nav-brand">
                 <img src="../../images/app_icon.png" alt="MyWay" width="38" height="38">
                 <span>MyWay</span>
             </a>
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../rehber/">Rehberler</a></li>
-                <li><a href="../#features">Özellikler</a></li>
+                <li><a href="/tr/rehber/" class="active">Şehir Rehberleri</a></li>
+                <li><a href="/tr/#features">Özellikler</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../../guides/berlin.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇬🇧 English</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇹🇷 TR</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/berlin.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item ">🇬🇧 English</a>
+                        <a href="/tr/rehber/berlin.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item active">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="../#hero" class="nav-cta">İndir</a>
+
+                <a href="/tr/#download" class="nav-cta">Hemen İndir</a>
             </div>
         </div>
     </nav>
@@ -555,7 +678,7 @@
         <img src="../../images/cities/berlin.jpg" alt="Berlin" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
-            <div class="city-badge">🇩🇪 Almanya &bull; Rehberler</div>
+            <div class="city-badge">🇩🇪 Almanya &bull; Şehir Rehberleri</div>
             <h1 class="guide-title">Berlin</h1>
             <p class="guide-tagline">Ham, özgür, hiç bitmemiş — ve her çatlağıyla gurur duyuyor</p>
         </div>
@@ -568,29 +691,249 @@
                 <span class="section-label">Genel Bakış</span>
                 <h2 class="section-title">Berlin Atmosferi</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Berlin seni etkilemeye çalışmaz. Buna ihtiyacı yok. Yerle bir edildi, ikiye bölündü ve yeniden birleşti; buna rağmen Avrupa&#x27;nın en yaratıcı özgür başkenti olarak çıktı ortaya. Duvarlarda hâlâ kurşun delikleri var, binalar arasındaki boşluklar hâlâ tarihi anlatıyor. Ama tüm bu ağırlığın yanı başında dünyanın en iyi kulüp sahnesi, efsanevi sokak yemekleri ve her tür insanı kendine ait hissettiren radikal bir açıklık kültürü var.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 Kiez</div>
+                <span class="pron-badge">🗣️ /keets/</span>
+            </div>
+            <p class="word-def"><strong>Senin mahallenin; daha doğrusu etrafındaki birkaç blok, şehir içinde sana köy gibi hissettiren yer. Her Berlinlinin bir Kiez&#x27;i vardır. Kendininkini bulmak, turist olmaktan çıkıp gerçekten burada yaşamaya başlamanın ta kendisi.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Temel Bilgiler</span>
+                <h2 class="section-title">Pratik İpuçları & Lojistik</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Havalimanı</div>
+                <div class="fact-desc">BER (Brandenburg)</div>
+                <div class="fact-sub">FEX treni · ~30 dk · ABC Bölgesi</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🚇</div>
+                <div class="fact-title">Ulaşım</div>
+                <div class="fact-desc">U-Bahn + S-Bahn</div>
+                <div class="fact-sub">Tekil bilet ve günlük kart mevcut</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">💶</div>
+                <div class="fact-title">Ödeme</div>
+                <div class="fact-desc">Nakit tercih edilir</div>
+                <div class="fact-sub">Pek çok yer sadece nakit</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🏪</div>
+                <div class="fact-title">Gece hayatı</div>
+                <div class="fact-desc">Späti 7/24 açık</div>
+                <div class="fact-sub">Gece yarısı köşe dükkanın</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yerel Sırlar</span>
+                <h2 class="section-title">Berlin İçin Yazısız Kurallar</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>Biletini her zaman geçerli kıl</strong>
+                    <span>Berlin onur sistemine göre çalışıyor: bariyer yok, turnike yok. Ama sivil denetçiler rastgele kontrol yapıyor ve ceza oldukça yüksek; istisnasız. Peronlardaki sarı veya kırmızı makinelerde her yolculuktan önce biletini geçerli kıl. Hiçbir mazeret kabul edilmiyor.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Nakit burada hâlâ kral</strong>
+                    <span>Amsterdam veya Barcelona&#x27;nın aksine Berlin&#x27;deki pek çok restoran, bar ve pazar nakit ödeme alıyor. Her zaman euro taşı. &quot;Nur Barzahlung&quot; (sadece nakit) tabelasını sürekli göreceksin.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Havalimanı C Bölgesi&#x27;nde; doğru bileti al</strong>
+                    <span>BER Havalimanı şehir dışında C Bölgesi&#x27;nde yer alıyor. Standart bir AB bileti oraya ulaşmanı sağlamaz; havalimanından ABC bileti al. Zaten bir AB biletin varsa, C Bölgesi için uzatma bileti (Anschlussfahrausweis) al; tam ABC&#x27;den daha uygun.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Gizli Köşeler</span>
+                <h2 class="section-title">Berlin'deki Saklı Hazineler</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Tempelhofer Feld — Eski Havalimanı</div>
+                <div class="card-desc">Hitler&#x27;in anıtsal 1930&#x27;lar havalimanı 2008&#x27;de kapatılıp şehre devredildi. Şimdi dünyanın en büyük kentsel açık alanı: Berlinliler pistlerde bisiklet sürüyor, barbekü yapıyor, uçurtma uçuruyor ve bahçecilik yapıyor. Brutalist terminal binası hâlâ ayakta. Giriş ücretsiz. Dünyanın hiçbir yerinde benzeri yok.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Boros Collection</div>
+                <div class="card-desc">Berlin&#x27;in merkezinde İkinci Dünya Savaşı hava sığınağı, dünyanın en olağanüstü özel sanat koleksiyonlarından birine dönüştürülmüş. Turlar haftalar öncesinden online rezervasyon gerektiriyor. Ham beton savaş mimarisinin içinde çağdaş sanat; başka hiçbir şeye benzemiyor.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Room of Silence (Raum der Stille)</div>
+                <div class="card-desc">Brandenburg Kapısı&#x27;nın birkaç adım ötesindeki işaretsiz bir kapının arkasında; din veya inanç ayrımı gözetmeksizin herkese açık, sessiz düşünce için tasarlanmış küçük bir huzur odası. Neredeyse hiçbir turist varlığından haberdar değil. Ücretsiz, her gün açık. Dünyanın en çok fotoğraflanan meydanlarından birinde tam sessizlik bulmak olağanüstü.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Berliner Philharmonie Öğle Konseri</div>
+                <div class="card-desc">Eylül&#x27;den Haziran&#x27;a her Çarşamba Berlin Philharmonie saat 13:00&#x27;te ücretsiz 45 dakikalık öğle konseri düzenliyor. Bilet yok, kıyafet kuralı yok. Sadece 13:00&#x27;ten önce gel ve otur. Herhangi bir Avrupa şehrindeki en iyi ücretsiz kültürel deneyimlerden biri.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Arminiusmarkthalle — Moabit</div>
+                <div class="card-desc">Turistler Markthalle Neun&#x27;da sıraya girerken Moabit&#x27;teki yerli halk kendi güzel 19. yüzyıl pazar salonuna sahip; tamamen turist radarının dışında. Taze ürünler, yerel kasaplar, uluslararası yemek standları, kahve. Pazartesiden Cumartesiye açık. Berlin&#x27;in en otantik pazar deneyimi.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Lindwerder Island — Grunewald</div>
+                <div class="card-desc">Havel gölündeki küçük bir ada; yalnızca küçük bir özel feribotla ulaşılabiliyor. Kıyıda bir zil çalıyorsun ve kayıkçı geliyor. Ihlamur ağaçları, yüzme noktaları, açık olduğunda teraslı restoran. Çoğu Berlinli bile neredeyse hiç bilmiyor. Merkezden 30 dakika sürer ama bambaşka bir dünya gibi hissettiriyor.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yeme & İçme</span>
+                <h2 class="section-title">Mutlaka Tadılması Gereken Lezzetler</h2>
+            </div>
+            <p class="intro-text">Berlin&#x27;in yemek sahnesi Avrupa&#x27;nın en çeşitli ve en uygun fiyatlı sahnelerinden biri. Efsanevi sokak yemeklerinden dünya klasmanında restoranlara; çoğu zaman adım mesafesinde.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Currywurst — Berlin kurumu</div>
+                <div class="card-desc">Domuz sosisi, dilimlenmiş, köri ketçabıyla kaplanmış, köri tozu serpilmiş. Basit geliyor; Berlin gibi tadılıyor. Kreuzberg&#x27;deki Curry 36&#x27;da ye; Checkpoint Charlie&#x27;deki turist tuzağı standında değil.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Döner Kebap — Berlin&#x27;in gerçek imzası</div>
+                <div class="card-desc">Berlin, Türkiye dışındaki en büyük Türk nüfusuna ev sahipliği yapıyor. Buradaki döner gerçekten farklı: daha kalın ekmek, daha fazla et, daha iyi sos. Kreuzberg&#x27;deki Mustafa&#x27;s Gemüse Kebap ünlü kuyruk yapıyor. Yerel Imbiss mekanları da en az o kadar iyi.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Vollkornbrot — gerçek Alman ekmeği</div>
+                <div class="card-desc">Almanya&#x27;da 3.200&#x27;den fazla kayıtlı ekmek çeşidi var. Berlin&#x27;in fırınları bunu ciddiye alıyor. Kahvaltıda tereyağlı ve peynirli koyu çavdar ekmeği; Berlinlilerin gerçekten yediği şey bu. İlk gün Kiez&#x27;indeki iyi bir Bäckerei&#x27;yi bul.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Berliner Weiße — yerel bira</div>
+                <div class="card-desc">Frambuaz (rot) veya sarımsak otu (grün) şurubuyla servis edilen ekşi buğday birası. Çok ferahlatıcı, çok Berlin. Herhangi bir geleneksel Kneipe&#x27;de ısmarla; her zaman mit Schuss (şuruplu).</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Späti Kültürü — Berlin ritüeli</div>
+                <div class="card-desc">Spätkauf: gece geç saatlere veya sabaha kadar açık, soğuk bira, atıştırmalık ve gece 2&#x27;de ihtiyacın olan her şeyi satan dükkan. Soğuk bir Pfand bira al, kaldırımda dışarıda otur, yabancılarla sohbet et. Berlin&#x27;in en otantik sosyal kurumu. Her mahallenin bir Späti&#x27;si var.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Markthalle Neun — Perşembe Sokak Yemeği</div>
+                <div class="card-desc">Kreuzberg&#x27;de görkemli bir 19. yüzyıl pazar salonu. Her Perşembe akşamı yerel satıcıların salonu doldurduğu Sokak Yemeği Perşembesi. Çeşitli, uygun fiyatlı, yerli halkla dolu. Cumartesi sabahı organik pazar. Berlin&#x27;in en iyi yemek deneyimlerinden biri.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Dikkat Edilmesi Gerekenler</span>
+                <h2 class="section-title">Turist Tuzakları & Kaçınılması Gerekenler</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Kostümlü &#x27;askerler&#x27;, para karşılığı poz ve etrafını saran hediyelik dükkanları. Soğuk Savaş&#x27;ın en dramatik noktası bugün şehrin en yapay köşesi.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Duvarın gerçek hikayesi için Bernauer Straße&#x27;deki Berlin Duvarı Anıtı&#x27;na git: ücretsiz, sarsıcı ve sahici.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Unter den Linden ve Pariser Platz civarındaki restoranlar manzara satar, yemek değil. Fiyatlar yüksek, mutfak vasat.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Aynı parayla Kreuzberg veya Neukölln&#x27;de iki katı iyi yersin; Markthalle Neun perşembeleri başlı başına bir gezi sebebi.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Renkli beton parçalarının duvardan geldiğinin hiçbir garantisi yok; çoğu sonradan boyanmış moloz.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Duvarı parayla değil yürüyerek al: East Side Gallery&#x27;yi baştan sona gez, ücretsiz.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Berlin&#x27;de bazı mekanların önündeki iki saatlik kuyruk, yemeğin iki saat iyi olduğu anlamına gelmez; şehirde her mahallenin kendi efsanesi var.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Kuyruk 20 dakikadan uzunsa bir sonraki köşeye yürü; Berlin&#x27;de &#x27;ikinci en iyi&#x27; çoğu şehrin birincisinden iyidir.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Berlin'yi MyWay ile Keşfedin</h3>
-            <p>Zikzak çizmeden adım adım akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
+            <p>Adım adım optimize edilmiş akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      App Store'dan Hemen İndirin
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. Tüm hakları saklıdır.</p>
+            <p>&copy; 2026 MyWay Travel App. Tüm hakları saklıdır.</p>
         </div>
     </footer>
 

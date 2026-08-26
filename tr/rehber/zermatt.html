@@ -6,8 +6,17 @@
     <title>Zermatt Gezi Rehberi & Akıllı Rotalar | MyWay</title>
     <meta name="description" content="Zermatt için adım adım yürüyüş rotaları, gizli mekanlar, turist tuzakları ve lezzet durakları. Zermatt gezi rehberi MyWay'de.">
     
-    <link rel="alternate" hreflang="en" href="../../guides/zermatt.html">
-    <link rel="alternate" hreflang="tr" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/zermatt.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/zermatt.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -527,7 +641,7 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="navbar-inner">
-            <a href="../" class="nav-brand">
+            <a href="/tr/" class="nav-brand">
                 <img src="../../images/app_icon.png" alt="MyWay" width="38" height="38">
                 <span>MyWay</span>
             </a>
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../rehber/">Rehberler</a></li>
-                <li><a href="../#features">Özellikler</a></li>
+                <li><a href="/tr/rehber/" class="active">Şehir Rehberleri</a></li>
+                <li><a href="/tr/#features">Özellikler</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../../guides/zermatt.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇬🇧 English</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇹🇷 TR</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/zermatt.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item ">🇬🇧 English</a>
+                        <a href="/tr/rehber/zermatt.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item active">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="../#hero" class="nav-cta">İndir</a>
+
+                <a href="/tr/#download" class="nav-cta">Hemen İndir</a>
             </div>
         </div>
     </nav>
@@ -555,7 +678,7 @@
         <img src="../../images/cities/zermatt.jpg" alt="Zermatt" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
-            <div class="city-badge">🇨🇭 İsviçre &bull; Rehberler</div>
+            <div class="city-badge">🇨🇭 İsviçre &bull; Şehir Rehberleri</div>
             <h1 class="guide-title">Zermatt</h1>
             <p class="guide-tagline">Arabasız köy, buzul trenleri ve Matterhorn'un gölgesi</p>
         </div>
@@ -568,29 +691,249 @@
                 <span class="section-label">Genel Bakış</span>
                 <h2 class="section-title">Zermatt Atmosferi</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Zermatt tek bir dağın etrafında kurulmuş bir ibadete benzer: Matterhorn&#x27;un eğri piramidi her sokağın ucunda, her balkonun karşısında, her fotoğrafın köşesindedir. Köye benzinli araba giremez — elektrikli mini taksiler vızıldar, kayakçılar tren garından pistlere yürür, yüzyıllık kararmış ahşap ambarlar butik otellerin arasında durur. Kışın dünyanın en yüksek kayak bölgelerinden biri, yazın patika cennetidir. Zirve bulutunu açtığı an köyde herkesin başı aynı yöne döner — sen de döneceksin.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 Horu</div>
+                <span class="pron-badge">🗣️ /horu/</span>
+            </div>
+            <p class="word-def"><strong>Matterhorn&#x27;un yerel Valais lehçesindeki adı: köylü dağına &#x27;ds Horu&#x27; der — &#x27;Boynuz&#x27;. Bir Zermattlı&#x27;nın &#x27;Horu açık mı?&#x27; sorusu, günün planını belirleyen milli hava durumu bültenidir.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Temel Bilgiler</span>
+                <h2 class="section-title">Pratik İpuçları & Lojistik</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">🚆</div>
+                <div class="fact-title">Ulaşım</div>
+                <div class="fact-desc">Täsch&#x27;ten mekik tren</div>
+                <div class="fact-sub">Araçsız köy · Visp&#x27;ten ~1 saat</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🚡</div>
+                <div class="fact-title">Köy içi</div>
+                <div class="fact-desc">Yayan + e-taksi</div>
+                <div class="fact-sub">Elektrikli minibüsler ve yaya sokaklar</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🗣️</div>
+                <div class="fact-title">Dil</div>
+                <div class="fact-desc">Almanca (Valais lehçesi)</div>
+                <div class="fact-sub">İngilizce her yerde sorunsuz</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🏔️</div>
+                <div class="fact-title">İmza</div>
+                <div class="fact-desc">Matterhorn (4478 m)</div>
+                <div class="fact-sub">Gornergrat treni en iyi loca</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yerel Sırlar</span>
+                <h2 class="section-title">Zermatt İçin Yazısız Kurallar</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>Zirve saatini sabaha kur</strong>
+                    <span>Matterhorn öğleden sonra sık sık bulut şapkasını takar: net görüş şansı sabah saatlerinde en yüksektir. Gornergrat ve fotoğraf planlarını erken saate koy — öğleden sonrayı köye ve vadiye bırak.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Yüksekliğe saygı, katmana güven</strong>
+                    <span>Köy 1600, zirve istasyonları 3000-3900 metrededir: yükseklik hissedilir, hava dakikada döner. Yavaş tırman, su iç, güneş kremini ihmal etme — dağ güneşi karda iki kat yakar.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Arabanı Täsch&#x27;te bırak</strong>
+                    <span>Zermatt&#x27;a özel araç giremez: sürücüler aracı Täsch terminaline bırakır, mekik trenle 12 dakikada köye iner. Bagaj arabaları trene kadar gelir — sistem kusursuz işler, direnme.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Gizli Köşeler</span>
+                <h2 class="section-title">Zermatt'deki Saklı Hazineler</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Riffelsee yansıması</div>
+                <div class="card-desc">Rotenboden durağından beş dakikada: rüzgarsız sabahta Matterhorn gölde ikizini bulur. Fotoğrafçıların şafak nöbeti buradadır — sen de ilk trenle katıl, sonra Riffelberg&#x27;e yürüyerek in.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Hinterdorf sokağı</div>
+                <div class="card-desc">Ana caddenin iki adım arkasında kararmış ahşap ambarlar ve taş diskli kilerler: köyün turizm öncesi hali burada donmuş. Akşam feneri yanınca sokak, zaman makinesine döner.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Dağcı Mezarlığı</div>
+                <div class="card-desc">Kilise bahçesindeki mezarlıkta Matterhorn&#x27;a ve çevre zirvelere hayatını veren dağcılar yatar: 1865 ilk tırmanış faciasının izleri de burada. Köyün en sessiz ve en derin köşesi.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Gorner Boğazı (Gornerschlucht)</div>
+                <div class="card-desc">Köyün ucundaki buzul suyu kanyonu: ahşap köprüler turkuaz suyun üstünde asılıdır. Yarım saatlik tur, öğleden sonra bulutlu günün en iyi B planıdır.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Findeln yaylası</div>
+                <div class="card-desc">Sunnegga&#x27;dan inen patikadaki eski yayla köyü: kararmış şaleler, altın melezler ve Horu manzaralı dağ restoranları. Kayakçılar kışın, yürüyüşçüler yazın aynı teraslarda buluşur.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">5-Seenweg&#x27;in az bilinen gölleri</div>
+                <div class="card-desc">Beş göl rotasının yıldızı Stellisee&#x27;dir ama Grindjisee&#x27;nin melez çerçevesi ve Leisee&#x27;nin yüzme iskelesi çoğu ziyaretçiden kaçar: rotayı tamamla, her göl başka bir Horu portresi verir.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yeme & İçme</span>
+                <h2 class="section-title">Mutlaka Tadılması Gereken Lezzetler</h2>
+            </div>
+            <p class="intro-text">Valais mutfağı dağın mutfağıdır: erimiş peynir, kurutulmuş et, çavdar ekmeği ve Avrupa&#x27;nın en yüksek bağlarının şarabı.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Raclette du Valais — memleketinde</div>
+                <div class="card-desc">Raclette&#x27;in anavatanındasın: tekerin yüzü ateşte eritilir, patatese kazınır, turşuyla dengelenir. Köy restoranlarında &#x27;AOP Valais&#x27; ibaresi gerçeğin mührüdür.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Fondü — zirve sonrası kazan</div>
+                <div class="card-desc">Soğuk pist gününün resmi kapanışı: kazan ortada, ekmek şişte, beyaz şarap yanında. Ekmeği kazanda düşürenin cezası masada belirlenir — gelenek ciddidir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Walliserteller — kurutulmuş et tabağı</div>
+                <div class="card-desc">Dağ havasında kurutulmuş sığır eti, füme jambon, dağ peyniri ve çavdar ekmeği: Valais&#x27;nin şarküteri gururu tek tabakta. Fendant şarabıyla açılış klasiğidir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Cholera böreği</div>
+                <div class="card-desc">Patates-pırasa-elma-peynir dörtlüsünün hamur işi hali: dağ kulübelerinde ve köy fırınlarında bulunur. Tuhaf adına takılma — tatlı-tuzlu dengesi şaşırtıcı derecede iyidir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Yüksek bağların şarabı — Heida</div>
+                <div class="card-desc">Avrupa&#x27;nın en yüksek bağlarından (Visperterminen, 1150 m) gelen Heida beyazı ve Valais&#x27;nin Fendant&#x27;ı: dağ sofrasının yerli kadehleri. &#x27;Dağ şarabı&#x27; burada pazarlama değil, coğrafyadır.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Dağ kulübesi molası</div>
+                <div class="card-desc">Patika üstü kulübelerde (Findeln, Zum See yönü) rösti, ev turtası ve manzaralı sıcak çikolata: Zermatt&#x27;ta öğle yemeğinin en iyi adresi çoğu zaman 2100 metrededir. Güneşli terasta rezervasyon sezonda şarttır.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Dikkat Edilmesi Gerekenler</span>
+                <h2 class="section-title">Turist Tuzakları & Kaçınılması Gerekenler</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Teleferik biletleri ciddi paradır; bulutun içindeki zirvede buzul sarayı dışında görecek şey kalmaz.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Sabah webcam&#x27;lere bak (köyün her ekranında akar): Horu kapalıysa günü boğaz, müze, hamam ve fondüyle takas et. Bilet kaçmaz — bulut geçer.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Sezon zirvesinde kayak ekipmanını son dakika arayan, kalan bedenlere kalan fiyatı öder.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Ekipmanı online önceden rezerve et, çok günlü kiralamada indirim iste. Yürüyüşçüysen baton ve bot kalitesinden kısma — patikalar taşlıdır, dizler tektir.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Bahnhofstrasse&#x27;nin vitrin restoranları turist temposuyla çalışır: fiyat yüksek, mutfak ortalama olabilir.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Bir sokak içeri gir ya da öğleni dağ kulübesinde ye: aynı bütçeyle hem manzara hem mutfak kazanırsın. Akşam için yerlinin önerdiği raclette adresini sor.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Deniz seviyesinden gelip ilk gün 3800 metreye çıkan, baş ağrısı ve nefes darlığıyla tanışır; buzul bölgesinde patika dışına çıkan ciddi risk alır.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> İlk günü köy ve orta kotlarda geçir, yüksekliğe kademeli çık, bol su iç. Buzul bölgesinde işaretli rotadan ayrılma — o çizgiler süs değil, sigortadır.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Zermatt'yi MyWay ile Keşfedin</h3>
-            <p>Zikzak çizmeden adım adım akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
+            <p>Adım adım optimize edilmiş akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      App Store'dan Hemen İndirin
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. Tüm hakları saklıdır.</p>
+            <p>&copy; 2026 MyWay Travel App. Tüm hakları saklıdır.</p>
         </div>
     </footer>
 

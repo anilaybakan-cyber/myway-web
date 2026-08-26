@@ -6,8 +6,17 @@
     <title>Edinburgh Gezi Rehberi & Akıllı Rotalar | MyWay</title>
     <meta name="description" content="Edinburgh için adım adım yürüyüş rotaları, gizli mekanlar, turist tuzakları ve lezzet durakları. Edinburgh gezi rehberi MyWay'de.">
     
-    <link rel="alternate" hreflang="en" href="../../guides/edinburgh.html">
-    <link rel="alternate" hreflang="tr" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/edinburgh.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/edinburgh.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -527,7 +641,7 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="navbar-inner">
-            <a href="../" class="nav-brand">
+            <a href="/tr/" class="nav-brand">
                 <img src="../../images/app_icon.png" alt="MyWay" width="38" height="38">
                 <span>MyWay</span>
             </a>
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../rehber/">Rehberler</a></li>
-                <li><a href="../#features">Özellikler</a></li>
+                <li><a href="/tr/rehber/" class="active">Şehir Rehberleri</a></li>
+                <li><a href="/tr/#features">Özellikler</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../../guides/edinburgh.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇬🇧 English</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇹🇷 TR</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/edinburgh.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item ">🇬🇧 English</a>
+                        <a href="/tr/rehber/edinburgh.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item active">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="../#hero" class="nav-cta">İndir</a>
+
+                <a href="/tr/#download" class="nav-cta">Hemen İndir</a>
             </div>
         </div>
     </nav>
@@ -555,7 +678,7 @@
         <img src="../../images/cities/edinburgh.jpg" alt="Edinburgh" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
-            <div class="city-badge">🏴󠁧󠁢󠁳󠁣󠁴󠁿 İskoçya &bull; Rehberler</div>
+            <div class="city-badge">🏴󠁧󠁢󠁳󠁣󠁴󠁿 İskoçya &bull; Şehir Rehberleri</div>
             <h1 class="guide-title">Edinburgh</h1>
             <p class="guide-tagline">Kalenin gölgesinde taş sokaklar, sisin içinde hikayeler</p>
         </div>
@@ -568,29 +691,249 @@
                 <span class="section-label">Genel Bakış</span>
                 <h2 class="section-title">Edinburgh Atmosferi</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Edinburgh iki şehirdir ve ikisi de tepeden birbirine bakar: volkanik kayanın üstündeki kaleden aşağı dökülen ortaçağ Old Town&#x27;ı ile düzenli meydanlı, zarif cepheli Georgian New Town&#x27;ı. Kapanmış volkan Arthur&#x27;s Seat şehrin ortasında yükselir, deniz sisi &#x27;haar&#x27; bazı sabahlar sokakları yutar, gaydacının sesi Royal Mile&#x27;da yankılanır. Bu şehir hikaye anlatıcılarının başkentidir — Stevenson, Conan Doyle ve Harry Potter&#x27;ın doğduğu kafeler buradadır. Ağustosta ise dünyanın en büyük sanat festivali şehri dev bir sahneye çevirir.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 Dreich</div>
+                <span class="pron-badge">🗣️ /driih/</span>
+            </div>
+            <p class="word-def"><strong>İskoçça&#x27;nın en sevilen kelimesi: gri, yağmurlu, sisli, iç karartıcı hava — hepsi tek hecede. &#x27;It&#x27;s a dreich day&#x27; dendiğinde gökyüzü kurşun rengidir ama İskoç buna üzülmez: dreich gün pub günüdür, viski günüdür, kitap günüdür. Bu kelimeyi öğrenen, İskoç havasıyla barışır.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Temel Bilgiler</span>
+                <h2 class="section-title">Pratik İpuçları & Lojistik</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Havalimanı</div>
+                <div class="fact-desc">Edinburgh (EDI)</div>
+                <div class="fact-sub">Tramvayla merkeze ~35 dk</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🏰</div>
+                <div class="fact-title">İmza</div>
+                <div class="fact-desc">Edinburgh Kalesi</div>
+                <div class="fact-sub">Volkanik kayanın üstünde</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">💷</div>
+                <div class="fact-title">Para birimi</div>
+                <div class="fact-desc">Sterlin (GBP)</div>
+                <div class="fact-sub">Kart her yerde, nakit nadir</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🗣️</div>
+                <div class="fact-title">Dil</div>
+                <div class="fact-desc">İngilizce (+ Scots)</div>
+                <div class="fact-sub">Aksan başta zorlar, sonra sevilir</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yerel Sırlar</span>
+                <h2 class="section-title">Edinburgh İçin Yazısız Kurallar</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>Dört mevsime aynı gün hazır ol</strong>
+                    <span>Edinburgh&#x27;da hava saatlik değişir: sabah güneş, öğlen yağmur, ikindi rüzgar. Kat kat giyin, yanına ince yağmurluk al — şemsiye rüzgara dayanmaz. Yağmur bastırınca pub ya da kitapçı en yakın sığınaktır; İskoçlar buna plan bozulması değil, plan der.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Kale ve popüler yerlere biletini önceden al</strong>
+                    <span>Edinburgh Kalesi saatli biletle çalışır ve yaz günleri kapıda &#x27;sold out&#x27; duvarı vardır: online ve erken al. Arthur&#x27;s Seat, Calton Hill ve sokakların kendisi ise ücretsizdir — paralı simgeleri planla, bedava manzaraları doğaçla.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Ağustosa bilerek gel ya da bilerek kaçın</strong>
+                    <span>Ağustosta Fringe Festivali şehri üçe katlar: her mahzen sahne, her sokak gösteri alanıdır — konaklama aylar önce dolar, fiyatlar uçar. Festival ruhu istiyorsan erken planla; sakin Edinburgh istiyorsan ağustosu takvimden çiz.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Gizli Köşeler</span>
+                <h2 class="section-title">Edinburgh'deki Saklı Hazineler</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Dean Village</div>
+                <div class="card-desc">Merkezden on dakikada ortaçağ değirmen köyü: taş evler, Water of Leith&#x27;in sesi ve sarmaşıklı cepheler. Sabah erken git — köprüden bakınca şehirde olduğuna inanmak zorlaşır.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Circus Lane</div>
+                <div class="card-desc">Stockbridge&#x27;in arka tarafında taş kaplı, çiçekli eski ahır sokağı: kuleli kilise fonu ve begonya saksılarıyla şehrin en zarif karesi. Beş dakikalık sokak, yarım saatlik fotoğraf molası demektir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Duddingston ve Sheep Heid Inn</div>
+                <div class="card-desc">Arthur&#x27;s Seat&#x27;in arkasına saklanmış köy: gölü, kilisesi ve 1360&#x27;tan beri hizmet veren pub&#x27;ıyla. Zirveden inişi bu yöne yap — skittle salonu olan pub&#x27;da dram, yürüyüşün hak edilmiş ödülüdür.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Water of Leith yürüyüş yolu</div>
+                <div class="card-desc">Şehri gizlice kat eden dere patikası: Dean Village&#x27;dan Stockbridge&#x27;e, oradan botanik bahçesine su sesiyle yürürsün. Şehir gürültüsü bir üst katta kalır — Edinburgh&#x27;un saklı yeşil koridoru.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Calton Hill</div>
+                <div class="card-desc">On dakikalık tırmanışla anıtlar tepesi: yarım kalmış &#x27;Parthenon&#x27;u, gözlemevi ve şehrin en meşhur manzarası. Gün batımında herkes buradadır ama tepe geniştir — kendi taşını bul, ışığın inişini izle.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Old Town&#x27;ın bağımsız kitapçıları</div>
+                <div class="card-desc">Grassmarket ve Victoria Street çevresinin ikinci el kitapçıları: raflar arasında harita, eski baskı ve İskoç şiiri. Yağmur bastırınca en iyi sığınak — &#x27;dreich günü kitapçı günüdür&#x27; kuralı burada doğrulanır.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yeme & İçme</span>
+                <h2 class="section-title">Mutlaka Tadılması Gereken Lezzetler</h2>
+            </div>
+            <p class="intro-text">İskoç mutfağı mütevazı görünür, sağlam çıkar: haggis&#x27;in baharatı, somonun tazesi, viskinin dumanı — hepsi pub sıcaklığında.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Haggis, neeps and tatties</div>
+                <div class="card-desc">İskoçya&#x27;nın milli yemeği: baharatlı haggis, şalgam ezmesi ve patates püresiyle. Kulağa cesaret işi gelir, tadı baharatlı ve derin çıkar — üstüne viski soslu &#x27;whisky sauce&#x27; istemek meşru bir moderniktir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Viski dram ritüeli</div>
+                <div class="card-desc">Islay&#x27;in dumanlısından Speyside&#x27;ın ballısına: iyi viski barı sana sorarak yol çizer. Tadım tahtası (flight) üç dram&#x27;la başlar — &#x27;peaty mi, sweet mi?&#x27; sorusuna cevabını hazırla.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Fish and chips, chippy sauce&#x27;la</div>
+                <div class="card-desc">Çıtır hamurlu morina ve iri patates: Edinburgh&#x27;da fark, kahverengi &#x27;chippy sauce&#x27;tadır — sirkeyle esmer sosun yerli karışımı. &#x27;Salt and sauce?&#x27; sorusuna &#x27;aye&#x27; de, şehrin usulüne uy.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Cullen skink</div>
+                <div class="card-desc">Tütsülenmiş mezgitli, patatesli, kremalı çorba: kuzeydoğu kıyısının Edinburgh sofralarına hediyesi. Dreich bir öğlenin en dürüst cevabı — yanında taze ekmek, tereyağı bol.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Full Scottish kahvaltı</div>
+                <div class="card-desc">Sosis, yumurta, fasulye ve yıldız oyuncular: kare sosis (lorne), tattie scone ve haggis dilimi. Öğlene kadar tok tutar — kahvaltı mekanı kuyruğu Stockbridge&#x27;de gelenektir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Cranachan ve shortbread</div>
+                <div class="card-desc">Krema, bal, viski ve kavrulmuş yulafla ahududu tatlısı cranachan; yanında tereyağlı shortbread: İskoç tatlısının iki klasiği. Kapanışı tatlı yerine peynir tabağı + dram ile yapmak da yerli usuldür.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Dikkat Edilmesi Gerekenler</span>
+                <h2 class="section-title">Turist Tuzakları & Kaçınılması Gerekenler</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Royal Mile&#x27;ın bazı vitrinlerinde &#x27;Scottish cashmere&#x27; etiketli ithal ürünler el dokuması fiyatına satılır; gayda çalan hoparlör, tezgahın menşeini değiştirmez.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Etiketi oku: &#x27;Made in Scotland&#x27; ara, dokuma fabrikası markalarını seç. Gerçek tartan istiyorsan klan desenini soran, metrajla çalışan köklü dükkana git — hikayesini anlatan esnaf, malını da bilir.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Edinburgh Kalesi saatli kontenjanla çalışır: yaz günü kapıya gelen, ya uzun kuyruğa ya &#x27;sold out&#x27; tabelasına toslar.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Bileti resmi siteden günler önce saatli al; sabah ilk seans hem sakin hem manzara için en iyisidir. Top atışını (One O&#x27;Clock Gun) duymak istersen 13.00&#x27;te surlarda ol.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Festival ayında konaklama fiyatları üç-dört katına çıkar ve yine de dolar; son dakika arayan, şehir dışına ya da bütçe üstüne savrulur.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Festival planını aylar önce kilitle ya da ziyaretini eylüle kaydır: aynı şehir, yarı fiyat ve boş nefes. Eylül başı &#x27;festival sonrası sakinliği&#x27; Edinburgh&#x27;un gizli altın haftalarıdır.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Mezarlık ve yeraltı turlarının bazıları kostümlü korkutmacayla bilet doldurur; tarih anlatısı zayıf, deneyim panayır seviyesinde kalır.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Yorumları okuyup hikaye anlatımıyla bilinen küçük grup turlarını seç; alternatif olarak Real Mary King&#x27;s Close gibi belgeli yeraltı turları tarihiyle korkutur — ucuz jump-scare yerine sahici ürperti.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Edinburgh'yi MyWay ile Keşfedin</h3>
-            <p>Zikzak çizmeden adım adım akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
+            <p>Adım adım optimize edilmiş akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      App Store'dan Hemen İndirin
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. Tüm hakları saklıdır.</p>
+            <p>&copy; 2026 MyWay Travel App. Tüm hakları saklıdır.</p>
         </div>
     </footer>
 

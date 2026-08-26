@@ -6,8 +6,17 @@
     <title>Naples City Guide & Smart Walking Routes | MyWay</title>
     <meta name="description" content="Explore Naples with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
     
-    <link rel="alternate" hreflang="tr" href="../tr/rehber/napoli.html">
-    <link rel="alternate" hreflang="en" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/napoli.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/napoli.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../guides/">City Guides</a></li>
+                <li><a href="/guides/" class="active">City Guides</a></li>
                 <li><a href="/#features">Features</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../tr/rehber/napoli.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇹🇷 Türkçe</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇬🇧 EN</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/napoli.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item active">🇬🇧 English</a>
+                        <a href="/tr/rehber/napoli.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item ">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="/#hero" class="nav-cta">Download</a>
+
+                <a href="/#download" class="nav-cta">Download</a>
             </div>
         </div>
     </nav>
@@ -568,29 +691,249 @@
                 <span class="section-label">Overview</span>
                 <h2 class="section-title">The Vibe of Naples</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Naples frightens you first, then won&#x27;t let you go. Traffic with no rules, narrow streets, noisy crowds. But at the same time Italy&#x27;s purest cuisine, the world&#x27;s best pizza, Europe&#x27;s most densely layered archaeological memory and the incomparable view of the Bay are all here. Vesuvius could wake at any moment — and Naples knows this. That&#x27;s why the city holds tight to today: loudly, fast and with its whole heart. Stand in the middle of Spaccanapoli and the city pulls you in every direction. Let it.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 O&#x27; cafè</div>
+                <span class="pron-badge">🗣️ /o KA-feh/</span>
+            </div>
+            <p class="word-def"><strong>Naples&#x27; espresso. Italy&#x27;s strongest, smallest, cheapest coffee. At the counter, in one sip, €1-1.50. The caffè sospeso tradition comes from here too: when someone has a coffee they leave one paid for someone who can&#x27;t afford it — it stays recorded at the till. You can ask &#x27;is there a sospeso?&#x27; Naples invented coffee as a form of sharing.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Essentials</span>
+                <h2 class="section-title">Quick Logistics</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Airport</div>
+                <div class="fact-desc">NAP — Naples Capodichino</div>
+                <div class="fact-sub">Alibus to Piazza Garibaldi or Piazza Municipio · €5</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🚇</div>
+                <div class="fact-title">Metro</div>
+                <div class="fact-desc">Line 1 (Art Metro) + Line 2</div>
+                <div class="fact-sub">Single fare €1.50 · 90 minutes valid · funicular included</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🌡️</div>
+                <div class="fact-title">Weather</div>
+                <div class="fact-desc">Mediterranean — summer hot and humid</div>
+                <div class="fact-sub">Apr–May and Sep–Oct ideal · Jun–Aug very hot · Dec–Feb mild</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🍕</div>
+                <div class="fact-title">Pizza</div>
+                <div class="fact-desc">Margherita or Marinara</div>
+                <div class="fact-sub">L&#x27;Antica Pizzeria da Michele · €5–8 · bring cash</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Insider Advice</span>
+                <h2 class="section-title">Unwritten Rules for Naples</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>Crowds and noise are normal — don&#x27;t try to protect yourself from them</strong>
+                    <span>Naples looks disorganised because it is. Cars run red lights, scooters mount pavements however narrow they are, the concept of a queue exists in shops but isn&#x27;t observed. No need to panic — the city functions within this chaos. Just be a little more careful, check your pockets and get into the city&#x27;s rhythm.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Pizza is nowhere else this good — and they know it</strong>
+                    <span>Neapolitan pizza is on UNESCO&#x27;s Intangible Cultural Heritage list. Why it isn&#x27;t the same elsewhere: Campania&#x27;s San Marzano tomatoes, mozzarella di bufala, a wood-fired oven at 485°C and dough rested for at least 8 hours. Margherita or Marinara — that&#x27;s all. No extra sauces, no toppings, no fillings. The skill is in the simplicity; adding extras is the mistake.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Half a day isn&#x27;t enough for Pompeii — plan a full day</strong>
+                    <span>Pompeii is 30-40 minutes from Naples and most people grasp its real scale only when they&#x27;re there: 66 hectares, 11,000 inhabitants, forum, theatre, baths, villas. Seeing it in half a day is possible but stays superficial. It opens at 9am and is most crowded at midday — getting in at opening is the best approach. Herculaneum is much smaller but far better preserved; if you&#x27;re seeing both, go to Herculaneum first.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Off the Beaten Path</span>
+                <h2 class="section-title">Hidden Gems in Naples</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Toledo Metro Station</div>
+                <div class="card-desc">Toledo station on Line 1 won the award for Europe&#x27;s most beautiful metro station in 2012. Designed by Oscar Tusquets: blue-purple mosaic surfaces that give a cave-like feeling as you descend deeper, themes of sea and light. No extra charge for entry — included in a standard metro ticket. Add Municipio, Università and Garibaldi stations: each is the work of a different artist. This metro line alone is worth making the journey for.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Galleria Borbonica</div>
+                <div class="card-desc">On Via Morelli, near Chiaia. Built in the 19th century as an escape tunnel for King Ferdinand II. Later became a hospital, police depot and World War II air raid shelter. Inside, old cars and motorcycles from the 1940s-50s are still there. Different from Napoli Sotterranea: here it&#x27;s not ancient Rome but recent history. Several different tour options available. Advance reservation essential.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Castel Sant&#x27;Elmo</div>
+                <div class="card-desc">A star-shaped castle on the Vomero hilltop, reachable by funicular. Dating from the 14th century. From its terraces: Vesuvius, the Bay, Capri and the whole city visible 360 degrees. The adjacent Certosa di San Martino (former Carthusian monastery) converted to a museum — the city&#x27;s richest museum in terms of Neapolitan art and history. Both reachable by the same funicular.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Quartieri Spagnoli murals</div>
+                <div class="card-desc">Diego Maradona&#x27;s enormous portrait on Via Emanuele De Deo has been here since 1990 — painted, removed, painted again. Naples, which Maradona led to championships in 1987 and 1990, regards him like a saint; there are statues and shrines to him on the street. Walking through the neighbourhood you see not just Maradona but dozens of other murals: paintings telling of Naples&#x27; identity, history and politics. Free, walkable.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Teatro Greco-Romano di Neapolis</div>
+                <div class="card-desc">In Spaccanapoli, on Via Anticaglia. A 2nd-century Roman theatre now buried under buildings. The old arches of the theatre are visible through the narrow streets between them. Literally the traces of a history built over by the city. Some sections can be visited on guided tours; consider combining with Napoli Sotterranea.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Museo di Capodimonte</div>
+                <div class="card-desc">In the north of the city, inside Capodimonte Park. Former Bourbon palace, now museum. Caravaggio, Titian, Raphael, Botticelli — and Andy Warhol&#x27;s famous Vesuvius series. A fraction of the Naples National Museum&#x27;s visitor numbers. The extensive park is also free to walk through. 30-40 minutes by bus from the city centre but a place where you could spend hours.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Food & Flavors</span>
+                <h2 class="section-title">What to Taste</h2>
+            </div>
+            <p class="intro-text">The Neapolitan pizza that entered UNESCO&#x27;s list in 2017 — when King Umberto I and Queen Margherita visited Naples in 1889, pizzaiolo Raffaele Esposito prepared a pizza carrying the colours of the Italian flag: red tomato, white mozzarella, green basil. The pizza named after the Queen is known everywhere in the world today, but its real taste is still only here. Naples doesn&#x27;t stop there: sfogliatella, cuoppo, pizza fritta — this city eats on the street, at the counter, standing up.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Neapolitan pizza — the real thing</div>
+                <div class="card-desc">Margherita (San Marzano tomatoes, mozzarella di bufala, basil) or Marinara (tomatoes, garlic, oregano — no cheese). No other options, no other options needed. L&#x27;Antica Pizzeria da Michele at Via Cesare Sersale 1 — since 1870, only these two varieties, cash payment, long queue. Sorbillo on Via dei Tribunali — shorter queue, same quality. Order another before you&#x27;re halfway through the first.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Pizza fritta</div>
+                <div class="card-desc">During World War II Naples was bombed, the wood-fired ovens were destroyed but frying oil was still available — so pizza began to be cooked in hot oil rather than an oven. Pizza fritta was born from these difficulties. The dough is filled with ricotta, cicoli (fried pork skin) and provola cheese and puffs up in hot oil. Sophia Loren fried this pizza in a famous film scene. €3-5, a full meal on its own. The pizzeria called 1947 Pizza Fritta is at Via Pietro Colletta 29-31.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Sfogliatella</div>
+                <div class="card-desc">A shell-shaped ricotta pastry — layered and crispy outside, filled with cinnamon ricotta and candied fruit inside. Two versions: riccia (crispy layered) and frolla (covered in short pastry on the outside, softer). The fresh version comes out of the oven in the early morning hours. La Sfogliatella Mary is inside Galleria Umberto I. An espresso alongside — this is the authentic Neapolitan morning.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Cuoppo</div>
+                <div class="card-desc">Mixed fried food in a paper cone: the seafood version (cuoppo di mare) has prawns, squid, mussels; the land version (cuoppo di terra) has courgette flowers, aubergine, potato chips. Around Pignasecca Market or Piazza Monteoliveto. €4-6. Eat while walking — no seating.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Ragù napoletano</div>
+                <div class="card-desc">Pork and tomato sauce cooked for hours — sometimes 5-6 hours — on the lowest heat. Monday and Thursday are the traditional days; your chance of finding it at trattorias is highest on those days. Served with spaghetti, rigatoni or ziti. Crusco bread alongside, the meal is complete. Trattoria da Nennella in Quartieri Spagnoli.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Espresso — and caffè sospeso</div>
+                <div class="card-desc">Neapolitan espresso: strong, small and €1-1.50. Drink at the counter, standing, fast — this is Naples coffee culture. The caffè sospeso (suspended coffee) tradition: an extra coffee paid into the till, for someone without means later. To take part, say &#x27;sospeso&#x27; and pay for two coffees, leaving one behind. One of Naples&#x27; most humane rituals.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Watch Out</span>
+                <h2 class="section-title">Tourist Traps to Avoid</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Da Michele is legend, but a two-hour tourist queue doesn&#x27;t make the pizza better; every Naples neighbourhood has its own master.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> If the queue overflows, walk two streets: Sorbillo, Di Matteo, Starita or a nameless local oven — all in the same league.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">The &#x27;official guides&#x27; who approach at the station and the ruins&#x27; gate sell mediocre tours at inflated prices; some tickets turn out fake.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Buy Pompeii tickets from the official site; if you want a guide, hire a licensed one inside — never deal on the Circumvesuviana.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">The &#x27;meter&#x27;s broken&#x27; classic in Naples taxis is the opening move of the tourist tariff.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Ask for the meter before boarding or point to the fixed-fare route list; failing that, call an app — and the metro is the city&#x27;s finest art gallery anyway.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Hand-sold &#x27;sealed&#x27; phones and watches are the city&#x27;s oldest game: a stone in the box, a hole in your pocket.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Never buy electronics on the street; for a gift take a corno (the red horn) — cheap, local, and the city swears it brings luck.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Explore Naples with MyWay</h3>
-            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without zigzagging across town.</p>
+            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without wasted steps.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      Download on App Store
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. All rights reserved.</p>
+            <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
         </div>
     </footer>
 

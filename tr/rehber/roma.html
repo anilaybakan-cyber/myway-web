@@ -6,8 +6,17 @@
     <title>Roma Gezi Rehberi & Akıllı Rotalar | MyWay</title>
     <meta name="description" content="Roma için adım adım yürüyüş rotaları, gizli mekanlar, turist tuzakları ve lezzet durakları. Roma gezi rehberi MyWay'de.">
     
-    <link rel="alternate" hreflang="en" href="../../guides/roma.html">
-    <link rel="alternate" hreflang="tr" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/roma.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/roma.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -527,7 +641,7 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="navbar-inner">
-            <a href="../" class="nav-brand">
+            <a href="/tr/" class="nav-brand">
                 <img src="../../images/app_icon.png" alt="MyWay" width="38" height="38">
                 <span>MyWay</span>
             </a>
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../rehber/">Rehberler</a></li>
-                <li><a href="../#features">Özellikler</a></li>
+                <li><a href="/tr/rehber/" class="active">Şehir Rehberleri</a></li>
+                <li><a href="/tr/#features">Özellikler</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../../guides/roma.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇬🇧 English</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇹🇷 TR</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/roma.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item ">🇬🇧 English</a>
+                        <a href="/tr/rehber/roma.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item active">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="../#hero" class="nav-cta">İndir</a>
+
+                <a href="/tr/#download" class="nav-cta">Hemen İndir</a>
             </div>
         </div>
     </nav>
@@ -555,7 +678,7 @@
         <img src="../../images/cities/roma.jpg" alt="Roma" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
-            <div class="city-badge">🇮🇹 İtalya &bull; Rehberler</div>
+            <div class="city-badge">🇮🇹 İtalya &bull; Şehir Rehberleri</div>
             <h1 class="guide-title">Roma</h1>
             <p class="guide-tagline">Üç bin yıllık tarih — ve hâlâ yaşayanların şehri</p>
         </div>
@@ -568,29 +691,249 @@
                 <span class="section-label">Genel Bakış</span>
                 <h2 class="section-title">Roma Atmosferi</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Roma dünyanın en katmanlı şehri. Bir Ortaçağ kilisesinin altında Cumhuriyet dönemi tapınağı, bir Barok piazzanın altında antik su kemerleri var. Forum, arkeolojik alan olmadan önce bir sığır pazarıydı. Çoğu ziyaretçi zamanını başlıca anıtlar arasında geçirir; Kolezyum, Vatikan, Trevi Çeşmesi. Gerçek Roma ise içlerinde ve aralarında yaşıyor. Gerçek Roma bir müze değil. Öğle yemeğini 13:30&#x27;da yiyen, espressoyu ayakta içen ve çevrelerindeki harabeleri arka plan olarak gören üç milyonluk yaşayan, kaotik, olağanüstü bir şehir. Soru Kolezyum&#x27;u görüp görmemek değil — haritadan başını kaldırdığında ne yaptığın.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 Aperitivo</div>
+                <span class="pron-badge">🗣️ /ah-peh-REE-tee-vo/</span>
+            </div>
+            <p class="word-def"><strong>Akşam yemeğinden önce, yaklaşık 18:00–20:00 arasında bir barda ya da piazzada alınan içkiyle (Aperol Spritz, Campari, Negroni) geçirilen erken akşam ritüeli. Yemek değil, parti değil; günün yavaşlaması. Roma&#x27;da bu mümkün olan her yerde dışarıda gerçekleşiyor; merdivenlerde, piazza duvarlarında, arnavut kaldırımlarına taşan küçük masalarda. Bir içki bedeliyle geçirilen en güzel Roma saati.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Temel Bilgiler</span>
+                <h2 class="section-title">Pratik İpuçları & Lojistik</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Havalimanları</div>
+                <div class="fact-desc">Fiumicino (FCO) · Ciampino (CIA)</div>
+                <div class="fact-sub">FCO: Leonardo Express 32 dk Termini&#x27;ye · CIA: Termini&#x27;ye otobüs</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🚌</div>
+                <div class="fact-title">Ulaşım</div>
+                <div class="fact-desc">Otobüs + tramvay + metro (2 hat)</div>
+                <div class="fact-sub">Binmeden önce bilet damgala · düzenli kontrol yapılıyor</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🗺️</div>
+                <div class="fact-title">Mahalleler</div>
+                <div class="fact-desc">Trastevere · Testaccio · Monti · Prati</div>
+                <div class="fact-sub">Her rione&#x27;nin kendine özgü ritmi var — dikkatli seç</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🍝</div>
+                <div class="fact-title">Yemek saatleri</div>
+                <div class="fact-desc">Öğle 13:00–15:00 · akşam 20:00–22:00</div>
+                <div class="fact-sub">Restoranlar servisler arası kapanır — 17:00&#x27;de gitme</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yerel Sırlar</span>
+                <h2 class="section-title">Roma İçin Yazısız Kurallar</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>Ana turist caddesinde asla yeme</strong>
+                    <span>Roma&#x27;nın her turist mahallesinin makarna fotoğrafları asan ve kapıdan seslenen garsonlarla dolu bir ana caddesi var. Hepsinin önünden geç. Yan sokağa dön, İngilizce menüsü ve yemek fotoğrafı olmayan bir yer bul ve orada ye. Fiyat daha düşük, yemek daha iyi olacak. Bu Roma&#x27;nın en güvenilir kurallarından biri.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Espresso barda, her zaman ayakta</strong>
+                    <span>Roma&#x27;da espresso tezgahta ayakta içilir, masada oturarak değil. Oturmak fiyatı iki üç katına çıkarır; masanın, kahvenin değil. Ayakta bir espresso yaklaşık 1–1,50 Euro. Un caffè de. İki yudumda bitir. Çık. Roma sabah 10&#x27;dan önce böyle işler.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Büyük yerleri önceden rezerve et</strong>
+                    <span>Vatikan Müzeleri, Borghese Galerisi ve Kolezyum önceden rezervasyon gerektiriyor; zirve sezonda haftalar, hatta aylar öncesinden. Temmuz&#x27;da rezervasyonsuz Vatikan Müzeleri&#x27;ne gitmek saatler süren kuyruk demek. Borghese Galerisi yalnızca iki saatlik zaman dilimleri sunuyor ve kapıdan kabul etmiyor. Gelmeden önce, bir gece öncesinde değil, önceden rezervasyon yap.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Gizli Köşeler</span>
+                <h2 class="section-title">Roma'deki Saklı Hazineler</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Aventine Anahtar Deliği (Şövalye Kapısı)</div>
+                <div class="card-desc">Aventine Tepesi&#x27;nde, Şövalyeler Tarikatı Priyoryası&#x27;nın kapısında bir anahtar deliği var. İçinden baktığında bakımlı bir bahçe yolunun ucunda mükemmel biçimde çerçevelenmiş Aziz Petrus Bazilikası&#x27;nın kubbesi görünüyor; aynı anda üç ülke gözlemleniyor: İtalya, Şövalyeler Tarikatı&#x27;nın bahçesi ve Vatikan. 18. yüzyılda mimar ve gravürcü Giovanni Battista Piranesi tarafından tasarlanmış. Hizalamanın kasıtlı olup olmadığı hâlâ tartışma konusu. Giriş ücretsiz, her saat erişilebilir. Sıra tek kişilik.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Basilica di San Clemente — Kolezyum yakını</div>
+                <div class="card-desc">Kolezyum&#x27;dan üç dakika uzakta, sıradan görünümlü bir kilisenin içinde Roma&#x27;nın en olağanüstü katmanlı alanlarından biri saklı. Zemin kattaki 12. yüzyıl bazilikası güzel ve girişi ücretsiz. Altında ortaçağ freskleriyle dolu 4. yüzyıldan kalma erken Hristiyan bazilikası. Onun altında ise 2. yüzyıldan bir Roma evi ve hâlâ işlevsel olan bir Mithra tapınağı — yeraltında hâlâ akan antik bir dereyi duyabiliyorsun. Tek bir binada yirmi yüzyıl arasında geçiş deneyimi Roma&#x27;da başka hiçbir yerde yok. Üst kilise ücretsiz. Yeraltı kazıları biletli (€10), önceden online rezervasyon zorunlu.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Palazzo Doria Pamphilj — Via del Corso</div>
+                <div class="card-desc">Roma&#x27;nın en merkezi caddesi Via del Corso&#x27;da bir kapı, şehrin en büyük özel mülkiyetli sarayına açılıyor; hâlâ Doria Pamphilj ailesi tarafından kullanılıyor. Galeri Velázquez&#x27;in Papa Innocent X Portresi&#x27;nin yanı sıra Caravaggio, Raphael ve Titian eserleri barındırıyor. Sesli rehber Prince Jonathan Doria Pamphilj tarafından anlatılıyor. Vatikan&#x27;ın aksine kalabalık yok. Borghese&#x27;nin aksine İtalyan olmayan ziyaretçilere neredeyse bilinmiyor. Biletli giriş (€16), önceden rezervasyon zorunlu.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Quartiere Coppedè — Trieste semti</div>
+                <div class="card-desc">1913 ile 1926 yılları arasında mimar Gino Coppedè, Trieste semtinde 26 küçük saray ve 17 villadan oluşan bir mahalle inşa etti; Art Nouveau, Barok, Gotik ve Yunan canlanmasının bu denli aşırı bir çarpışması gerçek olmayan bir film seti gibi görünüyor. Taştan salkım süsler, bronz örümcekler, masal kemerleri, işlemeli demir aksamlar. Herhangi bir turist güzergahından bir tramvay durağı uzakta. Neredeyse hiç ziyaretçi gitmiyor. Gezmek tamamen ücretsiz. Via Tagliamento&#x27;daki kemerin altından girilir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Giardino degli Aranci — Aventine Tepesi</div>
+                <div class="card-desc">Aventine Tepesi&#x27;ndeki Portakal Bahçesi, acı portakal ağaçları, şemsiye çam ağaçları ve gül çalılarından oluşan bir düzenli bahçe; bir ucunda Roma&#x27;nın en güzel panoramik manzaralarından birini sunan bir teras var; Aziz Petrus&#x27;un kubbesi terrakota çatıların üzerinde ve altta Tiber. İtalyan olmayan ziyaretçilere neredeyse tamamen bilinmiyor. Aventine Anahtar Deliği&#x27;nden iki dakika uzakta. Giriş ücretsiz. Sabahın erken saatlerinden gün batımına kadar açık.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Largo di Torre Argentina — Tarihi Merkez</div>
+                <div class="card-desc">Merkezi Roma&#x27;nın ortasında, trafiğin çevrelediği çukurlaşmış bir meydan, MS öncesi 3. ve 2. yüzyıllardan dört Cumhuriyet dönemi tapınağı ortaya çıkarıyor; şehirde görünür olan en eski kalıntılar arasında. Burası Julius Caesar&#x27;ın 15 Mart, MS 44&#x27;te suikasta kurban gittiği yer. Gönüllüler tarafından yürütülen bir kedi barınağı kalıntılar arasında yüzü aşkın kediyi barındırıyor. Kediler nesiller boyunca burada. Arkeolojik alan biletli. Kediler sokak seviyesinden ücretsiz olarak görülebilir.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yeme & İçme</span>
+                <h2 class="section-title">Mutlaka Tadılması Gereken Lezzetler</h2>
+            </div>
+            <p class="intro-text">Roma mutfağı Batı dünyasının en uzun süreli kentsel yemek geleneği — ve aynı zamanda en özgün olanı. Malzemeler, teknikler, et kesimleri, makarna şekilleri ve bir Roma yemeğinin sırası hepsi yüzyıllık gelenekle belirlenmiş. Hedef füzyon değil. Hedef inovasyon değil. Hedef doğru yapılmış bir kase cacio e pepe — aşçının büyükannesinin aynı yemeği pişirdiği bir restoranda.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Cacio e pepe — Roma standardı</div>
+                <div class="card-desc">Pecorino Romano, karabiber, makarna suyu, tonnarelli. Başka hiçbir şey. Doğru versiyonu ipeksi, topaklanmamış. Harika bir cacio e pepe İtalya&#x27;nın ürettiği en güzel şeylerden biri. Trastevere&#x27;de Tonnarello&#x27;da, Da Enzo al 29&#x27;da ya da rezervasyon alabilirsen Testaccio&#x27;daki Felice&#x27;de söyle. Fotoğraflı menüsü olan bir restoranda söyleme.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Carbonara — sandığın gibi değil</div>
+                <div class="card-desc">Roma karbonara dört malzemeledir: guanciale (kürlenmüş domuz yanağı), Pecorino Romano, yumurta sarısı ve karabiber. Krema yok. Pancetta yok. Bacon yok. Parmesan yok. Avrupa&#x27;daki turist restoranlarında servis edilen kremalı versiyon carbonara değil; gerçeği tatmamış insanlar için yapılan bir taklittir. Doğru bir carbonara zengin, yağlı ve hafifçe yapışkandır. Neyin servis edildiğinden emin değilsen guanciale sor.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Quinto quarto — beşinci çeyrek</div>
+                <div class="card-desc">Roma mutfağı quinto quarto üzerine kuruldu; dört asıl parça zenginlere giderken geriye kalan sakatat: işkembe (trippa), öküz kuyruğu (coda alla vaccinara), tatlı et, sakatat makarnası. Bu bir burun-kuyruk macerası değil; özgün Roma diyeti. Trippa alla romana (domatesli ve naneli işkembe, Pecorino ile) Cumartesi günleri mahalle trattorier&#x27;lerinde servis ediliyor. Coda alla vaccinara (domates, kereviz ve bitter çikolatayla yapılan yavaş pişirilmiş öküz kuyruğu) Avrupa&#x27;nın büyük yavaş pişirme yemeklerinden biri. Testaccio&#x27;da söyle.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Carciofi alla giudia — Yahudi usulü enginar</div>
+                <div class="card-desc">Yahudi Mahallesi&#x27;nin derin yağda kızarmış enginarı; çiçek gibi açılmış, sıcak yağa iki kez daldırılmış, yaprakları çıtır ve altın renginde, göbek kısmı yumuşak. Aynı sokaklarda yaklaşık 500 yıllık geçmişi olan bir yemek. Yalnızca sezonda servis ediliyor (Ekim&#x27;den ilkbahara). En iyi versiyonlar Ghetto&#x27;daki Da Giggetto ve Sora Margherita&#x27;da. Roma&#x27;yı tanımlayan yemeklerden biri.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Pizza al taglio — dilimle satılan pizza</div>
+                <div class="card-desc">Roma pizzası Napoli pizzası değil. İnce tabanlı, dikdörtgen kesilmiş, kiloya göre satılan ve ayakta ya da yürürken yenen bir yemek. Roma sabahı köşe fırınından bir dilim pizza bianca (sade, zeytinyağlı, tuzlu) ile başlıyor. En iyi pizza al taglio Roscioli&#x27;de, Bonci Pizzarium&#x27;da ve Forno di Campo de&#x27; Fiori&#x27;de. Doğru kahvaltı, doğru öğle yemeği ve doğru gece atıştırması.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Kahve — tezgahta, ayakta</div>
+                <div class="card-desc">Roma&#x27;da espresso barda 1–1,50 Euro. Oturmak fiyatı ikiye katlar. Cappuccino sabah içeceği; öğle yemeğinden sonra ısmarlamak anlaşılıyor ama hafifçe not düşürülüyor. Macchiato (bir damla sütlü espresso) yerel öğle arası kahvesi. Pantheon yakınındaki Sant&#x27;Eustachio il Caffè pek çoğunun Roma&#x27;nın en iyi espressosu dediği yeri sunuyor. Kuyruk hızlı ilerliyor. Ayakta iç.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Dikkat Edilmesi Gerekenler</span>
+                <h2 class="section-title">Turist Tuzakları & Kaçınılması Gerekenler</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Kostümlü gladyatörler fotoğraf sonrası fahiş &#x27;bahşiş&#x27; ister; kabul etmezsen sahne çıkarırlar. Belediye yasakladı ama tür tükenmedi.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Fotoğrafını arkadaşına çektir; en iyi Kolezyum karesi zaten Oppio tepesindeki parktan çıkar.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Pantheon ve Navona çevresinde sabit fiyatlı &#x27;turist menüsü&#x27; + kapıda çağıran garson formülü: donuk makarna, şişkin hesap.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Davet eden yerden yeme; Trastevere&#x27;nin arka sokakları, Testaccio ve Monti&#x27;de menüsü kısa, İtalyanca yerleri seç.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Meydanda dolaşan &#x27;skip-the-line tur&#x27; satıcıları resmi biletin birkaç katını ister; bazı biletler geçersiz çıkar.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Müze biletini yalnızca resmi siteden tarihli-saatli al; sıra istemiyorsan sabah ilk seansı veya cuma akşam açılışını seç.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">İstasyonda sana yaklaşan korsan taksiler pazarlıkla başlayıp kazıkla biter.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Yalnızca beyaz, taksimetreli resmi taksilere bin; havalimanı-şehir arası sabit tarifedir, binerken teyit et.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Roma'yi MyWay ile Keşfedin</h3>
-            <p>Zikzak çizmeden adım adım akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
+            <p>Adım adım optimize edilmiş akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      App Store'dan Hemen İndirin
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. Tüm hakları saklıdır.</p>
+            <p>&copy; 2026 MyWay Travel App. Tüm hakları saklıdır.</p>
         </div>
     </footer>
 

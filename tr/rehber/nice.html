@@ -6,8 +6,17 @@
     <title>Nice Gezi Rehberi & Akıllı Rotalar | MyWay</title>
     <meta name="description" content="Nice için adım adım yürüyüş rotaları, gizli mekanlar, turist tuzakları ve lezzet durakları. Nice gezi rehberi MyWay'de.">
     
-    <link rel="alternate" hreflang="en" href="../../guides/nice.html">
-    <link rel="alternate" hreflang="tr" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/nice.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/nice.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -527,7 +641,7 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="navbar-inner">
-            <a href="../" class="nav-brand">
+            <a href="/tr/" class="nav-brand">
                 <img src="../../images/app_icon.png" alt="MyWay" width="38" height="38">
                 <span>MyWay</span>
             </a>
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../rehber/">Rehberler</a></li>
-                <li><a href="../#features">Özellikler</a></li>
+                <li><a href="/tr/rehber/" class="active">Şehir Rehberleri</a></li>
+                <li><a href="/tr/#features">Özellikler</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../../guides/nice.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇬🇧 English</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇹🇷 TR</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/nice.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item ">🇬🇧 English</a>
+                        <a href="/tr/rehber/nice.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item active">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="../#hero" class="nav-cta">İndir</a>
+
+                <a href="/tr/#download" class="nav-cta">Hemen İndir</a>
             </div>
         </div>
     </nav>
@@ -555,7 +678,7 @@
         <img src="../../images/cities/nice.jpg" alt="Nice" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
-            <div class="city-badge">🇫🇷 Fransa &bull; Rehberler</div>
+            <div class="city-badge">🇫🇷 Fransa &bull; Şehir Rehberleri</div>
             <h1 class="guide-title">Nice</h1>
             <p class="guide-tagline">Fransız Rivierası'nın gerçek şehri — kartpostal değil, yaşayan yer</p>
         </div>
@@ -568,29 +691,249 @@
                 <span class="section-label">Genel Bakış</span>
                 <h2 class="section-title">Nice Atmosferi</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Nice, Monaco değil. Bir film seti ya da yat fuarı da değil. Gerçek bir Akdeniz şehri; İtalyan izleri taşıyan, güneşe doymuş ve tamamen kendine özgü. Fransa&#x27;nın beşinci büyük kenti ve Fransız Rivierası&#x27;nın başkenti Nice, 18. yüzyıldan bu yana ziyaretçileri büyülüyor. O dönem İngiliz aristokratlar soğuk kıştan uzaklaşmak için kış aylarını burada geçirirdi. Zamanla bu alışkanlık öyle yerleşti ki kıyı boyunca onlar için bir yürüyüş yolu yapıldı. O yol bugün hâlâ onların adını taşıyor. Ama keşfedilmeye değer Nice, herhangi bir yürüyüş yolundan çok daha eski ve sessiz: Vieux Nice, gökyüzünü kapatan dar sokaklarıyla, Barok kiliseleriyle, çiçek pazarıyla ve yıllardır aynı köşede socca satan adamıyla. Ve her gün tam öğlen, 1861&#x27;den bu yana, Colline du Château&#x27;dan ateşlenen top sesiyle. Bu şehrin kendi dili, kendi yemeği ve yazın buraya gelenlerle hiçbir ilgisi olmayan gururu var.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 Socca</div>
+                <span class="pron-badge">🗣️ /SOH-kah/</span>
+            </div>
+            <p class="word-def"><strong>Nice&#x27;in sokak yemeği, ruh yemeği, en eski yemeği. Nohut unu, zeytinyağı ve sudan yapılan ince hamur büyük bir bakır tepsiye yayılıp odun ateşinde yüksek ısıda pişirilir. Düzensiz dilimler halinde kesilir, sıcacık ve karabiberli servis edilir. Başka hiçbir şey yok: peynir yok, sos yok, değişiklik yok. Pazarda ayakta, kâğıda sarılı, henüz parmakları yakacak kadar sıcakken yenir. Chez Thérésa, Cours Saleya&#x27;da 1920&#x27;lerden bu yana yapıyor. Buradan başlamak gerekiyor.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Temel Bilgiler</span>
+                <h2 class="section-title">Pratik İpuçları & Lojistik</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Havalimanı</div>
+                <div class="fact-desc">Nice Côte d&#x27;Azur (NCE)</div>
+                <div class="fact-sub">2 numaralı tramvay · 10 dk · şehir merkezine direkt</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🚃</div>
+                <div class="fact-title">Ulaşım</div>
+                <div class="fact-desc">Tramvay + tren</div>
+                <div class="fact-sub">Sabit tarife · tek bilet tüm hatları kapsıyor</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🌊</div>
+                <div class="fact-title">Sahil</div>
+                <div class="fact-desc">Çakıl, kum değil</div>
+                <div class="fact-sub">Halk plajları ücretsiz · özel plajlarda olanak var</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🗺️</div>
+                <div class="fact-title">Üs olarak</div>
+                <div class="fact-desc">Monaco · Èze · Antibes</div>
+                <div class="fact-sub">Monaco trenle 25 dk · Cannes 40 dk</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yerel Sırlar</span>
+                <h2 class="section-title">Nice İçin Yazısız Kurallar</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>Sahil çakıldan oluşuyor — ve yerel halk bunu seviyor</strong>
+                    <span>Nice&#x27;in ünlü sahili ince yuvarlak çakıl taşlarından oluşuyor, kumdan değil. Ana sahilde hiçbir yerde kum yok. Bu, ilk kez gelenlerin neredeyse tamamını şaşırtıyor. Su ayakkabısı getirmek, özel plaj işletmelerinden şezlong kiralamak ya da yerel halkın yaptığı gibi düz bir taş bulmak işe yarıyor. Artısı: su inanılmaz berrak ve sahilde asla kumlu bir his yok.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Nice, Provence değil — ve tam anlamıyla Fransız da değil</strong>
+                    <span>Nice 1860&#x27;a kadar İtalyandı; Napoleon III tarafından resmen Fransa&#x27;ya bırakıldı. Eski şehrin mimarisi, yemeği, diyalekti (Niçard) ve genel karakteri bu İtalyan izini taşıyor. Eski diyalektte şehrin adı Nissa. Bu, İtalya&#x27;ya yakın olmakla yetinen bir Fransız şehri değil; her ikisinin de parçası olan ama tam olarak hiçbirinin olmadığı bir Akdeniz kenti.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Colline du Château — her zaman yürüyerek, her zaman ücretsiz</strong>
+                    <span>Colline du Château şehrin 92 metre üzerinde yükseliyor ve Nice&#x27;in en güzel manzarasını sunuyor: Baie des Anges&#x27;ın kıvrımı, Vieux Nice&#x27;in turuncu çatıları, uzakta Alpler. Asansör var ama yürüyerek çıkmak daha iyi; kayanın içinden geçen merdivenler deneyimin bir parçası. Aşağıya Vieux Nice&#x27;ten inerken şehir hemen ödüllendiriyor. Ücretsiz ve her zaman açık.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Gizli Köşeler</span>
+                <h2 class="section-title">Nice'deki Saklı Hazineler</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">To Catch a Thief (1955) — Grande Corniche</div>
+                <div class="card-desc">Hitchcock, To Catch a Thief&#x27;i (1955) Fransız Rivierası&#x27;nda çekti; Promenade des Anglais, Grande Corniche&#x27;in dağ yolları ve Monaco bahçeleri. Filmde Cary Grant ve Grace Kelly oynadı. İkisi arasındaki kimya, söylentiye göre Grace Kelly&#x27;nin Cannes Film Festivali&#x27;nde Prens Rainier ile tanışmasına zemin hazırladı. Kelly, 1956&#x27;da Nice Havalimanı&#x27;ndan prenses olmayan biri olarak son kez ayrıldı. Hitchcock&#x27;un kullandığı Corniche yolu hâlâ orada; aynı virajlar, aynı manzara, aynı ışık.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Coco Beach — limanın doğusu</div>
+                <div class="card-desc">Limanın hemen ötesinde, kıyı boyunca doğuya yürününce düz kayaların ve inanılmaz berrak suyun olduğu küçük bir koya ulaşılıyor: Coco Beach. Tesis yok, plaj kulübü yok, seyyar satıcı yok. Nesiller boyu buraya gelen Nice&#x27;liler var sadece. Buradan devam eden kıyı yolu uçurum yüzüne yapışarak 1.4 km boyunca Baie des Anges&#x27;a açılan manzaralarla ilerliyor. Kışın alçak güneşi yakaladığında şehrin en güzel yürüyüşlerinden birine dönüşüyor.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Cathédrale Saint-Nicolas — Avenue Nicolas II</div>
+                <div class="card-desc">Altı soğan kubbesi, renkli mozaikler ve Batı Avrupa&#x27;nın en büyük Rus Ortodoks katedrali; Promenade&#x27;den on dakika uzakta sakin bir bahçede duruyor. Nice&#x27;te kış aylarını geçiren büyük Rus aristokrat topluluk için 1912&#x27;de, Çar II. Nikola&#x27;nın desteğiyle inşa edildi. Romanovların şehirle güçlü bağları vardı; Şehzade Nikola 1865&#x27;te burada hayatını kaybetti. İç mekan olağanüstü güzel. Giriş ücretsiz.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Monastère de Cimiez — Cimiez Tepesi</div>
+                <div class="card-desc">Henri Matisse hayatının son 37 yılını Nice&#x27;te geçirdi ve sanatçı dostu Raoul Dufy ile birlikte Monastère de Cimiez&#x27;in mezarlığına defnedildi. Manastır bir Roma arkeoloji parkının içinde yer alıyor; amfitiyatro kalıntıları, bir zeytin bahçesi ve yerel halkın pétanque oynadığı kamusal bir bahçe. Hemen yanındaki Musée Matisse dünyanın en kapsamlı Matisse koleksiyonunu barındırıyor. Bu üçünü birbirine bağlayan bir turist haritası neredeyse yok. Yürüyerek çıkmaya değer. Zaman ayırmak gerekiyor.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">AOC Bellet — Saint-Roman-de-Bellet tepeleri</div>
+                <div class="card-desc">Nice&#x27;in hemen üzerindeki tepelerde, şehirden büyük ölçüde görünmez biçimde, kırmızı, beyaz ve roze üreten küçük bir bağ alanı var: AOC Bellet. Yalnızca yaklaşık 50 hektar. Üretimin neredeyse tamamı bölgede tüketiliyor, ihracatı yok denecek kadar az. Rozesi olağanüstü. Birkaç üretici randevuyla ziyaretçi kabul ediyor. Herhangi bir şarap dükkanında Bellet&#x27;i sormak yeterli; karşıdaki kişinin tepkisi çok şey anlatıyor.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Le Canon du Midi — Colline du Château</div>
+                <div class="card-desc">Her gün tam öğlen, Colline du Château&#x27;dan bir top ateşleniyor. 1861&#x27;den bu yana, her gün. Hikâye şu: Sir Thomas Coventry adlı bir İskoç lord, karısının alışverişten geç dönmesinden usanıp Nice şehir konseyini ikna etmiş; her gün öğlen bir top atılsın ki karısı eve dönme vaktini bilsin. Nice bu geleneği 160 yılı aşkın süre boyunca yaşatıyor. Öğlenden önce Colline du Château&#x27;ya çıkmak mümkün; atışı yakın mesafeden izlenebiliyor.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yeme & İçme</span>
+                <h2 class="section-title">Mutlaka Tadılması Gereken Lezzetler</h2>
+            </div>
+            <p class="intro-text">Niçoise mutfağı Fransa&#x27;nın en belirgin bölgesel geleneklerinden biri; Akdeniz kökenli, zeytinyağı ağırlıklı, sebze odaklı. 1860&#x27;a kadar İtalya&#x27;nın parçası olan bir şehrin yemeği bu ve o miras bugün de her tabakta hissediliyor.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Socca — her zaman buradan başlanmalı</div>
+                <div class="card-desc">Nohut unu, zeytinyağı, su, tuz. Büyük bir bakır tepsiye yayılıp odun ateşinde çok yüksek ısıda pişiyor; kenarları kıtır, ortası yumuşacık. Dilimlenip hemen servis ediliyor, karabiberle yeniyor. Cours Saleya&#x27;daki Chez Thérésa 1920&#x27;lerden bu yana yapıyor; sabah 10&#x27;dan önce gitmek ya da sıraya girmek gerekiyor. Socca yalnızca Nice&#x27;e ve çevresine özgü, Fransa&#x27;nın başka hiçbir yerinde yok.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Pan Bagnat — Nice&#x27;in büyük sandviçi</div>
+                <div class="card-desc">Zeytinyağına bandırılmış yuvarlak köy ekmeği; ton balığı, haşlanmış yumurta, çiğ sebzeler, hamsi, zeytin ve karabiberle doldurulmuş. Ekmek yemekten en az bir saat önce yağı iyice emmeli; bu işin acelesi yok. Cours Saleya yakınındaki Chez TinTin şehrin en iyisi seçiliyor. Colline du Château&#x27;ya çıkarken yanına almak için biçilmiş kaftan.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Salade Niçoise — gerçek tarif</div>
+                <div class="card-desc">Yalnızca çiğ sebzeler: domates, salatalık, turp, taze soğan, yeşil biber, bakla. Haşlanmış yumurta, yağlı ton balığı, hamsi filetoları, siyah zeytin, zeytinyağı. Pişmiş sebze yok, marul yok; fasulye ancak çok genç ve çiğ ise olabilir. Nice Turizm Kurulu&#x27;nun tescilli bir tarifi var. Pişmiş yeşil fasulye koyan her restoran yanlış bir şey sunuyor.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Pissaladière — pizzanın atası</div>
+                <div class="card-desc">Kalın, yumuşak hamur; üstüne en az bir saat pişirilmiş derin karamelize soğan ezmesi, siyah zeytin ve hamsi filetoları döşenmiş. Başka hiçbir şey yok. Vieux Nice&#x27;teki fırınlarda dilim dilim satılıyor. Bir kahveyle ayakta, sıcacık yeniyor. Sonuç tatlı, tuzlu ve bırakamayacağın cinsten.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Bellet şarabı — Nice&#x27;in saklı hazinesi</div>
+                <div class="card-desc">Nice dışında neredeyse hiç kimsenin bilmediği bir şey: şehrin hemen üzerindeki tepelerde kırmızı, beyaz ve roze üreten küçük bir AOC bağ alanı var. Yalnızca yaklaşık 50 hektar. Rozesi olağanüstü ve bölge dışında neredeyse bulunmuyor. Restoran listelerinde aramak, elde edince içmek gerekiyor; yerel, nadir ve gerçekten iyi.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Kahve — İtalyan usulü</div>
+                <div class="card-desc">Nice&#x27;in İtalyan mirası kahve kültüründe de kendini belli ediyor. Espresso ayakta tezgahta, kısa ve sert içiliyor. Noisette; içine ılık süt damlatılmış espresso, standart yerel sipariş. Cappuccino yalnızca sabahları. Cours Saleya kafeleri turistik fiyatla çalışıyor; bir sokak gerideki Vieux Nice kafeleri yerel halkın gittiği yerler. Fark hem fiyatta hem kalitede hemen anlaşılıyor.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Dikkat Edilmesi Gerekenler</span>
+                <h2 class="section-title">Turist Tuzakları & Kaçınılması Gerekenler</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Promenade&#x27;daki özel plajlarda şezlong, şemsiye, havlu derken hesap otel fiyatına yaklaşır; üstelik çakıl aynı çakıl.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Halk plajına in: havlunu ser, aynı denize gir. Konfor istersen fiyat listesini oturmadan önce iste.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Çiçek pazarının turist tarafındaki bazı restoranlar fotoğraflı menü ve donuk &#x27;Niçoise&#x27; klasikleriyle çalışır.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Pazarın kendisinden al ya da iki sokak içeri gir: Vieux Nice&#x27;in küçük lokantalarında gerçek pissaladière seni bekliyor.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Socca fırından çıkar çıkmaz yenir; önceden pişip bekletilmiş, mikrodalgada ısıtılmış socca şehre haksızlıktır.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Odun fırınından direkt tabağa geldiği yeri seç (Chez Pipo klasik); karabiberi bol at, elle ye.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Temmuz-ağustosta sahil yolu park savaşı ve trafikten ibaret; kiralık araba çoğu zaman özgürlük değil yük.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Treni kullan: Villefranche, Èze, Monaco, Cannes hepsi kıyı hattında. Manzara da cabası.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Nice'yi MyWay ile Keşfedin</h3>
-            <p>Zikzak çizmeden adım adım akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
+            <p>Adım adım optimize edilmiş akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      App Store'dan Hemen İndirin
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. Tüm hakları saklıdır.</p>
+            <p>&copy; 2026 MyWay Travel App. Tüm hakları saklıdır.</p>
         </div>
     </footer>
 

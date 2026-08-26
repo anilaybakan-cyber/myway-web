@@ -6,8 +6,17 @@
     <title>Dubai City Guide & Smart Walking Routes | MyWay</title>
     <meta name="description" content="Explore Dubai with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
     
-    <link rel="alternate" hreflang="tr" href="../tr/rehber/dubai.html">
-    <link rel="alternate" hreflang="en" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/dubai.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/dubai.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../guides/">City Guides</a></li>
+                <li><a href="/guides/" class="active">City Guides</a></li>
                 <li><a href="/#features">Features</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../tr/rehber/dubai.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇹🇷 Türkçe</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇬🇧 EN</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/dubai.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item active">🇬🇧 English</a>
+                        <a href="/tr/rehber/dubai.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item ">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="/#hero" class="nav-cta">Download</a>
+
+                <a href="/#download" class="nav-cta">Download</a>
             </div>
         </div>
     </nav>
@@ -568,29 +691,249 @@
                 <span class="section-label">Overview</span>
                 <h2 class="section-title">The Vibe of Dubai</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Dubai tells two stories at once: one is the glass-and-steel future gazing down from Burj Khalifa&#x27;s 828 meters; the other is the past of the wooden abra crossing the Creek for one dirham. Fifty years ago this was a pearl divers&#x27; town; today it is the world&#x27;s fastest-built showcase — but don&#x27;t let the showcase make you skip the old part: Deira&#x27;s spice-scented souks, the wind-tower courtyards of Al Fahidi and a glass of karak tea show where the city&#x27;s heart still beats. The way to love Dubai is to visit both banks.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 Habibi</div>
+                <span class="pron-badge">🗣️ /hah-BEE-bee/</span>
+            </div>
+            <p class="word-def"><strong>Arabic for &#x27;my dear&#x27;: the word you&#x27;ll hear a hundred times a day in Dubai. The taxi driver, the waiter, the souk merchant call everyone habibi — it is the common currency of warmth, bargaining and friendship. When someone says &#x27;yes habibi&#x27; to you, smile: the Gulf&#x27;s door has just opened.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Essentials</span>
+                <h2 class="section-title">Quick Logistics</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Airport</div>
+                <div class="fact-desc">Dubai (DXB)</div>
+                <div class="fact-sub">The red metro line runs downtown</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🏙️</div>
+                <div class="fact-title">Signature</div>
+                <div class="fact-desc">Burj Khalifa</div>
+                <div class="fact-sub">828 meters — the world&#x27;s tallest</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">💰</div>
+                <div class="fact-title">Currency</div>
+                <div class="fact-desc">Dirham (AED)</div>
+                <div class="fact-sub">Cards everywhere; the abra wants cash</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🗣️</div>
+                <div class="fact-title">Language</div>
+                <div class="fact-desc">Arabic</div>
+                <div class="fact-sub">Daily life runs on English</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Insider Advice</span>
+                <h2 class="section-title">Unwritten Rules for Dubai</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>Build the schedule around the air conditioning</strong>
+                    <span>Dubai has two seasons: outdoors and indoors. November to March is an open-air paradise; in summer the street hits 45°C at noon — put outdoor plans before 10 a.m. and after sunset, and give the remaining hours to museums, malls and the aquarium.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Don&#x27;t skip Old Dubai</strong>
+                    <span>The Burj and the marina are the city&#x27;s showcase; the Creek is its soul: Al Fahidi&#x27;s narrow lanes, the abra ride, the spice and gold souks fit into half a day — the city&#x27;s most authentic half day. See new Dubai from the sky, old Dubai from water level.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Respect the rules and the etiquette</strong>
+                    <span>Dubai is a relaxed city, but it has its manners: dress modestly around mosques and government buildings, don&#x27;t photograph people without permission, avoid rowdiness in public. If you come during Ramadan, eat and drink indoors by day — respect given is respect returned.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Off the Beaten Path</span>
+                <h2 class="section-title">Hidden Gems in Dubai</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">The abra crossing</div>
+                <div class="card-desc">You sit shoulder to shoulder on the wooden boat and glide to the far bank to the putter of the motor: spice scents, dhow silhouettes and minarets keep you company. Dubai&#x27;s oldest line remains its cheapest and most authentic experience.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Al Fahidi Historical Neighbourhood</div>
+                <div class="card-desc">Houses of coral stone and gypsum, barjeel towers, shaded courtyards: old Dubai&#x27;s restored quarter. Wander between the coffee museum and the small galleries — in the morning hours you&#x27;ll have it nearly to yourself.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Alserkal Avenue</div>
+                <div class="card-desc">Galleries, an independent cinema and third-wave coffee in the Al Quoz warehouse district: the heart of Dubai&#x27;s contemporary art scene. Saturday afternoons are its liveliest — the city&#x27;s creativity beyond the showcase lives here.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Ras Al Khor Wildlife Sanctuary</div>
+                <div class="card-desc">Hundreds of flamingos at the foot of the skyscraper skyline: you watch the pink flock from free observation hides. Winter is peak guest season — Dubai&#x27;s most unexpected postcard.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">The Deira souks at morning</div>
+                <div class="card-desc">The sack scents of the spice souk, the window blaze of the gold souk, and the dhow wharf&#x27;s porters at the edge: old trading Dubai is most itself in the morning hours. Bargaining is the custom — accept the offered tea.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Kite Beach and the public beaches</div>
+                <div class="card-desc">Swim at the free public beach, walk the running track, watch the Burj Al Arab silhouette at sunset: Dubai beach life without a ticket. Grab something from the food trucks — the beach evening assembles itself.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Food & Flavors</span>
+                <h2 class="section-title">What to Taste</h2>
+            </div>
+            <p class="intro-text">The Dubai table is a port city&#x27;s inheritance: the date-sweet generosity of Emirati cooking, the spices of the Indian quarter, and every cuisine on earth in one city.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Karak and chapati breakfast</div>
+                <div class="card-desc">Karak in a glass at an Old Dubai cafeteria, hot chapati and fried eggs alongside: a kingdom for a few dirhams. Join the morning workers&#x27; queue — this is the city&#x27;s true breakfast salon.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Machboos and the Emirati table</div>
+                <div class="card-desc">Lamb or fish machboos over spiced rice, with dates and coffee as welcome: the generous classic of Emirati cooking. Try it at a traditional Emirati restaurant — the floor-cushion seating section is part of the experience.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Shawarma night</div>
+                <div class="card-desc">The Levantine masters&#x27; shawarma is the foundation of Dubai street food: garlicky toum, pickles and thin flatbread. A late-night queue outside a cafeteria is the best address marker in town.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Luqaimat</div>
+                <div class="card-desc">Fried sweet dough balls under date syrup and sesame: the calling card of Emirati dessert. Crisp outside, soft inside — the star of Ramadan, but good places serve it year-round.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">The Friday brunch institution</div>
+                <div class="card-desc">The long brunch that opens the weekend is Dubai&#x27;s social tradition: dozens of stations, a table that lasts hours. Options span every budget — booking is essential and appetite should be deployed strategically.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Thali at Meena Bazaar</div>
+                <div class="card-desc">Tray thalis, dosas and fresh tandoor bread in Bur Dubai&#x27;s Indian quarter: the city&#x27;s oldest migrant kitchen at its most honest prices. Join the local office crowd at noon — the tray comes full and the bill light.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Watch Out</span>
+                <h2 class="section-title">Tourist Traps to Avoid</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">A last-minute At the Top ticket at the counter means both a queue and peak pricing; sunset slots sell out weeks ahead.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Buy a timed ticket online days ahead; if sunset is gone, the first morning slots are calm and clear. Alternative: a cafe terrace facing the tower delivers the view at a fraction of the price.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Cut-price safaris deliver a crowded convoy, rushed dune driving and a conveyor-belt camp evening; the experience bears no relation to the brochure photo.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Choose a licensed operator running small groups in the protected reserve; ask in advance about the sunset session and the camp menu. Slightly more money buys an entirely different desert.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">In Deira and the tourist zones the &#x27;copy bag, copy watch&#x27; whisper invites you into back rooms: quality uncertain, bargaining loaded, the situation legally gray.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Smile and keep walking. Do your souk shopping in spices, dates, gold and fabric — their bargaining is legitimate and their quality in plain view. On gold, check the hallmark stamp.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Between two points that look close on the map may lie a shadeless highway, an interchange and a construction site; a &#x27;ten-minute walk&#x27; becomes an ordeal in summer.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Save walking for the neighborhoods (the Marina promenade, the Creek shore, Al Fahidi); connect the dots by metro and taxi. In summer, add at least fifty percent to any walking estimate.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Explore Dubai with MyWay</h3>
-            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without zigzagging across town.</p>
+            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without wasted steps.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      Download on App Store
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. All rights reserved.</p>
+            <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
         </div>
     </footer>
 

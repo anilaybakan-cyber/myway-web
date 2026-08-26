@@ -6,8 +6,17 @@
     <title>Cenevre Gezi Rehberi & Akıllı Rotalar | MyWay</title>
     <meta name="description" content="Cenevre için adım adım yürüyüş rotaları, gizli mekanlar, turist tuzakları ve lezzet durakları. Cenevre gezi rehberi MyWay'de.">
     
-    <link rel="alternate" hreflang="en" href="../../guides/cenevre.html">
-    <link rel="alternate" hreflang="tr" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/cenevre.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/cenevre.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -527,7 +641,7 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="navbar-inner">
-            <a href="../" class="nav-brand">
+            <a href="/tr/" class="nav-brand">
                 <img src="../../images/app_icon.png" alt="MyWay" width="38" height="38">
                 <span>MyWay</span>
             </a>
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../rehber/">Rehberler</a></li>
-                <li><a href="../#features">Özellikler</a></li>
+                <li><a href="/tr/rehber/" class="active">Şehir Rehberleri</a></li>
+                <li><a href="/tr/#features">Özellikler</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../../guides/cenevre.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇬🇧 English</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇹🇷 TR</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/cenevre.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item ">🇬🇧 English</a>
+                        <a href="/tr/rehber/cenevre.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item active">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="../#hero" class="nav-cta">İndir</a>
+
+                <a href="/tr/#download" class="nav-cta">Hemen İndir</a>
             </div>
         </div>
     </nav>
@@ -555,7 +678,7 @@
         <img src="../../images/cities/cenevre.jpg" alt="Cenevre" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
-            <div class="city-badge">🇨🇭 İsviçre &bull; Rehberler</div>
+            <div class="city-badge">🇨🇭 İsviçre &bull; Şehir Rehberleri</div>
             <h1 class="guide-title">Cenevre</h1>
             <p class="guide-tagline">Dünyanın en pahalı şehirlerinden biri — en iyi şeylerin büyük bölümü ücretsiz</p>
         </div>
@@ -568,29 +691,249 @@
                 <span class="section-label">Genel Bakış</span>
                 <h2 class="section-title">Cenevre Atmosferi</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Cenevre küçük bir şehir — ancak içinde Birleşmiş Milletler&#x27;in Avrupa merkezi, 40&#x27;tan fazla uluslararası kuruluş ve dünyanın en yoğun diplomatik misyonları var. Bu şehre girerken fark ediyorsun: her şey çok düzenli, çok temiz, çok sessiz. Gece 22:00&#x27;den sonra sokaklar ıssızlaşıyor. Sonra Lac Léman&#x27;ın kıyısına oturuyorsun, karşıda Alpler, üstte Jet d&#x27;Eau, yanında bir kahve — ve şehrin neden burada kurulduğunu anlıyorsun. Jonction&#x27;da iki nehir farklı renklerde birleşiyor. Carouge&#x27;da İtalyan mahalle ruhu solumaya başlıyor. Cenevre küçük ama katmanlı.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 Moitié-Moitié</div>
+                <span class="pron-badge">🗣️ /mwa-tYEY mwa-tYEY/</span>
+            </div>
+            <p class="word-def"><strong>Yarı yarıya. Cenevre&#x27;de fondü söylendiğinde kasıt bu: yarı Gruyère, yarı Vacherin Fribourgeois peyniri. Standart karışım bu. Restoranda sadece &#x27;fondü&#x27; değil, &#x27;moitié-moitié&#x27; iste — farkı anlarsın. Kış yemeği; Kasım&#x27;dan Mart&#x27;a.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Temel Bilgiler</span>
+                <h2 class="section-title">Pratik İpuçları & Lojistik</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Havalimanı</div>
+                <div class="fact-desc">GVA — Geneva Cointrin</div>
+                <div class="fact-sub">Tren ile 7 dakikada Gare Cornavin · çıkışta ücretsiz 80 dk bilet</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🚋</div>
+                <div class="fact-title">Ulaşım</div>
+                <div class="fact-desc">TPG — tramvay, otobüs, tren, Mouettes</div>
+                <div class="fact-sub">Otelde konaklıyorsan tüm konaklama boyunca ücretsiz</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🌡️</div>
+                <div class="fact-title">Hava</div>
+                <div class="fact-desc">Dört mevsim, göl ve dağ etkisi</div>
+                <div class="fact-sub">Nis–Haz ve Eyl ideal · Ara–Mar soğuk · Bise rüzgârına hazır ol</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">💰</div>
+                <div class="fact-title">Para birimi</div>
+                <div class="fact-desc">İsviçre Frangı (CHF)</div>
+                <div class="fact-sub">Avrupa&#x27;nın en pahalı şehirlerinden · öğle menüsü akşamdan çok uygun</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yerel Sırlar</span>
+                <h2 class="section-title">Cenevre İçin Yazısız Kurallar</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>Otelde konaklıyorsan tüm ulaşım ücretsiz — check-in&#x27;de sor</strong>
+                    <span>Cenevre&#x27;de bir otel, hostel veya kamp alanında konaklıyorsan Geneva Transport Card&#x27;a hak kazanıyorsun. Konaklama boyunca tramvay, otobüs, tren ve sarı feribot dahil tüm toplu taşıma ücretsiz. Havalimanından otel transferini de kapsıyor. Bazen otomatik gelmiyor — check-in sırasında mutlaka sor.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Pahalı bir şehir — ama ücretsizler gerçekten iyi</strong>
+                    <span>Restoran fiyatları Avrupa&#x27;nın en yükseklerinden; planlarını buna göre yap. Ancak unutma: Jet d&#x27;Eau, Reformation Duvarı, Vieille Ville sokaklarını gezmek, Jonction&#x27;a yürümek ve göl kıyısı ücretsiz. Birçok müze Pazar günleri ücretsiz. Öğle menüleri akşam yemeklerinin yarı fiyatına, genellikle aynı kalitede.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Fondü ve raclette kış yemekleri — yazın menüde görsen de sipariş etme</strong>
+                    <span>Fondü ve raclette için doğru mevsim Kasım&#x27;dan Mart&#x27;a kadar. Yazın turistik restoranlarda servis edilse de bu yemeklerin ruhu kış soğuğuyla geliyor. Yazın doğru soru şu: &#x27;Filets de perches du Léman&#x27; var mı? Lac Léman&#x27;dan taze tatlı su levreği — menüde &#x27;du Léman&#x27; etiketi olmayan balık Doğu Avrupa&#x27;dan dondurulmuş olabilir.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Gizli Köşeler</span>
+                <h2 class="section-title">Cenevre'deki Saklı Hazineler</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">La Pointe de la Jonction</div>
+                <div class="card-desc">Şehrin batı ucunda Rhône ve Arve buluşuyor. Biri turkuaz-yeşil, diğeri çamurlu kahverengi — iki renk yan yana uzun süre karışmadan akıyor. Gözle açıkça görülebiliyor. Yazın güvenli bölgelerde nehirde yüzebilirsin. Yürüyerek ya da bisikletle kolayca ulaşılıyor. Ücretsiz, her zaman açık.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Quartier des Grottes</div>
+                <div class="card-desc">Gare Cornavin&#x27;in kuzey batısında, birkaç dakika yürüyüş. 1980&#x27;lerde yıkılmak üzere olan mahalle sakinleri binalara el koydu; mimarlar organik, dalgalı, rengarenk cepheler tasarladı. Şimdilerde &#x27;Smurf binaları&#x27; olarak biliniyor. Cenevre&#x27;nin düzenli ve steril havasının tam tersi. Avlularda sanat atölyeleri, alternatif kafeler. Ücretsiz, her zaman açık.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Promenade de la Treille</div>
+                <div class="card-desc">Vieille Ville&#x27;in hemen üzerinde, Parc des Bastions&#x27;ın kenarında. Buradaki ahşap bank 120 metre uzunluğuyla dünyanın en uzun ahşap bankları arasında. Her yıl baharın gelişi, bu yolun kenarındaki at kestanesi ağacının ilk tomurcuğuyla resmi olarak ilan ediliyor. Şehir üzerinde panoramik manzara, Reformation Duvarı&#x27;na yürüyüş mesafesi.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">CERN</div>
+                <div class="card-desc">Şehrin batı ucunda, İsviçre-Fransa sınırında. Dünyanın en büyük parçacık fiziği laboratuvarı ve World Wide Web&#x27;in doğduğu yer. 2023&#x27;te açılan Science Gateway&#x27;e giriş ücretsiz — ancak kayıt gerekiyor. Online kayıt bir ay öncesinden yapılabiliyor ve girişi garantiliyor; yerinde kayıt da mümkün ama müsaitliğe bağlı. Rehberli turlar da ücretsiz ama tur günü yerinde, 2 saat önceden açılan kayıtla alınıyor ve çok çabuk doluyor. Tramvayla yaklaşık 30 dakika.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Place des Nations — Kırık Sandalye</div>
+                <div class="card-desc">Birleşmiş Milletler binasının önünde, dördüncü ayağı kırık dev ahşap sandalye. Kara mayınlarını ve patlamamış bombaları simgeliyor. 1997&#x27;de Ottawa Antlaşması&#x27;nı imzalatmak amacıyla geçici olarak dikildi. Cenevre onu bırakmadı. Palais des Nations&#x27;a rehberli tur biletli ama meydana giriş ücretsiz.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Bains des Pâquis</div>
+                <div class="card-desc">Pâquis sahilinde gölün içine uzanan ahşap iskele. Yazın açık hava plajı ve hamam: yüzme, güneşlenme, sauna, hafif yemekler. Kışın kapanmıyor — kış fondüsü için en sevilen yerlerden biri. Biletli ama uygun fiyatlı. Kışın fondü için rezervasyon şart; hafta sonları hızla doluyor.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yeme & İçme</span>
+                <h2 class="section-title">Mutlaka Tadılması Gereken Lezzetler</h2>
+            </div>
+            <p class="intro-text">İsviçre-Fransız mutfağının ortasında bir şehir. Peynir, tatlı su balığı, yerel sosis — doğru yerde yenildiğinde bunların hepsi farklı.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Fondü moitié-moitié</div>
+                <div class="card-desc">Yarı Gruyère, yarı Vacherin Fribourgeois peynirinden yapılan Cenevre&#x27;nin klasik fondüsü. Ekmek parçaları uzun çatalla eritilmiş peynire batırılıyor. Fondünün doğru mevsimi Kasım&#x27;dan Mart&#x27;a kadar. Gare Cornavin çevresinden kaçın — ucuz peynir karışımı kullanıyorlar, fark hissedilir. Bains des Pâquis veya Carouge&#x27;daki restoranlar güvenilir adres.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Raclette</div>
+                <div class="card-desc">Yarım tekerlek peynir ateşin yanında ısıtılıyor, eriyen kısmı kazınıp doğrudan tabağa alınıyor. Haşlanmış patates, kornişon turşusu ve soğanla yeniyor. Masaya konan elektrikli küçük tava kestirme yol — gerçeği yarım tekerlek peynirle yapılan.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Longeole</div>
+                <div class="card-desc">Cenevre&#x27;ye özgü, coğrafi işaret (PDO) almış yerel sosis. Domuz eti, rezene tohumu ve baharatlarla yapılıyor; başka hiçbir yerde üretilmiyor. Şehrin resmi yemeklerinden sayılıyor. Mercimek veya kuru fasulye ile servis ediliyor. Carouge&#x27;daki yerel restoranlarda ve Halles de Rive&#x27;de bulunuyor.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Filets de perches du Léman</div>
+                <div class="card-desc">Lac Léman&#x27;dan taze levrek filetosu — yazın kıyı restoranlarının ana yemeği. &#x27;Du Léman&#x27; etiketi olmayan balık taze değil, bu etiketi ara. Hafif una bulanıp tereyağında pişiriliyor. Mayıs&#x27;tan Eylül&#x27;e.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Marmite de l&#x27;Escalade</div>
+                <div class="card-desc">Favarger markasının her yıl Kasım ortasından Aralık ortasına kadar ürettiği çikolata kazanı. 1602 zaferini simgeliyor. İçi küçük şekerlerle dolu; gelenek kazanı kırmak ve paylaşmak. Yıl boyunca bulamazsın, sadece bu dönemde.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Halles de Rive</div>
+                <div class="card-desc">Rive&#x27;de, gölün hemen yanında. Cenevre&#x27;nin en iyi kapalı gıda pazarı. Yerel peynirciler, kasaplar, balıkçılar, fırınlar bir arada. Longeole, Gruyère ve taze levrek burada. Turistik değil; Cenevreli halk alışverişini burada yapıyor. Her gün açık, sabahları en canlı.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Dikkat Edilmesi Gerekenler</span>
+                <h2 class="section-title">Turist Tuzakları & Kaçınılması Gerekenler</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">7 dakikalık tren varken 40 frank taksi ödemek şehrin en klasik turist hatası; üstelik tren bileti bagaj alanında ücretsiz.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Bagaj bandındaki otomatdan ücretsiz 80 dakikalık bileti al, trene bin; otelde de ücretsiz ulaşım kartını (Geneva Transport Card) iste.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Rue du Mont-Blanc&#x27;ın vitrinlerindeki ucuz &#x27;Swiss made&#x27; saat ve çakıların bir kısmı ithal taklit.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Gerçeğini istiyorsan yetkili satıcıya git; bütçe hediyesi için İsviçre çikolatası her zaman doğru cevap.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Menüde yıl boyu durur ama fondü kış yemeğidir; ağustosta turiste servis edilen fondünün tadı da ortamı da eksik kalır.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Yaz geldiyse gölden filets de perche ye; fondüyü soğuk bir akşama, taş duvarlı bir brasserie&#x27;ye sakla.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Jet d&#x27;Eau manzarası, göl kıyısı ve Eski Şehir zaten ücretsizken pahalı &#x27;şehir turu&#x27; paketleri aynı rotayı satar.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Sarı &#x27;Mouettes&#x27; su taksileri ulaşım kartınla bedava göl geçişi yapar; gerisini ayakların halleder.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Cenevre'yi MyWay ile Keşfedin</h3>
-            <p>Zikzak çizmeden adım adım akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
+            <p>Adım adım optimize edilmiş akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      App Store'dan Hemen İndirin
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. Tüm hakları saklıdır.</p>
+            <p>&copy; 2026 MyWay Travel App. Tüm hakları saklıdır.</p>
         </div>
     </footer>
 

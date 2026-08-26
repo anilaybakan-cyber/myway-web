@@ -6,8 +6,17 @@
     <title>Saint-Tropez Gezi Rehberi & Akıllı Rotalar | MyWay</title>
     <meta name="description" content="Saint-Tropez için adım adım yürüyüş rotaları, gizli mekanlar, turist tuzakları ve lezzet durakları. Saint-Tropez gezi rehberi MyWay'de.">
     
-    <link rel="alternate" hreflang="en" href="../../guides/saint_tropez.html">
-    <link rel="alternate" hreflang="tr" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/saint_tropez.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/saint_tropez.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -527,7 +641,7 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="navbar-inner">
-            <a href="../" class="nav-brand">
+            <a href="/tr/" class="nav-brand">
                 <img src="../../images/app_icon.png" alt="MyWay" width="38" height="38">
                 <span>MyWay</span>
             </a>
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../rehber/">Rehberler</a></li>
-                <li><a href="../#features">Özellikler</a></li>
+                <li><a href="/tr/rehber/" class="active">Şehir Rehberleri</a></li>
+                <li><a href="/tr/#features">Özellikler</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../../guides/saint_tropez.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇬🇧 English</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇹🇷 TR</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/saint_tropez.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item ">🇬🇧 English</a>
+                        <a href="/tr/rehber/saint_tropez.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item active">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="../#hero" class="nav-cta">İndir</a>
+
+                <a href="/tr/#download" class="nav-cta">Hemen İndir</a>
             </div>
         </div>
     </nav>
@@ -555,7 +678,7 @@
         <img src="../../images/cities/saint_tropez.jpg" alt="Saint-Tropez" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
-            <div class="city-badge">🇫🇷 Fransa &bull; Rehberler</div>
+            <div class="city-badge">🇫🇷 Fransa &bull; Şehir Rehberleri</div>
             <h1 class="guide-title">Saint-Tropez</h1>
             <p class="guide-tagline">Yat ve plaj kulübü cephesinin ardında hala bir balıkçı köyü saklı — onu bulmak biraz zaman istiyor</p>
         </div>
@@ -568,29 +691,249 @@
                 <span class="section-label">Genel Bakış</span>
                 <h2 class="section-title">Saint-Tropez Atmosferi</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Saint-Tropez adını duyunca akla yatlar, plaj kulüpleri ve Brigitte Bardot geliyor. Hepsi doğru — ama şehrin bu yüzü yaz aylarında o kadar baskın ki asıl Saint-Tropez&#x27;i görmek zorlaşıyor. 1950&#x27;lere kadar kimsenin bilmediği küçük bir balıkçı köyüydü burası. Bugün hala o köyün izleri var: eski limanda rengarenk boyalı balıkçı tekneleri, Place des Lices&#x27;in çınar ağaçları altında pétanque oynayan yaşlı adamlar, La Ponche mahallesinin taş sokakları. Bunlara ulaşmak için yoğun sezonu atlat ya da sabahın çok erken saatlerinde çık. Saint-Tropez küçük — her şey yürüme mesafesinde. Ama ulaşmak ayrı bir hikaye: tren istasyonu yok, trafik yaz aylarında felç oluyor.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 Pétanque</div>
+                <span class="pron-badge">🗣️ /peh-TANK/</span>
+            </div>
+            <p class="word-def"><strong>Fransız boules oyunu — metal bilyelerle hedef topa en yakın bırakanın kazandığı, saatlerce oynanabilen bir oyun. Place des Lices&#x27;in çınar ağaçları altında sabahları ve akşamüstleri oynayan yaşlı Tropézienler var. İzlemek ücretsiz, katılmak için davet beklemek gerek. Saint-Tropez&#x27;in en gerçek ve en ulaşılabilir yerel deneyimlerinden biri — yat limanından birkaç adım ötede.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Temel Bilgiler</span>
+                <h2 class="section-title">Pratik İpuçları & Lojistik</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">⛴️</div>
+                <div class="fact-title">Ulaşım</div>
+                <div class="fact-desc">Tren yok — feribot veya araba</div>
+                <div class="fact-sub">Sainte-Maxime&#x27;den feribot 25 dk · Saint-Raphaël&#x27;den otobüs 1-1,5 saat</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🏖️</div>
+                <div class="fact-title">Plaj</div>
+                <div class="fact-desc">Pampelonne — 5 km uzun plaj şeridi</div>
+                <div class="fact-sub">Plaj kulüpleri ücretli · ücretsiz bölüm de mevcut · bisiklet veya araçla</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🌡️</div>
+                <div class="fact-title">Hava</div>
+                <div class="fact-desc">Akdeniz — yaz sıcak ve güneşli</div>
+                <div class="fact-sub">Nis–Haz ve Eyl–Eki ideal · Tem–Ağu kalabalık ve pahalı · Ara–Şub sakin</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🎂</div>
+                <div class="fact-title">Yemek</div>
+                <div class="fact-desc">Tarte Tropézienne, ratatouille, taze balık</div>
+                <div class="fact-sub">Liman cephesi pahalı · La Ponche ve yan sokaklar makul</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yerel Sırlar</span>
+                <h2 class="section-title">Saint-Tropez İçin Yazısız Kurallar</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>Temmuz-Ağustos&#x27;ta gelmek zorundaysan çok önceden rezervasyon yap</strong>
+                    <span>Yaz ortasında Saint-Tropez çevresindeki yollar saatlerce tıkanıyor, plajlar dolup taşıyor, fiyatlar zirveye çıkıyor. Bu dönemde gelmek zorundaysan en az üç ay önceden rezervasyon yap. Araçla geleceksen şehrin dışındaki otoparklara bırak ve mini otobüsle merkeze geç. Sabahın çok erken saatleri ve akşam 19:00 sonrası şehir biraz nefes alıyor.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Ulaşım için plan yap — tren istasyonu yok</strong>
+                    <span>Saint-Tropez&#x27;e tren gitmiyor. En yakın tren istasyonu Saint-Raphaël, oradan otobüsle 1-1,5 saat. Sainte-Maxime&#x27;den feribot 25 dakika — çok daha keyifli. Nice&#x27;den yaz sezonu feribotu yaklaşık 2,5 saat. Araç kiralarsan yaz ortasında trafik çok kötü; Cogolin veya Grimaud&#x27;daki otoparklara bırakıp gidip gelebilirsin. Ulaşımı önceden planlamayan çok zaman kaybediyor.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Liman cephesi değil, La Ponche ve Citadelle tarafı</strong>
+                    <span>Liman cephesindeki kafeler ve restoranlar Saint-Tropez&#x27;in en pahalı ve en turistik noktaları. La Ponche mahallesi, Citadelle yokuşu ve Place aux Herbes çevresi hem daha ucuz hem çok daha yerel. Tarte Tropézienne için Place des Lices&#x27;e git; yemek için ise limanın arkasındaki sokakları keşfet.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Gizli Köşeler</span>
+                <h2 class="section-title">Saint-Tropez'deki Saklı Hazineler</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">La Ponche — eski balıkçı mahallesi</div>
+                <div class="card-desc">Liman meydanının hemen arkasında, birkaç adım içeride. Dar taş sokaklar, renkli boyalı pencereler, eski balıkçı evleri. Bardot 1956&#x27;da And God Created Woman filmini burada çekti ve Saint-Tropez&#x27;i dünyaya tanıttı. Hala o filmin ruhunu taşıyor. Sabahın erken saatlerinde neredeyse kimse yok. Küçük restoranlar ve kafeler var ama çoğu öğleden sonra açılıyor.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Gassin — körfezi gören ortaçağ köyü</div>
+                <div class="card-desc">Saint-Tropez&#x27;den 7 kilometre, araçla 15 dakika. Fransa&#x27;nın &#x27;Les Plus Beaux Villages&#x27; listesinde. Körfezin panoramasını en iyi gören köy — önünde hiçbir engel yok, sadece deniz. Küçük kilise, dar sokaklar, birkaç restoran. Akşam yemeği için buraya gelmek, aşağıdaki kalabalıktan kaçmak ve manzarayı kazanmak demek.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Citadelle de Saint-Tropez</div>
+                <div class="card-desc">17. yüzyıldan kalma kale, şehrin doğusunda, tepede. İçinde deniz tarihine adanmış müze var. Ama asıl sebep: kalenin etrafındaki hendek ve surlardan Saint-Tropez körfezinin panoramik manzarası. Biletli ama uygun fiyatlı. Sabahın erken saatlerinde en sakin. Buradan limana, Pampelonne&#x27;a ve uzakta Estérel dağlarına bakınca şehrin neden bu kadar seviklendiğini anlıyorsun.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Sentier du Littoral — kıyı yürüyüş yolu</div>
+                <div class="card-desc">Saint-Tropez&#x27;den Pampelonne&#x27;a ve Ramatuelle&#x27;e kadar uzanan kıyı yürüyüş yolu. Toplam 35 kilometre ama parçalar halinde gezilebilir. Kayalıklar, küçük koylar, çam ormanları ve Akdeniz manzarası. Temmuz-Ağustos&#x27;ta sıcak, ilkbahar ve sonbahar ideal. Yürürken kendi gizli koyunu bulursun — Saint-Tropez&#x27;in plaj kulübü cephesinin çok ötesinde bir deneyim.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Musée de l&#x27;Annonciade</div>
+                <div class="card-desc">Liman meydanına beş dakika, eski bir şapelde. Signac, Matisse, Derain, Bonnard — Post-Empresyonist ve Fauve ressamlar 20. yüzyıl başında Saint-Tropez&#x27;de yaşadı ve çalıştı. Bu müze onların eserlerini barındırıyor. Dışarıda hava çok sıcaksa, liman çok kalabalıksa bu müzeye girmek hem serinlemek hem çok iyi sanat görmek demek. Az bilinen ama gerçekten kaliteli.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Port Grimaud</div>
+                <div class="card-desc">Saint-Tropez&#x27;den 8 kilometre, 1960&#x27;larda mimar François Spoerry tarafından sıfırdan inşa edilmiş kanal şehri. Venedik benzeri ama Provençal — her evin önünde tekne yanaşma yeri, renkli boyalı cepheler. Tekne turları biletli, dış bölüm ücretsiz gezilebilir. Sainte-Maxime feribotundan önce veya sonra uğramak için mükemmel.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yeme & İçme</span>
+                <h2 class="section-title">Mutlaka Tadılması Gereken Lezzetler</h2>
+            </div>
+            <p class="intro-text">Saint-Tropez&#x27;de yemek pahalı ama doğru yeri bulursan hem lezzetli hem makul. Liman cephesinden kaç, yan sokaklara gir.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Tarte Tropézienne</div>
+                <div class="card-desc">Place des Lices&#x27;teki orijinal La Tarte Tropézienne dükkanından al — ya da aynı meydandaki kafede oturup ye. Bütün pasta 25-35 euro, dilim 5-8 euro. Sabah taze geliyor, öğleden sonra en popüler saati. Portakal çiçeği aroması hafif, iç dolgu kremamsı ve hafif. Bu pastayı burada yemek Saint-Tropez&#x27;in en yerel ve en erişilebilir ritüellerinden.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Taze balık — Place aux Herbes&#x27;de</div>
+                <div class="card-desc">Place aux Herbes&#x27;deki küçük balık pazarı sabahları işliyor — Tropézien balıkçıların günlük avı burada satılıyor. Liman cephesinin turistik restoranlarından çok daha taze ve çok daha ucuz balık yemek istiyorsan Place aux Herbes çevresindeki küçük bistrolara git. Sabah erken sat bitmeden.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Ratatouille</div>
+                <div class="card-desc">Kabak, patlıcan, domates, biber, soğan ve sarımsak — Provence&#x27;ın en saf sebze yemeği. Saint-Tropez&#x27;de her yerel restoran yapıyor; hem ana yemek olarak hem de et ve balığın yanında. Yaz ortasında yerel pazardan gelen sebzelerle yapılanı en iyisi. Yazın sıcağında soğuk da yenebilir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Daube Provençale</div>
+                <div class="card-desc">Provence&#x27;ın kırmızı şarapta uzun süre pişirilmiş dana yahnisi. Zeytinyağı, soğan, sarımsak, kekik ve defne yaprağıyla saatlerce yavaş pişirilir. Kış ve ilkbahar yemeği — yazın menülerde az görülür. Eylül-Mayıs arası La Ponche çevresindeki küçük restoranlarda bulmak mümkün.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Côtes de Provence rosésu</div>
+                <div class="card-desc">Saint-Tropez çevresindeki üzüm bağlarından çıkan, Fransa&#x27;nın en ünlü rosésu. Soluk rengi, hafif aroması ve kuru yapısıyla tanınan Provence rosésu dünyanın her yerine ihraç ediliyor. Ama en iyisi buradan içiliyor — Place des Lices&#x27;teki kafede veya limanın yanındaki barlarda kadeh 6-10 euro.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Socca ve pissaladière — Place des Lices pazarında</div>
+                <div class="card-desc">Salı ve Perşembe sabah pazarında yerel tezgahlar nohut unu gözlemesi (socca) ve soğan turta dilimleri (pissaladière) satıyor. 2-4 euro, sabahın en iyi atıştırmalığı. Pazar tezgahlarını dolaşırken bu ikisini dene — Provençal kahvaltının en ucuz ve en lezzetli yolu.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Dikkat Edilmesi Gerekenler</span>
+                <h2 class="section-title">Turist Tuzakları & Kaçınılması Gerekenler</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Ünlü plaj kulüplerinde şezlong + öğle yemeği kolayca yüzlerce euroya çıkar; deniz ise herkes için aynı deniz.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Pampelonne&#x27;un halka açık bölümlerine havlunu ser ya da patikayla ulaşılan koyları seç; kulüp merakı varsa sadece içki iç.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Rıhtımdaki kafeler süper yat manzarasını menüye ekler: sıradan salata, olağanüstü hesap.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Yatları rıhtımda yürüyerek bedava izle; yemeği iki sokak içeride, La Ponche tarafında ye.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Temmuz-ağustosta tek giriş yolu saatlerce süren bir kuyruktur; park ise ayrı bir savaş.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Sainte-Maxime&#x27;e park et, deniz otobüsüyle (bateau vert) 15 dakikada körfezi geç: manzara bonus, sinir bedava.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Yıldız villalarını uzaktan gösteren tekne turları pahalı bir hayal kırıklığıdır; ünlüler zaten görünmek istediklerinde limandadır.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Aynı parayla kıyı patikasında (Sentier du Littoral) yürü: koylar, burunlar ve gerçek Saint-Tropez manzarası.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Saint-Tropez'yi MyWay ile Keşfedin</h3>
-            <p>Zikzak çizmeden adım adım akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
+            <p>Adım adım optimize edilmiş akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      App Store'dan Hemen İndirin
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. Tüm hakları saklıdır.</p>
+            <p>&copy; 2026 MyWay Travel App. Tüm hakları saklıdır.</p>
         </div>
     </footer>
 

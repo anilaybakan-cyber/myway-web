@@ -6,8 +6,17 @@
     <title>Paris Gezi Rehberi & Akıllı Rotalar | MyWay</title>
     <meta name="description" content="Paris için adım adım yürüyüş rotaları, gizli mekanlar, turist tuzakları ve lezzet durakları. Paris gezi rehberi MyWay'de.">
     
-    <link rel="alternate" hreflang="en" href="../../guides/paris.html">
-    <link rel="alternate" hreflang="tr" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/paris.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/paris.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -527,7 +641,7 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="navbar-inner">
-            <a href="../" class="nav-brand">
+            <a href="/tr/" class="nav-brand">
                 <img src="../../images/app_icon.png" alt="MyWay" width="38" height="38">
                 <span>MyWay</span>
             </a>
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../rehber/">Rehberler</a></li>
-                <li><a href="../#features">Özellikler</a></li>
+                <li><a href="/tr/rehber/" class="active">Şehir Rehberleri</a></li>
+                <li><a href="/tr/#features">Özellikler</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../../guides/paris.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇬🇧 English</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇹🇷 TR</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/paris.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item ">🇬🇧 English</a>
+                        <a href="/tr/rehber/paris.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item active">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="../#hero" class="nav-cta">İndir</a>
+
+                <a href="/tr/#download" class="nav-cta">Hemen İndir</a>
             </div>
         </div>
     </nav>
@@ -555,7 +678,7 @@
         <img src="../../images/cities/paris.jpg" alt="Paris" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
-            <div class="city-badge">🇫🇷 Fransa &bull; Rehberler</div>
+            <div class="city-badge">🇫🇷 Fransa &bull; Şehir Rehberleri</div>
             <h1 class="guide-title">Paris</h1>
             <p class="guide-tagline">Herkesin tanıdığını sandığı şehir — neredeyse kimsenin gerçekten tanımadığı</p>
         </div>
@@ -568,29 +691,249 @@
                 <span class="section-label">Genel Bakış</span>
                 <h2 class="section-title">Paris Atmosferi</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Paris dünyanın en çok ziyaret edilen şehri; bu yüzden turistler için oynamayı onlarca yıldır öğreniyor. Çoğu ziyaretçinin gördüğü Paris selfie noktaları, anıtların yakınındaki pahalı kafeler, Eyfel Kulesi kuyrukları. Tüketim için kurulmuş bir sahne. Gerçek Paris ise onun hemen yanı başında akıyor: mahalle fırınlarında, 1820&#x27;lerden kalma kapalı pasajlarda, yerel halkın Çarşamba öğleden sonraları pétanque (Fransız bocce oyunu) oynadığı parklarda, tabelası ve İngilizce menüsü olmayan şarap barlarında. Bu şehir meraklıyı ödüllendiriyor, pasif olanı görmezden geliyor. Anıtlar gerçekten olağanüstü; Louvre, Notre-Dame, Versailles. Ama bunlar Paris&#x27;in başlangıcı, sonu değil. Soru Eyfel Kulesi&#x27;ni görüp görmemek değil. Soru ondan sonra ne yapacağın.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 Arrondissement</div>
+                <span class="pron-badge">🗣️ /ah-ron-dis-MON/</span>
+            </div>
+            <p class="word-def"><strong>Paris 20 arrondissement&#x27;a bölünmüş; şehir merkezinden saat yönünde sarmal şeklinde 1&#x27;den 20&#x27;ye numaralandırılmış. Her birinin kendine özgü karakteri, pazarları ve ritmi var. 1. tarihi merkez, 11. Parislilerin geceleri çıktığı yer, 18. Montmartre, 20. Belleville. Nereye gittiğini bilmek, herhangi bir restoran yorumundan çok o akşam hakkında daha fazla şey anlatıyor.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Temel Bilgiler</span>
+                <h2 class="section-title">Pratik İpuçları & Lojistik</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Havalimanları</div>
+                <div class="fact-desc">CDG · Orly · Beauvais</div>
+                <div class="fact-sub">CDG: RER B 35 dk · Orly: Orlyval+RER 35 dk</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🚇</div>
+                <div class="fact-title">Ulaşım</div>
+                <div class="fact-desc">Métro + RER + otobüs</div>
+                <div class="fact-sub">16 hat · 302 istasyon · 01:00–02:00&#x27;ye kadar</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🗺️</div>
+                <div class="fact-title">Arrondissement</div>
+                <div class="fact-desc">20 semt</div>
+                <div class="fact-sub">Merkezden sarmal · her birinin kendine özgü karakteri</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🥐</div>
+                <div class="fact-title">Kahvaltı kuralı</div>
+                <div class="fact-desc">Café crème + croissant</div>
+                <div class="fact-sub">Tezgahta · ayakta · sabah 10&#x27;dan önce</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yerel Sırlar</span>
+                <h2 class="section-title">Paris İçin Yazısız Kurallar</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>Her girişte bonjour de — istisnasız</strong>
+                    <span>Paris&#x27;te bir dükkâna, kafeye ya da fırına bonjour demeden girmek kabalık sayılıyor. Saldırgan bir tutum değil, gerçek bir görgü kuralı bu. Girerken bonjour, çıkarken merci ve au revoir. Bu tek alışkanlık her etkileşimi değiştiriyor. Parisliler soğuk değil; yabancılara karşı resmi. O resmiyet bir kapı.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Métro şehrin damarı</strong>
+                    <span>16 hat, 302 istasyon ve şehrin neredeyse her köşesine ulaşım. Tek t+ bileti metro, otobüs, tramvay ve şehir içi RER&#x27;de geçerli. Kısa konaklamalar için Navigo Easy kartı en pratik seçenek; üzerine bilet yüklenip her binişte okuyucuya dokundurularak geçerli kılınıyor. Metro hafta içi yaklaşık 01:00&#x27;e, hafta sonları 02:00&#x27;ye kadar çalışıyor.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Öğle yemeği asıl öğün — akşam değil</strong>
+                    <span>Paris&#x27;te en iyi değer hafta içi öğle yemeğinde. Bistroların ve brasserilerin büyük çoğunluğu formule sunuyor; akşamın yarı fiyatına iki ya da üç çeşit. Aynı mutfak, aynı yemek, yarı maliyet. Parisliler 12:30–14:00 arasında öğle yemeği yiyor. Kuyruk önlemek için 12:30&#x27;dan önce ya da 13:30&#x27;dan sonra gitmek iyi fikir. İyi restoranlarda akşam rezervasyonu şart, çoğu zaman haftalar öncesinden.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Gizli Köşeler</span>
+                <h2 class="section-title">Paris'deki Saklı Hazineler</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Sainte-Chapelle — Île de la Cité</div>
+                <div class="card-desc">Notre-Dame&#x27;dan on dakika uzakta, Palais de Justice&#x27;in duvarlarının ardında Sainte-Chapelle duruyor. Paris&#x27;in tartışmasız en olağanüstü iç mekânı. IX. Louis tarafından Dikenli Taç&#x27;ı barındırmak için 1242–1248 arasında altı yılda inşa edilen üst şapelin duvarları neredeyse tamamen vitray camdan; 600 metrekareye yayılmış 1.113 İncil sahnesi. Güneşli bir günde içeride yaşanan ışık deneyimini tarif etmek güç. Camın üçte ikisi 13. yüzyıldan özgün. Biletli giriş, önceden rezervasyon şart. Güneş cama vururken git.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Coulée Verte René-Dumont — 12. arrondissement</div>
+                <div class="card-desc">Kullanılmayan bir 19. yüzyıl demiryolu viyadüğünün üzerine inşa edilen Coulée Verte, 12. arrondissement boyunca 4.5 km uzanan yükseltilmiş bir bahçe yürüyüş yolu. 1993&#x27;te açıldı; New York High Line&#x27;ından on yedi yıl önce. High Line&#x27;ın mimarları Coulée Verte&#x27;den doğrudan ilham aldıklarını söylüyor. Viyadük kemerlerinin altında galeriler, tasarım stüdyoları ve atölyeler. Üstte glisin, gül, bambu ve hiçbir turistin uğramadığı bir Paris. Ücretsiz. Bastille ucundan başlayıp doğuya yürümek en iyisi.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Arènes de Lutèce — 5. arrondissement</div>
+                <div class="card-desc">Latin Çeyreği&#x27;nde, Rue Monge&#x27;daki sıradan bir apartman binasının hemen arkasında MS 1. yüzyıldan kalma bir Gallo-Roma amfitiyatrosu büyük ölçüde unutulmuş halde duruyor. Bir zamanlar 15.000 seyirci alıyordu. Bugün Çarşamba ve Cumartesi öğleden sonraları pétanque (Fransız bocce oyunu) oynayan yerlileri, çimenlerde oynayan çocukları barındırıyor. Giriş tamamen ücretsiz; bilet gişesi yok, tur grubu yok. Paris&#x27;in ayakta kalan en eski yapılarından biri. Neredeyse hiç ziyaretçi gelmiyor.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Galerie Vivienne — 2. arrondissement</div>
+                <div class="card-desc">Paris&#x27;in 1820&#x27;ler ve 1830&#x27;lardan kalma 20 kapalı pasajı hayatta. Cam çatılı bu alışveriş galerileri modern alışveriş merkezinin öncülleri. Galerie Vivienne en güzeli: mozaik zeminler, Neoklasik kabartmalar, onlarca yıldır aynı yerde duran bir şarap tüccarı, bir çay salonu, eski ve nadir baskılara odaklanmış bir kitabevi. Rue Vivienne&#x27;den girilip ücretsiz, yavaş yavaş gezilmeli. Haussmann her şeyi yıkmadan önce Paris böyle görünüyordu.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Palais Royal Bahçeleri — 1. arrondissement</div>
+                <div class="card-desc">Louvre&#x27;dan birkaç adım ötede, Palais Royal bahçeleri üç taraftan sütunlu galerilerle çevrili; çakıl yollar, çeşmeler ve ıhlamur ağaçlarından oluşan sakin bir dikdörtgen. Çevresinde antika tüccarları, bir restoran, avluda Daniel Buren&#x27;in çizgili sütunları var. Dünyanın en çok ziyaret edilen kilometrekaresinde bulunmasına rağmen büyük ölçüde huzurlu kalıyor. Kardinal Richelieu ve Mazarin burada yaşadı. Victor Hugo burada yürürdü. Giriş ücretsiz. Sıcak bir öğleden sonra burada vakit geçirilmeli.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">La Petite Ceinture — 15./16. arrondissement</div>
+                <div class="card-desc">Petite Ceinture 1862&#x27;den 1934&#x27;e kadar Paris&#x27;i çevreleyen dairesel bir demiryoluydu. Yaklaşık bir asırdır terk edilmiş; yabani çiçekler, huş ağaçları, tilkiler ve kimi zaman kent çiftçileri tarafından kısmen geri alınmış. Birkaç bölüm kamuya açık ve ücretsiz; 15. ve 16. arrondissement kesimleri en ilginç olanlar. Sarmaşıkla kaplı eski raylar boyunca yürümek Paris&#x27;in sunduğu en tuhaf ve en güzel deneyimlerden biri.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yeme & İçme</span>
+                <h2 class="section-title">Mutlaka Tadılması Gereken Lezzetler</h2>
+            </div>
+            <p class="intro-text">Fransız mutfağı dünyanın en etkili mutfak geleneği ve Paris onun başkenti. Ama yemek için gidilmesi gereken Paris, dışarıda İngilizce menüsü ve duvarda turist fotoğrafları olan yer değil. Salı günü mahalle bistrosu, sabah 08:00&#x27;de fırın, üç masalı ve el yazısıyla yazılmış şarap listesi olan bar.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Croissant — kalitesi fırına göre değişir</div>
+                <div class="card-desc">İyi bir croissant katmanlı: kesit görüntüsünde tereyağlı hamur katları görünür, dışı cam gibi kırılgan, içi yumuşak. Vasat bir croissant homojen, yumuşak ve unutulabilir. Paris&#x27;te her ikisi de var; fark fırıncıda. Maison Landemaine, Du Pain et des Idées ve Sébastien Gaudard en iyileri arasında. Özellikle kuyruğu olan fırından almayı tercih et; kuyruklar yalan söylemez.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Steak frites — Parisian standart</div>
+                <div class="card-desc">Bir bistrotun ölçütü. Düzgün bir steak frites onglet (askı biftek) ya da entrecôte (antrikot) kullanır; el yapımı patates kızartması ve béarnaise (yumurta sarısı ve tereyağlı sos) ya da arpacık soğan sosla gelir. Her zaman à point (orta pişmiş) ya da saignant (az pişmiş) ısmarlanır; bien cuit (çok pişmiş) bifteği israf sayılır. Saint-Germain&#x27;deki Le Relais de l&#x27;Entrecôte başka hiçbir şey servis etmiyor ve önünde sürekli kuyruk oluşuyor. Beklemeye değiyor.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Fromage — ritüel</div>
+                <div class="card-desc">Fransız restoranında peynir tatlıdan önce, tatlı yerine değil, gelir. Servis ekmekle sunulan üç ila beş çeşit peynirden oluşur; kraker veya chutney (meyve-sebze reçeli) eşlik etmez. Günün en iyisini sormak gerekiyor. Comté, Époisses, Brie de Meaux, Roquefort, Camembert. Kural: peynirin oda sıcaklığına gelmesini beklemek. Soğuk servis edilen peynir, peynircinin emeğine saygısızlık sayılır.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Doğal şarap — Paris&#x27;in tutkusu</div>
+                <div class="card-desc">Paris doğal şarap konusunda dünyaya öncülük ediyor; düşük müdahaleli, minimal sülfitli, çoğunlukla orange ya da pét-nat (pétillant naturel — doğal köpüklü şarap). 11. arrondissement&#x27;ın tek başına iyi doğal şarap barı sayısı, pek çok şehrin toplam şarap barından fazla. Le Servan, Septime Cave, Clown Bar, Canal Saint-Martin kıyısındaki Le Verre Volé. Bir kadeh ısmarlamak ve vigneronun ne yaptığını sormak gerekiyor. Avrupa&#x27;nın en ilginç şarap sahnesi.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Kahve — doğru yöntem</div>
+                <div class="card-desc">Paris&#x27;te café espresso demek. Café crème buharlı sütlü espresso. Noisette içine ılık süt damlatılmış espresso; yerel standart sipariş. Cappuccino anlaşılıyor ama sabah 11&#x27;den sonra hafifçe yadırganıyor. Tezgahta içmek gerekiyor; daha hızlı, daha ucuz ve daha Parisian. Üçüncü dalga kahve sahnesi (Ten Belles, Café Lomi, Coutume) Paris&#x27;i son on yılda dönüştürdü. Her iki gelenek yan yana yaşıyor.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Baguette — günlük ritüel</div>
+                <div class="card-desc">Parisliler her gün ekmek alır. Geleneksel baguette (baguette de tradition) çatlayan bir kabuk, açık ve havadar bir iç yapı, uzun fermantasyondan gelen hafif bir ekşilikle gelir. Akşama bayatlar; bu doğru ve normaldir. En iyileri hamurunu yavaş mayalayan fırınlarda pişiyor. Şehir her yıl Paris&#x27;in en iyi baguette&#x27;ini seçen bir yarışma düzenliyor; kazanan bir yıl boyunca Élysée Sarayı&#x27;na ekmek tedarik ediyor.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Dikkat Edilmesi Gerekenler</span>
+                <h2 class="section-title">Turist Tuzakları & Kaçınılması Gerekenler</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Yerden &#x27;altın yüzük bulan&#x27; ve sana vermek isteyen, ya da panoya imza isteyip sonra para talep eden ekipler büyük meydanların klasiği.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Durma, gülümse, &#x27;non merci&#x27; de ve yürü. Çantan önünde, fermuarı kapalı — Paris metro kuralı.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Dünyanın en ünlü caddesi, yemek konusunda şehrin en zayıf noktası: turist fiyatına vasat mutfak.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Caddeden bir paralel sokağa geç ya da rotayı Marais veya Canal Saint-Martin&#x27;e çevir: aynı bütçe, gerçek Paris.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Montmartre&#x27;ın ressam meydanında istemeden başlayan portreler pazarlıkla biter; fiyatlar önceden söylenmez.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Fiyatı baştan sor ya da sadece izle. Montmartre&#x27;ın asıl güzelliği meydandan iki sokak ötede, sessiz merdivenlerde.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Eyfel ve Louvre çevresinde &#x27;skip-the-line&#x27; diye satılan biletlerin çoğu ya sahte ya fahiş komisyonlu.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Bileti yalnızca resmi sitelerden ve tarihli-saatli al; Eyfel doluysa Trocadéro&#x27;dan bak, Louvre doluysa Orsay her zaman daha sakin.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Paris'yi MyWay ile Keşfedin</h3>
-            <p>Zikzak çizmeden adım adım akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
+            <p>Adım adım optimize edilmiş akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      App Store'dan Hemen İndirin
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. Tüm hakları saklıdır.</p>
+            <p>&copy; 2026 MyWay Travel App. Tüm hakları saklıdır.</p>
         </div>
     </footer>
 

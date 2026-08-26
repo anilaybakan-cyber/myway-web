@@ -6,8 +6,17 @@
     <title>Valencia City Guide & Smart Walking Routes | MyWay</title>
     <meta name="description" content="Explore Valencia with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
     
-    <link rel="alternate" hreflang="tr" href="../tr/rehber/valencia.html">
-    <link rel="alternate" hreflang="en" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/valencia.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/valencia.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../guides/">City Guides</a></li>
+                <li><a href="/guides/" class="active">City Guides</a></li>
                 <li><a href="/#features">Features</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../tr/rehber/valencia.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇹🇷 Türkçe</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇬🇧 EN</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/valencia.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item active">🇬🇧 English</a>
+                        <a href="/tr/rehber/valencia.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item ">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="/#hero" class="nav-cta">Download</a>
+
+                <a href="/#download" class="nav-cta">Download</a>
             </div>
         </div>
     </nav>
@@ -568,29 +691,249 @@
                 <span class="section-label">Overview</span>
                 <h2 class="section-title">The Vibe of Valencia</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Beach or history or architecture or food? Valencia is the city that doesn&#x27;t make you choose. In a single day you can swim in the Mediterranean, get lost in medieval streets, find yourself surrounded by futuristic museums and sit down for lunch where the world&#x27;s best paella was born. The Turia River running through the centre is the detail that completely changed Valencia&#x27;s spirit: after the great flood of 1957, the riverbed was drained and turned into a 9-kilometre green park in the heart of the city. Today people cycle to work through it, run, spend time with their children here. Perhaps this is exactly what makes Valencia feel so good. Large but not exhausting, lively but not chaotic, and prices still feel reasonable compared to Spain&#x27;s other big cities.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 L&#x27;Horta</div>
+                <span class="pron-badge">🗣️ /lor-TA/</span>
+            </div>
+            <p class="word-def"><strong>The fertile farmland surrounding Valencia. Orange groves, rice paddies, chestnut fields. Valencian paella comes from these lands: chicken, rabbit, fresh beans, olive oil and bomba rice (a short-grain local rice that absorbs liquid well). No seafood — real Valencian paella is the food of agricultural land. Knowing this distinction means eating the right thing in the right place in the city.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Essentials</span>
+                <h2 class="section-title">Quick Logistics</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Airport</div>
+                <div class="fact-desc">VLC — Valencia Airport</div>
+                <div class="fact-sub">Metro Line 3/5 to centre ~20 min · €5.60</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🚇</div>
+                <div class="fact-title">Transport</div>
+                <div class="fact-desc">Metro, bus, tram — SUMA card</div>
+                <div class="fact-sub">Single fare ~€1.50 · SUMA 10-trip €8.90 (Zone A)</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🌡️</div>
+                <div class="fact-title">Weather</div>
+                <div class="fact-desc">Mediterranean — Spain&#x27;s sunniest city</div>
+                <div class="fact-sub">Apr–Jun and Sep–Oct ideal · Jul–Aug hot · Dec–Feb mild</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🥘</div>
+                <div class="fact-title">Food</div>
+                <div class="fact-desc">Paella valenciana, orxata, agua de Valencia</div>
+                <div class="fact-sub">Set lunch €10–14 · paella per person €15–25</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Insider Advice</span>
+                <h2 class="section-title">Unwritten Rules for Valencia</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>Paella is a lunch dish — not dinner</strong>
+                    <span>Valencians eat paella at lunchtime, between 2pm and 4pm. Restaurants serving paella in the evening are generally tourist traps — they&#x27;re almost certainly reheating paella cooked that morning. Real paella preparation starts in the morning and takes an average of 40-50 minutes to cook. If you want paella, plan your lunch around it and warn the group early.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Don&#x27;t drink orxata (horchata) from a supermarket</strong>
+                    <span>Orxata is the city&#x27;s drink — a sweet, creamy cold drink made from chufa (tiger nuts similar to tubers). It has nothing in common with the pasteurised supermarket version. For fresh orxata, look for a horchatería with &#x27;orxata artesana&#x27; on the sign. Horchatería Santa Catalina near the Mercado Central is a historic spot and one of the best. Order a farton alongside — a long, lightly sweet roll made for dipping.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Come in March for Las Fallas — but be ready for it</strong>
+                    <span>Las Fallas (12-19 March) is Valencia&#x27;s UNESCO-listed festival — enormous sculpture groups are erected across the city and burned on the final night. Hotels charge two to three times normal prices during this period and the city is packed. But seeing Valencia this way is only possible in March — never at any other time.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Off the Beaten Path</span>
+                <h2 class="section-title">Hidden Gems in Valencia</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Estación del Norte</div>
+                <div class="card-desc">A Modernist train station built in 1917 — one of Valencia&#x27;s most important architectural buildings, yet most visitors walk past without going inside. Stained glass windows, ceramic panels and ironwork decorated with orange blossom, orange trees and Valencian symbols. Valencia&#x27;s agricultural culture is embedded in this building&#x27;s walls. Go inside even if you&#x27;re not catching a train.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Jardines del Turia</div>
+                <div class="card-desc">After the 1957 flood disaster, the Turia riverbed was drained and turned into a 9-kilometre green corridor running right through the heart of the city. Cycling paths, walking trails, playgrounds and Gulliver Park all along this corridor. Valencians run here, cycle, have picnics. Completely free.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Albufera Lake</div>
+                <div class="card-desc">20 kilometres south of Valencia, a freshwater lake separated from the Mediterranean by natural sand barriers. A 21,000-hectare natural park. El Palmar village sits in the middle of the lake and can be explored by wooden boat. At sunset the lake turns red — a spectacular sight. Just 40 minutes by bus from the city centre.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">El Carmen neighbourhood</div>
+                <div class="card-desc">Narrow streets enclosed by medieval walls inside Ciutat Vella. Artist studios, alternative cafés and street art by day; bars and live music venues by night. Torres de Serranos offers one of the city&#x27;s finest panoramas — free. Quietest in the early morning hours; nightlife peaks on Friday and Saturday.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">La Lonja de la Seda (Silk Exchange)</div>
+                <div class="card-desc">Built between 1482 and 1548, a UNESCO World Heritage Site. One of Spain&#x27;s finest examples of late Gothic architecture. The spiral columns and vaulted ceiling of the Salon de Contratación tell the story of Valencia&#x27;s golden age of trade. 3 minutes&#x27; walk from the Mercado Central, with a fraction of the crowds.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Bioparc Valencia</div>
+                <div class="card-desc">At the western end of the Turia Gardens. Not a traditional caged zoo — all animals are in open areas that replicate their natural habitats, at the same observation level as visitors. Gorillas, chimpanzees, elephants and hippos observed this way is a different experience altogether. Valencia&#x27;s finest activity for children, though adults are equally captivated.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Food & Flavors</span>
+                <h2 class="section-title">What to Taste</h2>
+            </div>
+            <p class="intro-text">Eating the wrong paella in Valencia is very easy; eating the right one takes a little research. The city handles the rest by itself.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Paella Valenciana</div>
+                <div class="card-desc">The city&#x27;s most iconic dish and also its most adulterated. If there are 10 types of paella on the menu, a photo menu, or they&#x27;re serving it in the evening — don&#x27;t go in. Real paella is a lunch dish, cooked over wood fire, taking 40-50 minutes. La Pepica (on Malvarrosa beach, since 1898) or restaurants in El Palmar village are the most reliable options. €15-25 per person.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Orxata con fartons</div>
+                <div class="card-desc">A sweet, cold drink made from chufa (tiger nuts). No milk, gluten-free and vegan. Alongside it, a farton — a long, lightly sweet roll made specifically for dipping into it. Between 5pm and 7pm, Valencians sit down for this pair. Try Horchatería Santa Catalina or anywhere with an &#x27;orxata artesana&#x27; sign. Stay well away from the pasteurised supermarket version.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Agua de Valencia</div>
+                <div class="card-desc">Fresh orange juice, cava (Spanish sparkling wine), vodka or gin, sugar — Valencia&#x27;s cocktail, served in a large jug. Invented in 1959 at Café Madrid. The real version made with fresh orange juice is completely different from the tourist version made with concentrate. The price tells you: €8-12 per jug.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Tapas — in El Cabanyal</div>
+                <div class="card-desc">El Cabanyal is Valencia&#x27;s former fishing neighbourhood — the freshest seafood in the city comes from here. Clóchinas (Valencia&#x27;s own small, intensely flavoured mussels, May-August season), coquilles (scallops) and pulpo (octopus) are the classics here. Bar Casa Montaña has been open since 1836 — small plates €3-5, excellent wine selection.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Buñuelo</div>
+                <div class="card-desc">Deep-fried dough ball — crispy on the outside, soft inside. The sweet version is served with icing sugar. €1-2 at stalls inside Mercado Central or on the street. A breakfast or mid-morning snack. Found everywhere during Las Fallas.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Arroz al horno</div>
+                <div class="card-desc">Paella&#x27;s sibling but very different: rice baked in the oven with chickpeas, aubergine, tomatoes, sausage and pork ribs, served in a clay pot. A winter dish — October to March. It lives in paella&#x27;s shadow but is every bit as delicious.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Watch Out</span>
+                <h2 class="section-title">Tourist Traps to Avoid</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Chicken-and-prawn &#x27;mixta&#x27; is a tourist invention, and dinner paella is usually lunch&#x27;s leftovers; a Valencian smiles at both and sits at neither.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Order paella at lunch, at an arrocería, for two or more; wood-fired seaside classics like Casa Carmela are a masterclass of their own.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">The menu-waving restaurants along Malvarrosa sell the day&#x27;s tired pan to tourists.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> One street inland, into El Cabanyal&#x27;s azulejo-fronted lanes: century-old bodegas like Casa Montaña serve tapas and history together.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Ticketing every building in one day is expensive and exhausting; half the complex is at its best from outside anyway.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Pick one building (the Oceanogràfic is the fullest) and live the rest as architecture on foot — at sunset the concrete and water mirror are a free show.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">The city&#x27;s cocktail is sold everywhere, but in most places it&#x27;s a version watered down with cheap fizz.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Drink it near where it was born: at long-standing bars like Café de las Horas, with cava and fresh orange — one jug serves two, believe it.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Explore Valencia with MyWay</h3>
-            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without zigzagging across town.</p>
+            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without wasted steps.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      Download on App Store
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. All rights reserved.</p>
+            <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
         </div>
     </footer>
 

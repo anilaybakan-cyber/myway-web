@@ -6,8 +6,17 @@
     <title>Houston Gezi Rehberi & Akıllı Rotalar | MyWay</title>
     <meta name="description" content="Houston için adım adım yürüyüş rotaları, gizli mekanlar, turist tuzakları ve lezzet durakları. Houston gezi rehberi MyWay'de.">
     
-    <link rel="alternate" hreflang="en" href="../../guides/houston.html">
-    <link rel="alternate" hreflang="tr" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/houston.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/houston.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -527,7 +641,7 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="navbar-inner">
-            <a href="../" class="nav-brand">
+            <a href="/tr/" class="nav-brand">
                 <img src="../../images/app_icon.png" alt="MyWay" width="38" height="38">
                 <span>MyWay</span>
             </a>
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../rehber/">Rehberler</a></li>
-                <li><a href="../#features">Özellikler</a></li>
+                <li><a href="/tr/rehber/" class="active">Şehir Rehberleri</a></li>
+                <li><a href="/tr/#features">Özellikler</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../../guides/houston.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇬🇧 English</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇹🇷 TR</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/houston.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item ">🇬🇧 English</a>
+                        <a href="/tr/rehber/houston.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item active">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="../#hero" class="nav-cta">İndir</a>
+
+                <a href="/tr/#download" class="nav-cta">Hemen İndir</a>
             </div>
         </div>
     </nav>
@@ -555,7 +678,7 @@
         <img src="../../images/cities/houston.jpg" alt="Houston" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
-            <div class="city-badge">🇺🇸 ABD &bull; Rehberler</div>
+            <div class="city-badge">🇺🇸 ABD &bull; Şehir Rehberleri</div>
             <h1 class="guide-title">Houston</h1>
             <p class="guide-tagline">Uzaya komuta eden, dünyanın sofrasını kuran bayou şehri</p>
         </div>
@@ -568,29 +691,249 @@
                 <span class="section-label">Genel Bakış</span>
                 <h2 class="section-title">Houston Atmosferi</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Houston iki efsaneyi aynı anda taşır: biri Ay&#x27;a giden her komutun geçtiği Görev Kontrol odası, öbürü Amerika&#x27;nın en çeşitli sofrası. Bu bayou şehri petrol parasıyla müze doldurmuş, göçle mutfak zenginleştirmiş, plansız büyümüş ve tam da bu yüzden özgürleşmiştir — kimse kimseye &#x27;nereden geldin&#x27; diye sormaz, &#x27;ne yiyelim&#x27; diye sorar. Rothko&#x27;nun sessiz şapeli, Menil&#x27;in ücretsiz koleksiyonu, Asiatown&#x27;ın dev yemek pasajları ve fajitanın doğduğu tavalar aynı haritadadır. H-Town gösterişsizdir; sevmesi bu yüzden kolaydır.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 H-Town</div>
+                <span class="pron-badge">🗣️ /eyç-taun/</span>
+            </div>
+            <p class="word-def"><strong>Houston&#x27;ın yerli takma adı: rap kültüründen gündelik dile geçmiş bir aidiyet mührü. &#x27;H-Town proud&#x27; diyen, şehrin gösterişsiz gururunu kuşanmıştır. Houston kendini dev sloganlarla değil, bu iki heceyle anlatır — duyduğunda başını salla, sen de dahilsin.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Temel Bilgiler</span>
+                <h2 class="section-title">Pratik İpuçları & Lojistik</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Havalimanı</div>
+                <div class="fact-desc">Bush (IAH) / Hobby (HOU)</div>
+                <div class="fact-sub">IAH uluslararası dev, Hobby şehre yakın</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🚀</div>
+                <div class="fact-title">İmza</div>
+                <div class="fact-desc">Space Center + sofra</div>
+                <div class="fact-sub">Görev Kontrol ve dünya mutfağı</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">💵</div>
+                <div class="fact-title">Para birimi</div>
+                <div class="fact-desc">Dolar (USD)</div>
+                <div class="fact-sub">Kart her yerde, bahşiş %18-20</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🗣️</div>
+                <div class="fact-title">Dil</div>
+                <div class="fact-desc">İngilizce (+145 dil)</div>
+                <div class="fact-sub">Amerika&#x27;nın en çok dilli şehri</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yerel Sırlar</span>
+                <h2 class="section-title">Houston İçin Yazısız Kurallar</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>NASA&#x27;ya &#x27;kısa uğrama&#x27; planı yapma</strong>
+                    <span>Space Center Houston merkeze 45 dakikadır ve tam gün ister: Görev Kontrol turu (Apollo dönemi salon!) saatli tramvayla yapılır, bileti önceden al. Sabah git, tramvay turunu ilk saatlere kur — &#x27;iki saatte döneriz&#x27; planı bu şehirde klasik pişmanlıktır.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Arabayı kabul et, mahalle mahalle gez</strong>
+                    <span>Houston Amerika&#x27;nın en yayılmış şehirlerindendir: araç şart, otoyol ağı devasa, feeder&#x27;lar başta kafa karıştırır. Panzehir mahalle stratejisidir — Montrose, Museum District ve Heights kendi içinde yürünür; araları öğlen saatlerinde geç.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Sofrayı dünya turuna çevir</strong>
+                    <span>Houston&#x27;da &#x27;yerel mutfak&#x27; dünya demektir: fajita burada doğdu, Viet-Cajun kerevit burada icat edildi, Asiatown Amerika&#x27;nın en iyi Çin-Vietnam sofralarını kurar. Her öğünü başka kıtaya ver — şehrin asıl müzesi menülerdir.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Gizli Köşeler</span>
+                <h2 class="section-title">Houston'deki Saklı Hazineler</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Rothko Chapel</div>
+                <div class="card-desc">Mark Rothko&#x27;nun on dört devasa tuvaliyle çevrili sekizgen meditasyon şapeli: içeride ses yok, sadece ışık ve koyu mor. İnancı ne olursa olsun herkesi susturur — Houston&#x27;ın en derin yarım saati, ücretsiz.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Menil Collection kampüsü</div>
+                <div class="card-desc">Petrol servetiyle kurulmuş, tamamen ücretsiz müze kampüsü: sürrealistlerden Bizans ikonalarına, çim bahçeler arasında. Cy Twombly galerisi ve bungalov sokakları dahil — Amerika&#x27;nın en zarif sanat adası.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Buffalo Bayou Cistern</div>
+                <div class="card-desc">1926&#x27;dan kalma yeraltı su deposu: 221 beton sütun, ayna gibi su ve katedral akustiği. Rehberli turla girilir, sanat enstalasyonları dönem dönem değişir — Houston&#x27;ın en beklenmedik mekanı.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Smither Park</div>
+                <div class="card-desc">Yüzlerce sanatçının atık malzeme ve mozaikle ördüğü halk sanatı parkı: her paneli başka el yapmış. Yanındaki Orange Show ile birlikte — Houston&#x27;ın &#x27;tuhaf ve harika&#x27; geleneğinin anıtı.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Asiatown (Bellaire) turu</div>
+                <div class="card-desc">Sekiz kilometrelik bulvar boyunca pasajlar, fırınlar, boba dükkanları ve dev marketler: Amerika&#x27;nın en canlı Asya koridorlarından. Cumartesi öğleni dim sum salonları ziyafete döner.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Eleanor Tinsley Park</div>
+                <div class="card-desc">Buffalo Bayou&#x27;nun yamacından Downtown silüetinin tam karşısı: piknikçiler, kanocular ve gün batımı fotoğrafçıları. 4 Temmuz havai fişeklerinin de ana sahnesi — şehrin kartpostalı bu çimden çekilir.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yeme & İçme</span>
+                <h2 class="section-title">Mutlaka Tadılması Gereken Lezzetler</h2>
+            </div>
+            <p class="intro-text">Houston Amerika&#x27;nın sofra başkentidir: fajitanın doğum yeri, Viet-Cajun&#x27;un icat evi, körfez istiridyesinin limanı — menü burada pasaporttur.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Fajita</div>
+                <div class="card-desc">Cazırdayan tavada etek eti, tortilla ve guacamole: fajita bu şehirde doğdu ve tarifi hâlâ burada en iyidir. Duman tavadan yükselirken sarma sanatı sana kalır — soğan-biberli klasiğinden şaşma.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Viet-Cajun kerevit</div>
+                <div class="card-desc">Vietnam göçmenlerinin Cajun kerevit kaynatmasına sarımsak-tereyağ-limon otu katmasıyla doğan Houston icadı: eldiven tak, önlük bağla, masaya dökülen kerevitlere gir. Sezon ilkbahar zirvesindedir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Kolache sabahı</div>
+                <div class="card-desc">Sosisli-kaşarlı klobasnek ve meyveli kolache kutusu: yol kahvaltısının Teksas-Çek klasiği. Sabah fırınından düzine ile alınır — ofise, yola, otele; kutu açıldığında diplomasi biter.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Houston barbeküsü</div>
+                <div class="card-desc">Brisket ve ribs&#x27;in yanında bu şehrin farkı çeşitliliktir: boudin dolgulu, Tex-Mex dokunuşlu, fırın böreğine giren barbekü yorumları. Öğlen kuyruğu kuralı burada da geçerlidir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Körfez istiridyesi</div>
+                <div class="card-desc">Galveston Körfezi&#x27;nin istiridyeleri buz üstünde ya da közde: mignonette yerine limon-tabasco yerli usuldür. İstiridye barlarının happy hour&#x27;ı Houston&#x27;ın en iyi ekonomik lüksüdür.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Asiatown pasajları</div>
+                <div class="card-desc">Bellaire bulvarı boyunca Amerika&#x27;nın en iyi Vietnam-Çin-Malezya sofraları: sabah pho, öğlen dim sum, akşam banh mi. Dev pasajlarda menüler cömert, fiyatlar dosttur — bir günü buraya ada.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Dikkat Edilmesi Gerekenler</span>
+                <h2 class="section-title">Turist Tuzakları & Kaçınılması Gerekenler</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Space Center merkezden 45 dakika uzaktadır ve tramvay turları saatlidir: öğleden sonra gelen, Görev Kontrol&#x27;ü göremeden döner.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Tam gün ayır, bileti ve tram turunu önceden al, sabah git. Apollo Görev Kontrol salonu restore haliyle gezinin zirvesidir — onsuz dönmek, Houston&#x27;ı yarım görmektir.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Harita &#x27;yakın&#x27; der, gölgesiz feeder ve dev bloklar &#x27;hayır&#x27; der: Houston&#x27;da noktalar arası yürüyüş çoğu kez mümkün değildir.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Mahalle adaları içinde yürü (Montrose, Heights, Museum District), aralarda araç kullan. Müze günü için METRORail arabadan iyidir — park derdi olmadan on dokuz müze.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Bazı akvaryum-restoran vitrinleri donmuş karidesi körfez fiyatına satar: manzara var, tazelik yok.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> İstiridyeyi köklü oyster barlarda, kereviti sezonunda Viet-Cajun salonlarında ye. &#x27;Günün istiridyesi hangi koydan?&#x27; sorusuna cevap alamadığın yerde oturma.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Ağustos-eylülde tropik fırtına ihtimali gerçektir: plansız yakalanan turist, iptal ve kapanma sürprizi yaşar.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> O aylarda seyahat sigortası yaptır, uçuş esnekliği seç ve hava takibini aç. Fırtına uzaktaysa panik yok — Houston altyapısı güçlüdür, yerliyi izle ve talimata uy.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Houston'yi MyWay ile Keşfedin</h3>
-            <p>Zikzak çizmeden adım adım akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
+            <p>Adım adım optimize edilmiş akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      App Store'dan Hemen İndirin
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. Tüm hakları saklıdır.</p>
+            <p>&copy; 2026 MyWay Travel App. Tüm hakları saklıdır.</p>
         </div>
     </footer>
 

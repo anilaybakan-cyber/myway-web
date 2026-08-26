@@ -6,8 +6,17 @@
     <title>Miami City Guide & Smart Walking Routes | MyWay</title>
     <meta name="description" content="Explore Miami with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
     
-    <link rel="alternate" hreflang="tr" href="../tr/rehber/miami.html">
-    <link rel="alternate" hreflang="en" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/miami.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/miami.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../guides/">City Guides</a></li>
+                <li><a href="/guides/" class="active">City Guides</a></li>
                 <li><a href="/#features">Features</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../tr/rehber/miami.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇹🇷 Türkçe</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇬🇧 EN</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/miami.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item active">🇬🇧 English</a>
+                        <a href="/tr/rehber/miami.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item ">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="/#hero" class="nav-cta">Download</a>
+
+                <a href="/#download" class="nav-cta">Download</a>
             </div>
         </div>
     </nav>
@@ -568,29 +691,249 @@
                 <span class="section-label">Overview</span>
                 <h2 class="section-title">The Vibe of Miami</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Miami is America&#x27;s tropical exception: pastel art deco facades face a turquoise sea, Cuban coffee steam mingles with the clack of dominoes, and Wynwood&#x27;s walls are repainted every year. Spanish is the unofficial first language here, salsa spills out of the supermarket, and the pastelito bakery open at 5 a.m. feeds the crowd leaving the nightclub. The beach is the shop window, but the city&#x27;s heart beats in its Cuban, Haitian, Colombian and Venezuelan neighborhoods. Sunscreen and dancing shoes — Miami wants both in the same day. Dale!</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 Dale</div>
+                <span class="pron-badge">🗣️ /DAH-leh/</span>
+            </div>
+            <p class="word-def"><strong>The multi-purpose command of Miami Spanish: &#x27;let&#x27;s go&#x27;, &#x27;okay&#x27;, &#x27;go ahead&#x27;, &#x27;keep going&#x27; — all at once. Pitbull&#x27;s choruses carried it to the world, but it has lived on these streets for a century. The waiter taking your order, the friend pulling you to dance, the light turning green: dale. Crack this word and you&#x27;ve cracked Miami&#x27;s rhythm.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Essentials</span>
+                <h2 class="section-title">Quick Logistics</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Airport</div>
+                <div class="fact-desc">Miami (MIA)</div>
+                <div class="fact-sub">20–30 min to town, Brightline links</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🌴</div>
+                <div class="fact-title">Signature</div>
+                <div class="fact-desc">Art deco + cafecito</div>
+                <div class="fact-sub">Pastel facades and Cuban coffee</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">💵</div>
+                <div class="fact-title">Currency</div>
+                <div class="fact-desc">Dollar (USD)</div>
+                <div class="fact-sub">Check if service is already added</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🗣️</div>
+                <div class="fact-title">Language</div>
+                <div class="fact-desc">English + Spanish</div>
+                <div class="fact-sub">Spanish is the daily language here</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Insider Advice</span>
+                <h2 class="section-title">Unwritten Rules for Miami</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>See South Beach, but find Miami in the neighborhoods</strong>
+                    <span>Ocean Drive is for photos; the city&#x27;s soul lives in Little Havana&#x27;s domino park, on Wynwood&#x27;s walls and under Coral Gables&#x27; banyan shade. Half a day for the beach, everything else for the neighborhoods — that&#x27;s how Miami is loved.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Join the cafecito hour</strong>
+                    <span>Standing at a ventanita in mid-afternoon with a thimble of sweet espresso is Miami&#x27;s shared ritual: watch the offices order a colada at 3:05 with the obligatory joke. The colada is for sharing — drinking one alone marks you as a tourist.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Take the summer noon and the hurricane calendar seriously</strong>
+                    <span>June to October is humid, showery and hurricane season: the afternoon rain comes and goes within the hour, and flexibility is enough insurance. Late October to May is the postcard Miami promises — in this city, date choice is half the experience.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Off the Beaten Path</span>
+                <h2 class="section-title">Hidden Gems in Miami</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Vizcaya Museum and Gardens</div>
+                <div class="card-desc">An Italianate villa of 1916: marble terraces, labyrinth gardens and a stone barge descending to the bay. Miami&#x27;s most graceful morning — go early for the light; stumbling into quinceañera photo shoots is part of the show.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">The Venetian Pool</div>
+                <div class="card-desc">A 1924 public pool carved from a coral rock quarry in Coral Gables: waterfalls, grottoes and palms. The world&#x27;s most beautiful municipal pool — go early on a summer morning.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Bill Baggs and the Key Biscayne lighthouse</div>
+                <div class="card-desc">Island calm twenty minutes over the causeway: an 1825 lighthouse, a waveless beach and picnic groves. The most peaceful address for gazing back at the Miami skyline.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Domino Park (Calle Ocho)</div>
+                <div class="card-desc">Máximo Gómez Park in the heart of Little Havana: masters in guayabera shirts slam dominoes all day as cigar smoke drifts. Watching is welcome, respect is essential — Miami&#x27;s truest corner.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">The MiMo Boulevard</div>
+                <div class="card-desc">Biscayne Boulevard&#x27;s 1950s &#x27;Miami Modern&#x27; motels with neon signs: restored lobbies, retro pools and photogenic facades. Art deco&#x27;s lesser-known sibling — cruise the strip, stop at the signs.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Everglades Shark Valley</div>
+                <div class="card-desc">An hour west, the Everglades&#x27; 24-kilometer loop road: you cycle past alligators, and from the observation tower the &#x27;river of grass&#x27; runs to the horizon. Miami&#x27;s wild backyard — early morning, water bottle in hand.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Food & Flavors</span>
+                <h2 class="section-title">What to Taste</h2>
+            </div>
+            <p class="intro-text">The Miami table is Latin America&#x27;s meeting point: the crunch of the Cuban sandwich, the lime of the ceviche and the coffee cup passed through the ventanita.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">The Cubano sandwich</div>
+                <div class="card-desc">Ham, roast pork, Swiss cheese, pickles and mustard, pressed hot in Cuban bread: the crunch is the mark of mastery. Try it at Little Havana&#x27;s storied counters — the &#x27;medianoche&#x27; version is the midnight classic.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">The cafecito and pastelito ritual</div>
+                <div class="card-desc">Cafecito at the ventanita with a guava pastelito alongside: the official pair of the Miami morning (and afternoon). If you bought a colada, hand out the cups — sharing is the protocol itself.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">The ropa vieja table</div>
+                <div class="card-desc">The shredded beef stew named &#x27;old clothes&#x27;: with black beans, rice and sweet fried plantains. The masterpiece of Cuban home cooking — Little Havana&#x27;s portions are generous.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Stone crab season</div>
+                <div class="card-desc">From October to May, Florida&#x27;s stone crab claws are served cold with mustard sauce: Miami&#x27;s seasonal luxury. Claw size sets the price — if you&#x27;re in season, don&#x27;t miss it.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Ceviche and Latin fusion</div>
+                <div class="card-desc">Peruvian migration brought world-class ceviche to Miami: fresh fish, lime, ají pepper. The city&#x27;s stylish rooms are the laboratory of Latin fusion — tiradito and arepa share a menu.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Cuban sweets and batidos</div>
+                <div class="card-desc">Tres leches, caramel flan and tropical batidos (shakes): where else will you taste guanabana or mamey? The sweet answer to a hot afternoon.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Watch Out</span>
+                <h2 class="section-title">Tourist Traps to Avoid</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Menus without prices, giant cocktails extended as &#x27;happy hour&#x27;, and a $45 surprise on the bill: Ocean Drive&#x27;s oldest number.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Ask menu prices and cocktail sizes before sitting; refuse the &#x27;two-for-one&#x27; pitches. Take the view walking Ocean Drive, set your table on Española Way or two streets in.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">A wrong park in South Beach means a tow truck within minutes; some private lots run outrageous event-day pricing.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Use the municipal garages and parking apps; read the sign to its last line. On beach days go early or arrive by ride app — a tow fee swallows the day&#x27;s budget.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Some cut-price airboat tours end in a fifteen-minute noisy loop and shabby animal shows.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Choose the national park side: the Shark Valley bike loop and ranger walks are authentic and economical. If you want an airboat, research a park-authorized, small-group operator.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Tourist-zone restaurants add 18–20% service automatically; the unaware visitor writes another tip on top.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Look for the &#x27;gratuity/service included&#x27; line: if it&#x27;s there, nothing more is needed — a few dollars if you&#x27;re delighted. Make this check a Miami reflex, especially around Ocean Drive and Bayside.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Explore Miami with MyWay</h3>
-            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without zigzagging across town.</p>
+            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without wasted steps.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      Download on App Store
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. All rights reserved.</p>
+            <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
         </div>
     </footer>
 

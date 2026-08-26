@@ -13,10 +13,15 @@
             var params = new URLSearchParams(window.location.search);
             var cityId = (params.get("cityId") || filtered[filtered.length - 1] || "").toLowerCase();
 
+            // Language detection
+            var userChoice = localStorage.getItem('myway_user_lang');
+            var isTr = userChoice === 'tr' || (!userChoice && (navigator.language || '').toLowerCase().indexOf('tr') === 0);
+
             if (cityId) {
-                window.location.replace("/guides/" + encodeURIComponent(cityId) + ".html");
+                var target = isTr ? "/tr/rehber/" + encodeURIComponent(cityId) + ".html" : "/guides/" + encodeURIComponent(cityId) + ".html";
+                window.location.replace(target);
             } else {
-                window.location.replace("/guides/");
+                window.location.replace(isTr ? "/tr/rehber/" : "/guides/");
             }
         })();
     </script>

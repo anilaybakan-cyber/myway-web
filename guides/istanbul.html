@@ -6,8 +6,17 @@
     <title>Istanbul City Guide & Smart Walking Routes | MyWay</title>
     <meta name="description" content="Explore Istanbul with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
     
-    <link rel="alternate" hreflang="tr" href="../tr/rehber/istanbul.html">
-    <link rel="alternate" hreflang="en" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/istanbul.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/istanbul.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../guides/">City Guides</a></li>
+                <li><a href="/guides/" class="active">City Guides</a></li>
                 <li><a href="/#features">Features</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../tr/rehber/istanbul.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇹🇷 Türkçe</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇬🇧 EN</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/istanbul.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item active">🇬🇧 English</a>
+                        <a href="/tr/rehber/istanbul.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item ">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="/#hero" class="nav-cta">Download</a>
+
+                <a href="/#download" class="nav-cta">Download</a>
             </div>
         </div>
     </nav>
@@ -568,29 +691,249 @@
                 <span class="section-label">Overview</span>
                 <h2 class="section-title">The Vibe of Istanbul</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Everyone who tries to fit Istanbul into one sentence loses — the city does not permit it. On one shore, Rome&#x27;s cisterns and the Ottoman domes; on the other, meyhane songs and third-wave coffee roasters; between them flows the Bosphorus, the most beautiful sea road in the world. The ferry horn, the seagull&#x27;s cry, the simit seller&#x27;s call and the call to prayer share the same air. This city is exhausting, crowded — and despite that, perhaps because of it, one of the most longed-for cities on earth. Don&#x27;t hurry: Istanbul is not a trip but a lifetime project; on this visit, you are only being introduced.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 Keyif</div>
+                <span class="pron-badge">🗣️ /kay-eef/</span>
+            </div>
+            <p class="word-def"><strong>The untranslatable Istanbul state: an unhurried, purposeless, perfectly calibrated well-being. Tea facing the Bosphorus, wind on the ferry deck, a meyhane table stretching into the night — all are forms of keyif. It is not a plan; it is a consistency.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Essentials</span>
+                <h2 class="section-title">Quick Logistics</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Airports</div>
+                <div class="fact-desc">Istanbul (IST) + Sabiha Gökçen (SAW)</div>
+                <div class="fact-sub">Both connect to the centre by metro</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">⛴️</div>
+                <div class="fact-title">Getting around</div>
+                <div class="fact-desc">Ferry + metro + tram</div>
+                <div class="fact-sub">All on one Istanbulkart</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🗣️</div>
+                <div class="fact-title">Language</div>
+                <div class="fact-desc">Turkish</div>
+                <div class="fact-sub">English common in tourist areas</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🌉</div>
+                <div class="fact-title">Signature</div>
+                <div class="fact-desc">The Bosphorus</div>
+                <div class="fact-sub">The sea road between two continents</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Insider Advice</span>
+                <h2 class="section-title">Unwritten Rules for Istanbul</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>Count the ferry as ritual, not transport</strong>
+                    <span>The finest road between the shores is the sea: board the ferry, buy your tea, sit on the open deck. Tossing simit to the seagulls is tradition — just be ready for them to snatch it mid-air. Even at rush hour, the ferry is the calmest place in the city.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Don&#x27;t take a step without an Istanbulkart</strong>
+                    <span>One card works on ferry, metro, tram, Marmaray and bus: buy it at a machine, load it, keep it next to your phone. Transfer discounts apply automatically — the tourist hunting for cash is forever at the ticket booth.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Measure distance in hours, not kilometres</strong>
+                    <span>Istanbul traffic runs on its own laws: at bridge hours, crossing between shores can exceed an hour. Build the plan on the rail + ferry backbone and make the road the last resort — the Marmaray crosses beneath the strait in five minutes.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Off the Beaten Path</span>
+                <h2 class="section-title">Hidden Gems in Istanbul</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Kuzguncuk</div>
+                <div class="card-desc">Coloured wooden houses, a centuries-old plane tree, and a mosque, church and synagogue standing side by side: the Bosphorus&#x27;s most graceful mahalle. Tomatoes grow in its market garden and time slows in its cafés — Istanbul&#x27;s &#x27;if only it were always like this&#x27; state.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Balat and Fener in the morning</div>
+                <div class="card-desc">Steep lanes, bay-windowed houses, the Greek Patriarchate and antique shop windows: the old world of the Golden Horn. Go early — as the breakfast places open, the streets are yours before the photographers.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">The Süleymaniye courtyard and Golden Horn view</div>
+                <div class="card-desc">The complex Sinan called &#x27;my journeyman work&#x27; holds the city&#x27;s most serene courtyard and its most generous Golden Horn terrace: at sunset the whole silhouette, from Galata Tower to the Bosphorus, lies at your feet.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Çukurcuma and the Museum of Innocence</div>
+                <div class="card-desc">In the middle of the antique dealers&#x27; quarter stands the museum born from Orhan Pamuk&#x27;s novel: the only place on earth where fiction turned into objects. The junk-shop windows of the surrounding streets are the museum&#x27;s natural continuation.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">The pine ridges of the Princes&#x27; Islands</div>
+                <div class="card-desc">The motor-free roads of Büyükada and Heybeliada are toured by bicycle: mansions, pine scent and paths dropping to the sea. Go on a weekday morning ferry — on its quiet days the island is another century.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Kariye (Chora)</div>
+                <div class="card-desc">This old Byzantine building near the land walls carries some of the world&#x27;s most moving mosaics and frescoes: intricate stories on gold ground. A quiet, deep alternative to Hagia Sophia&#x27;s crowds.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Food & Flavors</span>
+                <h2 class="section-title">What to Taste</h2>
+            </div>
+            <p class="intro-text">The Istanbul table is an imperial inheritance: the tradesman&#x27;s lokanta pot, the meyhane&#x27;s meze, the street&#x27;s simit and the baklava&#x27;s syrup all live in one day.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">The esnaf lokantası pot</div>
+                <div class="card-desc">White beans over rice, stuffed aubergine, meatballs in broth: choose by pointing at the pots behind the glass. Süleymaniye&#x27;s historic bean houses and the neighbourhood lokantas are the heart of the city&#x27;s everyday cooking.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">The meyhane ritual — rakı and meze</div>
+                <div class="card-desc">Start with cold meze, continue with hot starters, crown it with fish: rakı is drunk slowly and the table lasts for hours. From Nevizade to Kadıköy, every meyhane has its regulars and its story.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Simit, tea and breakfast culture</div>
+                <div class="card-desc">The morning simit is bought fresh and crackling, the tea drunk from a tulip glass; at weekends the spread breakfast takes over whole tables. Tea + simit on the ferry deck is Istanbul&#x27;s cheapest formula for happiness.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">The köfte and döner classics</div>
+                <div class="card-desc">Grilled köfte with bean salad at the historic köfte houses, döner carved by a master&#x27;s hand: the summit of things that look simple. The shop with the queue is usually the right shop.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Fish sandwiches and stuffed mussels</div>
+                <div class="card-desc">Eminönü&#x27;s balık ekmek is a contested classic; the midye dolma of the side streets a late-night legend: squeeze the lemon, count the shells later. This is the street food of a sea city.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">The baklava + Turkish coffee finale</div>
+                <div class="card-desc">Pistachio baklava from a master, coffee brewed on embers and served with its grounds: the table&#x27;s constitutional close. Reading the coffee cup is not science but the art of conversation — turn the cup over and wait.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Watch Out</span>
+                <h2 class="section-title">Tourist Traps to Avoid</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">At some restaurants on the tourist squares, the door-tout and the unpriced &#x27;fish of the day&#x27; end in a surprise bill.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Order nothing without a written price; enter where the locals sit, not where the doorman pulls. The two-streets-back rule is worth gold in this city.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Some taxis &#x27;forget&#x27; the meter, take the long way round, or perform sleight of hand with the change on a large note.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Call the taxi by app, follow the route on your map, break the big note before boarding. Over short distances the rails + ferry are cheaper and faster anyway.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">The bazaar&#x27;s first price is an opening line, and the &#x27;gift tea + carpet showing&#x27; chain is a classic sales choreography.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Haggle with a smile and at ease, and don&#x27;t settle in over something you won&#x27;t buy. The tea offering is a lovely tradition — accept it without feeling indebted; &#x27;thank you, just looking&#x27; suffices.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">At the bar suggested by a newly met &#x27;friend&#x27; in the tourist quarter, the bill arrives astronomical, and objections meet security at the door.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Choose your own night venue and never change it on an invitation. Real Istanbul conversation lives in the meyhane, the tea house and the mahalle coffeehouse — there both the bill and the talk are honest.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Explore Istanbul with MyWay</h3>
-            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without zigzagging across town.</p>
+            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without wasted steps.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      Download on App Store
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. All rights reserved.</p>
+            <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
         </div>
     </footer>
 

@@ -6,8 +6,17 @@
     <title>Mykonos Gezi Rehberi & Akıllı Rotalar | MyWay</title>
     <meta name="description" content="Mykonos için adım adım yürüyüş rotaları, gizli mekanlar, turist tuzakları ve lezzet durakları. Mykonos gezi rehberi MyWay'de.">
     
-    <link rel="alternate" hreflang="en" href="../../guides/mykonos.html">
-    <link rel="alternate" hreflang="tr" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/mykonos.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/mykonos.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -527,7 +641,7 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="navbar-inner">
-            <a href="../" class="nav-brand">
+            <a href="/tr/" class="nav-brand">
                 <img src="../../images/app_icon.png" alt="MyWay" width="38" height="38">
                 <span>MyWay</span>
             </a>
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../rehber/">Rehberler</a></li>
-                <li><a href="../#features">Özellikler</a></li>
+                <li><a href="/tr/rehber/" class="active">Şehir Rehberleri</a></li>
+                <li><a href="/tr/#features">Özellikler</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../../guides/mykonos.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇬🇧 English</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇹🇷 TR</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/mykonos.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item ">🇬🇧 English</a>
+                        <a href="/tr/rehber/mykonos.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item active">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="../#hero" class="nav-cta">İndir</a>
+
+                <a href="/tr/#download" class="nav-cta">Hemen İndir</a>
             </div>
         </div>
     </nav>
@@ -555,7 +678,7 @@
         <img src="../../images/cities/mykonos.jpg" alt="Mykonos" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
-            <div class="city-badge">🇬🇷 Yunanistan &bull; Rehberler</div>
+            <div class="city-badge">🇬🇷 Yunanistan &bull; Şehir Rehberleri</div>
             <h1 class="guide-title">Mykonos</h1>
             <p class="guide-tagline">Dünyanın en pahalı adalarından biri — ama Ege'nin beyaz ada ruhunu en saf haliyle de burada buluyorsun</p>
         </div>
@@ -568,29 +691,249 @@
                 <span class="section-label">Genel Bakış</span>
                 <h2 class="section-title">Mykonos Atmosferi</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Mykonos iki farklı ada gibi. Birincisi: dünyanın en pahalı plaj kulüplerinden bazıları, mega yatlar, gece hayatı ve Temmuz-Ağustos aylarında tıklım tıklım dolan Paradise Beach. İkincisi: beyaz badanalı duvarlar, dar labirent sokaklar, yel değirmenleri ve mavi kubbeleriyle adanın kalbinde saklı Chora. Bu ikinci Mykonos sabahın erken saatlerinde veya sezon dışında kendini gösteriyor. Ada küçük — her şeye araç ya da otobüsle ulaşmak mümkün. Ama Mykonos&#x27;a gelmeden önce bir şeyi kabul etmek gerek: burada her şey pahalı ve yaz ortasında çok kalabalık. Bu gerçekle barışık gelirsen Mykonos hayal kırıklığı yaratmaz.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 Chora</div>
+                <span class="pron-badge">🗣️ /HO-ra/</span>
+            </div>
+            <p class="word-def"><strong>Yunanca &#x27;şehir&#x27; veya &#x27;kasaba&#x27; demek — Ege adalarında her adanın ana kasabasına Chora deniyor. Mykonos&#x27;ta Chora, adanın beyaz labirent kalbi. Dar sokaklar, beyaz badanalı duvarlar, mavi kapılar, sarmaşıklar ve her köşede fotoğraf karesine giren manzaralar. Kasıtlı olarak labirent gibi tasarlanmış — eski zamanlarda korsanların yolunu şaşırtmak için. Bugün de kaybolmak kolay ve güzel.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Temel Bilgiler</span>
+                <h2 class="section-title">Pratik İpuçları & Lojistik</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Ulaşım</div>
+                <div class="fact-desc">Uçak veya feribot</div>
+                <div class="fact-sub">Atina&#x27;dan uçak ~45 dk · Pire&#x27;den hızlı feribot 2-2,5 saat · Rafina&#x27;dan 1,5-2 saat</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🚌</div>
+                <div class="fact-title">Ada içi</div>
+                <div class="fact-desc">KTEL otobüs veya ATV/araç kiralama</div>
+                <div class="fact-sub">KTEL bilet 1-3€ nakit · ATV günlük 25-50€ · taksi pahalı ve az</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🌡️</div>
+                <div class="fact-title">Hava</div>
+                <div class="fact-desc">Ege — yaz sıcak, rüzgarlı</div>
+                <div class="fact-sub">May–Haz ve Eyl–Eki ideal · Tem–Ağu çok kalabalık · Kas–Mar sakin</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🐙</div>
+                <div class="fact-title">Yemek</div>
+                <div class="fact-desc">Loukoumades, ahtapot, taze balık, tiropita</div>
+                <div class="fact-sub">Sokak atıştırmalığı 3-6€ · taverna öğle 18-30€ · Chora cephesi çok pahalı</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yerel Sırlar</span>
+                <h2 class="section-title">Mykonos İçin Yazısız Kurallar</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>Temmuz-Ağustos&#x27;ta gelmek istiyorsan bütçeni ve sabrını hazırla</strong>
+                    <span>Yaz ortasında Mykonos dünyanın her yerinden gelen kalabalıkla dolup taşıyor. Otel fiyatları çok yüksek, restoranlarda rezervasyon şart, plajlarda yer bulmak zor. Buna karşın gece hayatı ve atmosfer o dönemde en canlı halinde. Haziran veya Eylül aynı güneşi ve denizi sunuyor, fiyatlar belirgin şekilde daha düşük ve kalabalık tolere edilebilir seviyede.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Chora&#x27;yı sabahın erken saatlerinde keşfet</strong>
+                    <span>Gün içinde Chora&#x27;nın dar sokakları turist kalabalığıyla tıkanıyor. Ama sabah 07:00-09:00 arası sokaklar neredeyse boş — kedi ve güvercinler dışında. Bu saatte fotoğraf çekmek, sessiz kahve içmek ve kaybolmak mümkün. Akşam saatlerinde de güzel ama sabah erken başka türlü.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Araç kirala — adayı bir günde keşfetmek için ideal</strong>
+                    <span>Mykonos küçük ama KTEL otobüsleri her noktaya gitmiyor. ATV kiralamak adanın kuzey koylarına, Ano Mera köyüne ve gizli plajlara ulaşmak için en pratik yol. Küçük araç veya motosiklet de seçenek. Yaz ortasında sabahın erken saatlerinde kirala — öğleden sonra iyi araçlar kalmıyor.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Gizli Köşeler</span>
+                <h2 class="section-title">Mykonos'deki Saklı Hazineler</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Agios Sostis plajı</div>
+                <div class="card-desc">Adanın kuzeyinde, araçla veya uzun yürüyüşle ulaşılan küçük koy. Plaj kulübü yok, şezlong yok, bar yok — sadece kum, kaya ve temiz su. Yanında küçük bir taverna var, Kiki&#x27;s Tavern, rezervasyonsuz ve kuyruklu ama hem lezzetli hem uygun. Meltemi döneminde dalgalı olabiliyor. Yaz ortasında bile kalabalıktan çok uzak.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Delos Adası</div>
+                <div class="card-desc">Mykonos Old Port&#x27;tan tekneyle 30 dakika. Antik Yunan&#x27;ın kutsal adası — doğumun yasak, ölümün yasak olduğu yer. Apollo ve Artemis&#x27;in doğum yeri olarak kabul ediliyor. Aslan terası, mozaikli evler, tapınak kalıntıları. UNESCO Dünya Mirası ve açık hava müzesi. Sabah ilk seferle git, şapka ve su al. Kış aylarında ziyarete kapalı.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Paraportiani Kilisesi</div>
+                <div class="card-desc">Chora&#x27;nın kuzey ucunda, denize bakan yamaçta. Beyaz badanalı, beş ayrı şapelin birleşiminden oluşan kümülatif yapı. Dünyanın en çok fotoğraflanan kiliselerinden biri sayılıyor. Sabahın erken saatlerinde neredeyse boş — 07:00-08:00 arası. Öğleden sonra her köşede fotoğraf çeken kalabalık. Kilise içi küçük ve sade ama atmosfer çok güçlü.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Fokos plajı ve Fokos Tavernası</div>
+                <div class="card-desc">Adanın kuzey-doğusunda, araçla ulaşılan sarp yolun sonunda küçük koy. Tamamen doğal, tesis yok. Yanındaki Fokos Tavernası Mykonos&#x27;un en iyi balık restoranı olarak bilinir — yerel malzeme, taze balık, rezervasyon yok. Yaz ortasında bile sakin. ATV veya araç şart. Öğle yemeğiyle birlikte bir günlük gezi planı kur.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Cine Manto</div>
+                <div class="card-desc">Chora&#x27;nın merkezinde, bir bahçe içinde. Yunanistan&#x27;da çok sevilen bir gelenek: yaz geceleri açık hava sineması. 1960&#x27;lardan beri devam ediyor. Eski Hollywood klasikleri ve modern filmler, çam ağaçları altında. Gece tsipouro (yerel damıtılmış içki) ve meze ile film izlemek başka bir deneyim. Bilet 10-12 euro, rezervasyon önerilir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Ano Mera köyü</div>
+                <div class="card-desc">Adanın merkezinde, adanın tek gerçek iç köyü. Panagia Tourliani Manastırı&#x27;nın çevresindeki meydan, yerel kafeler ve tavernalar. Mykonos Chora&#x27;sının beyaz labirentinden çok farklı — daha sade, daha yerel, daha sakin. Haftanın her günü küçük bir pazar var. Araçla Chora&#x27;dan 15-20 dakika.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yeme & İçme</span>
+                <h2 class="section-title">Mutlaka Tadılması Gereken Lezzetler</h2>
+            </div>
+            <p class="intro-text">Mykonos pahalı ama yanlış yere girersen daha da pahalı. Taverna seçimi kritik — liman cephesinden kaç, yan sokaklara gir.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Ahtapot — güneşte kurutulmuş</div>
+                <div class="card-desc">Mykonos&#x27;un en ikonik görüntüsü: taverna balkonunda güneşte asılı kuru ahtapot. Izgara yapılıp limon ve zeytinyağıyla servis ediliyor. Taze ahtapot yüksek kalite farkı yaratıyor — taverna seçerken balkonda asılı ahtapot görüyorsan iyi işaret. Kıyı tavernalarında porsiyon 12-20 euro arası.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Tiropita ve spanakopita</div>
+                <div class="card-desc">Peynirli (tiropita) ve ıspanaklı (spanakopita) Yunan böreği — ince yufka, taze peynir veya ıspanak dolgusu, tereyağıyla fırında. Sabah kahvaltısı için mükemmel. Fırınlardan veya küçük pastane dükkanlarından alınıyor. 2-3 euro. Chora&#x27;nın arka sokaklarındaki fırınlar en iyisi — yürürken kolayca bulunuyor.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Souvlaki ve gyros</div>
+                <div class="card-desc">Yunanistan&#x27;ın fast food&#x27;u ama Mykonos&#x27;ta kaliteli versiyonları var. Souvlaki: şişte ızgara kuzu veya tavuk, pita, domates, soğan ve tzatziki. Gyros: döner benzeri, ince dilimlenmiş et. Chora&#x27;nın merkezi dışındaki küçük dükkanlar 5-8 euro. Liman cephesindeki yerler iki katı istiyor.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Loukoumades</div>
+                <div class="card-desc">Sıcak hamur topları, Yunan balı ve tarçın. Mykonos&#x27;ta birkaç özel loukoumades dükkanı var — Chora içinde. Sade, çikolatalı veya dondurmalı versiyonlar. 4-6 euro porsiyon. Oturarak veya yürürken yenebilir. Sabah ya da akşam atıştırmalığı.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Taze balık — Ano Mera ve Fokos Tavernası&#x27;nda</div>
+                <div class="card-desc">Chora&#x27;nın liman cephesindeki balık restoranları pahalı ve kalitesi değişken. Gerçek taze balık için Fokos Tavernası&#x27;na git — kuzey kıyısında, Fokos plajının yanında, ulaşımı zor ama balığı olağanüstü. Alternatif: Ano Mera&#x27;daki yerel tavernalar hem daha uygun fiyatlı hem daha taze.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Meze tabağı ve Yunan şarabı</div>
+                <div class="card-desc">Yunan mezesi paylaşma kültürü: tzatziki, tarama, fava (sarı bezelye ezmesi), dolma, zeytin, beyaz peynir. Yavaş yenilen, şarap eşliğinde uzatılan sofra. Mykonos yerel şarabı kısıtlı ama Ege&#x27;nin diğer adalarından gelen — özellikle Santorini Assyrtiko — tavernaların çoğunda var. Kadeh 8-12 euro, şişe 25-45 euro.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Dikkat Edilmesi Gerekenler</span>
+                <h2 class="section-title">Turist Tuzakları & Kaçınılması Gerekenler</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Güney plajlarının şöhretli kulüplerinde ön sıra şezlonglar yüzlerce euroya kiralanır; deniz ise iki koy ötede aynı maviliktedir.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Kuzeye dön: Agios Sostis ve Fokos&#x27;ta ne kulüp var ne hoparlör — havlunu ser, denizi bedava yaşa.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Dar sokaklarda menü sallayan yerlerin çoğu donuk musakkayı manzara fiyatına satar.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Yerlilerin masasına git: Ano Mera meydanı ve arka sokak tavernaları aynı yemeği yarı fiyata, iki kat özenle verir.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Adada avuç içi kadar taksi var; gece kulüp çıkışı taksi beklemek saatler sürer, pazarlık acı biter.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Plajlar arası SeaBus/deniz taksisi kullan, otobüs ağı şaşırtıcı derecede iyi; araç kiralarsan gece kim sürecek baştan karar ver.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Bazı barlar cam kenarı için ayrıca ücret ister; oysa günbatımı kimsenin malı değil.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Yel değirmenlerinin önündeki duvara otur: aynı günbatımı, sıfır ücret. İçki içeceksen tek kokteyl fiyatına manzara zaten dahil.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Mykonos'yi MyWay ile Keşfedin</h3>
-            <p>Zikzak çizmeden adım adım akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
+            <p>Adım adım optimize edilmiş akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      App Store'dan Hemen İndirin
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. Tüm hakları saklıdır.</p>
+            <p>&copy; 2026 MyWay Travel App. Tüm hakları saklıdır.</p>
         </div>
     </footer>
 

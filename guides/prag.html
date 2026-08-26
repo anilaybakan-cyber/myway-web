@@ -6,8 +6,17 @@
     <title>Prague City Guide & Smart Walking Routes | MyWay</title>
     <meta name="description" content="Explore Prague with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
     
-    <link rel="alternate" hreflang="tr" href="../tr/rehber/prag.html">
-    <link rel="alternate" hreflang="en" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/prag.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/prag.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../guides/">City Guides</a></li>
+                <li><a href="/guides/" class="active">City Guides</a></li>
                 <li><a href="/#features">Features</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../tr/rehber/prag.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇹🇷 Türkçe</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇬🇧 EN</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/prag.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item active">🇬🇧 English</a>
+                        <a href="/tr/rehber/prag.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item ">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="/#hero" class="nav-cta">Download</a>
+
+                <a href="/#download" class="nav-cta">Download</a>
             </div>
         </div>
     </nav>
@@ -568,29 +691,263 @@
                 <span class="section-label">Overview</span>
                 <h2 class="section-title">The Vibe of Prague</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Prague is one of the best-preserved medieval cities in Europe, which means it has spent thirty years learning to perform for the twelve million tourists who arrive each year. The Prague most visitors see — the overpriced beer traps on Old Town Square, the souvenir shops along Karlova, the organised pub crawls — is a city performing its own history. The real Prague runs underneath it: in the neighbourhood wine bars of Vinohrady, the riverside embankment at Náplavka on a Friday evening, the Baroque gardens that tourists walk past to reach the castle, the trams that still carry the city through every possible version of the weather. This is one of the most architecturally extraordinary cities on earth — Gothic, Renaissance, Baroque, Art Nouveau, and Communist Brutalism within walking distance of each other. The question is not whether to see the castle. The question is what happens when you stop following the crowd.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 Hospoda</div>
+                <span class="pron-badge">🗣️ /HOS-poh-dah/</span>
+            </div>
+            <p class="word-def"><strong>A traditional Czech pub — not a beer bar, not a gastropub, but a hospoda. Dark wood, long tables, regulars who have sat in the same seat for twenty years, draft Pilsner Urquell or Kozel served without asking. The hospoda is the social centre of Czech neighbourhood life. It is where news is exchanged, football is watched, and the country&#x27;s complicated relationship with its own history is quietly negotiated. A good hospoda has no English menu and no tourist-facing décor. Finding one is the entry point to the real city.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Essentials</span>
+                <h2 class="section-title">Quick Logistics</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Airport</div>
+                <div class="fact-desc">Václav Havel Airport (PRG)</div>
+                <div class="fact-sub">Bus 119 → Nádraží Veleslavín (Metro A) → centre, ~35 min</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🚇</div>
+                <div class="fact-title">Transport</div>
+                <div class="fact-desc">Metro (3 lines) + tram + bus</div>
+                <div class="fact-sub">90-min ticket CZK 40 · 24h pass CZK 120 · stamp on boarding</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">💰</div>
+                <div class="fact-title">Currency</div>
+                <div class="fact-desc">Czech Crown (CZK / Kč)</div>
+                <div class="fact-sub">Not euros — withdraw from bank ATMs only</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🍺</div>
+                <div class="fact-title">Beer rule</div>
+                <div class="fact-desc">Glass refilled automatically</div>
+                <div class="fact-sub">Beer mat on glass = stop · no beer mat = keep going</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Insider Advice</span>
+                <h2 class="section-title">Unwritten Rules for Prague</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>Czech beer is refilled without asking</strong>
+                    <span>In a traditional hospoda, the waiter will bring another beer when your glass is nearly empty without being asked. This is correct behaviour. To stop, place a beer mat on top of your glass. Not understanding this system is the most reliable way of accidentally drinking six beers in an afternoon. The Czech Republic has the highest per-capita beer consumption in the world. This is not a coincidence.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>The tram system is extraordinary</strong>
+                    <span>Prague has one of the finest tram networks in Europe — 26 routes covering the entire city including the historic centre, Malá Strana, and the castle approach. A single 90-minute ticket (CZK 40) covers all metro, tram and bus with unlimited transfers. Buy tickets at yellow vending machines in metro stations, at any newsagent (trafika), or via the PID Lítačka app. Stamp the ticket in the yellow machine when you board — unstamped tickets are treated as no ticket. The fine is CZK 1,500. The 24-hour pass (CZK 120) is the correct choice for most visitors.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>The Czech crown — cards are not always welcome</strong>
+                    <span>Prague uses the Czech crown (CZK / Kč), not the euro. Many neighbourhood hospodas, market stalls, and smaller restaurants are still cash only. The exchange rate matters: airport exchange offices are the worst value in the city. Withdraw cash from a bank ATM in the city centre. Never use the private exchange offices with flashing signs — the rates are predatory and the fees are hidden.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Off the Beaten Path</span>
+                <h2 class="section-title">Hidden Gems in Prague</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Wallenstein Garden (Valdštejnská zahrada) — Malá Strana</div>
+                <div class="card-desc">Built between 1623 and 1630 for Albrecht of Wallenstein — the military commander who wanted a garden that rivalled Prague Castle — the Wallenstein Garden is one of the finest early Baroque gardens in Central Europe. White peacocks roam freely between bronze statues of Greek gods, a koi pond, a grotto wall of artificial stalactites, and a sala terrena pavilion decorated with Trojan War frescoes. It sits directly behind the Malostranska metro exit. Almost no tourist finds it. Free entry. Open April to October.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Vyšehrad — the forgotten fortress</div>
+                <div class="card-desc">While tourists queue for Prague Castle, Vyšehrad sits on a clifftop above the Vltava on the south side of the city — a 10th-century fortress with the best panoramic view of Prague, a Romanesque rotunda, the National Cemetery where Dvořák and Smetana are buried, and a park full of locals having picnics. The grounds are entirely free. The Basilica of St. Peter and St. Paul inside requires a ticket. Walk the ramparts at dusk and watch the city below.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Nový Svět — the forgotten lane</div>
+                <div class="card-desc">Nový Svět (&#x27;New World&#x27;) is a narrow cobbled lane tucked below the castle walls in Hradčany — a row of tiny medieval cottages that housed castle servants from the 14th century onward. It is three minutes from the castle entrance and almost completely unknown to visitors. At any time of day, it is quiet. In the early morning, before the castle crowds arrive, it is one of the most atmospheric streets in Europe. Free to walk. Go before 9am.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Vrtba Garden (Vrtbovská zahrada) — Malá Strana</div>
+                <div class="card-desc">Hidden behind an unmarked door on Karmelitská Street, the Vrtba Garden is a terraced Baroque masterpiece built in 1720 — sculptures by Matyáš Bernard Braun, frescoes by Václav Vavřinec Reiner, and a staircase that climbs to a terrace with one of the best views of Prague Castle and Malá Strana rooftops. Voted the second most beautiful historic garden in Europe. Ticketed entry. Almost no one visits — even in peak season, you may have it nearly to yourself.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Café Imperial — Na Příkopě</div>
+                <div class="card-desc">Opened in 1914, Café Imperial has a dining room covered floor-to-ceiling in hand-painted Art Nouveau ceramic tiles — walls, pillars, ceiling — an interior that has no equivalent anywhere in Prague. Kafka used to work nearby; Einstein lived in Prague for a year. The café serves traditional Czech food alongside the coffee and cakes. Go mid-morning, when it is calmer, and sit long enough to look properly at the room. No entry fee — just the cost of a coffee.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Náplavka — Vltava embankment</div>
+                <div class="card-desc">The Náplavka is a riverside embankment on the left bank of the Vltava, south of the National Theatre. During the day it is a pleasant walk. On Friday evenings from spring through autumn, it becomes something else entirely — food stalls, a farmers market, people sitting along the stone wall with wine and beer, DJs occasionally, the whole city seeming to be here at once. Free. No reservation. One of the best evenings Prague has to offer.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Food & Flavors</span>
+                <h2 class="section-title">What to Taste</h2>
+            </div>
+            <p class="intro-text">Czech cuisine is heavier, more honest, and more interesting than its reputation suggests. The goal is not a Michelin-starred tasting menu. The goal is a proper svíčková in a hospoda that has been there since the 1950s, or a plate of roast pork with bread dumplings and sauerkraut that costs less than a coffee in Western Europe.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Svíčková na smetaně — the national dish</div>
+                <div class="card-desc">Slow-braised beef in root vegetable cream sauce, served with bread dumplings, lemon, whipped cream, and cranberry sauce. The combination is richer and more complex than it sounds. A good svíčková takes hours to prepare; the sauce should be thick, amber renginde, and slightly sweet-sour. Avoid places that serve it as a tourist dish. The best versions are in proper hospodas and traditional Czech restaurants away from the Old Town.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Guláš — the Czech version</div>
+                <div class="card-desc">Czech guláš is a richer, darker version of the Hungarian original — beef or pork braised for hours in paprika and spices until the sauce is thick and deep. Served almost universally with bread dumplings (houskový knedlík) to absorb the sauce. A staple of every hospoda menu. A bowl of guláš and a beer is the best lunch Prague offers.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Czech beer — the best in the world</div>
+                <div class="card-desc">The Czech Republic invented Pilsner in 1842 in Plzeň (Pilsen). Pilsner Urquell is the original and still the standard. Kozel is the preferred dark lager. Staropramen is the Prague local. Bernard is the independent alternative. Czech beer is served at the correct temperature, in the correct glass, with a dense foam head that is not optional. A half-litre of draft beer in a proper hospoda costs CZK 40–60 — less than in almost any other European capital.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Trdelník — eat it once</div>
+                <div class="card-desc">The chimney cake sold on every tourist street is not actually a traditional Czech dish — it is a Hungarian/Slovak pastry that became a Prague tourist fixture in the 2000s. It is fine. But eat it once, with cinnamon sugar rather than Nutella, and then find something more interesting. The real Czech street food is langos (fried dough with cheese and sour cream) or a párek v rohlíku (sausage in a bread roll) from a street stand.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Roast pork, dumplings, sauerkraut</div>
+                <div class="card-desc">Vepřo knedlo zelo — roast pork with bread dumplings and sauerkraut — is the other national standard. Simple, filling, and cheap. The pork should be fatty and slow-roasted, the dumplings should absorb the gravy, the sauerkraut should be sharp enough to cut through both. Available in every proper Czech restaurant. Avoid places where it arrives looking like a photograph — the best versions are never photogenic.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Roast duck — the autumn speciality</div>
+                <div class="card-desc">Pečená kachna (roast duck) is the Czech autumn and winter dish par excellence — slow-roasted until the skin is lacquered and crisp, served with red cabbage, sauerkraut, and bread or potato dumplings. The combination of rich duck fat, sharp cabbage, and absorbent dumplings is one of the great plates of Central European cooking. Available year-round but at its best from September onward, when Czech restaurants make it a seasonal centrepiece. Order it in a proper Czech restaurant, not a tourist menu.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Moravian wine — underrated</div>
+                <div class="card-desc">Moravia, the eastern Czech region, produces wine that almost no one outside the country knows about. Welschriesling, Müller-Thurgau, Grüner Veltliner, Palava — white wines with a mineral, slightly oxidative character. The wine bars of Vinohrady are the best place to find them. Ask for Moravské víno (Moravian wine) and let the server guide you. A carafe of house wine in a Vinohrady wine bar costs less than a glass in Paris.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Czech coffee culture</div>
+                <div class="card-desc">Prague has developed a serious third-wave coffee scene in the last decade — EMA Espresso Bar, Kavárna Místo, Můj šálek kávy, and others. But the traditional Czech café (kavárna) is a different and equally valid institution: large, slightly faded, Art Nouveau interiors, newspapers on wooden holders, a long menu of coffee preparations, and cakes. Café Imperial on Na Příkopě is the most spectacular example. Both traditions coexist and both are worth experiencing.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Watch Out</span>
+                <h2 class="section-title">Tourist Traps to Avoid</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">The city&#x27;s most famous trap: zero commission on the sign, disaster in the rate. Some offices cost tourists 20-30 percent.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Withdraw koruna from an ATM (in your bank&#x27;s rate — always refuse the &#x27;convert to your currency&#x27; DCC option), or use the well-known rate-comparing exchanges.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">That rotating dough is an invention marketed to tourists; Czech grandmothers do not make trdelník. Once for the photo, fine — but this is not Czech cuisine.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> For real pastry try koláče or větrník; find a cukrárna (pastry shop) and taste the difference.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Tables with an Astronomical Clock view bring astronomical bills; the kitchen is often frozen, the service rushed.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> See the square, eat in Vinohrady or Žižkov: svíčková twice as good at half the price.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Prague&#x27;s free-roaming taxis are famous for the tourist tariff; a midnight negotiation outside the station is already lost.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Use an app (Liftago, Bolt) or the already-excellent trams; night trams run till morning.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Explore Prague with MyWay</h3>
-            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without zigzagging across town.</p>
+            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without wasted steps.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      Download on App Store
@@ -604,7 +961,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. All rights reserved.</p>
+            <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
         </div>
     </footer>
 

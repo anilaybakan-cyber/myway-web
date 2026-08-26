@@ -6,8 +6,17 @@
     <title>Fes Gezi Rehberi & Akıllı Rotalar | MyWay</title>
     <meta name="description" content="Fes için adım adım yürüyüş rotaları, gizli mekanlar, turist tuzakları ve lezzet durakları. Fes gezi rehberi MyWay'de.">
     
-    <link rel="alternate" hreflang="en" href="../../guides/fes.html">
-    <link rel="alternate" hreflang="tr" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/fes.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/fes.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -527,7 +641,7 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="navbar-inner">
-            <a href="../" class="nav-brand">
+            <a href="/tr/" class="nav-brand">
                 <img src="../../images/app_icon.png" alt="MyWay" width="38" height="38">
                 <span>MyWay</span>
             </a>
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../rehber/">Rehberler</a></li>
-                <li><a href="../#features">Özellikler</a></li>
+                <li><a href="/tr/rehber/" class="active">Şehir Rehberleri</a></li>
+                <li><a href="/tr/#features">Özellikler</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../../guides/fes.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇬🇧 English</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇹🇷 TR</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/fes.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item ">🇬🇧 English</a>
+                        <a href="/tr/rehber/fes.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item active">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="../#hero" class="nav-cta">İndir</a>
+
+                <a href="/tr/#download" class="nav-cta">Hemen İndir</a>
             </div>
         </div>
     </nav>
@@ -555,7 +678,7 @@
         <img src="../../images/cities/fes.jpg" alt="Fes" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
-            <div class="city-badge">🇲🇦 Fas &bull; Rehberler</div>
+            <div class="city-badge">🇲🇦 Fas &bull; Şehir Rehberleri</div>
             <h1 class="guide-title">Fes</h1>
             <p class="guide-tagline">Dünyanın en büyük araçsız labirenti: medine, tabakhane ve bin yıllık ilim</p>
         </div>
@@ -568,29 +691,249 @@
                 <span class="section-label">Genel Bakış</span>
                 <h2 class="section-title">Fes Atmosferi</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Fes, Fas&#x27;ın ruhani ve zanaat başkentidir: Fes el-Bali&#x27;nin surları içinde dokuz binden fazla sokak, eşek kervanları, bakırcı çekiçleri ve dünyanın en eski üniversitesi bin yıldır aynı ritimle yaşar. Burada GPS teslim bayrağını erken çeker — ve bu bir kusur değil, davettir. Kaybol: her yanlış dönüş bir medresenin çinili avlusuna, bir tabakhanenin renk kuyularına ya da nane çayı ikram eden bir dükkana çıkar. Fes cilalanmamış, sahici ve yoğundur — Marakeş&#x27;in sahnesiyse, Fes kütüphanesidir.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 Balak!</div>
+                <span class="pron-badge">🗣️ /balak/</span>
+            </div>
+            <p class="word-def"><strong>&#x27;Dikkat, yol ver!&#x27;: medinede arkandan bu ünlemi duyduğunda kenara çekil — yüklü bir eşek ya da el arabası geliyor demektir. Fes&#x27;in dar sokaklarında trafik uyarısının bin yıllık hali.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Temel Bilgiler</span>
+                <h2 class="section-title">Pratik İpuçları & Lojistik</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Havalimanı</div>
+                <div class="fact-desc">Fes-Saïss (FEZ)</div>
+                <div class="fact-sub">Medineye taksiyle ~30 dk</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🚶</div>
+                <div class="fact-title">Medine içi</div>
+                <div class="fact-desc">Sadece yayan</div>
+                <div class="fact-sub">Araç girmez — yük eşekle taşınır</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🗣️</div>
+                <div class="fact-title">Dil</div>
+                <div class="fact-desc">Arapça (Darija) + Fransızca</div>
+                <div class="fact-sub">Turistik hatta İngilizce artıyor</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🕌</div>
+                <div class="fact-title">İmza</div>
+                <div class="fact-desc">Fes el-Bali medinesi</div>
+                <div class="fact-sub">UNESCO — dünyanın en büyüğü</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yerel Sırlar</span>
+                <h2 class="section-title">Fes İçin Yazısız Kurallar</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>Kaybolmayı plana yaz</strong>
+                    <span>Medinenin 9400 sokağında yolunu kaybetmen kesin — o yüzden korkma, kucakla. Ana arterler (Talaa Kebira ve Talaa Seghira) her zaman aşağıya, çarşıya iner; yokuş yukarı yürürsen kapılara çıkarsın. Pusulan bu ikisidir.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>&#x27;Yol kapalı&#x27; diyene inanma</strong>
+                    <span>Kendini rehber ilan eden gençlerin klasik açılışı &#x27;orası kapalı, ben götüreyim&#x27;dir — yol neredeyse hiçbir zaman kapalı değildir. Kibar ama net bir &#x27;la, şükran&#x27; ile yola devam et; gerçek rehber istiyorsan riyadından resmi olanını iste.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Pazarlık bir oyundur, ciddiyetle oyna</strong>
+                    <span>Çarşıda ilk fiyat bir açılış cümlesidir: üçte birinden başla, gülümseyerek ilerle, çay ikramını kabul et. Almayacağın şeye uzun pazarlık açma — oyunun da adabı var.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Gizli Köşeler</span>
+                <h2 class="section-title">Fes'deki Saklı Hazineler</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Merenid Mezarları tepesi</div>
+                <div class="card-desc">Kuzey tepesindeki harabe mezarlardan bütün medine tek bakışta görülür: minareler, teraslar ve akşam ezanının yankısı. Gün batımından önce çık, ışıklar yanarken in — Fes&#x27;i anlamanın en kısa yolu.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">El-Attarine Medresesi</div>
+                <div class="card-desc">Baharatçılar çarşısının kapısındaki 14. yüzyıl medresesi: zellij çinisi, oyma alçı ve sedir ahşabı el işçiliğinin doruğudur. Bou Inania&#x27;dan küçük, çoğu zaman sakin — avlusunda uzun dur.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Nejjarine Fondouk&#x27;u</div>
+                <div class="card-desc">Eski kervansaray, ahşap sanatları müzesine dönüştü: üç katlı avlusu başlı başına eser, çatı terası çarşının üstüne açılır. Önündeki çinili çeşme medinenin en fotojenik köşelerindendir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Jnan Sbil Bahçeleri</div>
+                <div class="card-desc">İki medine arasındaki yüzyıllık bahçe: palmiyeler, havuzlar ve bambu gölgesi. Medine yoğunluğunun ilacı — çıkışını Bab Boujloud üzerinden yaparsan mavi kapıya yeşil aradan varırsın.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Ain Nokbi çömlek atölyeleri</div>
+                <div class="card-desc">Şehrin dışındaki atölye bölgesinde Fes mavisi çini ve çömlek hâlâ elle şekillenir, zellij ustaları deseni tek tek kırar. Tabakhaneden daha az bilinir, işçiliği daha yakından gösterir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Karaviyyin çevresi ve kütüphane kapıları</div>
+                <div class="card-desc">Dünyanın en eski üniversitesinin kalbi gayrimüslimlere kapalıdır ama çevresindeki kapı aralıklarından avlular, restore kütüphanenin bölümleri ve çarşıya sızan ilim havası görülür. Kapı aralığı da Fes&#x27;te bir manzaradır.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yeme & İçme</span>
+                <h2 class="section-title">Mutlaka Tadılması Gereken Lezzetler</h2>
+            </div>
+            <p class="intro-text">Fes, Fas mutfağının başkenti sayılır: saray mutfağından gelen incelik, medine fırınlarının sıcaklığıyla aynı sokakta yaşar.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Pastilla — tatlı-tuzlu taç</div>
+                <div class="card-desc">İnce yufka katları arasında güvercin ya da tavuk, badem ve tarçın; üstünde pudra şekeri: Fes saray mutfağının başyapıtı. Tatlı mı tuzlu mu tartışması ilk çatalda biter — ikisi de.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Tajine ve yedi sebzeli kuskus</div>
+                <div class="card-desc">Konik kapaklı güveçte ağır pişen etler ve cuma günlerinin yedi sebzeli kuskusu: her riyadın kendi tarifi vardır. Cuma öğleni kuskus bulursan gelenek yerine gelmiştir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Harira ve medine kahvaltısı</div>
+                <div class="card-desc">Nohutlu-mercimekli harira çorbası, yanında hurma ve chebakia tatlısı: ramazanın yıldızı, yılın her günü tezgahlarda. Bissara ile birlikte medinenin sabah ikilisidir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Mahalle fırını ekmeği — khobz</div>
+                <div class="card-desc">Evlerde yoğrulan hamur mahalle fırınında (ferran) pişer: sokakta tepsiyle ekmek taşıyan çocuklar bu sistemin kuryeleridir. Fırının kapısından sıcak khobz almak serbesttir — sor, gülümse, al.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Nane çayı ve terasta gurup</div>
+                <div class="card-desc">&#x27;Fas viskisi&#x27; nane çayı yüksekten dökülür, köpüğü şereftir: pazarlığın, misafirliğin ve terasların resmi içeceği. Gün batımında medine manzaralı terasta iç — şeker ayarını baştan söyle.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Çarşı ızgaraları ve zeytin tezgahları</div>
+                <div class="card-desc">Kefta şiş dumanı, közlenmiş biber ve yüz çeşit zeytin: çarşının öğle mutfağı tezgahtadır. Kalabalık tezgah taze tezgahtır — yerlinin sırasına gir.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Dikkat Edilmesi Gerekenler</span>
+                <h2 class="section-title">Turist Tuzakları & Kaçınılması Gerekenler</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Medine girişlerinde beliren &#x27;yardımsever&#x27;, yolu kapalı ilan eder, seni dolaştırır ve sonunda bahşiş ya da dükkan komisyonu ister.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Rotanı bilir görün, &#x27;la, şükran&#x27; de ve yürü. Rehber istiyorsan riyadından resmi rozetli olanını ayarlat — fiyatı baştan, kapsamı net.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">&#x27;Ücretsiz manzara&#x27; terasına çıkınca kapıda ceket denettirilir, çıkışta yoğun pazarlık baskısı kurulur.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Baştan &#x27;sadece bakacağım&#x27; de, gerekirse küçük bir teras bahşişini gönülden ver. Deri alacaksan zaten pazarlık senin oyunun — almayacaksan tereddütsüz in.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Medine kapılarında bekleyen bazı taksiler taksimetreyi &#x27;unutur&#x27;; kısa mesafe turist tarifesine döner.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> &#x27;Compteur, afak&#x27; (taksimetre, lütfen) de; açmıyorsa in, sonraki taksiyi al. Kapılar arası standart mesafelerin fiyatını riyadına önceden sor.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Eşekli hamal, su satıcısı ya da dükkan önü — çekilen her fotoğrafın arkasından bahşiş talebi gelebilir; &#x27;hediye&#x27; diye uzatılan bilezik sonra faturalanır.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Fotoğraftan önce izin iste ve küçük bahşişi doğal karşıla — bu bir hizmet. Eline tutuşturulan &#x27;hediyeyi&#x27; kibarca geri ver; gülümseme + &#x27;la, şükran&#x27; bu şehrin sihirli anahtarıdır.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Fes'yi MyWay ile Keşfedin</h3>
-            <p>Zikzak çizmeden adım adım akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
+            <p>Adım adım optimize edilmiş akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      App Store'dan Hemen İndirin
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. Tüm hakları saklıdır.</p>
+            <p>&copy; 2026 MyWay Travel App. Tüm hakları saklıdır.</p>
         </div>
     </footer>
 

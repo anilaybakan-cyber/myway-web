@@ -6,8 +6,17 @@
     <title>Kotor Gezi Rehberi & Akıllı Rotalar | MyWay</title>
     <meta name="description" content="Kotor için adım adım yürüyüş rotaları, gizli mekanlar, turist tuzakları ve lezzet durakları. Kotor gezi rehberi MyWay'de.">
     
-    <link rel="alternate" hreflang="en" href="../../guides/kotor.html">
-    <link rel="alternate" hreflang="tr" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/kotor.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/kotor.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -527,7 +641,7 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="navbar-inner">
-            <a href="../" class="nav-brand">
+            <a href="/tr/" class="nav-brand">
                 <img src="../../images/app_icon.png" alt="MyWay" width="38" height="38">
                 <span>MyWay</span>
             </a>
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../rehber/">Rehberler</a></li>
-                <li><a href="../#features">Özellikler</a></li>
+                <li><a href="/tr/rehber/" class="active">Şehir Rehberleri</a></li>
+                <li><a href="/tr/#features">Özellikler</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../../guides/kotor.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇬🇧 English</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇹🇷 TR</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/kotor.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item ">🇬🇧 English</a>
+                        <a href="/tr/rehber/kotor.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item active">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="../#hero" class="nav-cta">İndir</a>
+
+                <a href="/tr/#download" class="nav-cta">Hemen İndir</a>
             </div>
         </div>
     </nav>
@@ -555,7 +678,7 @@
         <img src="../../images/cities/kotor.jpg" alt="Kotor" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
-            <div class="city-badge">🇲🇪 Karadağ &bull; Rehberler</div>
+            <div class="city-badge">🇲🇪 Karadağ &bull; Şehir Rehberleri</div>
             <h1 class="guide-title">Kotor</h1>
             <p class="guide-tagline">Fiyort görünümlü körfez, ortaçağ surları ve şehrin gerçek sahipleri: kediler</p>
         </div>
@@ -568,29 +691,249 @@
                 <span class="section-label">Genel Bakış</span>
                 <h2 class="section-title">Kotor Atmosferi</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Kotor, dağların denize en yakıştığı yerde durur: kara kayalıklar dimdik suya iner, körfez bir fiyort gibi kıvrılır ve ortaçağ şehri bu dekorun dibine mühür gibi oturur. Venedik aslanları kapılarında, kediler meydanlarında, surlar yamacın tepesinde seni bekler. Kruvaziyer kalabalığı öğlen gelir ve akşam gider; sen kal — taş sokakların gerçek sesi, gece çanların ve martıların arasında duyulur.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 Boka</div>
+                <span class="pron-badge">🗣️ /boka/</span>
+            </div>
+            <p class="word-def"><strong>Kotor Körfezi&#x27;nin yerel adı: &#x27;Boka Kotorska&#x27;. Körfez halkına Bokelj denir ve bu bir kimliktir — denizcilik geleneği, 12 asırlık donanma loncası ve körfeze özgü ağır bir gurur içerir.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Temel Bilgiler</span>
+                <h2 class="section-title">Pratik İpuçları & Lojistik</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Havalimanı</div>
+                <div class="fact-desc">Tivat (TIV) 8 km</div>
+                <div class="fact-sub">Taksiyle 15 dk · Dubrovnik alternatifi 70 km</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🚶</div>
+                <div class="fact-title">Şehir içi</div>
+                <div class="fact-desc">Tamamen yayan</div>
+                <div class="fact-sub">Eski Şehir araca kapalı</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🗣️</div>
+                <div class="fact-title">Dil</div>
+                <div class="fact-desc">Karadağca</div>
+                <div class="fact-sub">İngilizce turistik hatta yaygın</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🏰</div>
+                <div class="fact-title">İmza</div>
+                <div class="fact-desc">Sur tırmanışı</div>
+                <div class="fact-sub">1350 basamak, 260 metre yükseliş</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yerel Sırlar</span>
+                <h2 class="section-title">Kotor İçin Yazısız Kurallar</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>Kruvaziyer saatlerine göre yaşa</strong>
+                    <span>Gemiler sabah yanaşır, 11-16 arası Eski Şehir dolup taşar. Sur tırmanışını ve meydan keyfini sabah 8&#x27;e ya da akşamüstüne kur; öğlen saatlerini körfez köylerine sakla.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Kedilere saygı, şehrin totemi onlar</strong>
+                    <span>Kediler Kotor&#x27;un sembolüdür: denizcilerin gemilerinden inen bu ekip yüzyıllardır şehri fare ve yılandan korur. Beslemek serbest, kovalamak ayıp; müzesi bile var.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Surlara ya bilet öde ya patikayı bil</strong>
+                    <span>San Giovanni kalesine resmi giriş ücretlidir; ama şehir dışından başlayan Kotor Merdiveni (Ladder of Kotor) patikası surlara pencereden bağlanır. Her iki yolda da su ve sabah serinliği şarttır.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Gizli Köşeler</span>
+                <h2 class="section-title">Kotor'deki Saklı Hazineler</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Kotor Merdiveni (Ladder of Kotor)</div>
+                <div class="card-desc">Şehir dışından başlayan eski kervan patikası, 70 virajla dağa tırmanır ve bir pencereden sur hattına bağlanır. Manzara zirveden de cömerttir — sabah serinliğinde çık, suyu bol al.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Kayalar Meryemi (Gospa od Škrpjela)</div>
+                <div class="card-desc">Perast&#x27;lı denizcilerin taş ata ata denizden yükselttiği yapay ada: mavi kubbeli kilise, gümüş adaklar ve körfezin en iyi hikayesi. Her 22 Temmuz&#x27;da kayıklar taş atmaya devam eder — gelenek 500 yıldır kesintisiz.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Kotor Kedi Müzesi</div>
+                <div class="card-desc">Eski bir palatanın içinde kedilere adanmış küçük müze: gravürler, gemi kedileri, savaş posterleri. Bilet geliri sokak kedilerine gider — şehrin totemine vefa borcu böyle ödenir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Lovćen serpantini ve Njeguši</div>
+                <div class="card-desc">Eski Avusturya yolunun her virajı körfeze başka bir açı açar; tepede Njeguš köyünün pršut tadımı bekler. Kendi aracınla çık ya da tur al — dönüşte fren kokusu normaldir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Risan ve Roma mozaikleri</div>
+                <div class="card-desc">Körfezin en eski yerleşimi Risan&#x27;da Roma villasının mozaikleri saklıdır: uyuyan Hypnos mozaiği bölgenin en eski sanat eseridir. Perast&#x27;ın gölgesinde kalır, o yüzden sakindir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Muo rıhtımı gün batımı</div>
+                <div class="card-desc">Eski Şehir&#x27;in karşısındaki balıkçı rıhtımı, surların ve dağın suya yansıdığı en iyi noktadır: akşamüstü yürü, taş iskeleye otur, şehrin ışıklanmasını bekle. Fotoğrafçının gizli klasiği.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yeme & İçme</span>
+                <h2 class="section-title">Mutlaka Tadılması Gereken Lezzetler</h2>
+            </div>
+            <p class="intro-text">Boka mutfağı körfezin kendisidir: midye çiftlikleri, günün balığı, dağdan inen pršut ve Venedik&#x27;ten kalma tarifler.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Körfez midyesi — na buzara</div>
+                <div class="card-desc">Midyeler körfezin kendi çiftliklerinden çıkar ve en iyi halleri buzara sosundadır: beyaz şarap, sarımsak, maydanoz. Kabuğu maşa gibi kullan, sosu ekmekle bitir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Günün balığı ızgarada</div>
+                <div class="card-desc">Konobalarda balık vitrinden seçilir, kiloyla tartılır: levrek, çipura, bazen körfezin kendi dişçisi. Blitva ve zeytinyağıyla — sadelik burada ustalıktır.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Crni rižoto ve kalamar</div>
+                <div class="card-desc">Mürekkep karası risotto ile közlenmiş kalamar Boka sofrasının iki direğidir: Venedik mirası tariflerin körfeze uyarlanmış hali. Limon ve soğuk beyazla.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Njeguši durağı — pršut ve sir</div>
+                <div class="card-desc">Lovćen yolundaki Njeguši köyü, isle kurutulmuş jambonun başkentidir: serpantin yolu çıkarsan tadımı köyde yap, çıkmazsan her konobanın meze tabağında seni bekler.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Dobrota krempita&#x27;sı</div>
+                <div class="card-desc">Körfezin tatlı gururu: çıtır yufka arasında titrek muhallebi kreması. Sahil yürüyüşünün dönüş bahanesi olarak birebir — yanına sade kahve.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Vranac ve körfez akşamı</div>
+                <div class="card-desc">Karadağ&#x27;ın koyu kırmızısı balıkla bile içilir — kural yıkmak serbest. Akşam rıhtımda bir kadeh, karşında ışıklanan surlar: Kotor&#x27;un en ucuz lüksü budur.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Dikkat Edilmesi Gerekenler</span>
+                <h2 class="section-title">Turist Tuzakları & Kaçınılması Gerekenler</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">11-16 arası Eski Şehir&#x27;de yürümek kuyrukta beklemeye benzer: meydanlar dolu, restoranlar acele servis moduna geçer.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Programı ters kur: sabah 8&#x27;de sur, öğlen körfez köyleri ya da yüzme, 17 sonrası meydan keyfi. Gemi kalabalığı akşam yemeğine kalmaz.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Rıhtımda &#x27;mavi mağara + denizaltı üssü&#x27; diye bağıran teknelerin bazıları kalabalık doldurur, mağara önünde beş dakika bekletip döner.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Küçük grup ve süre garantisi sor; ya da Perast&#x27;tan ada kayığı + Blue Line otobüsüyle kendi turunu kur — yarı fiyata, kendi hızında.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Öğlen sıcağında susuz ve terlikle tırmanan, yarı yolda pes eder; taş basamaklar gölgesizdir ve yukarıda su satışı pahalıdır.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Sabah serinliğinde başla, kişi başı bir litre su ve kapalı ayakkabıyla çık. İniş için dizler yorgunsa Ladder patikasının eğimi daha merhametlidir.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Saat Kulesi meydanının restoranları manzara ve konum vergisini hesaba ekler; aynı buzara iki sokak içeride belirgin daha ucuzdur.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Ara sokak konobalarını ve Dobrota sahilini seç; günün balığını soran, fiyatı tartıdan önce öğrenen masada sürpriz yaşanmaz.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Kotor'yi MyWay ile Keşfedin</h3>
-            <p>Zikzak çizmeden adım adım akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
+            <p>Adım adım optimize edilmiş akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      App Store'dan Hemen İndirin
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. Tüm hakları saklıdır.</p>
+            <p>&copy; 2026 MyWay Travel App. Tüm hakları saklıdır.</p>
         </div>
     </footer>
 

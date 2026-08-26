@@ -6,8 +6,17 @@
     <title>Cannes City Guide & Smart Walking Routes | MyWay</title>
     <meta name="description" content="Explore Cannes with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
     
-    <link rel="alternate" hreflang="tr" href="../tr/rehber/cannes.html">
-    <link rel="alternate" hreflang="en" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/cannes.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/cannes.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../guides/">City Guides</a></li>
+                <li><a href="/guides/" class="active">City Guides</a></li>
                 <li><a href="/#features">Features</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../tr/rehber/cannes.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇹🇷 Türkçe</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇬🇧 EN</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/cannes.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item active">🇬🇧 English</a>
+                        <a href="/tr/rehber/cannes.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item ">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="/#hero" class="nav-cta">Download</a>
+
+                <a href="/#download" class="nav-cta">Download</a>
             </div>
         </div>
     </nav>
@@ -568,29 +691,249 @@
                 <span class="section-label">Overview</span>
                 <h2 class="section-title">The Vibe of Cannes</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">When you hear Cannes, you think red carpet, yacht harbour and film festival. But the city itself goes far beyond all of that. The old town perched on Le Suquet hill, the pine forests of the Lérins Islands, the morning crowds at Forville Market, the shopkeepers of Rue Meynadier — these are the real face of Cannes. The Croisette is the city&#x27;s most expensive and most touristy facade; one street back, prices drop and the atmosphere changes entirely. Cannes is a small city — everything is walkable, and drinking an espresso while watching the yachts is a French Riviera ritual in its own right.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 La Croisette</div>
+                <span class="pron-badge">🗣️ /la krwa-SET/</span>
+            </div>
+            <p class="word-def"><strong>Cannes&#x27; famous seafront boulevard — 2 kilometres from the yacht harbour to Palm Beach. Luxury hotels, boutiques, sandy beaches and the red carpet during the film festival. Touristy and expensive, but worth walking once. The real tip: right next to the paid private beach concessions on the Croisette there are free public beaches — same sea, half the price.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Essentials</span>
+                <h2 class="section-title">Quick Logistics</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Airport</div>
+                <div class="fact-desc">NCE — Nice Côte d&#x27;Azur</div>
+                <div class="fact-sub">Train from Nice ~30 min · taxi ~€80 · express bus ~€19.50</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🚌</div>
+                <div class="fact-title">Transport</div>
+                <div class="fact-desc">Palm Bus — city bus network</div>
+                <div class="fact-sub">Single fare €1.80 · day pass €4.60 · contactless card accepted</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🌡️</div>
+                <div class="fact-title">Weather</div>
+                <div class="fact-desc">French Riviera — 300 sunny days a year</div>
+                <div class="fact-sub">Apr–Jun and Sep–Oct ideal · Jul–Aug hot and crowded · Dec–Feb mild</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🥗</div>
+                <div class="fact-title">Food</div>
+                <div class="fact-desc">Socca, pan bagnat, pissaladière, rosé wine</div>
+                <div class="fact-sub">Set lunch €15–25 · street food €3–6</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Insider Advice</span>
+                <h2 class="section-title">Unwritten Rules for Cannes</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>If you&#x27;re coming during the Film Festival, book well in advance</strong>
+                    <span>During the Cannes Film Festival, which runs for about two weeks each May, the city fills up completely. Hotel prices triple or quadruple, restaurants are packed, the Croisette is surrounded by barriers. You can&#x27;t get into the festival itself — accreditation is required. But parallel events and public screenings are free to experience the atmosphere. If you want to come during this period, book at least six months ahead.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Step one street back from the Croisette — prices halve</strong>
+                    <span>Restaurants on or facing the Croisette are two to three times more expensive than the rest of Cannes. The small bistros and cafés on Rue Meynadier, Rue d&#x27;Antibes and in Le Suquet neighbourhood are both cheaper and far more local. Go to the Croisette for the view but step one street back for food.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Take the early morning ferry to the Lérins Islands</strong>
+                    <span>Sainte-Marguerite and Saint-Honorat islands are just 15 minutes by ferry from Cannes. In summer the afternoons get very crowded. If you take the 9am or 10am ferry you&#x27;ll find the islands nearly empty. On Sainte-Marguerite there&#x27;s the castle where the Man in the Iron Mask was held; on Saint-Honorat, living monks produce their own wine. Separate tickets are needed for each island.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Off the Beaten Path</span>
+                <h2 class="section-title">Hidden Gems in Cannes</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Le Suquet hilltop — Notre-Dame d&#x27;Espérance</div>
+                <div class="card-desc">Climb the steps from Vieux-Port and you reach the top of Le Suquet. From in front of Notre-Dame d&#x27;Espérance Church you can see the yacht harbour, the Croisette and the Estérel mountains. Go 30 minutes before sunset — the light hits this hill directly. Bring a bottle of rosé and sit on the terrace. A tenth of the Croisette&#x27;s crowds, free and far more beautiful.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Île Sainte-Marguerite</div>
+                <div class="card-desc">15 minutes by ferry from Vieux-Port. At Fort Royal you can see the cell where the Man in the Iron Mask was held — whether fact or legend is debated, but the cell itself is real. The rest of the island is pine and eucalyptus forest, clear sea coves and walking trails. Even in midsummer it stays peaceful. Have lunch on the island — the restaurant is simple but the fish is fresh.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Île Saint-Honorat</div>
+                <div class="card-desc">The smaller island next to Sainte-Marguerite, reached by a separate ferry. An active monastery since the 5th century — monks still live here today and tend their vines. The monastery wine is world-renowned; tastings and sales are available to visitors. The island is small, walkable in its entirety. Can be visited on the same day as Sainte-Marguerite — buy separate tickets for each island.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Vallauris — Picasso&#x27;s pottery village</div>
+                <div class="card-desc">20 minutes from Cannes by bus. Picasso lived here between 1948 and 1955 and discovered the art of ceramics here. Active pottery workshops and small galleries still exist today. Musée National Picasso La Guerre et la Paix — a chapel that Picasso personally painted and donated to the town. Ticketed but affordable, not crowded, genuinely impressive.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Grasse — perfume city</div>
+                <div class="card-desc">25-30 minutes from Cannes by train or bus. The world&#x27;s perfume capital — the raw materials for Chanel No.5 come from here. Fragonard, Molinard and Galimard perfume factories offer free tours; workshop sessions are ticketed. The old town has narrow streets and Provençal breakfast spots. In February-March mimosa blooms along the roads.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Forville antiques market</div>
+                <div class="card-desc">Every Monday Forville Market transforms from food into an antiques, vintage and second-hand market. Old photographs, frames, jewellery, books, plates. Prices far lower than auction houses. The best finds when stalls are being set up at 7am. Sellers are generally open to bargaining. A completely different and far more authentic Cannes experience, in contrast to the Croisette&#x27;s glamour.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Food & Flavors</span>
+                <h2 class="section-title">What to Taste</h2>
+            </div>
+            <p class="intro-text">Cannes is an expensive city — but one street back from the Croisette you eat both better and cheaper.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Socca</div>
+                <div class="card-desc">At the Socca&#x27;nne stall in Forville Market, fresh socca cooked over a wood fire. Wrapped in paper, black pepper on top, €3. Eat it hot — when it cools that crispy texture disappears. You can sit at one of the cafés beside the market and ask to bring it in. On the day the market is closed (Monday is the antiques market) there&#x27;s no socca either.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Pan bagnat</div>
+                <div class="card-desc">The sandwich version of a Niçoise salad — round bread filled with tuna, hard-boiled eggs, tomatoes, peppers, Niçoise olives and anchovies. The lunch dish of the Provençal Riviera. Sold everywhere at kiosks and small shops. How to spot a real pan bagnat: soaked bread, raw vegetables and quality canned tuna. If there are cooked vegetables, it&#x27;s the wrong version.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Pissaladière</div>
+                <div class="card-desc">An onion tart — thick pastry base, caramelised onions cooked for hours, Niçoise olives and a lattice of anchovies. At first glance the appearance might suggest pizza, but it&#x27;s different and far more intense. Fresh from bakeries on Rue Meynadier from the morning. Jean-Luc Pelé is the best on this street. A slice for €2-3, eat it while walking.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Bouillabaisse</div>
+                <div class="card-desc">A rich, saffron-scented broth made from rock fish, served with rouille (garlic mayonnaise) and croutons — a deeply flavourful Riviera soup. Good bouillabaisse in Cannes is expensive: €35-55 per person. Restaurants in Le Suquet neighbourhood are the most reliable. If the menu has no price or it seems very cheap, it&#x27;s likely a ready-made packet.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Rosé wine — Provence style</div>
+                <div class="card-desc">Provence produces some of the world&#x27;s finest rosé. Every bistro and café in Cannes has Provence rosé. A glass of open rosé is €5-8, double on the Croisette. On a warm afternoon, sitting on a café terrace near Forville with this wine is one of the French Riviera&#x27;s most pure moments.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Breakfast at Forville Market</div>
+                <div class="card-desc">The covered market open from 7am to 1pm. Mondays are the antiques market, all other days food. Fresh fruit, vegetables, cheese, fish, flowers and local products. Picking up socca, fougasse (Provençal olive bread) and fresh cheese and sitting outside is both cheap and the most local Cannes breakfast you can have. Chefs and grandmothers are at their most animated between 8am and 10am.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Watch Out</span>
+                <h2 class="section-title">Tourist Traps to Avoid</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Espresso on the palm-lined boulevard sells at several times the price; you&#x27;re paying not for coffee but for the right to watch Bentleys pass.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Drink your coffee around the Forville market or on Rue Meynadier; live the Croisette for free, on foot.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Most &#x27;starry gala&#x27; tickets sold on the street and online in May are fake; real invitations are never for sale.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Soak up the festival around the Palais and at the public beach screenings (Cinéma de la Plage — free).</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">On the Croisette&#x27;s private beaches, a sunbed and umbrella easily reach dinner-budget territory.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Use the public beaches: Plage du Midi and the public stretches by the Palais offer the same sand for free.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">The pricey &#x27;celebrity tour&#x27; sold at the port mostly amounts to pointing at walls from a distance.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Spend the same money on the Lérins Islands ferry: Sainte-Marguerite&#x27;s forest and the Man in the Iron Mask&#x27;s cell tell a real story.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Explore Cannes with MyWay</h3>
-            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without zigzagging across town.</p>
+            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without wasted steps.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      Download on App Store
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. All rights reserved.</p>
+            <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
         </div>
     </footer>
 

@@ -6,8 +6,17 @@
     <title>Geneva City Guide & Smart Walking Routes | MyWay</title>
     <meta name="description" content="Explore Geneva with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
     
-    <link rel="alternate" hreflang="tr" href="../tr/rehber/cenevre.html">
-    <link rel="alternate" hreflang="en" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/cenevre.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/cenevre.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../guides/">City Guides</a></li>
+                <li><a href="/guides/" class="active">City Guides</a></li>
                 <li><a href="/#features">Features</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../tr/rehber/cenevre.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇹🇷 Türkçe</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇬🇧 EN</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/cenevre.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item active">🇬🇧 English</a>
+                        <a href="/tr/rehber/cenevre.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item ">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="/#hero" class="nav-cta">Download</a>
+
+                <a href="/#download" class="nav-cta">Download</a>
             </div>
         </div>
     </nav>
@@ -568,29 +691,249 @@
                 <span class="section-label">Overview</span>
                 <h2 class="section-title">The Vibe of Geneva</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Geneva is a small city — but inside it sits the European headquarters of the United Nations, more than 40 international organisations, and the world&#x27;s densest concentration of diplomatic missions. You notice it when you arrive: everything is too orderly, too clean, too quiet. After 10pm the streets empty. Then you sit on the shore of Lac Léman, the Alps across the water, the Jet d&#x27;Eau above, a coffee beside you — and you understand why the city was built here. At Jonction, two rivers meet in different colours. In Carouge, an Italian neighbourhood spirit starts to breathe. Geneva is small but layered.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 Moitié-Moitié</div>
+                <span class="pron-badge">🗣️ /mwa-tYEY mwa-tYEY/</span>
+            </div>
+            <p class="word-def"><strong>Half and half. In Geneva, when fondue is mentioned, this is what&#x27;s meant: half Gruyère, half Vacherin Fribourgeois cheese. This is the standard blend. At a restaurant, don&#x27;t just say &#x27;fondue&#x27; — ask for &#x27;moitié-moitié&#x27; and you&#x27;ll notice the difference. A winter dish; from November to March.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Essentials</span>
+                <h2 class="section-title">Quick Logistics</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Airport</div>
+                <div class="fact-desc">GVA — Geneva Cointrin</div>
+                <div class="fact-sub">7-min train to Gare Cornavin · free 80-min ticket at exit</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🚋</div>
+                <div class="fact-title">Transport</div>
+                <div class="fact-desc">TPG — tram, bus, train, Mouettes</div>
+                <div class="fact-sub">Free for the entire stay if you&#x27;re in a hotel</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🌡️</div>
+                <div class="fact-title">Weather</div>
+                <div class="fact-desc">Four seasons, lake and mountain effect</div>
+                <div class="fact-sub">Apr–Jun and Sep ideal · Dec–Mar cold · watch for the Bise wind</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">💰</div>
+                <div class="fact-title">Currency</div>
+                <div class="fact-desc">Swiss Franc (CHF)</div>
+                <div class="fact-sub">One of Europe&#x27;s most expensive cities · lunch menus much cheaper than dinner</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Insider Advice</span>
+                <h2 class="section-title">Unwritten Rules for Geneva</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>If you&#x27;re staying in a hotel, all transport is free — ask at check-in</strong>
+                    <span>If you&#x27;re staying in a hotel, hostel or campsite in Geneva, you&#x27;re entitled to a Geneva Transport Card. For the duration of your stay, tram, bus, train and the yellow ferry (Mouettes Genevoises) are all free. It covers the airport transfer too. Sometimes it doesn&#x27;t arrive automatically — ask at check-in.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>An expensive city — but the free things are genuinely good</strong>
+                    <span>Restaurant prices are among the highest in Europe; plan accordingly. But don&#x27;t forget: the Jet d&#x27;Eau, the Reformation Wall, walking the Vieille Ville streets, walking to Jonction and the lakeside are all free. Many museums are free on Sundays. Lunch menus are often half the price of dinner at the same restaurant — same quality.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Fondue and raclette are winter dishes — don&#x27;t order them in summer</strong>
+                    <span>November to March is the right season for fondue and raclette. In summer they&#x27;re served at tourist restaurants, but these dishes belong to the cold. The right question in summer is: &#x27;Do you have Filets de perches du Léman?&#x27; Fresh lake perch from Lac Léman — if the menu doesn&#x27;t say &#x27;du Léman&#x27;, the fish may be frozen and imported from Eastern Europe.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Off the Beaten Path</span>
+                <h2 class="section-title">Hidden Gems in Geneva</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">La Pointe de la Jonction</div>
+                <div class="card-desc">At the western edge of the city, the Rhône and the Arve meet. One is turquoise-green, the other muddy brown — the two colours flow side by side for a long stretch without mixing. Clearly visible to the eye. In summer you can swim in safe areas. Easily reached on foot or by bike. Free, always open.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Quartier des Grottes</div>
+                <div class="card-desc">A few minutes&#x27; walk northwest of Gare Cornavin. In the 1980s, residents of a neighbourhood facing demolition occupied their buildings; architects designed organic, wavy, multicoloured façades. Now known as the &#x27;Smurf buildings&#x27;. The complete opposite of Geneva&#x27;s orderly and sterile character. Art studios and alternative cafés in the courtyards. Free, always open.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Promenade de la Treille</div>
+                <div class="card-desc">Just above the Vieille Ville, along the edge of Parc des Bastions. The wooden bench here, at 120 metres, is among the longest in the world. Each year, the arrival of spring is officially announced by the first bud on the chestnut tree beside this path. Panoramic views over the city, walking distance to the Reformation Wall.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">CERN</div>
+                <div class="card-desc">At the western edge of the city, on the Swiss-French border. The world&#x27;s largest particle physics laboratory and the birthplace of the World Wide Web. Entry to the Science Gateway, opened in 2023, is free — but registration is required. Online registration can be made up to a month in advance and guarantees entry; on-site registration is also possible but subject to availability. Guided tours are also free but open for on-site booking only, two hours before the tour starts — they fill up very quickly. Around 30 minutes by tram.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Place des Nations — Broken Chair</div>
+                <div class="card-desc">In front of the United Nations building, a giant three-legged wooden chair. The fourth leg is broken — representing landmines and unexploded ordnance. Erected temporarily in 1997 to push for the signing of the Ottawa Treaty banning landmines. Geneva never took it down. A guided tour of the Palais des Nations is ticketed, but entry to the square is free.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Bains des Pâquis</div>
+                <div class="card-desc">A wooden jetty extending into the lake on the Pâquis shore. In summer an open-air pool and hammam: swimming, sunbathing, sauna, light food. Doesn&#x27;t close in winter — one of the most popular spots for winter fondue. Ticketed but reasonably priced. In winter, reservations for fondue are essential; weekends fill up fast.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Food & Flavors</span>
+                <h2 class="section-title">What to Taste</h2>
+            </div>
+            <p class="intro-text">A city at the heart of Swiss-French cooking. Cheese, freshwater fish, local sausage — all different when eaten in the right place.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Fondue moitié-moitié</div>
+                <div class="card-desc">Geneva&#x27;s classic fondue: half Gruyère, half Vacherin Fribourgeois. Bread pieces dipped in melted cheese with a long fork. The right season for fondue runs from November to March. Avoid the restaurants around Gare Cornavin — they use cheap cheese blends and the difference is noticeable. Bains des Pâquis or restaurants in Carouge are the reliable addresses.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Raclette</div>
+                <div class="card-desc">A half wheel of cheese heated beside the fire, the melted part scraped directly onto the plate. Served with boiled potatoes, cornichons and onions. The electric tabletop version is a shortcut — the real thing is made with a half wheel of cheese.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Longeole</div>
+                <div class="card-desc">A local sausage unique to Geneva, with protected geographical indication (PDO). Made with pork, fennel seeds and spices; produced nowhere else. One of the city&#x27;s official dishes. Served with lentils or dried beans. Found at local restaurants in Carouge and at Halles de Rive.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Filets de perches du Léman</div>
+                <div class="card-desc">Fresh lake perch fillets from Lac Léman — the main dish at lakeside restaurants in summer. If the menu doesn&#x27;t say &#x27;du Léman&#x27;, the fish isn&#x27;t fresh — look for that label. Lightly floured and fried in butter. May to September.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Marmite de l&#x27;Escalade</div>
+                <div class="card-desc">A chocolate pot produced by Favarger each year from mid-November to mid-December. Commemorates the 1602 victory. Filled with small sweets; the tradition is to break it and share the contents. Geneva&#x27;s most local chocolate experience — unavailable the rest of the year.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Halles de Rive</div>
+                <div class="card-desc">In Rive, right next to the lake. Geneva&#x27;s best covered food market. Local cheese sellers, butchers, fishmongers and bakeries together. Longeole, Gruyère and fresh perch here. Not a tourist destination; this is where Genevans do their shopping. Open every day, busiest in the mornings.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Watch Out</span>
+                <h2 class="section-title">Tourist Traps to Avoid</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Paying 40 francs for a taxi when a 7-minute train exists is the city&#x27;s classic tourist mistake — and the train ticket is free in the baggage hall.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Take the free 80-minute ticket from the machine by the baggage belts; at your hotel, ask for the free Geneva Transport Card.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Some of the cheap &#x27;Swiss made&#x27; watches and knives in the Rue du Mont-Blanc windows are imported imitations.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> For the real thing go to an authorised dealer; for a budget gift, Swiss chocolate is always the right answer.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">It sits on menus year-round, but fondue is a winter dish; served to tourists in August it loses both its taste and its setting.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> In summer eat filets de perche from the lake; save fondue for a cold evening and a stone-walled brasserie.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Expensive &#x27;city tour&#x27; packages sell a route that is already free: the Jet d&#x27;Eau view, the lakeside, the Old Town.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> The yellow &#x27;Mouettes&#x27; water taxis cross the lake free with your transport card; your feet handle the rest.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Explore Geneva with MyWay</h3>
-            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without zigzagging across town.</p>
+            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without wasted steps.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      Download on App Store
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. All rights reserved.</p>
+            <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
         </div>
     </footer>
 

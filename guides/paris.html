@@ -6,8 +6,17 @@
     <title>Paris City Guide & Smart Walking Routes | MyWay</title>
     <meta name="description" content="Explore Paris with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
     
-    <link rel="alternate" hreflang="tr" href="../tr/rehber/paris.html">
-    <link rel="alternate" hreflang="en" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/paris.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/paris.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../guides/">City Guides</a></li>
+                <li><a href="/guides/" class="active">City Guides</a></li>
                 <li><a href="/#features">Features</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../tr/rehber/paris.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇹🇷 Türkçe</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇬🇧 EN</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/paris.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item active">🇬🇧 English</a>
+                        <a href="/tr/rehber/paris.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item ">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="/#hero" class="nav-cta">Download</a>
+
+                <a href="/#download" class="nav-cta">Download</a>
             </div>
         </div>
     </nav>
@@ -568,29 +691,249 @@
                 <span class="section-label">Overview</span>
                 <h2 class="section-title">The Vibe of Paris</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Paris is the most visited city on earth, which means it has spent decades learning to perform for tourists. The Paris most visitors see — the selfie spots, the overpriced cafés near the monuments, the Eiffel Tower queues — is a city built for consumption, not for living. The real Paris runs parallel to it: in the neighbourhood bakeries, the covered passages from 1820, the parks where locals play pétanque (a French bowling game) on Wednesday afternoons, the wine bars with no sign and no English menu. This city rewards the curious and ignores the passive. The monuments are genuinely extraordinary — the Louvre, Notre-Dame, Versailles — but they are the beginning of Paris, not the end of it. The question is not whether to see the Eiffel Tower. The question is what you do after.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 Arrondissement</div>
+                <span class="pron-badge">🗣️ /ah-ron-dees-MOHN/</span>
+            </div>
+            <p class="word-def"><strong>Paris is divided into 20 arrondissements — numbered 1 to 20 in a clockwise spiral from the city centre. Each has its own character, its own markets, its own pace. The 1st is the historic core; the 11th is where Parisians go out; the 18th is Montmartre; the 20th is Belleville. Knowing which arrondissement you&#x27;re heading to tells you more about your evening than any restaurant review.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Essentials</span>
+                <h2 class="section-title">Quick Logistics</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Airports</div>
+                <div class="fact-desc">CDG · Orly · Beauvais</div>
+                <div class="fact-sub">CDG: RER B 35 min · Orly: Orlyval+RER 35 min</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🚇</div>
+                <div class="fact-title">Transport</div>
+                <div class="fact-desc">Métro + RER + bus</div>
+                <div class="fact-sub">16 lines · 302 stations · runs until 1–2am</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🗺️</div>
+                <div class="fact-title">Arrondissements</div>
+                <div class="fact-desc">20 districts</div>
+                <div class="fact-sub">Spiral from city centre · each with its own character</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🥐</div>
+                <div class="fact-title">Breakfast rule</div>
+                <div class="fact-desc">Café crème + croissant</div>
+                <div class="fact-sub">At the bar · standing · before 10am</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Insider Advice</span>
+                <h2 class="section-title">Unwritten Rules for Paris</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>Say bonjour — every single time</strong>
+                    <span>In Paris, entering a shop, café, or bakery without saying bonjour is considered rude. Not aggressive, not tourist-bashing — just genuinely impolite. Say bonjour when you enter, merci and au revoir when you leave. This single habit will change how every interaction feels. Parisians are not cold; they are formal with strangers. The formality is the door.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>The métro is the city&#x27;s bloodstream</strong>
+                    <span>Paris has 16 metro lines, 302 stations, and covers almost every corner of the city. The Navigo Easy card — Paris&#x27;s equivalent of London&#x27;s Oyster Card — is the most practical option for short stays: buy it at any station, load t+ tickets onto it, and tap the reader at every metro, RER, bus, or tram boarding. Lines 1 and 14 run driverless and operate 24 hours at weekends. The metro runs until around 1am on weekdays and 2am on weekends.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Lunch is the meal — not dinner</strong>
+                    <span>The best-value eating in Paris is the weekday lunch. Most bistros and brasseries offer a formule — a set menu of two or three courses at a fraction of the evening price. The same kitchen, the same food, half the cost. Locals eat lunch between 12:30 and 14:00. Arrive before 12:30 or after 13:30 to avoid waiting. Dinner reservations at good restaurants are essential, often weeks ahead.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Off the Beaten Path</span>
+                <h2 class="section-title">Hidden Gems in Paris</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Sainte-Chapelle — Île de la Cité</div>
+                <div class="card-desc">Ten minutes from Notre-Dame, hidden behind the walls of the Palais de Justice, Sainte-Chapelle is arguably the most extraordinary interior in Paris. Built in six years between 1242 and 1248 by Louis IX to house the Crown of Thorns, its upper chapel is almost entirely made of stained glass — 1,113 biblical scenes across 600 square metres. On a sunny day the light is something close to supernatural. Two-thirds of the glass is original 13th-century work. Ticketed entry; book in advance online. Go on a sunny morning when the light is on the glass.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Coulée Verte René-Dumont — 12th arrondissement</div>
+                <div class="card-desc">Built on top of a disused 19th-century railway viaduct, the Coulée Verte is an elevated garden walkway stretching 4.5km through the 12th arrondissement. It opened in 1993 — seventeen years before New York&#x27;s High Line, which was directly inspired by it. Below the viaduct arches: galleries, design studios, and workshops. Above: wisteria, roses, bamboo, and a Paris no tourist visits. Free entry. Start at the Bastille end and walk east.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Arènes de Lutèce — 5th arrondissement</div>
+                <div class="card-desc">In the Latin Quarter, tucked behind an ordinary apartment building on Rue Monge, a Gallo-Roman amphitheatre from the 1st century AD sits largely forgotten. It once held 15,000 spectators. Today it holds locals playing pétanque (a French bowling game) on weekday afternoons, children on the grass, and pigeons. No entrance fee, no ticket desk, no tour groups. One of the oldest surviving structures in Paris. Almost no one visits.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Galerie Vivienne — 2nd arrondissement</div>
+                <div class="card-desc">Paris has 20 surviving covered passages — glass-roofed shopping arcades from the 1820s and 1830s, predecessors of the modern shopping mall. Galerie Vivienne is the most beautiful: mosaic floors, Neoclassical reliefs, a wine merchant who has been there for decades, a tearoom, a bookshop specialising in old and rare editions. Free to enter. Walk slowly. This is what Paris looked like before Haussmann tore it apart.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Palais Royal Gardens — 1st arrondissement</div>
+                <div class="card-desc">Steps from the Louvre, the Palais Royal gardens are enclosed by colonnaded arcades on three sides — a quiet rectangle of gravel paths, fountains, and lime trees, surrounded by antique dealers, a restaurant, and the Daniel Buren striped columns in the courtyard. Despite being in the most visited square kilometre in the world, it remains largely peaceful. Cardinals Richelieu and Mazarin lived here. Victor Hugo used to walk here. Free entry. On a warm afternoon, so should you.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">La Petite Ceinture — 15th/16th arrondissement</div>
+                <div class="card-desc">The Petite Ceinture was a circular railway that encircled Paris from 1862 to 1934. Abandoned for nearly a century, it has been partially reclaimed by wildflowers, birch trees, foxes, and the occasional urban farmer. Several sections are accessible to the public — the 15th and 16th arrondissement sections are the most interesting. Free, open to the public. Walking the overgrown tracks is one of the strangest and most beautiful things Paris offers.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Food & Flavors</span>
+                <h2 class="section-title">What to Taste</h2>
+            </div>
+            <p class="intro-text">French cuisine is the most influential culinary tradition in the world, and Paris is its capital. But the Paris worth eating in is not the one with English menus outside and tourist photos on the walls. It&#x27;s the neighbourhood bistro on a Tuesday, the boulangerie at 8am, the wine bar with three tables and a handwritten list.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Croissant — quality varies by bakery</div>
+                <div class="card-desc">A great croissant is laminated: layers of butter-enriched dough visible in the cross-section, shatteringly crisp on the outside, yielding within. A mediocre croissant is soft, uniform, and forgettable. Paris has both. The difference is the baker. Maison Landemaine, Du Pain et des Idées, and Sébastien Gaudard are among the best. Buy from a boulangerie with a queue — queues don&#x27;t lie.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Steak frites — the Parisian standard</div>
+                <div class="card-desc">The measure of a bistrot. A proper steak frites uses onglet (hanger steak) or entrecôte, served with hand-cut fries and a béarnaise or shallot sauce. Always ordered à point (medium) or saignant (rare) — bien cuit (well done) is considered a waste of good beef. Le Relais de l&#x27;Entrecôte in Saint-Germain serves nothing else and has a permanent queue. Worth every minute of the wait.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Fromage — the ritual</div>
+                <div class="card-desc">In a French restaurant, cheese comes before dessert, not instead of it. A cheese course is a platter of three to five cheeses served with bread — no crackers, no chutney. Ask the server what&#x27;s best today. Comté, Époisses, Brie de Meaux, Roquefort, Camembert. The rule: let it come to room temperature. Cold cheese is an insult to the cheesemaker.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Natural wine — Paris&#x27;s obsession</div>
+                <div class="card-desc">Paris leads the world in natural wine — low-intervention, minimal sulphites, often orange or pét-nat. The 11th arrondissement alone has more good natural wine bars than most cities have wine bars total. Le Servan, Septime Cave, Clown Bar, Le Verre Volé on Canal Saint-Martin. Order a glass and ask what the vigneron is doing with it. This is the most interesting wine scene in Europe.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Coffee — the correct way</div>
+                <div class="card-desc">A café in Paris means an espresso. A café crème is espresso with steamed milk. A noisette is espresso with a dash of cream. Cappuccino is understood but slightly regarded with suspicion after 11am. Drink it at the bar — it&#x27;s faster, cheaper, and more Parisian. The third-wave specialty coffee scene (Ten Belles, Café Lomi, Coutume) has transformed Paris in a decade. Both traditions coexist.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">The baguette — daily ritual</div>
+                <div class="card-desc">Parisians buy bread every day. A traditional baguette (baguette de tradition) has a crackling crust, open crumb, and slight tang from long fermentation. It goes stale by evening — this is correct. The best are from boulangeries that prove their dough slowly. Each arrondissement has its own; ask a neighbour. The city holds an annual competition for the best baguette in Paris — the winner supplies the Élysée Palace for a year.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Watch Out</span>
+                <h2 class="section-title">Tourist Traps to Avoid</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Crews &#x27;finding&#x27; a gold ring at your feet, or collecting signatures then demanding money, are a classic of the big squares.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Don&#x27;t stop, smile, say &#x27;non merci&#x27; and walk. Bag in front, zip closed — the Paris métro rule.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">The world&#x27;s most famous avenue is the city&#x27;s weakest spot for food: mediocre kitchens at tourist prices.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Step one street off the avenue, or point yourself at the Marais or Canal Saint-Martin: same budget, real Paris.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">On Montmartre&#x27;s painters&#x27; square, portraits that start uninvited end in haggling; prices are never stated up front.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Ask the price first, or just watch. Montmartre&#x27;s real beauty is two streets away, on the quiet staircases.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Most &#x27;skip-the-line&#x27; tickets sold around the Eiffel and the Louvre are fake or wildly marked up.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Buy only from official sites, dated and timed; if the Eiffel is full, watch from Trocadéro — if the Louvre is full, the Orsay is always calmer.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Explore Paris with MyWay</h3>
-            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without zigzagging across town.</p>
+            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without wasted steps.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      Download on App Store
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. All rights reserved.</p>
+            <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
         </div>
     </footer>
 

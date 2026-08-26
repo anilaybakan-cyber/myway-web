@@ -6,8 +6,17 @@
     <title>Cannes Gezi Rehberi & Akıllı Rotalar | MyWay</title>
     <meta name="description" content="Cannes için adım adım yürüyüş rotaları, gizli mekanlar, turist tuzakları ve lezzet durakları. Cannes gezi rehberi MyWay'de.">
     
-    <link rel="alternate" hreflang="en" href="../../guides/cannes.html">
-    <link rel="alternate" hreflang="tr" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/cannes.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/cannes.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -527,7 +641,7 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="navbar-inner">
-            <a href="../" class="nav-brand">
+            <a href="/tr/" class="nav-brand">
                 <img src="../../images/app_icon.png" alt="MyWay" width="38" height="38">
                 <span>MyWay</span>
             </a>
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../rehber/">Rehberler</a></li>
-                <li><a href="../#features">Özellikler</a></li>
+                <li><a href="/tr/rehber/" class="active">Şehir Rehberleri</a></li>
+                <li><a href="/tr/#features">Özellikler</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../../guides/cannes.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇬🇧 English</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇹🇷 TR</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/cannes.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item ">🇬🇧 English</a>
+                        <a href="/tr/rehber/cannes.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item active">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="../#hero" class="nav-cta">İndir</a>
+
+                <a href="/tr/#download" class="nav-cta">Hemen İndir</a>
             </div>
         </div>
     </nav>
@@ -555,7 +678,7 @@
         <img src="../../images/cities/cannes.jpg" alt="Cannes" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
-            <div class="city-badge">🇫🇷 Fransa &bull; Rehberler</div>
+            <div class="city-badge">🇫🇷 Fransa &bull; Şehir Rehberleri</div>
             <h1 class="guide-title">Cannes</h1>
             <p class="guide-tagline">Film festivali sadece bir hafta sürer — geriye kalan 51 haftada asıl Cannes başlar</p>
         </div>
@@ -568,29 +691,249 @@
                 <span class="section-label">Genel Bakış</span>
                 <h2 class="section-title">Cannes Atmosferi</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Cannes adını duyunca akla kırmızı halı, yat limanı ve film festivali geliyor. Ama şehrin kendisi bunların çok ötesinde. Le Suquet tepesindeki eski kasaba, Lérins Adaları&#x27;nın çam ormanları, Forville Pazarı&#x27;nın sabah kalabalığı, Rue Meynadier&#x27;in esnafı — bunlar Cannes&#x27;ın gerçek yüzü. Croisette şehrin en pahalı ve en turistik cephesi; ondan bir sokak içeri girdiğinde fiyatlar düşüyor, atmosfer değişiyor. Cannes küçük bir şehir — her şeye yürüyerek ulaşılıyor, yatlara bakarak espresso içmek ise ayrı bir Fransız Rivierası ritüeli.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 La Croisette</div>
+                <span class="pron-badge">🗣️ /la krwa-SET/</span>
+            </div>
+            <p class="word-def"><strong>Cannes&#x27;ın ünlü sahil bulvarı — yat limanından Palm Beach&#x27;e uzanan 2 kilometre. Lüks oteller, butikler, kumlu plajlar ve film festivali sırasında kırmızı halı. Turistik ve pahalı ama bir kere yürümek şart. Asıl ipucu: Croisette&#x27;teki ücretli plajların hemen yakınında ücretsiz halk plajı var — aynı deniz, yarı fiyat.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Temel Bilgiler</span>
+                <h2 class="section-title">Pratik İpuçları & Lojistik</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Havalimanı</div>
+                <div class="fact-desc">NCE — Nice Côte d&#x27;Azur</div>
+                <div class="fact-sub">Nice&#x27;den trene 30 dk · taksi ~80€ · express otobüs ~19,50€</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🚌</div>
+                <div class="fact-title">Ulaşım</div>
+                <div class="fact-desc">Palm Bus — şehir içi otobüs ağı</div>
+                <div class="fact-sub">Tek biniş 1,80€ · günlük pas 4,60€ · temassız kart geçerli</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🌡️</div>
+                <div class="fact-title">Hava</div>
+                <div class="fact-desc">Fransız Rivierası — yılda 300 gün güneş</div>
+                <div class="fact-sub">Nis–Haz ve Eyl–Eki ideal · Tem–Ağu sıcak ve kalabalık · Ara–Şub ılık</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🥗</div>
+                <div class="fact-title">Yemek</div>
+                <div class="fact-desc">Socca, pan bagnat, pissaladière, rosé şarap</div>
+                <div class="fact-sub">Öğle menüsü 15-25€ · sokak yiyeceği 3-6€</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yerel Sırlar</span>
+                <h2 class="section-title">Cannes İçin Yazısız Kurallar</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>Film Festivali döneminde geleceksen çok önceden rezervasyon yap</strong>
+                    <span>Her yılın Mayıs ayında yaklaşık iki hafta süren Cannes Film Festivali döneminde şehir tamamen doluyor. Otel fiyatları üç-dört katına çıkıyor, restoranlar dolu, Croisette barikatlarla çevrili. Festivalin kendisine giremezsin — akreditasyon gerekiyor. Ama atmosferi yaşamak için festivale paralel etkinlikler ve halk gösterimleri var. Bu dönemde gelmek istiyorsan en az altı ay önceden rezervasyon yap.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Croisette&#x27;ten bir sokak içeri gir — fiyatlar yarıya iner</strong>
+                    <span>La Croisette üzerindeki veya denize bakan restoranların fiyatları Cannes&#x27;ın geri kalanından iki-üç kat pahalı. Rue Meynadier, Rue d&#x27;Antibes ve Le Suquet mahallesindeki küçük bistro ve kafeler hem daha ucuz hem çok daha yerel. Manzara için Croisette&#x27;e git ama yemek için bir sokak içeri dön.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Lérins Adaları için sabah erkenden feribot al</strong>
+                    <span>Sainte-Marguerite ve Saint-Honorat adaları Cannes&#x27;a 15 dakika feribot mesafesinde. Yaz aylarında öğleden sonra çok kalabalık oluyor. Sabah 09:00 veya 10:00 feribotuna binersen adaları neredeyse boş görürsün. Sainte-Marguerite&#x27;de Man in the Iron Mask&#x27;ın tutulduğu kale, Saint-Honorat&#x27;ta yaşayan rahipler ve kendi şaraplarını üretiyorlar. Her iki ada için de farklı bilet gerekiyor.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Gizli Köşeler</span>
+                <h2 class="section-title">Cannes'deki Saklı Hazineler</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Le Suquet tepesi — Notre-Dame d&#x27;Espérance</div>
+                <div class="card-desc">Vieux-Port&#x27;tan merdivenleri çıkınca Le Suquet tepesine ulaşırsın. Notre-Dame d&#x27;Espérance Kilisesi&#x27;nin önünden hem yat limanı hem Croisette hem de Estérel dağları görünüyor. Gün batımından 30 dakika önce git — ışık bu tepeye doğrudan vuruyor. Yanında bir şişe rosé al, taraçada otur. Croisette&#x27;in kalabalığının onda birinde, ücretsiz ve çok daha güzel.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Île Sainte-Marguerite</div>
+                <div class="card-desc">Vieux-Port&#x27;tan feribotla 15 dakika. Fort Royal&#x27;de Demir Maskeli Adam&#x27;ın hücresini görebilirsin — gerçek mi efsane mi tartışılıyor ama mağara gerçekten var. Adanın geri kalanı çam ve okaliptüs ormanı, berrak deniz koyları, yürüyüş yolları. Yaz ortasında bile sakin. Öğle yemeğini adada ye — ada restoranı basit ama taze balık.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Île Saint-Honorat</div>
+                <div class="card-desc">Sainte-Marguerite&#x27;nin yanında, ayrı feribotla ulaşılan daha küçük ada. 5. yüzyıldan beri aktif manastır — bugün hala keşişler yaşıyor ve bağlarını işliyor. Manastır şarabı dünya çapında ünlü, ziyaretçilere tadım ve satış yapılıyor. Ada küçük, yürüyerek tamamı geziliyor. Sainte-Marguerite ile aynı günde ziyaret edilebilir — iki ada için ayrı bilet al.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Vallauris — Picasso&#x27;nun çömlekçi köyü</div>
+                <div class="card-desc">Cannes&#x27;dan otobüsle 20 dakika. Picasso 1948-1955 yılları arasında burada yaşadı ve çömlekçilik sanatıyla burada tanıştı. Bugün hala aktif çömlekçi atölyeleri ve küçük galeriler var. Musée National Picasso La Guerre et la Paix — Picasso&#x27;nun bizzat boyayıp belediyeye bağışladığı şapel. Biletli ama ucuz, kalabalık değil, gerçekten etkileyici.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Grasse — parfüm şehri</div>
+                <div class="card-desc">Cannes&#x27;dan tren veya otobüsle 25-30 dakika. Dünyanın parfüm başkenti — Chanel No.5&#x27;in hammaddesi buradan geliyor. Fragonard, Molinard ve Galimard parfüm fabrikaları ücretsiz tur sunuyor, atölye çalışmaları biletli. Eski şehir (vieille ville) dar sokaklar ve Provençal kahvaltı noktaları. Şubat-Mart&#x27;ta mimoza çiçeği yolları boyunca açıyor.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Forville antika pazarı</div>
+                <div class="card-desc">Her Pazartesi Forville Pazarı gıda yerine antika, vintage ve ikinci el eşya pazarına dönüşüyor. Eski fotoğraflar, çerçeveler, mücevherler, kitaplar, tabaklar. Fiyatlar müzayede evlerinden çok daha uygun. Sabah 07:00&#x27;de tezgahlar kurulurken en iyi fırsatlar. Satıcılar genellikle pazarlığa açık. Croisette&#x27;in glamuruna karşı tamamen farklı ve çok daha gerçek bir Cannes deneyimi.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yeme & İçme</span>
+                <h2 class="section-title">Mutlaka Tadılması Gereken Lezzetler</h2>
+            </div>
+            <p class="intro-text">Cannes pahalı bir şehir — ama Croisette&#x27;ten bir sokak içeri girdiğinde hem daha iyi hem daha ucuz yiyorsun.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Socca</div>
+                <div class="card-desc">Forville Pazarı&#x27;nda Socca&#x27;nne tezgahında, odun ateşinde pişirilmiş taze socca. Kağıda sarılı, üzerine karabiber, 3 euro. Sıcakken ye — soğuduğunda o çıtır doku kayboluyor. Pazarın yanındaki kafelerden birinde oturabilir, içeri getirmek için izin isteyebilirsin. Pazar kapalı olduğu gün (Pazartesi antika pazarı oluyor) socca da yok.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Pan bagnat</div>
+                <div class="card-desc">Niçoise salatasının sandviç hali — yuvarlak ekmek içine ton balığı, haşlanmış yumurta, domates, biber, Niçoise zeytinleri ve hamsi. Provençal Rivierası&#x27;nın öğle yemeği. Kiosklarda ve küçük dükkanlarda her yerde satılıyor. Gerçek pan bagnat&#x27;ı tanımanın yolu: ıslatılmış ekmek, çiğ sebze ve kaliteli konserve ton balığı. Pişmiş sebze varsa yanlış versiyondur.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Pissaladière</div>
+                <div class="card-desc">Soğan turtası — kalın hamur tabanı, saatlerce pişirilmiş karamelize soğan, Niçoise zeytinleri ve hamsi ızgarasıyla. İlk bakışta görüntüsü pizza sandırabilir ama farklı ve daha yoğun. Rue Meynadier&#x27;deki fırınlarda sabahtan itibaren taze. Jean-Luc Pelé bu caddenin en iyisi. Bir dilim 2-3 euro, yürürken ye.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Bouillabaisse</div>
+                <div class="card-desc">Marsilya&#x27;nın ünlü balık çorbasının Riviera versiyonu — kaya balıklarından yapılan zengin, safran aromalı et suyu, rouille (sarımsaklı mayonez) ve krutonla servis edilen derin lezzetli çorba. Cannes&#x27;da iyi bouillabaisse pahalı: kişi başı 35-55 euro. Le Suquet mahallesindeki restoranlar en güvenilir. Menüde fiyat yazmıyorsa ya da çok ucuzsa muhtemelen hazır paket.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Rosé şarap — Provence usulü</div>
+                <div class="card-desc">Provence, dünyanın en iyi rosé şarabını üretiyor. Cannes&#x27;da her bistro ve kafede Provence rosésu var. Açık rosé (verre) 5-8 euro bardakta, Croisette&#x27;te iki katı. Sarı Bandol veya soluk Côtes de Provence — hangisi olursa olsun, sıcak bir öğleden sonra Forville yakınında bir kafe terasında bu şarabı içmek Fransız Rivierası&#x27;nın en saf anlarından biri.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Forville Pazarı&#x27;nda kahvaltı</div>
+                <div class="card-desc">Sabah 07:00-13:00 arası açık olan kapalı pazar. Pazartesi günleri antika pazarı, diğer günler gıda. Taze meyve, sebze, peynir, balık, çiçek ve yerel ürünler. Socca, fougasse (zeytinli Provençal ekmek) ve taze peynir alıp dışarıda oturursan hem ucuz hem en yerel Cannes kahvaltısı. Şefler ve büyükanneler sabah 08:00-10:00 arasında en coşkulu saatlerinde.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Dikkat Edilmesi Gerekenler</span>
+                <h2 class="section-title">Turist Tuzakları & Kaçınılması Gerekenler</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Palmiyeli bulvarın teraslarında espresso birkaç kat fiyata satılır; ödediğin kahve değil, geçen Bentley&#x27;leri izleme hakkıdır.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Kahveni Forville pazarı çevresinde ya da Rue Meynadier&#x27;de iç; Croisette&#x27;i yürüyerek bedavaya yaşa.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Mayısta sokakta ve internette satılan &#x27;yıldızlı gala&#x27; biletlerinin çoğu sahtedir; gerçek davetler zaten satılmaz.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Festival havasını Palais çevresinden ve halka açık plaj gösterimlerinden (Cinéma de la Plage — ücretsiz) yaşa.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Croisette&#x27;in özel plajlarında şezlong + şemsiye kolayca akşam yemeği bütçesine ulaşır.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Halk plajlarını kullan: Plage du Midi ve Palais önündeki halka açık bölümler aynı kumu ücretsiz verir.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Limanda satılan pahalı &#x27;celebrity turu&#x27; çoğunlukla uzaktan duvar göstermekten ibarettir.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Aynı parayla Lérins Adaları feribotuna bin: Sainte-Marguerite&#x27;in ormanı ve Demir Maske&#x27;nin hücresi gerçek bir hikaye anlatır.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Cannes'yi MyWay ile Keşfedin</h3>
-            <p>Zikzak çizmeden adım adım akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
+            <p>Adım adım optimize edilmiş akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      App Store'dan Hemen İndirin
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. Tüm hakları saklıdır.</p>
+            <p>&copy; 2026 MyWay Travel App. Tüm hakları saklıdır.</p>
         </div>
     </footer>
 

@@ -6,8 +6,17 @@
     <title>Florence City Guide & Smart Walking Routes | MyWay</title>
     <meta name="description" content="Explore Florence with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
     
-    <link rel="alternate" hreflang="tr" href="../tr/rehber/floransa.html">
-    <link rel="alternate" hreflang="en" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/floransa.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/floransa.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../guides/">City Guides</a></li>
+                <li><a href="/guides/" class="active">City Guides</a></li>
                 <li><a href="/#features">Features</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../tr/rehber/floransa.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇹🇷 Türkçe</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇬🇧 EN</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/floransa.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item active">🇬🇧 English</a>
+                        <a href="/tr/rehber/floransa.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item ">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="/#hero" class="nav-cta">Download</a>
+
+                <a href="/#download" class="nav-cta">Download</a>
             </div>
         </div>
     </nav>
@@ -568,29 +691,249 @@
                 <span class="section-label">Overview</span>
                 <h2 class="section-title">The Vibe of Florence</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Florence is a small city — the historic centre is compact enough to walk. Inside it: Botticelli, Michelangelo, Leonardo, Brunelleschi; the Uffizi, Accademia, Bargello; a church on every corner, a fresco in every church. The only way to deal with this density is to set priorities: if you try to see everything at once, you won&#x27;t really see any of it. Florence&#x27;s dusty stone buildings, narrow streets, morning markets and evening aperitivo come together in a formula found nowhere else. The Arno River divides the city in two; on the far bank, the Oltrarno neighbourhoods — where most tourists don&#x27;t cross, where workshops and local bars carry on, where the real Florence lives.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 Cucina povera</div>
+                <span class="pron-badge">🗣️ /ku-CHI-na PO-ve-ra/</span>
+            </div>
+            <p class="word-def"><strong>The poor man&#x27;s kitchen. Florence&#x27;s best dishes came from here: lampredotto (beef tripe), ribollita (stale bread soup), pappa al pomodoro (tomato and bread porridge). Cheap ingredients, long cooking times, deep flavour. Bistecca alla Fiorentina is expensive and showy — cucina povera is the real face of the city.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Essentials</span>
+                <h2 class="section-title">Quick Logistics</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Airport</div>
+                <div class="fact-desc">FLR — Amerigo Vespucci</div>
+                <div class="fact-sub">T2 tram to Santa Maria Novella ~25 min · €1.70</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🚌</div>
+                <div class="fact-title">Transport</div>
+                <div class="fact-desc">Autolinee Toscane — bus and tram</div>
+                <div class="fact-sub">Single fare €1.70 · 90 minutes valid · buy at a tabacchi</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🌡️</div>
+                <div class="fact-title">Weather</div>
+                <div class="fact-desc">Mediterranean — summer hot and crowded</div>
+                <div class="fact-sub">Apr–May and Sep–Oct ideal · Jun–Aug very hot · Dec–Feb cold</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🥩</div>
+                <div class="fact-title">Food</div>
+                <div class="fact-desc">Bistecca, lampredotto, ribollita, gelato</div>
+                <div class="fact-sub">Trattoria lunch: €12–18 · lampredotto sandwich: €4–5</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Insider Advice</span>
+                <h2 class="section-title">Unwritten Rules for Florence</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>Don&#x27;t go to the Uffizi without a reservation</strong>
+                    <span>The Uffizi and the Accademia (Michelangelo&#x27;s David) are Florence&#x27;s most visited museums. Queues at the door can last hours — you might not get in at all. Book tickets in advance from the official websites — there&#x27;s a booking fee but it&#x27;s worth every minute saved in the queue. The first hours of the morning (9-10am) are the least crowded.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Tuscan bread is unsalted — be ready for this</strong>
+                    <span>Pane sciocco (unsalted bread) is a centuries-old Tuscan tradition. It might seem strange on the first bite. But dipped into cured meats, cheese or sauces it makes sense — it&#x27;s designed to absorb the salt from the food beside it, not to be eaten on its own. Schiacciata, however — the flat bread with olive oil and salt — is salty and delicious.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Know what real gelato looks like</strong>
+                    <span>High-piled gelato in big windows, neon coloured, is a tourist trap. Real good gelato looks the opposite: simple, understated, naturally coloured. Pistachio is yellowish not green, strawberry is pinkish not red. Because there&#x27;s no colouring — the colour comes only from the natural ingredients.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Off the Beaten Path</span>
+                <h2 class="section-title">Hidden Gems in Florence</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Bargello Museum</div>
+                <div class="card-desc">On Via del Proconsolo, 5 minutes&#x27; walk from the Uffizi. The most important collection of Renaissance sculpture is here: Donatello&#x27;s David, Michelangelo&#x27;s early works, Ghiberti and Verrocchio. A fraction of the Uffizi&#x27;s visitor numbers. The first-floor courtyard — when afternoon light passes through it — is one of Florence&#x27;s most beautiful and most silent spaces. Opens at 8:30am and is usually quiet until midday.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Laurentian Library</div>
+                <div class="card-desc">On the upper floor of San Lorenzo Basilica, with a separate ticket. The entrance vestibule and its dramatic, wavy staircase designed by Michelangelo — one of the earliest examples of Mannerism. Around 11,000 Medici manuscripts are held here. Open Monday-Saturday 10am-1pm.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Caffetteria delle Oblate</div>
+                <div class="card-desc">On Via dell&#x27;Oriuolo, 3 minutes&#x27; walk from the Duomo. A small café on the rooftop of the city library. The rear façade of the Duomo and a city panorama in front of you with your coffee or aperitivo. Limited seating — check before you go. The library itself is free to enter — you can sit inside too.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Piazza Santo Spirito</div>
+                <div class="card-desc">In Oltrarno, 15 minutes&#x27; walk from Ponte Vecchio. Quiet during the day — but after 6pm Florentines gather here. Bars and osterias all around, a fountain in the centre, people sitting on the steps. A small market runs every morning except Monday. Sunday brings an organic and craft market.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">San Miniato al Monte</div>
+                <div class="card-desc">Just above Piazzale Michelangelo, 10 more minutes of walking. An 11th-century basilica above the city. A fraction of Piazzale&#x27;s visitor numbers. The Tuscan marble floor and apse mosaic inside are among Florence&#x27;s least-known art treasures. Go before sunset: first San Miniato, then down to Piazzale. Both are free.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Ponte Vecchio — early morning</div>
+                <div class="card-desc">Between 7:30 and 8:30am, before the jewellery shops open, the bridge is almost empty. At this hour you can stand on it, watch the Arno and see the Vasari Corridor passing above. Note the open gap in the middle of the bridge: left deliberately open for the bust and the view of the Arno.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Food & Flavors</span>
+                <h2 class="section-title">What to Taste</h2>
+            </div>
+            <p class="intro-text">Florence is home to one of Italy&#x27;s finest cuisines — but without pretension. Bistecca is expensive, lampredotto is cheap; both are Florentine.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Bistecca alla Fiorentina</div>
+                <div class="card-desc">Giant T-bone steak, Chianina beef, cooked over charcoal, red inside. €45-60 per kilo — shared between two people. It has to be &#x27;al sangue&#x27; (rare). If you can accept that, this is one of Florence&#x27;s most iconic experiences.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Lampredotto sandwich</div>
+                <div class="card-desc">The fourth stomach of the cow, boiled, sliced and placed into a simple semmel roll. Topped with salsa verde and chilli sauce. Ask for it &#x27;bagnato&#x27; — they dip the top of the bread in the cooking broth, and the bread gets soaked — this is the critical difference. €4-5. At stalls in Mercato Centrale or Sant&#x27;Ambrogio Market. You&#x27;ll either love it or not, but you can&#x27;t leave Florence without trying.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Ribollita</div>
+                <div class="card-desc">A thick soup of white beans, cavolo nero (black kale), carrot, celery and stale Tuscan bread. The name means &#x27;reboiled&#x27; because it&#x27;s better the next day. A winter dish — October to March. Appears as a daily special at trattorias. Cheap and filling: €8-12.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Schiacciata sandwich</div>
+                <div class="card-desc">Tuscany&#x27;s flat olive oil and salt bread (schiacciata), filled with prosciutto, pecorino or grilled vegetables. Florence&#x27;s lunch-break food: quick, affordable, eaten standing. Fresh from bakeries from the morning onwards.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Real gelato</div>
+                <div class="card-desc">Metal containers, flat tops, natural colours: pistachio is yellowish-brown, strawberry pale pink. Those are real. Plastic containers, neon colours, high piled mounds — tourist trap. Gelateria dei Neri, Gelateria della Passera (Oltrarno), Bonchi.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Aperitivo culture</div>
+                <div class="card-desc">Between 6pm and 8pm. Order a Negroni or Aperol Spritz — small snacks come alongside. Some bars include a buffet with aperitivo. Oltrarno bars, Piazza Santo Spirito and Via San Niccolò are the right addresses for this ritual.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Watch Out</span>
+                <h2 class="section-title">Tourist Traps to Avoid</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">The &#x27;skip-the-line&#x27; hawkers around the museum charge multiples of the official ticket; some tickets turn out invalid at the door.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Buy only from the official site, dated and timed; the calmest hours are the first slot and two hours before closing.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Not everything labelled &#x27;vera pelle&#x27; is genuine; glued soles and synthetic leather abound on the tourist stalls.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> No flame test needed: check the stitching and the smell, and buy from workshops like the Scuola del Cuoio or long-established shops.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Real bistecca alla fiorentina is sold by the etto (100 g) and served rare; the promise of bistecca &#x27;per plate&#x27; is a thinned-out disappointment.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Go where the price is quoted per etto and accept it rare; sharing one between two is the tradition itself.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Half an hour before sunset the terrace fills with coach convoys; the view is lovely, the experience a scrum.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Climb ten minutes more: the steps of San Miniato al Monte give the same view plus monks&#x27; chanting — and room to breathe.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Explore Florence with MyWay</h3>
-            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without zigzagging across town.</p>
+            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without wasted steps.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      Download on App Store
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. All rights reserved.</p>
+            <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
         </div>
     </footer>
 

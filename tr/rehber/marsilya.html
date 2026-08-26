@@ -6,8 +6,17 @@
     <title>Marseille Gezi Rehberi & Akıllı Rotalar | MyWay</title>
     <meta name="description" content="Marseille için adım adım yürüyüş rotaları, gizli mekanlar, turist tuzakları ve lezzet durakları. Marseille gezi rehberi MyWay'de.">
     
-    <link rel="alternate" hreflang="en" href="../../guides/marsilya.html">
-    <link rel="alternate" hreflang="tr" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/marsilya.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/marsilya.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -527,7 +641,7 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="navbar-inner">
-            <a href="../" class="nav-brand">
+            <a href="/tr/" class="nav-brand">
                 <img src="../../images/app_icon.png" alt="MyWay" width="38" height="38">
                 <span>MyWay</span>
             </a>
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../rehber/">Rehberler</a></li>
-                <li><a href="../#features">Özellikler</a></li>
+                <li><a href="/tr/rehber/" class="active">Şehir Rehberleri</a></li>
+                <li><a href="/tr/#features">Özellikler</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../../guides/marsilya.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇬🇧 English</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇹🇷 TR</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/marsilya.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item ">🇬🇧 English</a>
+                        <a href="/tr/rehber/marsilya.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item active">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="../#hero" class="nav-cta">İndir</a>
+
+                <a href="/tr/#download" class="nav-cta">Hemen İndir</a>
             </div>
         </div>
     </nav>
@@ -555,7 +678,7 @@
         <img src="../../images/cities/marsilya.jpg" alt="Marseille" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
-            <div class="city-badge">🇫🇷 Fransa &bull; Rehberler</div>
+            <div class="city-badge">🇫🇷 Fransa &bull; Şehir Rehberleri</div>
             <h1 class="guide-title">Marseille</h1>
             <p class="guide-tagline">Fransa'nın en eski şehri — ve en çok küçümsenen</p>
         </div>
@@ -568,29 +691,270 @@
                 <span class="section-label">Genel Bakış</span>
                 <h2 class="section-title">Marseille Atmosferi</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Marseille 2.600 yıllık bir şehir — Yunan denizcileri tarafından kurulmuş ve bu sürenin büyük bölümünü küçümsenerek geçirmiş. Paris ona yukarıdan bakıyor. Turistler atlıyor. Marsilyalılar umursamıyor. Vieux-Port, Yunanlıların MÖ 600 civarında geldiğinden bu yana şehrin kalbinde atıyor. Calanques kıyıları Avrupa&#x27;nın en dramatik doğal manzaralarından. Balık pazarı her sabah aynı tekne başında, aynı şekilde kuruluyor. MuCEM kıtanın en iyi tasarlanmış müzelerinden biri. Bunların hiçbiri sır değil. Sır olan şu: şehir çalışıyor — gürültülü, gururlu ve tamamen kendisi.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 La Bonne Mère</div>
+                <span class="pron-badge">🗣️ /la bon MAIR/</span>
+            </div>
+            <p class="word-def"><strong>Her Marsilyalının Notre-Dame de la Garde&#x27;a, yani şehrin en yüksek tepesindeki bazilikaya verdiği isim. Limandan ayrılan gemiler ona bakardı. Dönen gemiler de bakardı. İçerideki duvarlara asılı eski adak levhalarında (ex-voto) her denizcinin izi var. &#x27;La Bonne Mère&#x27; &#x27;iyi anne&#x27; demek. Bu isim, şehrin denizle ve inançla kurduğu ilişkiyi tek başına anlatıyor. Giriş ücretsiz. Alacakaranlıkta git.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Temel Bilgiler</span>
+                <h2 class="section-title">Pratik İpuçları & Lojistik</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Havalimanı</div>
+                <div class="fact-desc">MRS — Marseille Provence Havalimanı</div>
+                <div class="fact-sub">Servis otobüsü → Saint-Charles garı, ~25 dk</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🚌</div>
+                <div class="fact-title">Ulaşım</div>
+                <div class="fact-desc">Metro + otobüs + tramvay (RTM)</div>
+                <div class="fact-sub">Tek bilet 1,70 Euro · 24 saatlik 5,20 Euro · Le Vélo ilk 30 dk ücretsiz</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🌡️</div>
+                <div class="fact-title">Hava</div>
+                <div class="fact-desc">Yılda 300 güneşli gün</div>
+                <div class="fact-sub">May–Haz ideal · Tem–Ağu sıcak ve kalabalık · Eyl–Eki mükemmel · kış ılıman</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🐟</div>
+                <div class="fact-title">Balık pazarı</div>
+                <div class="fact-desc">Her sabah, Quai des Belges, Vieux-Port</div>
+                <div class="fact-sub">Balıkçılar tekne başında satıyor · 10:00&#x27;da bitiyor · gezmesi ücretsiz</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yerel Sırlar</span>
+                <h2 class="section-title">Marseille İçin Yazısız Kurallar</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>Balık pazarı 10:00&#x27;da bitiyor</strong>
+                    <span>Her sabah balıkçılar gece avladıklarını doğrudan Vieux-Port&#x27;taki Quai des Belges&#x27;de teknelerinin başında satıyor. Aracı yok, toptancı yok — Avrupa&#x27;da bu türden kalan son pazarlardan biri. 10:00&#x27;da bitiyor. 11:00&#x27;de rıhtım boşalıyor. Restoranlar satın almadan önce gelir — 08:00&#x27;de git. Gezmesi ücretsiz. Mutfağın yoksa alacak bir şey yok.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Bouillabaisse&#x27;in bir şartnamesi var — ve önemli</strong>
+                    <span>Gerçek bouillabaisse belirli Akdeniz balıklarını kullanıyor — rascasse (iskorpit), grondin, Saint-Pierre — ve Marseille restoranlarının imzaladığı Bouillabaisse Şartnamesi&#x27;ne uyuyor. İki aşamada ayrı tabaklar olarak servis ediliyor, saatler alıyor ve pahalı. 20 Euro&#x27;luk turist menüsündeki versiyon başka bir yemek. Bouillabaisse Şartnamesi&#x27;ne uyan bir restoranda bir kez ye ve neyin bu kadar konuşulduğunu anla. Bu yemeğin icat edildiği yer burası.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Marseille acele edilecek bir şehir değil</strong>
+                    <span>Calanques planlama gerektiriyor — yazın Sugiton koyuna erişim için önceden ücretsiz online rezervasyon şart. MuCEM öğlen saatinde kuyruğa giriyor; sabah erken veya geç git. Notre-Dame de la Garde limandan 30 dakika yokuş yukarı ya da Hôtel de Ville&#x27;den 60 numaralı otobüsle. Le Panier günübirlikçiler gelmeden önce — 11:00&#x27;den önce — en iyi hâlinde. En az üç gün ayır.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Gizli Köşeler</span>
+                <h2 class="section-title">Marseille'deki Saklı Hazineler</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Vallon des Auffes</div>
+                <div class="card-desc">Corniche&#x27;i taşıyan viyadüğün altından geçilerek ulaşılan küçük bir koy. Bir düzine renkli balıkçı teknesi, kayalara oyulmuş bir avuç ev, iki üç balık restoranı. Balıkçılar hâlâ orada — gösteri için değil. Yazın yerel halk gün batımında ellerinde şişeyle kayaların üzerine oturuyor. 83 numaralı otobüs tam üstten geçiyor; otobüs penceresinden aşağıya bak ve neden inmen gerektiğini anlayacaksın. Ücretsiz, her zaman açık.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">L&#x27;Estaque</div>
+                <div class="card-desc">Merkezin 10 kilometre kuzeyinde, körfezin kıyısında. Cézanne 1870&#x27;ten 1882&#x27;ye kadar defalarca buraya geldi; Braque, Dufy ve Derain da aynı yolu izledi. Körfez ve fabrika bacaları, Kübizm&#x27;in temelini oluşturan onlarca eserde göründü. Köyde bugün küçük bir plaj, birkaç balıkçı restoranı ve neredeyse hiç ziyaretçi yok. Joliette metrosundan 35 numaralı otobüsle 25 dakika. Chichi frégi (liman yakınında tezgâhlardan satılan kızarmış hamur) yerel atıştırmalık. Hafta içi git.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">La Vieille Charité — Le Panier</div>
+                <div class="card-desc">1671 ile 1749 arasında, Marseille&#x27;in en önemli Barok mimarı Pierre Puget tarafından, yoksullar için barınak olarak inşa edildi. Üç kat kemerli galeri, ortada küçük kubbeli bir şapel. Şimdi Akdeniz Arkeolojisi Müzesi ile Afrika, Okyanusya ve Amerika Sanatı Müzesi&#x27;ne ev sahipliği yapıyor. Mimari tek başına Le Panier&#x27;e tırmanışı haklı kılıyor. Avluya giriş ücretsiz; müzeler biletli.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">La Friche la Belle de Mai</div>
+                <div class="card-desc">Belle de Mai mahallesinde, merkezden yürüyerek 15 dakika uzakta, 45.000 m²&#x27;lik eski bir SEITA tütün fabrikası. Kültür kompleksine dönüştürülmüş: sanatçı stüdyoları, gösteri salonları, sinema, sergi alanları, ortak bahçeler ve şehir manzaralı çatı terası. Çatı barı yazın açık — içecek, şehir manzarası, turist altyapısı yok. Standart güzergâhta değil çünkü liman bölgesini gerçekten terk etmeyi gerektiriyor. Réformés-Canebière&#x27;den 49 numaralı otobüsle.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Cathédrale de la Major</div>
+                <div class="card-desc">Fransa&#x27;nın en büyük kiliselerinden biri. 19. yüzyılın ikinci yarısında dönüşümlü yeşil ve beyaz taşla çizgili Romanesk-Bizans üslubunda inşa edilmiş — içeride altın mozaikler, yükselen kubbeler. MuCEM&#x27;in tam yanında duruyor ve ziyaretçilerin büyük çoğunluğu müzeye geçmek için önünden geçiyor. Giriş ücretsiz. İçerisi karanlık, serin ve neredeyse tamamen boş. Hemen dışarıdaki kalabalıkla yarattığı tezat mutlak.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Calanque de Sormiou</div>
+                <div class="card-desc">Şehre en yakın ve en erişilebilir kalanques — B1 otobüsü Castellane metrosundan doğrudan yürüyüş başlangıcına gidiyor. Beyaz kireçtaşı kayalıklarla çevrili turkuaz bir koya 30 dakika yürüyüş. Yazın araçla erişim kısıtlı; ilkbahar ve sonbaharda patika neredeyse boş. Aşağıda küçük mevsimlik bir restoran var. Su beş metre derinlikte dip görünecek kadar berrak. Ücretsiz.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Cours Julien</div>
+                <div class="card-desc">Vieux-Port&#x27;tan 15 dakika yürüyüş. Sokak sanatı, bağımsız kafeler, plak dükkanları, vintage mağazalar ve Fransa&#x27;nın en büyük açık hava sokak sanatı alanlarından biri. Çarşamba sabahları Place Jean Jaurès&#x27;de organik üretici pazarı kuruluyor — otuz kadar yerel çiftçi, Provence&#x27;tan taze ürünler. Akşamları barlar dolup taşıyor, kalabalık tamamen yerel. Vieux-Port&#x27;un yarı fiyatına yemek, iki katı atmosfer. Ücretsiz gezmek için, yemek için, oturmak için.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Palais Longchamp</div>
+                <div class="card-desc">1869&#x27;da şehre su getiren kanalı kutlamak için inşa edilmiş — su deposunun üstüne yapılmış bir saray. Orta kısımda büyük bir şelale ve heykel grubu, iki kanatta Güzel Sanatlar Müzesi ve Doğa Tarihi Müzesi. Arkasında geniş bir park: piknik alanları, oyun bahçeleri, gölge ağaçlar. Tramvay T2 ile Longchamp durağından 3 dakika. Bahçe ve dış alan her zaman ücretsiz; müzeler biletli, her ayın ilk Pazarı ücretsiz.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Notre-Dame de la Garde — La Bonne Mère</div>
+                <div class="card-desc">Marseille&#x27;nin en yüksek noktasında, 162 metre yükseklikte. Yokuşlu patikadan 30–40 dakika yürüyüş ya da Hôtel de Ville&#x27;den 60 numaralı otobüsle. Tepeden şehrin tamamı, Vieux-Port, adalar ve açık deniz görünüyor. İçeride: duvarlara asılı yüzlerce adak levhası (ex-voto) — gemicilerin, annelerin, hayatta kalanların bıraktığı. Bazilika 19. yüzyıldan kalma, Bizans-Romanesk karışımı. Giriş ücretsiz. Alacakaranlıkta git — ışık o saatte bambaşka.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yeme & İçme</span>
+                <h2 class="section-title">Mutlaka Tadılması Gereken Lezzetler</h2>
+            </div>
+            <p class="intro-text">Marseille&#x27;nin mutfağı Akdenizli, doğrudan ve liman tarafından şekillendirilmiş. Malzemeler denizden ve oraya gelen toplulukların mutfaklarından geliyor.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Bouillabaisse — orijinal</div>
+                <div class="card-desc">Bir çorba değil — bir yöntem. Belirli kaya balıkları (rascasse, grondin, Saint-Pierre, vive), safran, rezene ve zeytinyağı suyunda pişiriliyor, sonra iki aşamada ayrı tabaklar olarak servis ediliyor: önce rouille (sarımsak-safran mayonezi) sürülmüş kızarmış ekmek dilimlerine batırılarak içilen et suyu, sonra balıklar ayrıca. Bouillabaisse Şartnamesi gerekli balık türlerini tanımlıyor. Doğru yapılınca saatler alıyor ve fiyatı yüksek. Ucuz versiyonları balık çorbası. Bu ise mimari.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Panisse — Marseille sokak yemeği</div>
+                <div class="card-desc">Dışı çıtır içi yumuşak, kızartılmış kalın nohut unu keki — çubuk veya yuvarlak olarak servis ediliyor. Cenevizli göçmenler getirdi, Marseille benimsedi ve kendi malı yaptı. Marché de Noailles&#x27;de ve şehrin sokak tezgâhlarında bulunuyor. Sıcak, ucuz ve göründüğünden iyi. L&#x27;Estaque&#x27;ta soğuk birayla versiyonu doğru siparişin ta kendisi.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Rouille — vazgeçilmez sos</div>
+                <div class="card-desc">Sarımsak, safran ve zeytinyağından yapılan yoğun, parlak turuncu bir emülsiyon — aioli&#x27;den (sarımsaklı mayonez) daha keskin, mayonezden daha az narin. Bouillabaisse suyuna batırılan krutona sürülüyor. Aynı zamanda ızgara balık ve kızartılmış sebzeyle yeniyor. Rengi safrandan ve biberden geliyor; kuvveti sarımsaktan. Her Marseille restoranı kendi versiyonunu yapıyor. Kalitesi önemli ölçüde değişiyor.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Navette — Saint-Victor&#x27;un bisküvisi</div>
+                <div class="card-desc">Portakal çiçeği suyu aromalı, tekne biçimli kuru bir bisküvi — 1781&#x27;den bu yana Abbaye Saint-Victor yakınındaki Four des Navettes fırınında yapılıyor. Şekil, Meryem Magdalena ve ilk Hristiyanları Provence&#x27;a taşıdığı söylenen küçük teknelere gönderme yapıyor. Fırında yıl boyu satılıyor. Sert ve kuru — kahveye veya pastis&#x27;e bandırılmak için yapılmış. Bir atıştırmalık değil; bir gelenek.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Tapenade ve anchoïade — Provence&#x27;ın temelleri</div>
+                <div class="card-desc">Tapenade: siyah zeytin, kapari, hamsi ve zeytinyağı ezilerek yapılan bir ezmedir — adı Provençal dilinde kapari anlamına gelen &#x27;tapeno&#x27;dan geliyor. Anchoïade: daha kaba ve daha keskin, hamsi ve sarımsaktan yapılmış bir ezme. İkisi de ekmeğe sürülüyor, yemeklerden önce servis ediliyor, şehrin her kafesinde masaya geliyor. Marseille Provence&#x27;ın kıyısında oturuyor; bu lezzetler uzun süredir var.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Barda kahve — gerçek Marseille ritmi</div>
+                <div class="card-desc">Barda dur. Bir petit café (küçük siyah kahve) söyle. Öde ve on dakika içinde ayrıl. Vieux-Port kafelerinde masada oturmanın fiyatı barda durmaktan belirgin biçimde yüksek — yerliler doğrudan tezgâha gider. Noailles pazarında bir sabah, bir tezgâhta kahve, mahallenin açılışını izlemek: şehrin en dürüst versiyonu bu. Bir Euro&#x27;dan az tutuyor ve Marseille&#x27;de başka hiçbir şey sana bunu anlatmaz.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Dikkat Edilmesi Gerekenler</span>
+                <h2 class="section-title">Turist Tuzakları & Kaçınılması Gerekenler</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Gerçek bouillabaisse en az dört tür kayalık balığı ister ve iki serviste sunulur; ucuz menülerdeki turuncu çorba onun kılığına girmiş balık suyudur.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Şartnameye (charte) imza atmış klasiklerden birine git — Fonfon, Miramar gibi; pahalıdır ama bir kere gerçeğini ye.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Liman manzaralı sıra sıra teraslar günün yorgun balığını turist fiyatına satar.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Limandan iki sokak içeri gir ya da Vallon des Auffes gibi küçük koylara in: aynı deniz, dürüst mutfak.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Hediyelik dükkanlardaki rengarenk parfümlü küpler çoğu zaman ithal taklit; gerçeği %72 yağ oranı damgası taşır ve sadece dört sabunhanede üretilir.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> %72 damgasını ara; tarihi sabunhanelerin kendi dükkanlarından ya da güvenilir satıcıdan al.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Yazın koylara araçla giriş kapanır, patikalar yangın riskiyle yasaklanabilir; hazırlıksız gelenler kızgın güneşte geri döner.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Sabah erken git, suyunu al, girip giremeyeceğini önceden kontrol et; ya da tekneyle denizden yaklaş — Sormiou&#x27;yu hak ederek gör.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Marseille'yi MyWay ile Keşfedin</h3>
-            <p>Zikzak çizmeden adım adım akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
+            <p>Adım adım optimize edilmiş akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      App Store'dan Hemen İndirin
@@ -604,7 +968,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. Tüm hakları saklıdır.</p>
+            <p>&copy; 2026 MyWay Travel App. Tüm hakları saklıdır.</p>
         </div>
     </footer>
 

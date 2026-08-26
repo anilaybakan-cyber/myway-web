@@ -6,8 +6,17 @@
     <title>Nice City Guide & Smart Walking Routes | MyWay</title>
     <meta name="description" content="Explore Nice with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
     
-    <link rel="alternate" hreflang="tr" href="../tr/rehber/nice.html">
-    <link rel="alternate" hreflang="en" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/nice.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/nice.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../guides/">City Guides</a></li>
+                <li><a href="/guides/" class="active">City Guides</a></li>
                 <li><a href="/#features">Features</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../tr/rehber/nice.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇹🇷 Türkçe</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇬🇧 EN</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/nice.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item active">🇬🇧 English</a>
+                        <a href="/tr/rehber/nice.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item ">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="/#hero" class="nav-cta">Download</a>
+
+                <a href="/#download" class="nav-cta">Download</a>
             </div>
         </div>
     </nav>
@@ -568,29 +691,249 @@
                 <span class="section-label">Overview</span>
                 <h2 class="section-title">The Vibe of Nice</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Nice isn&#x27;t Monaco. It isn&#x27;t a film set, a yacht show, or a luxury showcase. It&#x27;s a real Mediterranean city — Italy-flavoured, sun-drenched, and entirely itself. The fifth largest city in France and the capital of the French Riviera, Nice has been seducing visitors since the 18th century when English aristocrats wintered here to escape the cold, eventually building the seafront promenade that still bears their name. But the Nice worth discovering is older and quieter than any promenade: Vieux Nice, the ochre and terracotta old town, with its Baroque churches, flower market, and lanes so narrow they block out the sky. The socca seller who&#x27;s been at the same corner for forty years. The midday cannon that has fired from Castle Hill every day since 1861. This city has its own language, its own food, and a pride that has nothing to do with the people who come here in summer.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 Socca</div>
+                <span class="pron-badge">🗣️ /SOH-kah/</span>
+            </div>
+            <p class="word-def"><strong>Nice&#x27;s street food, its soul food, its oldest food. A thin, crispy pancake made from chickpea flour, olive oil, and water — baked in a wood-fired oven on a huge copper plate, cut into irregular wedges, served hot with black pepper. Nothing else. No cheese, no toppings, no variations. Eaten standing at a market stall, in paper, while still too hot. Chez Thérésa at Cours Saleya has been making it since the 1920s. This is where you start.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Essentials</span>
+                <h2 class="section-title">Quick Logistics</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Airport</div>
+                <div class="fact-desc">Nice Côte d&#x27;Azur (NCE)</div>
+                <div class="fact-sub">Tram line 2 · 10 min · direct to city centre</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🚃</div>
+                <div class="fact-title">Transport</div>
+                <div class="fact-desc">Tram + train</div>
+                <div class="fact-sub">Flat fare · single ticket covers all lines</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🌊</div>
+                <div class="fact-title">Beach</div>
+                <div class="fact-desc">Pebbles, not sand</div>
+                <div class="fact-sub">Public beaches free · private beaches have amenities</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🗺️</div>
+                <div class="fact-title">Base for</div>
+                <div class="fact-desc">Monaco · Èze · Antibes</div>
+                <div class="fact-sub">Train to Monaco 25 min · Cannes 40 min</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Insider Advice</span>
+                <h2 class="section-title">Unwritten Rules for Nice</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>The beach is pebbles — and the locals love it that way</strong>
+                    <span>Nice&#x27;s famous beach is made of smooth, rounded pebbles, not sand. There is no sand anywhere on the main beach. This surprises almost every first-time visitor. Bring beach shoes, rent a mat from one of the private beach operators, or do what locals do and find a flat stone. The upside: the water is extraordinarily clear and the beach never feels gritty.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Nice is not Provence — and not fully French</strong>
+                    <span>Nice was Italian until 1860, formally ceded to France by Napoleon III. The old town architecture, the food, the dialect (Niçard), and the character of the place all carry that Italian imprint. The local word for Nice in the old dialect is Nissa. This is not a French city that happens to be near Italy; it&#x27;s a Mediterranean city that is both, and entirely neither.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Castle Hill — always on foot, always free</strong>
+                    <span>Colline du Château rises 92 metres above the city and offers the best view in Nice: the curve of the Baie des Anges, the orange rooftops of Vieux Nice, the Alps in the distance. There&#x27;s a lift, but walk up — the staircase through the rock is part of the experience, and the descent through Vieux Nice rewards you immediately. Free, always. One of the great free views in Europe.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Off the Beaten Path</span>
+                <h2 class="section-title">Hidden Gems in Nice</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">To Catch a Thief locations — the Grande Corniche</div>
+                <div class="card-desc">Hitchcock filmed To Catch a Thief (1955) on the French Riviera — the Promenade des Anglais, the mountain roads of the Grande Corniche, and the gardens of Monaco. The film starred Cary Grant and Grace Kelly, and the chemistry between them reportedly led to Grace Kelly meeting Prince Rainier of Monaco shortly afterwards at the Cannes Film Festival. She flew out of Nice airport as a commoner for the last time in 1956. The Corniche road Hitchcock used is still there — same curves, same views, same light.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Coco Beach — east of the Port</div>
+                <div class="card-desc">Just past the port, east along the coast, a rocky path leads to Coco Beach — a small, sheltered cove of flat rocks and extraordinarily clear water. No facilities, no beach clubs, no hawkers. Just Niçois who have been coming here for generations. The coastal path continues from here, hugging the cliff face for 1.4km with views out over the Baie des Anges. In winter the path catches the low sun and is one of the most beautiful walks in the city.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Cathédrale Saint-Nicolas — Avenue Nicolas II</div>
+                <div class="card-desc">Six onion domes, colourful mosaics, and the largest Russian Orthodox cathedral in Western Europe — standing in a quiet garden ten minutes from the Promenade. Built in 1912 with the support of Tsar Nicholas II, for the large Russian aristocratic community that wintered in Nice. The Romanovs had strong connections to the city; Tsarevich Nicholas died here in 1865. The interior is extraordinary and almost unknown to most visitors. Free entry.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Monastère de Cimiez — Cimiez Hill</div>
+                <div class="card-desc">Henri Matisse lived in Nice for the last 37 years of his life and is buried in the cemetery of the Monastère de Cimiez, alongside fellow artist Raoul Dufy. The monastery sits in a Roman archaeological park — the ruins of a Roman amphitheatre, an olive grove, and a public garden where locals play pétanque. The Musée Matisse is next door and houses the world&#x27;s largest Matisse collection. Almost no tourist map connects all three. Walk up. Take time.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">AOC Bellet — the hills of Saint-Roman-de-Bellet</div>
+                <div class="card-desc">In the hills directly above Nice, largely invisible from the city, a tiny wine appellation produces some of the most interesting wine in the south of France. AOC Bellet covers only about 50 hectares and produces red, white, and rosé — most of it consumed locally, almost none exported. The rosé is exceptional. Several domaines offer visits by appointment. Ask in any wine shop for Bellet — the reaction of the person behind the counter will tell you whether they know anything about wine.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Le Canon du Midi — Castle Hill</div>
+                <div class="card-desc">Every day at exactly noon, a cannon fires from Castle Hill. It has done so every day since 1861. The story: a Scottish lord named Sir Thomas Coventry, impatient for his wife to return from shopping in town, persuaded the Nice city council to fire a cannon at midday so she would know to come home. The city kept doing it for over 160 years. Walk up to Castle Hill before noon — you can watch the firing from close range, and the view from the top is the best in Nice.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Food & Flavors</span>
+                <h2 class="section-title">What to Taste</h2>
+            </div>
+            <p class="intro-text">Niçoise cuisine is one of France&#x27;s most distinct regional traditions — Mediterranean, olive-based, deeply vegetable-driven, and largely ignored by the rest of the country. This is the food of a city that was Italian until 1860 and has never entirely forgotten it.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Socca — start here, always</div>
+                <div class="card-desc">Chickpea flour, olive oil, water, salt. Baked in a wood-fired oven at very high heat on a huge copper plate until the edges are crisp and the centre yielding. Cut into wedges, served immediately, eaten with black pepper. Chez Thérésa at Cours Saleya has been making it since the 1920s — arrive before 10am or queue. Socca is unique to Nice and this area; it doesn&#x27;t exist anywhere else in France.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Pan Bagnat — Nice&#x27;s great sandwich</div>
+                <div class="card-desc">A round country bread soaked in olive oil, then filled with tuna, hard-boiled egg, raw vegetables, anchovies, olives, and black pepper. The bread must absorb the oil for at least an hour before eating — it is not a fast food item but a patient one. Chez TinTin near Cours Saleya is consistently voted the best in the city. The perfect lunch to take to Castle Hill.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Salade Niçoise — the real one</div>
+                <div class="card-desc">Raw vegetables only: tomato, cucumber, radish, spring onion, green pepper, broad beans. Hard-boiled egg. Good tuna in oil. Anchovy fillets. Black olives. Dressed with olive oil. No cooked vegetables, no lettuce, no green beans unless very young and raw. The Nice Tourism Board has a registered recipe. Any restaurant serving it with cooked green beans is lying to you.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Pissaladière — the original pizza</div>
+                <div class="card-desc">Thick, soft bread dough topped with a deeply caramelised onion compote, black olives, and anchovy fillets — nothing else. Sold by the slice in boulangeries throughout Vieux Nice. Eaten standing up, warm, with a coffee. The onions must cook for at least an hour; the result is sweet, savoury, and entirely addictive. The predecessor of all pizza.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Bellet wine — Nice&#x27;s best-kept secret</div>
+                <div class="card-desc">Almost nobody outside Nice knows this exists: a tiny AOC wine appellation in the hills directly above the city, producing red, white, and rosé. Only about 50 hectares of vines. The rosé is exceptional and almost impossible to find outside the region. Look for it on wine lists throughout the city — it&#x27;s local, it&#x27;s rare, and it&#x27;s very good.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Coffee — the Italian way</div>
+                <div class="card-desc">Nice&#x27;s Italian heritage shows in its coffee culture. Espresso is drunk standing at the bar, short and strong. A noisette is espresso with a dash of warm milk — the local standard. Cappuccino exists but is a morning-only drink. The cafés on Cours Saleya are tourist-priced; the cafés one street back in Vieux Nice are where locals go. The difference in price and quality is immediate.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Watch Out</span>
+                <h2 class="section-title">Tourist Traps to Avoid</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">At the private beaches on the Promenade, sunbed plus umbrella plus towel adds up to hotel money — and the pebbles are the same pebbles.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Use the public beach: lay your towel, swim the same sea. If you want comfort, ask for the price list before sitting down.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Some restaurants on the tourist side of the flower market run on photo menus and frozen &#x27;Niçoise&#x27; classics.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Buy from the market itself, or walk two streets in: real pissaladière waits in the small eateries of Vieux Nice.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Socca is eaten the moment it leaves the oven; pre-cooked, microwaved socca is an injustice to the city.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Choose where it goes straight from wood fire to plate (Chez Pipo is the classic); lots of black pepper, eat with your hands.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">In July and August the corniche is a parking war plus traffic; a rental car is usually a burden, not freedom.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Take the train: Villefranche, Èze, Monaco, Cannes are all on the coastal line. The view comes free.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Explore Nice with MyWay</h3>
-            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without zigzagging across town.</p>
+            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without wasted steps.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      Download on App Store
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. All rights reserved.</p>
+            <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
         </div>
     </footer>
 

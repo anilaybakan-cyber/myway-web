@@ -6,8 +6,17 @@
     <title>Saraybosna Gezi Rehberi & Akıllı Rotalar | MyWay</title>
     <meta name="description" content="Saraybosna için adım adım yürüyüş rotaları, gizli mekanlar, turist tuzakları ve lezzet durakları. Saraybosna gezi rehberi MyWay'de.">
     
-    <link rel="alternate" hreflang="en" href="../../guides/saraybosna.html">
-    <link rel="alternate" hreflang="tr" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/saraybosna.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/saraybosna.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -527,7 +641,7 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="navbar-inner">
-            <a href="../" class="nav-brand">
+            <a href="/tr/" class="nav-brand">
                 <img src="../../images/app_icon.png" alt="MyWay" width="38" height="38">
                 <span>MyWay</span>
             </a>
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../rehber/">Rehberler</a></li>
-                <li><a href="../#features">Özellikler</a></li>
+                <li><a href="/tr/rehber/" class="active">Şehir Rehberleri</a></li>
+                <li><a href="/tr/#features">Özellikler</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../../guides/saraybosna.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇬🇧 English</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇹🇷 TR</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/saraybosna.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item ">🇬🇧 English</a>
+                        <a href="/tr/rehber/saraybosna.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item active">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="../#hero" class="nav-cta">İndir</a>
+
+                <a href="/tr/#download" class="nav-cta">Hemen İndir</a>
             </div>
         </div>
     </nav>
@@ -555,7 +678,7 @@
         <img src="../../images/cities/saraybosna.jpg" alt="Saraybosna" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
-            <div class="city-badge">🇧🇦 Bosna-Hersek &bull; Rehberler</div>
+            <div class="city-badge">🇧🇦 Bosna-Hersek &bull; Şehir Rehberleri</div>
             <h1 class="guide-title">Saraybosna</h1>
             <p class="guide-tagline">Doğu ile Batı'nın bir çarşıda el sıkıştığı şehir</p>
         </div>
@@ -568,29 +691,249 @@
                 <span class="section-label">Genel Bakış</span>
                 <h2 class="section-title">Saraybosna Atmosferi</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Saraybosna&#x27;da tek caddede yüzyıl değiştirirsin: Ferhadija&#x27;da Avusturya-Macaristan cepheleri bir noktada biter, Osmanlı çarşısının kaldırımları başlar — yerdeki &#x27;Doğu ile Batı&#x27;nın buluşması&#x27; işareti şaka değildir. Başçarşı&#x27;da bakırcı çekiçleri döver, dört din bir meydana bakar: cami, katedral, kilise ve sinagog birbirine yürüme mesafesindedir. Bu şehir kuşatmayı da gördü, olimpiyatı da; yaralarını saklamaz ama seni misafirliğin en sıcak haliyle karşılar. Kahve fincan küçük, sohbet uzundur — Saraybosna acele edenin şehri değildir.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 Ćejf</div>
+                <span class="pron-badge">🗣️ /çeyf/</span>
+            </div>
+            <p class="word-def"><strong>Boşnakçaya Türkçedeki &#x27;keyif&#x27;ten geçen, anlamı derinleşmiş kelime: bir şeyi tam kendi usulünce, acele etmeden yapmanın hazzı. Bosna kahvesini fincandan yudumlamak, çarşıda amaçsız yürümek — hepsi ćejf&#x27;tir. Saraybosnalı için ćejf pazarlık kabul etmez: &#x27;ćejf mi je&#x27; dedi mi, mesele kapanmıştır.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Temel Bilgiler</span>
+                <h2 class="section-title">Pratik İpuçları & Lojistik</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Havalimanı</div>
+                <div class="fact-desc">Sarajevo (SJJ)</div>
+                <div class="fact-sub">Merkeze ~25 dk</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">💰</div>
+                <div class="fact-title">Para birimi</div>
+                <div class="fact-desc">Konvertibl Mark (KM)</div>
+                <div class="fact-sub">1 EUR ≈ 1,95 KM sabit kur</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🗣️</div>
+                <div class="fact-title">Dil</div>
+                <div class="fact-desc">Boşnakça</div>
+                <div class="fact-sub">Türkçe kelimeler her köşede tanıdık</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">☕</div>
+                <div class="fact-title">İmza</div>
+                <div class="fact-desc">Başçarşı + kahve</div>
+                <div class="fact-sub">Cezve, fildžan, lokum üçlüsü</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yerel Sırlar</span>
+                <h2 class="section-title">Saraybosna İçin Yazısız Kurallar</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>Kahveyi Bosna usulü iç, asla acele etme</strong>
+                    <span>Bosna kahvesi espresso değildir: bakır cezvede (džezva) gelir, fildžan denen küçük fincana ağır ağır koyulur, yanında lokum ve şeker. Şekeri kahveye atma — köşesini ısırıp yudum al. Yarım saatten kısa süren kahve, kahve sayılmaz.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Şehrin iki yüzünü de yürü</strong>
+                    <span>Sadece Başçarşı&#x27;da kalma: Ferhadija&#x27;nın Habsburg cepheleri, Latin Köprüsü&#x27;nün hikayesi ve sosyalist dönemin blokları da bu şehrin katmanları. Bir öğleden sonranı &#x27;yüzyıl yürüyüşüne&#x27; ayır — Osmanlı&#x27;dan Avusturya&#x27;ya, oradan bugüne tek caddede geçersin.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Savaş hafızasına saygıyla yaklaş</strong>
+                    <span>Kaldırımlardaki kırmızı reçineli izler — Saraybosna gülleri — havan mermisi çukurlarıdır; üstüne basmamak inceliktir. Tünel Müzesi&#x27;ni ve Srebrenitsa galerisini gez ama fotoğrafı ve soruyu ölçülü tut: bu şehirde savaş, turistik dekor değil yaşanmış hayattır.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Gizli Köşeler</span>
+                <h2 class="section-title">Saraybosna'deki Saklı Hazineler</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Sarı Tabya (Žuta Tabija)</div>
+                <div class="card-desc">Vratnik&#x27;in eski kale burcundan bütün vadi ayaklarının altındadır: akşamüstü yerlisi termosuyla gelir, ezan sesi tepelerden yankılanır. Ramazan&#x27;da iftar topu buradan atılır — yılın her akşamı gün batımı ücretsiz gösteridir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Trebević kızak pisti</div>
+                <div class="card-desc">1984 Olimpiyatları&#x27;nın bobsled pisti çam ormanının içinde grafitili bir beton nehir gibi kıvrılır: içinde yürünür, fotoğrafı efsanedir. Teleferikle çık, pist boyunca inerek dön.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Umut Tüneli (Tunel spasa)</div>
+                <div class="card-desc">Kuşatma yıllarında havalimanı pistinin altından kazılan 800 metrelik tünelin evden girilen müzesi: şehrin dört yıllık hayat damarı. Ziyaret ağır ama Saraybosna&#x27;yı anlamanın anahtarıdır.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Svrzo Evi</div>
+                <div class="card-desc">18. yüzyıl Boşnak konağı: selamlık-haremlik düzeni, sedirli odaları ve avlusuyla müze-ev. Başçarşı&#x27;nın on dakika yukarısında, kalabalığın hiç uğramadığı bir zaman kapsülü.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">İnat Kuća (İnat Evi)</div>
+                <div class="card-desc">Avusturya belediye sarayı yapılırken evini vermeye direnen adamın nehrin karşısına taş taş taşıttığı ev: bugün geleneksel lokanta. Hikayesi menüden lezzetli — &#x27;inat&#x27; kelimesi burada da aynı anlamda.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Vrelo Bosne</div>
+                <div class="card-desc">Bosna Nehri&#x27;nin doğduğu kaynak parkı: kuğulu göletler, dev çınarlar ve İlidža&#x27;dan uzanan at arabalı platan yolu. Tramvayın son durağından bir öğleden sonra kaçamağı — şehrin nefes aldığı yer.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yeme & İçme</span>
+                <h2 class="section-title">Mutlaka Tadılması Gereken Lezzetler</h2>
+            </div>
+            <p class="intro-text">Bosna mutfağı Osmanlı sofrasının dağ havasında demlenmiş hali: mangal dumanı, tereyağlı hamur ve ağır ağır içilen kahve.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Ćevapi</div>
+                <div class="card-desc">Közde pişen parmak köfteler, odun fırını somununun içinde: yanına kajmak ve halka soğan. Çarşının ćevabdžinica&#x27;larında yenir — masada ketçap arama, bu sofranın kuralı sadeliktir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Burek ve pita ailesi</div>
+                <div class="card-desc">Buregdžinica tezgahında döner tepsiler: kıymalı burek, peynirli sirnica, ıspanaklı zeljanica, patatesli krompiruša. Kiloyla satılır, üstüne yoğurt dökülür — sabah tepsisi en tazesidir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Begova çorbası ve klepe</div>
+                <div class="card-desc">Tavuklu, bamyalı &#x27;bey çorbası&#x27; Osmanlı mirasının kaşıkla içilen hali; klepe ise sarımsaklı yoğurtlu Bosna mantısı. Aščinica denen ev yemeği lokantalarında ikisi de gündelik menüdür.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Bosna kahvesi ritüeli</div>
+                <div class="card-desc">Bakır cezvede köpüğüyle gelir: fildžan, lokum, bir bardak su. Telveyi dibinde bırak, sohbeti uzat — Saraybosna&#x27;da kahve içecek değil, randevu birimidir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Tufahija ve hurmašica</div>
+                <div class="card-desc">Cevizli şerbetli elma tatlısı tufahija ile şerbetli irmik parmakları hurmašica: kahvenin yanına çarşı tatlıcısından. Şerbet ağır, porsiyon dost — paylaşmak serbest.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Somun ve kajmak kahvaltısı</div>
+                <div class="card-desc">Odun fırınından çıkan sıcak somun, üstüne taze kajmak ve bal: dağ usulü sade kahvaltı. Pazar sabahı fırın önünde sıra varsa doğru yerdesin — sıcak somunun kokusu adres tarif eder.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Dikkat Edilmesi Gerekenler</span>
+                <h2 class="section-title">Turist Tuzakları & Kaçınılması Gerekenler</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Havalimanı ve gece dönüşlerinde bazı sürücüler taksimetre yerine &#x27;sabit fiyat&#x27; söyler; rakam çoğu kez gerçeğin iki-üç katıdır.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Binmeden taksimetreyi sor, açmayana teşekkür edip sıradakine geç; uygulama tabanlı çağrı ya da otel transferi en temiz çözümdür. Şehir içi mesafeler zaten kısadır.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Bazı turistik yerler euro kabul eder ama kuru kendine göre yuvarlar, üstünü KM verir: her seferinde birkaç euro buharlaşır.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> KM ile öde: kur sabittir (1 EUR ≈ 1,95 KM), ATM&#x27;den çekmek pratiktir. Kart geçmeyen çarşı esnafı için cebinde bozuk KM bulundur.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Çarşının bazı tezgahlarında makine baskısı cezve ve tepsiler, el dövmesi hikayesiyle satılır; parlak vitrin çoğu kez ithal ürünü saklar.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Kazandžiluk sokağında çekiç sesi gelen atölyeden al: usta işini gösterir, ismini kazır. Mermi kovanından yapılma kalemler de sahici bir Saraybosna hatırasıdır — hikayesini ustasından dinle.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Bazı &#x27;war tour&#x27;lar kuşatmayı sansasyon dekoruna çevirir: hız, poz ve dramatik müzik — yaşanmışlığa saygı geri planda kalır.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Tünel Müzesi&#x27;ni, Kuşatma Müzesi&#x27;ni ve Galerija 11/07/95&#x27;i kendi hızında gez ya da yerel rehberli küçük grup seç. Soru sor, poz verme — bu şehirde hafıza ciddiye alınır.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Saraybosna'yi MyWay ile Keşfedin</h3>
-            <p>Zikzak çizmeden adım adım akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
+            <p>Adım adım optimize edilmiş akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      App Store'dan Hemen İndirin
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. Tüm hakları saklıdır.</p>
+            <p>&copy; 2026 MyWay Travel App. Tüm hakları saklıdır.</p>
         </div>
     </footer>
 

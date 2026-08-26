@@ -6,8 +6,17 @@
     <title>Marakeş Gezi Rehberi & Akıllı Rotalar | MyWay</title>
     <meta name="description" content="Marakeş için adım adım yürüyüş rotaları, gizli mekanlar, turist tuzakları ve lezzet durakları. Marakeş gezi rehberi MyWay'de.">
     
-    <link rel="alternate" hreflang="en" href="../../guides/marakes.html">
-    <link rel="alternate" hreflang="tr" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/marakes.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/marakes.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -527,7 +641,7 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="navbar-inner">
-            <a href="../" class="nav-brand">
+            <a href="/tr/" class="nav-brand">
                 <img src="../../images/app_icon.png" alt="MyWay" width="38" height="38">
                 <span>MyWay</span>
             </a>
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../rehber/">Rehberler</a></li>
-                <li><a href="../#features">Özellikler</a></li>
+                <li><a href="/tr/rehber/" class="active">Şehir Rehberleri</a></li>
+                <li><a href="/tr/#features">Özellikler</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../../guides/marakes.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇬🇧 English</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇹🇷 TR</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/marakes.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item ">🇬🇧 English</a>
+                        <a href="/tr/rehber/marakes.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item active">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="../#hero" class="nav-cta">İndir</a>
+
+                <a href="/tr/#download" class="nav-cta">Hemen İndir</a>
             </div>
         </div>
     </nav>
@@ -555,7 +678,7 @@
         <img src="../../images/cities/marakes.jpg" alt="Marakeş" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
-            <div class="city-badge">🇲🇦 Fas &bull; Rehberler</div>
+            <div class="city-badge">🇲🇦 Fas &bull; Şehir Rehberleri</div>
             <h1 class="guide-title">Marakeş</h1>
             <p class="guide-tagline">Kızıl şehrin meydanı, bahçeleri ve bitmeyen tiyatrosu</p>
         </div>
@@ -568,29 +691,249 @@
                 <span class="section-label">Genel Bakış</span>
                 <h2 class="section-title">Marakeş Atmosferi</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Marakeş bir şehirden çok bir sahne düzenidir: kızıl surların içinde yılan oynatıcıları ve hikaye anlatıcıları meydanı kurar, çarşının dar damarlarında bakır ve deri kokusu yükselir, riyad kapılarının ardında çinili sükunet saklanır. Kar başlıklı Atlas zirveleri palmiyelerin arkasında parlar — bu kadar zıtlık, başka bir kadraja zor sığar. Marakeş yorucudur, büyüleyicidir ve asla özür dilemez: temposuna katıl, ama sükunet kapılarının adreslerini de cebinde tut.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 Derb</div>
+                <span class="pron-badge">🗣️ /derb/</span>
+            </div>
+            <p class="word-def"><strong>Medinenin çıkmaz ara sokağı: riyadların gerçek adresleri hep bir derb&#x27;in içindedir. &#x27;Derb&#x27;in dibinde, yeşil kapı&#x27; tarifi bu şehirde tapu kadar geçerlidir — kaybolmak, adres sisteminin parçasıdır.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Temel Bilgiler</span>
+                <h2 class="section-title">Pratik İpuçları & Lojistik</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Havalimanı</div>
+                <div class="fact-desc">Menara (RAK)</div>
+                <div class="fact-sub">Medineye taksiyle ~20 dk</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🚶</div>
+                <div class="fact-title">Medine içi</div>
+                <div class="fact-desc">Yayan + petit taxi</div>
+                <div class="fact-sub">Çarşı sokakları araçsız</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🗣️</div>
+                <div class="fact-title">Dil</div>
+                <div class="fact-desc">Arapça (Darija) + Fransızca</div>
+                <div class="fact-sub">Turistik hatta İngilizce yaygın</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🏔️</div>
+                <div class="fact-title">İmza</div>
+                <div class="fact-desc">Jemaa el-Fnaa + Atlas</div>
+                <div class="fact-sub">Meydan UNESCO sözlü miras listesinde</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yerel Sırlar</span>
+                <h2 class="section-title">Marakeş İçin Yazısız Kurallar</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>Meydanı iki kez gör</strong>
+                    <span>Jemaa el-Fnaa gündüz başka, gece bambaşkadır: öğleden sonra portakal sıkacakları ve su satıcıları, karanlıkta duman, davul ve yüz tezgahlı açık mutfak. İkisini de görmeden meydanı görmüş sayılmazsın.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Fotoğrafın da fiyatı var, bil ve seç</strong>
+                    <span>Meydandaki yılancılar, maymuncular ve hennacılar fotoğraf başına ücret ister — çoğu zaman agresifçe. İstemiyorsan kamerayı doğrultma, göz teması kurma, yürü; istiyorsan fiyatı baştan konuş.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Sükunet molalarını planla</strong>
+                    <span>Marakeş yoğunluğu doz aşımı yapabilir: her güne bir bahçe, bir riyad avlusu ya da bir hamam yaz. Şehrin sırrı ritimdedir — kaos ve sükunet, ikisi de menüde.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Gizli Köşeler</span>
+                <h2 class="section-title">Marakeş'deki Saklı Hazineler</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Le Jardin Secret</div>
+                <div class="card-desc">Çarşının ortasında restore edilmiş saray bahçesi: İslam bahçe sanatının su kanalları, kaktüs koleksiyonu ve kulesinden medine damları. Kaosun iki adım ötesinde matematiksel bir sükunet.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Maison de la Photographie terası</div>
+                <div class="card-desc">Eski Fas fotoğraflarının müzesi, medinenin en iyi teraslarından biriyle taçlanır: sergiyi gez, çatıda çayını iç, Atlas&#x27;ı ufukta yakala. Giriş mütevazı, manzara cömert.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">El Badi Sarayı surları</div>
+                <div class="card-desc">Saadi altın çağının dev harabesi: çökmüş havuzlar, portakal çukur bahçeleri ve surlarda yuva kuran leylekler. Sabah erken git — leylek sesi, kalabalık sesinden önce gelir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Bahia&#x27;nın sessiz odaları ve Saadi mezarları sabahı</div>
+                <div class="card-desc">Bahia Sarayı&#x27;nın arka avluları ve Saadi mezarlarının çinili odaları açılış saatinde neredeyse boştur: zellij ve sedir tavan işçiliğini kuyruksuz gör. Aynı bileti öğlen alan, kuyruğu da alır.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Rahba Kedima</div>
+                <div class="card-desc">Ana çarşının içindeki eski tahıl meydanı: baharat piramitleri, şifalı ot dükkanları ve örgü şapka tezgahları. Çevresindeki teras kafeler, çarşı yorgunluğunun resmi molasıdır.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Agafay kır sofrası</div>
+                <div class="card-desc">Şehre 45 dakikada taşlı çöl platosu: çadır kampları, deve silüetleri ve Atlas fonlu gün batımı sofraları. &#x27;Sahra&#x27;ya vakti olmayanın çölü&#x27; — akşam yemeği + yıldız kombinasyonuyla.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yeme & İçme</span>
+                <h2 class="section-title">Mutlaka Tadılması Gereken Lezzetler</h2>
+            </div>
+            <p class="intro-text">Marakeş sofrası közde ve toprakta pişer: şehrin imzası tanjia, meydanın imzası duman, teraslarınki gün batımıdır.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Tanjia — külde pişen efsane</div>
+                <div class="card-desc">Testide saatlerce pişen et lif lif dağılır, konfit limon kokusu tabağı sarar: Marakeş&#x27;e özgü, tajine&#x27;den ayrı bir ritüel. Gerçeğini yapan lokantaya sor — testiyle servis edilir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Tajine çeşitlemeleri</div>
+                <div class="card-desc">Erikli-bademli kuzu, limonlu-zeytinli tavuk, kefta-yumurta: konik kapağın altında her ev başka hikaye anlatır. Riyadında akşamdan sipariş — çarşı menüsünün hep bir adım önünde.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Meydan tezgahları — duman sofrası</div>
+                <div class="card-desc">Akşam kurulan yüz tezgahlı açık mutfak: közde şiş, harira ve salyangoz çorbası. Kalabalık tezgah taze tezgahtır — numarasını ezberle, ertesi akşam yine gel.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Fas mezeleri ve zaalouk</div>
+                <div class="card-desc">Közlenmiş patlıcanlı zaalouk, havuçlu taktouka, zeytin tabakları: ana yemekten önce masayı donatan renkli ordu. Ekmekle sıyırmak usuldendir — çatal opsiyoneldir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Meydan portakalı ve avokado kokteyli</div>
+                <div class="card-desc">Sıkma portakal arabaları meydanın gündüz klasiği; süt bar&#x27;ların avokado-badem kokteyli ise yerlilerin serinleme sırrıdır. İkisi de birkaç dirhem, ikisi de efsane.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Nane çayı ve Fas tatlıları</div>
+                <div class="card-desc">Gazellerin boynuzu (kaab el ghazal), bal damlayan chebakia ve badem ezmeli zarflar: çay seremonisinin tatlı ordusu. Terasta, gün batımına karşı — şeker ayarını baştan söyle.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Dikkat Edilmesi Gerekenler</span>
+                <h2 class="section-title">Turist Tuzakları & Kaçınılması Gerekenler</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Maymun omzuna konar, yılan boynuna sarılır, henna eline dokunur — sonra sert bir ücret talebi gelir; pazarlık kalabalıkta zordur.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> İstemiyorsan mesafe koru, kamerayı doğrultma, göz temasından kaçın. İstiyorsan fiyatı net konuş ve küçük banknot hazırla — deneyim de fiyat da senin seçimin olsun.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Fes&#x27;teki oyunun Marakeş sahnesi: gönüllü rehber seni dolaştırıp komisyonlu dükkanda bitirir.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> &#x27;La şükran&#x27; + yürümeye devam. Tabelalı ana akslardan şaşma; gerçekten rehber istiyorsan riyadından resmi rozetli ayarlat.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Bazı baharat dükkanları tur otobüsü gruplarına şifa gösterisi yapar: sıradan baharat, &#x27;mucize&#x27; etiketiyle katlanmış fiyata satılır.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Baharatı Rahba Kedima çevresindeki sade tezgahlardan, gramajını görerek al. Safranın gerçeği pahalıdır — &#x27;ucuz safran&#x27; aslında aspir çiçeğidir.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Meydana bakan bazı teraslar vasat menüyü manzara fiyatına satar, hesaba kalem eklemeyi sever.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Terası gün batımı çayı için kullan, yemeği bir sokak içerideki lokantada ya da riyadında ye. Hesap gelince kalemleri kontrol etmek ayıp değil, adettir.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Marakeş'yi MyWay ile Keşfedin</h3>
-            <p>Zikzak çizmeden adım adım akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
+            <p>Adım adım optimize edilmiş akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      App Store'dan Hemen İndirin
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. Tüm hakları saklıdır.</p>
+            <p>&copy; 2026 MyWay Travel App. Tüm hakları saklıdır.</p>
         </div>
     </footer>
 

@@ -6,8 +6,17 @@
     <title>Selanik Gezi Rehberi & Akıllı Rotalar | MyWay</title>
     <meta name="description" content="Selanik için adım adım yürüyüş rotaları, gizli mekanlar, turist tuzakları ve lezzet durakları. Selanik gezi rehberi MyWay'de.">
     
-    <link rel="alternate" hreflang="en" href="../../guides/selanik.html">
-    <link rel="alternate" hreflang="tr" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/selanik.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/selanik.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -527,7 +641,7 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="navbar-inner">
-            <a href="../" class="nav-brand">
+            <a href="/tr/" class="nav-brand">
                 <img src="../../images/app_icon.png" alt="MyWay" width="38" height="38">
                 <span>MyWay</span>
             </a>
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../rehber/">Rehberler</a></li>
-                <li><a href="../#features">Özellikler</a></li>
+                <li><a href="/tr/rehber/" class="active">Şehir Rehberleri</a></li>
+                <li><a href="/tr/#features">Özellikler</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../../guides/selanik.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇬🇧 English</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇹🇷 TR</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/selanik.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item ">🇬🇧 English</a>
+                        <a href="/tr/rehber/selanik.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item active">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="../#hero" class="nav-cta">İndir</a>
+
+                <a href="/tr/#download" class="nav-cta">Hemen İndir</a>
             </div>
         </div>
     </nav>
@@ -555,7 +678,7 @@
         <img src="../../images/cities/selanik.jpg" alt="Selanik" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
-            <div class="city-badge">🇬🇷 Yunanistan &bull; Rehberler</div>
+            <div class="city-badge">🇬🇷 Yunanistan &bull; Şehir Rehberleri</div>
             <h1 class="guide-title">Selanik</h1>
             <p class="guide-tagline">Bizans'ın, kordonun ve uzun sofraların rahat şehri</p>
         </div>
@@ -568,29 +691,249 @@
                 <span class="section-label">Genel Bakış</span>
                 <h2 class="section-title">Selanik Atmosferi</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Selanik, Atina&#x27;nın telaşına omuz silken bir liman şehridir: kordon boyu kilometrelerce yürünür, Beyaz Kule denize bakar, yukarı mahalle Ano Poli&#x27;nin Osmanlı sokakları surlara tırmanır. Roma&#x27;nın Rotunda&#x27;sı, Bizans&#x27;ın UNESCO listesindeki kiliseleri, Osmanlı&#x27;nın hamamları ve bedesteni aynı yürüyüşe sığar — Atatürk&#x27;ün doğduğu ev de bu şehrin bir sokağındadır. Ama Selanik&#x27;i Selanik yapan taşlar değil, ritimdir: kahve uzun içilir, sofra geç kalkar, kimse saate bakmaz. Yunanistan&#x27;ın gastronomi başkenti unvanı boşuna değildir.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 Halara</div>
+                <span class="pron-badge">🗣️ /halara/</span>
+            </div>
+            <p class="word-def"><strong>Yunancanın &#x27;sakin ol, kasma, akışına bırak&#x27; kelimesi: Selanik&#x27;in yaşam ayarı. Kahve iki saat sürer? Halara. Otobüs gecikti? Halara. Bu şehirde acele, görgüsüzlük sayılır — sen de saatini cebine koy, halara moduna geç.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Temel Bilgiler</span>
+                <h2 class="section-title">Pratik İpuçları & Lojistik</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Havalimanı</div>
+                <div class="fact-desc">Selanik (SKG)</div>
+                <div class="fact-sub">Merkeze 30-40 dk, otobüs + metro</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🏛️</div>
+                <div class="fact-title">İmza</div>
+                <div class="fact-desc">Beyaz Kule + kordon</div>
+                <div class="fact-sub">Deniz kenarı 5 km yürüyüş</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🍽️</div>
+                <div class="fact-title">Unvan</div>
+                <div class="fact-desc">Gastronomi başkenti</div>
+                <div class="fact-sub">Yunanistan&#x27;ın mutfak vitrini</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🗣️</div>
+                <div class="fact-title">Dil</div>
+                <div class="fact-desc">Yunanca</div>
+                <div class="fact-sub">Türkçeyle ortak yüzlerce kelime</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yerel Sırlar</span>
+                <h2 class="section-title">Selanik İçin Yazısız Kurallar</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>Kahveyi Selanik hızında iç</strong>
+                    <span>Frappé ya da freddo espresso söyle ve en az bir saat ayır: Selanik&#x27;te kahve içecek değil, oturma biçimidir. Masadan kaldırılmazsın, hesap istenmeden gelmez — kordon kahvesinde deniz seyretmek şehrin resmi sporudur.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Yukarı mahalleye çık, surdan şehre bak</strong>
+                    <span>Ano Poli yangından kurtulmuş Osmanlı dokusudur: cumbalı evler, dar yokuşlar, taş çeşmeler. Trigonion Kulesi&#x27;nden gün batımında bütün körfez ayaklarının altındadır — çıkışı yürü, inişi ara sokaklardan yap.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Meze kültürüne teslim ol</strong>
+                    <span>Selanik sofrası paylaşımla kurulur: uzo ya da tsipuro söylendiğinde yanında meze gelir, tabaklar ortaya konur. Ana yemek diye bir zorunluluk yok — dört-beş meze, bir sürahi ve uzun sohbet, Selanik akşamının tam formülüdür.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Gizli Köşeler</span>
+                <h2 class="section-title">Selanik'deki Saklı Hazineler</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Trigonion Kulesi terası</div>
+                <div class="card-desc">Ano Poli&#x27;nin tepesindeki burçtan bütün şehir ve körfez ayaklarının altındadır: gün batımında yerli gençler, termoslar ve gitarlar toplanır. Selanik&#x27;in en iyi manzarası ücretsizdir — yanına bir şeyler al, taşa otur.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Atatürk Evi Müzesi</div>
+                <div class="card-desc">Türk Başkonsolosluğu bahçesindeki pembe ev: Mustafa Kemal&#x27;in doğduğu odalar, orijinal eşyalar ve belgeler. Girişte pasaport/kimlik gerekir — Türk ziyaretçi için Selanik&#x27;in en duygusal durağı.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Kapani Pazarı sofraları</div>
+                <div class="card-desc">Şehrin en eski pazarının tezgahları arasına sıkışmış küçük meyhaneler: balık kasasının yanında masa, tabakta günün en tazesi. Pazar gürültüsü fon müziğidir — öğlen git, akşam kapanır.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Rotunda</div>
+                <div class="card-desc">Galerius&#x27;un anıt mezarı, kilise ve cami olmuş 1700 yıllık yuvarlak yapı: kubbesinde altın mozaikler, yanında tek minare. Selanik&#x27;in bütün katmanları tek binada — içi dışından da etkileyicidir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Bit Bazaar (Tolis) çevresi</div>
+                <div class="card-desc">Antikacı dükkanları ve eski plakçıların avlusu, akşamüstü küçük uzo masalarına dönüşür: eski Selanik fotoğrafları, gramofonlar, tespihler. Pazarlık serbest, acele yasak — hazine avcısının köşesi.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Eptapirgio (Yedi Kule)</div>
+                <div class="card-desc">Surların en tepesindeki Osmanlı adıyla Yedi Kule hisarı: uzun yıllar hapishane olmuş, bugün sessiz bir manzara noktası. Ano Poli&#x27;nin de üstünde, şehrin en az bilinen sur yürüyüşü buradan başlar.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yeme & İçme</span>
+                <h2 class="section-title">Mutlaka Tadılması Gereken Lezzetler</h2>
+            </div>
+            <p class="intro-text">Selanik Yunanistan&#x27;ın mutfak başkentidir: İzmir ve İstanbul göçmenlerinin tarifleri, Ege&#x27;nin balığı ve Makedonya&#x27;nın bereketi aynı sofrada.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Bugatsa</div>
+                <div class="card-desc">Sabah fırınından sıcak: kremalısı tarçın-pudra şekerli, peynirlisi tuzlu ayarda. Tezgahta ayaküstü ya da küçük masada kahveyle — Selanik&#x27;e günaydın demenin tek doğru yolu budur.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Tsipuro ve meze düzeni</div>
+                <div class="card-desc">Tsipuradiko&#x27;da küçük şişe tsipuro söyle, mezeler kendiliğinden gelsin: her şişe yeni bir tabak açar. Ahtapot, sardalya, fava, turşu — sofra yavaş yavaş donanır, sohbet uzar.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Gyros ve souvlaki</div>
+                <div class="card-desc">Selanik gyros&#x27;u Atina&#x27;ya göre daha cömert ve daha iddialıdır: pide sıcak, patates içinde, tzatziki bol. Gece yarısı ayaküstü klasiği — &#x27;ap&#x27;ola&#x27; dersen her şeyden koyarlar.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Balık tavernası sofrası</div>
+                <div class="card-desc">Körfezin sardalyası, ızgara ahtapot ve karides güveç: Kalamaria ve liman arkası tavernalarında. Yanına horta (haşlama ot) ve limon — Ege&#x27;nin iki yakası aynı tabakta buluşur.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Trigona Panoramatos</div>
+                <div class="card-desc">Panorama semtinin icadı krema dolgulu çıtır külah: şerbetli yufkanın içine soğuk muhallebi sıkılır. Şehir merkezinde de bulunur ama hacısı Panorama&#x27;ya çıkar — bir tane asla yetmez.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Frappé ve freddo kültürü</div>
+                <div class="card-desc">Buzlu kahvenin anavatanı Yunanistan&#x27;dır ve tahtı Selanik&#x27;tedir: frappé çırpılır, freddo espresso sarsılır. Kordon masasında iki saat sürer — kimse garip bakmaz, herkes aynı işi yapıyordur.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Dikkat Edilmesi Gerekenler</span>
+                <h2 class="section-title">Turist Tuzakları & Kaçınılması Gerekenler</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Deniz manzaralı bazı teraslar fotoğraflı menü ve &#x27;tourist special&#x27; ile çalışır: fiyat manzara vergili, mutfak vasattır.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Kordonda kahve iç, sofrayı bir-iki sokak içeride kur: Ladadika&#x27;nın ara sokakları ve pazar içi meyhaneler aynı parayla iki kat lezzet verir. El yazısı menü iyi işarettir.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Sabit tarife olmasına rağmen bazı sürücüler &#x27;gece ücreti&#x27; ya da &#x27;bagaj farkı&#x27; ile rakamı şişirir.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Resmi sabit tarifeyi önceden öğren ve binerken teyit et; X1 otobüsü + metro kombinasyonu hem ucuz hem hızlıdır. Uygulama taksileri de sabit fiyat gösterir.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Yokuş, arnavut kaldırımı ve temmuz güneşi üçlüsü, keyif yürüyüşünü çileye çevirir; yukarı varan, manzaraya bakacak hali kalmadan döner.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Ano Poli&#x27;yi sabah serinliğinde ya da gün batımından iki saat önce çık; istersen otobüsle yukarı çıkıp yürüyerek in. Trigonion&#x27;da gün batımı planı her zaman kazanır.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Turist sokaklarında seri üretim nazar boncuğu ve &#x27;Yunan el işi&#x27; etiketli ithal ürünler, atölye fiyatına satılır.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Bit Bazaar&#x27;ın antikacılarından, Modiano çevresinin baharatçı ve zeytinyağcılarından al: ürünün hikayesini anlatan esnaf, fiyatını da dürüst söyler. Kumandaria yerine Makedonya şarabı da güzel hediyedir.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Selanik'yi MyWay ile Keşfedin</h3>
-            <p>Zikzak çizmeden adım adım akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
+            <p>Adım adım optimize edilmiş akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      App Store'dan Hemen İndirin
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. Tüm hakları saklıdır.</p>
+            <p>&copy; 2026 MyWay Travel App. Tüm hakları saklıdır.</p>
         </div>
     </footer>
 

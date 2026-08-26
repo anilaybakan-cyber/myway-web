@@ -6,8 +6,17 @@
     <title>Cairo City Guide & Smart Walking Routes | MyWay</title>
     <meta name="description" content="Explore Cairo with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
     
-    <link rel="alternate" hreflang="tr" href="../tr/rehber/kahire.html">
-    <link rel="alternate" hreflang="en" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/kahire.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/kahire.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../guides/">City Guides</a></li>
+                <li><a href="/guides/" class="active">City Guides</a></li>
                 <li><a href="/#features">Features</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../tr/rehber/kahire.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇹🇷 Türkçe</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇬🇧 EN</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/kahire.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item active">🇬🇧 English</a>
+                        <a href="/tr/rehber/kahire.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item ">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="/#hero" class="nav-cta">Download</a>
+
+                <a href="/#download" class="nav-cta">Download</a>
             </div>
         </div>
     </nav>
@@ -568,29 +691,249 @@
                 <span class="section-label">Overview</span>
                 <h2 class="section-title">The Vibe of Cairo</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Cairo doesn&#x27;t meet you halfway; it embraces you, shakes you, and never quite lets go. In this megacity of twenty million the horn symphony never rests — yet in the same city a felucca glides silently on the Nile, thousand-year-old minarets glow along El-Muizz Street, and on the horizon&#x27;s edge the pyramids have waited in the same spot for four and a half millennia. The bazaar seller of Khan el-Khalili, the mint-tea man at the ahwa, the master at the koshary counter — they all say the same sentence: &#x27;Welcome to Egypt!&#x27; Surrender to its chaos but know its rules; to the prepared traveler, Cairo is one of the world&#x27;s most generous cities.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 Maalesh</div>
+                <span class="pron-badge">🗣️ /mah-AH-lesh/</span>
+            </div>
+            <p class="word-def"><strong>Egypt&#x27;s magic word: &#x27;never mind, it happens, don&#x27;t worry&#x27; all in one. Traffic gridlocked? Maalesh. Plans changed? Maalesh. It&#x27;s not a shrug but a philosophy of life — the locals found the key to staying calm in Cairo&#x27;s chaos thousands of years ago.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Essentials</span>
+                <h2 class="section-title">Quick Logistics</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Airport</div>
+                <div class="fact-desc">Cairo (CAI)</div>
+                <div class="fact-sub">45–60 min to center, traffic depending</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🔺</div>
+                <div class="fact-title">Signature</div>
+                <div class="fact-desc">Pyramids of Giza</div>
+                <div class="fact-sub">At the city&#x27;s edge — even the metro gets close</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">💰</div>
+                <div class="fact-title">Currency</div>
+                <div class="fact-desc">Egyptian Pound (EGP)</div>
+                <div class="fact-sub">Cash is king; stock small notes</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🗣️</div>
+                <div class="fact-title">Language</div>
+                <div class="fact-desc">Arabic (Egyptian)</div>
+                <div class="fact-sub">English works in tourism</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Insider Advice</span>
+                <h2 class="section-title">Unwritten Rules for Cairo</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>Go to the pyramids at the first hour</strong>
+                    <span>Be inside the moment the Giza gates open: the light is soft, the heat merciful, the crowds and hustlers still thin. Toward noon both the sun and the commotion multiply. The site is vast — bring water, wear real shoes, allow three to four hours.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Use ride apps in the city</strong>
+                    <span>In classic taxis the meter is usually &#x27;broken&#x27; and the haggling is exhausting: Uber and Careem are cheap, everywhere and painless in Cairo. The price is fixed up front and no address explanations are needed — the traffic is adventure enough; the payment shouldn&#x27;t be.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Learn to say no with a smile</strong>
+                    <span>&#x27;La shukran&#x27; (no, thank you) is your most valuable sentence in Cairo: everything extended like a gift is a sale, every favor may expect baksheesh. Don&#x27;t get angry — smile and keep walking. The tourist who draws the line clearly sees Cairo&#x27;s best face.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Off the Beaten Path</span>
+                <h2 class="section-title">Hidden Gems in Cairo</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Al-Azhar Park</div>
+                <div class="card-desc">A park reclaimed from an old rubbish hill, facing historic Cairo&#x27;s thousand-minaret skyline: at sunset the Muhammad Ali Mosque turns to gold. Sit in the tea garden and listen to the call-to-prayer symphony from above — the city&#x27;s most peaceful hour.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">El-Muizz Street by night</div>
+                <div class="card-desc">The main street of Fatimid Cairo opens differently under evening lights: madrasas, sabils and caravanserais glow honey-colored. The crowds thin and the stonework takes the stage — even if you saw it by day, return at night.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Bab Zuweila</div>
+                <div class="card-desc">You can climb the minarets of the Fatimid walls&#x27; southern gate: the rooftops, laundry lines and minaret forest of historic Cairo lie at your feet. Modest entrance, generous view — and the tentmakers&#x27; bazaar is right at the gate.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Coptic Cairo (Mar Girgis)</div>
+                <div class="card-desc">The Hanging Church, the crypt of St. Sergius and the Ben Ezra Synagogue in one labyrinth of courtyards: an island of silence built into Roman towers. Reached by metro — Cairo&#x27;s calmest half day is here.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Tanoura at Wekalet El Ghouri</div>
+                <div class="card-desc">On set evenings, the courtyard of a Mameluke caravanserai hosts the tanoura (whirling) performance: rainbow skirts spin for hours and the rhythm becomes a trance. The ticket is modest, the atmosphere spellbinding — go early, the courtyard is small.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Manial Palace</div>
+                <div class="card-desc">A prince&#x27;s palace on Roda Island: Ottoman, Moorish and Art Nouveau styles under one roof, wrapped in a tropical garden. Skipped by the crowds, this mansion is a quiet window onto the last era of Cairo&#x27;s aristocracy.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Food & Flavors</span>
+                <h2 class="section-title">What to Taste</h2>
+            </div>
+            <p class="intro-text">The Egyptian table is the people&#x27;s kitchen: the generosity of the stew pot, the reign of the legume, and the speed of the street cart — all at once.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Koshary</div>
+                <div class="card-desc">Rice, pasta, lentils, chickpeas, fried onions and spiced tomato sauce in one bowl: Egypt&#x27;s national fast food. Served at the counter to a percussion of spoons — top with garlic vinegar (dakka) and hot sauce, to the limit of your courage.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Ful and ta&#x27;meya breakfast</div>
+                <div class="card-desc">Ful, the slow-stewed fava mash, and ta&#x27;meya, Egypt&#x27;s green-hearted falafel made from fava beans: rolled into baladi bread, crowned with pickles. Hot off the street cart in the morning — this is how Cairo starts its day.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Molokhia</div>
+                <div class="card-desc">A garlicky, coriander-scented soup-sauce of finely chopped jute leaves: with chicken or rabbit, over rice. The texture plays tricks on newcomers, the flavor becomes an addiction — try it at a home-cooking eatery.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">The grill and mahshi table</div>
+                <div class="card-desc">Kofta, chicken skewers and charcoal meat; alongside, rice-stuffed mahshi vegetables and tahini. The kebab table is laid with an army of salads and pickles — the baladi bread keeps arriving hot.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Feteer</div>
+                <div class="card-desc">Egypt&#x27;s layered butter pastry: savory with cheese or meat, sweet with honey and cream. The baker spinning the dough in the air is half the show — order it hot from the stone oven.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Om Ali and the juice stand</div>
+                <div class="card-desc">Om Ali, the baked bread pudding with milk, nuts and raisins, is eaten hot; alongside, a street glass of fresh-pressed sugarcane juice (asab). A sweet craving never goes unanswered in Cairo.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Watch Out</span>
+                <h2 class="section-title">Tourist Traps to Avoid</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">The headscarf extended &#x27;for free&#x27;, the volunteer who &#x27;takes your photo&#x27;, the camel that&#x27;s &#x27;free to mount&#x27;: all are invoiced on the way down. Mounting a camel is easy; dismounting is a negotiation.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Take nothing from anyone&#x27;s hand — say &#x27;la shukran&#x27; and walk. If you want a camel or horse, fix the price, duration and dismount point before mounting; pay no one outside the official ticket office.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">A &#x27;helpful&#x27; stranger appears at the gate: &#x27;This is closed until noon, let me take you somewhere lovely&#x27; — the route always ends at a cousin&#x27;s perfume or papyrus shop.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Check opening hours yourself and walk to the ticket window: unless the person saying &#x27;closed&#x27; is the ticket clerk, smile and pass. Official tickets always come from the gate or the official online channel.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Most perfume, papyrus and spice shops signed &#x27;government shop&#x27; or &#x27;fixed price museum store&#x27; are private businesses: prices are free-form, the stories rich. &#x27;Papyrus&#x27; printed on banana leaf is a bonus.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Accept the haggle from the start for souvenirs: open at a third of the first price and bargain with a smile. Real papyrus doesn&#x27;t crack when folded — ask for the test; for quality work, choose a shop that shows you its workshop.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">At the toilet door, from the guard offering to &#x27;open a hidden tomb&#x27;, for the photo taken unasked: the palm is always open and your change can &#x27;disappear&#x27;.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Carry plenty of small notes: a small tip for a small service is normal, and you set the number. Cut off &#x27;let me show you a special place&#x27; offers at the door — the tourist who enters a forbidden area pays a bigger fine than the guard.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Explore Cairo with MyWay</h3>
-            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without zigzagging across town.</p>
+            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without wasted steps.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      Download on App Store
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. All rights reserved.</p>
+            <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
         </div>
     </footer>
 

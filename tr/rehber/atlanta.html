@@ -6,8 +6,17 @@
     <title>Atlanta Gezi Rehberi & Akıllı Rotalar | MyWay</title>
     <meta name="description" content="Atlanta için adım adım yürüyüş rotaları, gizli mekanlar, turist tuzakları ve lezzet durakları. Atlanta gezi rehberi MyWay'de.">
     
-    <link rel="alternate" hreflang="en" href="../../guides/atlanta.html">
-    <link rel="alternate" hreflang="tr" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/atlanta.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/atlanta.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -527,7 +641,7 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="navbar-inner">
-            <a href="../" class="nav-brand">
+            <a href="/tr/" class="nav-brand">
                 <img src="../../images/app_icon.png" alt="MyWay" width="38" height="38">
                 <span>MyWay</span>
             </a>
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../rehber/">Rehberler</a></li>
-                <li><a href="../#features">Özellikler</a></li>
+                <li><a href="/tr/rehber/" class="active">Şehir Rehberleri</a></li>
+                <li><a href="/tr/#features">Özellikler</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../../guides/atlanta.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇬🇧 English</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇹🇷 TR</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/atlanta.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item ">🇬🇧 English</a>
+                        <a href="/tr/rehber/atlanta.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item active">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="../#hero" class="nav-cta">İndir</a>
+
+                <a href="/tr/#download" class="nav-cta">Hemen İndir</a>
             </div>
         </div>
     </nav>
@@ -555,7 +678,7 @@
         <img src="../../images/cities/atlanta.jpg" alt="Atlanta" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
-            <div class="city-badge">🇺🇸 ABD &bull; Rehberler</div>
+            <div class="city-badge">🇺🇸 ABD &bull; Şehir Rehberleri</div>
             <h1 class="guide-title">Atlanta</h1>
             <p class="guide-tagline">Güneyin başkenti: sivil haklar mirası, şeftali ağaçları ve soul sofraları</p>
         </div>
@@ -568,29 +691,249 @@
                 <span class="section-label">Genel Bakış</span>
                 <h2 class="section-title">Atlanta Atmosferi</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Atlanta gökdelenli bir orman şehridir: ağaç örtüsü Amerika&#x27;nın büyük şehirleri arasında rekor kırar, otoyollar bu yeşilin içinden akar. Ama şehrin asıl hikayesi sokaklarında yazılıdır — Martin Luther King burada doğdu, sivil haklar hareketi buradan yürüdü, Sweet Auburn caddesi o mücadelenin hafızasını taşır. Bugünün Atlanta&#x27;sı ise eski demiryolu hattını parka çeviren BeltLine üstünde koşuyor, lemon pepper wings tabağında buluşuyor, dünyanın en işlek havalimanından beslenip &#x27;y&#x27;all&#x27; diyerek gülümsüyor. Güney misafirperverliği burada klişe değil, gündelik dildir.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 Y&#x27;all</div>
+                <span class="pron-badge">🗣️ /yol/</span>
+            </div>
+            <p class="word-def"><strong>&#x27;You all&#x27;un kısaltması: Güney&#x27;in resmi zamiri. Tekil-çoğul derdini tek kelimeyle çözer, her cümleye sıcaklık katar. &#x27;Y&#x27;all come back now&#x27; duyduğunda bil ki kapı sana hep açık. Bu kelimeyi kullanmaya başladığın an, Atlanta seni misafirden hemşehriye terfi ettirir.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Temel Bilgiler</span>
+                <h2 class="section-title">Pratik İpuçları & Lojistik</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Havalimanı</div>
+                <div class="fact-desc">Hartsfield-Jackson (ATL)</div>
+                <div class="fact-sub">Dünyanın en işleği · MARTA ile merkez 20 dk</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🕊️</div>
+                <div class="fact-title">İmza</div>
+                <div class="fact-desc">MLK mirası + BeltLine</div>
+                <div class="fact-sub">Sivil haklar rotası ve park kuşağı</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">💵</div>
+                <div class="fact-title">Para birimi</div>
+                <div class="fact-desc">Dolar (USD)</div>
+                <div class="fact-sub">Kart her yerde, bahşiş %18-20</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🗣️</div>
+                <div class="fact-title">Dil</div>
+                <div class="fact-desc">İngilizce</div>
+                <div class="fact-sub">Güney aksanı tatlı ve misafirperver</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yerel Sırlar</span>
+                <h2 class="section-title">Atlanta İçin Yazısız Kurallar</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>Atlanta&#x27;yı mahallelerinden oku</strong>
+                    <span>Downtown vitrin, mahalleler ruhtur: Old Fourth Ward&#x27;ın BeltLine&#x27;ı, Virginia-Highland&#x27;ın verandalı evleri, Decatur&#x27;un meydanı ayrı şehirler gibidir. Günde bir-iki mahalle seç, arasını hesaplı bağla — Atlanta&#x27;yı sevenler onu semt semt sever.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Trafik saatlerine karşı planla</strong>
+                    <span>Atlanta trafiği efsanedir: 07.00-09.30 ve 16.00-19.00 arası otoyollara girme. MARTA treni havalimanı-Midtown hattında hayat kurtarır; gerisi için araç gerekir ama saat seçimi her şeydir — öğlen saatinde şehir yarı yarıya küçülür.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Sivil haklar mirasına vakit ayır</strong>
+                    <span>MLK Ulusal Tarihi Parkı ücretsizdir: doğduğu ev, vaaz verdiği Ebenezer Kilisesi ve kabri tek yürüyüşe sığar. Ulusal Sivil Haklar Merkezi&#x27;yle birleştir — Atlanta&#x27;yı anlamak bu mirası anlamakla başlar; gerisi sofra ve müzik olarak gelir.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Gizli Köşeler</span>
+                <h2 class="section-title">Atlanta'deki Saklı Hazineler</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Jackson Street Köprüsü</div>
+                <div class="card-desc">Old Fourth Ward&#x27;dan Downtown silüetine bakan köprü: &#x27;Walking Dead&#x27; jeneriğinden tanıdık kare, gün batımında fotoğrafçılarla dolar. Ücretsiz, açık ve her saat etkileyici — tripodunu al.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Oakland Mezarlığı</div>
+                <div class="card-desc">1850&#x27;den kalma Victorian bahçe-mezarlık: manolyalar, Margaret Mitchell&#x27;in kabri ve şehir silüeti manzarası. Atlantalı burada koşar, piknik yapar — tarih burada parkın kendisidir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Krog Street Tüneli</div>
+                <div class="card-desc">Cabbagetown&#x27;ı Inman Park&#x27;a bağlayan tünel, sürekli değişen grafiti katmanlarıyla yaşayan bir galeridir: her geçişte başka duvar. BeltLine yürüyüşüne doğal ara durak.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Sweet Auburn Curb Market</div>
+                <div class="card-desc">1918&#x27;den beri açık şehir pazarı: kasaplar, soul food tezgahları ve yeni nesil mutfaklar aynı çatıda. MLK bölgesi gezisiyle birleştir — öğle yemeğinin en tarihi adresi.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Old Fourth Ward Parkı ve göleti</div>
+                <div class="card-desc">BeltLine&#x27;ın dibinde amfitiyatrolu, gölet manzaralı park: Ponce City Market&#x27;in kulesi suya yansır. Gün batımında çimlere otur — yeni Atlanta&#x27;nın kartpostalı buradan çekilir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 GIZLI NOKTA</div>
+                <div class="card-name">Ponce City Market çatısı</div>
+                <div class="card-desc">Eski Sears deposunun çatısında mini lunapark, bar ve şehir manzarası: aşağıda market katının yemek tezgahları. Skee-ball oyna, manzaraya karşı bir şeyler iç — Atlanta&#x27;nın en eğlenceli çatısı.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Yeme & İçme</span>
+                <h2 class="section-title">Mutlaka Tadılması Gereken Lezzetler</h2>
+            </div>
+            <p class="intro-text">Atlanta sofrası Güney mutfağının başkentidir: kızarmış tavuğun çıtırı, soul food&#x27;un sıcaklığı ve lemon pepper&#x27;ın şehre özgü gururu.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Lemon pepper wings</div>
+                <div class="card-desc">Atlanta&#x27;nın imza kanadı: limon-karabiber tozuyla, istersen &#x27;wet&#x27; (tereyağlı soslu) halde. Şehrin kanat salonlarında rap kültürüyle iç içe bir kurumdur — ıslak peçete stoğunu hazırla.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Meat-and-three soul food</div>
+                <div class="card-desc">Kızarmış tavuk ya da güveç et, yanına collard greens, mac and cheese ve mısır ekmeği: tepsili Güney klasiği. Sweet Auburn ve Westside&#x27;ın köklü salonlarında öğlen kuyruğuna karış.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Buford Highway sofrası</div>
+                <div class="card-desc">Şehrin kuzeydoğu koridoru dünya mutfağının bulvarıdır: Vietnam pho&#x27;su, Kore barbeküsü, Meksika taquería&#x27;sı yan yana. Bir akşamı bu koridora ayır — Atlanta&#x27;nın en az bilinen süper gücü budur.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Chicken and waffles brunch&#x27;ı</div>
+                <div class="card-desc">Çıtır tavuk, sıcak waffle ve akçaağaç şurubu: Güney brunch&#x27;ının tatlı-tuzlu zirvesi. Pazar sabahı kilise çıkışı kalabalığıyla aynı masayı paylaşmak, şehrin en sahici saatlerindendir.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Peach cobbler ve sweet tea</div>
+                <div class="card-desc">Georgia şeftalisinin fırında şerbetli hali, yanında dev bardak buzlu tatlı çay: Güney sofrasının kapanış imzası. Cobbler&#x27;ın üstüne bir top vanilyalı dondurma — pazarlıksız klasik.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 LEZZET DURARI</div>
+                <div class="card-name">Drive-in chili dog</div>
+                <div class="card-desc">Asırlık drive-in geleneği: chili soslu sosisli, yanında halka soğan ve donmuş meyveli içecek. &#x27;What&#x27;ll ya have?&#x27; nidasıyla sipariş ver — Atlanta nostaljisinin ayaküstü hali.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Dikkat Edilmesi Gerekenler</span>
+                <h2 class="section-title">Turist Tuzakları & Kaçınılması Gerekenler</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Simgeler bölgesi akşam sessizleşir; sadece orada kalan turist &#x27;Atlanta ruhsuzmuş&#x27; diye döner — oysa şehir mahallelerde yaşar.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Simgeleri yarım güne sığdır, kalan zamanı O4W, Virginia-Highland, Decatur ve Buford Highway&#x27;e ver. Atlanta&#x27;nın cevabı hep &#x27;hangi mahalle?&#x27; sorusundadır.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Navigasyonun 20 dakika dediği yol, 17.30&#x27;da 70 dakikaya çıkar: Atlanta trafiği plan öldürür.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Mahalleler arası geçişleri 10.00-15.30 bandına kur; akşam programını tek mahallede topla. MARTA hattı üstündeki hedeflerde treni seç — maç günü bu kural altın olur.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Simge bölgelerindeki bazı &#x27;authentic Southern&#x27; restoranlar, donmuş ürünle klişe menüyü yüksek fiyata satar.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Yerlinin öğlen kuyruğuna bak: meat-and-three salonları, Sweet Auburn tezgahları ve mahalle brunch&#x27;ları aynı parayla iki kat lezzet verir. &#x27;Cast iron&#x27; kokusu tabeladan iyi rehberdir.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Stadyum ve konser günlerinde bazı özel otoparklar fahiş &#x27;event pricing&#x27; uygular; işaretsiz alanlarda çekilme riski gerçektir.</div>
+                <div class="trap-good">✅ <strong>Daha İyi Alternatif:</strong> Park uygulamasıyla yerini önceden ayırt ya da MARTA ile gel: istasyon otoparkları ucuz ve güvenlidir. Sokak tabelasını sonuna kadar oku — Atlanta çekicisi hızlı çalışır.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Atlanta'yi MyWay ile Keşfedin</h3>
-            <p>Zikzak çizmeden adım adım akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
+            <p>Adım adım optimize edilmiş akıllı yürüyüş rotaları, çevrimdışı haritalar ve 50+ özenle seçilmiş mekan cebinizde.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      App Store'dan Hemen İndirin
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. Tüm hakları saklıdır.</p>
+            <p>&copy; 2026 MyWay Travel App. Tüm hakları saklıdır.</p>
         </div>
     </footer>
 

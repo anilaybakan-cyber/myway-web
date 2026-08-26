@@ -6,8 +6,17 @@
     <title>Lisbon City Guide & Smart Walking Routes | MyWay</title>
     <meta name="description" content="Explore Lisbon with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
     
-    <link rel="alternate" hreflang="tr" href="../tr/rehber/lizbon.html">
-    <link rel="alternate" hreflang="en" href="#">
+    <link rel="alternate" hreflang="en" href="/guides/lizbon.html">
+    <link rel="alternate" hreflang="tr" href="/tr/rehber/lizbon.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -96,7 +105,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -108,27 +117,89 @@
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: white;
         }
 
-        .lang-switch-btn {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* Modern Language Dropdown */
+        .lang-dropdown-wrapper {
+            position: relative;
+        }
+
+        .lang-dropdown-btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 12px;
-            border-radius: 20px;
+            padding: 7px 14px;
+            border-radius: 100px;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            color: white !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .lang-switch-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
+        .lang-dropdown-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--primary);
+        }
+
+        .lang-globe-icon {
+            width: 15px;
+            height: 15px;
+            fill: currentColor;
+        }
+
+        .lang-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #19142B;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 6px;
+            min-width: 130px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .lang-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #CBD5E1;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-dropdown-item:hover {
+            background: rgba(123, 110, 246, 0.2);
+            color: white;
+        }
+
+        .lang-dropdown-item.active {
+            background: var(--primary);
+            color: white;
         }
 
         .nav-cta {
@@ -222,9 +293,10 @@
 
         .guide-tagline {
             font-size: clamp(16px, 2.5vw, 20px);
-            color: var(--text-muted);
+            color: #e2e8f0;
             font-weight: 500;
             max-width: 700px;
+            line-height: 1.5;
         }
 
         /* Container */
@@ -259,31 +331,58 @@
         }
 
         .intro-text {
-            font-size: 16px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.8;
             color: #cbd5e1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .highlight-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-left: 4px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 14px;
-            margin-top: 20px;
+            padding: 22px 26px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .highlight-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--accent);
+        }
+
+        .pron-badge {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .word-def {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 1.6;
             margin-bottom: 6px;
+        }
+
+        .word-context {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .facts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
         }
 
@@ -300,8 +399,8 @@
         }
 
         .fact-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -309,9 +408,16 @@
         }
 
         .fact-desc {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: white;
+            margin-bottom: 2px;
+        }
+
+        .fact-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         .rules-list {
@@ -322,16 +428,17 @@
 
         .rule-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
         }
 
         .rule-num {
             font-size: 18px;
+            font-weight: 800;
             color: var(--primary);
             flex-shrink: 0;
         }
@@ -340,18 +447,18 @@
             display: block;
             color: white;
             font-size: 16px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .rule-text span {
             color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
@@ -396,6 +503,13 @@
             background: rgba(255, 255, 255, 0.04);
             padding: 10px 14px;
             border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .traps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .trap-card {
@@ -403,7 +517,6 @@
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 22px;
-            margin-bottom: 16px;
         }
 
         .trap-bad {
@@ -417,6 +530,7 @@
             font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .trap-good {
@@ -535,17 +649,26 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../guides/">City Guides</a></li>
+                <li><a href="/guides/" class="active">City Guides</a></li>
                 <li><a href="/#features">Features</a></li>
             </ul>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div class="lang-dropdown-wrapper" style="position: relative;">
-                    <a href="../tr/rehber/lizbon.html" class="lang-dropdown-btn" style="display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: white; font-size: 13px; font-weight: 600; text-decoration: none;">
-                        <svg style="width: 15px; height: 15px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>🇹🇷 Türkçe</span>
-                    </a>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇬🇧 EN</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/guides/lizbon.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item active">🇬🇧 English</a>
+                        <a href="/tr/rehber/lizbon.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item ">🇹🇷 Türkçe</a>
+                    </div>
                 </div>
-                <a href="/#hero" class="nav-cta">Download</a>
+
+                <a href="/#download" class="nav-cta">Download</a>
             </div>
         </div>
     </nav>
@@ -568,29 +691,249 @@
                 <span class="section-label">Overview</span>
                 <h2 class="section-title">The Vibe of Lisbon</h2>
             </div>
-            <p class="intro-text"></p>
+            <p class="intro-text">Lisbon is built on seven hills — you&#x27;ll understand this the moment you step into the city. The cobblestones are slippery, the streets are steep, but at the top of every hill there&#x27;s a view. The city has made peace with this difficulty: trams climb, elevators help with the ascent, and people walk slowly. The Atlantic light hits here in a colour found nowhere else — not yellow, not amber, exactly Lisbon light. Azulejo tiles on every corner, fado seeping through a doorway, a pastelaria on every neighbourhood street. This city doesn&#x27;t tell you to hurry.</p>
             
+        <div class="highlight-box">
+            <div class="highlight-header">
+                <div class="highlight-title">💬 Saudade</div>
+                <span class="pron-badge">🗣️ /saw-DA-djeh/</span>
+            </div>
+            <p class="word-def"><strong>The word Portuguese has exported to the world. A longing for the past, for something distant, for something that perhaps never existed. Melancholic but not painful — a sweet sadness. Fado is Lisbon&#x27;s own traditional music genre — songs performed with guitar accompaniment, exploring themes of grief, longing and fate. Its emotional foundation is saudade. Lisbon itself carries a little saudade: old neighbourhoods facing the Tagus, faded tiles, traces of an old empire.</strong></p>
+            
+        </div>
+        
         </section>
 
         <!-- Quick Facts -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Essentials</span>
+                <h2 class="section-title">Quick Logistics</h2>
+            </div>
+            <div class="facts-grid">
+                
+            <div class="fact-card">
+                <div class="fact-icon">✈️</div>
+                <div class="fact-title">Airport</div>
+                <div class="fact-desc">LIS — Humberto Delgado</div>
+                <div class="fact-sub">Red metro line to Baixa-Chiado ~25 min · no surcharge</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🚇</div>
+                <div class="fact-title">Transport</div>
+                <div class="fact-desc">Viva Viagem card — metro, bus, tram, ferry</div>
+                <div class="fact-sub">Card €0.50 · single fare €1.80 · zapping (pre-loaded credit) €1.47</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🌡️</div>
+                <div class="fact-title">Weather</div>
+                <div class="fact-desc">Mild Mediterranean climate</div>
+                <div class="fact-sub">Mar–Jun and Sep–Nov ideal · Jul–Aug hot but breezy · Dec–Feb wet</div>
+            </div>
+            
+            <div class="fact-card">
+                <div class="fact-icon">🐟</div>
+                <div class="fact-title">Food</div>
+                <div class="fact-desc">Bacalhau, pastéis de nata, bifana</div>
+                <div class="fact-sub">Tasca lunch: €8–12 · pastel de nata: €1.50</div>
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Rules & Secrets -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Insider Advice</span>
+                <h2 class="section-title">Unwritten Rules for Lisbon</h2>
+            </div>
+            <div class="rules-list">
+                
+            <div class="rule-item">
+                <div class="rule-num">#1</div>
+                <div class="rule-text">
+                    <strong>Eat at the counter, not the table — same place, half the price</strong>
+                    <span>In most pastelarias and cafés in Lisbon, eating and drinking at the counter costs less than sitting at a table — sometimes half the price. An espresso at the counter might be €0.80, at a table €1.50. The same rule applies to breakfast and light meals. Standing, quick, cheap: this is Lisbon&#x27;s morning rhythm.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#2</div>
+                <div class="rule-text">
+                    <strong>Tram 28 is a tourist trap — use the alternatives</strong>
+                    <span>Tram 28E runs a beautiful route but is now completely packed with tourists. Don&#x27;t leave your pockets open and keep checking them. The crowds can be genuinely exhausting. Walk to Alfama or try tram 12E. Take the bus to Graça instead of 28E. The city&#x27;s elevadores are a completely different story: Elevador da Bica, Elevador da Glória — these are still local and lovely.</span>
+                </div>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-num">#3</div>
+                <div class="rule-text">
+                    <strong>Bacalhau every day different — but always the same fish</strong>
+                    <span>The Portuguese say they have 365 recipes for salt cod (bacalhau) — one for every day of the year. It&#x27;s a legend but grounded in truth: bacalhau is at the heart of Portuguese cooking. When you see &#x27;bacalhau&#x27; on a restaurant menu, look at how many versions they offer. Bacalhau à Brás — with egg, potato and olives — is the most classic and the right place to start.</span>
+                </div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- Hidden Gems -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Off the Beaten Path</span>
+                <h2 class="section-title">Hidden Gems in Lisbon</h2>
+            </div>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Miradouro da Graça</div>
+                <div class="card-desc">Behind São Jorge Castle, in the Graça neighbourhood. Most tourists end up at Portas do Sol or Santa Luzia — Graça is less known, quieter, the view equally beautiful. Go in the early morning or before sunset. If you&#x27;re going at sunset, don&#x27;t forget to bring a beer. Sit, take a sip and enjoy the moment. In the view before you, the Tagus, Alfama and the whole city will be waiting.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Livraria Bertrand</div>
+                <div class="card-desc">In Chiado, Rua Garrett 73. Open since 1732 — according to the Guinness Book of Records, the world&#x27;s oldest bookshop still in operation. Small rooms, old wooden shelves, books in Portuguese and foreign languages. Even if you don&#x27;t buy a book, go in, sit, stay a few minutes. You feel as though a whole history has settled over you.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Elevador da Bica</div>
+                <div class="card-desc">A steep funicular tram connecting the Bica neighbourhood to Cais do Sodré. Running since 1892. Not for the photograph — ride it because this is genuinely the way to travel this route. Your Viva Viagem card is valid here. At the bottom, walking distance to Mercado da Ribeira. At the top, get lost in Bica&#x27;s narrow streets.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Conserveira de Lisboa</div>
+                <div class="card-desc">At the entrance to Alfama, Rua dos Bacalhoeiros 34. Open since 1930. Inside, dozens of sardine, tuna and octopus tins — in colourful cans with designs from another era. A wonderful option for putting memories in your suitcase before you leave or bringing gifts for loved ones, at reasonable prices.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Cacilhas Ferry</div>
+                <div class="card-desc">From Cais do Sodré pier to Cacilhas: 10 minutes, €1.30. As the ferry moves, the Lisbon skyline, the Ponte 25 de Abril bridge and the Cristo Rei statue on the hill gradually come into sharper view. The finest view is during the crossing. Once you arrive in Cacilhas, you can eat fresh fish at the small restaurants on the waterfront while looking back at the city. Try to return at sunset — Lisbon takes on the most beautiful shade of orange at that hour.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">💎 HIDDEN GEM</div>
+                <div class="card-name">Calçada Portuguesa — Rossio Square</div>
+                <div class="card-desc">Portugal&#x27;s distinctive handmade black-and-white cobblestone mosaic. The finest example is in Rossio Square: wave-like curves simulating the sea, every stone placed by hand. The Portuguese took this technique to Brazil too. That&#x27;s why it&#x27;s no coincidence that Rio de Janeiro&#x27;s famous pavements show the same craftsmanship. To see the mosaic&#x27;s full pattern you need to look from slightly above; from the balcony of a café at the edge of the square, or from nearby steps, the whole design reveals itself.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- What to Eat -->
         
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Food & Flavors</span>
+                <h2 class="section-title">What to Taste</h2>
+            </div>
+            <p class="intro-text">Lisbon is cheap and delicious — if you eat in the right places. Start at a pastelaria corner, move on to a tasca, finish with ginjinha.</p>
+            <div class="cards-grid">
+                
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Pastel de nata</div>
+                <div class="card-desc">An egg custard tart invented by monastery monks. The top is caramelised and lightly scorched, the pastry layered and crisp. Dust with cinnamon and icing sugar. At the counter, standing, with an espresso. Manteigaria (Chiado): when the bell rings, they&#x27;ve just come out of the oven. Pastéis de Belém is the original — since 1837, in Belém — but Manteigaria is at least as good and right in the city centre.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Bifana</div>
+                <div class="card-desc">Pork marinated in white wine, garlic and rosemary, stuffed into a papo seco roll. The bread absorbs the sauce — this is critical. If there&#x27;s a yellow mustard bottle on the counter, that place knows what it&#x27;s doing. As Bifanas do Afonso, Rua da Madalena 146 — standing, fast, cheap.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Bacalhau à Brás</div>
+                <div class="card-desc">Salt cod, thin matchstick fries, egg, onion, olives and parsley — all cooked together in one pan. The result looks simple but the flavour is layered. Said to have been invented in the 19th century by a tavern owner in Bairro Alto. Start your bacalhau journey in Lisbon here — the most approachable, most classic version for first-timers.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Grilled sardines</div>
+                <div class="card-desc">Lisbon&#x27;s seasonal dish from May to August. During the Santo António festival in June, the smell of grilled sardines fills every street corner — that smell is the scent of Lisbon&#x27;s summer. With only lemon and bread. Fresh sardines are hard to find in winter; better not to order them in that season.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Ginjinha</div>
+                <div class="card-desc">Sour cherry liqueur, in a small glass, €1.50. Around 5pm there&#x27;s a strange moment in Lisbon — lunch is over, evening hasn&#x27;t arrived yet, nobody&#x27;s hungry but everyone is stopping somewhere. This is exactly the moment for ginjinha. A Ginjinha has been at Largo de São Domingos since 1840 — go in, say what you want, take it, leave. A few doors along is Ginjinha Sem Rival. Try both; it takes ten minutes, the difference is yours to decide.</div>
+                
+            </div>
+            
+            <div class="content-card">
+                <div class="card-tag">🍴 MUST TASTE</div>
+                <div class="card-name">Tasca lunch</div>
+                <div class="card-desc">Small, family-run, usually no printed menu or written on a chalkboard. Ask for the prato do dia (dish of the day), they&#x27;ll tell you what&#x27;s available, you take it. Fish, meat, a little wine — €8-12 all in. These kind of tascas are still going strong in Mouraria and Intendente. Zé da Mouraria is legendary: lunch service only, cash preferred. Reservation essential.</div>
+                
+            </div>
+            
+            </div>
+        </section>
+        
 
         <!-- Tourist Traps -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Watch Out</span>
+                <h2 class="section-title">Tourist Traps to Avoid</h2>
+            </div>
+            <div class="traps-list">
+                
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">The legendary tram is now a pickpocket bus at noon: an hour&#x27;s queue, then a ride packed like sardines.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Ride the same line before 8 am or try the 12E; better still, walk the route — Alfama exists to be walked.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">The bread, olives and cheese that land on your table are not free; touch them and they&#x27;re on the bill.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> If you don&#x27;t want it, smile and send it back: &#x27;não, obrigado&#x27; is enough — nobody minds, and the bill stays clean.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">The hills are the excuse and the tariffs are wild; a half-hour tour can cost three times a taxi.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> The funiculars (Bica, Glória) and the tram&#x27;s quiet hours handle the hills; if a tuk-tuk it must be, lock the price before boarding.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-bad">❌ </div>
+                <div class="trap-why">Pastéis de Belém is historic and lovely, but it isn&#x27;t the only truth; an hour&#x27;s queue is not required.</div>
+                <div class="trap-good">✅ <strong>Better Alternative:</strong> Take a warm nata from the counter at Manteigaria, dust the cinnamon, be happy in thirty seconds; if you go to Belém, go at opening time.</div>
+            </div>
+            
+            </div>
+        </section>
         
 
         <!-- CTA Banner -->
         <section class="app-cta-banner">
             <h3>Explore Lisbon with MyWay</h3>
-            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without zigzagging across town.</p>
+            <p>Get full step-by-step smart walking routes, interactive offline maps, and 50+ hand-picked spots without wasted steps.</p>
             <div class="store-btn-row">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
                      Download on App Store
@@ -604,7 +947,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 MyWay. All rights reserved.</p>
+            <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
         </div>
     </footer>
 
