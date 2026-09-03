@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - MyWay Travel App & City Guides</title>
+    <meta name="description" content="Learn about MyWay, our mission to revolutionize city exploration, our editorial curation standards, and our passionate team.">
+    
+    <link rel="alternate" hreflang="en" href="/about.html">
+    <link rel="alternate" hreflang="tr" href="/tr/about.html">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
+    </script>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
+         crossorigin="anonymous"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <link rel="icon" type="image/png" href="images/app_icon.png">
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        :root {
+            --primary: #7B6EF6;
+            --primary-light: #9D93FF;
+            --primary-dark: #5B4FD6;
+            --accent: #EC4899;
+            --bg-dark: #0F0B1A;
+            --bg-section: #130F22;
+            --bg-card: rgba(255, 255, 255, 0.04);
+            --text-primary: #FFFFFF;
+            --text-secondary: #9CA3AF;
+            --text-muted: #6B7280;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --radius-sm: 12px;
+            --shadow-glow: 0 0 80px rgba(123, 110, 246, 0.15);
+        }
+        
+        body {
+            background-color: var(--bg-dark); color: var(--text-primary);
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7; overflow-x: hidden;
+        }
+        
+        .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+        
+        /* Navbar */
+        .navbar {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(15, 11, 26, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle); height: 72px; display: flex; align-items: center;
+        }
+        .navbar-inner {
+            max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .nav-brand {
+            display: flex; align-items: center; gap: 12px; text-decoration: none;
+            color: #fff; font-weight: 700; font-size: 20px;
+        }
+        .nav-brand img { border-radius: 10px; }
+        .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+        .nav-links a {
+            color: var(--text-secondary); text-decoration: none; font-size: 14px;
+            font-weight: 500; transition: color 0.2s;
+        }
+        .nav-links a:hover, .nav-links a.active { color: #fff; }
+        .nav-actions { display: flex; align-items: center; gap: 14px; }
+        
+        .lang-dropdown-wrapper { position: relative; }
+        .lang-dropdown-btn {
+            display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px;
+            background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s ease;
+            font-family: inherit;
+        }
+        .lang-dropdown-btn:hover { background: rgba(255, 255, 255, 0.15); border-color: var(--primary); }
+        .lang-globe-icon { width: 15px; height: 15px; fill: currentColor; }
+        .lang-dropdown-menu {
+            display: none; position: absolute; top: calc(100% + 8px); right: 0;
+            background: #19142B; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 14px;
+            padding: 6px; min-width: 130px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); z-index: 1001;
+        }
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex; flex-direction: column; gap: 2px;
+        }
+        .lang-dropdown-item {
+            display: flex; align-items: center; padding: 8px 12px; font-size: 13px; font-weight: 600;
+            color: #CBD5E1; text-decoration: none; border-radius: 8px; transition: background 0.2s, color 0.2s;
+        }
+        .lang-dropdown-item:hover { background: rgba(123, 110, 246, 0.2); color: white; }
+        .lang-dropdown-item.active { background: var(--primary); color: white; }
+
+        .nav-cta {
+            background: var(--primary); color: #fff !important; padding: 8px 20px;
+            border-radius: 100px; font-size: 13px; font-weight: 600; text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(123, 110, 246, 0.4); }
+
+        /* Hero */
+        .page-hero {
+            padding: 140px 24px 60px; text-align: center; position: relative;
+        }
+        .page-hero-icon {
+            width: 72px; height: 72px; border-radius: 20px;
+            background: linear-gradient(135deg, rgba(123, 110, 246, 0.2), rgba(236, 72, 153, 0.15));
+            border: 1px solid rgba(157, 147, 255, 0.3); display: flex; align-items: center;
+            justify-content: center; font-size: 32px; margin: 0 auto 24px;
+        }
+        .page-hero h1 { font-size: clamp(32px, 6vw, 48px); font-weight: 800; letter-spacing: -1px; margin-bottom: 16px; }
+        .page-hero p { font-size: 18px; color: var(--text-secondary); max-width: 680px; margin: 0 auto; line-height: 1.6; }
+
+        /* Content Sections */
+        .content-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg); padding: 40px; margin-bottom: 32px;
+            backdrop-filter: blur(10px);
+        }
+        .content-card h2 {
+            font-size: 24px; font-weight: 700; color: #fff; margin-bottom: 16px;
+            display: flex; align-items: center; gap: 12px;
+        }
+        .content-card p {
+            color: var(--text-secondary); font-size: 16px; margin-bottom: 16px;
+        }
+        .content-card p:last-child { margin-bottom: 0; }
+        
+        .grid-2 {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 24px;
+        }
+        .stat-box {
+            background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md); padding: 24px; text-align: center;
+        }
+        .stat-box .num {
+            font-size: 36px; font-weight: 800; color: var(--primary-light); margin-bottom: 6px;
+        }
+        .stat-box .lbl {
+            font-size: 14px; color: var(--text-muted); font-weight: 500;
+        }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--border-subtle); padding: 60px 0 40px;
+            margin-top: 80px; background: var(--bg-section);
+        }
+        .footer-grid {
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px;
+            max-width: 1200px; margin: 0 auto; padding: 0 24px;
+        }
+        .footer-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+        .footer-brand img { border-radius: 8px; }
+        .footer-brand span { font-size: 18px; font-weight: 700; }
+        .footer-desc { color: var(--text-secondary); font-size: 14px; line-height: 1.6; max-width: 300px; }
+        .footer-links h4 { font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; color: #fff; }
+        .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+        .footer-links a:hover { color: #fff; }
+        .footer-bottom {
+            max-width: 1200px; margin: 40px auto 0; padding: 24px 24px 0;
+            border-top: 1px solid var(--border-subtle); display: flex;
+            justify-content: space-between; align-items: center; font-size: 13px; color: var(--text-muted);
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+            .content-card { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-inner">
+            <a href="/" class="nav-brand">
+                <img src="images/app_icon.png" alt="MyWay" width="36" height="36">
+                <span>MyWay</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/guides/">City Guides</a></li>
+                <li><a href="/about.html" class="active">About Us</a></li>
+                <li><a href="/support.html">Support</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                        <span>EN</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/about.html" class="lang-dropdown-item active">🇬🇧 English</a>
+                        <a href="/tr/about.html" class="lang-dropdown-item">🇹🇷 Türkçe</a>
+                    </div>
+                </div>
+                <a href="/#cta" class="nav-cta">Get App</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="page-hero-icon">🌍</div>
+        <h1>About MyWay</h1>
+        <p>Empowering travelers worldwide to discover authentic culture, explore step-by-step walking routes, and experience cities like true locals.</p>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Section 1: Who We Are -->
+        <div class="content-card">
+            <h2><span>🧭</span> Our Mission & Vision</h2>
+            <p>Travel is not about ticking off crowded tourist checkpoints; it is about immersing yourself in the rhythm of a city, finding hidden architectural masterpieces, tasting local cuisine in quiet alleys, and creating unforgettable memories.</p>
+            <p><strong>MyWay</strong> was created to solve a universal travel headache: spending dozens of hours browsing scattered blogs, generic TripAdvisor top-10 lists, and static PDF maps. We built an intelligent, beautifully designed platform that combines curated local walking routes, neighborhood secrets, and real-time offline exploration tools in one unified ecosystem.</p>
+            
+            <div class="grid-2">
+                <div class="stat-box">
+                    <div class="num">90+</div>
+                    <div class="lbl">Global Cities Covered</div>
+                </div>
+                <div class="stat-box">
+                    <div class="num">20,000+</div>
+                    <div class="lbl">Hand-Picked Attractions & Dining</div>
+                </div>
+                <div class="stat-box">
+                    <div class="num">100%</div>
+                    <div class="lbl">Independently Curated</div>
+                </div>
+                <div class="stat-box">
+                    <div class="num">6</div>
+                    <div class="lbl">Supported Global Languages</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Editorial Integrity -->
+        <div class="content-card">
+            <h2><span>✨</span> Editorial Standards & Quality Policy</h2>
+            <p>At MyWay, trust and authenticity are our top priorities. Every single recommendation in our web guides and mobile app is vetted against strict editorial standards:</p>
+            <p><strong>• Genuine Local Perspective:</strong> We intentionally filter out overpriced tourist traps and low-value sponsored attractions. Our team emphasizes neighborhood bistros, historic artisan workshops, scenic vantage points, and cultural landmarks that true locals cherish.</p>
+            <p><strong>• Continuous Updates via Cloud OTA:</strong> Travel information changes rapidly. Through our cloud over-the-air (OTA) content delivery pipeline, our destination guides, venue descriptions, opening tips, and curated walking paths are updated continuously without requiring manual app updates.</p>
+            <p><strong>• Unbiased & Independent:</strong> None of the places featured in our curated city routes pay for inclusion. We believe travelers deserve honest, transparent advice to make the most of their precious time.</p>
+        </div>
+
+        <!-- Section 3: Contact & Company -->
+        <div class="content-card">
+            <h2><span>📬</span> Transparency & Contact</h2>
+            <p>MyWay is developed and maintained by a dedicated team of passionate travelers, mobile developers, and cartography enthusiasts. We are committed to building the highest-quality digital travel companion on the market.</p>
+            <p>Have questions, feedback, or a partnership inquiry? We’d love to hear from you:</p>
+            <p>
+                <strong>General Inquiries & Support:</strong> <a href="mailto:support@mywaytravelapp.com" style="color: var(--primary-light); text-decoration: underline;">support@mywaytravelapp.com</a><br>
+                <strong>Official Website:</strong> <a href="https://mywaytravelapp.com" style="color: var(--primary-light); text-decoration: underline;">https://mywaytravelapp.com</a><br>
+                <strong>Community:</strong> Follow our latest discoveries on <a href="https://www.instagram.com/mywaytravelapp/" target="_blank" rel="noopener" style="color: var(--primary-light); text-decoration: underline;">Instagram @mywaytravelapp</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div>
+                <div class="footer-brand">
+                    <img src="images/app_icon.png" alt="MyWay" width="36" height="36">
+                    <span>MyWay</span>
+                </div>
+                <p class="footer-desc">The ultimate travel companion for the modern explorer. Discover, plan, and navigate — all in one app.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="/guides/">City Guides</a></li>
+                    <li><a href="/about.html">About Us</a></li>
+                    <li><a href="/#features">Features</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="/privacy.html">Privacy Policy</a></li>
+                    <li><a href="/terms.html">Terms of Use</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="/support.html">Support</a></li>
+                    <li><a href="mailto:support@mywaytravelapp.com">support@mywaytravelapp.com</a></li>
+                    <li><a href="https://www.instagram.com/mywaytravelapp/" target="_blank" rel="noopener">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 MyWay Travel App. All rights reserved.</p>
+            <p>Made with care for travelers worldwide.</p>
+        </div>
+    </footer>
+</body>
+</html>
