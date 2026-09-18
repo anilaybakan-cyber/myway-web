@@ -3,11 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atlanta Travel Guide & Smart Walking Routes | MyWay</title>
-    <meta name="description" content="Explore Atlanta with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
+    <title>Atlanta Travel Guide & Curated Walking Routes | MyWay</title>
+    <meta name="description" content="The ultimate Atlanta travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
     
     <link rel="alternate" hreflang="en" href="/guides/atlanta.html">
     <link rel="alternate" hreflang="tr" href="/tr/rehber/atlanta.html">
+    <link rel="canonical" href="https://mywaytravelapp.com/guides/atlanta.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mywaytravelapp.com/guides/atlanta.html">
+    <meta property="og:title" content="Atlanta Travel Guide & Curated Walking Routes | MyWay">
+    <meta property="og:description" content="The ultimate Atlanta travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
+    <meta property="og:image" content="https://mywaytravelapp.com/images/cities/atlanta.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Atlanta Travel Guide & Curated Walking Routes | MyWay">
+    <meta name="twitter:description" content="The ultimate Atlanta travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
+    <meta name="twitter:image" content="https://mywaytravelapp.com/images/cities/atlanta.jpg">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
@@ -22,6 +36,37 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
          crossorigin="anonymous"></script>
 
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TravelGuide",
+      "name": "Atlanta Travel Guide & Curated Walking Routes | MyWay",
+      "headline": "Atlanta Gezi Rehberi & Akıllı Yürüyüş Rotaları",
+      "description": "The ultimate Atlanta travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.",
+      "image": "https://mywaytravelapp.com/images/cities/atlanta.jpg",
+      "inLanguage": "en",
+      "url": "https://mywaytravelapp.com/guides/atlanta.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "MyWay Travel",
+        "url": "https://mywaytravelapp.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://mywaytravelapp.com/images/app_icon.png"
+        }
+      },
+      "about": {
+        "@type": "TouristDestination",
+        "name": "Atlanta",
+        "containedInPlace": {
+          "@type": "Country",
+          "name": "USA"
+        }
+      }
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -35,13 +80,17 @@
             --primary-light: #9D93FF;
             --primary-dark: #5B4FD6;
             --accent: #EC4899;
+            --emerald: #10B981;
+            --warning: #EF4444;
             --bg-dark: #0F0B1A;
             --bg-section: #130F22;
             --bg-card: rgba(255, 255, 255, 0.04);
+            --bg-card-hover: rgba(255, 255, 255, 0.07);
             --text-primary: #FFFFFF;
             --text-secondary: #9CA3AF;
             --text-muted: #6B7280;
             --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(123, 110, 246, 0.3);
             --radius-lg: 24px;
             --radius-md: 16px;
             --radius-sm: 12px;
@@ -52,15 +101,15 @@
         body {
             background-color: var(--bg-dark); color: var(--text-primary);
             font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6; overflow-x: hidden;
+            line-height: 1.7; overflow-x: hidden;
         }
         
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
         
         /* Navbar */
         .navbar {
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            background: rgba(15, 11, 26, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            background: rgba(15, 11, 26, 0.88); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-subtle); height: 72px; display: flex; align-items: center;
         }
         .navbar-inner {
@@ -114,18 +163,27 @@
         .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(123, 110, 246, 0.4); }
         .nav-toggle { display: none; background: none; border: none; color: #fff; cursor: pointer; padding: 8px; }
 
+        /* Breadcrumbs */
+        .breadcrumbs {
+            display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-muted);
+            margin-bottom: 16px; flex-wrap: wrap;
+        }
+        .breadcrumbs a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+        .breadcrumbs a:hover { color: #fff; }
+        .breadcrumbs span { color: var(--text-muted); }
+
         /* Guide Hero */
         .guide-hero {
-            position: relative; min-height: 440px; display: flex; align-items: flex-end;
-            padding: 120px 24px 44px; margin-top: 72px; overflow: hidden; background-color: #1A132F;
+            position: relative; min-height: 480px; display: flex; align-items: flex-end;
+            padding: 130px 24px 50px; margin-top: 72px; overflow: hidden; background-color: #1A132F;
         }
         .guide-hero-bg {
             position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-            filter: brightness(0.65);
+            filter: brightness(0.6);
         }
         .guide-hero-overlay {
             position: absolute; inset: 0;
-            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.4) 60%, transparent 100%);
+            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.5) 60%, rgba(15, 11, 26, 0.2) 100%);
         }
         .guide-hero-content { position: relative; z-index: 2; width: 100%; }
         .city-badge {
@@ -133,28 +191,34 @@
             backdrop-filter: blur(10px); padding: 6px 14px; border-radius: 99px; font-size: 13px;
             font-weight: 600; margin-bottom: 14px; border: 1px solid rgba(255, 255, 255, 0.15);
         }
-        .guide-title { font-size: clamp(32px, 6vw, 52px); font-weight: 800; line-height: 1.1; margin-bottom: 10px; }
-        .guide-tagline { font-size: 16px; color: var(--primary-light); max-width: 720px; font-weight: 500; line-height: 1.5; }
-        
+        .guide-title { font-size: clamp(34px, 6vw, 56px); font-weight: 800; line-height: 1.1; margin-bottom: 12px; }
+        .guide-tagline { font-size: 17px; color: var(--primary-light); max-width: 780px; font-weight: 500; line-height: 1.5; margin-bottom: 12px; }
+        .guide-editorial-meta { font-size: 13px; color: #94A3B8; display: flex; gap: 16px; align-items: center; }
+
         /* Sections */
-        .section { padding: 42px 0; border-bottom: 1px solid var(--border-subtle); }
-        .section-header { margin-bottom: 24px; }
-        .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); font-weight: 700; }
-        .section-title { font-size: 24px; font-weight: 700; margin-top: 4px; }
+        .section { padding: 50px 0; border-bottom: 1px solid var(--border-subtle); }
+        .section-header { margin-bottom: 26px; }
+        .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); font-weight: 700; display: block; margin-bottom: 6px; }
+        .section-title { font-size: clamp(22px, 3.5vw, 28px); font-weight: 800; margin-bottom: 10px; }
+        .section-intro { font-size: 15px; color: #D1D5DB; line-height: 1.8; margin-bottom: 22px; max-width: 900px; }
         
-        .intro-text { font-size: 15px; color: #D1D5DB; line-height: 1.8; margin-bottom: 20px; }
-        
-        /* Local Word */
-        .local-word-box {
+        /* Pro-Tip & Local Word Boxes */
+        .callout-box {
             background: rgba(123, 110, 246, 0.08); border-left: 4px solid var(--primary);
-            padding: 18px 22px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-top: 20px;
+            padding: 18px 22px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin: 24px 0;
         }
-        .word-title { font-size: 15px; color: #fff; margin-bottom: 4px; }
+        .callout-box.warning {
+            background: rgba(239, 68, 68, 0.08); border-left: 4px solid var(--warning);
+        }
+        .callout-box.success {
+            background: rgba(16, 185, 129, 0.08); border-left: 4px solid var(--emerald);
+        }
+        .callout-title { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+        .callout-box p { font-size: 14px; color: #D1D5DB; line-height: 1.6; }
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
-        .local-word-box p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        
+
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
@@ -164,8 +228,8 @@
         .fact-val { font-size: 15px; font-weight: 600; color: #fff; margin: 2px 0; }
         .fact-sub { font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
         
-        /* Rules */
-        .rules-list { display: flex; flex-direction: column; gap: 14px; }
+        /* Rules List */
+        .rules-list { display: flex; flex-direction: column; gap: 14px; margin: 20px 0; }
         .rule-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 20px; display: flex; gap: 16px; align-items: flex-start;
@@ -177,52 +241,94 @@
         }
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        
-        /* Hidden Gems & Eat Grid */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
-        .gem-card, .eat-card {
+
+        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
+        .feature-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative;
+            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
+            display: flex; flex-direction: column; justify-content: space-between;
         }
-        .gem-badge {
-            display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase;
-            color: #10B981; background: rgba(16, 185, 129, 0.12); padding: 4px 10px; border-radius: 99px;
-            margin-bottom: 10px;
+        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
+        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
+        .card-title-group { display: flex; align-items: center; gap: 10px; }
+        .card-icon { font-size: 20px; }
+        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+        .card-badge {
+            font-size: 11px; font-weight: 700; text-transform: uppercase;
+            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
         }
-        .gem-hook { font-size: 13px; color: var(--primary-light); font-style: italic; margin-bottom: 8px; }
-        .gem-card h4, .eat-card h4 { font-size: 16px; margin-bottom: 6px; }
-        .gem-card p, .eat-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        .card-tip-box {
-            margin-top: 10px; padding: 8px 12px; background: rgba(255, 255, 255, 0.04);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1;
-        }
+        .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
+        .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
+        .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
+        .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        /* Traps */
-        .traps-list { display: flex; flex-direction: column; gap: 14px; }
-        .trap-card {
-            background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.15);
-            border-radius: var(--radius-md); padding: 20px;
+        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        .card-footer-tip {
+            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
         }
-        .trap-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+
+        /* Traps List */
+        .traps-list { display: flex; flex-direction: column; gap: 16px; margin: 20px 0; }
+        .trap-card {
+            background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.18);
+            border-radius: var(--radius-md); padding: 22px;
+        }
+        .trap-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
         .trap-tag {
             background: #EF4444; color: #fff; font-size: 11px; font-weight: 700;
-            text-transform: uppercase; padding: 2px 8px; border-radius: 6px;
+            text-transform: uppercase; padding: 3px 8px; border-radius: 6px;
         }
-        .trap-header h4 { font-size: 16px; color: #fff; }
+        .trap-header h4 { font-size: 17px; color: #fff; font-weight: 700; }
         .trap-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
         .trap-solution {
-            margin-top: 10px; padding: 10px 14px; background: rgba(16, 185, 129, 0.08);
-            border-left: 3px solid #10B981; border-radius: 4px; font-size: 13px; color: #D1D5DB; line-height: 1.5;
+            margin-top: 12px; padding: 12px 16px; background: rgba(16, 185, 129, 0.08);
+            border-left: 3px solid #10B981; border-radius: 6px; font-size: 13px; color: #D1D5DB; line-height: 1.5;
         }
-        
-        /* App CTA Banner */
-        .app-cta-banner {
-            background: linear-gradient(135deg, rgba(123, 110, 246, 0.15), rgba(236, 72, 153, 0.1));
-            border: 1px solid rgba(157, 147, 255, 0.3); border-radius: var(--radius-lg);
-            padding: 44px 20px; text-align: center; margin: 50px 0; position: relative;
+
+        /* Timeline (Itinerary) */
+        .timeline { position: relative; padding-left: 32px; margin: 24px 0 32px; }
+        .timeline::before {
+            content: ''; position: absolute; left: 11px; top: 8px; bottom: 8px;
+            width: 2px; background: linear-gradient(to bottom, var(--primary), var(--accent));
         }
-        .app-cta-banner h3 { font-size: clamp(22px, 4vw, 28px); font-weight: 800; margin-bottom: 10px; }
-        .app-cta-banner p { color: var(--text-secondary); max-width: 580px; margin: 0 auto 24px; font-size: 15px; }
+        .timeline-step { position: relative; margin-bottom: 24px; }
+        .timeline-step:last-child { margin-bottom: 0; }
+        .timeline-dot {
+            position: absolute; left: -32px; top: 4px; width: 24px; height: 24px;
+            border-radius: 50%; background: #19142B; border: 2px solid var(--primary-light);
+            display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700;
+        }
+        .step-header { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; flex-wrap: wrap; }
+        .step-time {
+            background: rgba(123, 110, 246, 0.2); color: var(--primary-light); font-size: 12px;
+            font-weight: 700; padding: 2px 8px; border-radius: 6px;
+        }
+        .step-title { font-size: 16px; font-weight: 700; color: #fff; }
+        .step-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+        /* Mobile App Gate Banner (Days 2 & 3 + Live Map) */
+        .app-lock-banner {
+            background: linear-gradient(135deg, rgba(123, 110, 246, 0.16) 0%, rgba(236, 72, 153, 0.12) 100%);
+            border: 1.5px solid rgba(157, 147, 255, 0.35); border-radius: var(--radius-lg);
+            padding: 36px 28px; margin: 36px 0; text-align: center; position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        .app-lock-badge {
+            display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px; border-radius: 100px; font-size: 12px; font-weight: 700;
+            color: #fff; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .app-lock-banner h3 { font-size: clamp(22px, 3.5vw, 28px); font-weight: 800; margin-bottom: 8px; }
+        .app-lock-banner p { color: var(--text-secondary); max-width: 620px; margin: 0 auto 20px; font-size: 14px; line-height: 1.6; }
+        .app-lock-features {
+            display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 24px;
+            font-size: 13px; color: #E2E8F0; font-weight: 500;
+        }
+        .app-lock-feature-item { display: flex; align-items: center; gap: 6px; }
+
+        /* Store Buttons */
         .store-btn-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
         .store-pill-btn {
             display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: white;
@@ -231,10 +337,48 @@
         }
         .store-pill-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2); }
 
+        /* Ad Placement Slots */
+        .ad-placement-slot {
+            margin: 40px auto; text-align: center; max-width: 728px; min-height: 90px;
+            background: rgba(255, 255, 255, 0.02); border: 1px dashed rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-sm); padding: 10px; overflow: hidden;
+        }
+        .ad-label {
+            font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px;
+            color: var(--text-muted); display: block; margin-bottom: 6px;
+        }
+
+        /* Phrases Table */
+        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrase-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm); padding: 14px 18px;
+        }
+        .phrase-orig { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+        .phrase-trans { font-size: 13px; color: var(--text-secondary); }
+
         /* Footer */
         .footer {
-            border-top: 1px solid var(--border-subtle); padding: 40px 24px 30px;
-            color: var(--text-muted); font-size: 13px; text-align: center;
+            border-top: 1px solid var(--border-subtle); padding: 50px 24px 36px;
+            color: var(--text-muted); font-size: 13px; background: #0A0713;
+        }
+        .footer-grid {
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px;
+            max-width: 1080px; margin: 0 auto 40px; text-align: left;
+        }
+        .footer-brand h4 { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+        .footer-brand p { font-size: 13px; line-height: 1.6; color: var(--text-secondary); max-width: 340px; }
+        .footer-col h5 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+        .footer-col a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+        .footer-col a:hover { color: #fff; }
+        .footer-bottom {
+            text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 24px; max-width: 1080px; margin: 0 auto;
+        }
+
+        @media (max-width: 860px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
         @media (max-width: 768px) {
@@ -246,8 +390,9 @@
             }
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
-            .guide-hero { min-height: 380px; padding-top: 90px; }
+            .guide-hero { min-height: 420px; padding-top: 100px; }
             .cards-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
 
@@ -268,6 +413,8 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="/guides/" class="active">City Guides</a></li>
                 <li><a href="/#features">Features</a></li>
+                <li><a href="../about.html">About Us</a></li>
+                <li><a href="../support.html">Support</a></li>
             </ul>
             <div class="nav-actions">
                 <!-- Top Right Globe Dropdown -->
@@ -295,37 +442,58 @@
         <img src="../images/cities/atlanta.jpg" alt="Atlanta" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
+            <div class="breadcrumbs">
+                <a href="/">Home</a> <span>/</span>
+                <a href="/guides/">City Guides</a> <span>/</span>
+                <span>🇺🇸 USA</span> <span>/</span>
+                <span style="color:#fff;">Atlanta</span>
+            </div>
             <div class="city-badge">🇺🇸 USA &bull; City Guides</div>
             <h1 class="guide-title">Atlanta</h1>
             <p class="guide-tagline">Capital of the South: civil rights legacy, peach trees and soul food tables</p>
+            <div class="guide-editorial-meta">
+                <span>✍️ MyWay Editorial Team</span>
+                <span>•</span>
+                <span>🛡️ Verified Local Guide</span>
+            </div>
         </div>
     </header>
 
+    <!-- Ad Placement 1: Top Banner -->
+    <div class="container">
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    </div>
+
     <main class="container">
-        <!-- Overview -->
+        <!-- 1. Overview -->
         <section class="section">
             <div class="section-header">
-                <span class="section-label">Overview</span>
-                <h2 class="section-title">The Vibe of Atlanta</h2>
+                <span class="section-label">Overview & Atmosphere</span>
+                <h2 class="section-title">The True Vibe of Atlanta</h2>
             </div>
-            <p class="intro-text">Atlanta is a forest city with skyscrapers: its tree canopy is a record-holder among big American cities, and the highways flow through the green. But the city&#x27;s real story is written in its streets — Martin Luther King was born here, the civil rights movement marched from here, and Sweet Auburn Avenue carries that struggle&#x27;s memory. Today&#x27;s Atlanta jogs along the BeltLine, a railway loop turned park, meets over a plate of lemon pepper wings, feeds off the world&#x27;s busiest airport and smiles as it says &#x27;y&#x27;all&#x27;. Southern hospitality here is not a cliché but the daily language.</p>
+            <p class="section-intro">Atlanta is a forest city with skyscrapers: its tree canopy is a record-holder among big American cities, and the highways flow through the green. But the city&#x27;s real story is written in its streets — Martin Luther King was born here, the civil rights movement marched from here, and Sweet Auburn Avenue carries that struggle&#x27;s memory. Today&#x27;s Atlanta jogs along the BeltLine, a railway loop turned park, meets over a plate of lemon pepper wings, feeds off the world&#x27;s busiest airport and smiles as it says &#x27;y&#x27;all&#x27;. Southern hospitality here is not a cliché but the daily language.</p>
             
-        <div class="local-word-box">
-            <div class="word-title">🗣️ Local Concept: <strong>Y&#x27;all</strong> <span class="pron">(yawl)</span></div>
+        <div class="callout-box">
+            <div class="callout-title">🗣️ Local Concept: <strong>Y&#x27;all</strong> <span class="pron">(yawl)</span></div>
             <p>The contraction of &#x27;you all&#x27;: the official pronoun of the South. It solves the singular-plural problem in one word and warms every sentence. When you hear &#x27;y&#x27;all come back now&#x27;, know the door is always open. The moment you start using it, Atlanta promotes you from guest to neighbor.</p>
         </div>
         
-        </section>
 
-        <!-- Quick Facts -->
-        
-        <section class="section">
-            <div class="section-header">
-                <span class="section-label">Essentials</span>
-                <h2 class="section-title">Quick Logistics</h2>
-            </div>
+            <!-- Quick Facts Grid -->
             <div class="facts-grid">
-                
             <div class="fact-card">
                 <div class="fact-icon">✈️</div>
                 <div>
@@ -361,20 +529,13 @@
                     <div class="fact-sub">The Southern accent is sweet and warm</div>
                 </div>
             </div>
-            
             </div>
-        </section>
-        
 
-        <!-- Rules & Secrets -->
-        
-        <section class="section">
-            <div class="section-header">
-                <span class="section-label">Insider Advice</span>
-                <h2 class="section-title">3 Unwritten Rules for Atlanta</h2>
-            </div>
-            <div class="rules-list">
-                
+            <!-- 3 Unwritten Rules -->
+            
+            <div style="margin-top: 32px;">
+                <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 14px;">3 Unwritten Rules for Atlanta</h3>
+                <div class="rules-list">
             <div class="rule-card">
                 <div class="rule-num">1</div>
                 <div class="rule-content">
@@ -398,29 +559,593 @@
                     <p>The MLK National Historical Park is free: his birth home, the Ebenezer church where he preached, and his tomb fit into one walk. Combine it with the National Center for Civil and Human Rights — understanding Atlanta begins with this legacy; the rest arrives as food and music.</p>
                 </div>
             </div>
+            </div>
+            </div>
             
+        </section>
+
+        <!-- 2. Transportation & Transit Logistics -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Getting Around</span>
+                <h2 class="section-title">Atlanta Public Transit & Airport Transfers</h2>
+            </div>
+            <p class="section-intro">Atlanta is a car city, but the MARTA train, the BeltLine and smart hour choices do a visitor&#x27;s work.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">✈️</span>
+                        <span class="card-title">Arriving from the airport</span>
+                    </div>
+                </div>
+                <p class="card-desc">From Hartsfield-Jackson, MARTA&#x27;s red/gold line reaches Downtown and Midtown in 20 minutes: cheap, painless, traffic-free. Inside the world&#x27;s busiest airport the inter-terminal distances are serious — budget your transfer generously.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚇</span>
+                        <span class="card-title">The MARTA train</span>
+                    </div>
+                </div>
+                <p class="card-desc">Four lines weave the airport, Downtown, Midtown and Decatur: ride with a Breeze card. Coverage is limited, but for anything on the line it&#x27;s the smartest choice — and on game and concert days it always beats the car.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚶</span>
+                        <span class="card-title">Walking the BeltLine</span>
+                    </div>
+                </div>
+                <p class="card-desc">The old railway loop became a park-path: the Eastside Trail walks you from Old Fourth Ward to Ponce City Market among artworks. Walk, run or rent a bike — this is Atlanta&#x27;s most delightful &#x27;transit line&#x27;.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">📱</span>
+                        <span class="card-title">Uber/Lyft and a car</span>
+                    </div>
+                </div>
+                <p class="card-desc">Ride apps are the practical bridge between neighborhoods; renting a car adds freedom on longer stays. Parking is mostly easy and paid — prices soar on stadium days, so move early.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚋</span>
+                        <span class="card-title">The streetcar and themed routes</span>
+                    </div>
+                </div>
+                <p class="card-desc">The Downtown streetcar loops out to Sweet Auburn: a practical link to the MLK district. Tour Atlanta by theme: one day for the civil rights trail, one for the BeltLine neighborhoods — the city makes sense through its themes.</p>
+            </div>
+            </div>
+            
+        <div class="callout-box success">
+            <div class="callout-title">💡 BeltLine tip</div>
+            <p>On Saturday morning enter the Eastside Trail from the Old Fourth Ward end: walk to Ponce City Market among joggers, street art and coffee carts. Ride the rooftop amusement park or settle into the food hall for lunch — this is the classic opening of an Atlanta weekend.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 3. Where to Stay (Neighborhoods) -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Neighborhood Guide</span>
+                <h2 class="section-title">Where to Stay in Atlanta: Best Areas</h2>
+            </div>
+            <p class="section-intro">In Atlanta the choice is a matter of the loop: city life turns inside the Perimeter — Midtown&#x27;s walkability, O4W&#x27;s BeltLine rhythm, Decatur&#x27;s square-town calm.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Midtown</span>
+                    <span class="card-badge badge-purple">Most balanced</span>
+                </div>
+                <p class="card-desc">Piedmont Park, the art museum and the MARTA line together: Atlanta&#x27;s most walkable district. Dense with restaurants and bars — the most practical base for a first visit.</p>
+                <div class="card-footer-tip">Beside the park • On MARTA • Walkable streets</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Old Fourth Ward</span>
+                    <span class="card-badge badge-purple">BeltLine soul</span>
+                </div>
+                <p class="card-desc">MLK&#x27;s neighborhood now lives the city&#x27;s liveliest transformation: the BeltLine, Ponce City Market and historic streets interwoven. For history and new Atlanta at one address.</p>
+                <div class="card-footer-tip">BeltLine at the door • MLK legacy • Market next door</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Virginia-Highland</span>
+                    <span class="card-badge badge-purple">Porch calm</span>
+                </div>
+                <p class="card-desc">Bungalow houses, neighborhood bars and independent shops: Atlanta&#x27;s leafy, front-porch daily life. A short drive to the center — the calm, characterful side.</p>
+                <div class="card-footer-tip">Bungalow streets • Neighborhood bars • Leafy walks</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Downtown</span>
+                    <span class="card-badge badge-purple">Beside the icons</span>
+                </div>
+                <p class="card-desc">The aquarium, Centennial Park and the convention hotels: walking distance to the big sights. It quiets down at night — for the sight-packed, practically-located stay.</p>
+                <div class="card-footer-tip">Walk to the aquarium • Hotel plenty • Icon base</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Decatur</span>
+                    <span class="card-badge badge-purple">Town square</span>
+                </div>
+                <p class="card-desc">An old town connected by MARTA: its square, independent restaurants and bookshop run on their own rhythm. For sleeping in a town while staying tied to the city.</p>
+                <div class="card-footer-tip">Square life • On MARTA • Independent tables</div>
+            </div>
             </div>
         </section>
         
 
-        <!-- CTA Banner -->
-        <section class="app-cta-banner">
-            <h3>Unlock the Full Guide in MyWay 🌟</h3>
-            <p>Discover hidden gems, curated local food, tourist traps to avoid, and step-by-step smart walking routes for Atlanta in MyWay.</p>
-            <div class="store-btn-row">
-                <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
-                     Download on App Store
-                </a>
-                <a href="https://play.google.com/store/apps/details?id=com.anilaybakan.sehirkesif" class="store-pill-btn">
-                    ▶ Get on Google Play
-                </a>
+        <!-- Ad Placement 2: Mid-Article -->
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+
+        <!-- 4. Best Time to Visit -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Seasons & Weather</span>
+                <h2 class="section-title">Best Time to Visit Atlanta</h2>
+            </div>
+            <p class="section-intro">Atlanta&#x27;s calendar is built on spring blossoms and autumn coolness; summer is humid and stormy, winter short and mild.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Spring</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Mar – May</span>
+                    </div>
+                    <span class="card-badge badge-amber">Dogwood Spring</span>
+                </div>
+                <p class="card-desc">In late March the city bursts into bloom: dogwoods and azaleas turn the neighborhoods pastel and Piedmont Park fills with festivals. In pollen weeks the cars turn yellow — come prepared if you have allergies; the scenery is worth it.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Summer</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Jun – Aug</span>
+                    </div>
+                    <span class="card-badge badge-amber">Humid Southern Summer</span>
+                </div>
+                <p class="card-desc">Summer Atlanta is humid and thunder-prone: the midday heat is heavy and the afternoon storm arrives short and loud. Early mornings and evenings outdoors, middays in museums and the aquarium — iced sweet tea is this season&#x27;s official drink.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Autumn</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Sep – Nov</span>
+                    </div>
+                    <span class="card-badge badge-amber">Golden Southern Fall</span>
+                </div>
+                <p class="card-desc">October breaks the humidity, the tree canopy turns gold, and porch season opens: these are Atlanta&#x27;s finest weeks. On Saturdays college football takes the city — factor in stadium-day traffic and hotel prices.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Winter</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Dec – Feb</span>
+                    </div>
+                    <span class="card-badge badge-amber">Mild and Quiet</span>
+                </div>
+                <p class="card-desc">Atlanta winter is soft: snow is rare, and when it falls the city panics comically. Museums, the aquarium and soul food tables are the season&#x27;s natural program — hotels run calm and prices friendly.</p>
+            </div>
             </div>
         </section>
+        
+
+        <!-- 5. Authentic Food & Dining -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Culinary Culture</span>
+                <h2 class="section-title">Authentic Local Dining & Food Secrets in Atlanta</h2>
+            </div>
+            <p class="section-intro">The Atlanta table is the capital of Southern cooking: the crunch of fried chicken, the warmth of soul food, and the city&#x27;s own pride in lemon pepper.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🍗</span>
+                        <span class="card-title">Lemon pepper wings</span>
+                    </div>
+                </div>
+                <p class="card-desc">Atlanta&#x27;s signature wing: dusted with lemon pepper, or &#x27;wet&#x27; with butter sauce if you dare. An institution of the city&#x27;s wing halls, woven into rap culture — stock up on wet wipes.</p>
+                <div class="card-footer-tip">⭐ The city&#x27;s signature · try it wet</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🍛</span>
+                        <span class="card-title">Meat-and-three soul food</span>
+                    </div>
+                </div>
+                <p class="card-desc">Fried chicken or stewed meat with collard greens, mac and cheese and cornbread: the tray-line Southern classic. Join the lunch queue at the storied halls of Sweet Auburn and the Westside.</p>
+                <div class="card-footer-tip">⭐ Tray classic · lunch queue</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🌏</span>
+                        <span class="card-title">The Buford Highway table</span>
+                    </div>
+                </div>
+                <p class="card-desc">The city&#x27;s northeast corridor is a boulevard of world cooking: Vietnamese pho, Korean barbecue and Mexican taquerías side by side. Give it one evening — Atlanta&#x27;s least-known superpower.</p>
+                <div class="card-footer-tip">⭐ World corridor · give it a night</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🧇</span>
+                        <span class="card-title">Chicken and waffles brunch</span>
+                    </div>
+                </div>
+                <p class="card-desc">Crisp chicken, hot waffle and maple syrup: the sweet-savory summit of the Southern brunch. Sharing tables with the Sunday church crowd is among the city&#x27;s truest hours.</p>
+                <div class="card-footer-tip">⭐ Sunday ritual · sweet and savory</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🍑</span>
+                        <span class="card-title">Peach cobbler and sweet tea</span>
+                    </div>
+                </div>
+                <p class="card-desc">Georgia peaches baked in syrup, beside a giant glass of iced sweet tea: the closing signature of the Southern table. A scoop of vanilla ice cream on the cobbler — a classic beyond negotiation.</p>
+                <div class="card-footer-tip">⭐ Georgia signature · ice cream on top</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🌭</span>
+                        <span class="card-title">The drive-in chili dog</span>
+                    </div>
+                </div>
+                <p class="card-desc">A century-old drive-in tradition: chili dogs with onion rings and a frosted fruit drink. Order to the cry of &#x27;What&#x27;ll ya have?&#x27; — Atlanta nostalgia in standing form.</p>
+                <div class="card-footer-tip">⭐ Nostalgia classic · what&#x27;ll ya have</div>
+            </div>
+            </div>
+            
+        <div class="callout-box">
+            <div class="callout-title">🍷 Table rule</div>
+            <p>You don&#x27;t need a tourist &#x27;Southern&#x27; chain in Atlanta: the locals&#x27; queue, the after-church crowd and a handwritten daily menu point to the right address. Tipping 18–20% is standard — Southern sweetness is mutual at the register too.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 6. Handpicked Hidden Gems -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Off The Beaten Path</span>
+                <h2 class="section-title">Handpicked Hidden Gems in Atlanta</h2>
+            </div>
+            <p class="section-intro">Everyone sees the aquarium; these six are Atlanta&#x27;s neighborhood-scale, story-laden hidden face.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Jackson Street Bridge</span>
+                    <span class="card-badge badge-emerald">The skyline&#x27;s best frame</span>
+                </div>
+                <p class="card-desc">The bridge looking from Old Fourth Ward to the Downtown skyline: familiar from the &#x27;Walking Dead&#x27; credits, it fills with photographers at sunset. Free, open and striking at every hour — bring the tripod.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Oakland Cemetery</span>
+                    <span class="card-badge badge-emerald">A cemetery like a garden</span>
+                </div>
+                <p class="card-desc">A Victorian garden cemetery from 1850: magnolias, Margaret Mitchell&#x27;s grave and a skyline view. Atlantans jog and picnic here — history itself is the park.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">The Krog Street Tunnel</span>
+                    <span class="card-badge badge-emerald">A neon tunnel gallery</span>
+                </div>
+                <p class="card-desc">The tunnel linking Cabbagetown to Inman Park lives as a gallery of ever-changing graffiti layers: a different wall on every pass. A natural pause on the BeltLine walk.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Sweet Auburn Curb Market</span>
+                    <span class="card-badge badge-emerald">The market at one hundred</span>
+                </div>
+                <p class="card-desc">The city market open since 1918: butchers, soul food stalls and new-generation kitchens under one roof. Pair it with the MLK district — lunch&#x27;s most historic address.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Old Fourth Ward Park and its pond</span>
+                    <span class="card-badge badge-emerald">City park with a waterfall</span>
+                </div>
+                <p class="card-desc">An amphitheater park at the BeltLine&#x27;s foot: the Ponce City Market tower reflects in the water. Sit on the grass at sunset — new Atlanta&#x27;s postcard is taken from here.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">The Ponce City Market rooftop</span>
+                    <span class="card-badge badge-emerald">A carnival on the roof</span>
+                </div>
+                <p class="card-desc">A mini amusement park, bar and city views atop the old Sears warehouse, with the food hall below. Play skee-ball, drink something against the skyline — Atlanta&#x27;s most entertaining roof.</p>
+            </div>
+            </div>
+            
+        <div class="callout-box success">
+            <div class="callout-title">✨ Route strategy</div>
+            <p>Most of these corners line up on one route: Jackson Street Bridge → O4W Park → BeltLine → Ponce City → Krog Tunnel → Oakland Cemetery. On foot, in one day — Atlanta&#x27;s best day lives inside this loop.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 7. Tourist Traps & Smarter Alternatives -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Scam Prevention</span>
+                <h2 class="section-title">Tourist Traps to Avoid & Smarter Alternatives</h2>
+            </div>
+            <p class="section-intro">Atlanta is an honest city; its traps grow from wrong expectations more than bad intent — know these four.</p>
+            <div class="traps-list">
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🏙️ TRAP</span>
+                    <h4>Mistaking Downtown for Atlanta</h4>
+                </div>
+                <p>The icon district goes quiet at night; the tourist who stays only there leaves saying &#x27;Atlanta had no soul&#x27; — but the city lives in its neighborhoods.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Fit the icons into half a day and give the rest to O4W, Virginia-Highland, Decatur and Buford Highway. Atlanta&#x27;s answer always lives in the question &#x27;which neighborhood?&#x27;</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🚗 TRAP</span>
+                    <h4>Underestimating rush hour</h4>
+                </div>
+                <p>The road navigation calls 20 minutes becomes 70 at 17:30: Atlanta traffic murders plans.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Set cross-town moves in the 10:00–15:30 band; gather the evening program in one neighborhood. For anything on the MARTA line, take the train — on game days this rule turns golden.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🍽️ TRAP</span>
+                    <h4>The tourist &#x27;Southern food&#x27; window</h4>
+                </div>
+                <p>Some &#x27;authentic Southern&#x27; restaurants near the icons sell a frozen-food cliché menu at high prices.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Watch for the locals&#x27; lunch queue: meat-and-three halls, Sweet Auburn stalls and neighborhood brunches give twice the flavor for the same money. The smell of cast iron is a better guide than any sign.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🅿️ TRAP</span>
+                    <h4>Event-day parking games</h4>
+                </div>
+                <p>On stadium and concert days some private lots run outrageous &#x27;event pricing&#x27;; towing from unmarked areas is a real risk.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Reserve a spot in advance with a parking app, or arrive by MARTA: station lots are cheap and safe. Read the street sign to its last line — Atlanta&#x27;s tow trucks work fast.</div>
+            </div>
+            </div>
+            
+        <div class="callout-box warning">
+            <div class="callout-title">🛡️ Golden rule</div>
+            <p>Atlanta&#x27;s formula is neighborhood + hour + table: go to the right district at the right time and sit at the locals&#x27; table. Smile and say &#x27;y&#x27;all&#x27; — the Southern door opens from the inside.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 8. Step-by-Step 1-Day Itinerary -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Smart Itinerary</span>
+                <h2 class="section-title">Day 1: Step-by-Step Atlanta Walking Tour</h2>
+            </div>
+            <p class="section-intro">If you hate planning, follow these flows. Times are flexible; keep the spirit, break the order.</p>
+            <div class="timeline">
+                
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">08:30</span>
+                    <h4 class="step-title">Southern breakfast</h4>
+                </div>
+                <p class="step-desc">Open the day with biscuits, eggs and grits: the fuel station of a Southern morning. Large coffee — there&#x27;s much walking today.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">09:30</span>
+                    <h4 class="step-title">MLK National Historical Park</h4>
+                </div>
+                <p class="step-desc">The birth home, Ebenezer Baptist Church and the tomb: walk the civil rights legacy in morning calm. The visitor center is free.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">12:00</span>
+                    <h4 class="step-title">Lunch at Sweet Auburn market</h4>
+                </div>
+                <p class="step-desc">Soul food at the century-old market stalls: take your tray and eat inside history.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">13:30</span>
+                    <h4 class="step-title">The BeltLine walk</h4>
+                </div>
+                <p class="step-desc">Enter the Eastside Trail from O4W Park: street art, joggers and the Krog Tunnel detour on the way to Ponce City Market.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">16:00</span>
+                    <h4 class="step-title">The Ponce City rooftop</h4>
+                </div>
+                <p class="step-desc">Snack in the food hall, then the mini amusement park and the view up top: Atlanta&#x27;s transformation story in one building.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">19:00</span>
+                    <h4 class="step-title">Lemon pepper evening</h4>
+                </div>
+                <p class="step-desc">Lemon pepper wet at a wing hall, sweet tea alongside: close with the night skyline from Jackson Street Bridge.</p>
+            </div>
+            
+            </div>
+
+            <!-- Mobile App Locked Content: Days 2 & 3 + Live GPS Map -->
+            <div class="app-lock-banner" id="download">
+                <div class="app-lock-badge">MyWay Mobile Exclusive 📱</div>
+                <h3>Unlock Days 2 & 3 + Turn-by-Turn GPS Map Navigation</h3>
+                <p>Explore the complete 3-day hourly itinerary for Atlanta, browse our 180+ verified place database offline, and plan collaborative daily itineraries with friends in the MyWay app.</p>
+                <div style="margin: 16px 0 20px; font-size: 13px; color: #CBD5E1; font-weight: 600;">
+                    📍 Day 2: Icons and park day &bull; 📍 Day 3: Town square and the world corridor
+                </div>
+                <div class="app-lock-features">
+                    <div class="app-lock-feature-item">✓ Live Interactive GPS Map & Navigation</div>
+                    <div class="app-lock-feature-item">✓ Full 180+ Place Database (Offline Mode)</div>
+                    <div class="app-lock-feature-item">✓ Co-plan Hourly Trips with Friends</div>
+                </div>
+                <div class="store-btn-row">
+                    <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
+                         Download on App Store
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.anilaybakan.sehirkesif" class="store-pill-btn">
+                        ▶ Get on Google Play
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+
+        <!-- 9. Phrases -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Local Slang</span>
+                <h2 class="section-title">Useful Everyday Phrases in Atlanta</h2>
+            </div>
+            <p class="section-intro">Southern English is sweet music; these five phrases open doors and tables in Atlanta.</p>
+            <div class="phrases-grid">
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Y&#x27;all</div>
+                <div class="phrase-trans">You all — the South&#x27;s official pronoun; use it once and you&#x27;re half local</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Hey, how y&#x27;all doing?</div>
+                <div class="phrase-trans">The long form of hello — everyone asks it, from the register to the bus; you ask too</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Bless your heart</div>
+                <div class="phrase-trans">Tenderness or sweet needling, depending on context — the South&#x27;s many-layered classic</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Sweet tea, please</div>
+                <div class="phrase-trans">Iced sweet tea — say &#x27;tea&#x27; and it comes sweet anyway; in the South, this is tea</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ The A</div>
+                <div class="phrase-trans">Atlanta&#x27;s nickname — when you hear &#x27;welcome to the A&#x27;, you&#x27;re home</div>
+            </div>
+            </div>
+        </section>
+        
+
+        <!-- Ad Placement 3: Bottom Banner -->
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
     </main>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h4>MyWay Travel</h4>
+                    <p>The ultimate smart travel guide and AI route planner for modern explorers. Stop being a tourist; experience cities like a local.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>City Guides</h5>
+                    <ul>
+                        <li><a href="/guides/">All Cities</a></li>
+                        <li><a href="../guides/barcelona.html">Barcelona</a></li>
+                        <li><a href="../guides/roma.html">Roma</a></li>
+                        <li><a href="../guides/paris.html">Paris</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Company</h5>
+                    <ul>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../support.html">Support</a></li>
+                        <li><a href="/#features">Features</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Legal</h5>
+                    <ul>
+                        <li><a href="../privacy.html">Privacy Policy</a></li>
+                        <li><a href="../terms.html">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 

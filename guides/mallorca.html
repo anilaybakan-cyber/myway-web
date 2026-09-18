@@ -3,11 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mallorca Travel Guide & Smart Walking Routes | MyWay</title>
-    <meta name="description" content="Explore Mallorca with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
+    <title>Mallorca Travel Guide & Curated Walking Routes | MyWay</title>
+    <meta name="description" content="The ultimate Mallorca travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
     
     <link rel="alternate" hreflang="en" href="/guides/mallorca.html">
     <link rel="alternate" hreflang="tr" href="/tr/rehber/mallorca.html">
+    <link rel="canonical" href="https://mywaytravelapp.com/guides/mallorca.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mywaytravelapp.com/guides/mallorca.html">
+    <meta property="og:title" content="Mallorca Travel Guide & Curated Walking Routes | MyWay">
+    <meta property="og:description" content="The ultimate Mallorca travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
+    <meta property="og:image" content="https://mywaytravelapp.com/images/cities/mallorca.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mallorca Travel Guide & Curated Walking Routes | MyWay">
+    <meta name="twitter:description" content="The ultimate Mallorca travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
+    <meta name="twitter:image" content="https://mywaytravelapp.com/images/cities/mallorca.jpg">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
@@ -22,6 +36,37 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
          crossorigin="anonymous"></script>
 
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TravelGuide",
+      "name": "Mallorca Travel Guide & Curated Walking Routes | MyWay",
+      "headline": "Mallorca Gezi Rehberi & Akıllı Yürüyüş Rotaları",
+      "description": "The ultimate Mallorca travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.",
+      "image": "https://mywaytravelapp.com/images/cities/mallorca.jpg",
+      "inLanguage": "en",
+      "url": "https://mywaytravelapp.com/guides/mallorca.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "MyWay Travel",
+        "url": "https://mywaytravelapp.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://mywaytravelapp.com/images/app_icon.png"
+        }
+      },
+      "about": {
+        "@type": "TouristDestination",
+        "name": "Mallorca",
+        "containedInPlace": {
+          "@type": "Country",
+          "name": "Spain"
+        }
+      }
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -35,13 +80,17 @@
             --primary-light: #9D93FF;
             --primary-dark: #5B4FD6;
             --accent: #EC4899;
+            --emerald: #10B981;
+            --warning: #EF4444;
             --bg-dark: #0F0B1A;
             --bg-section: #130F22;
             --bg-card: rgba(255, 255, 255, 0.04);
+            --bg-card-hover: rgba(255, 255, 255, 0.07);
             --text-primary: #FFFFFF;
             --text-secondary: #9CA3AF;
             --text-muted: #6B7280;
             --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(123, 110, 246, 0.3);
             --radius-lg: 24px;
             --radius-md: 16px;
             --radius-sm: 12px;
@@ -52,15 +101,15 @@
         body {
             background-color: var(--bg-dark); color: var(--text-primary);
             font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6; overflow-x: hidden;
+            line-height: 1.7; overflow-x: hidden;
         }
         
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
         
         /* Navbar */
         .navbar {
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            background: rgba(15, 11, 26, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            background: rgba(15, 11, 26, 0.88); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-subtle); height: 72px; display: flex; align-items: center;
         }
         .navbar-inner {
@@ -114,18 +163,27 @@
         .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(123, 110, 246, 0.4); }
         .nav-toggle { display: none; background: none; border: none; color: #fff; cursor: pointer; padding: 8px; }
 
+        /* Breadcrumbs */
+        .breadcrumbs {
+            display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-muted);
+            margin-bottom: 16px; flex-wrap: wrap;
+        }
+        .breadcrumbs a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+        .breadcrumbs a:hover { color: #fff; }
+        .breadcrumbs span { color: var(--text-muted); }
+
         /* Guide Hero */
         .guide-hero {
-            position: relative; min-height: 440px; display: flex; align-items: flex-end;
-            padding: 120px 24px 44px; margin-top: 72px; overflow: hidden; background-color: #1A132F;
+            position: relative; min-height: 480px; display: flex; align-items: flex-end;
+            padding: 130px 24px 50px; margin-top: 72px; overflow: hidden; background-color: #1A132F;
         }
         .guide-hero-bg {
             position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-            filter: brightness(0.65);
+            filter: brightness(0.6);
         }
         .guide-hero-overlay {
             position: absolute; inset: 0;
-            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.4) 60%, transparent 100%);
+            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.5) 60%, rgba(15, 11, 26, 0.2) 100%);
         }
         .guide-hero-content { position: relative; z-index: 2; width: 100%; }
         .city-badge {
@@ -133,28 +191,34 @@
             backdrop-filter: blur(10px); padding: 6px 14px; border-radius: 99px; font-size: 13px;
             font-weight: 600; margin-bottom: 14px; border: 1px solid rgba(255, 255, 255, 0.15);
         }
-        .guide-title { font-size: clamp(32px, 6vw, 52px); font-weight: 800; line-height: 1.1; margin-bottom: 10px; }
-        .guide-tagline { font-size: 16px; color: var(--primary-light); max-width: 720px; font-weight: 500; line-height: 1.5; }
-        
+        .guide-title { font-size: clamp(34px, 6vw, 56px); font-weight: 800; line-height: 1.1; margin-bottom: 12px; }
+        .guide-tagline { font-size: 17px; color: var(--primary-light); max-width: 780px; font-weight: 500; line-height: 1.5; margin-bottom: 12px; }
+        .guide-editorial-meta { font-size: 13px; color: #94A3B8; display: flex; gap: 16px; align-items: center; }
+
         /* Sections */
-        .section { padding: 42px 0; border-bottom: 1px solid var(--border-subtle); }
-        .section-header { margin-bottom: 24px; }
-        .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); font-weight: 700; }
-        .section-title { font-size: 24px; font-weight: 700; margin-top: 4px; }
+        .section { padding: 50px 0; border-bottom: 1px solid var(--border-subtle); }
+        .section-header { margin-bottom: 26px; }
+        .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); font-weight: 700; display: block; margin-bottom: 6px; }
+        .section-title { font-size: clamp(22px, 3.5vw, 28px); font-weight: 800; margin-bottom: 10px; }
+        .section-intro { font-size: 15px; color: #D1D5DB; line-height: 1.8; margin-bottom: 22px; max-width: 900px; }
         
-        .intro-text { font-size: 15px; color: #D1D5DB; line-height: 1.8; margin-bottom: 20px; }
-        
-        /* Local Word */
-        .local-word-box {
+        /* Pro-Tip & Local Word Boxes */
+        .callout-box {
             background: rgba(123, 110, 246, 0.08); border-left: 4px solid var(--primary);
-            padding: 18px 22px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-top: 20px;
+            padding: 18px 22px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin: 24px 0;
         }
-        .word-title { font-size: 15px; color: #fff; margin-bottom: 4px; }
+        .callout-box.warning {
+            background: rgba(239, 68, 68, 0.08); border-left: 4px solid var(--warning);
+        }
+        .callout-box.success {
+            background: rgba(16, 185, 129, 0.08); border-left: 4px solid var(--emerald);
+        }
+        .callout-title { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+        .callout-box p { font-size: 14px; color: #D1D5DB; line-height: 1.6; }
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
-        .local-word-box p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        
+
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
@@ -164,8 +228,8 @@
         .fact-val { font-size: 15px; font-weight: 600; color: #fff; margin: 2px 0; }
         .fact-sub { font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
         
-        /* Rules */
-        .rules-list { display: flex; flex-direction: column; gap: 14px; }
+        /* Rules List */
+        .rules-list { display: flex; flex-direction: column; gap: 14px; margin: 20px 0; }
         .rule-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 20px; display: flex; gap: 16px; align-items: flex-start;
@@ -177,52 +241,94 @@
         }
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        
-        /* Hidden Gems & Eat Grid */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
-        .gem-card, .eat-card {
+
+        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
+        .feature-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative;
+            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
+            display: flex; flex-direction: column; justify-content: space-between;
         }
-        .gem-badge {
-            display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase;
-            color: #10B981; background: rgba(16, 185, 129, 0.12); padding: 4px 10px; border-radius: 99px;
-            margin-bottom: 10px;
+        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
+        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
+        .card-title-group { display: flex; align-items: center; gap: 10px; }
+        .card-icon { font-size: 20px; }
+        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+        .card-badge {
+            font-size: 11px; font-weight: 700; text-transform: uppercase;
+            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
         }
-        .gem-hook { font-size: 13px; color: var(--primary-light); font-style: italic; margin-bottom: 8px; }
-        .gem-card h4, .eat-card h4 { font-size: 16px; margin-bottom: 6px; }
-        .gem-card p, .eat-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        .card-tip-box {
-            margin-top: 10px; padding: 8px 12px; background: rgba(255, 255, 255, 0.04);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1;
-        }
+        .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
+        .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
+        .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
+        .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        /* Traps */
-        .traps-list { display: flex; flex-direction: column; gap: 14px; }
-        .trap-card {
-            background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.15);
-            border-radius: var(--radius-md); padding: 20px;
+        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        .card-footer-tip {
+            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
         }
-        .trap-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+
+        /* Traps List */
+        .traps-list { display: flex; flex-direction: column; gap: 16px; margin: 20px 0; }
+        .trap-card {
+            background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.18);
+            border-radius: var(--radius-md); padding: 22px;
+        }
+        .trap-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
         .trap-tag {
             background: #EF4444; color: #fff; font-size: 11px; font-weight: 700;
-            text-transform: uppercase; padding: 2px 8px; border-radius: 6px;
+            text-transform: uppercase; padding: 3px 8px; border-radius: 6px;
         }
-        .trap-header h4 { font-size: 16px; color: #fff; }
+        .trap-header h4 { font-size: 17px; color: #fff; font-weight: 700; }
         .trap-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
         .trap-solution {
-            margin-top: 10px; padding: 10px 14px; background: rgba(16, 185, 129, 0.08);
-            border-left: 3px solid #10B981; border-radius: 4px; font-size: 13px; color: #D1D5DB; line-height: 1.5;
+            margin-top: 12px; padding: 12px 16px; background: rgba(16, 185, 129, 0.08);
+            border-left: 3px solid #10B981; border-radius: 6px; font-size: 13px; color: #D1D5DB; line-height: 1.5;
         }
-        
-        /* App CTA Banner */
-        .app-cta-banner {
-            background: linear-gradient(135deg, rgba(123, 110, 246, 0.15), rgba(236, 72, 153, 0.1));
-            border: 1px solid rgba(157, 147, 255, 0.3); border-radius: var(--radius-lg);
-            padding: 44px 20px; text-align: center; margin: 50px 0; position: relative;
+
+        /* Timeline (Itinerary) */
+        .timeline { position: relative; padding-left: 32px; margin: 24px 0 32px; }
+        .timeline::before {
+            content: ''; position: absolute; left: 11px; top: 8px; bottom: 8px;
+            width: 2px; background: linear-gradient(to bottom, var(--primary), var(--accent));
         }
-        .app-cta-banner h3 { font-size: clamp(22px, 4vw, 28px); font-weight: 800; margin-bottom: 10px; }
-        .app-cta-banner p { color: var(--text-secondary); max-width: 580px; margin: 0 auto 24px; font-size: 15px; }
+        .timeline-step { position: relative; margin-bottom: 24px; }
+        .timeline-step:last-child { margin-bottom: 0; }
+        .timeline-dot {
+            position: absolute; left: -32px; top: 4px; width: 24px; height: 24px;
+            border-radius: 50%; background: #19142B; border: 2px solid var(--primary-light);
+            display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700;
+        }
+        .step-header { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; flex-wrap: wrap; }
+        .step-time {
+            background: rgba(123, 110, 246, 0.2); color: var(--primary-light); font-size: 12px;
+            font-weight: 700; padding: 2px 8px; border-radius: 6px;
+        }
+        .step-title { font-size: 16px; font-weight: 700; color: #fff; }
+        .step-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+        /* Mobile App Gate Banner (Days 2 & 3 + Live Map) */
+        .app-lock-banner {
+            background: linear-gradient(135deg, rgba(123, 110, 246, 0.16) 0%, rgba(236, 72, 153, 0.12) 100%);
+            border: 1.5px solid rgba(157, 147, 255, 0.35); border-radius: var(--radius-lg);
+            padding: 36px 28px; margin: 36px 0; text-align: center; position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        .app-lock-badge {
+            display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px; border-radius: 100px; font-size: 12px; font-weight: 700;
+            color: #fff; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .app-lock-banner h3 { font-size: clamp(22px, 3.5vw, 28px); font-weight: 800; margin-bottom: 8px; }
+        .app-lock-banner p { color: var(--text-secondary); max-width: 620px; margin: 0 auto 20px; font-size: 14px; line-height: 1.6; }
+        .app-lock-features {
+            display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 24px;
+            font-size: 13px; color: #E2E8F0; font-weight: 500;
+        }
+        .app-lock-feature-item { display: flex; align-items: center; gap: 6px; }
+
+        /* Store Buttons */
         .store-btn-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
         .store-pill-btn {
             display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: white;
@@ -231,10 +337,48 @@
         }
         .store-pill-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2); }
 
+        /* Ad Placement Slots */
+        .ad-placement-slot {
+            margin: 40px auto; text-align: center; max-width: 728px; min-height: 90px;
+            background: rgba(255, 255, 255, 0.02); border: 1px dashed rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-sm); padding: 10px; overflow: hidden;
+        }
+        .ad-label {
+            font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px;
+            color: var(--text-muted); display: block; margin-bottom: 6px;
+        }
+
+        /* Phrases Table */
+        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrase-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm); padding: 14px 18px;
+        }
+        .phrase-orig { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+        .phrase-trans { font-size: 13px; color: var(--text-secondary); }
+
         /* Footer */
         .footer {
-            border-top: 1px solid var(--border-subtle); padding: 40px 24px 30px;
-            color: var(--text-muted); font-size: 13px; text-align: center;
+            border-top: 1px solid var(--border-subtle); padding: 50px 24px 36px;
+            color: var(--text-muted); font-size: 13px; background: #0A0713;
+        }
+        .footer-grid {
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px;
+            max-width: 1080px; margin: 0 auto 40px; text-align: left;
+        }
+        .footer-brand h4 { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+        .footer-brand p { font-size: 13px; line-height: 1.6; color: var(--text-secondary); max-width: 340px; }
+        .footer-col h5 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+        .footer-col a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+        .footer-col a:hover { color: #fff; }
+        .footer-bottom {
+            text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 24px; max-width: 1080px; margin: 0 auto;
+        }
+
+        @media (max-width: 860px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
         @media (max-width: 768px) {
@@ -246,8 +390,9 @@
             }
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
-            .guide-hero { min-height: 380px; padding-top: 90px; }
+            .guide-hero { min-height: 420px; padding-top: 100px; }
             .cards-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
 
@@ -268,6 +413,8 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="/guides/" class="active">City Guides</a></li>
                 <li><a href="/#features">Features</a></li>
+                <li><a href="../about.html">About Us</a></li>
+                <li><a href="../support.html">Support</a></li>
             </ul>
             <div class="nav-actions">
                 <!-- Top Right Globe Dropdown -->
@@ -295,37 +442,58 @@
         <img src="../images/cities/mallorca.jpg" alt="Mallorca" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
+            <div class="breadcrumbs">
+                <a href="/">Home</a> <span>/</span>
+                <a href="/guides/">City Guides</a> <span>/</span>
+                <span>🇪🇸 Spain</span> <span>/</span>
+                <span style="color:#fff;">Mallorca</span>
+            </div>
             <div class="city-badge">🇪🇸 Spain &bull; City Guides</div>
             <h1 class="guide-title">Mallorca</h1>
             <p class="guide-tagline">Behind the crowded beaches, villages, olive groves and mountains that have kept their authenticity are still hiding</p>
+            <div class="guide-editorial-meta">
+                <span>✍️ MyWay Editorial Team</span>
+                <span>•</span>
+                <span>🛡️ Verified Local Guide</span>
+            </div>
         </div>
     </header>
 
+    <!-- Ad Placement 1: Top Banner -->
+    <div class="container">
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    </div>
+
     <main class="container">
-        <!-- Overview -->
+        <!-- 1. Overview -->
         <section class="section">
             <div class="section-header">
-                <span class="section-label">Overview</span>
-                <h2 class="section-title">The Vibe of Mallorca</h2>
+                <span class="section-label">Overview & Atmosphere</span>
+                <h2 class="section-title">The True Vibe of Mallorca</h2>
             </div>
-            <p class="intro-text">Mallorca is Spain&#x27;s largest Balearic Island and one of Europe&#x27;s most visited holiday destinations. But those numbers only apply to the coastline — inland there&#x27;s a completely different Mallorca. The UNESCO-listed villages of the Tramuntana mountains, stone roads among olive groves, terraced orange orchards. Palma is a city in its own right: La Seu Cathedral, historic neighbourhoods, Santa Catalina&#x27;s market and gastronomy. The island is large and getting around without a car becomes difficult — but with the right planning it&#x27;s possible to see beach, villages and mountains on the same trip.</p>
+            <p class="section-intro">Mallorca is Spain&#x27;s largest Balearic Island and one of Europe&#x27;s most visited holiday destinations. But those numbers only apply to the coastline — inland there&#x27;s a completely different Mallorca. The UNESCO-listed villages of the Tramuntana mountains, stone roads among olive groves, terraced orange orchards. Palma is a city in its own right: La Seu Cathedral, historic neighbourhoods, Santa Catalina&#x27;s market and gastronomy. The island is large and getting around without a car becomes difficult — but with the right planning it&#x27;s possible to see beach, villages and mountains on the same trip.</p>
             
-        <div class="local-word-box">
-            <div class="word-title">🗣️ Local Concept: <strong>Ensaimada</strong> <span class="pron">(en-sa-i-MA-da)</span></div>
+        <div class="callout-box">
+            <div class="callout-title">🗣️ Local Concept: <strong>Ensaimada</strong> <span class="pron">(en-sa-i-MA-da)</span></div>
             <p>Mallorca&#x27;s emblem — a spiral-shaped soft pastry made with lard (saïm). Available plain, with honey or filled with various fillings. Fresh from the oven every morning. Coming to Mallorca without eating an ensaimada is like going to Paris without a croissant. Found fresh at Palma&#x27;s historic bakeries or at Mercat de l&#x27;Olivar. Also sold in large gift boxes to take home — but the best version is warm, straight from the oven.</p>
         </div>
         
-        </section>
 
-        <!-- Quick Facts -->
-        
-        <section class="section">
-            <div class="section-header">
-                <span class="section-label">Essentials</span>
-                <h2 class="section-title">Quick Logistics</h2>
-            </div>
+            <!-- Quick Facts Grid -->
             <div class="facts-grid">
-                
             <div class="fact-card">
                 <div class="fact-icon">✈️</div>
                 <div>
@@ -361,20 +529,13 @@
                     <div class="fact-sub">Set lunch €12-18 · Palma centre €15-30 · coastal restaurants expensive</div>
                 </div>
             </div>
-            
             </div>
-        </section>
-        
 
-        <!-- Rules & Secrets -->
-        
-        <section class="section">
-            <div class="section-header">
-                <span class="section-label">Insider Advice</span>
-                <h2 class="section-title">3 Unwritten Rules for Mallorca</h2>
-            </div>
-            <div class="rules-list">
-                
+            <!-- 3 Unwritten Rules -->
+            
+            <div style="margin-top: 32px;">
+                <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 14px;">3 Unwritten Rules for Mallorca</h3>
+                <div class="rules-list">
             <div class="rule-card">
                 <div class="rule-num">1</div>
                 <div class="rule-content">
@@ -398,29 +559,593 @@
                     <p>Many visitors settle in a resort and leave without ever visiting Palma. This is a great loss. With La Seu Cathedral, Bellver Castle, Santa Catalina neighbourhood, Mercat de l&#x27;Olivar and its historic streets, Palma is a city well worth visiting in its own right. Set aside at least half a day, ideally a full day.</p>
                 </div>
             </div>
+            </div>
+            </div>
             
+        </section>
+
+        <!-- 2. Transportation & Transit Logistics -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Getting Around</span>
+                <h2 class="section-title">Mallorca Public Transit & Airport Transfers</h2>
+            </div>
+            <p class="section-intro">Palma is manageable by public transport. For the island TIB buses and trains are available, but car hire is the most flexible option.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">✈️</span>
+                        <span class="card-title">Airport → Palma centre</span>
+                    </div>
+                </div>
+                <p class="card-desc">EMT bus Line A1 runs from the airport to Palma centre (Plaça d&#x27;Espanya) every 15 minutes, about 20 minutes, €5. Fixed-price taxi approximately €25. TIB AeroTib buses provide direct connections to the island&#x27;s other resort areas (Alcúdia, Magaluf).</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚌</span>
+                        <span class="card-title">EMT — Palma city buses</span>
+                    </div>
+                </div>
+                <p class="card-desc">Palma&#x27;s blue buses cover every point in the city. Single fare €1.50 (Line 1 port route €3), paid on board or by card. 10-trip card €10. Bellver Castle, Es Baluard Museum, Santa Catalina and Passeig Marítim are all reachable by EMT. Palma metro line M1 goes to the university — limited tourist use.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚂</span>
+                        <span class="card-title">SFM train — into the island</span>
+                    </div>
+                </div>
+                <p class="card-desc">From Palma&#x27;s Plaça d&#x27;Espanya, SFM trains go to Inca, Sa Pobla and Manacor. The Sóller Train (since 1912) is separate and historic — breathtaking mountain crossing between Palma and Sóller, return approximately €20. Train is a good option for day trips to the island&#x27;s interior. Ideal for the large Sunday market in Sineu.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚗</span>
+                        <span class="card-title">Car hire — essential for the island</span>
+                    </div>
+                </div>
+                <p class="card-desc">Tramuntana villages, hidden coves, Cap de Formentor — all require a car. Affordable with early booking, expensive last-minute in summer. No need to drive in Palma itself; hiring a car is most practical when leaving Palma. Navigation is essential — some roads are narrow.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚲</span>
+                        <span class="card-title">Bicycle and scooter</span>
+                    </div>
+                </div>
+                <p class="card-desc">Palma is cycle-friendly — the cycling path along Passeig Marítim is excellent. BiciPalma (city bike sharing) stations everywhere. Scooter hire is also widespread. Mallorca is also a paradise for professional cyclists.</p>
+            </div>
+            </div>
+            
+        <div class="callout-box success">
+            <div class="callout-title">💡 Sóller Train + Tram combination</div>
+            <p>Historic wooden train from Palma to Sóller: 10:10am or 10:50am departures are recommended. From Sóller, the tram down to Port de Sóller. Lunch at Port de Sóller, then a short walk through Sóller&#x27;s orange groves on the return. Buy tickets online in advance — sells out in summer. Sóller Train: €20 return. Tram separately ~€2.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 3. Where to Stay (Neighborhoods) -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Neighborhood Guide</span>
+                <h2 class="section-title">Where to Stay in Mallorca: Best Areas</h2>
+            </div>
+            <p class="section-intro">Location is critical in Mallorca — Palma is both urban and central, Tramuntana villages are authentic but require a car, coastal areas are crowded.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Palma — historic centre</span>
+                    <span class="card-badge badge-purple">Most central</span>
+                </div>
+                <p class="card-desc">Walking distance to La Seu Cathedral, Bellver Castle, Mercat de l&#x27;Olivar and Santa Catalina neighbourhood. La Lonja and El Born neighbourhoods are Palma&#x27;s liveliest spots. Ideal for exploring the city without a car. Boutique hotels in restored historic buildings are characterful but small.</p>
+                <div class="card-footer-tip">Close to La Seu Cathedral • Santa Catalina neighbourhood • Everything walkable</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Deià — the jewel of the Tramuntana</span>
+                    <span class="card-badge badge-purple">Most authentic</span>
+                </div>
+                <p class="card-desc">A hilltop village in the Tramuntana mountains, looking out over the sea. Where Robert Graves lived and wrote. A magnet for artists, writers and musicians. Hotels and fincas are expensive but the atmosphere is unmatched. 30 minutes from Palma by car. Everything small-scale and authentic.</p>
+                <div class="card-footer-tip">Robert Graves&#x27; village • Tramuntana atmosphere • Artists&#x27; village</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Sóller — orange grove town</span>
+                    <span class="card-badge badge-purple">Most characterful</span>
+                </div>
+                <p class="card-desc">A lovely town in the Tramuntana valley among orange groves. Connected to Palma by historic train, with a tram down to Port de Sóller. Compact and walkable centre. Close to Palma but peaceful. Ideal position for seeing both mountains and sea.</p>
+                <div class="card-footer-tip">Historic train connection • Orange groves • Tram to the harbour</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Alcúdia — north coast</span>
+                    <span class="card-badge badge-purple">Family holiday</span>
+                </div>
+                <p class="card-desc">Versatile with both a walled historic town and a wide sandy beach. Playa de Muro and Alcúdia beaches are long and clean. The walled inner town is small but impressive. Somewhat quieter than the southern resorts. Sunday market is the largest open-air market in the area.</p>
+                <div class="card-footer-tip">Walled historic town • Long sandy beach • Family-friendly</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Santanyí — south coast</span>
+                    <span class="card-badge badge-purple">Most elegant</span>
+                </div>
+                <p class="card-desc">An elegant small town in the south-east with golden stone buildings. Surrounded by Es Trenc beach (the island&#x27;s finest sand) and Cala Mondragó natural park. Artistic market on Wednesdays and Saturdays. Away from crowds, quality restaurants and boutiques.</p>
+                <div class="card-footer-tip">Close to Es Trenc • Wednesday–Saturday market • Golden stone architecture</div>
+            </div>
             </div>
         </section>
         
 
-        <!-- CTA Banner -->
-        <section class="app-cta-banner">
-            <h3>Unlock the Full Guide in MyWay 🌟</h3>
-            <p>Discover hidden gems, curated local food, tourist traps to avoid, and step-by-step smart walking routes for Mallorca in MyWay.</p>
-            <div class="store-btn-row">
-                <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
-                     Download on App Store
-                </a>
-                <a href="https://play.google.com/store/apps/details?id=com.anilaybakan.sehirkesif" class="store-pill-btn">
-                    ▶ Get on Google Play
-                </a>
+        <!-- Ad Placement 2: Mid-Article -->
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+
+        <!-- 4. Best Time to Visit -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Seasons & Weather</span>
+                <h2 class="section-title">Best Time to Visit Mallorca</h2>
+            </div>
+            <p class="section-intro">Mallorca can be visited year-round — summer is hot and crowded, spring and autumn are the most balanced.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Spring</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Apr – Jun</span>
+                    </div>
+                    <span class="card-badge badge-amber">The best time</span>
+                </div>
+                <p class="card-desc">April and May are Mallorca&#x27;s golden period: temperatures 18-24°C, no crowds, prices reasonable. Tramuntana walking trails are ideal. It starts filling up from mid-June but still far from the July-August crowds. The sea is a little cool but swimming is possible.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Summer</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Jun – Aug</span>
+                    </div>
+                    <span class="card-badge badge-amber">Crowded but lively</span>
+                </div>
+                <p class="card-desc">July and August coastal resorts are packed. But the Tramuntana mountains and inland villages are still quiet at the same time. The sea is at its finest, evenings are long and lively. To see hidden coves in the very early morning hours, an early start is needed. June is more manageable.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Autumn</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Sep – Nov</span>
+                    </div>
+                    <span class="card-badge badge-amber">Second best time</span>
+                </div>
+                <p class="card-desc">September and October see the crowds go, the weather stays warm and the sea is still swimmable. Olive and orange harvests begin. Autumn markets and fairs in inland villages. Rain increases in November but prices drop significantly. Tramuntana walking trails are excellent in autumn too.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Winter</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Dec – Feb</span>
+                    </div>
+                    <span class="card-badge badge-amber">Quiet and green</span>
+                </div>
+                <p class="card-desc">In late January and early February, almond trees blossom in Mallorca&#x27;s interior. The mountains are covered in pink and white. Well worth a special visit for this scenery. Temperatures 10-15°C, occasionally rainy. Most resorts are closed but Palma, Sóller and inland towns keep going. Prices very low.</p>
+            </div>
             </div>
         </section>
+        
+
+        <!-- 5. Authentic Food & Dining -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Culinary Culture</span>
+                <h2 class="section-title">Authentic Local Dining & Food Secrets in Mallorca</h2>
+            </div>
+            <p class="section-intro">Mallorca&#x27;s cuisine is the simple, delicious face of the Mediterranean — olive oil, vegetables, pork and fresh seafood. Avoid tourist restaurants, step into the local markets.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🥐</span>
+                        <span class="card-title">Ensaimada</span>
+                    </div>
+                </div>
+                <p class="card-desc">Mallorca&#x27;s spiral pastry, fresh from the oven every morning. Available plain, with honey or filled (apricot jam, sobrasada, whipped cream). At Palma&#x27;s historic bakeries or Mercat de l&#x27;Olivar for breakfast, €1.50-3. Brushed with egg yolk, dusted with icing sugar — as beautiful to look at as it is to eat.</p>
+                <div class="card-footer-tip">⭐ Palma bakeries · Mercat de l&#x27;Olivar · fresh in the morning · €1.50–3</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🥩</span>
+                        <span class="card-title">Sobrasada</span>
+                    </div>
+                </div>
+                <p class="card-desc">Mallorca&#x27;s soft pork sausage paste — raw sausage cured with red pepper, salt and spices. Eaten with pa amb oli, spread on bread or cooked. Available everywhere across the island. Quality varies greatly between producers — much tastier from small local producers or village markets.</p>
+                <div class="card-footer-tip">⭐ Local markets and shops · everywhere · look out for quality</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🥘</span>
+                        <span class="card-title">Tumbet</span>
+                    </div>
+                </div>
+                <p class="card-desc">Mallorca&#x27;s take on ratatouille but different — aubergine, courgette, potato and tomato sauce baked in layers in the oven. Fried vegetables, olive oil and garlic. Served both as a main and as a side dish. Most authentic in local restaurants in inland villages.</p>
+                <div class="card-footer-tip">⭐ Local restaurants · inland villages · €10-16</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🍞</span>
+                        <span class="card-title">Pa amb oli</span>
+                    </div>
+                </div>
+                <p class="card-desc">Bread rubbed with tomato, olive oil and salt — Mallorca&#x27;s simplest and most satisfying dish. Sobrasada or cheese added on top. The island&#x27;s cheapest and most local flavour. The quality difference is immediately apparent — fresh tomato and good olive oil change everything.</p>
+                <div class="card-footer-tip">⭐ Everywhere · morning–lunch · €4–8 · try the sobrasada version</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🐟</span>
+                        <span class="card-title">Fresh fish — in Santa Catalina</span>
+                    </div>
+                </div>
+                <p class="card-desc">Palma&#x27;s Santa Catalina neighbourhood is the address for the island&#x27;s best fresh seafood and fish restaurants. Fish stalls at Mercat de Santa Catalina in the mornings. The small restaurants nearby are both fresh and reasonably priced. Dorado (sea bream), llampuga (mahi-mahi, September-November season) and fresh prawns are the island&#x27;s standout choices.</p>
+                <div class="card-footer-tip">⭐ Santa Catalina neighbourhood · Mercat de Santa Catalina · lunch–dinner</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🫒</span>
+                        <span class="card-title">Mallorca olive oil and wine</span>
+                    </div>
+                </div>
+                <p class="card-desc">The island produces small quantities of high-quality olive oil and wine. Red wines from the Binissalem and Pla i Llevant DO areas are particularly good — the local Manto Negro grape. For olive oil, go to inland estates or Mercat de l&#x27;Olivar. Wine tasting at small bodegas around Manacor and Felanitx is possible.</p>
+                <div class="card-footer-tip">⭐ Mercat de l&#x27;Olivar · bodegas · book ahead for tastings</div>
+            </div>
+            </div>
+            
+        <div class="callout-box">
+            <div class="callout-title">🍷 Mercat de l&#x27;Olivar — Palma&#x27;s kitchen</div>
+            <p>In Palma centre, at Plaça de l&#x27;Olivar. Fresh fish, meat, vegetables, fruit, cheese, charcuterie and prepared foods. Tapas bars and small restaurants inside too. Open 7am-2pm, closed Sundays. Go early — the fish stalls close towards midday. Ideal for both shopping and breakfast. Mercat de Santa Catalina is a younger, more modernised alternative nearby.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 6. Handpicked Hidden Gems -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Off The Beaten Path</span>
+                <h2 class="section-title">Handpicked Hidden Gems in Mallorca</h2>
+            </div>
+            <p class="section-intro">Mallorca&#x27;s finest corners are not far from the coastal resorts — just a car and a little curiosity are enough.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Sóller Train</span>
+                    <span class="card-badge badge-emerald">The world&#x27;s finest mountain train journey — since 1912</span>
+                </div>
+                <p class="card-desc">Historic wooden train from Palma to Sóller — the same rails and carriages since 1912. It crosses the Tramuntana mountains through 13 tunnels, leaping across viaducts. About 1 hour. After arriving in Sóller, the tram running since 1913 takes you down to Port de Sóller. Buy tickets in advance — sells out. Return approximately €20. One of the island&#x27;s most unforgettable experiences.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Deià</span>
+                    <span class="card-badge badge-emerald">Robert Graves&#x27; village — touristy but still magical</span>
+                </div>
+                <p class="card-desc">A small village in the Tramuntana mountains, looking down to the Mediterranean. Where British poet and author Robert Graves lived from 1929 until his death. His house is now a museum. The village itself is small, stone-streeted and panoramic. Quiet in the early morning hours. A small path leads to nearby Cala Deià cove — descend carefully, a beautiful cove awaits.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Sa Calobra</span>
+                    <span class="card-badge badge-emerald">Sa Calobra — steep to reach, views like nowhere else</span>
+                </div>
+                <p class="card-desc">On the north coast, a legendary 13km winding road descending from the Tramuntana mountains. The road itself is an experience — winding, narrow, breathtaking views. At the bottom, a small cove and Torrent de Pareis (a deep rock canyon). Very crowded in midsummer afternoons — go early in the morning or late afternoon. Limited car parking; coming by bike is possible but demanding.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Fornalutx</span>
+                    <span class="card-badge badge-emerald">Fornalutx — one of Spain&#x27;s most beautiful villages</span>
+                </div>
+                <p class="card-desc">4 kilometres above Sóller, one of the Tramuntana&#x27;s most impressive villages. Honey-coloured stone houses, stepped streets, lemon and orange groves. Population 600. Tourism but peaceful. It&#x27;s also possible to walk from Sóller — about 1 hour. Lunch at a small restaurant here is one of Mallorca&#x27;s most local and finest moments.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Cala Mondragó Natural Park</span>
+                    <span class="card-badge badge-emerald">Cala Mondragó — cove in a protected natural park</span>
+                </div>
+                <p class="card-desc">On the south-east coast, near Santanyí. Two small coves within a natural park — much quieter and more sheltered than crowded beach areas. Walking trails, pine forests and clear turquoise water. Reachable by bus or car. Paid car park. An early start is recommended in midsummer. Nearby Cala Figuera fishing village is ideal for fresh fish.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Bellver Castle</span>
+                    <span class="card-badge badge-emerald">Bellver Castle — Palma&#x27;s most overlooked viewpoint</span>
+                </div>
+                <p class="card-desc">Just west of Palma city centre, on a pine-forested hill. A circular plan from the 14th century — one of Europe&#x27;s rare round castles. Houses the Palma History Museum inside. But the real reason: from the terrace, Palma bay and the whole city are visible 360 degrees. Ticketed but affordable. Reachable by EMT bus. Open-air concerts on summer evenings.</p>
+            </div>
+            </div>
+            
+        <div class="callout-box success">
+            <div class="callout-title">✨ Valldemossa — the monastery village where Chopin wintered</div>
+            <p>20 minutes by car from Palma. Frédéric Chopin and George Sand spent the winter of 1838-39 here — the cells of the former Carthusian monastery are now converted to a museum. The village is small and beautiful: stone streets, potted flowers, small cafés. Very crowded in midsummer but quiet in the early morning hours. Fine walking trails in the surrounding area. Valldemossa local arts festival takes place every summer.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 7. Tourist Traps & Smarter Alternatives -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Scam Prevention</span>
+                <h2 class="section-title">Tourist Traps to Avoid & Smarter Alternatives</h2>
+            </div>
+            <p class="section-intro">Mallorca is two islands: the one in the brochure and the real one. Know these four and holiday on the second.</p>
+            <div class="traps-list">
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🍹 TRAP</span>
+                    <h4>Mistaking Magaluf and Arenal for &#x27;Mallorca&#x27;</h4>
+                </div>
+                <p>The party strips are the island&#x27;s exception, not its shop window; knowing Mallorca from there is like knowing a country from its airport.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Point your route at the Tramuntana villages, Palma&#x27;s old town and the southern coves; that&#x27;s where the island actually is.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🐟 TRAP</span>
+                    <h4>&#x27;Fresh fish&#x27; with the kilo price unasked</h4>
+                </div>
+                <p>At seaside restaurants the &#x27;catch of the day&#x27; sells by weight; fish ordered without asking becomes a surprise on the bill.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Ask the weight and price before ordering; or choose the locals&#x27; fish quarter around Santa Catalina.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🚗 TRAP</span>
+                    <h4>Descending Sa Calobra at summer midday</h4>
+                </div>
+                <p>One of the world&#x27;s twistiest roads becomes a bus convoy and parking war at noon.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Go at first light, or approach by boat from Port de Sóller: the same fjord, zero hairpin stress.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🥐 TRAP</span>
+                    <h4>An airport-box ensaimada</h4>
+                </div>
+                <p>The mass-produced last-minute ensaimada is not even a shadow of the one from the oven.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Buy it fresh from a historic Palma bakery; if it&#x27;s travelling home, the bakeries provide travel boxes too.</div>
+            </div>
+            </div>
+            
+        <div class="callout-box warning">
+            <div class="callout-title">🛡️ The golden rule</div>
+            <p>On Mallorca the distances are short and the differences huge: drive twenty minutes inland from the coastal crowds and the stone villages, almond groves and silence begin. That&#x27;s what the car is for.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 8. Step-by-Step 1-Day Itinerary -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Smart Itinerary</span>
+                <h2 class="section-title">Day 1: Step-by-Step Mallorca Walking Tour</h2>
+            </div>
+            <p class="section-intro">If you hate planning, follow these flows. The times are flexible; keep the spirit, break the order.</p>
+            <div class="timeline">
+                
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">08:30</span>
+                    <h4 class="step-title">Palma Cathedral (La Seu)</h4>
+                </div>
+                <p class="step-desc">The Gothic giant by the sea is at its best in morning light; look for Gaudí&#x27;s touches inside.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">10:00</span>
+                    <h4 class="step-title">Old town + ensaimada break</h4>
+                </div>
+                <p class="step-desc">Get lost among the courtyard mansions; ensaimada and hot chocolate the century-old way at Ca&#x27;n Joan de S&#x27;Aigo.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">11:30</span>
+                    <h4 class="step-title">Board the Sóller train</h4>
+                </div>
+                <p class="step-desc">In wooden carriages from 1912 into the orange valley: through mountain tunnels, alighting on Sóller&#x27;s square.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">14:00</span>
+                    <h4 class="step-title">Tram to Port de Sóller</h4>
+                </div>
+                <p class="step-desc">The nostalgic tram rolls down to the harbour; lunch by the water, the day&#x27;s fish on the plate.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">16:30</span>
+                    <h4 class="step-title">Coastal drive to Deià</h4>
+                </div>
+                <p class="step-desc">Along the serpentine road to the Tramuntana&#x27;s loveliest village: stone houses, an artists&#x27; soul, olive terraces.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">19:30</span>
+                    <h4 class="step-title">Sunset and evening</h4>
+                </div>
+                <p class="step-desc">In Deià, or back in Palma&#x27;s Santa Catalina quarter: tapas, island wine, long conversation.</p>
+            </div>
+            
+            </div>
+
+            <!-- Mobile App Locked Content: Days 2 & 3 + Live GPS Map -->
+            <div class="app-lock-banner" id="download">
+                <div class="app-lock-badge">MyWay Mobile Exclusive 📱</div>
+                <h3>Unlock Days 2 & 3 + Turn-by-Turn GPS Map Navigation</h3>
+                <p>Explore the complete 3-day hourly itinerary for Mallorca, browse our 180+ verified place database offline, and plan collaborative daily itineraries with friends in the MyWay app.</p>
+                <div style="margin: 16px 0 20px; font-size: 13px; color: #CBD5E1; font-weight: 600;">
+                    📍 Day 2: Deep Tramuntana &bull; 📍 Day 3: Southern coves and goodbye
+                </div>
+                <div class="app-lock-features">
+                    <div class="app-lock-feature-item">✓ Live Interactive GPS Map & Navigation</div>
+                    <div class="app-lock-feature-item">✓ Full 180+ Place Database (Offline Mode)</div>
+                    <div class="app-lock-feature-item">✓ Co-plan Hourly Trips with Friends</div>
+                </div>
+                <div class="store-btn-row">
+                    <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
+                         Download on App Store
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.anilaybakan.sehirkesif" class="store-pill-btn">
+                        ▶ Get on Google Play
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+
+        <!-- 9. Phrases -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Local Slang</span>
+                <h2 class="section-title">Useful Everyday Phrases in Mallorca</h2>
+            </div>
+            <p class="section-intro">Spanish works everywhere, but a pinch of Mallorquí opens the island&#x27;s doors.</p>
+            <div class="phrases-grid">
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Bon dia</div>
+                <div class="phrase-trans">Good morning in Mallorquí — guaranteed smiles at the village bakery</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Gracias</div>
+                <div class="phrase-trans">Thank you — short, clear, always</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Por favor</div>
+                <div class="phrase-trans">Please — add it to the end of your order</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ ¡Salud!</div>
+                <div class="phrase-trans">Cheers! — island wine glasses rise to this</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Uep!</div>
+                <div class="phrase-trans">The Mallorcan greeting: &#x27;hey, what&#x27;s up!&#x27; — say it once and you&#x27;re an islander</div>
+            </div>
+            </div>
+        </section>
+        
+
+        <!-- Ad Placement 3: Bottom Banner -->
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
     </main>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h4>MyWay Travel</h4>
+                    <p>The ultimate smart travel guide and AI route planner for modern explorers. Stop being a tourist; experience cities like a local.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>City Guides</h5>
+                    <ul>
+                        <li><a href="/guides/">All Cities</a></li>
+                        <li><a href="../guides/barcelona.html">Barcelona</a></li>
+                        <li><a href="../guides/roma.html">Roma</a></li>
+                        <li><a href="../guides/paris.html">Paris</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Company</h5>
+                    <ul>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../support.html">Support</a></li>
+                        <li><a href="/#features">Features</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Legal</h5>
+                    <ul>
+                        <li><a href="../privacy.html">Privacy Policy</a></li>
+                        <li><a href="../terms.html">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 

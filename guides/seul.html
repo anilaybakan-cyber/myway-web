@@ -3,11 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seoul Travel Guide & Smart Walking Routes | MyWay</title>
-    <meta name="description" content="Explore Seoul with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
+    <title>Seoul Travel Guide & Curated Walking Routes | MyWay</title>
+    <meta name="description" content="The ultimate Seoul travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
     
     <link rel="alternate" hreflang="en" href="/guides/seul.html">
     <link rel="alternate" hreflang="tr" href="/tr/rehber/seul.html">
+    <link rel="canonical" href="https://mywaytravelapp.com/guides/seul.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mywaytravelapp.com/guides/seul.html">
+    <meta property="og:title" content="Seoul Travel Guide & Curated Walking Routes | MyWay">
+    <meta property="og:description" content="The ultimate Seoul travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
+    <meta property="og:image" content="https://mywaytravelapp.com/images/cities/seul.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Seoul Travel Guide & Curated Walking Routes | MyWay">
+    <meta name="twitter:description" content="The ultimate Seoul travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
+    <meta name="twitter:image" content="https://mywaytravelapp.com/images/cities/seul.jpg">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
@@ -22,6 +36,37 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
          crossorigin="anonymous"></script>
 
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TravelGuide",
+      "name": "Seoul Travel Guide & Curated Walking Routes | MyWay",
+      "headline": "Seoul Gezi Rehberi & Akıllı Yürüyüş Rotaları",
+      "description": "The ultimate Seoul travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.",
+      "image": "https://mywaytravelapp.com/images/cities/seul.jpg",
+      "inLanguage": "en",
+      "url": "https://mywaytravelapp.com/guides/seul.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "MyWay Travel",
+        "url": "https://mywaytravelapp.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://mywaytravelapp.com/images/app_icon.png"
+        }
+      },
+      "about": {
+        "@type": "TouristDestination",
+        "name": "Seoul",
+        "containedInPlace": {
+          "@type": "Country",
+          "name": "South Korea"
+        }
+      }
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -35,13 +80,17 @@
             --primary-light: #9D93FF;
             --primary-dark: #5B4FD6;
             --accent: #EC4899;
+            --emerald: #10B981;
+            --warning: #EF4444;
             --bg-dark: #0F0B1A;
             --bg-section: #130F22;
             --bg-card: rgba(255, 255, 255, 0.04);
+            --bg-card-hover: rgba(255, 255, 255, 0.07);
             --text-primary: #FFFFFF;
             --text-secondary: #9CA3AF;
             --text-muted: #6B7280;
             --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(123, 110, 246, 0.3);
             --radius-lg: 24px;
             --radius-md: 16px;
             --radius-sm: 12px;
@@ -52,15 +101,15 @@
         body {
             background-color: var(--bg-dark); color: var(--text-primary);
             font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6; overflow-x: hidden;
+            line-height: 1.7; overflow-x: hidden;
         }
         
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
         
         /* Navbar */
         .navbar {
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            background: rgba(15, 11, 26, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            background: rgba(15, 11, 26, 0.88); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-subtle); height: 72px; display: flex; align-items: center;
         }
         .navbar-inner {
@@ -114,18 +163,27 @@
         .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(123, 110, 246, 0.4); }
         .nav-toggle { display: none; background: none; border: none; color: #fff; cursor: pointer; padding: 8px; }
 
+        /* Breadcrumbs */
+        .breadcrumbs {
+            display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-muted);
+            margin-bottom: 16px; flex-wrap: wrap;
+        }
+        .breadcrumbs a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+        .breadcrumbs a:hover { color: #fff; }
+        .breadcrumbs span { color: var(--text-muted); }
+
         /* Guide Hero */
         .guide-hero {
-            position: relative; min-height: 440px; display: flex; align-items: flex-end;
-            padding: 120px 24px 44px; margin-top: 72px; overflow: hidden; background-color: #1A132F;
+            position: relative; min-height: 480px; display: flex; align-items: flex-end;
+            padding: 130px 24px 50px; margin-top: 72px; overflow: hidden; background-color: #1A132F;
         }
         .guide-hero-bg {
             position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-            filter: brightness(0.65);
+            filter: brightness(0.6);
         }
         .guide-hero-overlay {
             position: absolute; inset: 0;
-            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.4) 60%, transparent 100%);
+            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.5) 60%, rgba(15, 11, 26, 0.2) 100%);
         }
         .guide-hero-content { position: relative; z-index: 2; width: 100%; }
         .city-badge {
@@ -133,28 +191,34 @@
             backdrop-filter: blur(10px); padding: 6px 14px; border-radius: 99px; font-size: 13px;
             font-weight: 600; margin-bottom: 14px; border: 1px solid rgba(255, 255, 255, 0.15);
         }
-        .guide-title { font-size: clamp(32px, 6vw, 52px); font-weight: 800; line-height: 1.1; margin-bottom: 10px; }
-        .guide-tagline { font-size: 16px; color: var(--primary-light); max-width: 720px; font-weight: 500; line-height: 1.5; }
-        
+        .guide-title { font-size: clamp(34px, 6vw, 56px); font-weight: 800; line-height: 1.1; margin-bottom: 12px; }
+        .guide-tagline { font-size: 17px; color: var(--primary-light); max-width: 780px; font-weight: 500; line-height: 1.5; margin-bottom: 12px; }
+        .guide-editorial-meta { font-size: 13px; color: #94A3B8; display: flex; gap: 16px; align-items: center; }
+
         /* Sections */
-        .section { padding: 42px 0; border-bottom: 1px solid var(--border-subtle); }
-        .section-header { margin-bottom: 24px; }
-        .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); font-weight: 700; }
-        .section-title { font-size: 24px; font-weight: 700; margin-top: 4px; }
+        .section { padding: 50px 0; border-bottom: 1px solid var(--border-subtle); }
+        .section-header { margin-bottom: 26px; }
+        .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); font-weight: 700; display: block; margin-bottom: 6px; }
+        .section-title { font-size: clamp(22px, 3.5vw, 28px); font-weight: 800; margin-bottom: 10px; }
+        .section-intro { font-size: 15px; color: #D1D5DB; line-height: 1.8; margin-bottom: 22px; max-width: 900px; }
         
-        .intro-text { font-size: 15px; color: #D1D5DB; line-height: 1.8; margin-bottom: 20px; }
-        
-        /* Local Word */
-        .local-word-box {
+        /* Pro-Tip & Local Word Boxes */
+        .callout-box {
             background: rgba(123, 110, 246, 0.08); border-left: 4px solid var(--primary);
-            padding: 18px 22px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-top: 20px;
+            padding: 18px 22px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin: 24px 0;
         }
-        .word-title { font-size: 15px; color: #fff; margin-bottom: 4px; }
+        .callout-box.warning {
+            background: rgba(239, 68, 68, 0.08); border-left: 4px solid var(--warning);
+        }
+        .callout-box.success {
+            background: rgba(16, 185, 129, 0.08); border-left: 4px solid var(--emerald);
+        }
+        .callout-title { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+        .callout-box p { font-size: 14px; color: #D1D5DB; line-height: 1.6; }
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
-        .local-word-box p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        
+
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
@@ -164,8 +228,8 @@
         .fact-val { font-size: 15px; font-weight: 600; color: #fff; margin: 2px 0; }
         .fact-sub { font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
         
-        /* Rules */
-        .rules-list { display: flex; flex-direction: column; gap: 14px; }
+        /* Rules List */
+        .rules-list { display: flex; flex-direction: column; gap: 14px; margin: 20px 0; }
         .rule-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 20px; display: flex; gap: 16px; align-items: flex-start;
@@ -177,52 +241,94 @@
         }
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        
-        /* Hidden Gems & Eat Grid */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
-        .gem-card, .eat-card {
+
+        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
+        .feature-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative;
+            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
+            display: flex; flex-direction: column; justify-content: space-between;
         }
-        .gem-badge {
-            display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase;
-            color: #10B981; background: rgba(16, 185, 129, 0.12); padding: 4px 10px; border-radius: 99px;
-            margin-bottom: 10px;
+        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
+        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
+        .card-title-group { display: flex; align-items: center; gap: 10px; }
+        .card-icon { font-size: 20px; }
+        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+        .card-badge {
+            font-size: 11px; font-weight: 700; text-transform: uppercase;
+            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
         }
-        .gem-hook { font-size: 13px; color: var(--primary-light); font-style: italic; margin-bottom: 8px; }
-        .gem-card h4, .eat-card h4 { font-size: 16px; margin-bottom: 6px; }
-        .gem-card p, .eat-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        .card-tip-box {
-            margin-top: 10px; padding: 8px 12px; background: rgba(255, 255, 255, 0.04);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1;
-        }
+        .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
+        .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
+        .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
+        .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        /* Traps */
-        .traps-list { display: flex; flex-direction: column; gap: 14px; }
-        .trap-card {
-            background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.15);
-            border-radius: var(--radius-md); padding: 20px;
+        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        .card-footer-tip {
+            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
         }
-        .trap-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+
+        /* Traps List */
+        .traps-list { display: flex; flex-direction: column; gap: 16px; margin: 20px 0; }
+        .trap-card {
+            background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.18);
+            border-radius: var(--radius-md); padding: 22px;
+        }
+        .trap-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
         .trap-tag {
             background: #EF4444; color: #fff; font-size: 11px; font-weight: 700;
-            text-transform: uppercase; padding: 2px 8px; border-radius: 6px;
+            text-transform: uppercase; padding: 3px 8px; border-radius: 6px;
         }
-        .trap-header h4 { font-size: 16px; color: #fff; }
+        .trap-header h4 { font-size: 17px; color: #fff; font-weight: 700; }
         .trap-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
         .trap-solution {
-            margin-top: 10px; padding: 10px 14px; background: rgba(16, 185, 129, 0.08);
-            border-left: 3px solid #10B981; border-radius: 4px; font-size: 13px; color: #D1D5DB; line-height: 1.5;
+            margin-top: 12px; padding: 12px 16px; background: rgba(16, 185, 129, 0.08);
+            border-left: 3px solid #10B981; border-radius: 6px; font-size: 13px; color: #D1D5DB; line-height: 1.5;
         }
-        
-        /* App CTA Banner */
-        .app-cta-banner {
-            background: linear-gradient(135deg, rgba(123, 110, 246, 0.15), rgba(236, 72, 153, 0.1));
-            border: 1px solid rgba(157, 147, 255, 0.3); border-radius: var(--radius-lg);
-            padding: 44px 20px; text-align: center; margin: 50px 0; position: relative;
+
+        /* Timeline (Itinerary) */
+        .timeline { position: relative; padding-left: 32px; margin: 24px 0 32px; }
+        .timeline::before {
+            content: ''; position: absolute; left: 11px; top: 8px; bottom: 8px;
+            width: 2px; background: linear-gradient(to bottom, var(--primary), var(--accent));
         }
-        .app-cta-banner h3 { font-size: clamp(22px, 4vw, 28px); font-weight: 800; margin-bottom: 10px; }
-        .app-cta-banner p { color: var(--text-secondary); max-width: 580px; margin: 0 auto 24px; font-size: 15px; }
+        .timeline-step { position: relative; margin-bottom: 24px; }
+        .timeline-step:last-child { margin-bottom: 0; }
+        .timeline-dot {
+            position: absolute; left: -32px; top: 4px; width: 24px; height: 24px;
+            border-radius: 50%; background: #19142B; border: 2px solid var(--primary-light);
+            display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700;
+        }
+        .step-header { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; flex-wrap: wrap; }
+        .step-time {
+            background: rgba(123, 110, 246, 0.2); color: var(--primary-light); font-size: 12px;
+            font-weight: 700; padding: 2px 8px; border-radius: 6px;
+        }
+        .step-title { font-size: 16px; font-weight: 700; color: #fff; }
+        .step-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+        /* Mobile App Gate Banner (Days 2 & 3 + Live Map) */
+        .app-lock-banner {
+            background: linear-gradient(135deg, rgba(123, 110, 246, 0.16) 0%, rgba(236, 72, 153, 0.12) 100%);
+            border: 1.5px solid rgba(157, 147, 255, 0.35); border-radius: var(--radius-lg);
+            padding: 36px 28px; margin: 36px 0; text-align: center; position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        .app-lock-badge {
+            display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px; border-radius: 100px; font-size: 12px; font-weight: 700;
+            color: #fff; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .app-lock-banner h3 { font-size: clamp(22px, 3.5vw, 28px); font-weight: 800; margin-bottom: 8px; }
+        .app-lock-banner p { color: var(--text-secondary); max-width: 620px; margin: 0 auto 20px; font-size: 14px; line-height: 1.6; }
+        .app-lock-features {
+            display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 24px;
+            font-size: 13px; color: #E2E8F0; font-weight: 500;
+        }
+        .app-lock-feature-item { display: flex; align-items: center; gap: 6px; }
+
+        /* Store Buttons */
         .store-btn-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
         .store-pill-btn {
             display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: white;
@@ -231,10 +337,48 @@
         }
         .store-pill-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2); }
 
+        /* Ad Placement Slots */
+        .ad-placement-slot {
+            margin: 40px auto; text-align: center; max-width: 728px; min-height: 90px;
+            background: rgba(255, 255, 255, 0.02); border: 1px dashed rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-sm); padding: 10px; overflow: hidden;
+        }
+        .ad-label {
+            font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px;
+            color: var(--text-muted); display: block; margin-bottom: 6px;
+        }
+
+        /* Phrases Table */
+        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrase-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm); padding: 14px 18px;
+        }
+        .phrase-orig { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+        .phrase-trans { font-size: 13px; color: var(--text-secondary); }
+
         /* Footer */
         .footer {
-            border-top: 1px solid var(--border-subtle); padding: 40px 24px 30px;
-            color: var(--text-muted); font-size: 13px; text-align: center;
+            border-top: 1px solid var(--border-subtle); padding: 50px 24px 36px;
+            color: var(--text-muted); font-size: 13px; background: #0A0713;
+        }
+        .footer-grid {
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px;
+            max-width: 1080px; margin: 0 auto 40px; text-align: left;
+        }
+        .footer-brand h4 { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+        .footer-brand p { font-size: 13px; line-height: 1.6; color: var(--text-secondary); max-width: 340px; }
+        .footer-col h5 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+        .footer-col a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+        .footer-col a:hover { color: #fff; }
+        .footer-bottom {
+            text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 24px; max-width: 1080px; margin: 0 auto;
+        }
+
+        @media (max-width: 860px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
         @media (max-width: 768px) {
@@ -246,8 +390,9 @@
             }
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
-            .guide-hero { min-height: 380px; padding-top: 90px; }
+            .guide-hero { min-height: 420px; padding-top: 100px; }
             .cards-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
 
@@ -268,6 +413,8 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="/guides/" class="active">City Guides</a></li>
                 <li><a href="/#features">Features</a></li>
+                <li><a href="../about.html">About Us</a></li>
+                <li><a href="../support.html">Support</a></li>
             </ul>
             <div class="nav-actions">
                 <!-- Top Right Globe Dropdown -->
@@ -295,37 +442,58 @@
         <img src="../images/cities/seul.jpg" alt="Seoul" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
+            <div class="breadcrumbs">
+                <a href="/">Home</a> <span>/</span>
+                <a href="/guides/">City Guides</a> <span>/</span>
+                <span>🇰🇷 South Korea</span> <span>/</span>
+                <span style="color:#fff;">Seoul</span>
+            </div>
             <div class="city-badge">🇰🇷 South Korea &bull; City Guides</div>
             <h1 class="guide-title">Seoul</h1>
             <p class="guide-tagline">Where five-hundred-year-old palaces and neon streets live at once</p>
+            <div class="guide-editorial-meta">
+                <span>✍️ MyWay Editorial Team</span>
+                <span>•</span>
+                <span>🛡️ Verified Local Guide</span>
+            </div>
         </div>
     </header>
 
+    <!-- Ad Placement 1: Top Banner -->
+    <div class="container">
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    </div>
+
     <main class="container">
-        <!-- Overview -->
+        <!-- 1. Overview -->
         <section class="section">
             <div class="section-header">
-                <span class="section-label">Overview</span>
-                <h2 class="section-title">The Vibe of Seoul</h2>
+                <span class="section-label">Overview & Atmosphere</span>
+                <h2 class="section-title">The True Vibe of Seoul</h2>
             </div>
-            <p class="intro-text">Seoul says speed and grace in the same sentence: a five-hundred-year-old ceremony is reenacted in the courtyard of Gyeongbokgung while, two streets over, a K-pop video breaks records over the world&#x27;s fastest internet. The curve of hanok roofs and the gleam of glass towers share one frame; at midnight the street stalls still steam and the cafes stay open to dawn. Everything here runs &#x27;ppalli ppalli&#x27; (quick, quick) — but the table culture refuses to hurry: time spent around the grill is Seoul&#x27;s most precious hospitality.</p>
+            <p class="section-intro">Seoul says speed and grace in the same sentence: a five-hundred-year-old ceremony is reenacted in the courtyard of Gyeongbokgung while, two streets over, a K-pop video breaks records over the world&#x27;s fastest internet. The curve of hanok roofs and the gleam of glass towers share one frame; at midnight the street stalls still steam and the cafes stay open to dawn. Everything here runs &#x27;ppalli ppalli&#x27; (quick, quick) — but the table culture refuses to hurry: time spent around the grill is Seoul&#x27;s most precious hospitality.</p>
             
-        <div class="local-word-box">
-            <div class="word-title">🗣️ Local Concept: <strong>Jeong</strong> <span class="pron">(juhng)</span></div>
+        <div class="callout-box">
+            <div class="callout-title">🗣️ Local Concept: <strong>Jeong</strong> <span class="pron">(juhng)</span></div>
             <p>Korean&#x27;s untranslatable word: the deep attachment and unconditional care woven over time. The stall keeper adding an extra piece to your plate, a host feeding you like their own child — all of it is jeong. Understanding Korea begins with noticing this invisible bond circulating at every table.</p>
         </div>
         
-        </section>
 
-        <!-- Quick Facts -->
-        
-        <section class="section">
-            <div class="section-header">
-                <span class="section-label">Essentials</span>
-                <h2 class="section-title">Quick Logistics</h2>
-            </div>
+            <!-- Quick Facts Grid -->
             <div class="facts-grid">
-                
             <div class="fact-card">
                 <div class="fact-icon">✈️</div>
                 <div>
@@ -361,20 +529,13 @@
                     <div class="fact-sub">Metro and menus support English</div>
                 </div>
             </div>
-            
             </div>
-        </section>
-        
 
-        <!-- Rules & Secrets -->
-        
-        <section class="section">
-            <div class="section-header">
-                <span class="section-label">Insider Advice</span>
-                <h2 class="section-title">3 Unwritten Rules for Seoul</h2>
-            </div>
-            <div class="rules-list">
-                
+            <!-- 3 Unwritten Rules -->
+            
+            <div style="margin-top: 32px;">
+                <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 14px;">3 Unwritten Rules for Seoul</h3>
+                <div class="rules-list">
             <div class="rule-card">
                 <div class="rule-num">1</div>
                 <div class="rule-content">
@@ -398,29 +559,593 @@
                     <p>Those wearing rented hanbok enter the palaces free: touring Gyeongbokgung in traditional dress is not a tourist gimmick — locals do it too. Time your visit to the changing of the guard — drums in the palace courtyard are the city&#x27;s most graceful time travel.</p>
                 </div>
             </div>
+            </div>
+            </div>
             
+        </section>
+
+        <!-- 2. Transportation & Transit Logistics -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Getting Around</span>
+                <h2 class="section-title">Seoul Public Transit & Airport Transfers</h2>
+            </div>
+            <p class="section-intro">The Seoul metro is among the world&#x27;s best: clean, punctual, English-friendly — with a T-money card the city fits in your palm.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">✈️</span>
+                        <span class="card-title">Arriving from the airport</span>
+                    </div>
+                </div>
+                <p class="card-desc">From Incheon, the AREX express reaches Seoul Station in 45 minutes; the all-stop AREX is slower but cheaper. For late-night landings, airport limousine buses fan out by district — taxis are comfortable but costly.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚇</span>
+                        <span class="card-title">Metro mastery</span>
+                    </div>
+                </div>
+                <p class="card-desc">Color-coded lines, numbered exits and English announcements: the metro is Seoul&#x27;s spine. Buy a T-money card at any convenience store; transfers calculate automatically. Line 2 packs out at rush hour — wait one train, the next comes emptier.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚕</span>
+                        <span class="card-title">Taxis and Kakao T</span>
+                    </div>
+                </div>
+                <p class="card-desc">Taxis are reasonable by world standards: orange-and-silver is standard, black &#x27;deluxe&#x27; is pricier. The Kakao T app ends the address problem — showing the driver an address in Korean is always the fastest solution.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚶</span>
+                        <span class="card-title">Neighborhood walks</span>
+                    </div>
+                </div>
+                <p class="card-desc">Seoul is walked neighborhood by neighborhood: Bukchon&#x27;s slopes, Seongsu&#x27;s warehouse lanes, Hongdae&#x27;s young crowds. The Cheonggyecheon stream is a walking corridor through the city&#x27;s middle — lovelier still under the night lights.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚌</span>
+                        <span class="card-title">Night buses and mountain lines</span>
+                    </div>
+                </div>
+                <p class="card-desc">The Owl buses run the main arteries after midnight; city buses reach the gates of Bukhansan and the other mountains. Few places escape the metro — the bus is its scenic complement.</p>
+            </div>
+            </div>
+            
+        <div class="callout-box success">
+            <div class="callout-title">💡 Metro tip</div>
+            <p>Crack the address culture: &#x27;Hongik Univ. Station, Exit 9&#x27; is an address. Type the station into Naver Map and follow the exit number — leaving by the wrong exit means an extra ten-minute walk in Seoul.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 3. Where to Stay (Neighborhoods) -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Neighborhood Guide</span>
+                <h2 class="section-title">Where to Stay in Seoul: Best Areas</h2>
+            </div>
+            <p class="section-intro">In Seoul choosing a neighborhood means choosing a tempo: Myeongdong&#x27;s practicality, Hongdae&#x27;s night rhythm, Bukchon&#x27;s hanok mornings.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Myeongdong</span>
+                    <span class="card-badge badge-purple">Most practical</span>
+                </div>
+                <p class="card-desc">The center of shopping streets, cosmetics shops and street-food stalls: strong metro links, everything within walking distance. The classic, painless base for a first visit.</p>
+                <div class="card-footer-tip">Shopping central • Street stalls • Strong metro</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Hongdae</span>
+                    <span class="card-badge badge-purple">Night rhythm</span>
+                </div>
+                <p class="card-desc">The university quarter&#x27;s street performances, clubs and cafes: alive late into the night. Direct to the airport on the AREX line — the address for young energy.</p>
+                <div class="card-footer-tip">Street stages • Nightlife • Direct to airport</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Bukchon and Insadong</span>
+                    <span class="card-badge badge-purple">Hanok soul</span>
+                </div>
+                <p class="card-desc">The hanok village between the palaces and the art lanes beside it: tea houses, galleries, morning silence. An ondol experience with a hanok stay — for waking up inside history.</p>
+                <div class="card-footer-tip">Hanok stays • Beside the palaces • Tea houses</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Gangnam</span>
+                    <span class="card-badge badge-purple">Modern face</span>
+                </div>
+                <p class="card-desc">Broad boulevards, towers and polished restaurants: Seoul&#x27;s glossy modern bank. COEX and Bongeunsa Temple sit side by side — the hub for business-and-comfort stays.</p>
+                <div class="card-footer-tip">Modern comfort • Polished dining • Broad boulevards</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Seongsu</span>
+                    <span class="card-badge badge-purple">Hip conversion</span>
+                </div>
+                <p class="card-desc">&#x27;Seoul&#x27;s Brooklyn&#x27;, where old shoe factories became cafes and galleries: pop-up shops, third-wave coffee. Next to Seoul Forest park — for seeing the creative scene at the source.</p>
+                <div class="card-footer-tip">Factory cafes • Pop-up scene • Beside the park</div>
+            </div>
             </div>
         </section>
         
 
-        <!-- CTA Banner -->
-        <section class="app-cta-banner">
-            <h3>Unlock the Full Guide in MyWay 🌟</h3>
-            <p>Discover hidden gems, curated local food, tourist traps to avoid, and step-by-step smart walking routes for Seoul in MyWay.</p>
-            <div class="store-btn-row">
-                <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
-                     Download on App Store
-                </a>
-                <a href="https://play.google.com/store/apps/details?id=com.anilaybakan.sehirkesif" class="store-pill-btn">
-                    ▶ Get on Google Play
-                </a>
+        <!-- Ad Placement 2: Mid-Article -->
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+
+        <!-- 4. Best Time to Visit -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Seasons & Weather</span>
+                <h2 class="section-title">Best Time to Visit Seoul</h2>
+            </div>
+            <p class="section-intro">Seoul lives its four seasons hard: cherry blossoms in spring, monsoon and festivals in summer, crimson leaves in autumn, freezing but ice-blue skies in winter.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Spring</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Apr – Jun</span>
+                    </div>
+                    <span class="card-badge badge-amber">The Cherry Blossom Wave</span>
+                </div>
+                <p class="card-desc">In early April the cherry blossoms sweep the city: Yeouido&#x27;s tree tunnels, palace courtyards and campuses turn pink. The air warms and the Han River picnics begin — Seoul&#x27;s most photogenic window.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Summer</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Jul – Aug</span>
+                    </div>
+                    <span class="card-badge badge-amber">Monsoon and River Nights</span>
+                </div>
+                <p class="card-desc">July&#x27;s monsoon arrives in downpours and August is humid and hot: days are built around air-conditioned museums and cafes, evenings around the Han River banks. The night picnic — a tent, fried chicken and a river breeze — is the signature of a Seoul summer.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Autumn</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Sep – Nov</span>
+                    </div>
+                    <span class="card-badge badge-amber">Crimson Leaf Peak</span>
+                </div>
+                <p class="card-desc">October and November are Seoul at its best: crystal skies, cool air, ginkgo trees painting the avenues gold. Bukhansan&#x27;s granite turns crimson and the palace courtyards catch their most graceful light — the season of walkers and photographers.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Winter</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Dec – Mar</span>
+                    </div>
+                    <span class="card-badge badge-amber">Ice-Blue Days</span>
+                </div>
+                <p class="card-desc">Seoul winter is fierce: minus ten happens, but the sky stays deep blue most days. The steam of street stalls, hotteok pancakes and jjimjilbang warmth are winter&#x27;s rewards — and when snow falls, the palace courtyards become postcards.</p>
+            </div>
             </div>
         </section>
+        
+
+        <!-- 5. Authentic Food & Dining -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Culinary Culture</span>
+                <h2 class="section-title">Authentic Local Dining & Food Secrets in Seoul</h2>
+            </div>
+            <p class="section-intro">The Korean table is the architecture of sharing: meat over coals, an army of banchan in the middle, soju alongside — and everything has its etiquette.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🥓</span>
+                        <span class="card-title">The samgyeopsal ritual</span>
+                    </div>
+                </div>
+                <p class="card-desc">Pork belly or beef over coals set into your table: cut with scissors, wrapped in a lettuce leaf — garlic, ssamjang and a piece of kimchi inside. Eat the wrap in one bite; etiquette insists. The hour around the grill is the heart of Seoul&#x27;s social life.</p>
+                <div class="card-footer-tip">⭐ Coals at the table · one-bite wraps</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🏮</span>
+                        <span class="card-title">Gwangjang Market classics</span>
+                    </div>
+                </div>
+                <p class="card-desc">At the century-old market&#x27;s stalls: bindaetteok (mung-bean pancakes) and mayak gimbap (&#x27;addictive&#x27; mini rolls). Grab a stool and watch the aunties&#x27; mastery. The crowded stall is always the right stall.</p>
+                <div class="card-footer-tip">⭐ Market classic · on a stool</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🍲</span>
+                        <span class="card-title">Kimchi jjigae and a full table</span>
+                    </div>
+                </div>
+                <p class="card-desc">Bubbling kimchi stew with rice and the banchan army: the cornerstone of Korean home cooking. A few dollars at a lunchtime eatery — its heat races its warmth, and the spoon is hard to put down.</p>
+                <div class="card-footer-tip">⭐ Home classic · a bubbling pot</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🍢</span>
+                        <span class="card-title">Tteokbokki and the street stall</span>
+                    </div>
+                </div>
+                <p class="card-desc">Rice cakes in sweet-hot sauce, with fish cakes and fried mandu alongside: the classic of the school run and the night walk. The pojangmacha (tent stall) atmosphere is half the experience — the steam is best in the cold.</p>
+                <div class="card-footer-tip">⭐ Street classic · at a tent stall</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🍗</span>
+                        <span class="card-title">Chimaek: chicken + beer</span>
+                    </div>
+                </div>
+                <p class="card-desc">Double-fried crisp Korean chicken with cold beer: the &#x27;chikin + maekju&#x27; contraction is now an institution. Order half sauced, half plain, and eat it by the Han River — Seoul evening&#x27;s most democratic pleasure.</p>
+                <div class="card-footer-tip">⭐ The institution · by the river</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🍧</span>
+                        <span class="card-title">Bingsu and cafe culture</span>
+                    </div>
+                </div>
+                <p class="card-desc">Snow-fine shaved ice under sweet red bean, milk and fruit: bingsu is Seoul&#x27;s sweet summit. The city&#x27;s cafe scene is a reason to travel in itself — from theme cafes to rooftops, the coffee is taken seriously.</p>
+                <div class="card-footer-tip">⭐ Snow dessert · with the cafe scene</div>
+            </div>
+            </div>
+            
+        <div class="callout-box">
+            <div class="callout-title">🍷 Table rule</div>
+            <p>Three signs of a good Seoul restaurant: a queue at the door, generous banchan on the table, few items on the menu. Grill houses sometimes require two portions for solo diners — then the stew and bibimbap eateries are your friends.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 6. Handpicked Hidden Gems -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Off The Beaten Path</span>
+                <h2 class="section-title">Handpicked Hidden Gems in Seoul</h2>
+            </div>
+            <p class="section-intro">Everyone sees Gyeongbokgung; these six are Seoul&#x27;s hanok-scented, mountain-framed hidden face.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Ikseondong</span>
+                    <span class="card-badge badge-emerald">Hanoks turned cafes</span>
+                </div>
+                <p class="card-desc">Cafes, workshops and boutiques in the narrow lanes of restored hanoks: third-wave coffee under traditional roofs. Go on a weekday morning — the lanes fill by afternoon, but the morning is yours.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">The Naksan fortress walls</span>
+                    <span class="card-badge badge-emerald">Night walk on the wall</span>
+                </div>
+                <p class="card-desc">The Naksan stretch of the city walls is lit at night: five-hundred-year-old stones on one side, a million-lighted city on the other. The route from Hyehwa down to Dongdaemun is Seoul&#x27;s most romantic free activity.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Bukhansan National Park</span>
+                    <span class="card-badge badge-emerald">A summit reached by metro</span>
+                </div>
+                <p class="card-desc">Granite peaks rising out of the city: metro and bus deliver you to the gate, and within hours you&#x27;re looking down on the megacity from bare rock. Few cities of millions have such a mountain this close — go on a weekday.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">The jjimjilbang experience</span>
+                    <span class="card-badge badge-emerald">Korean bathhouse night</span>
+                </div>
+                <p class="card-desc">Hot pools, salt and ice rooms, naps on heated floors and the sheep-head towel: the jjimjilbang is not a spa but a social institution. You can even stay the night — falling asleep on a warm floor is the Korean way of resetting.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Mangwon Market</span>
+                    <span class="card-badge badge-emerald">The aunties&#x27; market</span>
+                </div>
+                <p class="card-desc">A neighborhood market tourists rarely reach: fried-chicken stalls, home-style dishes and friendly prices. Shop, then walk five minutes to the Han River — market plus river picnic is the locals&#x27; weekend formula.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Seongsu and Seoul Forest</span>
+                    <span class="card-badge badge-emerald">From factory to cafe</span>
+                </div>
+                <p class="card-desc">Old shoe factories became cafes, galleries and pop-up shops; next door, the deer groves of Seoul Forest. Split an afternoon between the two — Seoul&#x27;s creative present and its green breath side by side.</p>
+            </div>
+            </div>
+            
+        <div class="callout-box success">
+            <div class="callout-title">✨ Tempo strategy</div>
+            <p>Tour Seoul in layers: palace and hanok in the morning, a market stall at noon, a cafe or a mountain in the afternoon, a wall walk or neon street at night. When fatigue accumulates, the jjimjilbang resets you — this city runs fast, but it has institutionalized its breaks.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 7. Tourist Traps & Smarter Alternatives -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Scam Prevention</span>
+                <h2 class="section-title">Tourist Traps to Avoid & Smarter Alternatives</h2>
+            </div>
+            <p class="section-intro">Seoul is honest and safe; its traps are small and easily dodged — keep these four in your pocket.</p>
+            <div class="traps-list">
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🗺️ TRAP</span>
+                    <h4>Trusting Google Maps</h4>
+                </div>
+                <p>Map data is restricted in Korea: Google won&#x27;t draw walking routes and its time estimates mislead — &#x27;can&#x27;t find the way&#x27; is the classic tourist problem in Seoul.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Download Naver Map or Kakao Map and set them to English: metro exit numbers, bus times and walking routes work flawlessly. Copying addresses in Korean also saves lives in taxis.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">💄 TRAP</span>
+                    <h4>The &#x27;free gift&#x27; sales press in Myeongdong</h4>
+                </div>
+                <p>In some cosmetics shops, the &#x27;free mask&#x27; pressed on you at the door becomes a long, insistent sales chat inside; the basket swells and returns are hard.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Decline the gift with a smile, or take it and skip the store if you need nothing. Shop at official single-brand stores and price-tagged chains — and carry your passport for tax-free shopping.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🚕 TRAP</span>
+                    <h4>The late-night &#x27;black taxi&#x27; haggle</h4>
+                </div>
+                <p>Some drivers waiting in nightlife zones quote round numbers instead of the meter; tourists mistaking a deluxe cab for a standard one pay double.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Call a ride with Kakao T or take a metered orange-and-silver taxi: the night surcharge is legal and modest, and haggling is unnecessary. Returning before the metro closes is always an option — check the last train.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">👘 TRAP</span>
+                    <h4>Low-quality hanbok rentals</h4>
+                </div>
+                <p>Some shops near the palaces rent the cheapest fabric at the highest price; &#x27;mandatory extras&#x27; like hair accessories and bags inflate the bill.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Ask clearly at the door what&#x27;s included: hourly rate, accessories, hair? Choose a well-reviewed shop in advance — a quality hanbok shows its difference in the photos and in the palace.</div>
+            </div>
+            </div>
+            
+        <div class="callout-box warning">
+            <div class="callout-title">🛡️ Golden rule</div>
+            <p>Getting lost in Seoul isn&#x27;t dangerous, just time lost — with the right map, a T-money card and a few Korean words, the city works for you. When in doubt, ask the young: most treat helping in English as seriously as homework.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 8. Step-by-Step 1-Day Itinerary -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Smart Itinerary</span>
+                <h2 class="section-title">Day 1: Step-by-Step Seoul Walking Tour</h2>
+            </div>
+            <p class="section-intro">If you hate planning, follow these flows. Times are flexible; keep the spirit, break the order.</p>
+            <div class="timeline">
+                
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">09:00</span>
+                    <h4 class="step-title">Gyeongbokgung and the guard ceremony</h4>
+                </div>
+                <p class="step-desc">Tour the palace courtyards in morning light and catch the changing of the guard. Rent a hanbok and entry is free — the photos last a lifetime.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">11:00</span>
+                    <h4 class="step-title">Bukchon and Ikseondong</h4>
+                </div>
+                <p class="step-desc">Roof curves on the hanok village slopes, then Ikseondong&#x27;s cafe lanes: two hours where tradition and today shake hands.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">13:30</span>
+                    <h4 class="step-title">Gwangjang Market lunch</h4>
+                </div>
+                <p class="step-desc">Grab a stool for bindaetteok and mayak gimbap: the aunties&#x27; stall mastery is the show itself.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">15:30</span>
+                    <h4 class="step-title">Cheonggyecheon and Dongdaemun</h4>
+                </div>
+                <p class="step-desc">Walk the stream to the spaceship architecture of the DDP: Zaha Hadid&#x27;s curves are at their best at sunset.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">18:00</span>
+                    <h4 class="step-title">The Naksan wall walk</h4>
+                </div>
+                <p class="step-desc">Climb to the walls from Hyehwa: as the lights come on, the city spreads at your feet. Seoul&#x27;s most romantic free hour.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">20:00</span>
+                    <h4 class="step-title">Samgyeopsal and the night streets</h4>
+                </div>
+                <p class="step-desc">The wrap ritual around the coals, then Hongdae&#x27;s street performances or a pojangmacha stall: the night doesn&#x27;t end early in Seoul.</p>
+            </div>
+            
+            </div>
+
+            <!-- Mobile App Locked Content: Days 2 & 3 + Live GPS Map -->
+            <div class="app-lock-banner" id="download">
+                <div class="app-lock-badge">MyWay Mobile Exclusive 📱</div>
+                <h3>Unlock Days 2 & 3 + Turn-by-Turn GPS Map Navigation</h3>
+                <p>Explore the complete 3-day hourly itinerary for Seoul, browse our 180+ verified place database offline, and plan collaborative daily itineraries with friends in the MyWay app.</p>
+                <div style="margin: 16px 0 20px; font-size: 13px; color: #CBD5E1; font-weight: 600;">
+                    📍 Day 2: Mountain or the modern bank &bull; 📍 Day 3: River and farewell
+                </div>
+                <div class="app-lock-features">
+                    <div class="app-lock-feature-item">✓ Live Interactive GPS Map & Navigation</div>
+                    <div class="app-lock-feature-item">✓ Full 180+ Place Database (Offline Mode)</div>
+                    <div class="app-lock-feature-item">✓ Co-plan Hourly Trips with Friends</div>
+                </div>
+                <div class="store-btn-row">
+                    <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
+                         Download on App Store
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.anilaybakan.sehirkesif" class="store-pill-btn">
+                        ▶ Get on Google Play
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+
+        <!-- 9. Phrases -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Local Slang</span>
+                <h2 class="section-title">Useful Everyday Phrases in Seoul</h2>
+            </div>
+            <p class="section-intro">Korean is a courteous language and effort is rewarded instantly; these five phrases open doors at the table and on the street.</p>
+            <div class="phrases-grid">
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Annyeonghaseyo</div>
+                <div class="phrase-trans">Hello — with a slight bow; valid at every hour of the day</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Gamsahamnida</div>
+                <div class="phrase-trans">Thank you — from stall to metro, your most-used word</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Jal meokgesseumnida</div>
+                <div class="phrase-trans">&#x27;I will eat well&#x27; — said before the meal; it wins the host&#x27;s heart</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Geonbae!</div>
+                <div class="phrase-trans">Cheers! — as the soju rises; turning slightly away from elders while drinking is the custom</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Juseyo</div>
+                <div class="phrase-trans">Please give me — combined with pointing, the key to the art of menu-free ordering</div>
+            </div>
+            </div>
+        </section>
+        
+
+        <!-- Ad Placement 3: Bottom Banner -->
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
     </main>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h4>MyWay Travel</h4>
+                    <p>The ultimate smart travel guide and AI route planner for modern explorers. Stop being a tourist; experience cities like a local.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>City Guides</h5>
+                    <ul>
+                        <li><a href="/guides/">All Cities</a></li>
+                        <li><a href="../guides/barcelona.html">Barcelona</a></li>
+                        <li><a href="../guides/roma.html">Roma</a></li>
+                        <li><a href="../guides/paris.html">Paris</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Company</h5>
+                    <ul>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../support.html">Support</a></li>
+                        <li><a href="/#features">Features</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Legal</h5>
+                    <ul>
+                        <li><a href="../privacy.html">Privacy Policy</a></li>
+                        <li><a href="../terms.html">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 

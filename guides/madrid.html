@@ -3,11 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Madrid Travel Guide & Smart Walking Routes | MyWay</title>
-    <meta name="description" content="Explore Madrid with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
+    <title>Madrid Travel Guide & Curated Walking Routes | MyWay</title>
+    <meta name="description" content="The ultimate Madrid travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
     
     <link rel="alternate" hreflang="en" href="/guides/madrid.html">
     <link rel="alternate" hreflang="tr" href="/tr/rehber/madrid.html">
+    <link rel="canonical" href="https://mywaytravelapp.com/guides/madrid.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mywaytravelapp.com/guides/madrid.html">
+    <meta property="og:title" content="Madrid Travel Guide & Curated Walking Routes | MyWay">
+    <meta property="og:description" content="The ultimate Madrid travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
+    <meta property="og:image" content="https://mywaytravelapp.com/images/cities/madrid.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Madrid Travel Guide & Curated Walking Routes | MyWay">
+    <meta name="twitter:description" content="The ultimate Madrid travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
+    <meta name="twitter:image" content="https://mywaytravelapp.com/images/cities/madrid.jpg">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
@@ -22,6 +36,37 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
          crossorigin="anonymous"></script>
 
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TravelGuide",
+      "name": "Madrid Travel Guide & Curated Walking Routes | MyWay",
+      "headline": "Madrid Gezi Rehberi & Akıllı Yürüyüş Rotaları",
+      "description": "The ultimate Madrid travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.",
+      "image": "https://mywaytravelapp.com/images/cities/madrid.jpg",
+      "inLanguage": "en",
+      "url": "https://mywaytravelapp.com/guides/madrid.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "MyWay Travel",
+        "url": "https://mywaytravelapp.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://mywaytravelapp.com/images/app_icon.png"
+        }
+      },
+      "about": {
+        "@type": "TouristDestination",
+        "name": "Madrid",
+        "containedInPlace": {
+          "@type": "Country",
+          "name": "Spain"
+        }
+      }
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -35,13 +80,17 @@
             --primary-light: #9D93FF;
             --primary-dark: #5B4FD6;
             --accent: #EC4899;
+            --emerald: #10B981;
+            --warning: #EF4444;
             --bg-dark: #0F0B1A;
             --bg-section: #130F22;
             --bg-card: rgba(255, 255, 255, 0.04);
+            --bg-card-hover: rgba(255, 255, 255, 0.07);
             --text-primary: #FFFFFF;
             --text-secondary: #9CA3AF;
             --text-muted: #6B7280;
             --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(123, 110, 246, 0.3);
             --radius-lg: 24px;
             --radius-md: 16px;
             --radius-sm: 12px;
@@ -52,15 +101,15 @@
         body {
             background-color: var(--bg-dark); color: var(--text-primary);
             font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6; overflow-x: hidden;
+            line-height: 1.7; overflow-x: hidden;
         }
         
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
         
         /* Navbar */
         .navbar {
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            background: rgba(15, 11, 26, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            background: rgba(15, 11, 26, 0.88); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-subtle); height: 72px; display: flex; align-items: center;
         }
         .navbar-inner {
@@ -114,18 +163,27 @@
         .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(123, 110, 246, 0.4); }
         .nav-toggle { display: none; background: none; border: none; color: #fff; cursor: pointer; padding: 8px; }
 
+        /* Breadcrumbs */
+        .breadcrumbs {
+            display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-muted);
+            margin-bottom: 16px; flex-wrap: wrap;
+        }
+        .breadcrumbs a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+        .breadcrumbs a:hover { color: #fff; }
+        .breadcrumbs span { color: var(--text-muted); }
+
         /* Guide Hero */
         .guide-hero {
-            position: relative; min-height: 440px; display: flex; align-items: flex-end;
-            padding: 120px 24px 44px; margin-top: 72px; overflow: hidden; background-color: #1A132F;
+            position: relative; min-height: 480px; display: flex; align-items: flex-end;
+            padding: 130px 24px 50px; margin-top: 72px; overflow: hidden; background-color: #1A132F;
         }
         .guide-hero-bg {
             position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-            filter: brightness(0.65);
+            filter: brightness(0.6);
         }
         .guide-hero-overlay {
             position: absolute; inset: 0;
-            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.4) 60%, transparent 100%);
+            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.5) 60%, rgba(15, 11, 26, 0.2) 100%);
         }
         .guide-hero-content { position: relative; z-index: 2; width: 100%; }
         .city-badge {
@@ -133,28 +191,34 @@
             backdrop-filter: blur(10px); padding: 6px 14px; border-radius: 99px; font-size: 13px;
             font-weight: 600; margin-bottom: 14px; border: 1px solid rgba(255, 255, 255, 0.15);
         }
-        .guide-title { font-size: clamp(32px, 6vw, 52px); font-weight: 800; line-height: 1.1; margin-bottom: 10px; }
-        .guide-tagline { font-size: 16px; color: var(--primary-light); max-width: 720px; font-weight: 500; line-height: 1.5; }
-        
+        .guide-title { font-size: clamp(34px, 6vw, 56px); font-weight: 800; line-height: 1.1; margin-bottom: 12px; }
+        .guide-tagline { font-size: 17px; color: var(--primary-light); max-width: 780px; font-weight: 500; line-height: 1.5; margin-bottom: 12px; }
+        .guide-editorial-meta { font-size: 13px; color: #94A3B8; display: flex; gap: 16px; align-items: center; }
+
         /* Sections */
-        .section { padding: 42px 0; border-bottom: 1px solid var(--border-subtle); }
-        .section-header { margin-bottom: 24px; }
-        .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); font-weight: 700; }
-        .section-title { font-size: 24px; font-weight: 700; margin-top: 4px; }
+        .section { padding: 50px 0; border-bottom: 1px solid var(--border-subtle); }
+        .section-header { margin-bottom: 26px; }
+        .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); font-weight: 700; display: block; margin-bottom: 6px; }
+        .section-title { font-size: clamp(22px, 3.5vw, 28px); font-weight: 800; margin-bottom: 10px; }
+        .section-intro { font-size: 15px; color: #D1D5DB; line-height: 1.8; margin-bottom: 22px; max-width: 900px; }
         
-        .intro-text { font-size: 15px; color: #D1D5DB; line-height: 1.8; margin-bottom: 20px; }
-        
-        /* Local Word */
-        .local-word-box {
+        /* Pro-Tip & Local Word Boxes */
+        .callout-box {
             background: rgba(123, 110, 246, 0.08); border-left: 4px solid var(--primary);
-            padding: 18px 22px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-top: 20px;
+            padding: 18px 22px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin: 24px 0;
         }
-        .word-title { font-size: 15px; color: #fff; margin-bottom: 4px; }
+        .callout-box.warning {
+            background: rgba(239, 68, 68, 0.08); border-left: 4px solid var(--warning);
+        }
+        .callout-box.success {
+            background: rgba(16, 185, 129, 0.08); border-left: 4px solid var(--emerald);
+        }
+        .callout-title { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+        .callout-box p { font-size: 14px; color: #D1D5DB; line-height: 1.6; }
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
-        .local-word-box p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        
+
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
@@ -164,8 +228,8 @@
         .fact-val { font-size: 15px; font-weight: 600; color: #fff; margin: 2px 0; }
         .fact-sub { font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
         
-        /* Rules */
-        .rules-list { display: flex; flex-direction: column; gap: 14px; }
+        /* Rules List */
+        .rules-list { display: flex; flex-direction: column; gap: 14px; margin: 20px 0; }
         .rule-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 20px; display: flex; gap: 16px; align-items: flex-start;
@@ -177,52 +241,94 @@
         }
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        
-        /* Hidden Gems & Eat Grid */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
-        .gem-card, .eat-card {
+
+        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
+        .feature-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative;
+            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
+            display: flex; flex-direction: column; justify-content: space-between;
         }
-        .gem-badge {
-            display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase;
-            color: #10B981; background: rgba(16, 185, 129, 0.12); padding: 4px 10px; border-radius: 99px;
-            margin-bottom: 10px;
+        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
+        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
+        .card-title-group { display: flex; align-items: center; gap: 10px; }
+        .card-icon { font-size: 20px; }
+        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+        .card-badge {
+            font-size: 11px; font-weight: 700; text-transform: uppercase;
+            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
         }
-        .gem-hook { font-size: 13px; color: var(--primary-light); font-style: italic; margin-bottom: 8px; }
-        .gem-card h4, .eat-card h4 { font-size: 16px; margin-bottom: 6px; }
-        .gem-card p, .eat-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        .card-tip-box {
-            margin-top: 10px; padding: 8px 12px; background: rgba(255, 255, 255, 0.04);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1;
-        }
+        .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
+        .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
+        .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
+        .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        /* Traps */
-        .traps-list { display: flex; flex-direction: column; gap: 14px; }
-        .trap-card {
-            background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.15);
-            border-radius: var(--radius-md); padding: 20px;
+        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        .card-footer-tip {
+            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
         }
-        .trap-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+
+        /* Traps List */
+        .traps-list { display: flex; flex-direction: column; gap: 16px; margin: 20px 0; }
+        .trap-card {
+            background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.18);
+            border-radius: var(--radius-md); padding: 22px;
+        }
+        .trap-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
         .trap-tag {
             background: #EF4444; color: #fff; font-size: 11px; font-weight: 700;
-            text-transform: uppercase; padding: 2px 8px; border-radius: 6px;
+            text-transform: uppercase; padding: 3px 8px; border-radius: 6px;
         }
-        .trap-header h4 { font-size: 16px; color: #fff; }
+        .trap-header h4 { font-size: 17px; color: #fff; font-weight: 700; }
         .trap-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
         .trap-solution {
-            margin-top: 10px; padding: 10px 14px; background: rgba(16, 185, 129, 0.08);
-            border-left: 3px solid #10B981; border-radius: 4px; font-size: 13px; color: #D1D5DB; line-height: 1.5;
+            margin-top: 12px; padding: 12px 16px; background: rgba(16, 185, 129, 0.08);
+            border-left: 3px solid #10B981; border-radius: 6px; font-size: 13px; color: #D1D5DB; line-height: 1.5;
         }
-        
-        /* App CTA Banner */
-        .app-cta-banner {
-            background: linear-gradient(135deg, rgba(123, 110, 246, 0.15), rgba(236, 72, 153, 0.1));
-            border: 1px solid rgba(157, 147, 255, 0.3); border-radius: var(--radius-lg);
-            padding: 44px 20px; text-align: center; margin: 50px 0; position: relative;
+
+        /* Timeline (Itinerary) */
+        .timeline { position: relative; padding-left: 32px; margin: 24px 0 32px; }
+        .timeline::before {
+            content: ''; position: absolute; left: 11px; top: 8px; bottom: 8px;
+            width: 2px; background: linear-gradient(to bottom, var(--primary), var(--accent));
         }
-        .app-cta-banner h3 { font-size: clamp(22px, 4vw, 28px); font-weight: 800; margin-bottom: 10px; }
-        .app-cta-banner p { color: var(--text-secondary); max-width: 580px; margin: 0 auto 24px; font-size: 15px; }
+        .timeline-step { position: relative; margin-bottom: 24px; }
+        .timeline-step:last-child { margin-bottom: 0; }
+        .timeline-dot {
+            position: absolute; left: -32px; top: 4px; width: 24px; height: 24px;
+            border-radius: 50%; background: #19142B; border: 2px solid var(--primary-light);
+            display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700;
+        }
+        .step-header { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; flex-wrap: wrap; }
+        .step-time {
+            background: rgba(123, 110, 246, 0.2); color: var(--primary-light); font-size: 12px;
+            font-weight: 700; padding: 2px 8px; border-radius: 6px;
+        }
+        .step-title { font-size: 16px; font-weight: 700; color: #fff; }
+        .step-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+        /* Mobile App Gate Banner (Days 2 & 3 + Live Map) */
+        .app-lock-banner {
+            background: linear-gradient(135deg, rgba(123, 110, 246, 0.16) 0%, rgba(236, 72, 153, 0.12) 100%);
+            border: 1.5px solid rgba(157, 147, 255, 0.35); border-radius: var(--radius-lg);
+            padding: 36px 28px; margin: 36px 0; text-align: center; position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        .app-lock-badge {
+            display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px; border-radius: 100px; font-size: 12px; font-weight: 700;
+            color: #fff; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .app-lock-banner h3 { font-size: clamp(22px, 3.5vw, 28px); font-weight: 800; margin-bottom: 8px; }
+        .app-lock-banner p { color: var(--text-secondary); max-width: 620px; margin: 0 auto 20px; font-size: 14px; line-height: 1.6; }
+        .app-lock-features {
+            display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 24px;
+            font-size: 13px; color: #E2E8F0; font-weight: 500;
+        }
+        .app-lock-feature-item { display: flex; align-items: center; gap: 6px; }
+
+        /* Store Buttons */
         .store-btn-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
         .store-pill-btn {
             display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: white;
@@ -231,10 +337,48 @@
         }
         .store-pill-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2); }
 
+        /* Ad Placement Slots */
+        .ad-placement-slot {
+            margin: 40px auto; text-align: center; max-width: 728px; min-height: 90px;
+            background: rgba(255, 255, 255, 0.02); border: 1px dashed rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-sm); padding: 10px; overflow: hidden;
+        }
+        .ad-label {
+            font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px;
+            color: var(--text-muted); display: block; margin-bottom: 6px;
+        }
+
+        /* Phrases Table */
+        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrase-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm); padding: 14px 18px;
+        }
+        .phrase-orig { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+        .phrase-trans { font-size: 13px; color: var(--text-secondary); }
+
         /* Footer */
         .footer {
-            border-top: 1px solid var(--border-subtle); padding: 40px 24px 30px;
-            color: var(--text-muted); font-size: 13px; text-align: center;
+            border-top: 1px solid var(--border-subtle); padding: 50px 24px 36px;
+            color: var(--text-muted); font-size: 13px; background: #0A0713;
+        }
+        .footer-grid {
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px;
+            max-width: 1080px; margin: 0 auto 40px; text-align: left;
+        }
+        .footer-brand h4 { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+        .footer-brand p { font-size: 13px; line-height: 1.6; color: var(--text-secondary); max-width: 340px; }
+        .footer-col h5 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+        .footer-col a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+        .footer-col a:hover { color: #fff; }
+        .footer-bottom {
+            text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 24px; max-width: 1080px; margin: 0 auto;
+        }
+
+        @media (max-width: 860px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
         @media (max-width: 768px) {
@@ -246,8 +390,9 @@
             }
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
-            .guide-hero { min-height: 380px; padding-top: 90px; }
+            .guide-hero { min-height: 420px; padding-top: 100px; }
             .cards-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
 
@@ -268,6 +413,8 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="/guides/" class="active">City Guides</a></li>
                 <li><a href="/#features">Features</a></li>
+                <li><a href="../about.html">About Us</a></li>
+                <li><a href="../support.html">Support</a></li>
             </ul>
             <div class="nav-actions">
                 <!-- Top Right Globe Dropdown -->
@@ -295,37 +442,58 @@
         <img src="../images/cities/madrid.jpg" alt="Madrid" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
+            <div class="breadcrumbs">
+                <a href="/">Home</a> <span>/</span>
+                <a href="/guides/">City Guides</a> <span>/</span>
+                <span>🇪🇸 Spain</span> <span>/</span>
+                <span style="color:#fff;">Madrid</span>
+            </div>
             <div class="city-badge">🇪🇸 Spain &bull; City Guides</div>
             <h1 class="guide-title">Madrid</h1>
             <p class="guide-tagline">Europe's city that never sleeps — being out at 2am here needs no explanation</p>
+            <div class="guide-editorial-meta">
+                <span>✍️ MyWay Editorial Team</span>
+                <span>•</span>
+                <span>🛡️ Verified Local Guide</span>
+            </div>
         </div>
     </header>
 
+    <!-- Ad Placement 1: Top Banner -->
+    <div class="container">
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    </div>
+
     <main class="container">
-        <!-- Overview -->
+        <!-- 1. Overview -->
         <section class="section">
             <div class="section-header">
-                <span class="section-label">Overview</span>
-                <h2 class="section-title">The Vibe of Madrid</h2>
+                <span class="section-label">Overview & Atmosphere</span>
+                <h2 class="section-title">The True Vibe of Madrid</h2>
             </div>
-            <p class="intro-text">Reset your clock before you land. Lunch starts at 2pm, dinner before 9:30pm is almost unheard of, and at 2am the streets are still full. This isn&#x27;t an exaggeration — it&#x27;s Madrid&#x27;s actual rhythm. See the Prado, visit Reina Sofía, tour the Royal Palace — but if you&#x27;re already planning what to eat after dinner, you&#x27;re thinking like a Madrileño. The metro costs less than a café menu. The sun sets late. Tapas are eaten standing, talking, unhurried.</p>
+            <p class="section-intro">Reset your clock before you land. Lunch starts at 2pm, dinner before 9:30pm is almost unheard of, and at 2am the streets are still full. This isn&#x27;t an exaggeration — it&#x27;s Madrid&#x27;s actual rhythm. See the Prado, visit Reina Sofía, tour the Royal Palace — but if you&#x27;re already planning what to eat after dinner, you&#x27;re thinking like a Madrileño. The metro costs less than a café menu. The sun sets late. Tapas are eaten standing, talking, unhurried.</p>
             
-        <div class="local-word-box">
-            <div class="word-title">🗣️ Local Concept: <strong>Vermuteo</strong> <span class="pron">(ber-moo-TAY-o)</span></div>
+        <div class="callout-box">
+            <div class="callout-title">🗣️ Local Concept: <strong>Vermuteo</strong> <span class="pron">(ber-moo-TAY-o)</span></div>
             <p>The ritual of drinking vermouth before lunch. Between noon and 2pm, bars pour vermouth on tap, with crisps, olives, and a slice of tortilla on the side. Sunday after El Rastro, or weekday lunch breaks. &#x27;Shall we do vermuteo?&#x27; is one of the most common sentences in a Madrileño&#x27;s vocabulary.</p>
         </div>
         
-        </section>
 
-        <!-- Quick Facts -->
-        
-        <section class="section">
-            <div class="section-header">
-                <span class="section-label">Essentials</span>
-                <h2 class="section-title">Quick Logistics</h2>
-            </div>
+            <!-- Quick Facts Grid -->
             <div class="facts-grid">
-                
             <div class="fact-card">
                 <div class="fact-icon">✈️</div>
                 <div>
@@ -361,20 +529,13 @@
                     <div class="fact-sub">Menú del día €12–15 · outside these hours places are empty</div>
                 </div>
             </div>
-            
             </div>
-        </section>
-        
 
-        <!-- Rules & Secrets -->
-        
-        <section class="section">
-            <div class="section-header">
-                <span class="section-label">Insider Advice</span>
-                <h2 class="section-title">3 Unwritten Rules for Madrid</h2>
-            </div>
-            <div class="rules-list">
-                
+            <!-- 3 Unwritten Rules -->
+            
+            <div style="margin-top: 32px;">
+                <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 14px;">3 Unwritten Rules for Madrid</h3>
+                <div class="rules-list">
             <div class="rule-card">
                 <div class="rule-num">1</div>
                 <div class="rule-content">
@@ -398,29 +559,593 @@
                     <p>In Madrid, tapas don&#x27;t come free with drinks — some bars put something small out but it&#x27;s not the rule. Eat standing at the bar, visit a few bars, have something to eat and drink at each one. Small, light, shared: croquetas, patatas bravas, boquerones, a slice of tortilla.</p>
                 </div>
             </div>
+            </div>
+            </div>
             
+        </section>
+
+        <!-- 2. Transportation & Transit Logistics -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Getting Around</span>
+                <h2 class="section-title">Madrid Public Transit & Airport Transfers</h2>
+            </div>
+            <p class="section-intro">The metro goes everywhere but the city centre is small enough to walk. Taxis are possible but not necessary.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">✈️</span>
+                        <span class="card-title">Airport → City</span>
+                    </div>
+                </div>
+                <p class="card-desc">Metro Line 8 to Nuevos Ministerios, 25 minutes, then transfer to the city centre. The ticket is the standard metro fare plus a €3 airport supplement — around €5 total. Fixed-price taxi from the airport: €33. Terminals T1-T2-T3 are connected; T4 is separate, 10 minutes by metro.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚇</span>
+                        <span class="card-title">Metro — the city&#x27;s backbone</span>
+                    </div>
+                </div>
+                <p class="card-desc">13 lines, over 300 stations. Single ticket €1.50–2, depending on distance. The 10-trip ticket (MetroBus) is €7.30 — valid on both metro and bus, and can be shared between people (each person taps separately). You need to buy a Multi Card at a station machine first (€2.50). Runs 6am to 1:30am.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚌</span>
+                        <span class="card-title">EMT buses — for late nights</span>
+                    </div>
+                </div>
+                <p class="card-desc">Over 200 daytime routes, 35 night routes (Búho). Daytime runs 6am–11:30pm. Night buses depart from Cibeles — the only option once the metro closes. Pay by card directly or with the 10-trip ticket.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚲</span>
+                        <span class="card-title">BiciMAD — electric bikes</span>
+                    </div>
+                </div>
+                <p class="card-desc">Electric bike sharing stations across the city. €0.50 per 30 minutes or a monthly flat rate of €10. Ideal routes along Paseo del Prado, Retiro and Madrid Río.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚶</span>
+                        <span class="card-title">Walking — the best option</span>
+                    </div>
+                </div>
+                <p class="card-desc">The city centre is smaller than you think. From Sol: La Latina 15 minutes, Malasaña 20 minutes, Chueca 10 minutes. Safe at night. You can spend a full day without needing the metro.</p>
+            </div>
+            </div>
+            
+        <div class="callout-box success">
+            <div class="callout-title">💡 Tourist Pass or 10-trip ticket?</div>
+            <p>For a few days, the 10-trip MetroBus ticket (€7.30) is usually better value — valid on both metro and bus, and shareable between travellers. The Tourist Pass is €10 per day for Zone A, €42 for 7 days — unlimited rides including the airport with no supplement. If you&#x27;re staying more than 3 days and plan to move around a lot, the Tourist Pass is worth considering.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 3. Where to Stay (Neighborhoods) -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Neighborhood Guide</span>
+                <h2 class="section-title">Where to Stay in Madrid: Best Areas</h2>
+            </div>
+            <p class="section-intro">Location matters a lot in Madrid — the city lives at night and the neighbourhood&#x27;s character shapes your evenings directly.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">La Latina / Lavapiés</span>
+                    <span class="card-badge badge-purple">Most historic, most alive</span>
+                </div>
+                <p class="card-desc">La Latina is one of Madrid&#x27;s oldest neighbourhoods. Cava Baja is lined with tapas bars and historic taverns. Plaza de la Paja is a quiet medieval square. El Rastro passes through on Sundays. Next door, Lavapiés is multicultural, artistic and constantly changing — the Mercado de San Fernando is here.</p>
+                <div class="card-footer-tip">El Rastro Sunday • Cava Baja tapas • Historic streets</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Malasaña</span>
+                    <span class="card-badge badge-purple">Most alternative</span>
+                </div>
+                <p class="card-desc">The Movida Madrileña movement of the 1980s was born here. It still carries that spirit: street art, vintage shops, small bars and cafés. Plaza del Dos de Mayo fills up in the evening. Busy but authentic. Ten minutes&#x27; walk from Gran Vía but feels like another world.</p>
+                <div class="card-footer-tip">Street art • Vintage shops • Nightlife</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Chueca</span>
+                    <span class="card-badge badge-purple">Most lively</span>
+                </div>
+                <p class="card-desc">Colourful, modern, with a strong nightlife scene. The Mercado de San Antón is here — three floors, with a rooftop bar at the top. Bodega de la Ardosa has been pouring vermouth straight from the barrel since 1892. Shares a border with Malasaña — five minutes between them.</p>
+                <div class="card-footer-tip">Mercado de San Antón • Bodega de la Ardosa • Nightlife</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Chamberí</span>
+                    <span class="card-badge badge-purple">Most local, most quiet</span>
+                </div>
+                <p class="card-desc">The neighbourhood Madrid residents choose when they want to stay in Madrid. Families having morning coffee around Plaza de Olavide, elderly couples sharing newspapers. No tourist pressure. Andén 0 — the ghost metro station — is here. 15-20 minutes&#x27; walk to the city centre.</p>
+                <div class="card-footer-tip">Plaza de Olavide • Andén 0 • Quiet neighbourhood rhythm</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Barrio de las Letras</span>
+                    <span class="card-badge badge-purple">Most cultural</span>
+                </div>
+                <p class="card-desc">Between the Prado and Puerta del Sol, where Lope de Vega and Cervantes lived. Quotes from writers are set into the pavement of Calle de las Huertas — look down as you walk. The Thyssen and Reina Sofía are within walking distance. It quietens early in the morning — that&#x27;s when it&#x27;s at its best.</p>
+                <div class="card-footer-tip">Calle de las Huertas quotes • Close to museums • Literary history</div>
+            </div>
             </div>
         </section>
         
 
-        <!-- CTA Banner -->
-        <section class="app-cta-banner">
-            <h3>Unlock the Full Guide in MyWay 🌟</h3>
-            <p>Discover hidden gems, curated local food, tourist traps to avoid, and step-by-step smart walking routes for Madrid in MyWay.</p>
-            <div class="store-btn-row">
-                <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
-                     Download on App Store
-                </a>
-                <a href="https://play.google.com/store/apps/details?id=com.anilaybakan.sehirkesif" class="store-pill-btn">
-                    ▶ Get on Google Play
-                </a>
+        <!-- Ad Placement 2: Mid-Article -->
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+
+        <!-- 4. Best Time to Visit -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Seasons & Weather</span>
+                <h2 class="section-title">Best Time to Visit Madrid</h2>
+            </div>
+            <p class="section-intro">Madrid has a continental climate — summers are very hot, winters cold, spring and autumn are excellent.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Spring</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Apr – Jun</span>
+                    </div>
+                    <span class="card-badge badge-amber">The best time</span>
+                </div>
+                <p class="card-desc">April to June is Madrid&#x27;s most balanced period. There&#x27;s sun but the temperature is right for exploring. The rose garden Rosaleda in Retiro Park is in bloom in May. Fiestas de San Isidro in May — Madrid&#x27;s biggest local festival, street musicians, traditional costumes, open-air concerts. Almond blossom at Quinta de los Molinos in late March.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Autumn</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Sep – Nov</span>
+                    </div>
+                    <span class="card-badge badge-amber">Breathing after summer</span>
+                </div>
+                <p class="card-desc">From mid-September to November Madrid comes back to life. Museums open new exhibitions, restaurants launch new menus. Retiro Park turns golden in autumn — weekday mornings are its finest hours. Crowds are lower than summer.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Summer</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Jul – Aug</span>
+                    </div>
+                    <span class="card-badge badge-amber">Hot but the city never sleeps</span>
+                </div>
+                <p class="card-desc">July and August are Madrid&#x27;s hottest months — 40°C is normal. Between 2pm and 7pm being outside is tough. But nightlife peaks. Veranos de la Villa: open-air concerts, film screenings and cultural events all summer. Picnics by the lake in Casa de Campo. Rooftop bars are at their liveliest this season.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Winter</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Dec – Feb</span>
+                    </div>
+                    <span class="card-badge badge-amber">Quiet but easy on the wallet</span>
+                </div>
+                <p class="card-desc">December: Navidad lights cover Gran Vía, and the Reyes Magos parade on the evening of 5 January. January and February are quiet — museums empty, restaurants without queues, hotels affordable. Cocido madrileño — the chickpea winter stew — is the dish of these months. Cold but snow is rare.</p>
+            </div>
             </div>
         </section>
+        
+
+        <!-- 5. Authentic Food & Dining -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Culinary Culture</span>
+                <h2 class="section-title">Authentic Local Dining & Food Secrets in Madrid</h2>
+            </div>
+            <p class="section-intro">Madrid is far from the sea but seafood is among the city&#x27;s best. And everything here is eaten standing, at the bar, unhurried.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🦑</span>
+                        <span class="card-title">Bocadillo de calamares</span>
+                    </div>
+                </div>
+                <p class="card-desc">Fried calamari in a bread roll, a squeeze of lemon — that&#x27;s it. Bar La Campana is right behind Plaza Mayor, open since 1979. There&#x27;s a queue but it moves fast. A beer alongside, eaten standing in Plaza Mayor. Eat this before you think about where else to go in Madrid.</p>
+                <div class="card-footer-tip">⭐ Bar La Campana, behind Plaza Mayor · eat standing · every day</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🍳</span>
+                        <span class="card-title">Huevos rotos</span>
+                    </div>
+                </div>
+                <p class="card-desc">Fried eggs over crispy potatoes, with jamón or chorizo. The egg is broken so the yolk spreads over the potatoes — that&#x27;s where the name comes from. Specific to Madrid. Casa Lucio is famous but crowded; you&#x27;ll find the same dish at smaller bars in La Latina.</p>
+                <div class="card-footer-tip">⭐ La Latina bars · lunch and dinner · best shared</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🥘</span>
+                        <span class="card-title">Cocido madrileño</span>
+                    </div>
+                </div>
+                <p class="card-desc">A stew of chickpeas, pork, chicken, morcilla and vegetables — served in three stages. First the chickpea broth, then the vegetables, then the meats. A winter dish, November to March. Taberna La Bola has been making it since 1870. Advance reservation essential.</p>
+                <div class="card-footer-tip">⭐ Winter · lunch · Taberna La Bola since 1870 · reservation required</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🍟</span>
+                        <span class="card-title">Patatas bravas</span>
+                    </div>
+                </div>
+                <p class="card-desc">Crispy potatoes with two sauces — one spicy (brava), one garlicky aioli. In the Madrid version, the sauce is poured over the potatoes. Every tapas bar has its own recipe. Docamar on Alcalá is the city&#x27;s most famous patatas bravas bar.</p>
+                <div class="card-footer-tip">⭐ Every tapas bar · Docamar is the most famous</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🍩</span>
+                        <span class="card-title">Churros con chocolate</span>
+                    </div>
+                </div>
+                <p class="card-desc">At the end of a night out at 2am, or Sunday morning with bleary eyes. Chocolatería San Ginés has been open since 1894, right next to Puerta del Sol. Churros straight from the hot oil, chocolate thick and dark. Sitting here late at night is part of the Madrid experience.</p>
+                <div class="card-footer-tip">⭐ Chocolatería San Ginés · since 1894 · next to Puerta del Sol · open until 2am</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🍶</span>
+                        <span class="card-title">Vermut ritual</span>
+                    </div>
+                </div>
+                <p class="card-desc">Sunday after El Rastro or weekday lunch breaks. Vermouth on tap, olives alongside. Bodega de la Ardosa in Chueca has been serving vermouth straight from the barrel since 1892. Casa Alberto in Barrio de las Letras since 1827. This isn&#x27;t just a drink — it&#x27;s a ritual of pausing.</p>
+                <div class="card-footer-tip">⭐ Sundays after El Rastro or weekday lunch · Bodega de la Ardosa or Casa Alberto</div>
+            </div>
+            </div>
+            
+        <div class="callout-box">
+            <div class="callout-title">🍷 How to eat at a tapas bar</div>
+            <p>Go in, find a spot at the bar, say what you want. Eating standing is better than at a table. Visit a few bars: croquetas at one, patatas bravas at the next, bocadillo after that. This is the right way to do tapas in Madrid. Wait a while before asking for the bill — there&#x27;s no rush here.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 6. Handpicked Hidden Gems -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Off The Beaten Path</span>
+                <h2 class="section-title">Handpicked Hidden Gems in Madrid</h2>
+            </div>
+            <p class="section-intro">Madrid is a big city but its best corners appear as soon as you walk two blocks and turn.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Andén 0 — Ghost Station</span>
+                    <span class="card-badge badge-emerald">There&#x27;s another metro hidden under the metro</span>
+                </div>
+                <p class="card-desc">Under Puerta del Sol metro station, an unused station dating from 1919. Converted into a museum in 2021. Original infrastructure from the construction of the metro preserved — old signs and vehicles. Ticketed; tours at specific times. The starting point of Spain&#x27;s first metro line.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Calle de las Huertas</span>
+                    <span class="card-badge badge-emerald">Poetry set into the pavement — the literary quarter</span>
+                </div>
+                <p class="card-desc">In Barrio de las Letras, between Puerta del Sol and the Prado. Quotes from Cervantes, Lope de Vega and other Golden Age writers are set into the pavement of the street where they lived — look down as you walk. Before 10am, before tour groups arrive, there&#x27;s no crowd. Lope de Vega&#x27;s house is open as a museum.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Cerro del Tío Pío — Siete Tetas</span>
+                    <span class="card-badge badge-emerald">The city&#x27;s most local hill for sunset</span>
+                </div>
+                <p class="card-desc">In the Vallecas neighbourhood, walking distance from Line 1 Buenos Aires stop. Seven small hills — known locally as &#x27;Siete Tetas&#x27;. One of the least crowded spots in the city for Madrid&#x27;s skyline and sunset. Bring a picnic blanket and food; sit with the local crowd in the late afternoon.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Casa Alberto</span>
+                    <span class="card-badge badge-emerald">Open since 1827 — on the same spot</span>
+                </div>
+                <p class="card-desc">In Barrio de las Letras, Calle de las Huertas 18. Open since 1827. Wooden bar, vermouth from the barrel, old Madrid photographs on the walls. Drink the vermouth on tap, order caracoles (snails) alongside — in season.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Quinta de los Molinos</span>
+                    <span class="card-badge badge-emerald">Almond blossom in March — Madrid&#x27;s most invisible festival</span>
+                </div>
+                <p class="card-desc">On Alcalá, near the Ventas bullring. 1,500 almond trees — in late March they all blossom at once, ground and air turning white. Less known than Japanese cherry blossom but equally striking. Free, park always open. Go on a Sunday morning — neighbours walk here.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Círculo de Bellas Artes Rooftop</span>
+                    <span class="card-badge badge-emerald">Look out over the city from above Gran Vía</span>
+                </div>
+                <p class="card-desc">Alcalá 42, right at the corner of Gran Vía. Pay €5 and go up to the rooftop — Gran Vía, the Royal Palace, the Sierra de Guadarrama mountains visible 360 degrees. There&#x27;s a bar. Inside there are art exhibitions too, often free. Most beautiful at sunset.</p>
+            </div>
+            </div>
+            
+        <div class="callout-box success">
+            <div class="callout-title">✨ El Rastro — the Sunday morning ritual</div>
+            <p>Every Sunday 9am–3pm in La Latina. Calle de la Ribera de Curtidores is the main street — second-hand goods, antiques, clothing, books, everything. El Rastro on Sunday, then vermuteo at lunch in La Latina — the standard Madrileño Sunday plan. Watch your pockets, it gets crowded. Best selection in the early morning hours.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 7. Tourist Traps & Smarter Alternatives -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Scam Prevention</span>
+                <h2 class="section-title">Tourist Traps to Avoid & Smarter Alternatives</h2>
+            </div>
+            <p class="section-intro">Madrid is a generous city; its traps are squeezed into its three most touristic squares. Know these four — the rest is safe ground.</p>
+            <div class="traps-list">
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🍤 TRAP</span>
+                    <h4>Sitting down on Plaza Mayor</h4>
+                </div>
+                <p>The square&#x27;s terraces sell the historic view, not the kitchen: frozen calamares, double-priced sangria.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Walk the square, take your photo; eat your bocadillo de calamares standing at the classic bars just outside it.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🥘 TRAP</span>
+                    <h4>Mistaking Mercado San Miguel for a &#x27;real market&#x27;</h4>
+                </div>
+                <p>The glass market is beautiful, but it&#x27;s now a tourist showcase: small portions, big bills.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> For the real market experience go to Mercado de la Cebada or Antón Martín; same flavours, half the price, full of locals.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🎩 TRAP</span>
+                    <h4>Shell games and petitions at Sol</h4>
+                </div>
+                <p>The cup game, the &#x27;deaf association petition&#x27; and the rosemary-sprig fortune tellers around Puerta del Sol are the same crew in different costumes.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Don&#x27;t stop, smile, walk on; bag in front, phone in pocket. Even watching serves the crew&#x27;s crowd trick.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">💃 TRAP</span>
+                    <h4>Bus-tour flamenco &#x27;galas&#x27;</h4>
+                </div>
+                <p>The giant dinner-hall shows don&#x27;t carry flamenco&#x27;s soul; Madrid&#x27;s tablao tradition is smaller and truer.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Pick an established tablao, eat elsewhere, watch the show with a drink: cheaper and many times more moving.</div>
+            </div>
+            </div>
+            
+        <div class="callout-box warning">
+            <div class="callout-title">🛡️ The golden rule</div>
+            <p>Madrid&#x27;s rule is simple: walk two blocks from any tourist square and the price halves while the flavour doubles. The city is already telling you this; listen.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 8. Step-by-Step 1-Day Itinerary -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Smart Itinerary</span>
+                <h2 class="section-title">Day 1: Step-by-Step Madrid Walking Tour</h2>
+            </div>
+            <p class="section-intro">If you hate planning, follow these flows. The times are flexible; keep the spirit, break the order.</p>
+            <div class="timeline">
+                
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">09:00</span>
+                    <h4 class="step-title">The Prado — first hour</h4>
+                </div>
+                <p class="step-desc">Book ahead and meet Velázquez and Goya with a fresh head; two hours is enough — don&#x27;t attempt it all.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">11:30</span>
+                    <h4 class="step-title">Retiro Park</h4>
+                </div>
+                <p class="step-desc">The Crystal Palace, a rowboat on the pond, or simply sun on a bench: where Madrid breathes.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">14:00</span>
+                    <h4 class="step-title">Long lunch in La Latina</h4>
+                </div>
+                <p class="step-desc">Bar to bar along Cava Baja: huevos rotos, tortilla, a glass of vermut. Hurrying is forbidden.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">17:30</span>
+                    <h4 class="step-title">Malasaña + Chueca crawl</h4>
+                </div>
+                <p class="step-desc">Vintage shops, record stores, third-wave coffee; Madrid&#x27;s young heart beats in these two quarters.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">20:30</span>
+                    <h4 class="step-title">Sunset on the Círculo rooftop</h4>
+                </div>
+                <p class="step-desc">Look down Gran Vía from the Círculo de Bellas Artes terrace: the city&#x27;s lights switch on at exactly this hour.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">23:30</span>
+                    <h4 class="step-title">Churros at San Ginés</h4>
+                </div>
+                <p class="step-desc">Dipping churros in thick hot chocolate at midnight is Madrid&#x27;s closing ritual; the queue moves fast.</p>
+            </div>
+            
+            </div>
+
+            <!-- Mobile App Locked Content: Days 2 & 3 + Live GPS Map -->
+            <div class="app-lock-banner" id="download">
+                <div class="app-lock-badge">MyWay Mobile Exclusive 📱</div>
+                <h3>Unlock Days 2 & 3 + Turn-by-Turn GPS Map Navigation</h3>
+                <p>Explore the complete 3-day hourly itinerary for Madrid, browse our 180+ verified place database offline, and plan collaborative daily itineraries with friends in the MyWay app.</p>
+                <div style="margin: 16px 0 20px; font-size: 13px; color: #CBD5E1; font-weight: 600;">
+                    📍 Day 2: The palace and hidden Madrid &bull; 📍 Day 3: Market and goodbye
+                </div>
+                <div class="app-lock-features">
+                    <div class="app-lock-feature-item">✓ Live Interactive GPS Map & Navigation</div>
+                    <div class="app-lock-feature-item">✓ Full 180+ Place Database (Offline Mode)</div>
+                    <div class="app-lock-feature-item">✓ Co-plan Hourly Trips with Friends</div>
+                </div>
+                <div class="store-btn-row">
+                    <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
+                         Download on App Store
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.anilaybakan.sehirkesif" class="store-pill-btn">
+                        ▶ Get on Google Play
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+
+        <!-- 9. Phrases -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Local Slang</span>
+                <h2 class="section-title">Useful Everyday Phrases in Madrid</h2>
+            </div>
+            <p class="section-intro">Madrid is patient with English, but five Spanish words open the doors wide.</p>
+            <div class="phrases-grid">
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Buenas</div>
+                <div class="phrase-trans">The short all-day greeting — entering any bar or shop</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Gracias</div>
+                <div class="phrase-trans">Thank you — short, clear, always</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Por favor</div>
+                <div class="phrase-trans">Please — add it to the end of your order</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ ¡Salud!</div>
+                <div class="phrase-trans">Cheers! — vermut glasses rise to this</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Vale</div>
+                <div class="phrase-trans">OK / deal — Spain&#x27;s most used word; said twice: vale, vale</div>
+            </div>
+            </div>
+        </section>
+        
+
+        <!-- Ad Placement 3: Bottom Banner -->
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
     </main>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h4>MyWay Travel</h4>
+                    <p>The ultimate smart travel guide and AI route planner for modern explorers. Stop being a tourist; experience cities like a local.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>City Guides</h5>
+                    <ul>
+                        <li><a href="/guides/">All Cities</a></li>
+                        <li><a href="../guides/barcelona.html">Barcelona</a></li>
+                        <li><a href="../guides/roma.html">Roma</a></li>
+                        <li><a href="../guides/paris.html">Paris</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Company</h5>
+                    <ul>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../support.html">Support</a></li>
+                        <li><a href="/#features">Features</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Legal</h5>
+                    <ul>
+                        <li><a href="../privacy.html">Privacy Policy</a></li>
+                        <li><a href="../terms.html">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 

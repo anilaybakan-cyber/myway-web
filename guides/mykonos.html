@@ -3,11 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mykonos Travel Guide & Smart Walking Routes | MyWay</title>
-    <meta name="description" content="Explore Mykonos with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
+    <title>Mykonos Travel Guide & Curated Walking Routes | MyWay</title>
+    <meta name="description" content="The ultimate Mykonos travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
     
     <link rel="alternate" hreflang="en" href="/guides/mykonos.html">
     <link rel="alternate" hreflang="tr" href="/tr/rehber/mykonos.html">
+    <link rel="canonical" href="https://mywaytravelapp.com/guides/mykonos.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mywaytravelapp.com/guides/mykonos.html">
+    <meta property="og:title" content="Mykonos Travel Guide & Curated Walking Routes | MyWay">
+    <meta property="og:description" content="The ultimate Mykonos travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
+    <meta property="og:image" content="https://mywaytravelapp.com/images/cities/mykonos.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mykonos Travel Guide & Curated Walking Routes | MyWay">
+    <meta name="twitter:description" content="The ultimate Mykonos travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
+    <meta name="twitter:image" content="https://mywaytravelapp.com/images/cities/mykonos.jpg">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
@@ -22,6 +36,37 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
          crossorigin="anonymous"></script>
 
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TravelGuide",
+      "name": "Mykonos Travel Guide & Curated Walking Routes | MyWay",
+      "headline": "Mykonos Gezi Rehberi & Akıllı Yürüyüş Rotaları",
+      "description": "The ultimate Mykonos travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.",
+      "image": "https://mywaytravelapp.com/images/cities/mykonos.jpg",
+      "inLanguage": "en",
+      "url": "https://mywaytravelapp.com/guides/mykonos.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "MyWay Travel",
+        "url": "https://mywaytravelapp.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://mywaytravelapp.com/images/app_icon.png"
+        }
+      },
+      "about": {
+        "@type": "TouristDestination",
+        "name": "Mykonos",
+        "containedInPlace": {
+          "@type": "Country",
+          "name": "Greece"
+        }
+      }
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -35,13 +80,17 @@
             --primary-light: #9D93FF;
             --primary-dark: #5B4FD6;
             --accent: #EC4899;
+            --emerald: #10B981;
+            --warning: #EF4444;
             --bg-dark: #0F0B1A;
             --bg-section: #130F22;
             --bg-card: rgba(255, 255, 255, 0.04);
+            --bg-card-hover: rgba(255, 255, 255, 0.07);
             --text-primary: #FFFFFF;
             --text-secondary: #9CA3AF;
             --text-muted: #6B7280;
             --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(123, 110, 246, 0.3);
             --radius-lg: 24px;
             --radius-md: 16px;
             --radius-sm: 12px;
@@ -52,15 +101,15 @@
         body {
             background-color: var(--bg-dark); color: var(--text-primary);
             font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6; overflow-x: hidden;
+            line-height: 1.7; overflow-x: hidden;
         }
         
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
         
         /* Navbar */
         .navbar {
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            background: rgba(15, 11, 26, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            background: rgba(15, 11, 26, 0.88); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-subtle); height: 72px; display: flex; align-items: center;
         }
         .navbar-inner {
@@ -114,18 +163,27 @@
         .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(123, 110, 246, 0.4); }
         .nav-toggle { display: none; background: none; border: none; color: #fff; cursor: pointer; padding: 8px; }
 
+        /* Breadcrumbs */
+        .breadcrumbs {
+            display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-muted);
+            margin-bottom: 16px; flex-wrap: wrap;
+        }
+        .breadcrumbs a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+        .breadcrumbs a:hover { color: #fff; }
+        .breadcrumbs span { color: var(--text-muted); }
+
         /* Guide Hero */
         .guide-hero {
-            position: relative; min-height: 440px; display: flex; align-items: flex-end;
-            padding: 120px 24px 44px; margin-top: 72px; overflow: hidden; background-color: #1A132F;
+            position: relative; min-height: 480px; display: flex; align-items: flex-end;
+            padding: 130px 24px 50px; margin-top: 72px; overflow: hidden; background-color: #1A132F;
         }
         .guide-hero-bg {
             position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-            filter: brightness(0.65);
+            filter: brightness(0.6);
         }
         .guide-hero-overlay {
             position: absolute; inset: 0;
-            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.4) 60%, transparent 100%);
+            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.5) 60%, rgba(15, 11, 26, 0.2) 100%);
         }
         .guide-hero-content { position: relative; z-index: 2; width: 100%; }
         .city-badge {
@@ -133,28 +191,34 @@
             backdrop-filter: blur(10px); padding: 6px 14px; border-radius: 99px; font-size: 13px;
             font-weight: 600; margin-bottom: 14px; border: 1px solid rgba(255, 255, 255, 0.15);
         }
-        .guide-title { font-size: clamp(32px, 6vw, 52px); font-weight: 800; line-height: 1.1; margin-bottom: 10px; }
-        .guide-tagline { font-size: 16px; color: var(--primary-light); max-width: 720px; font-weight: 500; line-height: 1.5; }
-        
+        .guide-title { font-size: clamp(34px, 6vw, 56px); font-weight: 800; line-height: 1.1; margin-bottom: 12px; }
+        .guide-tagline { font-size: 17px; color: var(--primary-light); max-width: 780px; font-weight: 500; line-height: 1.5; margin-bottom: 12px; }
+        .guide-editorial-meta { font-size: 13px; color: #94A3B8; display: flex; gap: 16px; align-items: center; }
+
         /* Sections */
-        .section { padding: 42px 0; border-bottom: 1px solid var(--border-subtle); }
-        .section-header { margin-bottom: 24px; }
-        .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); font-weight: 700; }
-        .section-title { font-size: 24px; font-weight: 700; margin-top: 4px; }
+        .section { padding: 50px 0; border-bottom: 1px solid var(--border-subtle); }
+        .section-header { margin-bottom: 26px; }
+        .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); font-weight: 700; display: block; margin-bottom: 6px; }
+        .section-title { font-size: clamp(22px, 3.5vw, 28px); font-weight: 800; margin-bottom: 10px; }
+        .section-intro { font-size: 15px; color: #D1D5DB; line-height: 1.8; margin-bottom: 22px; max-width: 900px; }
         
-        .intro-text { font-size: 15px; color: #D1D5DB; line-height: 1.8; margin-bottom: 20px; }
-        
-        /* Local Word */
-        .local-word-box {
+        /* Pro-Tip & Local Word Boxes */
+        .callout-box {
             background: rgba(123, 110, 246, 0.08); border-left: 4px solid var(--primary);
-            padding: 18px 22px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-top: 20px;
+            padding: 18px 22px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin: 24px 0;
         }
-        .word-title { font-size: 15px; color: #fff; margin-bottom: 4px; }
+        .callout-box.warning {
+            background: rgba(239, 68, 68, 0.08); border-left: 4px solid var(--warning);
+        }
+        .callout-box.success {
+            background: rgba(16, 185, 129, 0.08); border-left: 4px solid var(--emerald);
+        }
+        .callout-title { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+        .callout-box p { font-size: 14px; color: #D1D5DB; line-height: 1.6; }
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
-        .local-word-box p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        
+
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
@@ -164,8 +228,8 @@
         .fact-val { font-size: 15px; font-weight: 600; color: #fff; margin: 2px 0; }
         .fact-sub { font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
         
-        /* Rules */
-        .rules-list { display: flex; flex-direction: column; gap: 14px; }
+        /* Rules List */
+        .rules-list { display: flex; flex-direction: column; gap: 14px; margin: 20px 0; }
         .rule-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 20px; display: flex; gap: 16px; align-items: flex-start;
@@ -177,52 +241,94 @@
         }
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        
-        /* Hidden Gems & Eat Grid */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
-        .gem-card, .eat-card {
+
+        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
+        .feature-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative;
+            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
+            display: flex; flex-direction: column; justify-content: space-between;
         }
-        .gem-badge {
-            display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase;
-            color: #10B981; background: rgba(16, 185, 129, 0.12); padding: 4px 10px; border-radius: 99px;
-            margin-bottom: 10px;
+        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
+        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
+        .card-title-group { display: flex; align-items: center; gap: 10px; }
+        .card-icon { font-size: 20px; }
+        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+        .card-badge {
+            font-size: 11px; font-weight: 700; text-transform: uppercase;
+            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
         }
-        .gem-hook { font-size: 13px; color: var(--primary-light); font-style: italic; margin-bottom: 8px; }
-        .gem-card h4, .eat-card h4 { font-size: 16px; margin-bottom: 6px; }
-        .gem-card p, .eat-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        .card-tip-box {
-            margin-top: 10px; padding: 8px 12px; background: rgba(255, 255, 255, 0.04);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1;
-        }
+        .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
+        .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
+        .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
+        .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        /* Traps */
-        .traps-list { display: flex; flex-direction: column; gap: 14px; }
-        .trap-card {
-            background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.15);
-            border-radius: var(--radius-md); padding: 20px;
+        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        .card-footer-tip {
+            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
         }
-        .trap-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+
+        /* Traps List */
+        .traps-list { display: flex; flex-direction: column; gap: 16px; margin: 20px 0; }
+        .trap-card {
+            background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.18);
+            border-radius: var(--radius-md); padding: 22px;
+        }
+        .trap-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
         .trap-tag {
             background: #EF4444; color: #fff; font-size: 11px; font-weight: 700;
-            text-transform: uppercase; padding: 2px 8px; border-radius: 6px;
+            text-transform: uppercase; padding: 3px 8px; border-radius: 6px;
         }
-        .trap-header h4 { font-size: 16px; color: #fff; }
+        .trap-header h4 { font-size: 17px; color: #fff; font-weight: 700; }
         .trap-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
         .trap-solution {
-            margin-top: 10px; padding: 10px 14px; background: rgba(16, 185, 129, 0.08);
-            border-left: 3px solid #10B981; border-radius: 4px; font-size: 13px; color: #D1D5DB; line-height: 1.5;
+            margin-top: 12px; padding: 12px 16px; background: rgba(16, 185, 129, 0.08);
+            border-left: 3px solid #10B981; border-radius: 6px; font-size: 13px; color: #D1D5DB; line-height: 1.5;
         }
-        
-        /* App CTA Banner */
-        .app-cta-banner {
-            background: linear-gradient(135deg, rgba(123, 110, 246, 0.15), rgba(236, 72, 153, 0.1));
-            border: 1px solid rgba(157, 147, 255, 0.3); border-radius: var(--radius-lg);
-            padding: 44px 20px; text-align: center; margin: 50px 0; position: relative;
+
+        /* Timeline (Itinerary) */
+        .timeline { position: relative; padding-left: 32px; margin: 24px 0 32px; }
+        .timeline::before {
+            content: ''; position: absolute; left: 11px; top: 8px; bottom: 8px;
+            width: 2px; background: linear-gradient(to bottom, var(--primary), var(--accent));
         }
-        .app-cta-banner h3 { font-size: clamp(22px, 4vw, 28px); font-weight: 800; margin-bottom: 10px; }
-        .app-cta-banner p { color: var(--text-secondary); max-width: 580px; margin: 0 auto 24px; font-size: 15px; }
+        .timeline-step { position: relative; margin-bottom: 24px; }
+        .timeline-step:last-child { margin-bottom: 0; }
+        .timeline-dot {
+            position: absolute; left: -32px; top: 4px; width: 24px; height: 24px;
+            border-radius: 50%; background: #19142B; border: 2px solid var(--primary-light);
+            display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700;
+        }
+        .step-header { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; flex-wrap: wrap; }
+        .step-time {
+            background: rgba(123, 110, 246, 0.2); color: var(--primary-light); font-size: 12px;
+            font-weight: 700; padding: 2px 8px; border-radius: 6px;
+        }
+        .step-title { font-size: 16px; font-weight: 700; color: #fff; }
+        .step-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+        /* Mobile App Gate Banner (Days 2 & 3 + Live Map) */
+        .app-lock-banner {
+            background: linear-gradient(135deg, rgba(123, 110, 246, 0.16) 0%, rgba(236, 72, 153, 0.12) 100%);
+            border: 1.5px solid rgba(157, 147, 255, 0.35); border-radius: var(--radius-lg);
+            padding: 36px 28px; margin: 36px 0; text-align: center; position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        .app-lock-badge {
+            display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px; border-radius: 100px; font-size: 12px; font-weight: 700;
+            color: #fff; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .app-lock-banner h3 { font-size: clamp(22px, 3.5vw, 28px); font-weight: 800; margin-bottom: 8px; }
+        .app-lock-banner p { color: var(--text-secondary); max-width: 620px; margin: 0 auto 20px; font-size: 14px; line-height: 1.6; }
+        .app-lock-features {
+            display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 24px;
+            font-size: 13px; color: #E2E8F0; font-weight: 500;
+        }
+        .app-lock-feature-item { display: flex; align-items: center; gap: 6px; }
+
+        /* Store Buttons */
         .store-btn-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
         .store-pill-btn {
             display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: white;
@@ -231,10 +337,48 @@
         }
         .store-pill-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2); }
 
+        /* Ad Placement Slots */
+        .ad-placement-slot {
+            margin: 40px auto; text-align: center; max-width: 728px; min-height: 90px;
+            background: rgba(255, 255, 255, 0.02); border: 1px dashed rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-sm); padding: 10px; overflow: hidden;
+        }
+        .ad-label {
+            font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px;
+            color: var(--text-muted); display: block; margin-bottom: 6px;
+        }
+
+        /* Phrases Table */
+        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrase-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm); padding: 14px 18px;
+        }
+        .phrase-orig { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+        .phrase-trans { font-size: 13px; color: var(--text-secondary); }
+
         /* Footer */
         .footer {
-            border-top: 1px solid var(--border-subtle); padding: 40px 24px 30px;
-            color: var(--text-muted); font-size: 13px; text-align: center;
+            border-top: 1px solid var(--border-subtle); padding: 50px 24px 36px;
+            color: var(--text-muted); font-size: 13px; background: #0A0713;
+        }
+        .footer-grid {
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px;
+            max-width: 1080px; margin: 0 auto 40px; text-align: left;
+        }
+        .footer-brand h4 { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+        .footer-brand p { font-size: 13px; line-height: 1.6; color: var(--text-secondary); max-width: 340px; }
+        .footer-col h5 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+        .footer-col a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+        .footer-col a:hover { color: #fff; }
+        .footer-bottom {
+            text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 24px; max-width: 1080px; margin: 0 auto;
+        }
+
+        @media (max-width: 860px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
         @media (max-width: 768px) {
@@ -246,8 +390,9 @@
             }
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
-            .guide-hero { min-height: 380px; padding-top: 90px; }
+            .guide-hero { min-height: 420px; padding-top: 100px; }
             .cards-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
 
@@ -268,6 +413,8 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="/guides/" class="active">City Guides</a></li>
                 <li><a href="/#features">Features</a></li>
+                <li><a href="../about.html">About Us</a></li>
+                <li><a href="../support.html">Support</a></li>
             </ul>
             <div class="nav-actions">
                 <!-- Top Right Globe Dropdown -->
@@ -295,37 +442,58 @@
         <img src="../images/cities/mykonos.jpg" alt="Mykonos" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
+            <div class="breadcrumbs">
+                <a href="/">Home</a> <span>/</span>
+                <a href="/guides/">City Guides</a> <span>/</span>
+                <span>🇬🇷 Greece</span> <span>/</span>
+                <span style="color:#fff;">Mykonos</span>
+            </div>
             <div class="city-badge">🇬🇷 Greece &bull; City Guides</div>
             <h1 class="guide-title">Mykonos</h1>
             <p class="guide-tagline">One of the world's most expensive islands — but this is also where you find the spirit of the Aegean islands in its purest form</p>
+            <div class="guide-editorial-meta">
+                <span>✍️ MyWay Editorial Team</span>
+                <span>•</span>
+                <span>🛡️ Verified Local Guide</span>
+            </div>
         </div>
     </header>
 
+    <!-- Ad Placement 1: Top Banner -->
+    <div class="container">
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    </div>
+
     <main class="container">
-        <!-- Overview -->
+        <!-- 1. Overview -->
         <section class="section">
             <div class="section-header">
-                <span class="section-label">Overview</span>
-                <h2 class="section-title">The Vibe of Mykonos</h2>
+                <span class="section-label">Overview & Atmosphere</span>
+                <h2 class="section-title">The True Vibe of Mykonos</h2>
             </div>
-            <p class="intro-text">Mykonos is like two different islands. The first: some of the world&#x27;s most expensive beach clubs, mega yachts, nightlife and Paradise Beach packed to bursting in July and August. The second: whitewashed walls, narrow labyrinthine streets, windmills and blue-domed Chora, hidden at the heart of the island. This second Mykonos shows itself in the early morning hours or out of season. The island is small — everything is reachable by vehicle or bus. But before coming to Mykonos, one thing needs to be accepted: everything here is expensive and in midsummer it is very crowded. If you come at peace with that reality, Mykonos won&#x27;t disappoint.</p>
+            <p class="section-intro">Mykonos is like two different islands. The first: some of the world&#x27;s most expensive beach clubs, mega yachts, nightlife and Paradise Beach packed to bursting in July and August. The second: whitewashed walls, narrow labyrinthine streets, windmills and blue-domed Chora, hidden at the heart of the island. This second Mykonos shows itself in the early morning hours or out of season. The island is small — everything is reachable by vehicle or bus. But before coming to Mykonos, one thing needs to be accepted: everything here is expensive and in midsummer it is very crowded. If you come at peace with that reality, Mykonos won&#x27;t disappoint.</p>
             
-        <div class="local-word-box">
-            <div class="word-title">🗣️ Local Concept: <strong>Chora</strong> <span class="pron">(HO-ra)</span></div>
+        <div class="callout-box">
+            <div class="callout-title">🗣️ Local Concept: <strong>Chora</strong> <span class="pron">(HO-ra)</span></div>
             <p>Greek for &#x27;town&#x27; or &#x27;city&#x27; — the main town of every island in the Aegean is called Chora. In Mykonos, Chora is the white labyrinthine heart of the island. Narrow streets, whitewashed walls, blue doors, climbing plants. Deliberately designed like a maze — in the old days to confuse pirates. Today getting lost is just as easy and just as beautiful.</p>
         </div>
         
-        </section>
 
-        <!-- Quick Facts -->
-        
-        <section class="section">
-            <div class="section-header">
-                <span class="section-label">Essentials</span>
-                <h2 class="section-title">Quick Logistics</h2>
-            </div>
+            <!-- Quick Facts Grid -->
             <div class="facts-grid">
-                
             <div class="fact-card">
                 <div class="fact-icon">✈️</div>
                 <div>
@@ -361,20 +529,13 @@
                     <div class="fact-sub">Street snacks €3-6 · taverna lunch €18-30 · Chora harbourfront very expensive</div>
                 </div>
             </div>
-            
             </div>
-        </section>
-        
 
-        <!-- Rules & Secrets -->
-        
-        <section class="section">
-            <div class="section-header">
-                <span class="section-label">Insider Advice</span>
-                <h2 class="section-title">3 Unwritten Rules for Mykonos</h2>
-            </div>
-            <div class="rules-list">
-                
+            <!-- 3 Unwritten Rules -->
+            
+            <div style="margin-top: 32px;">
+                <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 14px;">3 Unwritten Rules for Mykonos</h3>
+                <div class="rules-list">
             <div class="rule-card">
                 <div class="rule-num">1</div>
                 <div class="rule-content">
@@ -398,29 +559,593 @@
                     <p>Mykonos is small but KTEL buses don&#x27;t go everywhere. Hiring an ATV is the most practical way to reach the island&#x27;s northern coves, Ano Mera village and hidden beaches. Small car or motorbike are also options. In midsummer, hire in the early morning — by afternoon the good vehicles are gone.</p>
                 </div>
             </div>
+            </div>
+            </div>
             
+        </section>
+
+        <!-- 2. Transportation & Transit Logistics -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Getting Around</span>
+                <h2 class="section-title">Mykonos Public Transit & Airport Transfers</h2>
+            </div>
+            <p class="section-intro">Mykonos is a small island. KTEL buses cover the main spots; an ATV or vehicle is essential for the rest.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">✈️</span>
+                        <span class="card-title">From Athens to Mykonos</span>
+                    </div>
+                </div>
+                <p class="card-desc">Flight from Athens approximately 45 minutes, ticket €40-120 depending on season and how far in advance. Ferry: fast ferry from Piraeus (Seajet, Golden Star) 2-2.5 hours, €50-80. From Rafina port 1.5-2 hours, slightly cheaper. Rafina is close to Athens Airport — KTEL bus 30-40 minutes, €4. Buy tickets in advance in summer — sells out.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚌</span>
+                        <span class="card-title">KTEL buses — island transport</span>
+                    </div>
+                </div>
+                <p class="card-desc">Mykonos has two bus terminals: Fabrika (south) and Old Port (north) — no connection between them but 15 minutes on foot through Chora. From Fabrika: Paradise Beach (~15 min) and the airport (~10 min). From Old Port: the new port and Agios Stefanos. Ticket €1-3, cash from the driver.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🏍️</span>
+                        <span class="card-title">ATV and vehicle hire</span>
+                    </div>
+                </div>
+                <p class="card-desc">The most free-spirited way to explore the island. ATV daily €25-50, small car €40-70, motorbike €20-40. Essential for reaching the northern coves, Ano Mera village, Fokos and Agios Sostis beaches. Driving licence required. Hire in the early morning — by afternoon the best vehicles are gone. Return with a full tank.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">⛵</span>
+                        <span class="card-title">Boat — beach and island excursions</span>
+                    </div>
+                </div>
+                <p class="card-desc">Daily boat trips to Delos Island depart from Old Port pier — return approximately €20-25. Combined ticket with Rhenia €25-30. Private boat and catamaran hire also available. Water taxi between beaches: Platis Gialos to Paradise Beach by water taxi 10-15 minutes, €10-15.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚶</span>
+                        <span class="card-title">Walking — sufficient within Chora</span>
+                    </div>
+                </div>
+                <p class="card-desc">Chora&#x27;s labyrinth is walkable — small and compact. From the windmills to Little Venice 10 minutes, Paraportiani 5 minutes. Getting out of Chora requires KTEL or a vehicle. Coastal walking path and Chora-Ano Mera trail for the more adventurous.</p>
+            </div>
+            </div>
+            
+        <div class="callout-box success">
+            <div class="callout-title">💡 Delos Island — 30 minutes from Mykonos, thousands of years back</div>
+            <p>Daily boat trips from Mykonos Old Port. Centre of the ancient Greek pantheon — Temple of Apollo, lion statues, mosaic-floored houses. UNESCO World Heritage Site. Archaeological museum on the island. Return boat ticket plus archaeological site entry combined total €30-35. Take the first morning sailing. Very hot in summer — hat and water essential.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 3. Where to Stay (Neighborhoods) -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Neighborhood Guide</span>
+                <h2 class="section-title">Where to Stay in Mykonos: Best Areas</h2>
+            </div>
+            <p class="section-intro">Where you stay in Mykonos completely changes the experience — Chora is unmatched but expensive; the south coast is close to beaches but crowded.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Chora — the heart of the island</span>
+                    <span class="card-badge badge-purple">Most iconic</span>
+                </div>
+                <p class="card-desc">Mykonos&#x27;s white labyrinthine town. Everything within walking distance. Windmills, Little Venice, Paraportiani Church and nightlife. Quiet in the morning hours, crowded in the afternoon. Hotel prices are high but the essence of the Mykonos experience is here.</p>
+                <div class="card-footer-tip">Windmills • Little Venice • Nightlife hub</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Platis Gialos — south coast</span>
+                    <span class="card-badge badge-purple">Most practical</span>
+                </div>
+                <p class="card-desc">4 kilometres from Chora, a quiet beach village on the south coast. Connected to the Fabrika bus terminal. Water taxi to Paradise Beach and other beaches. Slightly more affordable than Chora. Suitable for families.</p>
+                <div class="card-footer-tip">South beach coast • Water taxi connections • Close to Chora</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Ornos — quiet and local</span>
+                    <span class="card-badge badge-purple">Most peaceful</span>
+                </div>
+                <p class="card-desc">A quiet small bay on the south coast, next to Platis Gialos. Away from the Paradise Beach crowds. Small waterfront restaurants and cafés. 10 minutes from Chora by car.</p>
+                <div class="card-footer-tip">Quiet bay • Small waterfront restaurants • Away from crowds</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Agios Ioannis — sunset village</span>
+                    <span class="card-badge badge-purple">Most romantic</span>
+                </div>
+                <p class="card-desc">Small village on the south-west coast. Known as the filming location of Shirley Valentine. Stunning sunset views facing Delos Island. Small beach and a few restaurants. 15 minutes from Chora by car. Quiet and authentic.</p>
+                <div class="card-footer-tip">Sunset facing Delos • Shirley Valentine location • Quiet and small</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Around Ano Mera</span>
+                    <span class="card-badge badge-purple">Most local</span>
+                </div>
+                <p class="card-desc">In the centre of the island, the only real village. Panagia Tourliani Monastery, local tavernas and authentic Mykonos life. Far from the beach but close to the northern coves. Half the price of Chora. Car essential.</p>
+                <div class="card-footer-tip">Panagia Tourliani Monastery • Local tavernas • Close to northern coves</div>
+            </div>
             </div>
         </section>
         
 
-        <!-- CTA Banner -->
-        <section class="app-cta-banner">
-            <h3>Unlock the Full Guide in MyWay 🌟</h3>
-            <p>Discover hidden gems, curated local food, tourist traps to avoid, and step-by-step smart walking routes for Mykonos in MyWay.</p>
-            <div class="store-btn-row">
-                <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
-                     Download on App Store
-                </a>
-                <a href="https://play.google.com/store/apps/details?id=com.anilaybakan.sehirkesif" class="store-pill-btn">
-                    ▶ Get on Google Play
-                </a>
+        <!-- Ad Placement 2: Mid-Article -->
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+
+        <!-- 4. Best Time to Visit -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Seasons & Weather</span>
+                <h2 class="section-title">Best Time to Visit Mykonos</h2>
+            </div>
+            <p class="section-intro">Mykonos is a summer island — but the difference in price and crowds between midsummer and shoulder seasons is enormous.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Spring</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Apr – Jun</span>
+                    </div>
+                    <span class="card-badge badge-amber">Quietest and most affordable</span>
+                </div>
+                <p class="card-desc">April and May are quiet in Mykonos. Most venues aren&#x27;t yet at full capacity but the weather is lovely and there are no crowds. June is the ideal balance point: temperatures 25-28°C, sea swimmable, venues open but far from the July-August crowds. Prices can drop to half those of midsummer.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Summer</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Jun – Aug</span>
+                    </div>
+                    <span class="card-badge badge-amber">Most lively but most expensive</span>
+                </div>
+                <p class="card-desc">July and August see Mykonos at its most lively but also its most crowded and most expensive. Paradise Beach parties, Little Venice evenings, Cavo Paradiso nightclub — all at their peak during this period. Everything requires booking far in advance. The only window to escape the crowds is in the very early morning hours.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Autumn</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Sep – Oct</span>
+                    </div>
+                    <span class="card-badge badge-amber">Second best time</span>
+                </div>
+                <p class="card-desc">September and October are Mykonos&#x27;s most balanced period. Still 22-26°C, the sea is swimmable. Prices have noticeably dropped. Some nightclubs have closed but the island is still running. Chora in the mornings is genuinely empty and beautiful. The meltemi dies down.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Winter</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Nov – Mar</span>
+                    </div>
+                    <span class="card-badge badge-amber">Local Mykonos</span>
+                </div>
+                <p class="card-desc">From November to March Mykonos belongs largely to its local residents. Most restaurants, bars and boutiques are closed. Weather 12-16°C and windy. But what remains open is genuinely local and cheap. Chora in the morning hours is quiet and photogenic. For those who choose this period consciously, it means seeing the island&#x27;s real face.</p>
+            </div>
             </div>
         </section>
+        
+
+        <!-- 5. Authentic Food & Dining -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Culinary Culture</span>
+                <h2 class="section-title">Authentic Local Dining & Food Secrets in Mykonos</h2>
+            </div>
+            <p class="section-intro">Mykonos is expensive — but if you go to the wrong place it&#x27;s even more so. Taverna selection is critical — flee the harbourfront, step into the side streets.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🐙</span>
+                        <span class="card-title">Octopus — sun-dried</span>
+                    </div>
+                </div>
+                <p class="card-desc">Mykonos&#x27;s most iconic sight: sun-dried octopus hanging on a taverna balcony. Grilled and served with lemon and olive oil. Seeing octopus hanging on the balcony is a good sign for freshness. Portion at coastal tavernas €12-20.</p>
+                <div class="card-footer-tip">⭐ Coastal tavernas · portion €12–20 · look for the one hanging on the balcony</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🥐</span>
+                        <span class="card-title">Tiropita and spanakopita</span>
+                    </div>
+                </div>
+                <p class="card-desc">Greek cheese pie (tiropita) and spinach pie (spanakopita) — thin filo, fresh cheese or spinach filling, baked in butter. Perfect for breakfast. From bakeries or small pastry shops. €2-3. The bakeries in Chora&#x27;s back streets are the best — easy to find while walking around.</p>
+                <div class="card-footer-tip">⭐ Chora back street bakeries · €2–3 · fresh in the morning</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🍖</span>
+                        <span class="card-title">Souvlaki and gyros</span>
+                    </div>
+                </div>
+                <p class="card-desc">Greece&#x27;s fast food but quality versions exist in Mykonos. Souvlaki: grilled lamb or chicken on a skewer, pita, tomato, onion and tzatziki. Gyros: döner-style, thinly sliced meat. Small shops outside Chora&#x27;s centre charge €5-8. Places on the harbourfront charge double.</p>
+                <div class="card-footer-tip">⭐ Chora back streets · €5–8 · avoid the harbourfront</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🍯</span>
+                        <span class="card-title">Loukoumades</span>
+                    </div>
+                </div>
+                <p class="card-desc">Hot dough balls, Greek honey and cinnamon. A few specialist loukoumades shops in Chora. Plain, chocolate or with ice cream versions. €4-6 a portion. Can be eaten sitting or walking. Morning or evening snack.</p>
+                <div class="card-footer-tip">⭐ Shops in Chora&#x27;s streets · €4–6 · eat them hot</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🐟</span>
+                        <span class="card-title">Fresh fish — at Fokos Taverna</span>
+                    </div>
+                </div>
+                <p class="card-desc">The fish restaurants on Chora&#x27;s harbourfront are expensive and inconsistent. For genuinely fresh fish go to Fokos Taverna — on the north coast, next to Fokos beach, not easy to reach but the fish is outstanding. Alternative: local tavernas in Ano Mera are both more affordable and fresher.</p>
+                <div class="card-footer-tip">⭐ Fokos Taverna · Ano Mera tavernas · portion €15–25</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🧀</span>
+                        <span class="card-title">Meze platter and Greek wine</span>
+                    </div>
+                </div>
+                <p class="card-desc">Greek meze sharing culture: tzatziki, tarama, fava (yellow pea purée), stuffed vine leaves, olives, white cheese. A leisurely meal with wine that stretches on. Santorini Assyrtiko is the best match. Glass €8-12, bottle €25-45.</p>
+                <div class="card-footer-tip">⭐ Local tavernas · meze platter €12–18 · try Assyrtiko wine</div>
+            </div>
+            </div>
+            
+        <div class="callout-box">
+            <div class="callout-title">🍷 Ano Mera — eating at half Chora&#x27;s price</div>
+            <p>8 kilometres east of Chora, the island&#x27;s only real village. Tavernas around the square in front of Panagia Tourliani Monastery are both cheaper and far more local. A menu that costs €30-40 in Chora is €15-20 here. 15-20 minutes by car. Having lunch here and then heading to the northern beaches makes for a perfect day plan.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 6. Handpicked Hidden Gems -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Off The Beaten Path</span>
+                <h2 class="section-title">Handpicked Hidden Gems in Mykonos</h2>
+            </div>
+            <p class="section-intro">Mykonos&#x27;s finest corners are far from the beach clubs — on the north coast, in quiet coves and in the early morning hours.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Agios Sostis beach</span>
+                    <span class="card-badge badge-emerald">Mykonos beach for those wanting to escape the crowds</span>
+                </div>
+                <p class="card-desc">A small cove on the northern part of the island, reached by vehicle or a long walk. No beach club, no sunbeds, no bar — just sand, rock and clean water. Kiki&#x27;s Taverna alongside, no reservations and with a queue but both delicious and affordable. Even in midsummer, far from the crowds.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Delos Island</span>
+                    <span class="card-badge badge-emerald">Even older than Delos — the sacred island of the Aegean</span>
+                </div>
+                <p class="card-desc">30 minutes by boat from Mykonos Old Port. The sacred island of ancient Greece — where Apollo and Artemis are said to have been born. The Terrace of the Lions, mosaic-floored houses, temple ruins. UNESCO World Heritage Site. Take the first morning sailing, bring a hat and water. Closed for visits in winter.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Paraportiani Church</span>
+                    <span class="card-badge badge-emerald">Paraportiani Church — one of the world&#x27;s most photographed churches</span>
+                </div>
+                <p class="card-desc">At the northern end of Chora, on a slope facing the sea. A cumulative white structure made up of five separate chapels. Considered one of the world&#x27;s most photographed churches. Nearly empty between 7am and 8am. In the afternoon, crowds with cameras at every corner. The church interior is small and plain but the atmosphere is very powerful.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Fokos beach and Fokos Taverna</span>
+                    <span class="card-badge badge-emerald">An isolated beach experience in the northerly wind</span>
+                </div>
+                <p class="card-desc">In the north-east of the island, at the end of a steep road reached by vehicle. Completely natural, no facilities. The adjacent Fokos Taverna is known as Mykonos&#x27;s finest fish restaurant — local produce, fresh fish, no reservations. Quiet even in midsummer. ATV or car essential. Plan a day trip that includes lunch here.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Cine Manto</span>
+                    <span class="card-badge badge-emerald">Cine Manto — open-air cinema under the stars</span>
+                </div>
+                <p class="card-desc">In the centre of Chora, inside a garden. A tradition much loved in Greece: open-air cinema on summer nights, continuing since the 1960s. Old Hollywood classics and modern films under the pine trees. Watching a film at night with tsipouro (local distilled spirit) and meze is another experience altogether. Ticket €10-12, reservation recommended.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Ano Mera village</span>
+                    <span class="card-badge badge-emerald">Ano Mera — non-touristy Mykonos</span>
+                </div>
+                <p class="card-desc">In the centre of the island, the island&#x27;s only real inland village. The square around Panagia Tourliani Monastery, local cafés and tavernas. Very different from Mykonos Chora&#x27;s white labyrinth — simpler, more local, quieter. A small market every day of the week. 15-20 minutes from Chora by car.</p>
+            </div>
+            </div>
+            
+        <div class="callout-box success">
+            <div class="callout-title">✨ The windmills — different in the morning and evening</div>
+            <p>The seven 16th-century windmills on the top of Chora are the symbol of Mykonos. Built to mill grain brought by the Aegean winds. Surrounded by photo crowds during the day. Between 7am and 8am in the morning or at sunset in the evening — both light and quiet are at their finest at those hours. The mill interiors are closed but the surroundings can be visited at any time.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 7. Tourist Traps & Smarter Alternatives -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Scam Prevention</span>
+                <h2 class="section-title">Tourist Traps to Avoid & Smarter Alternatives</h2>
+            </div>
+            <p class="section-intro">Mykonos is a two-faced island: the bright shop window and the quiet back. Know these four and choose the one without the bill.</p>
+            <div class="traps-list">
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🛋️ TRAP</span>
+                    <h4>A sunbed at the famous beach clubs</h4>
+                </div>
+                <p>Front-row sunbeds at the celebrated southern clubs rent for hundreds of euros; two coves over, the sea is the same blue.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Turn north: at Agios Sostis and Fokos there are no clubs and no speakers — lay your towel and take the sea for free.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🍽️ TRAP</span>
+                    <h4>A &#x27;Greek taverna&#x27; with a doorway inviter in Chora</h4>
+                </div>
+                <p>Most places waving menus in the narrow lanes sell frozen moussaka at view prices.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Sit where the locals sit: Ano Mera&#x27;s square and the backstreet tavernas serve the same dish at half the price with twice the care.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🚕 TRAP</span>
+                    <h4>Counting on taxis</h4>
+                </div>
+                <p>The island has a handful of taxis; waiting for one after the clubs takes hours and the haggling ends badly.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Use the SeaBus between beaches, the bus network is surprisingly good; if you rent wheels, decide who&#x27;s driving at night before you start.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🌅 TRAP</span>
+                    <h4>The &#x27;sunset table&#x27; booking fee in Little Venice</h4>
+                </div>
+                <p>Some bars charge extra for the window seat; but the sunset belongs to no one.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Sit on the wall by the windmills: same sunset, zero fee. If you&#x27;re drinking anyway, one cocktail&#x27;s price includes the view.</div>
+            </div>
+            </div>
+            
+        <div class="callout-box warning">
+            <div class="callout-title">🛡️ The golden rule</div>
+            <p>On Mykonos the wind (meltemi) picks your beach: north wind means calm southern coves, south wind means quiet northern beaches. Watch the wind, not the sunbeds.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 8. Step-by-Step 1-Day Itinerary -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Smart Itinerary</span>
+                <h2 class="section-title">Day 1: Step-by-Step Mykonos Walking Tour</h2>
+            </div>
+            <p class="section-intro">If you hate planning, follow these flows. The times are flexible; keep the spirit, break the order.</p>
+            <div class="timeline">
+                
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">08:00</span>
+                    <h4 class="step-title">Chora — before the crowds</h4>
+                </div>
+                <p class="step-desc">Get lost in the white labyrinth: bougainvillea, cats and boutiques not yet open. The best photos happen now.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">09:30</span>
+                    <h4 class="step-title">Paraportiani + the old port</h4>
+                </div>
+                <p class="step-desc">The white miracle of five churches melted into one; then the fishermen and the heirs of Petros the pelican.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">11:00</span>
+                    <h4 class="step-title">Escape to Agios Sostis</h4>
+                </div>
+                <p class="step-desc">The sea in the north&#x27;s untouched cove: no club, no umbrella, pure Aegean.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">14:00</span>
+                    <h4 class="step-title">Lunch — a Kiki&#x27;s-style taverna</h4>
+                </div>
+                <p class="step-desc">Grilled octopus, horiatiki, cold white wine; no electricity, no hurry, plenty of flavour.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">17:30</span>
+                    <h4 class="step-title">Ano Mera pause</h4>
+                </div>
+                <p class="step-desc">A monastery courtyard and a square coffee in the island&#x27;s inland village; island life, not a tourist window.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">19:30</span>
+                    <h4 class="step-title">Sunset at the windmills</h4>
+                </div>
+                <p class="step-desc">Sit on the wall before Kato Mili as the sun drops into the Aegean; then a glass in Little Venice and dinner in Chora.</p>
+            </div>
+            
+            </div>
+
+            <!-- Mobile App Locked Content: Days 2 & 3 + Live GPS Map -->
+            <div class="app-lock-banner" id="download">
+                <div class="app-lock-badge">MyWay Mobile Exclusive 📱</div>
+                <h3>Unlock Days 2 & 3 + Turn-by-Turn GPS Map Navigation</h3>
+                <p>Explore the complete 3-day hourly itinerary for Mykonos, browse our 180+ verified place database offline, and plan collaborative daily itineraries with friends in the MyWay app.</p>
+                <div style="margin: 16px 0 20px; font-size: 13px; color: #CBD5E1; font-weight: 600;">
+                    📍 Day 2: Delos morning &bull; 📍 Day 3: The wild east and cinema night
+                </div>
+                <div class="app-lock-features">
+                    <div class="app-lock-feature-item">✓ Live Interactive GPS Map & Navigation</div>
+                    <div class="app-lock-feature-item">✓ Full 180+ Place Database (Offline Mode)</div>
+                    <div class="app-lock-feature-item">✓ Co-plan Hourly Trips with Friends</div>
+                </div>
+                <div class="store-btn-row">
+                    <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
+                         Download on App Store
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.anilaybakan.sehirkesif" class="store-pill-btn">
+                        ▶ Get on Google Play
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+
+        <!-- 9. Phrases -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Local Slang</span>
+                <h2 class="section-title">Useful Everyday Phrases in Mykonos</h2>
+            </div>
+            <p class="section-intro">Even three words of Greek get the ouzo flowing at the taverna.</p>
+            <div class="phrases-grid">
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Yassas</div>
+                <div class="phrase-trans">Hello / goodbye — the formal, safe greeting</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Efharistó</div>
+                <div class="phrase-trans">Thank you — looks hard, lands by the second try</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Parakaló</div>
+                <div class="phrase-trans">Please / you&#x27;re welcome — Greek&#x27;s joker card</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Yamas!</div>
+                <div class="phrase-trans">Cheers! — ouzo glasses rise to this</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Opa!</div>
+                <div class="phrase-trans">The exclamation of joy — for breaking plates and starting dances alike</div>
+            </div>
+            </div>
+        </section>
+        
+
+        <!-- Ad Placement 3: Bottom Banner -->
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
     </main>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h4>MyWay Travel</h4>
+                    <p>The ultimate smart travel guide and AI route planner for modern explorers. Stop being a tourist; experience cities like a local.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>City Guides</h5>
+                    <ul>
+                        <li><a href="/guides/">All Cities</a></li>
+                        <li><a href="../guides/barcelona.html">Barcelona</a></li>
+                        <li><a href="../guides/roma.html">Roma</a></li>
+                        <li><a href="../guides/paris.html">Paris</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Company</h5>
+                    <ul>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../support.html">Support</a></li>
+                        <li><a href="/#features">Features</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Legal</h5>
+                    <ul>
+                        <li><a href="../privacy.html">Privacy Policy</a></li>
+                        <li><a href="../terms.html">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 

@@ -3,11 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Los Angeles Travel Guide & Smart Walking Routes | MyWay</title>
-    <meta name="description" content="Explore Los Angeles with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
+    <title>Los Angeles Travel Guide & Curated Walking Routes | MyWay</title>
+    <meta name="description" content="The ultimate Los Angeles travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
     
     <link rel="alternate" hreflang="en" href="/guides/losangeles.html">
     <link rel="alternate" hreflang="tr" href="/tr/rehber/losangeles.html">
+    <link rel="canonical" href="https://mywaytravelapp.com/guides/losangeles.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mywaytravelapp.com/guides/losangeles.html">
+    <meta property="og:title" content="Los Angeles Travel Guide & Curated Walking Routes | MyWay">
+    <meta property="og:description" content="The ultimate Los Angeles travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
+    <meta property="og:image" content="https://mywaytravelapp.com/images/cities/losangeles.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Los Angeles Travel Guide & Curated Walking Routes | MyWay">
+    <meta name="twitter:description" content="The ultimate Los Angeles travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
+    <meta name="twitter:image" content="https://mywaytravelapp.com/images/cities/losangeles.jpg">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
@@ -22,6 +36,37 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
          crossorigin="anonymous"></script>
 
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TravelGuide",
+      "name": "Los Angeles Travel Guide & Curated Walking Routes | MyWay",
+      "headline": "Los Angeles Gezi Rehberi & Akıllı Yürüyüş Rotaları",
+      "description": "The ultimate Los Angeles travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.",
+      "image": "https://mywaytravelapp.com/images/cities/losangeles.jpg",
+      "inLanguage": "en",
+      "url": "https://mywaytravelapp.com/guides/losangeles.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "MyWay Travel",
+        "url": "https://mywaytravelapp.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://mywaytravelapp.com/images/app_icon.png"
+        }
+      },
+      "about": {
+        "@type": "TouristDestination",
+        "name": "Los Angeles",
+        "containedInPlace": {
+          "@type": "Country",
+          "name": "USA"
+        }
+      }
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -35,13 +80,17 @@
             --primary-light: #9D93FF;
             --primary-dark: #5B4FD6;
             --accent: #EC4899;
+            --emerald: #10B981;
+            --warning: #EF4444;
             --bg-dark: #0F0B1A;
             --bg-section: #130F22;
             --bg-card: rgba(255, 255, 255, 0.04);
+            --bg-card-hover: rgba(255, 255, 255, 0.07);
             --text-primary: #FFFFFF;
             --text-secondary: #9CA3AF;
             --text-muted: #6B7280;
             --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(123, 110, 246, 0.3);
             --radius-lg: 24px;
             --radius-md: 16px;
             --radius-sm: 12px;
@@ -52,15 +101,15 @@
         body {
             background-color: var(--bg-dark); color: var(--text-primary);
             font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6; overflow-x: hidden;
+            line-height: 1.7; overflow-x: hidden;
         }
         
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
         
         /* Navbar */
         .navbar {
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            background: rgba(15, 11, 26, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            background: rgba(15, 11, 26, 0.88); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-subtle); height: 72px; display: flex; align-items: center;
         }
         .navbar-inner {
@@ -114,18 +163,27 @@
         .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(123, 110, 246, 0.4); }
         .nav-toggle { display: none; background: none; border: none; color: #fff; cursor: pointer; padding: 8px; }
 
+        /* Breadcrumbs */
+        .breadcrumbs {
+            display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-muted);
+            margin-bottom: 16px; flex-wrap: wrap;
+        }
+        .breadcrumbs a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+        .breadcrumbs a:hover { color: #fff; }
+        .breadcrumbs span { color: var(--text-muted); }
+
         /* Guide Hero */
         .guide-hero {
-            position: relative; min-height: 440px; display: flex; align-items: flex-end;
-            padding: 120px 24px 44px; margin-top: 72px; overflow: hidden; background-color: #1A132F;
+            position: relative; min-height: 480px; display: flex; align-items: flex-end;
+            padding: 130px 24px 50px; margin-top: 72px; overflow: hidden; background-color: #1A132F;
         }
         .guide-hero-bg {
             position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-            filter: brightness(0.65);
+            filter: brightness(0.6);
         }
         .guide-hero-overlay {
             position: absolute; inset: 0;
-            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.4) 60%, transparent 100%);
+            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.5) 60%, rgba(15, 11, 26, 0.2) 100%);
         }
         .guide-hero-content { position: relative; z-index: 2; width: 100%; }
         .city-badge {
@@ -133,28 +191,34 @@
             backdrop-filter: blur(10px); padding: 6px 14px; border-radius: 99px; font-size: 13px;
             font-weight: 600; margin-bottom: 14px; border: 1px solid rgba(255, 255, 255, 0.15);
         }
-        .guide-title { font-size: clamp(32px, 6vw, 52px); font-weight: 800; line-height: 1.1; margin-bottom: 10px; }
-        .guide-tagline { font-size: 16px; color: var(--primary-light); max-width: 720px; font-weight: 500; line-height: 1.5; }
-        
+        .guide-title { font-size: clamp(34px, 6vw, 56px); font-weight: 800; line-height: 1.1; margin-bottom: 12px; }
+        .guide-tagline { font-size: 17px; color: var(--primary-light); max-width: 780px; font-weight: 500; line-height: 1.5; margin-bottom: 12px; }
+        .guide-editorial-meta { font-size: 13px; color: #94A3B8; display: flex; gap: 16px; align-items: center; }
+
         /* Sections */
-        .section { padding: 42px 0; border-bottom: 1px solid var(--border-subtle); }
-        .section-header { margin-bottom: 24px; }
-        .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); font-weight: 700; }
-        .section-title { font-size: 24px; font-weight: 700; margin-top: 4px; }
+        .section { padding: 50px 0; border-bottom: 1px solid var(--border-subtle); }
+        .section-header { margin-bottom: 26px; }
+        .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); font-weight: 700; display: block; margin-bottom: 6px; }
+        .section-title { font-size: clamp(22px, 3.5vw, 28px); font-weight: 800; margin-bottom: 10px; }
+        .section-intro { font-size: 15px; color: #D1D5DB; line-height: 1.8; margin-bottom: 22px; max-width: 900px; }
         
-        .intro-text { font-size: 15px; color: #D1D5DB; line-height: 1.8; margin-bottom: 20px; }
-        
-        /* Local Word */
-        .local-word-box {
+        /* Pro-Tip & Local Word Boxes */
+        .callout-box {
             background: rgba(123, 110, 246, 0.08); border-left: 4px solid var(--primary);
-            padding: 18px 22px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-top: 20px;
+            padding: 18px 22px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin: 24px 0;
         }
-        .word-title { font-size: 15px; color: #fff; margin-bottom: 4px; }
+        .callout-box.warning {
+            background: rgba(239, 68, 68, 0.08); border-left: 4px solid var(--warning);
+        }
+        .callout-box.success {
+            background: rgba(16, 185, 129, 0.08); border-left: 4px solid var(--emerald);
+        }
+        .callout-title { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+        .callout-box p { font-size: 14px; color: #D1D5DB; line-height: 1.6; }
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
-        .local-word-box p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        
+
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
@@ -164,8 +228,8 @@
         .fact-val { font-size: 15px; font-weight: 600; color: #fff; margin: 2px 0; }
         .fact-sub { font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
         
-        /* Rules */
-        .rules-list { display: flex; flex-direction: column; gap: 14px; }
+        /* Rules List */
+        .rules-list { display: flex; flex-direction: column; gap: 14px; margin: 20px 0; }
         .rule-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 20px; display: flex; gap: 16px; align-items: flex-start;
@@ -177,52 +241,94 @@
         }
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        
-        /* Hidden Gems & Eat Grid */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
-        .gem-card, .eat-card {
+
+        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
+        .feature-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative;
+            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
+            display: flex; flex-direction: column; justify-content: space-between;
         }
-        .gem-badge {
-            display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase;
-            color: #10B981; background: rgba(16, 185, 129, 0.12); padding: 4px 10px; border-radius: 99px;
-            margin-bottom: 10px;
+        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
+        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
+        .card-title-group { display: flex; align-items: center; gap: 10px; }
+        .card-icon { font-size: 20px; }
+        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+        .card-badge {
+            font-size: 11px; font-weight: 700; text-transform: uppercase;
+            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
         }
-        .gem-hook { font-size: 13px; color: var(--primary-light); font-style: italic; margin-bottom: 8px; }
-        .gem-card h4, .eat-card h4 { font-size: 16px; margin-bottom: 6px; }
-        .gem-card p, .eat-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        .card-tip-box {
-            margin-top: 10px; padding: 8px 12px; background: rgba(255, 255, 255, 0.04);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1;
-        }
+        .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
+        .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
+        .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
+        .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        /* Traps */
-        .traps-list { display: flex; flex-direction: column; gap: 14px; }
-        .trap-card {
-            background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.15);
-            border-radius: var(--radius-md); padding: 20px;
+        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        .card-footer-tip {
+            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
         }
-        .trap-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+
+        /* Traps List */
+        .traps-list { display: flex; flex-direction: column; gap: 16px; margin: 20px 0; }
+        .trap-card {
+            background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.18);
+            border-radius: var(--radius-md); padding: 22px;
+        }
+        .trap-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
         .trap-tag {
             background: #EF4444; color: #fff; font-size: 11px; font-weight: 700;
-            text-transform: uppercase; padding: 2px 8px; border-radius: 6px;
+            text-transform: uppercase; padding: 3px 8px; border-radius: 6px;
         }
-        .trap-header h4 { font-size: 16px; color: #fff; }
+        .trap-header h4 { font-size: 17px; color: #fff; font-weight: 700; }
         .trap-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
         .trap-solution {
-            margin-top: 10px; padding: 10px 14px; background: rgba(16, 185, 129, 0.08);
-            border-left: 3px solid #10B981; border-radius: 4px; font-size: 13px; color: #D1D5DB; line-height: 1.5;
+            margin-top: 12px; padding: 12px 16px; background: rgba(16, 185, 129, 0.08);
+            border-left: 3px solid #10B981; border-radius: 6px; font-size: 13px; color: #D1D5DB; line-height: 1.5;
         }
-        
-        /* App CTA Banner */
-        .app-cta-banner {
-            background: linear-gradient(135deg, rgba(123, 110, 246, 0.15), rgba(236, 72, 153, 0.1));
-            border: 1px solid rgba(157, 147, 255, 0.3); border-radius: var(--radius-lg);
-            padding: 44px 20px; text-align: center; margin: 50px 0; position: relative;
+
+        /* Timeline (Itinerary) */
+        .timeline { position: relative; padding-left: 32px; margin: 24px 0 32px; }
+        .timeline::before {
+            content: ''; position: absolute; left: 11px; top: 8px; bottom: 8px;
+            width: 2px; background: linear-gradient(to bottom, var(--primary), var(--accent));
         }
-        .app-cta-banner h3 { font-size: clamp(22px, 4vw, 28px); font-weight: 800; margin-bottom: 10px; }
-        .app-cta-banner p { color: var(--text-secondary); max-width: 580px; margin: 0 auto 24px; font-size: 15px; }
+        .timeline-step { position: relative; margin-bottom: 24px; }
+        .timeline-step:last-child { margin-bottom: 0; }
+        .timeline-dot {
+            position: absolute; left: -32px; top: 4px; width: 24px; height: 24px;
+            border-radius: 50%; background: #19142B; border: 2px solid var(--primary-light);
+            display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700;
+        }
+        .step-header { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; flex-wrap: wrap; }
+        .step-time {
+            background: rgba(123, 110, 246, 0.2); color: var(--primary-light); font-size: 12px;
+            font-weight: 700; padding: 2px 8px; border-radius: 6px;
+        }
+        .step-title { font-size: 16px; font-weight: 700; color: #fff; }
+        .step-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+        /* Mobile App Gate Banner (Days 2 & 3 + Live Map) */
+        .app-lock-banner {
+            background: linear-gradient(135deg, rgba(123, 110, 246, 0.16) 0%, rgba(236, 72, 153, 0.12) 100%);
+            border: 1.5px solid rgba(157, 147, 255, 0.35); border-radius: var(--radius-lg);
+            padding: 36px 28px; margin: 36px 0; text-align: center; position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        .app-lock-badge {
+            display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px; border-radius: 100px; font-size: 12px; font-weight: 700;
+            color: #fff; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .app-lock-banner h3 { font-size: clamp(22px, 3.5vw, 28px); font-weight: 800; margin-bottom: 8px; }
+        .app-lock-banner p { color: var(--text-secondary); max-width: 620px; margin: 0 auto 20px; font-size: 14px; line-height: 1.6; }
+        .app-lock-features {
+            display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 24px;
+            font-size: 13px; color: #E2E8F0; font-weight: 500;
+        }
+        .app-lock-feature-item { display: flex; align-items: center; gap: 6px; }
+
+        /* Store Buttons */
         .store-btn-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
         .store-pill-btn {
             display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: white;
@@ -231,10 +337,48 @@
         }
         .store-pill-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2); }
 
+        /* Ad Placement Slots */
+        .ad-placement-slot {
+            margin: 40px auto; text-align: center; max-width: 728px; min-height: 90px;
+            background: rgba(255, 255, 255, 0.02); border: 1px dashed rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-sm); padding: 10px; overflow: hidden;
+        }
+        .ad-label {
+            font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px;
+            color: var(--text-muted); display: block; margin-bottom: 6px;
+        }
+
+        /* Phrases Table */
+        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrase-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm); padding: 14px 18px;
+        }
+        .phrase-orig { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+        .phrase-trans { font-size: 13px; color: var(--text-secondary); }
+
         /* Footer */
         .footer {
-            border-top: 1px solid var(--border-subtle); padding: 40px 24px 30px;
-            color: var(--text-muted); font-size: 13px; text-align: center;
+            border-top: 1px solid var(--border-subtle); padding: 50px 24px 36px;
+            color: var(--text-muted); font-size: 13px; background: #0A0713;
+        }
+        .footer-grid {
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px;
+            max-width: 1080px; margin: 0 auto 40px; text-align: left;
+        }
+        .footer-brand h4 { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+        .footer-brand p { font-size: 13px; line-height: 1.6; color: var(--text-secondary); max-width: 340px; }
+        .footer-col h5 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+        .footer-col a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+        .footer-col a:hover { color: #fff; }
+        .footer-bottom {
+            text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 24px; max-width: 1080px; margin: 0 auto;
+        }
+
+        @media (max-width: 860px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
         @media (max-width: 768px) {
@@ -246,8 +390,9 @@
             }
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
-            .guide-hero { min-height: 380px; padding-top: 90px; }
+            .guide-hero { min-height: 420px; padding-top: 100px; }
             .cards-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
 
@@ -268,6 +413,8 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="/guides/" class="active">City Guides</a></li>
                 <li><a href="/#features">Features</a></li>
+                <li><a href="../about.html">About Us</a></li>
+                <li><a href="../support.html">Support</a></li>
             </ul>
             <div class="nav-actions">
                 <!-- Top Right Globe Dropdown -->
@@ -295,37 +442,58 @@
         <img src="../images/cities/losangeles.jpg" alt="Los Angeles" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
+            <div class="breadcrumbs">
+                <a href="/">Home</a> <span>/</span>
+                <a href="/guides/">City Guides</a> <span>/</span>
+                <span>🇺🇸 USA</span> <span>/</span>
+                <span style="color:#fff;">Los Angeles</span>
+            </div>
             <div class="city-badge">🇺🇸 USA &bull; City Guides</div>
             <h1 class="guide-title">Los Angeles</h1>
             <p class="guide-tagline">The endless city of palms, golden-hour light and taco trucks</p>
+            <div class="guide-editorial-meta">
+                <span>✍️ MyWay Editorial Team</span>
+                <span>•</span>
+                <span>🛡️ Verified Local Guide</span>
+            </div>
         </div>
     </header>
 
+    <!-- Ad Placement 1: Top Banner -->
+    <div class="container">
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    </div>
+
     <main class="container">
-        <!-- Overview -->
+        <!-- 1. Overview -->
         <section class="section">
             <div class="section-header">
-                <span class="section-label">Overview</span>
-                <h2 class="section-title">The Vibe of Los Angeles</h2>
+                <span class="section-label">Overview & Atmosphere</span>
+                <h2 class="section-title">The True Vibe of Los Angeles</h2>
             </div>
-            <p class="intro-text">Los Angeles is not one city but a hundred towns strung together with palm trees: Venice&#x27;s canals, Hollywood&#x27;s hills, Downtown&#x27;s art deco towers and K-Town&#x27;s late-night grills build separate worlds on one map. Light is the star here — the film industry moved for this golden hour and never left. Fame is the shop window, but the city&#x27;s heart beats in the taco truck queue, on the Griffith trail at sunset, and in the wave hitting the shore. To love LA, stop looking for celebrities; look at the light and the table.</p>
+            <p class="section-intro">Los Angeles is not one city but a hundred towns strung together with palm trees: Venice&#x27;s canals, Hollywood&#x27;s hills, Downtown&#x27;s art deco towers and K-Town&#x27;s late-night grills build separate worlds on one map. Light is the star here — the film industry moved for this golden hour and never left. Fame is the shop window, but the city&#x27;s heart beats in the taco truck queue, on the Griffith trail at sunset, and in the wave hitting the shore. To love LA, stop looking for celebrities; look at the light and the table.</p>
             
-        <div class="local-word-box">
-            <div class="word-title">🗣️ Local Concept: <strong>Golden hour</strong> <span class="pron">(GOHL-den OW-er)</span></div>
+        <div class="callout-box">
+            <div class="callout-title">🗣️ Local Concept: <strong>Golden hour</strong> <span class="pron">(GOHL-den OW-er)</span></div>
             <p>The hour of golden light before sunset: LA&#x27;s sacred time zone. Filmmakers settled the city for this light, photographers build their day around it, and everyone on the beach falls quiet when it arrives. When planning in LA, first decide where you&#x27;ll be for golden hour — everything else arranges itself around it.</p>
         </div>
         
-        </section>
 
-        <!-- Quick Facts -->
-        
-        <section class="section">
-            <div class="section-header">
-                <span class="section-label">Essentials</span>
-                <h2 class="section-title">Quick Logistics</h2>
-            </div>
+            <!-- Quick Facts Grid -->
             <div class="facts-grid">
-                
             <div class="fact-card">
                 <div class="fact-icon">✈️</div>
                 <div>
@@ -361,20 +529,13 @@
                     <div class="fact-sub">A megacity of 224 languages</div>
                 </div>
             </div>
-            
             </div>
-        </section>
-        
 
-        <!-- Rules & Secrets -->
-        
-        <section class="section">
-            <div class="section-header">
-                <span class="section-label">Insider Advice</span>
-                <h2 class="section-title">3 Unwritten Rules for Los Angeles</h2>
-            </div>
-            <div class="rules-list">
-                
+            <!-- 3 Unwritten Rules -->
+            
+            <div style="margin-top: 32px;">
+                <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 14px;">3 Unwritten Rules for Los Angeles</h3>
+                <div class="rules-list">
             <div class="rule-card">
                 <div class="rule-num">1</div>
                 <div class="rule-content">
@@ -398,29 +559,593 @@
                     <p>The Walk of Fame is a five-minute glance; LA&#x27;s real magic lives on Griffith&#x27;s paths, in the taco truck queue and on the ocean cliffs. Shift your expectation from showcase to light — that&#x27;s when the city opens.</p>
                 </div>
             </div>
+            </div>
+            </div>
             
+        </section>
+
+        <!-- 2. Transportation & Transit Logistics -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Getting Around</span>
+                <h2 class="section-title">Los Angeles Public Transit & Airport Transfers</h2>
+            </div>
+            <p class="section-intro">LA is a freeway civilization: the car is the base, the metro is a surprising helper, and the beach bike path is the most delightful line.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">✈️</span>
+                        <span class="card-title">Arriving from LAX</span>
+                    </div>
+                </div>
+                <p class="card-desc">LAX is chaotic but the solution is simple: the ride-app pickup zone (LAX-it) or the FlyAway buses. The center is 30–60 minutes by traffic — if you land between 16:00 and 19:00, pack patience.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚇</span>
+                        <span class="card-title">Where the metro works</span>
+                    </div>
+                </div>
+                <p class="card-desc">The B line links Downtown to Hollywood, the E line Downtown to Santa Monica: on those two corridors the metro beats the car. Ride with a TAP card — on game and concert days rail is the secret superpower.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚗</span>
+                        <span class="card-title">The car and freeway language</span>
+                    </div>
+                </div>
+                <p class="card-desc">In LA the freeways take &#x27;the&#x27;: the 405, the 101, the 10. Navigation is essential and lane discipline loose. Read parking signs to the last line — the LA parking ticket is the city&#x27;s hidden tax.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚲</span>
+                        <span class="card-title">The beach bike path</span>
+                    </div>
+                </div>
+                <p class="card-desc">The Strand: 35 kilometers of shoreline cycling from Santa Monica to Redondo. The Venice–Santa Monica stretch is the classic — rent in the morning and pedal beside the ocean. This is LA&#x27;s best &#x27;freeway&#x27;.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🥾</span>
+                        <span class="card-title">The trail network</span>
+                    </div>
+                </div>
+                <p class="card-desc">From Griffith Park to Runyon Canyon the city is laced with trails: observatory routes, Hollywood Sign viewpoints and canyon walks. A water bottle and sunscreen are the official equipment of an LA hike.</p>
+            </div>
+            </div>
+            
+        <div class="callout-box success">
+            <div class="callout-title">💡 Golden hour tip</div>
+            <p>The day&#x27;s most important transport decision is this: where will you be at golden hour? Griffith Observatory, the El Matador cliffs or the Venice pier — be in that zone by 16:00 and finish the traffic before the light. Sunset is an appointment in LA; you don&#x27;t arrive late.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 3. Where to Stay (Neighborhoods) -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Neighborhood Guide</span>
+                <h2 class="section-title">Where to Stay in Los Angeles: Best Areas</h2>
+            </div>
+            <p class="section-intro">In LA choosing a neighborhood is choosing a vacation: the coast&#x27;s coolness, the hills&#x27; views, Downtown&#x27;s walkability or the Eastside&#x27;s cafe rhythm.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Santa Monica</span>
+                    <span class="card-badge badge-purple">Coastal classic</span>
+                </div>
+                <p class="card-desc">The pier, the beach bike path and walkable streets: LA&#x27;s most practical seaside base. Linked to Downtown by the E line — the only realistic address for a car-free LA plan.</p>
+                <div class="card-footer-tip">Beside the pier • Walkable • On the metro</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Venice</span>
+                    <span class="card-badge badge-purple">Bohemian shore</span>
+                </div>
+                <p class="card-desc">The canals, Abbot Kinney&#x27;s boutiques and the boardwalk&#x27;s chaos: LA&#x27;s free-spirited corner. Surfer mornings, street-artist evenings — for the character seeker.</p>
+                <div class="card-footer-tip">Canal walks • Abbot Kinney • Surf mornings</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Hollywood and WeHo</span>
+                    <span class="card-badge badge-purple">Night rhythm</span>
+                </div>
+                <p class="card-desc">Close to the studios, the comedy clubs and the Sunset Strip: the base for a nightlife-first visit. Brace for tourist noise — the payoff is location and energy.</p>
+                <div class="card-footer-tip">Sunset Strip • Comedy clubs • Near the studios</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Downtown (DTLA)</span>
+                    <span class="card-badge badge-purple">Walkable center</span>
+                </div>
+                <p class="card-desc">Art deco towers, Grand Central Market and museums: LA&#x27;s most walkable district. The metro junction — a smart base for the car-free traveler and the architecture lover.</p>
+                <div class="card-footer-tip">Art deco • Beside the market • Metro junction</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Silver Lake and Los Feliz</span>
+                    <span class="card-badge badge-purple">Eastside soul</span>
+                </div>
+                <p class="card-desc">Coffee roasters, record stores and the Griffith trails next door: local LA&#x27;s cafe rhythm. Hills and reservoir walks at the doorstep — for those seeking life, not showcase.</p>
+                <div class="card-footer-tip">Coffee scene • Beside Griffith • Vintage shops</div>
+            </div>
             </div>
         </section>
         
 
-        <!-- CTA Banner -->
-        <section class="app-cta-banner">
-            <h3>Unlock the Full Guide in MyWay 🌟</h3>
-            <p>Discover hidden gems, curated local food, tourist traps to avoid, and step-by-step smart walking routes for Los Angeles in MyWay.</p>
-            <div class="store-btn-row">
-                <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
-                     Download on App Store
-                </a>
-                <a href="https://play.google.com/store/apps/details?id=com.anilaybakan.sehirkesif" class="store-pill-btn">
-                    ▶ Get on Google Play
-                </a>
+        <!-- Ad Placement 2: Mid-Article -->
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+
+        <!-- 4. Best Time to Visit -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Seasons & Weather</span>
+                <h2 class="section-title">Best Time to Visit Los Angeles</h2>
+            </div>
+            <p class="section-intro">LA&#x27;s weather is a joke with a twist: assumed always sunny, it keeps its own moods — June gray, October heat — and every season works if you know the fine print.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Spring</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Mar – May</span>
+                    </div>
+                    <span class="card-badge badge-amber">Blossom and Clarity</span>
+                </div>
+                <p class="card-desc">Winter rains have greened the hills, and in May the jacarandas paint the streets purple. The air is clear, the trails fresh — LA&#x27;s most photogenic and most balanced season.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Summer</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Jun – Aug</span>
+                    </div>
+                    <span class="card-badge badge-amber">From June Gloom to Golden Summer</span>
+                </div>
+                <p class="card-desc">June mornings on the coast are gray — the &#x27;June Gloom&#x27; legend is real; it burns off by noon. July and August are peak beach season: 24°C at the shore, 35°C in the valley. Two climates in one day — that is the LA summer&#x27;s tease.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Autumn</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Sep – Nov</span>
+                    </div>
+                    <span class="card-badge badge-amber">The Locals&#x27; Summer</span>
+                </div>
+                <p class="card-desc">September and October are LA&#x27;s secret peak: the ocean at its warmest, the sky clear, the crowds gone. Santa Ana winds bring spells of dry heat — this is the season locals call the real summer.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Winter</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Dec – Feb</span>
+                    </div>
+                    <span class="card-badge badge-amber">Green Hills and Snow Backdrops</span>
+                </div>
+                <p class="card-desc">LA winter means sunny 18°C days: rain visits now and then, the hills turn green, the air gets rinsed. In post-rain clarity the snowy San Gabriels settle behind the skyline — the year&#x27;s best photographic light.</p>
+            </div>
             </div>
         </section>
+        
+
+        <!-- 5. Authentic Food & Dining -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Culinary Culture</span>
+                <h2 class="section-title">Authentic Local Dining & Food Secrets in Los Angeles</h2>
+            </div>
+            <p class="section-intro">The LA table runs from truck to starred menu, but its heart beats in one place: a tortilla, meat off the fire and a wedge of lime.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🌮</span>
+                        <span class="card-title">The taco truck ritual</span>
+                    </div>
+                </div>
+                <p class="card-desc">A truck glowing on a night corner, plate in hand, eaten standing: al pastor, carne asada and lime. In LA the taco is not a meal but the city&#x27;s shared language — the truck with the queue is always the right truck.</p>
+                <div class="card-footer-tip">⭐ The shared language · queue = truth</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🍔</span>
+                        <span class="card-title">In-N-Out and animal style</span>
+                    </div>
+                </div>
+                <p class="card-desc">California&#x27;s cult burger chain: short menu, long secret menu. Give the password &#x27;animal style&#x27; (grilled onions, extra sauce) — and leave as someone in the know, not a tourist.</p>
+                <div class="card-footer-tip">⭐ Cult classic · animal style</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🥩</span>
+                        <span class="card-title">K-Town Korean BBQ</span>
+                    </div>
+                </div>
+                <p class="card-desc">Koreatown&#x27;s tables burn charcoal late into the night: the banchan army, marinated meats and an insatiable atmosphere. America&#x27;s best Korean cooking outside Seoul lives here.</p>
+                <div class="card-footer-tip">⭐ Night classic · charcoal tables</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🏛️</span>
+                        <span class="card-title">A Grand Central Market crawl</span>
+                    </div>
+                </div>
+                <p class="card-desc">The Downtown market open since 1917: taco counters to third-wave coffee, pupusas to pastrami. Join the lunch crowd — LA&#x27;s kitchen summarized under one roof.</p>
+                <div class="card-footer-tip">⭐ Since 1917 · one-roof summary</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🥑</span>
+                        <span class="card-title">The California brunch</span>
+                    </div>
+                </div>
+                <p class="card-desc">Avocado toast, açaí bowls and cold brew: it looks like a cliché until you eat it on a sunny terrace. LA brunch is not a meal but a weekend liturgy — be ready to queue.</p>
+                <div class="card-footer-tip">⭐ Terrace liturgy · weekends</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🐟</span>
+                        <span class="card-title">Baja-style fish tacos</span>
+                    </div>
+                </div>
+                <p class="card-desc">Crisp-battered fish, cabbage, crema and lime: Baja California&#x27;s gift to the LA shore. The undisputed answer to a beach-day lunch — a michelada alongside is for the brave.</p>
+                <div class="card-footer-tip">⭐ Beach classic · with lime</div>
+            </div>
+            </div>
+            
+        <div class="callout-box">
+            <div class="callout-title">🍷 Table rule</div>
+            <p>In LA good food follows the queue, not the fame: the starred room wants a reservation, the taco truck wants patience — both are worth it. Eat in the ethnic neighborhoods (K-Town, Boyle Heights, Thai Town, Little Ethiopia): the city&#x27;s true food map lives there.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 6. Handpicked Hidden Gems -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Off The Beaten Path</span>
+                <h2 class="section-title">Handpicked Hidden Gems in Los Angeles</h2>
+            </div>
+            <p class="section-intro">Everyone knows the Hollywood Sign; these six are LA&#x27;s cliff-sounding, book-scented hidden face.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">El Matador Beach</span>
+                    <span class="card-badge badge-emerald">The beach the cliffs hide</span>
+                </div>
+                <p class="card-desc">Malibu&#x27;s rocky cove: you descend a cliff stairway to giant rocks and cave arches that turn to silhouettes at sunset. LA&#x27;s most cinematic beach — at golden hour, be nowhere else.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">The Getty Center</span>
+                    <span class="card-badge badge-emerald">A free palace on the hill</span>
+                </div>
+                <p class="card-desc">The white marble art complex reached by tram: the collection free, the gardens sculptural, the view running to the ocean. Give it half a day — LA&#x27;s most gracious gift.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">The Bradbury Building and the Last Bookstore</span>
+                    <span class="card-badge badge-emerald">An art deco time capsule</span>
+                </div>
+                <p class="card-desc">The wrought-iron light atrium of 1893 (familiar from Blade Runner) and, two blocks away, the book tunnels of the Last Bookstore: DTLA&#x27;s most photogenic pair. They fit one afternoon.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">The Venice Canals</span>
+                    <span class="card-badge badge-emerald">The quiet canals</span>
+                </div>
+                <p class="card-desc">Two streets in from the boardwalk chaos, canals from 1905: ducks, wooden bridges and gardened houses. Walk them at sunset — the dream Venice was named for still stands here.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Griffith&#x27;s back trails</span>
+                    <span class="card-badge badge-emerald">The sign&#x27;s back road</span>
+                </div>
+                <p class="card-desc">Tourists face the Hollywood Sign from the front; you walk Griffith Park&#x27;s back trails (the Charlie Turner or Wonder View routes) — sign, observatory and city in one frame, half the crowd.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Barnsdall Art Park</span>
+                    <span class="card-badge badge-emerald">An art picnic on the hill</span>
+                </div>
+                <p class="card-desc">The hilltop park around Frank Lloyd Wright&#x27;s Hollyhock House: sunset picnics under olive trees, summer wine evenings. Los Feliz&#x27;s local secret — the calmest lawn with a Hollywood view.</p>
+            </div>
+            </div>
+            
+        <div class="callout-box success">
+            <div class="callout-title">✨ Light strategy</div>
+            <p>LA&#x27;s hidden corners run on light: the Getty at noon, the canals in the late afternoon, El Matador at golden hour, the observatory at night. The same place is ordinary in the wrong light and unforgettable in the right one — in this city, the hour outranks the address.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 7. Tourist Traps & Smarter Alternatives -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Scam Prevention</span>
+                <h2 class="section-title">Tourist Traps to Avoid & Smarter Alternatives</h2>
+            </div>
+            <p class="section-intro">LA&#x27;s traps wait in fame&#x27;s shadow; know these four and live the city by its light, not its shop window.</p>
+            <div class="traps-list">
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">⭐ TRAP</span>
+                    <h4>Walk of Fame expectations</h4>
+                </div>
+                <p>The starred sidewalk is crowded, loud and plainer than imagined; the costumed characters charge after the photo.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Look for five minutes, take the picture, move on — and know the costume photo costs money before you pose. Live the real Hollywood on a studio tour (Warner Bros) or at a movie in El Capitan.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🚌 TRAP</span>
+                    <h4>Celebrity-home tour vans</h4>
+                </div>
+                <p>&#x27;Celebrity homes&#x27; tours are mostly an expensive traffic experience past tall hedges and guessed addresses.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Spend that money on the Warner Bros studio tour or the Getty: cinema itself is more interesting than a celebrity&#x27;s hedge. For neighborhood curiosity, gliding through Beverly Hills in your own car is free.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🚗 TRAP</span>
+                    <h4>Ignoring the traffic math</h4>
+                </div>
+                <p>&#x27;Venice to Hollywood, 25 minutes&#x27; says the map; at 17:00 the truth is 80. The visitor who plans across town sees LA through a windshield.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Hold to the one-zone-a-day rule; make crossings between 10:00 and 15:00. Build the evening where you already are — meeting golden hour on a freeway is LA&#x27;s most classic regret.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🅿️ TRAP</span>
+                    <h4>Not reading the parking sign</h4>
+                </div>
+                <p>LA parking signs are layered legal documents: misreading costs a ticket or a tow, and beach lots multiply prices on event days.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Read EVERY line of the sign; when unsure, use an app-listed garage. On beach days go early or walk a few blocks from a neighborhood street — a ticketless day is a won day in LA.</div>
+            </div>
+            </div>
+            
+        <div class="callout-box warning">
+            <div class="callout-title">🛡️ Golden rule</div>
+            <p>In LA the best things are either free or queued: the beach, the trail and golden hour cost nothing; the taco and the brunch cost a queue. Pay for light and food, not fame — the city will show you more than stars.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 8. Step-by-Step 1-Day Itinerary -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Smart Itinerary</span>
+                <h2 class="section-title">Day 1: Step-by-Step Los Angeles Walking Tour</h2>
+            </div>
+            <p class="section-intro">If you hate planning, follow these flows. Times are flexible; keep the spirit, break the order.</p>
+            <div class="timeline">
+                
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">08:00</span>
+                    <h4 class="step-title">Venice morning</h4>
+                </div>
+                <p class="step-desc">Watch the surfers while the boardwalk wakes, then turn into the canals: Venice&#x27;s two faces in morning calm.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">10:00</span>
+                    <h4 class="step-title">The beach bike ride</h4>
+                </div>
+                <p class="step-desc">Pedal the Strand to Santa Monica: ocean on your left, palms on your right. The Ferris wheel photo at the pier is the classic.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">12:30</span>
+                    <h4 class="step-title">Fish taco lunch</h4>
+                </div>
+                <p class="step-desc">Baja-style crisp fish tacos with lime and cabbage: the beach day&#x27;s undisputed lunch.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">14:30</span>
+                    <h4 class="step-title">DTLA hours</h4>
+                </div>
+                <p class="step-desc">Cross to Downtown on the E line: the Bradbury&#x27;s light atrium, the Last Bookstore tunnels and a Grand Central Market coffee.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">17:30</span>
+                    <h4 class="step-title">Griffith golden hour</h4>
+                </div>
+                <p class="step-desc">Reach the observatory before sunset: the city turns orange with the Hollywood Sign alongside. This is LA&#x27;s appointed hour.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">20:30</span>
+                    <h4 class="step-title">Taco truck night</h4>
+                </div>
+                <p class="step-desc">Stop at the glowing truck on the way home: al pastor &#x27;with everything&#x27;. Standing, plate in hand — an LA day closes this way.</p>
+            </div>
+            
+            </div>
+
+            <!-- Mobile App Locked Content: Days 2 & 3 + Live GPS Map -->
+            <div class="app-lock-banner" id="download">
+                <div class="app-lock-badge">MyWay Mobile Exclusive 📱</div>
+                <h3>Unlock Days 2 & 3 + Turn-by-Turn GPS Map Navigation</h3>
+                <p>Explore the complete 3-day hourly itinerary for Los Angeles, browse our 180+ verified place database offline, and plan collaborative daily itineraries with friends in the MyWay app.</p>
+                <div style="margin: 16px 0 20px; font-size: 13px; color: #CBD5E1; font-weight: 600;">
+                    📍 Day 2: Malibu and Getty day &bull; 📍 Day 3: Hills and the Eastside
+                </div>
+                <div class="app-lock-features">
+                    <div class="app-lock-feature-item">✓ Live Interactive GPS Map & Navigation</div>
+                    <div class="app-lock-feature-item">✓ Full 180+ Place Database (Offline Mode)</div>
+                    <div class="app-lock-feature-item">✓ Co-plan Hourly Trips with Friends</div>
+                </div>
+                <div class="store-btn-row">
+                    <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
+                         Download on App Store
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.anilaybakan.sehirkesif" class="store-pill-btn">
+                        ▶ Get on Google Play
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+
+        <!-- 9. Phrases -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Local Slang</span>
+                <h2 class="section-title">Useful Everyday Phrases in Los Angeles</h2>
+            </div>
+            <p class="section-intro">LA English is relaxed, sunny and freeway-accented; these five phrases tune you to the city&#x27;s frequency.</p>
+            <div class="phrases-grid">
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ The 405</div>
+                <div class="phrase-trans">Freeways take &#x27;the&#x27; — &#x27;the 405 was brutal&#x27; is the universal LA opener</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ June Gloom</div>
+                <div class="phrase-trans">The gray coastal cloud of June mornings — burns off by noon; locals don&#x27;t blink</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ SigAlert</div>
+                <div class="phrase-trans">The major-traffic-jam alert — reroute when you hear it on the radio</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Dude</div>
+                <div class="phrase-trans">Address, exclamation, punctuation — the all-purpose salt of LA sentences</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ No worries</div>
+                <div class="phrase-trans">It&#x27;s all fine — the official seal of California ease; use liberally</div>
+            </div>
+            </div>
+        </section>
+        
+
+        <!-- Ad Placement 3: Bottom Banner -->
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
     </main>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h4>MyWay Travel</h4>
+                    <p>The ultimate smart travel guide and AI route planner for modern explorers. Stop being a tourist; experience cities like a local.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>City Guides</h5>
+                    <ul>
+                        <li><a href="/guides/">All Cities</a></li>
+                        <li><a href="../guides/barcelona.html">Barcelona</a></li>
+                        <li><a href="../guides/roma.html">Roma</a></li>
+                        <li><a href="../guides/paris.html">Paris</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Company</h5>
+                    <ul>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../support.html">Support</a></li>
+                        <li><a href="/#features">Features</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Legal</h5>
+                    <ul>
+                        <li><a href="../privacy.html">Privacy Policy</a></li>
+                        <li><a href="../terms.html">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 

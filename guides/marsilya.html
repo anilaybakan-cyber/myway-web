@@ -3,11 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marseille Travel Guide & Smart Walking Routes | MyWay</title>
-    <meta name="description" content="Explore Marseille with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
+    <title>Marseille Travel Guide & Curated Walking Routes | MyWay</title>
+    <meta name="description" content="The ultimate Marseille travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
     
     <link rel="alternate" hreflang="en" href="/guides/marsilya.html">
     <link rel="alternate" hreflang="tr" href="/tr/rehber/marsilya.html">
+    <link rel="canonical" href="https://mywaytravelapp.com/guides/marsilya.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mywaytravelapp.com/guides/marsilya.html">
+    <meta property="og:title" content="Marseille Travel Guide & Curated Walking Routes | MyWay">
+    <meta property="og:description" content="The ultimate Marseille travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
+    <meta property="og:image" content="https://mywaytravelapp.com/images/cities/marsilya.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Marseille Travel Guide & Curated Walking Routes | MyWay">
+    <meta name="twitter:description" content="The ultimate Marseille travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
+    <meta name="twitter:image" content="https://mywaytravelapp.com/images/cities/marsilya.jpg">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
@@ -22,6 +36,37 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
          crossorigin="anonymous"></script>
 
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TravelGuide",
+      "name": "Marseille Travel Guide & Curated Walking Routes | MyWay",
+      "headline": "Marseille Gezi Rehberi & Akıllı Yürüyüş Rotaları",
+      "description": "The ultimate Marseille travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.",
+      "image": "https://mywaytravelapp.com/images/cities/marsilya.jpg",
+      "inLanguage": "en",
+      "url": "https://mywaytravelapp.com/guides/marsilya.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "MyWay Travel",
+        "url": "https://mywaytravelapp.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://mywaytravelapp.com/images/app_icon.png"
+        }
+      },
+      "about": {
+        "@type": "TouristDestination",
+        "name": "Marseille",
+        "containedInPlace": {
+          "@type": "Country",
+          "name": "France"
+        }
+      }
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -35,13 +80,17 @@
             --primary-light: #9D93FF;
             --primary-dark: #5B4FD6;
             --accent: #EC4899;
+            --emerald: #10B981;
+            --warning: #EF4444;
             --bg-dark: #0F0B1A;
             --bg-section: #130F22;
             --bg-card: rgba(255, 255, 255, 0.04);
+            --bg-card-hover: rgba(255, 255, 255, 0.07);
             --text-primary: #FFFFFF;
             --text-secondary: #9CA3AF;
             --text-muted: #6B7280;
             --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(123, 110, 246, 0.3);
             --radius-lg: 24px;
             --radius-md: 16px;
             --radius-sm: 12px;
@@ -52,15 +101,15 @@
         body {
             background-color: var(--bg-dark); color: var(--text-primary);
             font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6; overflow-x: hidden;
+            line-height: 1.7; overflow-x: hidden;
         }
         
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
         
         /* Navbar */
         .navbar {
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            background: rgba(15, 11, 26, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            background: rgba(15, 11, 26, 0.88); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-subtle); height: 72px; display: flex; align-items: center;
         }
         .navbar-inner {
@@ -114,18 +163,27 @@
         .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(123, 110, 246, 0.4); }
         .nav-toggle { display: none; background: none; border: none; color: #fff; cursor: pointer; padding: 8px; }
 
+        /* Breadcrumbs */
+        .breadcrumbs {
+            display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-muted);
+            margin-bottom: 16px; flex-wrap: wrap;
+        }
+        .breadcrumbs a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+        .breadcrumbs a:hover { color: #fff; }
+        .breadcrumbs span { color: var(--text-muted); }
+
         /* Guide Hero */
         .guide-hero {
-            position: relative; min-height: 440px; display: flex; align-items: flex-end;
-            padding: 120px 24px 44px; margin-top: 72px; overflow: hidden; background-color: #1A132F;
+            position: relative; min-height: 480px; display: flex; align-items: flex-end;
+            padding: 130px 24px 50px; margin-top: 72px; overflow: hidden; background-color: #1A132F;
         }
         .guide-hero-bg {
             position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-            filter: brightness(0.65);
+            filter: brightness(0.6);
         }
         .guide-hero-overlay {
             position: absolute; inset: 0;
-            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.4) 60%, transparent 100%);
+            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.5) 60%, rgba(15, 11, 26, 0.2) 100%);
         }
         .guide-hero-content { position: relative; z-index: 2; width: 100%; }
         .city-badge {
@@ -133,28 +191,34 @@
             backdrop-filter: blur(10px); padding: 6px 14px; border-radius: 99px; font-size: 13px;
             font-weight: 600; margin-bottom: 14px; border: 1px solid rgba(255, 255, 255, 0.15);
         }
-        .guide-title { font-size: clamp(32px, 6vw, 52px); font-weight: 800; line-height: 1.1; margin-bottom: 10px; }
-        .guide-tagline { font-size: 16px; color: var(--primary-light); max-width: 720px; font-weight: 500; line-height: 1.5; }
-        
+        .guide-title { font-size: clamp(34px, 6vw, 56px); font-weight: 800; line-height: 1.1; margin-bottom: 12px; }
+        .guide-tagline { font-size: 17px; color: var(--primary-light); max-width: 780px; font-weight: 500; line-height: 1.5; margin-bottom: 12px; }
+        .guide-editorial-meta { font-size: 13px; color: #94A3B8; display: flex; gap: 16px; align-items: center; }
+
         /* Sections */
-        .section { padding: 42px 0; border-bottom: 1px solid var(--border-subtle); }
-        .section-header { margin-bottom: 24px; }
-        .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); font-weight: 700; }
-        .section-title { font-size: 24px; font-weight: 700; margin-top: 4px; }
+        .section { padding: 50px 0; border-bottom: 1px solid var(--border-subtle); }
+        .section-header { margin-bottom: 26px; }
+        .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); font-weight: 700; display: block; margin-bottom: 6px; }
+        .section-title { font-size: clamp(22px, 3.5vw, 28px); font-weight: 800; margin-bottom: 10px; }
+        .section-intro { font-size: 15px; color: #D1D5DB; line-height: 1.8; margin-bottom: 22px; max-width: 900px; }
         
-        .intro-text { font-size: 15px; color: #D1D5DB; line-height: 1.8; margin-bottom: 20px; }
-        
-        /* Local Word */
-        .local-word-box {
+        /* Pro-Tip & Local Word Boxes */
+        .callout-box {
             background: rgba(123, 110, 246, 0.08); border-left: 4px solid var(--primary);
-            padding: 18px 22px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-top: 20px;
+            padding: 18px 22px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin: 24px 0;
         }
-        .word-title { font-size: 15px; color: #fff; margin-bottom: 4px; }
+        .callout-box.warning {
+            background: rgba(239, 68, 68, 0.08); border-left: 4px solid var(--warning);
+        }
+        .callout-box.success {
+            background: rgba(16, 185, 129, 0.08); border-left: 4px solid var(--emerald);
+        }
+        .callout-title { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+        .callout-box p { font-size: 14px; color: #D1D5DB; line-height: 1.6; }
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
-        .local-word-box p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        
+
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
@@ -164,8 +228,8 @@
         .fact-val { font-size: 15px; font-weight: 600; color: #fff; margin: 2px 0; }
         .fact-sub { font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
         
-        /* Rules */
-        .rules-list { display: flex; flex-direction: column; gap: 14px; }
+        /* Rules List */
+        .rules-list { display: flex; flex-direction: column; gap: 14px; margin: 20px 0; }
         .rule-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 20px; display: flex; gap: 16px; align-items: flex-start;
@@ -177,52 +241,94 @@
         }
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        
-        /* Hidden Gems & Eat Grid */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
-        .gem-card, .eat-card {
+
+        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
+        .feature-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative;
+            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
+            display: flex; flex-direction: column; justify-content: space-between;
         }
-        .gem-badge {
-            display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase;
-            color: #10B981; background: rgba(16, 185, 129, 0.12); padding: 4px 10px; border-radius: 99px;
-            margin-bottom: 10px;
+        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
+        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
+        .card-title-group { display: flex; align-items: center; gap: 10px; }
+        .card-icon { font-size: 20px; }
+        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+        .card-badge {
+            font-size: 11px; font-weight: 700; text-transform: uppercase;
+            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
         }
-        .gem-hook { font-size: 13px; color: var(--primary-light); font-style: italic; margin-bottom: 8px; }
-        .gem-card h4, .eat-card h4 { font-size: 16px; margin-bottom: 6px; }
-        .gem-card p, .eat-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        .card-tip-box {
-            margin-top: 10px; padding: 8px 12px; background: rgba(255, 255, 255, 0.04);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1;
-        }
+        .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
+        .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
+        .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
+        .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        /* Traps */
-        .traps-list { display: flex; flex-direction: column; gap: 14px; }
-        .trap-card {
-            background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.15);
-            border-radius: var(--radius-md); padding: 20px;
+        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        .card-footer-tip {
+            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
         }
-        .trap-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+
+        /* Traps List */
+        .traps-list { display: flex; flex-direction: column; gap: 16px; margin: 20px 0; }
+        .trap-card {
+            background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.18);
+            border-radius: var(--radius-md); padding: 22px;
+        }
+        .trap-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
         .trap-tag {
             background: #EF4444; color: #fff; font-size: 11px; font-weight: 700;
-            text-transform: uppercase; padding: 2px 8px; border-radius: 6px;
+            text-transform: uppercase; padding: 3px 8px; border-radius: 6px;
         }
-        .trap-header h4 { font-size: 16px; color: #fff; }
+        .trap-header h4 { font-size: 17px; color: #fff; font-weight: 700; }
         .trap-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
         .trap-solution {
-            margin-top: 10px; padding: 10px 14px; background: rgba(16, 185, 129, 0.08);
-            border-left: 3px solid #10B981; border-radius: 4px; font-size: 13px; color: #D1D5DB; line-height: 1.5;
+            margin-top: 12px; padding: 12px 16px; background: rgba(16, 185, 129, 0.08);
+            border-left: 3px solid #10B981; border-radius: 6px; font-size: 13px; color: #D1D5DB; line-height: 1.5;
         }
-        
-        /* App CTA Banner */
-        .app-cta-banner {
-            background: linear-gradient(135deg, rgba(123, 110, 246, 0.15), rgba(236, 72, 153, 0.1));
-            border: 1px solid rgba(157, 147, 255, 0.3); border-radius: var(--radius-lg);
-            padding: 44px 20px; text-align: center; margin: 50px 0; position: relative;
+
+        /* Timeline (Itinerary) */
+        .timeline { position: relative; padding-left: 32px; margin: 24px 0 32px; }
+        .timeline::before {
+            content: ''; position: absolute; left: 11px; top: 8px; bottom: 8px;
+            width: 2px; background: linear-gradient(to bottom, var(--primary), var(--accent));
         }
-        .app-cta-banner h3 { font-size: clamp(22px, 4vw, 28px); font-weight: 800; margin-bottom: 10px; }
-        .app-cta-banner p { color: var(--text-secondary); max-width: 580px; margin: 0 auto 24px; font-size: 15px; }
+        .timeline-step { position: relative; margin-bottom: 24px; }
+        .timeline-step:last-child { margin-bottom: 0; }
+        .timeline-dot {
+            position: absolute; left: -32px; top: 4px; width: 24px; height: 24px;
+            border-radius: 50%; background: #19142B; border: 2px solid var(--primary-light);
+            display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700;
+        }
+        .step-header { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; flex-wrap: wrap; }
+        .step-time {
+            background: rgba(123, 110, 246, 0.2); color: var(--primary-light); font-size: 12px;
+            font-weight: 700; padding: 2px 8px; border-radius: 6px;
+        }
+        .step-title { font-size: 16px; font-weight: 700; color: #fff; }
+        .step-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+        /* Mobile App Gate Banner (Days 2 & 3 + Live Map) */
+        .app-lock-banner {
+            background: linear-gradient(135deg, rgba(123, 110, 246, 0.16) 0%, rgba(236, 72, 153, 0.12) 100%);
+            border: 1.5px solid rgba(157, 147, 255, 0.35); border-radius: var(--radius-lg);
+            padding: 36px 28px; margin: 36px 0; text-align: center; position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        .app-lock-badge {
+            display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px; border-radius: 100px; font-size: 12px; font-weight: 700;
+            color: #fff; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .app-lock-banner h3 { font-size: clamp(22px, 3.5vw, 28px); font-weight: 800; margin-bottom: 8px; }
+        .app-lock-banner p { color: var(--text-secondary); max-width: 620px; margin: 0 auto 20px; font-size: 14px; line-height: 1.6; }
+        .app-lock-features {
+            display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 24px;
+            font-size: 13px; color: #E2E8F0; font-weight: 500;
+        }
+        .app-lock-feature-item { display: flex; align-items: center; gap: 6px; }
+
+        /* Store Buttons */
         .store-btn-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
         .store-pill-btn {
             display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: white;
@@ -231,10 +337,48 @@
         }
         .store-pill-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2); }
 
+        /* Ad Placement Slots */
+        .ad-placement-slot {
+            margin: 40px auto; text-align: center; max-width: 728px; min-height: 90px;
+            background: rgba(255, 255, 255, 0.02); border: 1px dashed rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-sm); padding: 10px; overflow: hidden;
+        }
+        .ad-label {
+            font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px;
+            color: var(--text-muted); display: block; margin-bottom: 6px;
+        }
+
+        /* Phrases Table */
+        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrase-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm); padding: 14px 18px;
+        }
+        .phrase-orig { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+        .phrase-trans { font-size: 13px; color: var(--text-secondary); }
+
         /* Footer */
         .footer {
-            border-top: 1px solid var(--border-subtle); padding: 40px 24px 30px;
-            color: var(--text-muted); font-size: 13px; text-align: center;
+            border-top: 1px solid var(--border-subtle); padding: 50px 24px 36px;
+            color: var(--text-muted); font-size: 13px; background: #0A0713;
+        }
+        .footer-grid {
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px;
+            max-width: 1080px; margin: 0 auto 40px; text-align: left;
+        }
+        .footer-brand h4 { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+        .footer-brand p { font-size: 13px; line-height: 1.6; color: var(--text-secondary); max-width: 340px; }
+        .footer-col h5 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+        .footer-col a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+        .footer-col a:hover { color: #fff; }
+        .footer-bottom {
+            text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 24px; max-width: 1080px; margin: 0 auto;
+        }
+
+        @media (max-width: 860px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
         @media (max-width: 768px) {
@@ -246,8 +390,9 @@
             }
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
-            .guide-hero { min-height: 380px; padding-top: 90px; }
+            .guide-hero { min-height: 420px; padding-top: 100px; }
             .cards-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
 
@@ -268,6 +413,8 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="/guides/" class="active">City Guides</a></li>
                 <li><a href="/#features">Features</a></li>
+                <li><a href="../about.html">About Us</a></li>
+                <li><a href="../support.html">Support</a></li>
             </ul>
             <div class="nav-actions">
                 <!-- Top Right Globe Dropdown -->
@@ -295,37 +442,58 @@
         <img src="../images/cities/marsilya.jpg" alt="Marseille" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
+            <div class="breadcrumbs">
+                <a href="/">Home</a> <span>/</span>
+                <a href="/guides/">City Guides</a> <span>/</span>
+                <span>🇫🇷 France</span> <span>/</span>
+                <span style="color:#fff;">Marseille</span>
+            </div>
             <div class="city-badge">🇫🇷 France &bull; City Guides</div>
             <h1 class="guide-title">Marseille</h1>
             <p class="guide-tagline">France's oldest city — and its most misunderstood</p>
+            <div class="guide-editorial-meta">
+                <span>✍️ MyWay Editorial Team</span>
+                <span>•</span>
+                <span>🛡️ Verified Local Guide</span>
+            </div>
         </div>
     </header>
 
+    <!-- Ad Placement 1: Top Banner -->
+    <div class="container">
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    </div>
+
     <main class="container">
-        <!-- Overview -->
+        <!-- 1. Overview -->
         <section class="section">
             <div class="section-header">
-                <span class="section-label">Overview</span>
-                <h2 class="section-title">The Vibe of Marseille</h2>
+                <span class="section-label">Overview & Atmosphere</span>
+                <h2 class="section-title">The True Vibe of Marseille</h2>
             </div>
-            <p class="intro-text">Marseille is 2,600 years old, founded by Greek sailors, and has spent most of that time being underestimated. Paris looks down on it. Tourists skip it. Marseillais don&#x27;t care. The Vieux-Port has been the city&#x27;s beating heart since the Greeks arrived around 600 BC. The Calanques are some of the most dramatic coastline in Europe. The fish market runs every morning, fishermen selling from the same boats, the same way. MuCEM is one of the best-designed museums on the continent. None of this is secret. The secret is that the city works — loud, proud, and completely itself.</p>
+            <p class="section-intro">Marseille is 2,600 years old, founded by Greek sailors, and has spent most of that time being underestimated. Paris looks down on it. Tourists skip it. Marseillais don&#x27;t care. The Vieux-Port has been the city&#x27;s beating heart since the Greeks arrived around 600 BC. The Calanques are some of the most dramatic coastline in Europe. The fish market runs every morning, fishermen selling from the same boats, the same way. MuCEM is one of the best-designed museums on the continent. None of this is secret. The secret is that the city works — loud, proud, and completely itself.</p>
             
-        <div class="local-word-box">
-            <div class="word-title">🗣️ Local Concept: <strong>La Bonne Mère</strong> <span class="pron">(la bon MAIR)</span></div>
+        <div class="callout-box">
+            <div class="callout-title">🗣️ Local Concept: <strong>La Bonne Mère</strong> <span class="pron">(la bon MAIR)</span></div>
             <p>What every Marseillais calls Notre-Dame de la Garde — the basilica that watches over the city from the highest hill. Ships leaving the port looked up at her. Ships returning looked up at her. She&#x27;s on every sailor&#x27;s ex-voto hung inside. &#x27;La Bonne Mère&#x27; means &#x27;the good mother&#x27;. The name says everything about how this city relates to the sea and to faith. Free entry. Go at dusk.</p>
         </div>
         
-        </section>
 
-        <!-- Quick Facts -->
-        
-        <section class="section">
-            <div class="section-header">
-                <span class="section-label">Essentials</span>
-                <h2 class="section-title">Quick Logistics</h2>
-            </div>
+            <!-- Quick Facts Grid -->
             <div class="facts-grid">
-                
             <div class="fact-card">
                 <div class="fact-icon">✈️</div>
                 <div>
@@ -361,20 +529,13 @@
                     <div class="fact-sub">Fishermen sell direct from boats · done by 10:00 · free to visit</div>
                 </div>
             </div>
-            
             </div>
-        </section>
-        
 
-        <!-- Rules & Secrets -->
-        
-        <section class="section">
-            <div class="section-header">
-                <span class="section-label">Insider Advice</span>
-                <h2 class="section-title">3 Unwritten Rules for Marseille</h2>
-            </div>
-            <div class="rules-list">
-                
+            <!-- 3 Unwritten Rules -->
+            
+            <div style="margin-top: 32px;">
+                <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 14px;">3 Unwritten Rules for Marseille</h3>
+                <div class="rules-list">
             <div class="rule-card">
                 <div class="rule-num">1</div>
                 <div class="rule-content">
@@ -398,29 +559,617 @@
                     <p>The Calanques require planning — in summer, access to some coves is restricted due to fire risk and must be booked online. MuCEM has queues by midday; go early or late. Notre-Dame de la Garde is a 30-minute uphill walk from the port, or bus 60 from Hôtel de Ville. Le Panier is best before 11:00, before the day-trippers arrive. Give yourself three days minimum.</p>
                 </div>
             </div>
+            </div>
+            </div>
             
+        </section>
+
+        <!-- 2. Transportation & Transit Logistics -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Getting Around</span>
+                <h2 class="section-title">Marseille Public Transit & Airport Transfers</h2>
+            </div>
+            <p class="section-intro">Marseille is a large, hilly city. The centre is walkable. The Calanques, beaches, and outer neighbourhoods need buses. The RTM network covers everything — use it.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">✈️</span>
+                        <span class="card-title">Airport → City Centre</span>
+                    </div>
+                </div>
+                <p class="card-desc">The Navette Marseille shuttle runs between the airport and Saint-Charles train station every 15–20 minutes, journey around 25 minutes, paid on board. From Saint-Charles, the metro and tram connect to the rest of the city. Taxis run on meter, significantly more expensive.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚇</span>
+                        <span class="card-title">Metro — two lines, well placed</span>
+                    </div>
+                </div>
+                <p class="card-desc">Line 1 runs east-west through the centre: Vieux-Port, Noailles, Castellane. Line 2 runs north-south: Saint-Charles, Joliette (for MuCEM), Rond-Point du Prado. Single ticket €1.70, valid 60 minutes on all RTM transport. 24-hour pass €5.20. Buy at machines in every station.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚌</span>
+                        <span class="card-title">Buses — essential for the coast</span>
+                    </div>
+                </div>
+                <p class="card-desc">Bus 60 to Notre-Dame de la Garde from Hôtel de Ville. Bus 83 along the Corniche — Vallon des Auffes, Prado beaches, Malmousque. Bus B1 from Castellane metro to Sormiou calanque. Same RTM ticket as the metro. The coastal route on bus 83 is one of the best urban bus rides in France.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚲</span>
+                        <span class="card-title">Le Vélo — bikes across the centre</span>
+                    </div>
+                </div>
+                <p class="card-desc">Over 100 stations, 1,000 bikes. First 30 minutes free with a subscription. Flat enough in the centre; the hills start immediately once you leave the port area. Useful for Vieux-Port to Le Panier, Cours Julien, or along the seafront to MuCEM.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚶</span>
+                        <span class="card-title">Walking — the only way to know Le Panier</span>
+                    </div>
+                </div>
+                <p class="card-desc">Vieux-Port to MuCEM: 10 minutes. Vieux-Port to Le Panier: 15 minutes uphill. Notre-Dame de la Garde: 30–40 minutes steep walk from the port, or bus 60. Le Panier&#x27;s alleyways cannot be navigated any other way. Wear shoes you can walk in.</p>
+            </div>
+            </div>
+            
+        <div class="callout-box success">
+            <div class="callout-title">💡 Bus 83 — the Corniche route</div>
+            <p>Bus 83 runs along the Corniche Kennedy — the coastal road that curves around the bay south of the Vieux-Port. On the left: sea, rocks, swimmers. On the right: Belle Époque villas, palm trees, the city above. Vallon des Auffes appears below a bridge — you&#x27;ll miss it if you&#x27;re not looking. Prado beaches at the end. Same RTM ticket. Sit on the left side of the bus.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 3. Where to Stay (Neighborhoods) -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Neighborhood Guide</span>
+                <h2 class="section-title">Where to Stay in Marseille: Best Areas</h2>
+            </div>
+            <p class="section-intro">Marseille&#x27;s neighbourhoods are distinct. Proximity to the Vieux-Port is convenient but not always where the city actually lives.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Le Panier</span>
+                    <span class="card-badge badge-purple">Most atmospheric</span>
+                </div>
+                <p class="card-desc">The oldest part of the city, above the Vieux-Port. Narrow alleys, street art, the Vieille Charité — a 17th-century almshouse now used as a museum and exhibition space. Mornings are quiet; by 11:00 the day-trippers arrive. Best neighbourhood to be based in if you want to feel the city rather than just see it.</p>
+                <div class="card-footer-tip">Oldest neighbourhood • 10 min to Vieux-Port • Street art &amp; galleries</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Vieux-Port / 1er arrondissement</span>
+                    <span class="card-badge badge-purple">Most central</span>
+                </div>
+                <p class="card-desc">Around the old harbour. Everything starts here. Fish market in the morning, aperitif terraces at sundown, the ferry to Château d&#x27;If from the quay. Central, expensive, and loud at night. Close to MuCEM, Le Panier, and the ferry terminal. Best for short stays.</p>
+                <div class="card-footer-tip">Ferry to Château d&#x27;If • Fish market steps away • Loud at night</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Noailles / Notre-Dame du Mont</span>
+                    <span class="card-badge badge-purple">Most local</span>
+                </div>
+                <p class="card-desc">Noailles is Marseille&#x27;s most multicultural neighbourhood — Algerian, Moroccan, Comorian, Armenian communities, all present since the city was a major port of arrival. The market spills across the streets: spices, olives, flatbread, cheap produce. Notre-Dame du Mont just above is where younger Marseillais actually go out. Cours Julien is at the edge — street art, organic market on Wednesdays.</p>
+                <div class="card-footer-tip">Marché de Noailles • Cours Julien nearby • Real city life</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Joliette / Euromed</span>
+                    <span class="card-badge badge-purple">Most modern</span>
+                </div>
+                <p class="card-desc">The regenerated port district around MuCEM. New hotels, the Docks (a 19th-century warehouse turned offices and restaurants), and direct access to MuCEM and Fort Saint-Jean. Not yet a neighbourhood in the full sense — more infrastructure than community. Best if MuCEM and the port area are the priority.</p>
+                <div class="card-footer-tip">MuCEM &amp; Fort Saint-Jean • Modern hotels • 10 min to Vieux-Port</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Prado / 8ème arrondissement</span>
+                    <span class="card-badge badge-purple">Quietest option</span>
+                </div>
+                <p class="card-desc">South of the centre, along the coast. Access to the Prado beaches, Parc Borély, and the start of the Calanques road. More residential, more Marseillais, fewer tourists. Metro or bus to the centre. Best if the Calanques are the main reason to be there.</p>
+                <div class="card-footer-tip">Prado beaches • Parc Borély • Calanques access</div>
+            </div>
             </div>
         </section>
         
 
-        <!-- CTA Banner -->
-        <section class="app-cta-banner">
-            <h3>Unlock the Full Guide in MyWay 🌟</h3>
-            <p>Discover hidden gems, curated local food, tourist traps to avoid, and step-by-step smart walking routes for Marseille in MyWay.</p>
-            <div class="store-btn-row">
-                <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
-                     Download on App Store
-                </a>
-                <a href="https://play.google.com/store/apps/details?id=com.anilaybakan.sehirkesif" class="store-pill-btn">
-                    ▶ Get on Google Play
-                </a>
+        <!-- Ad Placement 2: Mid-Article -->
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+
+        <!-- 4. Best Time to Visit -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Seasons & Weather</span>
+                <h2 class="section-title">Best Time to Visit Marseille</h2>
+            </div>
+            <p class="section-intro">Marseille has 300 days of sun. The question is not whether to go but when to avoid the crowds.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Spring</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Apr – Jun</span>
+                    </div>
+                    <span class="card-badge badge-amber">The Right Season</span>
+                </div>
+                <p class="card-desc">May and June are the best months. Temperatures around 20–25°C, the sea is warming up, the Calanques are fully accessible without summer fire restrictions, and the tourist crowds haven&#x27;t arrived. The Vieux-Port morning market is at its most active. Prices for accommodation are 30–40% lower than August. Marseille in May is the version the city prefers for itself.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Summer</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Jul – Aug</span>
+                    </div>
+                    <span class="card-badge badge-amber">Hot and Crowded</span>
+                </div>
+                <p class="card-desc">July and August: the entire south of France is here. Calanque access restricted on high fire-risk days. Vieux-Port restaurants double their prices. The city itself is still Marseille — beaches, pastis, late dinners — but it requires patience. If you go in summer, stay away from the Vieux-Port at dinner and eat inland. The neighbourhoods absorb the tourists; the port does not.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Autumn</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Sep – Nov</span>
+                    </div>
+                    <span class="card-badge badge-amber">The Best-Kept Secret</span>
+                </div>
+                <p class="card-desc">September and October: the sea is at its warmest (22–24°C), the Calanques are fully open again, the crowds are gone, and the city returns to its own rhythm. Restaurant prices drop. Hotel availability opens. The light turns golden and lower. The Marseillais who left for August come back. This is the version of the city that residents actually prefer — and almost no visitor knows it.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Winter</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Dec – Mar</span>
+                    </div>
+                    <span class="card-badge badge-amber">Mild and Overlooked</span>
+                </div>
+                <p class="card-desc">Winter in Marseille is mild — rarely below 10°C, often 15°C and sunny. The Mistral wind can be sharp and sustained for days, but between the Mistrals the city is quietly beautiful. Museums have no queues. The fish market runs. The neighbourhood cafés fill with locals. Notre-Dame de la Garde on a clear winter morning, with the Alps visible to the north — this is not the Marseille that most tourists see.</p>
+            </div>
             </div>
         </section>
+        
+
+        <!-- 5. Authentic Food & Dining -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Culinary Culture</span>
+                <h2 class="section-title">Authentic Local Dining & Food Secrets in Marseille</h2>
+            </div>
+            <p class="section-intro">Marseille&#x27;s food is Mediterranean, direct, and shaped by the port. The ingredients come from the sea and from the communities that arrived through it.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🐟</span>
+                        <span class="card-title">Bouillabaisse — the original</span>
+                    </div>
+                </div>
+                <p class="card-desc">Not a soup — a method. Specific rockfish (rascasse, grondin, Saint-Pierre, vive) simmered in saffron, fennel, and olive oil broth, then served in two courses: first the broth with rouille (garlic-saffron aioli) spread on grilled bread, then the fish separately. The Bouillabaisse Charter defines the required species. Made correctly, it takes hours and costs accordingly. The cheap versions are fish soup. This is architecture.</p>
+                <div class="card-footer-tip">⭐ Charter restaurants only · two courses · expensive and worth it</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🥜</span>
+                        <span class="card-title">Panisse — Marseille street food</span>
+                    </div>
+                </div>
+                <p class="card-desc">A thick chickpea flour cake, fried until crisp outside and soft inside, served in sticks or rounds. Originally brought by Genoese immigrants — Marseille absorbed it, made it its own. Found at the Marché de Noailles and at street stalls across the city. Hot, cheap, and better than it sounds. The version at L&#x27;Estaque with a cold beer is the correct order.</p>
+                <div class="card-footer-tip">⭐ Noailles market · street stalls · L&#x27;Estaque</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🧄</span>
+                        <span class="card-title">Rouille — the essential condiment</span>
+                    </div>
+                </div>
+                <p class="card-desc">A thick, intensely orange emulsion of garlic, saffron, and olive oil — more forceful than aioli, less subtle than mayonnaise. Spread on the croutons that go into the bouillabaisse broth. Also eaten with grilled fish and fried vegetables. The colour comes from saffron and pepper; the heat comes from the garlic. Every Marseille restaurant makes its own. The quality varies significantly.</p>
+                <div class="card-footer-tip">⭐ With bouillabaisse · grilled fish · the best ones are orange-red</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🍪</span>
+                        <span class="card-title">Navette — the biscuit of Saint-Victor</span>
+                    </div>
+                </div>
+                <p class="card-desc">A dry, boat-shaped biscuit flavoured with orange blossom water, made since 1781 by the Four des Navettes bakery near the Abbaye Saint-Victor. The shape references the small boats said to have carried Mary Magdalene and the early Christians to Provence. Sold year-round at the bakery. Hard and dry — meant for dipping in coffee or pastis. Not a snack; a tradition.</p>
+                <div class="card-footer-tip">⭐ Four des Navettes · since 1781 · near Saint-Victor</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🫒</span>
+                        <span class="card-title">Tapenade and anchoïade — Provençal basics</span>
+                    </div>
+                </div>
+                <p class="card-desc">Tapenade: black olives, capers, anchovies, and olive oil blended to a paste — the name comes from the Provençal word for caper. Anchoïade: a rougher, more pungent paste of anchovies and garlic. Both spread on bread, served before meals, eaten at every terrace. Marseille sits at the edge of Provence; these are the flavours that have been here the longest.</p>
+                <div class="card-footer-tip">⭐ Every terrace · before meals · with bread and pastis</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">☕</span>
+                        <span class="card-title">Café at the bar — the real Marseille rhythm</span>
+                    </div>
+                </div>
+                <p class="card-desc">Stand at the bar. Order a petit café. Pay and leave within ten minutes. The terrace surcharge at Vieux-Port cafés adds a visible premium — locals know to stand at the zinc. Morning at the Noailles market, a coffee at a counter, watching the neighbourhood open: this is the most honest version of the city. It costs less than a euro and nothing else in Marseille will tell you more.</p>
+                <div class="card-footer-tip">⭐ Bar not terrace · Noailles · before 09:00</div>
+            </div>
+            </div>
+            
+        <div class="callout-box">
+            <div class="callout-title">🍷 Marché de Noailles — the city&#x27;s real kitchen</div>
+            <p>Noailles is where Marseille actually shops. The streets around Rue Longue-des-Capucins fill with stalls every morning: North African spices, fresh olives, merguez, Provençal herbs, preserved lemons, flatbreads from the oven. The smells are North Africa and Provence simultaneously. No tourist infrastructure, no English menus. Go hungry, bring cash, eat standing up. This is where the city feeds itself.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 6. Handpicked Hidden Gems -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Off The Beaten Path</span>
+                <h2 class="section-title">Handpicked Hidden Gems in Marseille</h2>
+            </div>
+            <p class="section-intro">Marseille&#x27;s famous for the port and the basilica. Both are worth it. But the city has a second layer that most visitors never reach.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Vallon des Auffes</span>
+                    <span class="card-badge badge-emerald">A tiny fishing port hidden under a road bridge — 15 minutes from the Vieux-Port</span>
+                </div>
+                <p class="card-desc">A small cove cut into the Corniche, reached by walking under the viaduct that carries the coastal road above. A dozen colourful fishing boats, a cluster of houses built into the rock, two or three restaurants serving the catch of the day. The fishermen are still there — not for show. In summer, locals sit on the rocks at sunset with a bottle. Bus 83 passes directly above; look down from the bus window and you&#x27;ll see why you get off. Free, always open.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">L&#x27;Estaque</span>
+                    <span class="card-badge badge-emerald">A Cézanne and Braque village that no guidebook sends anyone to</span>
+                </div>
+                <p class="card-desc">Ten kilometres north of the centre, on the edge of the bay. Cézanne came here repeatedly from 1870 to 1882; Braque, Dufy, and Derain followed. The bay and the factory chimneys appeared in dozens of works that became the foundation of Cubism. The village today has a small beach, a handful of fishermen&#x27;s restaurants, and almost no visitors. Bus 35 from Joliette metro takes 25 minutes. The chichi frégi — fried dough sold from stands near the port — is the local snack. Go on a weekday.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">La Vieille Charité — Le Panier</span>
+                    <span class="card-badge badge-emerald">The 17th-century almshouse that became the city&#x27;s most beautiful cultural space</span>
+                </div>
+                <p class="card-desc">Built between 1671 and 1749 as a poorhouse, designed by Pierre Puget — Marseille&#x27;s most important Baroque architect. Three floors of arcaded galleries around a courtyard, with a small domed chapel at the centre. Now houses the Museum of Mediterranean Archaeology and the Museum of African, Oceanic and Amerindian Arts. The architecture alone justifies the walk up through Le Panier. The courtyard is free to enter; museums are ticketed.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">La Friche la Belle de Mai</span>
+                    <span class="card-badge badge-emerald">A former tobacco factory with a rooftop bar that the tourists haven&#x27;t found</span>
+                </div>
+                <p class="card-desc">A 45,000 m² former SEITA tobacco factory in the Belle de Mai neighbourhood, 15 minutes by foot from the centre. Converted into a cultural complex: artist studios, performance halls, a cinema, exhibition spaces, shared gardens, and a rooftop terrace with panoramic views over the city. The rooftop bar is open in summer — drinks, city view, no tourist infrastructure. Not on the standard itinerary because it requires actually leaving the port area. Take bus 49 from Réformés-Canebière.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Cathédrale de la Major</span>
+                    <span class="card-badge badge-emerald">The cathedral larger than Notre-Dame de Paris — that no one enters</span>
+                </div>
+                <p class="card-desc">One of the largest churches in France, built in the second half of the 19th century in striped Romanesque-Byzantine style — alternating green and white stone, golden mosaics inside, soaring domes. It sits directly next to MuCEM and most visitors walk past it to get to the museum. Free entry. The interior is dark, cool, and almost completely empty. The contrast with the crowds immediately outside is absolute.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Calanque de Sormiou</span>
+                    <span class="card-badge badge-emerald">The cove the Calanques tour boats skip</span>
+                </div>
+                <p class="card-desc">The closest calanque to the city and the most accessible — bus B1 from Castellane metro runs directly to the trailhead. A 30-minute walk down to a turquoise bay enclosed by white limestone cliffs. In summer, access by car is restricted; in spring and autumn, the path is nearly empty. There is a small seasonal restaurant at the bottom. The water is clear enough to see the bottom at five metres depth. Free. Check fire restrictions before going in summer.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Cours Julien</span>
+                    <span class="card-badge badge-emerald">The bohemian square where locals actually hang out</span>
+                </div>
+                <p class="card-desc">15 minutes&#x27; walk from the Vieux-Port. Street art, independent cafés, record shops, vintage stores, and one of the largest open-air street art areas in France. On Wednesday mornings, an organic farmers&#x27; market sets up on Place Jean Jaurès — around thirty local producers, fresh Provençal produce. In the evenings, the bars fill up with an entirely local crowd. Food at half the price of the Vieux-Port, twice the atmosphere. Free to walk, eat, sit.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Palais Longchamp</span>
+                    <span class="card-badge badge-emerald">Two museums, spectacular gardens — almost no tourists</span>
+                </div>
+                <p class="card-desc">Built in 1869 to celebrate the canal that finally brought water to the city — a palace constructed above a reservoir. At the centre, a grand waterfall and sculpture group; in the two wings, the Museum of Fine Arts and the Natural History Museum. Behind it, an expansive park: picnic lawns, playgrounds, shaded paths. Tram T2 to the Longchamp stop, 3-minute walk. Gardens and exterior always free; museums ticketed, free on the first Sunday of every month.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Notre-Dame de la Garde — La Bonne Mère</span>
+                    <span class="card-badge badge-emerald">360 degrees over the city — worth the climb</span>
+                </div>
+                <p class="card-desc">At 162 metres, the highest point in Marseille. A 30–40 minute uphill walk on the footpath, or bus 60 from Hôtel de Ville. From the top: the entire city, the Vieux-Port, the islands, and the open sea. Inside: hundreds of ex-votos — votive offerings left by sailors, mothers, survivors — covering the walls. The basilica itself is 19th-century Romanesque-Byzantine. Free entry. Go at dusk — the light at that hour is different.</p>
+            </div>
+            </div>
+            
+        <div class="callout-box success">
+            <div class="callout-title">✨ The Calanques — how to actually get there</div>
+            <p>The standard advice is to take a boat tour from the Vieux-Port — the better option is to go yourself. Bus B1 from Castellane metro (line 1) runs to Luminy; from there, it&#x27;s a 90-minute hike to Calanque de Sugiton, no facilities, bring everything. The same line goes to Sormiou — 30-minute walk down, a seasonal restaurant at the bottom, better for swimming. Both routes are free. Start before 09:00 in summer. The boat tours show you the cliffs from the outside; the trails put you inside them.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 7. Tourist Traps & Smarter Alternatives -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Scam Prevention</span>
+                <h2 class="section-title">Tourist Traps to Avoid & Smarter Alternatives</h2>
+            </div>
+            <p class="section-intro">Marseille is a city without pretence; even its traps are obvious. Know these four and trust the city with the rest.</p>
+            <div class="traps-list">
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🍲 TRAP</span>
+                    <h4>&#x27;Bouillabaisse&#x27; under 40 euros</h4>
+                </div>
+                <p>Real bouillabaisse demands at least four kinds of rockfish and two services; the orange soup on cheap menus is fish stock in costume.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Go to one of the classics that signed the charter — Fonfon, Miramar; expensive, but eat the real thing once.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">⚓ TRAP</span>
+                    <h4>Photo menus on the Vieux-Port quay</h4>
+                </div>
+                <p>The rows of harbour-view terraces sell the day&#x27;s tired fish at tourist prices.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Walk two streets inland, or drop into a small cove like Vallon des Auffes: same sea, honest kitchen.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🧼 TRAP</span>
+                    <h4>Fake &#x27;Savon de Marseille&#x27;</h4>
+                </div>
+                <p>The colourful perfumed cubes in souvenir shops are often imported imitations; the real one bears the 72% oil stamp and comes from just four soap works.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Look for the 72% stamp; buy from the historic soap factories&#x27; own shops or a trusted seller.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">⛵ TRAP</span>
+                    <h4>Going to the Calanques unprepared</h4>
+                </div>
+                <p>In summer, road access closes and trails can shut for fire risk; the unprepared turn back under a punishing sun.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Go early, carry water, check access the day before; or approach by boat from the sea — earn your first sight of Sormiou.</div>
+            </div>
+            </div>
+            
+        <div class="callout-box warning">
+            <div class="callout-title">🛡️ The golden rule</div>
+            <p>In Marseille, beauty comes unpolished: the best cove has no sunbeds, the best bar no sign, the best fish no show. If you see polish, the price is a tourist price.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 8. Step-by-Step 1-Day Itinerary -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Smart Itinerary</span>
+                <h2 class="section-title">Day 1: Step-by-Step Marseille Walking Tour</h2>
+            </div>
+            <p class="section-intro">If you hate planning, follow these flows. The times are flexible; keep the spirit, break the order.</p>
+            <div class="timeline">
+                
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">08:30</span>
+                    <h4 class="step-title">Vieux-Port fish market</h4>
+                </div>
+                <p class="step-desc">Watch fish go from boat to stall on the quay; the market ends at 10:00, come early.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">10:00</span>
+                    <h4 class="step-title">The lanes of Le Panier</h4>
+                </div>
+                <p class="step-desc">Get lost in the city&#x27;s oldest quarter: street art, washing lines, the calm courtyard of the Vieille Charité.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">13:00</span>
+                    <h4 class="step-title">Lunch in Noailles</h4>
+                </div>
+                <p class="step-desc">Among the stalls of &#x27;the belly of Marseille&#x27;: panisse, kebab, North African aromas. The city&#x27;s true seasoning.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">15:00</span>
+                    <h4 class="step-title">MuCEM + Cathédrale de la Major</h4>
+                </div>
+                <p class="step-desc">From the lace-concrete museum, stretch over the sea by footbridge; the striped cathedral is lovely while waiting for dusk.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">18:00</span>
+                    <h4 class="step-title">Notre-Dame de la Garde</h4>
+                </div>
+                <p class="step-desc">Climb the hill and watch city and sea from under La Bonne Mère: Marseille&#x27;s best view, free.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">20:30</span>
+                    <h4 class="step-title">Evening on Cours Julien</h4>
+                </div>
+                <p class="step-desc">A bar on the graffiti-covered square, live music, pastis. The night stretches long here.</p>
+            </div>
+            
+            </div>
+
+            <!-- Mobile App Locked Content: Days 2 & 3 + Live GPS Map -->
+            <div class="app-lock-banner" id="download">
+                <div class="app-lock-badge">MyWay Mobile Exclusive 📱</div>
+                <h3>Unlock Days 2 & 3 + Turn-by-Turn GPS Map Navigation</h3>
+                <p>Explore the complete 3-day hourly itinerary for Marseille, browse our 180+ verified place database offline, and plan collaborative daily itineraries with friends in the MyWay app.</p>
+                <div style="margin: 16px 0 20px; font-size: 13px; color: #CBD5E1; font-weight: 600;">
+                    📍 Day 2: Calanques day &bull; 📍 Day 3: L'Estaque and art
+                </div>
+                <div class="app-lock-features">
+                    <div class="app-lock-feature-item">✓ Live Interactive GPS Map & Navigation</div>
+                    <div class="app-lock-feature-item">✓ Full 180+ Place Database (Offline Mode)</div>
+                    <div class="app-lock-feature-item">✓ Co-plan Hourly Trips with Friends</div>
+                </div>
+                <div class="store-btn-row">
+                    <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
+                         Download on App Store
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.anilaybakan.sehirkesif" class="store-pill-btn">
+                        ▶ Get on Google Play
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+
+        <!-- 9. Phrases -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Local Slang</span>
+                <h2 class="section-title">Useful Everyday Phrases in Marseille</h2>
+            </div>
+            <p class="section-intro">French opens doors; Marseille slang wins hearts. With these five you belong on the quay.</p>
+            <div class="phrases-grid">
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Bonjour</div>
+                <div class="phrase-trans">Hello — the mandatory first word of every exchange</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Merci</div>
+                <div class="phrase-trans">Thank you — stronger with beaucoup</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ S&#x27;il vous plaît</div>
+                <div class="phrase-trans">Please — add it to the end of your order</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Santé!</div>
+                <div class="phrase-trans">Cheers! — pastis glasses rise to this</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Dégun</div>
+                <div class="phrase-trans">Marseille slang for &#x27;nobody&#x27; — &#x27;craint dégun&#x27;: fears no one, the city&#x27;s motto</div>
+            </div>
+            </div>
+        </section>
+        
+
+        <!-- Ad Placement 3: Bottom Banner -->
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
     </main>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h4>MyWay Travel</h4>
+                    <p>The ultimate smart travel guide and AI route planner for modern explorers. Stop being a tourist; experience cities like a local.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>City Guides</h5>
+                    <ul>
+                        <li><a href="/guides/">All Cities</a></li>
+                        <li><a href="../guides/barcelona.html">Barcelona</a></li>
+                        <li><a href="../guides/roma.html">Roma</a></li>
+                        <li><a href="../guides/paris.html">Paris</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Company</h5>
+                    <ul>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../support.html">Support</a></li>
+                        <li><a href="/#features">Features</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Legal</h5>
+                    <ul>
+                        <li><a href="../privacy.html">Privacy Policy</a></li>
+                        <li><a href="../terms.html">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 

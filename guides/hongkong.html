@@ -3,11 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hong Kong Travel Guide & Smart Walking Routes | MyWay</title>
-    <meta name="description" content="Explore Hong Kong with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
+    <title>Hong Kong Travel Guide & Curated Walking Routes | MyWay</title>
+    <meta name="description" content="The ultimate Hong Kong travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
     
     <link rel="alternate" hreflang="en" href="/guides/hongkong.html">
     <link rel="alternate" hreflang="tr" href="/tr/rehber/hongkong.html">
+    <link rel="canonical" href="https://mywaytravelapp.com/guides/hongkong.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mywaytravelapp.com/guides/hongkong.html">
+    <meta property="og:title" content="Hong Kong Travel Guide & Curated Walking Routes | MyWay">
+    <meta property="og:description" content="The ultimate Hong Kong travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
+    <meta property="og:image" content="https://mywaytravelapp.com/images/cities/hongkong.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Hong Kong Travel Guide & Curated Walking Routes | MyWay">
+    <meta name="twitter:description" content="The ultimate Hong Kong travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
+    <meta name="twitter:image" content="https://mywaytravelapp.com/images/cities/hongkong.jpg">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
@@ -22,6 +36,37 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
          crossorigin="anonymous"></script>
 
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TravelGuide",
+      "name": "Hong Kong Travel Guide & Curated Walking Routes | MyWay",
+      "headline": "Hong Kong Gezi Rehberi & Akıllı Yürüyüş Rotaları",
+      "description": "The ultimate Hong Kong travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.",
+      "image": "https://mywaytravelapp.com/images/cities/hongkong.jpg",
+      "inLanguage": "en",
+      "url": "https://mywaytravelapp.com/guides/hongkong.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "MyWay Travel",
+        "url": "https://mywaytravelapp.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://mywaytravelapp.com/images/app_icon.png"
+        }
+      },
+      "about": {
+        "@type": "TouristDestination",
+        "name": "Hong Kong",
+        "containedInPlace": {
+          "@type": "Country",
+          "name": "China (SAR)"
+        }
+      }
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -35,13 +80,17 @@
             --primary-light: #9D93FF;
             --primary-dark: #5B4FD6;
             --accent: #EC4899;
+            --emerald: #10B981;
+            --warning: #EF4444;
             --bg-dark: #0F0B1A;
             --bg-section: #130F22;
             --bg-card: rgba(255, 255, 255, 0.04);
+            --bg-card-hover: rgba(255, 255, 255, 0.07);
             --text-primary: #FFFFFF;
             --text-secondary: #9CA3AF;
             --text-muted: #6B7280;
             --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(123, 110, 246, 0.3);
             --radius-lg: 24px;
             --radius-md: 16px;
             --radius-sm: 12px;
@@ -52,15 +101,15 @@
         body {
             background-color: var(--bg-dark); color: var(--text-primary);
             font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6; overflow-x: hidden;
+            line-height: 1.7; overflow-x: hidden;
         }
         
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
         
         /* Navbar */
         .navbar {
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            background: rgba(15, 11, 26, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            background: rgba(15, 11, 26, 0.88); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-subtle); height: 72px; display: flex; align-items: center;
         }
         .navbar-inner {
@@ -114,18 +163,27 @@
         .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(123, 110, 246, 0.4); }
         .nav-toggle { display: none; background: none; border: none; color: #fff; cursor: pointer; padding: 8px; }
 
+        /* Breadcrumbs */
+        .breadcrumbs {
+            display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-muted);
+            margin-bottom: 16px; flex-wrap: wrap;
+        }
+        .breadcrumbs a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+        .breadcrumbs a:hover { color: #fff; }
+        .breadcrumbs span { color: var(--text-muted); }
+
         /* Guide Hero */
         .guide-hero {
-            position: relative; min-height: 440px; display: flex; align-items: flex-end;
-            padding: 120px 24px 44px; margin-top: 72px; overflow: hidden; background-color: #1A132F;
+            position: relative; min-height: 480px; display: flex; align-items: flex-end;
+            padding: 130px 24px 50px; margin-top: 72px; overflow: hidden; background-color: #1A132F;
         }
         .guide-hero-bg {
             position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-            filter: brightness(0.65);
+            filter: brightness(0.6);
         }
         .guide-hero-overlay {
             position: absolute; inset: 0;
-            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.4) 60%, transparent 100%);
+            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.5) 60%, rgba(15, 11, 26, 0.2) 100%);
         }
         .guide-hero-content { position: relative; z-index: 2; width: 100%; }
         .city-badge {
@@ -133,28 +191,34 @@
             backdrop-filter: blur(10px); padding: 6px 14px; border-radius: 99px; font-size: 13px;
             font-weight: 600; margin-bottom: 14px; border: 1px solid rgba(255, 255, 255, 0.15);
         }
-        .guide-title { font-size: clamp(32px, 6vw, 52px); font-weight: 800; line-height: 1.1; margin-bottom: 10px; }
-        .guide-tagline { font-size: 16px; color: var(--primary-light); max-width: 720px; font-weight: 500; line-height: 1.5; }
-        
+        .guide-title { font-size: clamp(34px, 6vw, 56px); font-weight: 800; line-height: 1.1; margin-bottom: 12px; }
+        .guide-tagline { font-size: 17px; color: var(--primary-light); max-width: 780px; font-weight: 500; line-height: 1.5; margin-bottom: 12px; }
+        .guide-editorial-meta { font-size: 13px; color: #94A3B8; display: flex; gap: 16px; align-items: center; }
+
         /* Sections */
-        .section { padding: 42px 0; border-bottom: 1px solid var(--border-subtle); }
-        .section-header { margin-bottom: 24px; }
-        .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); font-weight: 700; }
-        .section-title { font-size: 24px; font-weight: 700; margin-top: 4px; }
+        .section { padding: 50px 0; border-bottom: 1px solid var(--border-subtle); }
+        .section-header { margin-bottom: 26px; }
+        .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); font-weight: 700; display: block; margin-bottom: 6px; }
+        .section-title { font-size: clamp(22px, 3.5vw, 28px); font-weight: 800; margin-bottom: 10px; }
+        .section-intro { font-size: 15px; color: #D1D5DB; line-height: 1.8; margin-bottom: 22px; max-width: 900px; }
         
-        .intro-text { font-size: 15px; color: #D1D5DB; line-height: 1.8; margin-bottom: 20px; }
-        
-        /* Local Word */
-        .local-word-box {
+        /* Pro-Tip & Local Word Boxes */
+        .callout-box {
             background: rgba(123, 110, 246, 0.08); border-left: 4px solid var(--primary);
-            padding: 18px 22px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-top: 20px;
+            padding: 18px 22px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin: 24px 0;
         }
-        .word-title { font-size: 15px; color: #fff; margin-bottom: 4px; }
+        .callout-box.warning {
+            background: rgba(239, 68, 68, 0.08); border-left: 4px solid var(--warning);
+        }
+        .callout-box.success {
+            background: rgba(16, 185, 129, 0.08); border-left: 4px solid var(--emerald);
+        }
+        .callout-title { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+        .callout-box p { font-size: 14px; color: #D1D5DB; line-height: 1.6; }
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
-        .local-word-box p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        
+
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
@@ -164,8 +228,8 @@
         .fact-val { font-size: 15px; font-weight: 600; color: #fff; margin: 2px 0; }
         .fact-sub { font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
         
-        /* Rules */
-        .rules-list { display: flex; flex-direction: column; gap: 14px; }
+        /* Rules List */
+        .rules-list { display: flex; flex-direction: column; gap: 14px; margin: 20px 0; }
         .rule-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 20px; display: flex; gap: 16px; align-items: flex-start;
@@ -177,52 +241,94 @@
         }
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        
-        /* Hidden Gems & Eat Grid */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
-        .gem-card, .eat-card {
+
+        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
+        .feature-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative;
+            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
+            display: flex; flex-direction: column; justify-content: space-between;
         }
-        .gem-badge {
-            display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase;
-            color: #10B981; background: rgba(16, 185, 129, 0.12); padding: 4px 10px; border-radius: 99px;
-            margin-bottom: 10px;
+        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
+        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
+        .card-title-group { display: flex; align-items: center; gap: 10px; }
+        .card-icon { font-size: 20px; }
+        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+        .card-badge {
+            font-size: 11px; font-weight: 700; text-transform: uppercase;
+            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
         }
-        .gem-hook { font-size: 13px; color: var(--primary-light); font-style: italic; margin-bottom: 8px; }
-        .gem-card h4, .eat-card h4 { font-size: 16px; margin-bottom: 6px; }
-        .gem-card p, .eat-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        .card-tip-box {
-            margin-top: 10px; padding: 8px 12px; background: rgba(255, 255, 255, 0.04);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1;
-        }
+        .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
+        .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
+        .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
+        .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        /* Traps */
-        .traps-list { display: flex; flex-direction: column; gap: 14px; }
-        .trap-card {
-            background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.15);
-            border-radius: var(--radius-md); padding: 20px;
+        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        .card-footer-tip {
+            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
         }
-        .trap-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+
+        /* Traps List */
+        .traps-list { display: flex; flex-direction: column; gap: 16px; margin: 20px 0; }
+        .trap-card {
+            background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.18);
+            border-radius: var(--radius-md); padding: 22px;
+        }
+        .trap-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
         .trap-tag {
             background: #EF4444; color: #fff; font-size: 11px; font-weight: 700;
-            text-transform: uppercase; padding: 2px 8px; border-radius: 6px;
+            text-transform: uppercase; padding: 3px 8px; border-radius: 6px;
         }
-        .trap-header h4 { font-size: 16px; color: #fff; }
+        .trap-header h4 { font-size: 17px; color: #fff; font-weight: 700; }
         .trap-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
         .trap-solution {
-            margin-top: 10px; padding: 10px 14px; background: rgba(16, 185, 129, 0.08);
-            border-left: 3px solid #10B981; border-radius: 4px; font-size: 13px; color: #D1D5DB; line-height: 1.5;
+            margin-top: 12px; padding: 12px 16px; background: rgba(16, 185, 129, 0.08);
+            border-left: 3px solid #10B981; border-radius: 6px; font-size: 13px; color: #D1D5DB; line-height: 1.5;
         }
-        
-        /* App CTA Banner */
-        .app-cta-banner {
-            background: linear-gradient(135deg, rgba(123, 110, 246, 0.15), rgba(236, 72, 153, 0.1));
-            border: 1px solid rgba(157, 147, 255, 0.3); border-radius: var(--radius-lg);
-            padding: 44px 20px; text-align: center; margin: 50px 0; position: relative;
+
+        /* Timeline (Itinerary) */
+        .timeline { position: relative; padding-left: 32px; margin: 24px 0 32px; }
+        .timeline::before {
+            content: ''; position: absolute; left: 11px; top: 8px; bottom: 8px;
+            width: 2px; background: linear-gradient(to bottom, var(--primary), var(--accent));
         }
-        .app-cta-banner h3 { font-size: clamp(22px, 4vw, 28px); font-weight: 800; margin-bottom: 10px; }
-        .app-cta-banner p { color: var(--text-secondary); max-width: 580px; margin: 0 auto 24px; font-size: 15px; }
+        .timeline-step { position: relative; margin-bottom: 24px; }
+        .timeline-step:last-child { margin-bottom: 0; }
+        .timeline-dot {
+            position: absolute; left: -32px; top: 4px; width: 24px; height: 24px;
+            border-radius: 50%; background: #19142B; border: 2px solid var(--primary-light);
+            display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700;
+        }
+        .step-header { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; flex-wrap: wrap; }
+        .step-time {
+            background: rgba(123, 110, 246, 0.2); color: var(--primary-light); font-size: 12px;
+            font-weight: 700; padding: 2px 8px; border-radius: 6px;
+        }
+        .step-title { font-size: 16px; font-weight: 700; color: #fff; }
+        .step-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+        /* Mobile App Gate Banner (Days 2 & 3 + Live Map) */
+        .app-lock-banner {
+            background: linear-gradient(135deg, rgba(123, 110, 246, 0.16) 0%, rgba(236, 72, 153, 0.12) 100%);
+            border: 1.5px solid rgba(157, 147, 255, 0.35); border-radius: var(--radius-lg);
+            padding: 36px 28px; margin: 36px 0; text-align: center; position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        .app-lock-badge {
+            display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px; border-radius: 100px; font-size: 12px; font-weight: 700;
+            color: #fff; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .app-lock-banner h3 { font-size: clamp(22px, 3.5vw, 28px); font-weight: 800; margin-bottom: 8px; }
+        .app-lock-banner p { color: var(--text-secondary); max-width: 620px; margin: 0 auto 20px; font-size: 14px; line-height: 1.6; }
+        .app-lock-features {
+            display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 24px;
+            font-size: 13px; color: #E2E8F0; font-weight: 500;
+        }
+        .app-lock-feature-item { display: flex; align-items: center; gap: 6px; }
+
+        /* Store Buttons */
         .store-btn-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
         .store-pill-btn {
             display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: white;
@@ -231,10 +337,48 @@
         }
         .store-pill-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2); }
 
+        /* Ad Placement Slots */
+        .ad-placement-slot {
+            margin: 40px auto; text-align: center; max-width: 728px; min-height: 90px;
+            background: rgba(255, 255, 255, 0.02); border: 1px dashed rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-sm); padding: 10px; overflow: hidden;
+        }
+        .ad-label {
+            font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px;
+            color: var(--text-muted); display: block; margin-bottom: 6px;
+        }
+
+        /* Phrases Table */
+        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrase-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm); padding: 14px 18px;
+        }
+        .phrase-orig { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+        .phrase-trans { font-size: 13px; color: var(--text-secondary); }
+
         /* Footer */
         .footer {
-            border-top: 1px solid var(--border-subtle); padding: 40px 24px 30px;
-            color: var(--text-muted); font-size: 13px; text-align: center;
+            border-top: 1px solid var(--border-subtle); padding: 50px 24px 36px;
+            color: var(--text-muted); font-size: 13px; background: #0A0713;
+        }
+        .footer-grid {
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px;
+            max-width: 1080px; margin: 0 auto 40px; text-align: left;
+        }
+        .footer-brand h4 { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+        .footer-brand p { font-size: 13px; line-height: 1.6; color: var(--text-secondary); max-width: 340px; }
+        .footer-col h5 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+        .footer-col a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+        .footer-col a:hover { color: #fff; }
+        .footer-bottom {
+            text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 24px; max-width: 1080px; margin: 0 auto;
+        }
+
+        @media (max-width: 860px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
         @media (max-width: 768px) {
@@ -246,8 +390,9 @@
             }
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
-            .guide-hero { min-height: 380px; padding-top: 90px; }
+            .guide-hero { min-height: 420px; padding-top: 100px; }
             .cards-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
 
@@ -268,6 +413,8 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="/guides/" class="active">City Guides</a></li>
                 <li><a href="/#features">Features</a></li>
+                <li><a href="../about.html">About Us</a></li>
+                <li><a href="../support.html">Support</a></li>
             </ul>
             <div class="nav-actions">
                 <!-- Top Right Globe Dropdown -->
@@ -295,37 +442,58 @@
         <img src="../images/cities/hongkong.jpg" alt="Hong Kong" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
+            <div class="breadcrumbs">
+                <a href="/">Home</a> <span>/</span>
+                <a href="/guides/">City Guides</a> <span>/</span>
+                <span>🌍 China (SAR)</span> <span>/</span>
+                <span style="color:#fff;">Hong Kong</span>
+            </div>
             <div class="city-badge">🌍 China (SAR) &bull; City Guides</div>
             <h1 class="guide-title">Hong Kong</h1>
             <p class="guide-tagline">The harbour where skyscrapers meet mountains, and dim sum meets neon</p>
+            <div class="guide-editorial-meta">
+                <span>✍️ MyWay Editorial Team</span>
+                <span>•</span>
+                <span>🛡️ Verified Local Guide</span>
+            </div>
         </div>
     </header>
 
+    <!-- Ad Placement 1: Top Banner -->
+    <div class="container">
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    </div>
+
     <main class="container">
-        <!-- Overview -->
+        <!-- 1. Overview -->
         <section class="section">
             <div class="section-header">
-                <span class="section-label">Overview</span>
-                <h2 class="section-title">The Vibe of Hong Kong</h2>
+                <span class="section-label">Overview & Atmosphere</span>
+                <h2 class="section-title">The True Vibe of Hong Kong</h2>
             </div>
-            <p class="intro-text">Hong Kong is a harbour of contradictions, and that is exactly why it&#x27;s addictive: ten minutes from the world&#x27;s densest forest of skyscrapers, subtropical mountain trails begin; the double-decker tram trundles beneath neon signs while the metro runs to the second. In the morning, tai chi is practised in the shadow of a bamboo-scaffolded tower; at noon dim sum arrives in steaming baskets; at night the harbour stands to attention for a light show on both banks. This city never slows down — but it has the grace to let you catch your breath on the Star Ferry&#x27;s deck.</p>
+            <p class="section-intro">Hong Kong is a harbour of contradictions, and that is exactly why it&#x27;s addictive: ten minutes from the world&#x27;s densest forest of skyscrapers, subtropical mountain trails begin; the double-decker tram trundles beneath neon signs while the metro runs to the second. In the morning, tai chi is practised in the shadow of a bamboo-scaffolded tower; at noon dim sum arrives in steaming baskets; at night the harbour stands to attention for a light show on both banks. This city never slows down — but it has the grace to let you catch your breath on the Star Ferry&#x27;s deck.</p>
             
-        <div class="local-word-box">
-            <div class="word-title">🗣️ Local Concept: <strong>Ga yau</strong> <span class="pron">(gah yow)</span></div>
+        <div class="callout-box">
+            <div class="callout-title">🗣️ Local Concept: <strong>Ga yau</strong> <span class="pron">(gah yow)</span></div>
             <p>加油 — literally &#x27;add oil&#x27;: the Hong Kong way of saying &#x27;keep going, hang in there, you&#x27;ve got this!&#x27;. At the marathon, in the exam hall, on the uphill stairs — the city&#x27;s spirit in two syllables.</p>
         </div>
         
-        </section>
 
-        <!-- Quick Facts -->
-        
-        <section class="section">
-            <div class="section-header">
-                <span class="section-label">Essentials</span>
-                <h2 class="section-title">Quick Logistics</h2>
-            </div>
+            <!-- Quick Facts Grid -->
             <div class="facts-grid">
-                
             <div class="fact-card">
                 <div class="fact-icon">✈️</div>
                 <div>
@@ -361,20 +529,13 @@
                     <div class="fact-sub">Light show every night at 8 pm</div>
                 </div>
             </div>
-            
             </div>
-        </section>
-        
 
-        <!-- Rules & Secrets -->
-        
-        <section class="section">
-            <div class="section-header">
-                <span class="section-label">Insider Advice</span>
-                <h2 class="section-title">3 Unwritten Rules for Hong Kong</h2>
-            </div>
-            <div class="rules-list">
-                
+            <!-- 3 Unwritten Rules -->
+            
+            <div style="margin-top: 32px;">
+                <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 14px;">3 Unwritten Rules for Hong Kong</h3>
+                <div class="rules-list">
             <div class="rule-card">
                 <div class="rule-num">1</div>
                 <div class="rule-content">
@@ -398,29 +559,593 @@
                     <p>At busy hours being seated with strangers at a local diner (cha chaan teng) is normal: don&#x27;t be surprised — nod, look at the menu. Fast ordering, fast eating, passing the table on — this is a rhythm, not rudeness.</p>
                 </div>
             </div>
+            </div>
+            </div>
             
+        </section>
+
+        <!-- 2. Transportation & Transit Logistics -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Getting Around</span>
+                <h2 class="section-title">Hong Kong Public Transit & Airport Transfers</h2>
+            </div>
+            <p class="section-intro">Hong Kong&#x27;s transport is a sightseeing programme in itself: a century-old tram, a legendary ferry and the world&#x27;s most efficient metro meet on one card.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">✈️</span>
+                        <span class="card-title">Airport to the centre</span>
+                    </div>
+                </div>
+                <p class="card-desc">The Airport Express reaches Central in 24 minutes, with free shuttles fanning out to the big hotels. The budget alternative, buses A11/A21, is scenic and half the price.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚇</span>
+                        <span class="card-title">The MTR — a backbone that runs to the second</span>
+                    </div>
+                </div>
+                <p class="card-desc">The metro network weaves both shores and the New Territories: clean, fast, flawlessly signed. Be ready for the human tide at rush hour — the flow carries you; just steer.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚋</span>
+                        <span class="card-title">The Ding Ding — the double-decker tram</span>
+                    </div>
+                </div>
+                <p class="card-desc">The double-deckers have trundled along the island since 1904 and remain the city&#x27;s cheapest tour: take the front seat on the top deck and glide beneath the neon signs. Board at the back, pay as you leave.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">⛴️</span>
+                        <span class="card-title">The Star Ferry — the harbour&#x27;s legend</span>
+                    </div>
+                </div>
+                <p class="card-desc">The green-and-white ferries have linked the two shores since 1888 and give the world&#x27;s best view cruise for pocket change: the evening crossing from Kowloon, as the skyline lights up, is the stuff of legend.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚠</span>
+                        <span class="card-title">The Peak Tram and the cable cars</span>
+                    </div>
+                </div>
+                <p class="card-desc">The Peak Tram has climbed steeply to Victoria Peak since 1888; the Ngong Ping 360 cable car glides to the Big Buddha on Lantau. Both love a queue — first departures of the morning are the rule.</p>
+            </div>
+            </div>
+            
+        <div class="callout-box success">
+            <div class="callout-title">💡 Ferry tip</div>
+            <p>Board the Star Ferry at Tsim Sha Tsui just before sunset, cross to the island and come back: the two tickets together cost less than a coffee, and this is the only &#x27;harbour cruise&#x27; that watches the 8 pm light show from the water.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 3. Where to Stay (Neighborhoods) -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Neighborhood Guide</span>
+                <h2 class="section-title">Where to Stay in Hong Kong: Best Areas</h2>
+            </div>
+            <p class="section-intro">In Hong Kong choosing a shore is choosing a character: the island&#x27;s financial polish, Kowloon&#x27;s neon energy, or the islands&#x27; calm?</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Central and Sheung Wan</span>
+                    <span class="card-badge badge-purple">Most central</span>
+                </div>
+                <p class="card-desc">Antique lanes between the finance towers, the Mid-Levels escalator and SoHo&#x27;s restaurants: the island&#x27;s heart. High prices, flawless location — the classic for a first visit.</p>
+                <div class="card-footer-tip">SoHo restaurants • The escalator • Finance heart</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Tsim Sha Tsui (Kowloon)</span>
+                    <span class="card-badge badge-purple">Best views</span>
+                </div>
+                <p class="card-desc">The skyline view from the harbour&#x27;s edge: museums, the Star Ferry pier and Nathan Road&#x27;s energy. Remember the skyline photo is taken from this side — your hotel window can be a gallery.</p>
+                <div class="card-footer-tip">Skyline views • Museum waterfront • Shopping heavy</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Wan Chai and Causeway Bay</span>
+                    <span class="card-badge badge-purple">Most lively</span>
+                </div>
+                <p class="card-desc">Markets, the tram line, nightlife and shopping floors interlocked: the island&#x27;s dense everyday life. Hotels for every budget, something open at every hour.</p>
+                <div class="card-footer-tip">Tram line • Nightlife • Every budget</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Mong Kok and Yau Ma Tei</span>
+                    <span class="card-badge badge-purple">Most local</span>
+                </div>
+                <p class="card-desc">Neon signs, street markets and one of the densest crowds on earth: Hong Kong unfiltered. From cheap guesthouses to boutique hotels — for those who like their reality in high doses.</p>
+                <div class="card-footer-tip">Street markets • Neon nights • Fair prices</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Lantau and the islands</span>
+                    <span class="card-badge badge-purple">Calmest</span>
+                </div>
+                <p class="card-desc">Lantau of the Big Buddha, the fishing island Cheung Chau or laid-back Lamma: another tempo half an hour by ferry. For those who want the city + nature balance built into where they sleep.</p>
+                <div class="card-footer-tip">Ferry life • Mountain trails • Village tempo</div>
+            </div>
             </div>
         </section>
         
 
-        <!-- CTA Banner -->
-        <section class="app-cta-banner">
-            <h3>Unlock the Full Guide in MyWay 🌟</h3>
-            <p>Discover hidden gems, curated local food, tourist traps to avoid, and step-by-step smart walking routes for Hong Kong in MyWay.</p>
-            <div class="store-btn-row">
-                <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
-                     Download on App Store
-                </a>
-                <a href="https://play.google.com/store/apps/details?id=com.anilaybakan.sehirkesif" class="store-pill-btn">
-                    ▶ Get on Google Play
-                </a>
+        <!-- Ad Placement 2: Mid-Article -->
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+
+        <!-- 4. Best Time to Visit -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Seasons & Weather</span>
+                <h2 class="section-title">Best Time to Visit Hong Kong</h2>
+            </div>
+            <p class="section-intro">Read the subtropical calendar like this: October-December is the golden window, summer is humid and typhoon-prone, spring misty but alive.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Spring</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Mar – May</span>
+                    </div>
+                    <span class="card-badge badge-amber">Misty Vitality</span>
+                </div>
+                <p class="card-desc">The air warms, the humidity slowly climbs, and on some mornings the harbour wraps itself in mist — the Peak view becomes a lottery. The art season floods the city with galleries in spring.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Summer</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Jun – Sep</span>
+                    </div>
+                    <span class="card-badge badge-amber">Humidity and Typhoon Season</span>
+                </div>
+                <p class="card-desc">The heat and humidity are heavy and the occasional typhoon signal stops the city; but hotels get cheaper, and the malls and museums are icy cool. Island beaches and junk-boat days are this season&#x27;s reward.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Autumn</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Oct – Dec</span>
+                    </div>
+                    <span class="card-badge badge-amber">The Golden Window</span>
+                </div>
+                <p class="card-desc">Humidity drops, the sky clears and the city returns to its best self: the Peak view sharp, the trails cool, the terraces full. This is the year&#x27;s most reliable travel window — everyone knows it, so book early.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Winter</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Jan – Feb</span>
+                    </div>
+                    <span class="card-badge badge-amber">Cool and Festive</span>
+                </div>
+                <p class="card-desc">Winter is gentle — cardigan weather, not coat weather. In late January-February the Chinese New Year paints the city red: flower markets, the night parade and fireworks over the harbour. Some businesses close for a few festival days.</p>
+            </div>
             </div>
         </section>
+        
+
+        <!-- 5. Authentic Food & Dining -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Culinary Culture</span>
+                <h2 class="section-title">Authentic Local Dining & Food Secrets in Hong Kong</h2>
+            </div>
+            <p class="section-intro">Hong Kong holds some of the densest delicious square metres on earth: Michelin-starred dim sum and back-alley wonton live in the same block.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🥟</span>
+                        <span class="card-title">Dim sum — a ritual by the basket</span>
+                    </div>
+                </div>
+                <p class="card-desc">Har gow (shrimp dumplings), siu mai, char siu bao: the table builds itself as the steaming baskets land. A morning-and-noon ritual — dim sum without tea is dim sum incomplete.</p>
+                <div class="card-footer-tip">⭐ Morning to noon · with tea</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🍗</span>
+                        <span class="card-title">Char siu and roast goose</span>
+                    </div>
+                </div>
+                <p class="card-desc">The glossy red char siu and crisp-skinned roast goose hanging in the windows: the shopfront pride of Cantonese cooking. A portion over rice is the city&#x27;s best fast meal.</p>
+                <div class="card-footer-tip">⭐ At a roast-shop · over rice</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🍜</span>
+                        <span class="card-title">Wonton noodles and fish balls</span>
+                    </div>
+                </div>
+                <p class="card-desc">Shrimp-filled wontons over fine egg noodles: the century-old speciality of tiny shops. The street stall&#x27;s fish-ball soup plays in the same league.</p>
+                <div class="card-footer-tip">⭐ In a tiny shop · being squeezed in is good luck</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🍞</span>
+                        <span class="card-title">Cha chaan teng classics</span>
+                    </div>
+                </div>
+                <p class="card-desc">Silk-stocking milk tea, a pineapple bun (bolo bao) with a slab of cold butter, and Hong Kong-style French toast: the warmest menu of the east-west mix. Afternoon tea is drunk here.</p>
+                <div class="card-footer-tip">⭐ Afternoon ritual · with milk tea</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🥚</span>
+                        <span class="card-title">Egg tarts and egg waffles</span>
+                    </div>
+                </div>
+                <p class="card-desc">A warm egg tart (dan tat) from the oven and the bubble-textured egg waffle (gai daan jai): the city&#x27;s two sweet signatures. Whichever bakery has the queue is the right bakery.</p>
+                <div class="card-footer-tip">⭐ Street sweet · warm from the oven</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🍲</span>
+                        <span class="card-title">A dai pai dong evening</span>
+                    </div>
+                </div>
+                <p class="card-desc">Wok flames at open-air stalls, plastic stools and ice-cold beer: the smoky flavour called &#x27;wok hei&#x27; (the breath of the wok) is born here. Their numbers have dwindled — when you find one, don&#x27;t pass it by.</p>
+                <div class="card-footer-tip">⭐ At an open stall · by wok fire</div>
+            </div>
+            </div>
+            
+        <div class="callout-box">
+            <div class="callout-title">🍷 The table rule</div>
+            <p>Fill your neighbour&#x27;s cup before your own, and accept thanks by two fingers tapped lightly on the table — this silent courtesy is the table&#x27;s heart. Don&#x27;t fear the menu-less place: point + show how many you are; that method never leaves you hungry in this city.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 6. Handpicked Hidden Gems -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Off The Beaten Path</span>
+                <h2 class="section-title">Handpicked Hidden Gems in Hong Kong</h2>
+            </div>
+            <p class="section-intro">Everyone goes up the Peak; these six open Hong Kong&#x27;s layers.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">The Lugard Road walk</span>
+                    <span class="card-badge badge-emerald">The Peak&#x27;s free rival</span>
+                </div>
+                <p class="card-desc">Five minutes from the Peak Tram terrace&#x27;s crowds, a flat path circles the summit: the skyline at your feet, no queue, no entry fee. The sunset loop takes 45 minutes — the city&#x27;s best free view.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Man Mo Temple</span>
+                    <span class="card-badge badge-emerald">Silence under incense spirals</span>
+                </div>
+                <p class="card-desc">A dim temple in the middle of Sheung Wan with giant incense coils hanging from the ceiling, dedicated to the gods of literature and war. At the foot of the skyscrapers, you step into another century in an instant.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">The Temple Street night market</span>
+                    <span class="card-badge badge-emerald">Fortunes under the neon</span>
+                </div>
+                <p class="card-desc">As evening falls the stalls, fortune tellers and open-air karaoke booths appear: the set of Hong Kong cinema in real life. Haggling allowed, atmosphere free.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Yick Fat / Montane Mansion</span>
+                    <span class="card-badge badge-emerald">A thousand lives in one building</span>
+                </div>
+                <p class="card-desc">Quarry Bay&#x27;s colossal housing blocks are famous as the &#x27;monster building&#x27;: look up from the courtyard and the city&#x27;s density explains itself in one frame. With respect and quiet for the residents — this is a home, not a film set.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Cheung Chau island</span>
+                    <span class="card-badge badge-emerald">Another century on an island</span>
+                </div>
+                <p class="card-desc">A car-free fishing island 40 minutes by ferry: the smell of dried fish, bicycles, mini beaches and a pirate&#x27;s cave. The locals&#x27; Sunday escape — go on a weekday and find it empty.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Sunrise on the Kowloon promenade</span>
+                    <span class="card-badge badge-emerald">Tai chi at dawn on the waterfront</span>
+                </div>
+                <p class="card-desc">The Tsim Sha Tsui promenade at 6 am: the skyline turns pink, locals practise tai chi, runners pass. Choose this quiet hour over the light show crowds — the harbour saves its most beautiful face for morning.</p>
+            </div>
+            </div>
+            
+        <div class="callout-box success">
+            <div class="callout-title">✨ Trail tip</div>
+            <p>Most of Hong Kong&#x27;s land is mountain and park: give half a day to Dragon&#x27;s Back, Lion Rock or a Lantau trail. From a summit you understand — this is not a skyscraper city, it&#x27;s a nature reserve with skyscrapers.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 7. Tourist Traps & Smarter Alternatives -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Scam Prevention</span>
+                <h2 class="section-title">Tourist Traps to Avoid & Smarter Alternatives</h2>
+            </div>
+            <p class="section-intro">Hong Kong is honest and orderly; its traps are few but well camouflaged along the tourist route.</p>
+            <div class="traps-list">
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🚡 TRAP</span>
+                    <h4>The midday Peak Tram queue</h4>
+                </div>
+                <p>At midday the tram queue reaches an hour; on a misty day you meet a white wall at the top — ticket paid, view a lottery.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Take the first tram of the morning or climb by bus 15 on the winding road; at the top, walk Lugard Road&#x27;s free view instead of the paid Sky Terrace. If it&#x27;s misty, swap the day.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">📷 TRAP</span>
+                    <h4>The Nathan Road electronics shops</h4>
+                </div>
+                <p>Some electronics and camera shops on the tourist strip inflate the price afterwards, swap the box or play the &#x27;mandatory accessory&#x27; game.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Buy electronics from chain stores or official dealers, and verify prices online. Never enter a shop without price tags in the window.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🍽️ TRAP</span>
+                    <h4>The surprise bill at a view restaurant</h4>
+                </div>
+                <p>Some harbour-view tourist restaurants pad the bill with service, tea and &#x27;peanut&#x27; line items; the menu price is half the story.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Treat the tea-and-snack charge as normal (it&#x27;s local custom) but know the rates: 10% service + a small tea charge is standard. Take the view with one drink at a bar, eat at a local place.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🚕 TRAP</span>
+                    <h4>Insisting on a taxi for a short hop</h4>
+                </div>
+                <p>In traffic hours a taxi is both dearer and slower; the MTR often does the same route in half the time.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Use the MTR + tram + ferry trio with your Octopus; if you need a taxi, make sure the red (urban) cab runs its meter — there is no haggling taxi in this city.</div>
+            </div>
+            </div>
+            
+        <div class="callout-box warning">
+            <div class="callout-title">🛡️ Golden rule</div>
+            <p>Queue culture in Hong Kong is sacred and well signposted: smile politely at anyone offering a queue-free &#x27;shortcut&#x27; and walk on. The city&#x27;s system works with the same efficiency for visitors — trust the system.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 8. Step-by-Step 1-Day Itinerary -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Smart Itinerary</span>
+                <h2 class="section-title">Day 1: Step-by-Step Hong Kong Walking Tour</h2>
+            </div>
+            <p class="section-intro">If you hate planning, follow these flows. The times are flexible; keep the spirit, break the order.</p>
+            <div class="timeline">
+                
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">08:00</span>
+                    <h4 class="step-title">A Peak morning</h4>
+                </div>
+                <p class="step-desc">First Peak Tram up to Victoria Peak: walk Lugard Road and see the skyline in morning light, queue-free.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">10:30</span>
+                    <h4 class="step-title">Sheung Wan and Man Mo</h4>
+                </div>
+                <p class="step-desc">The incense-coiled temple, the antique lanes and the city&#x27;s layers on the Mid-Levels escalator; a side-street coffee break.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">12:30</span>
+                    <h4 class="step-title">A yum cha noon</h4>
+                </div>
+                <p class="step-desc">The dim sum table: har gow, siu mai, char siu bao and strong tea. Don&#x27;t forget the two-finger thank-you as the baskets empty.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">14:30</span>
+                    <h4 class="step-title">The Ding Ding tour</h4>
+                </div>
+                <p class="step-desc">The Wan Chai-Causeway Bay stretch from the tram&#x27;s top front seat: neon signs, markets and city life right outside the glass.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">17:30</span>
+                    <h4 class="step-title">Across by Star Ferry</h4>
+                </div>
+                <p class="step-desc">Cross to Kowloon towards sunset: take your place on the promenade as the skyline lights come on.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">20:00</span>
+                    <h4 class="step-title">The light show + the night market</h4>
+                </div>
+                <p class="step-desc">Watch the 8 pm Symphony of Lights from the harbour, then dive into Temple Street: stalls, fortune tellers and late-night snacks — a close beneath the neon.</p>
+            </div>
+            
+            </div>
+
+            <!-- Mobile App Locked Content: Days 2 & 3 + Live GPS Map -->
+            <div class="app-lock-banner" id="download">
+                <div class="app-lock-badge">MyWay Mobile Exclusive 📱</div>
+                <h3>Unlock Days 2 & 3 + Turn-by-Turn GPS Map Navigation</h3>
+                <p>Explore the complete 3-day hourly itinerary for Hong Kong, browse our 180+ verified place database offline, and plan collaborative daily itineraries with friends in the MyWay app.</p>
+                <div style="margin: 16px 0 20px; font-size: 13px; color: #CBD5E1; font-weight: 600;">
+                    📍 Day 2: Lantau and the Buddha &bull; 📍 Day 3: Trail and island escape
+                </div>
+                <div class="app-lock-features">
+                    <div class="app-lock-feature-item">✓ Live Interactive GPS Map & Navigation</div>
+                    <div class="app-lock-feature-item">✓ Full 180+ Place Database (Offline Mode)</div>
+                    <div class="app-lock-feature-item">✓ Co-plan Hourly Trips with Friends</div>
+                </div>
+                <div class="store-btn-row">
+                    <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
+                         Download on App Store
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.anilaybakan.sehirkesif" class="store-pill-btn">
+                        ▶ Get on Google Play
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+
+        <!-- 9. Phrases -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Local Slang</span>
+                <h2 class="section-title">Useful Everyday Phrases in Hong Kong</h2>
+            </div>
+            <p class="section-intro">English works everywhere, but five words of Cantonese open a wide smile on the counter&#x27;s far side.</p>
+            <div class="phrases-grid">
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Nei hou</div>
+                <div class="phrase-trans">Hello — the morning version &#x27;jou san&#x27; is even more charming</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ M̀h&#x27;gōi</div>
+                <div class="phrase-trans">Thanks / excuse me / may I — the magic word you&#x27;ll use fifty times a day</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Dō jeh</div>
+                <div class="phrase-trans">Thank you (for a gift or big favour) — m̀h&#x27;gōi&#x27;s formal sibling</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Ga yau!</div>
+                <div class="phrase-trans">&#x27;Keep going, you&#x27;ve got this!&#x27; — on the hill, in the queue, in life</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Ho sik</div>
+                <div class="phrase-trans">&#x27;Delicious&#x27; — said after the dim sum basket, it wins you the counter</div>
+            </div>
+            </div>
+        </section>
+        
+
+        <!-- Ad Placement 3: Bottom Banner -->
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
     </main>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h4>MyWay Travel</h4>
+                    <p>The ultimate smart travel guide and AI route planner for modern explorers. Stop being a tourist; experience cities like a local.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>City Guides</h5>
+                    <ul>
+                        <li><a href="/guides/">All Cities</a></li>
+                        <li><a href="../guides/barcelona.html">Barcelona</a></li>
+                        <li><a href="../guides/roma.html">Roma</a></li>
+                        <li><a href="../guides/paris.html">Paris</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Company</h5>
+                    <ul>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../support.html">Support</a></li>
+                        <li><a href="/#features">Features</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Legal</h5>
+                    <ul>
+                        <li><a href="../privacy.html">Privacy Policy</a></li>
+                        <li><a href="../terms.html">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 

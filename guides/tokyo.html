@@ -3,11 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tokyo Travel Guide & Smart Walking Routes | MyWay</title>
-    <meta name="description" content="Explore Tokyo with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
+    <title>Tokyo Travel Guide & Curated Walking Routes | MyWay</title>
+    <meta name="description" content="The ultimate Tokyo travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
     
     <link rel="alternate" hreflang="en" href="/guides/tokyo.html">
     <link rel="alternate" hreflang="tr" href="/tr/rehber/tokyo.html">
+    <link rel="canonical" href="https://mywaytravelapp.com/guides/tokyo.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mywaytravelapp.com/guides/tokyo.html">
+    <meta property="og:title" content="Tokyo Travel Guide & Curated Walking Routes | MyWay">
+    <meta property="og:description" content="The ultimate Tokyo travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
+    <meta property="og:image" content="https://mywaytravelapp.com/images/cities/tokyo.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tokyo Travel Guide & Curated Walking Routes | MyWay">
+    <meta name="twitter:description" content="The ultimate Tokyo travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
+    <meta name="twitter:image" content="https://mywaytravelapp.com/images/cities/tokyo.jpg">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
@@ -22,6 +36,37 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
          crossorigin="anonymous"></script>
 
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TravelGuide",
+      "name": "Tokyo Travel Guide & Curated Walking Routes | MyWay",
+      "headline": "Tokyo Gezi Rehberi & Akıllı Yürüyüş Rotaları",
+      "description": "The ultimate Tokyo travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.",
+      "image": "https://mywaytravelapp.com/images/cities/tokyo.jpg",
+      "inLanguage": "en",
+      "url": "https://mywaytravelapp.com/guides/tokyo.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "MyWay Travel",
+        "url": "https://mywaytravelapp.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://mywaytravelapp.com/images/app_icon.png"
+        }
+      },
+      "about": {
+        "@type": "TouristDestination",
+        "name": "Tokyo",
+        "containedInPlace": {
+          "@type": "Country",
+          "name": "Japan"
+        }
+      }
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -35,13 +80,17 @@
             --primary-light: #9D93FF;
             --primary-dark: #5B4FD6;
             --accent: #EC4899;
+            --emerald: #10B981;
+            --warning: #EF4444;
             --bg-dark: #0F0B1A;
             --bg-section: #130F22;
             --bg-card: rgba(255, 255, 255, 0.04);
+            --bg-card-hover: rgba(255, 255, 255, 0.07);
             --text-primary: #FFFFFF;
             --text-secondary: #9CA3AF;
             --text-muted: #6B7280;
             --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(123, 110, 246, 0.3);
             --radius-lg: 24px;
             --radius-md: 16px;
             --radius-sm: 12px;
@@ -52,15 +101,15 @@
         body {
             background-color: var(--bg-dark); color: var(--text-primary);
             font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6; overflow-x: hidden;
+            line-height: 1.7; overflow-x: hidden;
         }
         
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
         
         /* Navbar */
         .navbar {
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            background: rgba(15, 11, 26, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            background: rgba(15, 11, 26, 0.88); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-subtle); height: 72px; display: flex; align-items: center;
         }
         .navbar-inner {
@@ -114,18 +163,27 @@
         .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(123, 110, 246, 0.4); }
         .nav-toggle { display: none; background: none; border: none; color: #fff; cursor: pointer; padding: 8px; }
 
+        /* Breadcrumbs */
+        .breadcrumbs {
+            display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-muted);
+            margin-bottom: 16px; flex-wrap: wrap;
+        }
+        .breadcrumbs a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+        .breadcrumbs a:hover { color: #fff; }
+        .breadcrumbs span { color: var(--text-muted); }
+
         /* Guide Hero */
         .guide-hero {
-            position: relative; min-height: 440px; display: flex; align-items: flex-end;
-            padding: 120px 24px 44px; margin-top: 72px; overflow: hidden; background-color: #1A132F;
+            position: relative; min-height: 480px; display: flex; align-items: flex-end;
+            padding: 130px 24px 50px; margin-top: 72px; overflow: hidden; background-color: #1A132F;
         }
         .guide-hero-bg {
             position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-            filter: brightness(0.65);
+            filter: brightness(0.6);
         }
         .guide-hero-overlay {
             position: absolute; inset: 0;
-            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.4) 60%, transparent 100%);
+            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.5) 60%, rgba(15, 11, 26, 0.2) 100%);
         }
         .guide-hero-content { position: relative; z-index: 2; width: 100%; }
         .city-badge {
@@ -133,28 +191,34 @@
             backdrop-filter: blur(10px); padding: 6px 14px; border-radius: 99px; font-size: 13px;
             font-weight: 600; margin-bottom: 14px; border: 1px solid rgba(255, 255, 255, 0.15);
         }
-        .guide-title { font-size: clamp(32px, 6vw, 52px); font-weight: 800; line-height: 1.1; margin-bottom: 10px; }
-        .guide-tagline { font-size: 16px; color: var(--primary-light); max-width: 720px; font-weight: 500; line-height: 1.5; }
-        
+        .guide-title { font-size: clamp(34px, 6vw, 56px); font-weight: 800; line-height: 1.1; margin-bottom: 12px; }
+        .guide-tagline { font-size: 17px; color: var(--primary-light); max-width: 780px; font-weight: 500; line-height: 1.5; margin-bottom: 12px; }
+        .guide-editorial-meta { font-size: 13px; color: #94A3B8; display: flex; gap: 16px; align-items: center; }
+
         /* Sections */
-        .section { padding: 42px 0; border-bottom: 1px solid var(--border-subtle); }
-        .section-header { margin-bottom: 24px; }
-        .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); font-weight: 700; }
-        .section-title { font-size: 24px; font-weight: 700; margin-top: 4px; }
+        .section { padding: 50px 0; border-bottom: 1px solid var(--border-subtle); }
+        .section-header { margin-bottom: 26px; }
+        .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); font-weight: 700; display: block; margin-bottom: 6px; }
+        .section-title { font-size: clamp(22px, 3.5vw, 28px); font-weight: 800; margin-bottom: 10px; }
+        .section-intro { font-size: 15px; color: #D1D5DB; line-height: 1.8; margin-bottom: 22px; max-width: 900px; }
         
-        .intro-text { font-size: 15px; color: #D1D5DB; line-height: 1.8; margin-bottom: 20px; }
-        
-        /* Local Word */
-        .local-word-box {
+        /* Pro-Tip & Local Word Boxes */
+        .callout-box {
             background: rgba(123, 110, 246, 0.08); border-left: 4px solid var(--primary);
-            padding: 18px 22px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-top: 20px;
+            padding: 18px 22px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin: 24px 0;
         }
-        .word-title { font-size: 15px; color: #fff; margin-bottom: 4px; }
+        .callout-box.warning {
+            background: rgba(239, 68, 68, 0.08); border-left: 4px solid var(--warning);
+        }
+        .callout-box.success {
+            background: rgba(16, 185, 129, 0.08); border-left: 4px solid var(--emerald);
+        }
+        .callout-title { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+        .callout-box p { font-size: 14px; color: #D1D5DB; line-height: 1.6; }
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
-        .local-word-box p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        
+
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
@@ -164,8 +228,8 @@
         .fact-val { font-size: 15px; font-weight: 600; color: #fff; margin: 2px 0; }
         .fact-sub { font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
         
-        /* Rules */
-        .rules-list { display: flex; flex-direction: column; gap: 14px; }
+        /* Rules List */
+        .rules-list { display: flex; flex-direction: column; gap: 14px; margin: 20px 0; }
         .rule-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 20px; display: flex; gap: 16px; align-items: flex-start;
@@ -177,52 +241,94 @@
         }
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        
-        /* Hidden Gems & Eat Grid */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
-        .gem-card, .eat-card {
+
+        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
+        .feature-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative;
+            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
+            display: flex; flex-direction: column; justify-content: space-between;
         }
-        .gem-badge {
-            display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase;
-            color: #10B981; background: rgba(16, 185, 129, 0.12); padding: 4px 10px; border-radius: 99px;
-            margin-bottom: 10px;
+        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
+        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
+        .card-title-group { display: flex; align-items: center; gap: 10px; }
+        .card-icon { font-size: 20px; }
+        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+        .card-badge {
+            font-size: 11px; font-weight: 700; text-transform: uppercase;
+            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
         }
-        .gem-hook { font-size: 13px; color: var(--primary-light); font-style: italic; margin-bottom: 8px; }
-        .gem-card h4, .eat-card h4 { font-size: 16px; margin-bottom: 6px; }
-        .gem-card p, .eat-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        .card-tip-box {
-            margin-top: 10px; padding: 8px 12px; background: rgba(255, 255, 255, 0.04);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1;
-        }
+        .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
+        .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
+        .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
+        .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        /* Traps */
-        .traps-list { display: flex; flex-direction: column; gap: 14px; }
-        .trap-card {
-            background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.15);
-            border-radius: var(--radius-md); padding: 20px;
+        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        .card-footer-tip {
+            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
         }
-        .trap-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+
+        /* Traps List */
+        .traps-list { display: flex; flex-direction: column; gap: 16px; margin: 20px 0; }
+        .trap-card {
+            background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.18);
+            border-radius: var(--radius-md); padding: 22px;
+        }
+        .trap-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
         .trap-tag {
             background: #EF4444; color: #fff; font-size: 11px; font-weight: 700;
-            text-transform: uppercase; padding: 2px 8px; border-radius: 6px;
+            text-transform: uppercase; padding: 3px 8px; border-radius: 6px;
         }
-        .trap-header h4 { font-size: 16px; color: #fff; }
+        .trap-header h4 { font-size: 17px; color: #fff; font-weight: 700; }
         .trap-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
         .trap-solution {
-            margin-top: 10px; padding: 10px 14px; background: rgba(16, 185, 129, 0.08);
-            border-left: 3px solid #10B981; border-radius: 4px; font-size: 13px; color: #D1D5DB; line-height: 1.5;
+            margin-top: 12px; padding: 12px 16px; background: rgba(16, 185, 129, 0.08);
+            border-left: 3px solid #10B981; border-radius: 6px; font-size: 13px; color: #D1D5DB; line-height: 1.5;
         }
-        
-        /* App CTA Banner */
-        .app-cta-banner {
-            background: linear-gradient(135deg, rgba(123, 110, 246, 0.15), rgba(236, 72, 153, 0.1));
-            border: 1px solid rgba(157, 147, 255, 0.3); border-radius: var(--radius-lg);
-            padding: 44px 20px; text-align: center; margin: 50px 0; position: relative;
+
+        /* Timeline (Itinerary) */
+        .timeline { position: relative; padding-left: 32px; margin: 24px 0 32px; }
+        .timeline::before {
+            content: ''; position: absolute; left: 11px; top: 8px; bottom: 8px;
+            width: 2px; background: linear-gradient(to bottom, var(--primary), var(--accent));
         }
-        .app-cta-banner h3 { font-size: clamp(22px, 4vw, 28px); font-weight: 800; margin-bottom: 10px; }
-        .app-cta-banner p { color: var(--text-secondary); max-width: 580px; margin: 0 auto 24px; font-size: 15px; }
+        .timeline-step { position: relative; margin-bottom: 24px; }
+        .timeline-step:last-child { margin-bottom: 0; }
+        .timeline-dot {
+            position: absolute; left: -32px; top: 4px; width: 24px; height: 24px;
+            border-radius: 50%; background: #19142B; border: 2px solid var(--primary-light);
+            display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700;
+        }
+        .step-header { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; flex-wrap: wrap; }
+        .step-time {
+            background: rgba(123, 110, 246, 0.2); color: var(--primary-light); font-size: 12px;
+            font-weight: 700; padding: 2px 8px; border-radius: 6px;
+        }
+        .step-title { font-size: 16px; font-weight: 700; color: #fff; }
+        .step-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+        /* Mobile App Gate Banner (Days 2 & 3 + Live Map) */
+        .app-lock-banner {
+            background: linear-gradient(135deg, rgba(123, 110, 246, 0.16) 0%, rgba(236, 72, 153, 0.12) 100%);
+            border: 1.5px solid rgba(157, 147, 255, 0.35); border-radius: var(--radius-lg);
+            padding: 36px 28px; margin: 36px 0; text-align: center; position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        .app-lock-badge {
+            display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px; border-radius: 100px; font-size: 12px; font-weight: 700;
+            color: #fff; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .app-lock-banner h3 { font-size: clamp(22px, 3.5vw, 28px); font-weight: 800; margin-bottom: 8px; }
+        .app-lock-banner p { color: var(--text-secondary); max-width: 620px; margin: 0 auto 20px; font-size: 14px; line-height: 1.6; }
+        .app-lock-features {
+            display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 24px;
+            font-size: 13px; color: #E2E8F0; font-weight: 500;
+        }
+        .app-lock-feature-item { display: flex; align-items: center; gap: 6px; }
+
+        /* Store Buttons */
         .store-btn-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
         .store-pill-btn {
             display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: white;
@@ -231,10 +337,48 @@
         }
         .store-pill-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2); }
 
+        /* Ad Placement Slots */
+        .ad-placement-slot {
+            margin: 40px auto; text-align: center; max-width: 728px; min-height: 90px;
+            background: rgba(255, 255, 255, 0.02); border: 1px dashed rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-sm); padding: 10px; overflow: hidden;
+        }
+        .ad-label {
+            font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px;
+            color: var(--text-muted); display: block; margin-bottom: 6px;
+        }
+
+        /* Phrases Table */
+        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrase-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm); padding: 14px 18px;
+        }
+        .phrase-orig { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+        .phrase-trans { font-size: 13px; color: var(--text-secondary); }
+
         /* Footer */
         .footer {
-            border-top: 1px solid var(--border-subtle); padding: 40px 24px 30px;
-            color: var(--text-muted); font-size: 13px; text-align: center;
+            border-top: 1px solid var(--border-subtle); padding: 50px 24px 36px;
+            color: var(--text-muted); font-size: 13px; background: #0A0713;
+        }
+        .footer-grid {
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px;
+            max-width: 1080px; margin: 0 auto 40px; text-align: left;
+        }
+        .footer-brand h4 { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+        .footer-brand p { font-size: 13px; line-height: 1.6; color: var(--text-secondary); max-width: 340px; }
+        .footer-col h5 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+        .footer-col a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+        .footer-col a:hover { color: #fff; }
+        .footer-bottom {
+            text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 24px; max-width: 1080px; margin: 0 auto;
+        }
+
+        @media (max-width: 860px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
         @media (max-width: 768px) {
@@ -246,8 +390,9 @@
             }
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
-            .guide-hero { min-height: 380px; padding-top: 90px; }
+            .guide-hero { min-height: 420px; padding-top: 100px; }
             .cards-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
 
@@ -268,6 +413,8 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="/guides/" class="active">City Guides</a></li>
                 <li><a href="/#features">Features</a></li>
+                <li><a href="../about.html">About Us</a></li>
+                <li><a href="../support.html">Support</a></li>
             </ul>
             <div class="nav-actions">
                 <!-- Top Right Globe Dropdown -->
@@ -295,37 +442,58 @@
         <img src="../images/cities/tokyo.jpg" alt="Tokyo" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
+            <div class="breadcrumbs">
+                <a href="/">Home</a> <span>/</span>
+                <a href="/guides/">City Guides</a> <span>/</span>
+                <span>🇯🇵 Japan</span> <span>/</span>
+                <span style="color:#fff;">Tokyo</span>
+            </div>
             <div class="city-badge">🇯🇵 Japan &bull; City Guides</div>
             <h1 class="guide-title">Tokyo</h1>
             <p class="guide-tagline">The quiet giant of order, neon and perfection</p>
+            <div class="guide-editorial-meta">
+                <span>✍️ MyWay Editorial Team</span>
+                <span>•</span>
+                <span>🛡️ Verified Local Guide</span>
+            </div>
         </div>
     </header>
 
+    <!-- Ad Placement 1: Top Banner -->
+    <div class="container">
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    </div>
+
     <main class="container">
-        <!-- Overview -->
+        <!-- 1. Overview -->
         <section class="section">
             <div class="section-header">
-                <span class="section-label">Overview</span>
-                <h2 class="section-title">The Vibe of Tokyo</h2>
+                <span class="section-label">Overview & Atmosphere</span>
+                <h2 class="section-title">The True Vibe of Tokyo</h2>
             </div>
-            <p class="intro-text">Tokyo is not one city but a hundred nested ones: five minutes separate the human tide of Shibuya Crossing from the cedar forest of Meiji Shrine. Here the world&#x27;s densest metro doesn&#x27;t slip by a second, the smallest ramen shop practices its craft with religious seriousness, and a vending machine serves hot soup. The city is enormous but never rude: everyone flows quietly, every corner is clean, even getting lost is safe. Tokyo&#x27;s secret is not in its scale but in its detail — the closer you look, the more you see.</p>
+            <p class="section-intro">Tokyo is not one city but a hundred nested ones: five minutes separate the human tide of Shibuya Crossing from the cedar forest of Meiji Shrine. Here the world&#x27;s densest metro doesn&#x27;t slip by a second, the smallest ramen shop practices its craft with religious seriousness, and a vending machine serves hot soup. The city is enormous but never rude: everyone flows quietly, every corner is clean, even getting lost is safe. Tokyo&#x27;s secret is not in its scale but in its detail — the closer you look, the more you see.</p>
             
-        <div class="local-word-box">
-            <div class="word-title">🗣️ Local Concept: <strong>Omotenashi</strong> <span class="pron">(oh-moh-teh-NAH-shee)</span></div>
+        <div class="callout-box">
+            <div class="callout-title">🗣️ Local Concept: <strong>Omotenashi</strong> <span class="pron">(oh-moh-teh-NAH-shee)</span></div>
             <p>The philosophy of Japanese hospitality: service considered before you ask, given without expectation of return. The taxi door that opens by itself, the cashier presenting your package with both hands, the paper bag slipped into plastic when it rains — all omotenashi. There is no tipping, because excellence is already the standard.</p>
         </div>
         
-        </section>
 
-        <!-- Quick Facts -->
-        
-        <section class="section">
-            <div class="section-header">
-                <span class="section-label">Essentials</span>
-                <h2 class="section-title">Quick Logistics</h2>
-            </div>
+            <!-- Quick Facts Grid -->
             <div class="facts-grid">
-                
             <div class="fact-card">
                 <div class="fact-icon">✈️</div>
                 <div>
@@ -361,20 +529,13 @@
                     <div class="fact-sub">English limited, courtesy unlimited</div>
                 </div>
             </div>
-            
             </div>
-        </section>
-        
 
-        <!-- Rules & Secrets -->
-        
-        <section class="section">
-            <div class="section-header">
-                <span class="section-label">Insider Advice</span>
-                <h2 class="section-title">3 Unwritten Rules for Tokyo</h2>
-            </div>
-            <div class="rules-list">
-                
+            <!-- 3 Unwritten Rules -->
+            
+            <div style="margin-top: 32px;">
+                <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 14px;">3 Unwritten Rules for Tokyo</h3>
+                <div class="rules-list">
             <div class="rule-card">
                 <div class="rule-num">1</div>
                 <div class="rule-content">
@@ -398,29 +559,593 @@
                     <p>Tokyo cannot be &#x27;seen&#x27; in one pass: Asakusa&#x27;s temple morning, Shibuya&#x27;s neon night and Yanaka&#x27;s old lanes are separate cities. Pick two or three neighborhoods a day and connect them by train — fewer districts, more depth: that is the Tokyo formula.</p>
                 </div>
             </div>
+            </div>
+            </div>
             
+        </section>
+
+        <!-- 2. Transportation & Transit Logistics -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Getting Around</span>
+                <h2 class="section-title">Tokyo Public Transit & Airport Transfers</h2>
+            </div>
+            <p class="section-intro">Tokyo&#x27;s rail network is the city&#x27;s bloodstream: the Yamanote loop is the spine, the metro its capillaries — and a Suica card makes it all one tap.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">✈️</span>
+                        <span class="card-title">Arriving from the airports</span>
+                    </div>
+                </div>
+                <p class="card-desc">Haneda connects to the center in half an hour by monorail or the Keikyu line; from Narita, the Narita Express or Skyliner takes about an hour. Skip paper tickets and tap through with Suica — buy the card at the airport or load it onto your phone.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚉</span>
+                        <span class="card-title">The Yamanote loop</span>
+                    </div>
+                </div>
+                <p class="card-desc">The green loop train strings the city&#x27;s main stops together: Shibuya, Shinjuku, Ueno, Tokyo Station. If you&#x27;re lost, return to the Yamanote — the loop eventually delivers you to a familiar platform.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚇</span>
+                        <span class="card-title">Metro mastery</span>
+                    </div>
+                </div>
+                <p class="card-desc">Two metro companies and color-coded lines look confusing at first: follow the station numbers (like G-09); the signage is flawless. Rush hour from 07:30 to 09:00 is serious — never board with a suitcase then.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚶</span>
+                        <span class="card-title">Walking the neighborhoods</span>
+                    </div>
+                </div>
+                <p class="card-desc">Tokyo&#x27;s neighborhoods open up on foot: exit the station, leave the main street, turn into the lanes. Addresses run by block, not street name — follow the map, and count getting lost as part of the program.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚄</span>
+                        <span class="card-title">Day-trip Shinkansen</span>
+                    </div>
+                </div>
+                <p class="card-desc">From Tokyo Station the bullet train reaches Kamakura, Nikko and even the Fuji foothills for day trips. The JR Pass no longer pays off for everyone — calculate your route; single tickets win on most short itineraries.</p>
+            </div>
+            </div>
+            
+        <div class="callout-box success">
+            <div class="callout-title">💡 Train tip</div>
+            <p>Load Suica onto your phone and use the balance at vending machines too: hunting for a card at the gate is against Tokyo&#x27;s tempo. The last train runs around midnight and is taken seriously — miss it and your options are a taxi, a capsule hotel, or an izakaya open till dawn.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 3. Where to Stay (Neighborhoods) -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Neighborhood Guide</span>
+                <h2 class="section-title">Where to Stay in Tokyo: Best Areas</h2>
+            </div>
+            <p class="section-intro">In Tokyo choosing a neighborhood means choosing a city: Shinjuku&#x27;s neon, Asakusa&#x27;s temple mornings, Ginza&#x27;s polish — each a different Tokyo.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Shinjuku</span>
+                    <span class="card-badge badge-purple">Center of everything</span>
+                </div>
+                <p class="card-desc">The world&#x27;s busiest station, neon streets, izakaya alleys and the mini-bars of Golden Gai: the heart of Tokyo&#x27;s intensity. Connected to every line — high energy, streets open till dawn.</p>
+                <div class="card-footer-tip">Transit giant • Neon nights • Izakaya alleys</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Shibuya</span>
+                    <span class="card-badge badge-purple">Young pulse</span>
+                </div>
+                <p class="card-desc">The famous crossing, fashion streets and nightlife: young Tokyo&#x27;s showcase. Harajuku and Omotesando in walking distance — the tempo is high and boredom impossible.</p>
+                <div class="card-footer-tip">At the crossing • Fashion streets • Young energy</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Asakusa</span>
+                    <span class="card-badge badge-purple">Old Tokyo</span>
+                </div>
+                <p class="card-desc">The neighborhood of Senso-ji temple: temple courtyards in the morning, shutters closing early, quiet nights. Friendly prices and ryokan options — for waking up in the shitamachi spirit.</p>
+                <div class="card-footer-tip">Beside the temple • Friendly prices • Ryokan options</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Ginza and Tokyo Station</span>
+                    <span class="card-badge badge-purple">Polished center</span>
+                </div>
+                <p class="card-desc">Luxury windows, Michelin basements and the Imperial Palace walk: Tokyo&#x27;s most refined bank. Next to Tokyo Station, the shinkansen gateway — comfort and location at their peak.</p>
+                <div class="card-footer-tip">Luxury windows • Shinkansen gate • Palace walks</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Ueno and Yanaka</span>
+                    <span class="card-badge badge-purple">Local rhythm</span>
+                </div>
+                <p class="card-desc">The museum park, the Ameyoko market street and Yanaka&#x27;s old-Tokyo lanes: little tourist polish, plenty of character. On the Yamanote — a calm, authentic base.</p>
+                <div class="card-footer-tip">Museum park • Market street • Old lanes</div>
+            </div>
             </div>
         </section>
         
 
-        <!-- CTA Banner -->
-        <section class="app-cta-banner">
-            <h3>Unlock the Full Guide in MyWay 🌟</h3>
-            <p>Discover hidden gems, curated local food, tourist traps to avoid, and step-by-step smart walking routes for Tokyo in MyWay.</p>
-            <div class="store-btn-row">
-                <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
-                     Download on App Store
-                </a>
-                <a href="https://play.google.com/store/apps/details?id=com.anilaybakan.sehirkesif" class="store-pill-btn">
-                    ▶ Get on Google Play
-                </a>
+        <!-- Ad Placement 2: Mid-Article -->
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+
+        <!-- 4. Best Time to Visit -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Seasons & Weather</span>
+                <h2 class="section-title">Best Time to Visit Tokyo</h2>
+            </div>
+            <p class="section-intro">Tokyo&#x27;s calendar knows two peaks: late-March sakura and November koyo — but the city runs full twelve months, and every season tells it differently.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Spring</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Mar – May</span>
+                    </div>
+                    <span class="card-badge badge-amber">The Sakura Wave</span>
+                </div>
+                <p class="card-desc">In late March and early April the sakura paints the city pink: hanami picnics fill the parks and the canals brim with petals. The peak lasts a week and the world comes for it — so do prices and crowds. May is the green, calm back door.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Summer</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Jun – Aug</span>
+                    </div>
+                    <span class="card-badge badge-amber">Matsuri and Humidity</span>
+                </div>
+                <p class="card-desc">Summer Tokyo is humid and hot, but it pays you back: neighborhood matsuri festivals, yukata evenings and fireworks over the rivers. Air-conditioned museum-and-cafe breaks are part of the program — early morning and late evening is summer&#x27;s formula.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Autumn</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Sep – Nov</span>
+                    </div>
+                    <span class="card-badge badge-amber">Koyo Crimson</span>
+                </div>
+                <p class="card-desc">October cools and November paints the city crimson and gold: maple gardens, ginkgo avenues and crystal views of Fuji. This is Tokyo&#x27;s most balanced touring window — smaller crowds than sakura, and even finer light.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Winter</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Dec – Feb</span>
+                    </div>
+                    <span class="card-badge badge-amber">Clear and Quiet</span>
+                </div>
+                <p class="card-desc">Tokyo winter is dry and sunny: the sky stays clear, and Fuji shows crystal-sharp from the observation decks. The New Year temple visits (hatsumode) are among the city&#x27;s truest traditions — hotels run calmer than summer and the izakayas are steamy and warm.</p>
+            </div>
             </div>
         </section>
+        
+
+        <!-- 5. Authentic Food & Dining -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Culinary Culture</span>
+                <h2 class="section-title">Authentic Local Dining & Food Secrets in Tokyo</h2>
+            </div>
+            <p class="section-intro">Tokyo holds more Michelin stars than any city on earth, but its real miracle is how extraordinary the ordinary places are: even the station ramen man is a craftsman.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🍣</span>
+                        <span class="card-title">Sushi: from counter to omakase</span>
+                    </div>
+                </div>
+                <p class="card-desc">From Toyosu market&#x27;s morning sushi to the neighborhood master&#x27;s counter: fresh fish is the baseline here; craft is the difference. Standing sushi bars (tachigui) are excellent and affordable — eating nigiri with your hand is legitimate, and dipping fish-side into the soy is the etiquette.</p>
+                <div class="card-footer-tip">⭐ At the counter · soy on the fish side</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🍜</span>
+                        <span class="card-title">The ramen ritual</span>
+                    </div>
+                </div>
+                <p class="card-desc">Buy a slip from the ticket machine, take a counter seat, wait for your bowl: from tonkotsu to shoyu, each shop masters one soup. Slurping isn&#x27;t rude, it&#x27;s a compliment — and a queue means you&#x27;re at the right door.</p>
+                <div class="card-footer-tip">⭐ Slip from the machine · slurping welcome</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🏮</span>
+                        <span class="card-title">Izakaya night</span>
+                    </div>
+                </div>
+                <p class="card-desc">At the Japanese tavern the small plates keep coming: yakitori skewers, edamame, karaage fried chicken. Start with &#x27;toriaezu nama&#x27; (a beer, to begin) — the izakaya is where Tokyo exhales after work.</p>
+                <div class="card-footer-tip">⭐ Small plates · a beer to begin</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🏪</span>
+                        <span class="card-title">Konbini breakfast</span>
+                    </div>
+                </div>
+                <p class="card-desc">7-Eleven, Lawson, FamilyMart: the Japanese convenience store is a kitchen — onigiri, the famous egg sandwich (tamago sando) and hot coffee. Cheap, fresh and astonishingly good: whoever scorns the konbini misses Tokyo&#x27;s first lesson.</p>
+                <div class="card-footer-tip">⭐ Convenience miracle · tamago sando</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🍱</span>
+                        <span class="card-title">Depachika discovery</span>
+                    </div>
+                </div>
+                <p class="card-desc">The basement food halls of the luxury department stores: bento boxes, mochi sweets, a hundred kinds of pickles. Discount stickers appear near closing time — a depachika bento eaten in a park is Tokyo&#x27;s elegant picnic trick.</p>
+                <div class="card-footer-tip">⭐ Basement feast · closing-time discounts</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🍵</span>
+                        <span class="card-title">Wagashi and a matcha pause</span>
+                    </div>
+                </div>
+                <p class="card-desc">Wagashi, the delicate sweets shaped by the season, beside a deep bowl of matcha: at a temple tea house or an old confectioner&#x27;s. Sweet first, tea after — bitterness and sweetness speak in turn.</p>
+                <div class="card-footer-tip">⭐ Tea-house grace · shaped by the season</div>
+            </div>
+            </div>
+            
+        <div class="callout-box">
+            <div class="callout-title">🍷 Table rule</div>
+            <p>In Tokyo the lunch sets (teishoku) deliver mastery at half the evening price: schedule the big meal for noon. Queues signal quality and the plastic food displays decode the menu — and remember: no tipping; thanks are said with &#x27;gochisosama deshita&#x27;.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 6. Handpicked Hidden Gems -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Off The Beaten Path</span>
+                <h2 class="section-title">Handpicked Hidden Gems in Tokyo</h2>
+            </div>
+            <p class="section-intro">Everyone sees Shibuya Crossing; these six are Tokyo&#x27;s old-laned, valley-voiced hidden face.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Yanaka Ginza</span>
+                    <span class="card-badge badge-emerald">Old Tokyo&#x27;s shopping lane</span>
+                </div>
+                <p class="card-desc">The market street of a shitamachi quarter that survived war and earthquake: cat figurines, craft shops, and the &#x27;sunset stairs&#x27; in evening light. With its temple courtyards and cedar-shaded old cemetery — Tokyo&#x27;s slowest afternoon.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Shimokitazawa</span>
+                    <span class="card-badge badge-emerald">Backstreet of the theaters</span>
+                </div>
+                <p class="card-desc">Second-hand record shops, vintage stores, tiny stages and coffee roasters: Tokyo&#x27;s bohemian village. Two stops from the main lines, years away in atmosphere — Sunday afternoon is its liveliest hour.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Todoroki Valley</span>
+                    <span class="card-badge badge-emerald">A valley inside the city</span>
+                </div>
+                <p class="card-desc">A stream valley shaded by bamboo and maple in the middle of Setagaya: a footpath, a red bridge and a temple tea house at the valley&#x27;s end. The metropolis&#x27; sound disappears in thirty seconds — Tokyo&#x27;s most surprising nature escape.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Kagurazaka</span>
+                    <span class="card-badge badge-emerald">Stone-paved geisha quarter</span>
+                </div>
+                <p class="card-desc">The stone lanes of an old geisha district now filled with French bistros and kappo restaurants: Tokyo&#x27;s &#x27;little Paris&#x27;. The red-lantern staircases in its side alleys are the evening walk&#x27;s reward.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">The Nezu Museum garden</span>
+                    <span class="card-badge badge-emerald">Art-and-garden pair</span>
+                </div>
+                <p class="card-desc">An Asian art collection beside Omotesando, with a hidden Japanese garden behind: tea houses, mossy stones, a lotus pond. From fashion&#x27;s heart to stillness in two minutes — the elegant summary of Tokyo&#x27;s contrasts.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Omoide Yokocho</span>
+                    <span class="card-badge badge-emerald">Lantern-lit izakaya alley</span>
+                </div>
+                <p class="card-desc">A narrow postwar izakaya alley at the foot of Shinjuku Station: smoke, lantern light and shoulder-to-shoulder counters. It earns its name, &#x27;Memory Lane&#x27; — a yakitori skewer and a beer are the ticket for time travel.</p>
+            </div>
+            </div>
+            
+        <div class="callout-box success">
+            <div class="callout-title">✨ Contrast strategy</div>
+            <p>Tour Tokyo by contrast: balance a neon morning with an old quarter, a packed crossing with a garden. From Shibuya to Todoroki, Shinjuku to Kagurazaka — two opposite Tokyos in one day is the city&#x27;s true portrait.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 7. Tourist Traps & Smarter Alternatives -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Scam Prevention</span>
+                <h2 class="section-title">Tourist Traps to Avoid & Smarter Alternatives</h2>
+            </div>
+            <p class="section-intro">Tokyo is among the world&#x27;s most honest cities; its traps are few but wearying for the unprepared — keep these four in your pocket.</p>
+            <div class="traps-list">
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🍸 TRAP</span>
+                    <h4>The Kabukicho touts</h4>
+                </div>
+                <p>In the nightlife district, touts offering &#x27;free drinks, great bar&#x27; (especially the English-speaking ones) steer you to venues with inflated bills; objecting is hard.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Never follow a street invitation to a bar — keep the rule absolute. For a drinking night choose Golden Gai&#x27;s signposted bars or izakaya chains; ask about the cover charge at the door, and the answer will be clear.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🍣 TRAP</span>
+                    <h4>Tourist sushi windows</h4>
+                </div>
+                <p>In some tourist zones, windows shouting &#x27;fresh fish&#x27; sell mediocre sushi at master prices; an English-menu crowd can mislead.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Choose the queued tachigui bars, the market-hall counters or the lunchtime set menus of sushi masters. Clear price list, full counter, a chef chatting with Japanese customers — that&#x27;s the right place.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🎫 TRAP</span>
+                    <h4>The reflexive JR Pass</h4>
+                </div>
+                <p>The JR Pass price has risen: a traveler staying in Tokyo with one or two day trips never earns the pass back.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Calculate your route: for long itineraries like a Kyoto–Osaka round trip the pass can still make sense, but for a Tokyo-focused trip Suica plus single tickets nearly always wins. Five minutes of math, serious savings.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">💴 TRAP</span>
+                    <h4>Assuming cards work everywhere</h4>
+                </div>
+                <p>Tokyo looks modern, but small restaurants, temples and some bars run cash-only; the card-only tourist stalls at the door.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Always carry 10,000–20,000 yen in cash; the konbini ATMs (7-Eleven) take foreign cards without fuss. Coins help at ticket-machine shops too — cash is still a key in Tokyo.</div>
+            </div>
+            </div>
+            
+        <div class="callout-box warning">
+            <div class="callout-title">🛡️ Golden rule</div>
+            <p>Almost no one in Tokyo is trying to cheat you — the exceptions cluster in the night districts and tourist windows. Trust the queue, distrust the tout, carry cash: with these three, the city&#x27;s honesty works entirely in your favor.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 8. Step-by-Step 1-Day Itinerary -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Smart Itinerary</span>
+                <h2 class="section-title">Day 1: Step-by-Step Tokyo Walking Tour</h2>
+            </div>
+            <p class="section-intro">If you hate planning, follow these flows. Times are flexible; keep the spirit, break the order.</p>
+            <div class="timeline">
+                
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">07:30</span>
+                    <h4 class="step-title">Senso-ji morning</h4>
+                </div>
+                <p class="step-desc">Tour Asakusa&#x27;s temple before the crowds: pass under the Kaminarimon lantern, make a wish in the incense smoke. Leave as the Nakamise shops open.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">10:00</span>
+                    <h4 class="step-title">Ueno and the Yanaka lanes</h4>
+                </div>
+                <p class="step-desc">A short dive into one of the park&#x27;s museums, then an old-Tokyo walk along Yanaka Ginza: cats, craft shops, stone stairs.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">13:00</span>
+                    <h4 class="step-title">Ramen noon</h4>
+                </div>
+                <p class="step-desc">Slip from the ticket machine, seat at the counter: the day&#x27;s reward in a steaming bowl. Slurp — it&#x27;s a compliment.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">15:00</span>
+                    <h4 class="step-title">Meiji Shrine and Harajuku</h4>
+                </div>
+                <p class="step-desc">From the silence of the cedar forest to the sugary chaos of Takeshita Street: Tokyo&#x27;s contrast in a single walk. Close with Omotesando&#x27;s architectural windows.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">17:30</span>
+                    <h4 class="step-title">Shibuya Crossing and an observation deck</h4>
+                </div>
+                <p class="step-desc">First cross it from inside, then watch from above: as the lights come on, the human tide becomes a synchronized dance.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">19:30</span>
+                    <h4 class="step-title">Izakaya and Omoide Yokocho</h4>
+                </div>
+                <p class="step-desc">Yakitori and beer in the lantern alley, shoulder to shoulder at the counter: &#x27;toriaezu nama!&#x27; If the night stretches, Golden Gai&#x27;s mini-bars are two steps away.</p>
+            </div>
+            
+            </div>
+
+            <!-- Mobile App Locked Content: Days 2 & 3 + Live GPS Map -->
+            <div class="app-lock-banner" id="download">
+                <div class="app-lock-badge">MyWay Mobile Exclusive 📱</div>
+                <h3>Unlock Days 2 & 3 + Turn-by-Turn GPS Map Navigation</h3>
+                <p>Explore the complete 3-day hourly itinerary for Tokyo, browse our 180+ verified place database offline, and plan collaborative daily itineraries with friends in the MyWay app.</p>
+                <div style="margin: 16px 0 20px; font-size: 13px; color: #CBD5E1; font-weight: 600;">
+                    📍 Day 2: Market morning and the polished bank &bull; 📍 Day 3: Valley, bohemian village and farewell
+                </div>
+                <div class="app-lock-features">
+                    <div class="app-lock-feature-item">✓ Live Interactive GPS Map & Navigation</div>
+                    <div class="app-lock-feature-item">✓ Full 180+ Place Database (Offline Mode)</div>
+                    <div class="app-lock-feature-item">✓ Co-plan Hourly Trips with Friends</div>
+                </div>
+                <div class="store-btn-row">
+                    <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
+                         Download on App Store
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.anilaybakan.sehirkesif" class="store-pill-btn">
+                        ▶ Get on Google Play
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+
+        <!-- 9. Phrases -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Local Slang</span>
+                <h2 class="section-title">Useful Everyday Phrases in Tokyo</h2>
+            </div>
+            <p class="section-intro">Japanese is a language of courtesy, and even one word of effort earns great respect; these five open every door a crack.</p>
+            <div class="phrases-grid">
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Konnichiwa</div>
+                <div class="phrase-trans">Hello — the daytime greeting; pair it with a slight bow</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Arigatou gozaimasu</div>
+                <div class="phrase-trans">Thank you very much — &#x27;arigatou&#x27; for short; you&#x27;ll say it fifty times a day</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Sumimasen</div>
+                <div class="phrase-trans">Excuse me / sorry / thanks — Japanese&#x27;s hardest-working magic word</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Itadakimasu</div>
+                <div class="phrase-trans">Said before eating — the expression of gratitude to the meal; hands together</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Kanpai!</div>
+                <div class="phrase-trans">Cheers! — the opening move of an izakaya night; glasses touch lightly</div>
+            </div>
+            </div>
+        </section>
+        
+
+        <!-- Ad Placement 3: Bottom Banner -->
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
     </main>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h4>MyWay Travel</h4>
+                    <p>The ultimate smart travel guide and AI route planner for modern explorers. Stop being a tourist; experience cities like a local.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>City Guides</h5>
+                    <ul>
+                        <li><a href="/guides/">All Cities</a></li>
+                        <li><a href="../guides/barcelona.html">Barcelona</a></li>
+                        <li><a href="../guides/roma.html">Roma</a></li>
+                        <li><a href="../guides/paris.html">Paris</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Company</h5>
+                    <ul>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../support.html">Support</a></li>
+                        <li><a href="/#features">Features</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Legal</h5>
+                    <ul>
+                        <li><a href="../privacy.html">Privacy Policy</a></li>
+                        <li><a href="../terms.html">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 

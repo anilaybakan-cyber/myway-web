@@ -3,11 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amsterdam Travel Guide & Smart Walking Routes | MyWay</title>
-    <meta name="description" content="Explore Amsterdam with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
+    <title>Amsterdam Travel Guide & Curated Walking Routes | MyWay</title>
+    <meta name="description" content="The ultimate Amsterdam travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
     
     <link rel="alternate" hreflang="en" href="/guides/amsterdam.html">
     <link rel="alternate" hreflang="tr" href="/tr/rehber/amsterdam.html">
+    <link rel="canonical" href="https://mywaytravelapp.com/guides/amsterdam.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mywaytravelapp.com/guides/amsterdam.html">
+    <meta property="og:title" content="Amsterdam Travel Guide & Curated Walking Routes | MyWay">
+    <meta property="og:description" content="The ultimate Amsterdam travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
+    <meta property="og:image" content="https://mywaytravelapp.com/images/cities/amsterdam.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Amsterdam Travel Guide & Curated Walking Routes | MyWay">
+    <meta name="twitter:description" content="The ultimate Amsterdam travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
+    <meta name="twitter:image" content="https://mywaytravelapp.com/images/cities/amsterdam.jpg">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
@@ -22,6 +36,37 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
          crossorigin="anonymous"></script>
 
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TravelGuide",
+      "name": "Amsterdam Travel Guide & Curated Walking Routes | MyWay",
+      "headline": "Amsterdam Gezi Rehberi & Akıllı Yürüyüş Rotaları",
+      "description": "The ultimate Amsterdam travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.",
+      "image": "https://mywaytravelapp.com/images/cities/amsterdam.jpg",
+      "inLanguage": "en",
+      "url": "https://mywaytravelapp.com/guides/amsterdam.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "MyWay Travel",
+        "url": "https://mywaytravelapp.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://mywaytravelapp.com/images/app_icon.png"
+        }
+      },
+      "about": {
+        "@type": "TouristDestination",
+        "name": "Amsterdam",
+        "containedInPlace": {
+          "@type": "Country",
+          "name": "Netherlands"
+        }
+      }
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -35,13 +80,17 @@
             --primary-light: #9D93FF;
             --primary-dark: #5B4FD6;
             --accent: #EC4899;
+            --emerald: #10B981;
+            --warning: #EF4444;
             --bg-dark: #0F0B1A;
             --bg-section: #130F22;
             --bg-card: rgba(255, 255, 255, 0.04);
+            --bg-card-hover: rgba(255, 255, 255, 0.07);
             --text-primary: #FFFFFF;
             --text-secondary: #9CA3AF;
             --text-muted: #6B7280;
             --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(123, 110, 246, 0.3);
             --radius-lg: 24px;
             --radius-md: 16px;
             --radius-sm: 12px;
@@ -52,15 +101,15 @@
         body {
             background-color: var(--bg-dark); color: var(--text-primary);
             font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6; overflow-x: hidden;
+            line-height: 1.7; overflow-x: hidden;
         }
         
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
         
         /* Navbar */
         .navbar {
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            background: rgba(15, 11, 26, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            background: rgba(15, 11, 26, 0.88); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-subtle); height: 72px; display: flex; align-items: center;
         }
         .navbar-inner {
@@ -114,18 +163,27 @@
         .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(123, 110, 246, 0.4); }
         .nav-toggle { display: none; background: none; border: none; color: #fff; cursor: pointer; padding: 8px; }
 
+        /* Breadcrumbs */
+        .breadcrumbs {
+            display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-muted);
+            margin-bottom: 16px; flex-wrap: wrap;
+        }
+        .breadcrumbs a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+        .breadcrumbs a:hover { color: #fff; }
+        .breadcrumbs span { color: var(--text-muted); }
+
         /* Guide Hero */
         .guide-hero {
-            position: relative; min-height: 440px; display: flex; align-items: flex-end;
-            padding: 120px 24px 44px; margin-top: 72px; overflow: hidden; background-color: #1A132F;
+            position: relative; min-height: 480px; display: flex; align-items: flex-end;
+            padding: 130px 24px 50px; margin-top: 72px; overflow: hidden; background-color: #1A132F;
         }
         .guide-hero-bg {
             position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-            filter: brightness(0.65);
+            filter: brightness(0.6);
         }
         .guide-hero-overlay {
             position: absolute; inset: 0;
-            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.4) 60%, transparent 100%);
+            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.5) 60%, rgba(15, 11, 26, 0.2) 100%);
         }
         .guide-hero-content { position: relative; z-index: 2; width: 100%; }
         .city-badge {
@@ -133,28 +191,34 @@
             backdrop-filter: blur(10px); padding: 6px 14px; border-radius: 99px; font-size: 13px;
             font-weight: 600; margin-bottom: 14px; border: 1px solid rgba(255, 255, 255, 0.15);
         }
-        .guide-title { font-size: clamp(32px, 6vw, 52px); font-weight: 800; line-height: 1.1; margin-bottom: 10px; }
-        .guide-tagline { font-size: 16px; color: var(--primary-light); max-width: 720px; font-weight: 500; line-height: 1.5; }
-        
+        .guide-title { font-size: clamp(34px, 6vw, 56px); font-weight: 800; line-height: 1.1; margin-bottom: 12px; }
+        .guide-tagline { font-size: 17px; color: var(--primary-light); max-width: 780px; font-weight: 500; line-height: 1.5; margin-bottom: 12px; }
+        .guide-editorial-meta { font-size: 13px; color: #94A3B8; display: flex; gap: 16px; align-items: center; }
+
         /* Sections */
-        .section { padding: 42px 0; border-bottom: 1px solid var(--border-subtle); }
-        .section-header { margin-bottom: 24px; }
-        .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); font-weight: 700; }
-        .section-title { font-size: 24px; font-weight: 700; margin-top: 4px; }
+        .section { padding: 50px 0; border-bottom: 1px solid var(--border-subtle); }
+        .section-header { margin-bottom: 26px; }
+        .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); font-weight: 700; display: block; margin-bottom: 6px; }
+        .section-title { font-size: clamp(22px, 3.5vw, 28px); font-weight: 800; margin-bottom: 10px; }
+        .section-intro { font-size: 15px; color: #D1D5DB; line-height: 1.8; margin-bottom: 22px; max-width: 900px; }
         
-        .intro-text { font-size: 15px; color: #D1D5DB; line-height: 1.8; margin-bottom: 20px; }
-        
-        /* Local Word */
-        .local-word-box {
+        /* Pro-Tip & Local Word Boxes */
+        .callout-box {
             background: rgba(123, 110, 246, 0.08); border-left: 4px solid var(--primary);
-            padding: 18px 22px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-top: 20px;
+            padding: 18px 22px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin: 24px 0;
         }
-        .word-title { font-size: 15px; color: #fff; margin-bottom: 4px; }
+        .callout-box.warning {
+            background: rgba(239, 68, 68, 0.08); border-left: 4px solid var(--warning);
+        }
+        .callout-box.success {
+            background: rgba(16, 185, 129, 0.08); border-left: 4px solid var(--emerald);
+        }
+        .callout-title { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+        .callout-box p { font-size: 14px; color: #D1D5DB; line-height: 1.6; }
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
-        .local-word-box p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        
+
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
@@ -164,8 +228,8 @@
         .fact-val { font-size: 15px; font-weight: 600; color: #fff; margin: 2px 0; }
         .fact-sub { font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
         
-        /* Rules */
-        .rules-list { display: flex; flex-direction: column; gap: 14px; }
+        /* Rules List */
+        .rules-list { display: flex; flex-direction: column; gap: 14px; margin: 20px 0; }
         .rule-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 20px; display: flex; gap: 16px; align-items: flex-start;
@@ -177,52 +241,94 @@
         }
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        
-        /* Hidden Gems & Eat Grid */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
-        .gem-card, .eat-card {
+
+        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
+        .feature-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative;
+            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
+            display: flex; flex-direction: column; justify-content: space-between;
         }
-        .gem-badge {
-            display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase;
-            color: #10B981; background: rgba(16, 185, 129, 0.12); padding: 4px 10px; border-radius: 99px;
-            margin-bottom: 10px;
+        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
+        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
+        .card-title-group { display: flex; align-items: center; gap: 10px; }
+        .card-icon { font-size: 20px; }
+        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+        .card-badge {
+            font-size: 11px; font-weight: 700; text-transform: uppercase;
+            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
         }
-        .gem-hook { font-size: 13px; color: var(--primary-light); font-style: italic; margin-bottom: 8px; }
-        .gem-card h4, .eat-card h4 { font-size: 16px; margin-bottom: 6px; }
-        .gem-card p, .eat-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        .card-tip-box {
-            margin-top: 10px; padding: 8px 12px; background: rgba(255, 255, 255, 0.04);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1;
-        }
+        .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
+        .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
+        .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
+        .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        /* Traps */
-        .traps-list { display: flex; flex-direction: column; gap: 14px; }
-        .trap-card {
-            background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.15);
-            border-radius: var(--radius-md); padding: 20px;
+        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        .card-footer-tip {
+            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
         }
-        .trap-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+
+        /* Traps List */
+        .traps-list { display: flex; flex-direction: column; gap: 16px; margin: 20px 0; }
+        .trap-card {
+            background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.18);
+            border-radius: var(--radius-md); padding: 22px;
+        }
+        .trap-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
         .trap-tag {
             background: #EF4444; color: #fff; font-size: 11px; font-weight: 700;
-            text-transform: uppercase; padding: 2px 8px; border-radius: 6px;
+            text-transform: uppercase; padding: 3px 8px; border-radius: 6px;
         }
-        .trap-header h4 { font-size: 16px; color: #fff; }
+        .trap-header h4 { font-size: 17px; color: #fff; font-weight: 700; }
         .trap-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
         .trap-solution {
-            margin-top: 10px; padding: 10px 14px; background: rgba(16, 185, 129, 0.08);
-            border-left: 3px solid #10B981; border-radius: 4px; font-size: 13px; color: #D1D5DB; line-height: 1.5;
+            margin-top: 12px; padding: 12px 16px; background: rgba(16, 185, 129, 0.08);
+            border-left: 3px solid #10B981; border-radius: 6px; font-size: 13px; color: #D1D5DB; line-height: 1.5;
         }
-        
-        /* App CTA Banner */
-        .app-cta-banner {
-            background: linear-gradient(135deg, rgba(123, 110, 246, 0.15), rgba(236, 72, 153, 0.1));
-            border: 1px solid rgba(157, 147, 255, 0.3); border-radius: var(--radius-lg);
-            padding: 44px 20px; text-align: center; margin: 50px 0; position: relative;
+
+        /* Timeline (Itinerary) */
+        .timeline { position: relative; padding-left: 32px; margin: 24px 0 32px; }
+        .timeline::before {
+            content: ''; position: absolute; left: 11px; top: 8px; bottom: 8px;
+            width: 2px; background: linear-gradient(to bottom, var(--primary), var(--accent));
         }
-        .app-cta-banner h3 { font-size: clamp(22px, 4vw, 28px); font-weight: 800; margin-bottom: 10px; }
-        .app-cta-banner p { color: var(--text-secondary); max-width: 580px; margin: 0 auto 24px; font-size: 15px; }
+        .timeline-step { position: relative; margin-bottom: 24px; }
+        .timeline-step:last-child { margin-bottom: 0; }
+        .timeline-dot {
+            position: absolute; left: -32px; top: 4px; width: 24px; height: 24px;
+            border-radius: 50%; background: #19142B; border: 2px solid var(--primary-light);
+            display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700;
+        }
+        .step-header { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; flex-wrap: wrap; }
+        .step-time {
+            background: rgba(123, 110, 246, 0.2); color: var(--primary-light); font-size: 12px;
+            font-weight: 700; padding: 2px 8px; border-radius: 6px;
+        }
+        .step-title { font-size: 16px; font-weight: 700; color: #fff; }
+        .step-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+        /* Mobile App Gate Banner (Days 2 & 3 + Live Map) */
+        .app-lock-banner {
+            background: linear-gradient(135deg, rgba(123, 110, 246, 0.16) 0%, rgba(236, 72, 153, 0.12) 100%);
+            border: 1.5px solid rgba(157, 147, 255, 0.35); border-radius: var(--radius-lg);
+            padding: 36px 28px; margin: 36px 0; text-align: center; position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        .app-lock-badge {
+            display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px; border-radius: 100px; font-size: 12px; font-weight: 700;
+            color: #fff; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .app-lock-banner h3 { font-size: clamp(22px, 3.5vw, 28px); font-weight: 800; margin-bottom: 8px; }
+        .app-lock-banner p { color: var(--text-secondary); max-width: 620px; margin: 0 auto 20px; font-size: 14px; line-height: 1.6; }
+        .app-lock-features {
+            display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 24px;
+            font-size: 13px; color: #E2E8F0; font-weight: 500;
+        }
+        .app-lock-feature-item { display: flex; align-items: center; gap: 6px; }
+
+        /* Store Buttons */
         .store-btn-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
         .store-pill-btn {
             display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: white;
@@ -231,10 +337,48 @@
         }
         .store-pill-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2); }
 
+        /* Ad Placement Slots */
+        .ad-placement-slot {
+            margin: 40px auto; text-align: center; max-width: 728px; min-height: 90px;
+            background: rgba(255, 255, 255, 0.02); border: 1px dashed rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-sm); padding: 10px; overflow: hidden;
+        }
+        .ad-label {
+            font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px;
+            color: var(--text-muted); display: block; margin-bottom: 6px;
+        }
+
+        /* Phrases Table */
+        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrase-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm); padding: 14px 18px;
+        }
+        .phrase-orig { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+        .phrase-trans { font-size: 13px; color: var(--text-secondary); }
+
         /* Footer */
         .footer {
-            border-top: 1px solid var(--border-subtle); padding: 40px 24px 30px;
-            color: var(--text-muted); font-size: 13px; text-align: center;
+            border-top: 1px solid var(--border-subtle); padding: 50px 24px 36px;
+            color: var(--text-muted); font-size: 13px; background: #0A0713;
+        }
+        .footer-grid {
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px;
+            max-width: 1080px; margin: 0 auto 40px; text-align: left;
+        }
+        .footer-brand h4 { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+        .footer-brand p { font-size: 13px; line-height: 1.6; color: var(--text-secondary); max-width: 340px; }
+        .footer-col h5 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+        .footer-col a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+        .footer-col a:hover { color: #fff; }
+        .footer-bottom {
+            text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 24px; max-width: 1080px; margin: 0 auto;
+        }
+
+        @media (max-width: 860px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
         @media (max-width: 768px) {
@@ -246,8 +390,9 @@
             }
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
-            .guide-hero { min-height: 380px; padding-top: 90px; }
+            .guide-hero { min-height: 420px; padding-top: 100px; }
             .cards-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
 
@@ -268,6 +413,8 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="/guides/" class="active">City Guides</a></li>
                 <li><a href="/#features">Features</a></li>
+                <li><a href="../about.html">About Us</a></li>
+                <li><a href="../support.html">Support</a></li>
             </ul>
             <div class="nav-actions">
                 <!-- Top Right Globe Dropdown -->
@@ -295,37 +442,58 @@
         <img src="../images/cities/amsterdam.jpg" alt="Amsterdam" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
+            <div class="breadcrumbs">
+                <a href="/">Home</a> <span>/</span>
+                <a href="/guides/">City Guides</a> <span>/</span>
+                <span>🇳🇱 Netherlands</span> <span>/</span>
+                <span style="color:#fff;">Amsterdam</span>
+            </div>
             <div class="city-badge">🇳🇱 Netherlands &bull; City Guides</div>
             <h1 class="guide-title">Amsterdam</h1>
             <p class="guide-tagline">Freedom, canals, and more bicycles than people</p>
+            <div class="guide-editorial-meta">
+                <span>✍️ MyWay Editorial Team</span>
+                <span>•</span>
+                <span>🛡️ Verified Local Guide</span>
+            </div>
         </div>
     </header>
 
+    <!-- Ad Placement 1: Top Banner -->
+    <div class="container">
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    </div>
+
     <main class="container">
-        <!-- Overview -->
+        <!-- 1. Overview -->
         <section class="section">
             <div class="section-header">
-                <span class="section-label">Overview</span>
-                <h2 class="section-title">The Vibe of Amsterdam</h2>
+                <span class="section-label">Overview & Atmosphere</span>
+                <h2 class="section-title">The True Vibe of Amsterdam</h2>
             </div>
-            <p class="intro-text">The moment you step off the train, Amsterdam hits different. The houses lean sideways — yes, on purpose, they&#x27;re 17th century and proud of it. The canals wind through the city like a maze. And somehow the whole place just feels free.</p>
+            <p class="section-intro">The moment you step off the train, Amsterdam hits different. The houses lean sideways — yes, on purpose, they&#x27;re 17th century and proud of it. The canals wind through the city like a maze. And somehow the whole place just feels free.</p>
             
-        <div class="local-word-box">
-            <div class="word-title">🗣️ Local Concept: <strong>Gezellig</strong> <span class="pron">(heh-ZEL-ikh)</span></div>
+        <div class="callout-box">
+            <div class="callout-title">🗣️ Local Concept: <strong>Gezellig</strong> <span class="pron">(heh-ZEL-ikh)</span></div>
             <p>That warm, cozy, can&#x27;t-quite-translate-it Dutch vibe — sitting by the water with a coffee, watching boats drift past. This single word explains the soul of Amsterdam. You&#x27;ll feel it everywhere.</p>
         </div>
         
-        </section>
 
-        <!-- Quick Facts -->
-        
-        <section class="section">
-            <div class="section-header">
-                <span class="section-label">Essentials</span>
-                <h2 class="section-title">Quick Logistics</h2>
-            </div>
+            <!-- Quick Facts Grid -->
             <div class="facts-grid">
-                
             <div class="fact-card">
                 <div class="fact-icon">✈️</div>
                 <div>
@@ -361,20 +529,13 @@
                     <div class="fact-sub">To Noord — free, all day</div>
                 </div>
             </div>
-            
             </div>
-        </section>
-        
 
-        <!-- Rules & Secrets -->
-        
-        <section class="section">
-            <div class="section-header">
-                <span class="section-label">Insider Advice</span>
-                <h2 class="section-title">3 Unwritten Rules for Amsterdam</h2>
-            </div>
-            <div class="rules-list">
-                
+            <!-- 3 Unwritten Rules -->
+            
+            <div style="margin-top: 32px;">
+                <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 14px;">3 Unwritten Rules for Amsterdam</h3>
+                <div class="rules-list">
             <div class="rule-card">
                 <div class="rule-num">1</div>
                 <div class="rule-content">
@@ -390,29 +551,604 @@
                     <p>From tiny bakeries to street markets, most places are card-only. Don&#x27;t be surprised by the &#x27;Card Only&#x27; sign — just tap and go.</p>
                 </div>
             </div>
+            </div>
+            </div>
             
+        </section>
+
+        <!-- 2. Transportation & Transit Logistics -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Getting Around</span>
+                <h2 class="section-title">Amsterdam Public Transit & Airport Transfers</h2>
+            </div>
+            <p class="section-intro">In Amsterdam, how you move is part of the experience. Get this right and the city opens up completely.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">✈️</span>
+                        <span class="card-title">Airport → City Center</span>
+                    </div>
+                </div>
+                <p class="card-desc">The simplest option is the train. Schiphol has its own station directly below the terminal — take the escalators down with your luggage and board. Trains to Amsterdam Centraal run every 10–15 minutes and take 15–20 minutes. Fast, cheap, and stress-free. Taxis and transfer services cost 4–5 times more and are subject to traffic.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚲</span>
+                        <span class="card-title">Bicycle — the city&#x27;s real lifeblood</span>
+                    </div>
+                </div>
+                <p class="card-desc">Rent one and Amsterdam suddenly makes sense. Three golden rules: never walk on the red bike lanes; always use two locks — bike theft here is practically a local sport; never stop in the middle of a bike lane to take a photo. Other cyclists won&#x27;t warn you, they&#x27;ll just ride past.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚋</span>
+                        <span class="card-title">Trams, Buses &amp; Metro</span>
+                    </div>
+                </div>
+                <p class="card-desc">Trams are the backbone of the city, gliding through narrow streets to reach everywhere. Tap your OV-chipkaart or phone when boarding AND when exiting. Missing the exit tap gets processed as a maximum fare by the system. Everyone makes this mistake at the beginning.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">⛵</span>
+                        <span class="card-title">Free Ferries to Noord</span>
+                    </div>
+                </div>
+                <p class="card-desc">Free ferries depart continuously from directly behind Centraal Station to Amsterdam Noord — free for pedestrians, cyclists and mopeds. Short, breezy, and a small experience in itself. Runs all day and into the night.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚕</span>
+                        <span class="card-title">Taxi &amp; Uber</span>
+                    </div>
+                </div>
+                <p class="card-desc">Both options exist but cost 4–5 times more than public transport. Worth considering for late nights or special situations — not as daily transport. Uber works smoothly in Amsterdam.</p>
+            </div>
+            </div>
+            
+        <div class="callout-box warning">
+            <div class="callout-title">💡 Shoe tip</div>
+            <p>Wear comfortable, flat shoes. Canal-side stones are uneven and slippery. When crossing any street — look for bikes first, cars second. The bicycle army is silent and fast.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 3. Where to Stay (Neighborhoods) -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Neighborhood Guide</span>
+                <h2 class="section-title">Where to Stay in Amsterdam: Best Areas</h2>
+            </div>
+            <p class="section-intro">Your neighborhood shapes your whole trip. The Centrum is overpriced and loud — step one ring out and Amsterdam gets real.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Jordaan</span>
+                    <span class="card-badge badge-purple">Most romantic</span>
+                </div>
+                <p class="card-desc">The most &#x27;Amsterdam&#x27; neighbourhood that exists. Narrow alleys, ivy-covered canal houses, boutique hotels right on the water. Buildings are 400 years old — expect very steep stairs and tiny rooms. Bring a small suitcase.</p>
+                <div class="card-footer-tip">Calm &amp; central • Steep stairs • Small suitcase essential</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">De Pijp</span>
+                    <span class="card-badge badge-purple">Best nightlife</span>
+                </div>
+                <p class="card-desc">Amsterdam&#x27;s &#x27;Latin Quarter.&#x27; Home to the Albert Cuypmarkt — the city&#x27;s biggest open-air market — a buzzing student scene, and restaurants from every corner of the world. Slightly cheaper than center, way more alive.</p>
+                <div class="card-footer-tip">Nightlife-friendly • Great food scene • Budget-friendly</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Grachtengordel (Canal Belt)</span>
+                    <span class="card-badge badge-purple">UNESCO listed</span>
+                </div>
+                <p class="card-desc">Living inside a UNESCO World Heritage Site. Grand, high-ceilinged canal houses that end up on every postcard. Walking distance to everything, but expect tourist crowds on weekends.</p>
+                <div class="card-footer-tip">Most prestigious • Weekend crowds • Postcard-perfect</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Oud-West</span>
+                    <span class="card-badge badge-purple">Local favourite</span>
+                </div>
+                <p class="card-desc">The local&#x27;s secret. Home to De Hallen — a gorgeous food hall and cinema in a converted tram depot — walking distance to Vondelpark. Best value-for-money area in Amsterdam. 10 minutes to center by tram.</p>
+                <div class="card-footer-tip">Best value • Near Vondelpark • Safe &amp; stylish</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Amsterdam Noord</span>
+                    <span class="card-badge badge-purple">Free ferry</span>
+                </div>
+                <p class="card-desc">Across the free ferry behind Central Station. Former shipyards turned cool hotels, massive street art murals, digital nomad hub. Completely different energy. Catch the NDSM flea market on weekends.</p>
+                <div class="card-footer-tip">Free ferry access • Street art • Weekend flea market</div>
+            </div>
             </div>
         </section>
         
 
-        <!-- CTA Banner -->
-        <section class="app-cta-banner">
-            <h3>Unlock the Full Guide in MyWay 🌟</h3>
-            <p>Discover hidden gems, curated local food, tourist traps to avoid, and step-by-step smart walking routes for Amsterdam in MyWay.</p>
-            <div class="store-btn-row">
-                <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
-                     Download on App Store
-                </a>
-                <a href="https://play.google.com/store/apps/details?id=com.anilaybakan.sehirkesif" class="store-pill-btn">
-                    ▶ Get on Google Play
-                </a>
+        <!-- Ad Placement 2: Mid-Article -->
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+
+        <!-- 4. Best Time to Visit -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Seasons & Weather</span>
+                <h2 class="section-title">Best Time to Visit Amsterdam</h2>
+            </div>
+            <p class="section-intro">Amsterdam isn&#x27;t a &#x27;one perfect time&#x27; city — it&#x27;s a &#x27;depends what you&#x27;re after&#x27; city.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Spring</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Mar – May</span>
+                    </div>
+                    <span class="card-badge badge-amber">Tulip Season</span>
+                </div>
+                <p class="card-desc">Keukenhof Gardens explodes with millions of tulips. Then April 27th — King&#x27;s Day — the entire city turns orange, every street becomes a party, and the canals fill with boats. One of the biggest street celebrations in Europe. If you can only go once, make it spring.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Summer</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Jun – Aug</span>
+                    </div>
+                    <span class="card-badge badge-amber">Long Days</span>
+                </div>
+                <p class="card-desc">Sun sets past 10 PM. Locals picnic on canal boats. Vondelpark buzzes with live music. But weather is unpredictable — warm morning? Bring a jacket anyway. Rain arrives without warning.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Autumn</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Sep – Nov</span>
+                    </div>
+                    <span class="card-badge badge-amber">Moody &amp; Golden</span>
+                </div>
+                <p class="card-desc">Canal trees turn amber and orange, the city gets its famous melancholic, moody beauty. October brings Amsterdam Dance Event (ADE) — the whole city becomes the world&#x27;s electronic music capital. Gezellig spirit peaks: rainy evenings, warm brown cafes, locals actually home.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Winter</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Dec – Feb</span>
+                    </div>
+                    <span class="card-badge badge-amber">Canal Magic</span>
+                </div>
+                <p class="card-desc">Quieter, mistier, and honestly magical. The Amsterdam Light Festival transforms the canals into an open-air art museum. And if you get very lucky — rare, but it happens — the canals freeze and locals ice skate on them.</p>
+            </div>
             </div>
         </section>
+        
+
+        <!-- 5. Authentic Food & Dining -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Culinary Culture</span>
+                <h2 class="section-title">Authentic Local Dining & Food Secrets in Amsterdam</h2>
+            </div>
+            <p class="section-intro">Dutch food is better than its reputation. Some of this you can only find here.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🍟</span>
+                        <span class="card-title">Vlaamse Frites + Patat Oorlog</span>
+                    </div>
+                </div>
+                <p class="card-desc">Thick-cut, double-fried, in a paper cone. Order Patat Oorlog (War Fries): peanut sauce, mayo, and raw onion. Sounds chaotic. Tastes incredible.</p>
+                <div class="card-footer-tip">⭐ Try this first</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🧇</span>
+                        <span class="card-title">Stroopwafel — fresh, not packaged</span>
+                    </div>
+                </div>
+                <p class="card-desc">Two thin waffle layers with caramel in the middle. Get one warm from Albert Cuypmarkt. The supermarket versions don&#x27;t compare.</p>
+                <div class="card-footer-tip">⭐ Albert Cuypmarkt only</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🧀</span>
+                        <span class="card-title">Dutch Cheese (Kaas)</span>
+                    </div>
+                </div>
+                <p class="card-desc">You&#x27;re in Gouda country. Cheese shops offer free tastings — aged, young, smoked, herb-infused. Try Henri Willig or Old Amsterdam. Always free to taste.</p>
+                <div class="card-footer-tip">⭐ Free tastings available</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🍺</span>
+                        <span class="card-title">Bitterballen + Borrel</span>
+                    </div>
+                </div>
+                <p class="card-desc">Fried crispy balls filled with creamy meat ragout, dipped in mustard. Always eaten alongside an afternoon beer — that&#x27;s the Borrel, Amsterdam&#x27;s after-work ritual. Any brown café.</p>
+                <div class="card-footer-tip">⭐ The true local ritual</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🐟</span>
+                        <span class="card-title">Haring (Raw Herring)</span>
+                    </div>
+                </div>
+                <p class="card-desc">Hold by the tail, tilt back, lower it in — that&#x27;s the traditional way. Too bold? Get a broodje haring with pickles and onion. Either way, try it once.</p>
+                <div class="card-footer-tip">⭐ Rite of passage</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🍛</span>
+                        <span class="card-title">Rijsttafel — Indonesian Feast</span>
+                    </div>
+                </div>
+                <p class="card-desc">15–20 small Indonesian dishes served together — rich, spiced, completely unlike anything else in Amsterdam. The most delicious remnant of Dutch colonial history. Reserve an evening.</p>
+                <div class="card-footer-tip">⭐ Reserve in advance</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🥞</span>
+                        <span class="card-title">Poffertjes</span>
+                    </div>
+                </div>
+                <p class="card-desc">Tiny, fluffy mini-pancakes dusted with powdered sugar and butter. A childhood favourite in the Netherlands. Find them at any street market.</p>
+                <div class="card-footer-tip">⭐ Kids &amp; adults love these</div>
+            </div>
+            </div>
+            
+        <div class="callout-box">
+            <div class="callout-title">🍷 Late night secret</div>
+            <p>Find a FEBO automat — tap your card at a wall of little glass windows and pull out a hot kroket. Amsterdam&#x27;s oldest fast-food tradition. Completely unique after midnight.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 6. Handpicked Hidden Gems -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Off The Beaten Path</span>
+                <h2 class="section-title">Handpicked Hidden Gems in Amsterdam</h2>
+            </div>
+            <p class="section-intro">The real Amsterdam is behind doors, down alleys, and across free ferries. Most tourists walk right past these.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Ons&#x27; Lieve Heer op Solder — Church in an Attic</span>
+                    <span class="card-badge badge-emerald">Extremely rare find</span>
+                </div>
+                <p class="card-desc">From the outside: a normal canal house. Inside, hidden on the top floor: a fully intact 17th-century Catholic church. Built secretly when Catholic worship was banned. Amsterdam&#x27;s most powerful symbol of tolerance — almost nobody knows it&#x27;s there.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Begijnhof — The Hidden Courtyard</span>
+                    <span class="card-badge badge-emerald">Medieval secret</span>
+                </div>
+                <p class="card-desc">A medieval courtyard behind an unmarked door on Spui square. Step through and the noise disappears entirely. Built in the 14th century. No sign on the door — look for a small wooden gate in the wall.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Tuschinski Theater</span>
+                    <span class="card-badge badge-emerald">Art Deco masterpiece</span>
+                </div>
+                <p class="card-desc">One of the most beautiful Art Deco buildings in the world. Even if you don&#x27;t watch a film, walk into the lobby. Carpets, ceiling, chandeliers — a time machine to 1921 Amsterdam. Most tourists walk past and never go inside.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">NDSM Werf + Weekend Flea Market</span>
+                    <span class="card-badge badge-emerald">Noord secret — weekends only</span>
+                </div>
+                <p class="card-desc">Old shipyard turned street art wonderland via the free ferry. Giant scrap metal sculptures, massive murals. On weekends: the NDSM flea market brings artists, food trucks, and vintage stalls. The Amsterdam of the future.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Hofjes — Secret Garden Courts</span>
+                    <span class="card-badge badge-emerald">Jordaan&#x27;s best-kept secret</span>
+                </div>
+                <p class="card-desc">Amsterdam has dozens of hidden gardens behind unmarked wooden doors. Begijnhof is the famous one, but Jordaan has several others — Karthuizerhofje, Sint Andrieshofje. Follow small signs on walls. Step through and find a garden 400 years removed from the city outside.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Winkel 43 — The Apple Pie Pilgrimage</span>
+                    <span class="card-badge badge-emerald">Best apple pie debate settled</span>
+                </div>
+                <p class="card-desc">Thick, cinnamon-heavy, served warm with a mountain of fresh whipped cream (slagroom). Queue is worth every minute. Go for afternoon coffee on a rainy day.</p>
+            </div>
+            </div>
+            
+        <div class="callout-box success">
+            <div class="callout-title">✨ De Wallen rule</div>
+            <p>Do NOT photograph the windows in the Red Light District. Illegal, deeply disrespectful, hostile response guaranteed. Phone stays in pocket — no exceptions.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 7. Tourist Traps & Smarter Alternatives -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Scam Prevention</span>
+                <h2 class="section-title">Tourist Traps to Avoid & Smarter Alternatives</h2>
+            </div>
+            <p class="section-intro">Amsterdam is not ruthless about tourist traps, but the center has a few classics. Know them, and spend your money and time on the real Amsterdam.</p>
+            <div class="traps-list">
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🍽️ TRAP</span>
+                    <h4>Photo-menu restaurants on Damrak and Leidseplein</h4>
+                </div>
+                <p>The neon-lit places that greet you off the train, with a waiter at the door and a menu in 12 languages. Overpriced, mediocre, and where no Dutch person ever sits.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Walk two streets in: in Jordaan or De Pijp the same money buys a meal twice as good.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🚢 TRAP</span>
+                    <h4>Giant glass-covered canal boats</h4>
+                </div>
+                <p>The big boats hauling 70 people with a recorded audio guide show you the canals without letting you feel them. Even photos are hard through the glass.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Pick a small open boat with a live skipper — and time it for sunset.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🧀 TRAP</span>
+                    <h4>Souvenir cheese and tulip shops on Damrak</h4>
+                </div>
+                <p>Vacuum-packed &#x27;Gouda&#x27; and tulip bulbs that will never bloom. Inflated prices, low quality, and much of it isn&#x27;t even locally made.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Buy cheese at a real kaas shop after tasting; get certified (customs-approved) bulbs at Bloemenmarkt stalls.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🚕 TRAP</span>
+                    <h4>Taxi from Schiphol to the city</h4>
+                </div>
+                <p>You&#x27;ll pay €60–70 and take twice as long as the train in traffic. The airport taxi queue is Amsterdam&#x27;s most expensive waiting room.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> The train reaches Centraal in 15–20 minutes; the platforms are right below the terminal.</div>
+            </div>
+            </div>
+            
+        <div class="callout-box warning">
+            <div class="callout-title">🛡️ The golden rule</div>
+            <p>If someone at the door is calling you inside, the place can&#x27;t sell itself. Good spots in Amsterdam never call you — you find them.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 8. Step-by-Step 1-Day Itinerary -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Smart Itinerary</span>
+                <h2 class="section-title">Day 1: Step-by-Step Amsterdam Walking Tour</h2>
+            </div>
+            <p class="section-intro">If you hate planning, follow these flows. The times are flexible; keep the spirit, break the order.</p>
+            <div class="timeline">
+                
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">09:00</span>
+                    <h4 class="step-title">Breakfast in Jordaan</h4>
+                </div>
+                <p class="step-desc">Start the day with apple pie at Winkel 43 — yes, pie for breakfast, you&#x27;re here.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">10:30</span>
+                    <h4 class="step-title">9 Straatjes + Canal Belt walk</h4>
+                </div>
+                <p class="step-desc">From the Nine Streets south along Prinsengracht; don&#x27;t rush, stop on the bridges.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">13:00</span>
+                    <h4 class="step-title">Lunch at Albert Cuypmarkt</h4>
+                </div>
+                <p class="step-desc">A warm stroopwafel, fresh haring, or whatever calls you. Standing up, market style.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">14:30</span>
+                    <h4 class="step-title">Rijksmuseum or Van Gogh</h4>
+                </div>
+                <p class="step-desc">Don&#x27;t cram both into one day. Pick one and take your time. Book the ticket ahead.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">17:30</span>
+                    <h4 class="step-title">Borrel at a bruin café</h4>
+                </div>
+                <p class="step-desc">Bitterballen + beer. The most Dutch hour of the day.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">19:30</span>
+                    <h4 class="step-title">Canalside at sunset</h4>
+                </div>
+                <p class="step-desc">Grab a bottle of something from a market, sit on the canal edge, let your feet dangle. The whole day was for this.</p>
+            </div>
+            
+            </div>
+
+            <!-- Mobile App Locked Content: Days 2 & 3 + Live GPS Map -->
+            <div class="app-lock-banner" id="download">
+                <div class="app-lock-badge">MyWay Mobile Exclusive 📱</div>
+                <h3>Unlock Days 2 & 3 + Turn-by-Turn GPS Map Navigation</h3>
+                <p>Explore the complete 3-day hourly itinerary for Amsterdam, browse our 180+ verified place database offline, and plan collaborative daily itineraries with friends in the MyWay app.</p>
+                <div style="margin: 16px 0 20px; font-size: 13px; color: #CBD5E1; font-weight: 600;">
+                    📍 Day 2: Noord and alternative Amsterdam &bull; 📍 Day 3: Hidden Amsterdam + one last gezellig
+                </div>
+                <div class="app-lock-features">
+                    <div class="app-lock-feature-item">✓ Live Interactive GPS Map & Navigation</div>
+                    <div class="app-lock-feature-item">✓ Full 180+ Place Database (Offline Mode)</div>
+                    <div class="app-lock-feature-item">✓ Co-plan Hourly Trips with Friends</div>
+                </div>
+                <div class="store-btn-row">
+                    <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
+                         Download on App Store
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.anilaybakan.sehirkesif" class="store-pill-btn">
+                        ▶ Get on Google Play
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+
+        <!-- 9. Phrases -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Local Slang</span>
+                <h2 class="section-title">Useful Everyday Phrases in Amsterdam</h2>
+            </div>
+            <p class="section-intro">Everyone speaks English, but even a single word of Dutch changes faces.</p>
+            <div class="phrases-grid">
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Dank je wel</div>
+                <div class="phrase-trans">Thank you — the word you&#x27;ll use most</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Alsjeblieft</div>
+                <div class="phrase-trans">Please / here you go — also said when handing something over</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Proost!</div>
+                <div class="phrase-trans">Cheers! Don&#x27;t forget the eye contact</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Lekker</div>
+                <div class="phrase-trans">Tasty / great — works for food and for the weather</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Doei!</div>
+                <div class="phrase-trans">Bye — cheerful, said twice: doei doei!</div>
+            </div>
+            </div>
+        </section>
+        
+
+        <!-- Ad Placement 3: Bottom Banner -->
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
     </main>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h4>MyWay Travel</h4>
+                    <p>The ultimate smart travel guide and AI route planner for modern explorers. Stop being a tourist; experience cities like a local.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>City Guides</h5>
+                    <ul>
+                        <li><a href="/guides/">All Cities</a></li>
+                        <li><a href="../guides/barcelona.html">Barcelona</a></li>
+                        <li><a href="../guides/roma.html">Roma</a></li>
+                        <li><a href="../guides/paris.html">Paris</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Company</h5>
+                    <ul>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../support.html">Support</a></li>
+                        <li><a href="/#features">Features</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Legal</h5>
+                    <ul>
+                        <li><a href="../privacy.html">Privacy Policy</a></li>
+                        <li><a href="../terms.html">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 

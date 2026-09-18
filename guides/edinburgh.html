@@ -3,11 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edinburgh Travel Guide & Smart Walking Routes | MyWay</title>
-    <meta name="description" content="Explore Edinburgh with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
+    <title>Edinburgh Travel Guide & Curated Walking Routes | MyWay</title>
+    <meta name="description" content="The ultimate Edinburgh travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
     
     <link rel="alternate" hreflang="en" href="/guides/edinburgh.html">
     <link rel="alternate" hreflang="tr" href="/tr/rehber/edinburgh.html">
+    <link rel="canonical" href="https://mywaytravelapp.com/guides/edinburgh.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mywaytravelapp.com/guides/edinburgh.html">
+    <meta property="og:title" content="Edinburgh Travel Guide & Curated Walking Routes | MyWay">
+    <meta property="og:description" content="The ultimate Edinburgh travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
+    <meta property="og:image" content="https://mywaytravelapp.com/images/cities/edinburgh.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Edinburgh Travel Guide & Curated Walking Routes | MyWay">
+    <meta name="twitter:description" content="The ultimate Edinburgh travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
+    <meta name="twitter:image" content="https://mywaytravelapp.com/images/cities/edinburgh.jpg">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
@@ -22,6 +36,37 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
          crossorigin="anonymous"></script>
 
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TravelGuide",
+      "name": "Edinburgh Travel Guide & Curated Walking Routes | MyWay",
+      "headline": "Edinburgh Gezi Rehberi & Akıllı Yürüyüş Rotaları",
+      "description": "The ultimate Edinburgh travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.",
+      "image": "https://mywaytravelapp.com/images/cities/edinburgh.jpg",
+      "inLanguage": "en",
+      "url": "https://mywaytravelapp.com/guides/edinburgh.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "MyWay Travel",
+        "url": "https://mywaytravelapp.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://mywaytravelapp.com/images/app_icon.png"
+        }
+      },
+      "about": {
+        "@type": "TouristDestination",
+        "name": "Edinburgh",
+        "containedInPlace": {
+          "@type": "Country",
+          "name": "Scotland"
+        }
+      }
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -35,13 +80,17 @@
             --primary-light: #9D93FF;
             --primary-dark: #5B4FD6;
             --accent: #EC4899;
+            --emerald: #10B981;
+            --warning: #EF4444;
             --bg-dark: #0F0B1A;
             --bg-section: #130F22;
             --bg-card: rgba(255, 255, 255, 0.04);
+            --bg-card-hover: rgba(255, 255, 255, 0.07);
             --text-primary: #FFFFFF;
             --text-secondary: #9CA3AF;
             --text-muted: #6B7280;
             --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(123, 110, 246, 0.3);
             --radius-lg: 24px;
             --radius-md: 16px;
             --radius-sm: 12px;
@@ -52,15 +101,15 @@
         body {
             background-color: var(--bg-dark); color: var(--text-primary);
             font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6; overflow-x: hidden;
+            line-height: 1.7; overflow-x: hidden;
         }
         
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
         
         /* Navbar */
         .navbar {
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            background: rgba(15, 11, 26, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            background: rgba(15, 11, 26, 0.88); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-subtle); height: 72px; display: flex; align-items: center;
         }
         .navbar-inner {
@@ -114,18 +163,27 @@
         .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(123, 110, 246, 0.4); }
         .nav-toggle { display: none; background: none; border: none; color: #fff; cursor: pointer; padding: 8px; }
 
+        /* Breadcrumbs */
+        .breadcrumbs {
+            display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-muted);
+            margin-bottom: 16px; flex-wrap: wrap;
+        }
+        .breadcrumbs a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+        .breadcrumbs a:hover { color: #fff; }
+        .breadcrumbs span { color: var(--text-muted); }
+
         /* Guide Hero */
         .guide-hero {
-            position: relative; min-height: 440px; display: flex; align-items: flex-end;
-            padding: 120px 24px 44px; margin-top: 72px; overflow: hidden; background-color: #1A132F;
+            position: relative; min-height: 480px; display: flex; align-items: flex-end;
+            padding: 130px 24px 50px; margin-top: 72px; overflow: hidden; background-color: #1A132F;
         }
         .guide-hero-bg {
             position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-            filter: brightness(0.65);
+            filter: brightness(0.6);
         }
         .guide-hero-overlay {
             position: absolute; inset: 0;
-            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.4) 60%, transparent 100%);
+            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.5) 60%, rgba(15, 11, 26, 0.2) 100%);
         }
         .guide-hero-content { position: relative; z-index: 2; width: 100%; }
         .city-badge {
@@ -133,28 +191,34 @@
             backdrop-filter: blur(10px); padding: 6px 14px; border-radius: 99px; font-size: 13px;
             font-weight: 600; margin-bottom: 14px; border: 1px solid rgba(255, 255, 255, 0.15);
         }
-        .guide-title { font-size: clamp(32px, 6vw, 52px); font-weight: 800; line-height: 1.1; margin-bottom: 10px; }
-        .guide-tagline { font-size: 16px; color: var(--primary-light); max-width: 720px; font-weight: 500; line-height: 1.5; }
-        
+        .guide-title { font-size: clamp(34px, 6vw, 56px); font-weight: 800; line-height: 1.1; margin-bottom: 12px; }
+        .guide-tagline { font-size: 17px; color: var(--primary-light); max-width: 780px; font-weight: 500; line-height: 1.5; margin-bottom: 12px; }
+        .guide-editorial-meta { font-size: 13px; color: #94A3B8; display: flex; gap: 16px; align-items: center; }
+
         /* Sections */
-        .section { padding: 42px 0; border-bottom: 1px solid var(--border-subtle); }
-        .section-header { margin-bottom: 24px; }
-        .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); font-weight: 700; }
-        .section-title { font-size: 24px; font-weight: 700; margin-top: 4px; }
+        .section { padding: 50px 0; border-bottom: 1px solid var(--border-subtle); }
+        .section-header { margin-bottom: 26px; }
+        .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); font-weight: 700; display: block; margin-bottom: 6px; }
+        .section-title { font-size: clamp(22px, 3.5vw, 28px); font-weight: 800; margin-bottom: 10px; }
+        .section-intro { font-size: 15px; color: #D1D5DB; line-height: 1.8; margin-bottom: 22px; max-width: 900px; }
         
-        .intro-text { font-size: 15px; color: #D1D5DB; line-height: 1.8; margin-bottom: 20px; }
-        
-        /* Local Word */
-        .local-word-box {
+        /* Pro-Tip & Local Word Boxes */
+        .callout-box {
             background: rgba(123, 110, 246, 0.08); border-left: 4px solid var(--primary);
-            padding: 18px 22px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-top: 20px;
+            padding: 18px 22px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin: 24px 0;
         }
-        .word-title { font-size: 15px; color: #fff; margin-bottom: 4px; }
+        .callout-box.warning {
+            background: rgba(239, 68, 68, 0.08); border-left: 4px solid var(--warning);
+        }
+        .callout-box.success {
+            background: rgba(16, 185, 129, 0.08); border-left: 4px solid var(--emerald);
+        }
+        .callout-title { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+        .callout-box p { font-size: 14px; color: #D1D5DB; line-height: 1.6; }
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
-        .local-word-box p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        
+
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
@@ -164,8 +228,8 @@
         .fact-val { font-size: 15px; font-weight: 600; color: #fff; margin: 2px 0; }
         .fact-sub { font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
         
-        /* Rules */
-        .rules-list { display: flex; flex-direction: column; gap: 14px; }
+        /* Rules List */
+        .rules-list { display: flex; flex-direction: column; gap: 14px; margin: 20px 0; }
         .rule-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 20px; display: flex; gap: 16px; align-items: flex-start;
@@ -177,52 +241,94 @@
         }
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        
-        /* Hidden Gems & Eat Grid */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
-        .gem-card, .eat-card {
+
+        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
+        .feature-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative;
+            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
+            display: flex; flex-direction: column; justify-content: space-between;
         }
-        .gem-badge {
-            display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase;
-            color: #10B981; background: rgba(16, 185, 129, 0.12); padding: 4px 10px; border-radius: 99px;
-            margin-bottom: 10px;
+        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
+        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
+        .card-title-group { display: flex; align-items: center; gap: 10px; }
+        .card-icon { font-size: 20px; }
+        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+        .card-badge {
+            font-size: 11px; font-weight: 700; text-transform: uppercase;
+            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
         }
-        .gem-hook { font-size: 13px; color: var(--primary-light); font-style: italic; margin-bottom: 8px; }
-        .gem-card h4, .eat-card h4 { font-size: 16px; margin-bottom: 6px; }
-        .gem-card p, .eat-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        .card-tip-box {
-            margin-top: 10px; padding: 8px 12px; background: rgba(255, 255, 255, 0.04);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1;
-        }
+        .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
+        .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
+        .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
+        .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        /* Traps */
-        .traps-list { display: flex; flex-direction: column; gap: 14px; }
-        .trap-card {
-            background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.15);
-            border-radius: var(--radius-md); padding: 20px;
+        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        .card-footer-tip {
+            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
         }
-        .trap-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+
+        /* Traps List */
+        .traps-list { display: flex; flex-direction: column; gap: 16px; margin: 20px 0; }
+        .trap-card {
+            background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.18);
+            border-radius: var(--radius-md); padding: 22px;
+        }
+        .trap-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
         .trap-tag {
             background: #EF4444; color: #fff; font-size: 11px; font-weight: 700;
-            text-transform: uppercase; padding: 2px 8px; border-radius: 6px;
+            text-transform: uppercase; padding: 3px 8px; border-radius: 6px;
         }
-        .trap-header h4 { font-size: 16px; color: #fff; }
+        .trap-header h4 { font-size: 17px; color: #fff; font-weight: 700; }
         .trap-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
         .trap-solution {
-            margin-top: 10px; padding: 10px 14px; background: rgba(16, 185, 129, 0.08);
-            border-left: 3px solid #10B981; border-radius: 4px; font-size: 13px; color: #D1D5DB; line-height: 1.5;
+            margin-top: 12px; padding: 12px 16px; background: rgba(16, 185, 129, 0.08);
+            border-left: 3px solid #10B981; border-radius: 6px; font-size: 13px; color: #D1D5DB; line-height: 1.5;
         }
-        
-        /* App CTA Banner */
-        .app-cta-banner {
-            background: linear-gradient(135deg, rgba(123, 110, 246, 0.15), rgba(236, 72, 153, 0.1));
-            border: 1px solid rgba(157, 147, 255, 0.3); border-radius: var(--radius-lg);
-            padding: 44px 20px; text-align: center; margin: 50px 0; position: relative;
+
+        /* Timeline (Itinerary) */
+        .timeline { position: relative; padding-left: 32px; margin: 24px 0 32px; }
+        .timeline::before {
+            content: ''; position: absolute; left: 11px; top: 8px; bottom: 8px;
+            width: 2px; background: linear-gradient(to bottom, var(--primary), var(--accent));
         }
-        .app-cta-banner h3 { font-size: clamp(22px, 4vw, 28px); font-weight: 800; margin-bottom: 10px; }
-        .app-cta-banner p { color: var(--text-secondary); max-width: 580px; margin: 0 auto 24px; font-size: 15px; }
+        .timeline-step { position: relative; margin-bottom: 24px; }
+        .timeline-step:last-child { margin-bottom: 0; }
+        .timeline-dot {
+            position: absolute; left: -32px; top: 4px; width: 24px; height: 24px;
+            border-radius: 50%; background: #19142B; border: 2px solid var(--primary-light);
+            display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700;
+        }
+        .step-header { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; flex-wrap: wrap; }
+        .step-time {
+            background: rgba(123, 110, 246, 0.2); color: var(--primary-light); font-size: 12px;
+            font-weight: 700; padding: 2px 8px; border-radius: 6px;
+        }
+        .step-title { font-size: 16px; font-weight: 700; color: #fff; }
+        .step-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+        /* Mobile App Gate Banner (Days 2 & 3 + Live Map) */
+        .app-lock-banner {
+            background: linear-gradient(135deg, rgba(123, 110, 246, 0.16) 0%, rgba(236, 72, 153, 0.12) 100%);
+            border: 1.5px solid rgba(157, 147, 255, 0.35); border-radius: var(--radius-lg);
+            padding: 36px 28px; margin: 36px 0; text-align: center; position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        .app-lock-badge {
+            display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px; border-radius: 100px; font-size: 12px; font-weight: 700;
+            color: #fff; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .app-lock-banner h3 { font-size: clamp(22px, 3.5vw, 28px); font-weight: 800; margin-bottom: 8px; }
+        .app-lock-banner p { color: var(--text-secondary); max-width: 620px; margin: 0 auto 20px; font-size: 14px; line-height: 1.6; }
+        .app-lock-features {
+            display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 24px;
+            font-size: 13px; color: #E2E8F0; font-weight: 500;
+        }
+        .app-lock-feature-item { display: flex; align-items: center; gap: 6px; }
+
+        /* Store Buttons */
         .store-btn-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
         .store-pill-btn {
             display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: white;
@@ -231,10 +337,48 @@
         }
         .store-pill-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2); }
 
+        /* Ad Placement Slots */
+        .ad-placement-slot {
+            margin: 40px auto; text-align: center; max-width: 728px; min-height: 90px;
+            background: rgba(255, 255, 255, 0.02); border: 1px dashed rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-sm); padding: 10px; overflow: hidden;
+        }
+        .ad-label {
+            font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px;
+            color: var(--text-muted); display: block; margin-bottom: 6px;
+        }
+
+        /* Phrases Table */
+        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrase-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm); padding: 14px 18px;
+        }
+        .phrase-orig { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+        .phrase-trans { font-size: 13px; color: var(--text-secondary); }
+
         /* Footer */
         .footer {
-            border-top: 1px solid var(--border-subtle); padding: 40px 24px 30px;
-            color: var(--text-muted); font-size: 13px; text-align: center;
+            border-top: 1px solid var(--border-subtle); padding: 50px 24px 36px;
+            color: var(--text-muted); font-size: 13px; background: #0A0713;
+        }
+        .footer-grid {
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px;
+            max-width: 1080px; margin: 0 auto 40px; text-align: left;
+        }
+        .footer-brand h4 { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+        .footer-brand p { font-size: 13px; line-height: 1.6; color: var(--text-secondary); max-width: 340px; }
+        .footer-col h5 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+        .footer-col a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+        .footer-col a:hover { color: #fff; }
+        .footer-bottom {
+            text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 24px; max-width: 1080px; margin: 0 auto;
+        }
+
+        @media (max-width: 860px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
         @media (max-width: 768px) {
@@ -246,8 +390,9 @@
             }
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
-            .guide-hero { min-height: 380px; padding-top: 90px; }
+            .guide-hero { min-height: 420px; padding-top: 100px; }
             .cards-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
 
@@ -268,6 +413,8 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="/guides/" class="active">City Guides</a></li>
                 <li><a href="/#features">Features</a></li>
+                <li><a href="../about.html">About Us</a></li>
+                <li><a href="../support.html">Support</a></li>
             </ul>
             <div class="nav-actions">
                 <!-- Top Right Globe Dropdown -->
@@ -295,37 +442,58 @@
         <img src="../images/cities/edinburgh.jpg" alt="Edinburgh" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
+            <div class="breadcrumbs">
+                <a href="/">Home</a> <span>/</span>
+                <a href="/guides/">City Guides</a> <span>/</span>
+                <span>🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland</span> <span>/</span>
+                <span style="color:#fff;">Edinburgh</span>
+            </div>
             <div class="city-badge">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland &bull; City Guides</div>
             <h1 class="guide-title">Edinburgh</h1>
             <p class="guide-tagline">Stone streets in the castle's shadow, stories in the mist</p>
+            <div class="guide-editorial-meta">
+                <span>✍️ MyWay Editorial Team</span>
+                <span>•</span>
+                <span>🛡️ Verified Local Guide</span>
+            </div>
         </div>
     </header>
 
+    <!-- Ad Placement 1: Top Banner -->
+    <div class="container">
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    </div>
+
     <main class="container">
-        <!-- Overview -->
+        <!-- 1. Overview -->
         <section class="section">
             <div class="section-header">
-                <span class="section-label">Overview</span>
-                <h2 class="section-title">The Vibe of Edinburgh</h2>
+                <span class="section-label">Overview & Atmosphere</span>
+                <h2 class="section-title">The True Vibe of Edinburgh</h2>
             </div>
-            <p class="intro-text">Edinburgh is two cities, and each looks down at the other: the medieval Old Town pouring downhill from the castle on its volcanic rock, and the elegant, square-planned Georgian New Town. The extinct volcano of Arthur&#x27;s Seat rises in the middle of it all, the sea mist called haar swallows the streets on some mornings, and a piper&#x27;s drone echoes down the Royal Mile. This is the capital of storytellers — Stevenson, Conan Doyle, and the cafes where Harry Potter was born. And in August, the world&#x27;s biggest arts festival turns the whole city into a stage.</p>
+            <p class="section-intro">Edinburgh is two cities, and each looks down at the other: the medieval Old Town pouring downhill from the castle on its volcanic rock, and the elegant, square-planned Georgian New Town. The extinct volcano of Arthur&#x27;s Seat rises in the middle of it all, the sea mist called haar swallows the streets on some mornings, and a piper&#x27;s drone echoes down the Royal Mile. This is the capital of storytellers — Stevenson, Conan Doyle, and the cafes where Harry Potter was born. And in August, the world&#x27;s biggest arts festival turns the whole city into a stage.</p>
             
-        <div class="local-word-box">
-            <div class="word-title">🗣️ Local Concept: <strong>Dreich</strong> <span class="pron">(dreekh)</span></div>
+        <div class="callout-box">
+            <div class="callout-title">🗣️ Local Concept: <strong>Dreich</strong> <span class="pron">(dreekh)</span></div>
             <p>Scotland&#x27;s best-loved word: gray, wet, misty, dispiriting weather — all in one syllable. When someone says &#x27;it&#x27;s a dreich day&#x27;, the sky is lead-colored, but the Scot isn&#x27;t sad about it: a dreich day is a pub day, a whisky day, a book day. Learn this word and you make peace with Scottish weather.</p>
         </div>
         
-        </section>
 
-        <!-- Quick Facts -->
-        
-        <section class="section">
-            <div class="section-header">
-                <span class="section-label">Essentials</span>
-                <h2 class="section-title">Quick Logistics</h2>
-            </div>
+            <!-- Quick Facts Grid -->
             <div class="facts-grid">
-                
             <div class="fact-card">
                 <div class="fact-icon">✈️</div>
                 <div>
@@ -361,20 +529,13 @@
                     <div class="fact-sub">The accent puzzles, then charms</div>
                 </div>
             </div>
-            
             </div>
-        </section>
-        
 
-        <!-- Rules & Secrets -->
-        
-        <section class="section">
-            <div class="section-header">
-                <span class="section-label">Insider Advice</span>
-                <h2 class="section-title">3 Unwritten Rules for Edinburgh</h2>
-            </div>
-            <div class="rules-list">
-                
+            <!-- 3 Unwritten Rules -->
+            
+            <div style="margin-top: 32px;">
+                <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 14px;">3 Unwritten Rules for Edinburgh</h3>
+                <div class="rules-list">
             <div class="rule-card">
                 <div class="rule-num">1</div>
                 <div class="rule-content">
@@ -398,29 +559,593 @@
                     <p>In August the Fringe triples the city: every cellar is a stage, every street a venue — rooms sell out months ahead and prices soar. If you want the festival spirit, plan early; if you want quiet Edinburgh, strike August from the calendar.</p>
                 </div>
             </div>
+            </div>
+            </div>
             
+        </section>
+
+        <!-- 2. Transportation & Transit Logistics -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Getting Around</span>
+                <h2 class="section-title">Edinburgh Public Transit & Airport Transfers</h2>
+            </div>
+            <p class="section-intro">The center is entirely walkable; the tram covers the airport and Lothian buses cover everything else — no car needed.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">✈️</span>
+                        <span class="card-title">Arriving from the airport</span>
+                    </div>
+                </div>
+                <p class="card-desc">The airport tram reaches Princes Street in 35 minutes: tickets from the machine or the app. The Airlink 100 bus runs through the night — a taxi costs three times the same road.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚶</span>
+                        <span class="card-title">Two walkable towns</span>
+                    </div>
+                </div>
+                <p class="card-desc">Everything between Old Town and New Town is within steps, but the steps are steep: the Royal Mile runs down a ridge and the side lanes are staircases. Comfortable shoes are non-negotiable — cobblestones don&#x27;t negotiate with heels.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚌</span>
+                        <span class="card-title">Lothian buses</span>
+                    </div>
+                </div>
+                <p class="card-desc">The maroon buses reach every corner of the city: contactless payment caps at a daily maximum — the system does the ticket math for you. The top-deck front seat is the cheapest scenic tour in town.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚋</span>
+                        <span class="card-title">The tram line</span>
+                    </div>
+                </div>
+                <p class="card-desc">A single line runs from the airport to Leith: Princes Street and St Andrew Square are the key stops. The extension makes reaching the Leith waterfront easy — the practical line for a harbor outing.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🥾</span>
+                        <span class="card-title">Hill paths</span>
+                    </div>
+                </div>
+                <p class="card-desc">The Arthur&#x27;s Seat trails start at Holyrood: the summit is a 45-minute climb with route options for every level. Calton Hill is the ten-minute &#x27;lazy view&#x27; — both are free.</p>
+            </div>
+            </div>
+            
+        <div class="callout-box success">
+            <div class="callout-title">💡 View tip</div>
+            <p>On a windy but clear late afternoon, climb Calton Hill: castle, Old Town skyline and the Firth of Forth gather in one frame. Take your place twenty minutes before sunset — Edinburgh light is generous to photographers, and the wind is an enemy to hats.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 3. Where to Stay (Neighborhoods) -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Neighborhood Guide</span>
+                <h2 class="section-title">Where to Stay in Edinburgh: Best Areas</h2>
+            </div>
+            <p class="section-intro">The choice is between two towns: Old Town&#x27;s stone atmosphere, New Town&#x27;s Georgian elegance, or the village souls of Stockbridge and Leith.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Old Town</span>
+                    <span class="card-badge badge-purple">Most atmospheric</span>
+                </div>
+                <p class="card-desc">Hotels in the stone buildings around the Royal Mile: the castle above, the closes at your door. You wake inside history — lively in summer and festival season, fairytale-quiet in winter.</p>
+                <div class="card-footer-tip">Walk to the castle • Stone atmosphere • Inside the closes</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">New Town</span>
+                    <span class="card-badge badge-purple">Georgian elegance</span>
+                </div>
+                <p class="card-desc">Ordered squares, graceful facades and Princes Street shopping: five minutes to Old Town, one notch calmer. A balanced, stylish base — the best breakfast spots live here too.</p>
+                <div class="card-footer-tip">Georgian facades • Beside the shops • Balanced location</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Stockbridge</span>
+                    <span class="card-badge badge-purple">Village soul</span>
+                </div>
+                <p class="card-desc">A village-like quarter by the water: a Sunday street market, independent shops, coffee roasters. A fifteen-minute walk to the center — for living Edinburgh like a local.</p>
+                <div class="card-footer-tip">Sunday market • Independent shops • Riverside walks</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Leith</span>
+                    <span class="card-badge badge-purple">Harbor character</span>
+                </div>
+                <p class="card-desc">Waterfront restaurants, Michelin-starred kitchens and a transforming dock district: The Shore at dusk is one of the city&#x27;s most pleasant corners. Linked to the center by tram — prices a notch kinder.</p>
+                <div class="card-footer-tip">Waterfront dining • Michelin kitchens • On the tram</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Bruntsfield and Morningside</span>
+                    <span class="card-badge badge-purple">Quiet side</span>
+                </div>
+                <p class="card-desc">Southern neighborhoods of cafes and bakeries beside the parks: a pleasant walk across the Meadows to the center. The balanced choice for families and quiet-night seekers.</p>
+                <div class="card-footer-tip">Beside the parks • Neighborhood cafes • Quiet nights</div>
+            </div>
             </div>
         </section>
         
 
-        <!-- CTA Banner -->
-        <section class="app-cta-banner">
-            <h3>Unlock the Full Guide in MyWay 🌟</h3>
-            <p>Discover hidden gems, curated local food, tourist traps to avoid, and step-by-step smart walking routes for Edinburgh in MyWay.</p>
-            <div class="store-btn-row">
-                <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
-                     Download on App Store
-                </a>
-                <a href="https://play.google.com/store/apps/details?id=com.anilaybakan.sehirkesif" class="store-pill-btn">
-                    ▶ Get on Google Play
-                </a>
+        <!-- Ad Placement 2: Mid-Article -->
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+
+        <!-- 4. Best Time to Visit -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Seasons & Weather</span>
+                <h2 class="section-title">Best Time to Visit Edinburgh</h2>
+            </div>
+            <p class="section-intro">Edinburgh&#x27;s weather guarantees nothing, but its calendar is clear: August is festival madness, December is lights and Hogmanay, spring and autumn are the calm balance.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Spring</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Apr – Jun</span>
+                    </div>
+                    <span class="card-badge badge-amber">Waking Gardens</span>
+                </div>
+                <p class="card-desc">The Meadows drown in cherry blossom, the days lengthen fast, and the festival crowds are still far away. The year&#x27;s most balanced window for Arthur&#x27;s Seat trails and close-hunting — the weather still springs surprises, so layer up.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Summer</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Jul – Aug</span>
+                    </div>
+                    <span class="card-badge badge-amber">Festival Madness</span>
+                </div>
+                <p class="card-desc">In August the Fringe, the International Festival and the Military Tattoo share the stage: the city becomes one vast performance and the queues run past midnight. Light lasts until ten — the energy is unmatched, and so are the prices and crowds.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Autumn</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Sep – Nov</span>
+                    </div>
+                    <span class="card-badge badge-amber">Season of Golden Mist</span>
+                </div>
+                <p class="card-desc">The city shakes off festival fatigue, the parks turn gold, and the haar swallows the castle each morning and gives it back. Pub fires are lit and whisky season opens — these are the months when Edinburgh is most itself.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Winter</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Dec – Feb</span>
+                    </div>
+                    <span class="card-badge badge-amber">Lights and Hogmanay</span>
+                </div>
+                <p class="card-desc">In December the Christmas market floods Princes Street Gardens with light; at New Year, Hogmanay becomes a three-day city festival — torchlight procession, concerts and midnight fireworks. The days are short, the atmosphere dense.</p>
+            </div>
             </div>
         </section>
+        
+
+        <!-- 5. Authentic Food & Dining -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Culinary Culture</span>
+                <h2 class="section-title">Authentic Local Dining & Food Secrets in Edinburgh</h2>
+            </div>
+            <p class="section-intro">Scottish cooking looks modest and lands solid: the spice of haggis, the freshness of salmon, the smoke of whisky — all at pub warmth.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🥘</span>
+                        <span class="card-title">Haggis, neeps and tatties</span>
+                    </div>
+                </div>
+                <p class="card-desc">Scotland&#x27;s national dish: spiced haggis with mashed turnip and potato. It sounds like a dare and tastes deep and peppery — asking for whisky sauce on top is a legitimate modern touch.</p>
+                <div class="card-footer-tip">⭐ National classic · try the whisky sauce</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🥃</span>
+                        <span class="card-title">The whisky dram ritual</span>
+                    </div>
+                </div>
+                <p class="card-desc">From Islay&#x27;s smoke to Speyside&#x27;s honey: a good whisky bar draws you a map by asking questions. A tasting flight starts at three drams — have your answer ready for &#x27;peaty or sweet?&#x27;</p>
+                <div class="card-footer-tip">⭐ By the flight · ask the bartender</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🐟</span>
+                        <span class="card-title">Fish and chips with chippy sauce</span>
+                    </div>
+                </div>
+                <p class="card-desc">Crisp-battered cod and thick-cut chips: the Edinburgh difference is the brown &#x27;chippy sauce&#x27; — the local blend of vinegar and brown sauce. When asked &#x27;salt and sauce?&#x27;, say &#x27;aye&#x27; and follow the city&#x27;s custom.</p>
+                <div class="card-footer-tip">⭐ Chippy classic · salt and sauce</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🍲</span>
+                        <span class="card-title">Cullen skink</span>
+                    </div>
+                </div>
+                <p class="card-desc">A cream soup of smoked haddock and potato: the northeast coast&#x27;s gift to Edinburgh tables. The most honest answer to a dreich noon — with fresh bread and plenty of butter.</p>
+                <div class="card-footer-tip">⭐ Smoky soup · dreich-day work</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🍳</span>
+                        <span class="card-title">The full Scottish breakfast</span>
+                    </div>
+                </div>
+                <p class="card-desc">Sausage, eggs, beans and the star players: square (lorne) sausage, tattie scone and a slice of haggis. It holds you till noon — queueing for breakfast is a Stockbridge tradition.</p>
+                <div class="card-footer-tip">⭐ A challenge to the day · with tattie scone</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🍰</span>
+                        <span class="card-title">Cranachan and shortbread</span>
+                    </div>
+                </div>
+                <p class="card-desc">Cranachan — raspberries with cream, honey, whisky and toasted oats — and buttery shortbread beside it: two classics of the Scottish sweet course. Closing with a cheese board and a dram instead of dessert is equally native.</p>
+                <div class="card-footer-tip">⭐ Sweet duo · whisky cream</div>
+            </div>
+            </div>
+            
+        <div class="callout-box">
+            <div class="callout-title">🍷 Table rule</div>
+            <p>In Edinburgh the lunch menus run at half the evening price: schedule the big meal for noon. Against the Royal Mile tourist traps, turn one street aside — the Leith waterfront and Stockbridge are the most honest addresses for the price-to-flavor balance.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 6. Handpicked Hidden Gems -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Off The Beaten Path</span>
+                <h2 class="section-title">Handpicked Hidden Gems in Edinburgh</h2>
+            </div>
+            <p class="section-intro">Everyone sees the castle; these six are Edinburgh&#x27;s misty, storied hidden pages.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Dean Village</span>
+                    <span class="card-badge badge-emerald">A village inside the city</span>
+                </div>
+                <p class="card-desc">A medieval milling village ten minutes from the center: stone houses, the sound of the Water of Leith and ivy-covered facades. Go early in the morning — from the bridge, it&#x27;s hard to believe you&#x27;re still in a city.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Circus Lane</span>
+                    <span class="card-badge badge-emerald">The photographer&#x27;s lane</span>
+                </div>
+                <p class="card-desc">A cobbled old mews lane behind Stockbridge, lined with flowers: with its church tower backdrop and begonia pots, the city&#x27;s most graceful frame. A five-minute lane means a half-hour photo stop.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Duddingston and the Sheep Heid Inn</span>
+                    <span class="card-badge badge-emerald">A village pub by a loch</span>
+                </div>
+                <p class="card-desc">A village hidden behind Arthur&#x27;s Seat: its loch, its kirk, and a pub serving since 1360. Descend from the summit this way — a dram at the inn with its old skittle alley is the walk&#x27;s earned reward.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">The Water of Leith walkway</span>
+                    <span class="card-badge badge-emerald">Riverside footpath</span>
+                </div>
+                <p class="card-desc">The stream path that secretly crosses the city: from Dean Village to Stockbridge and on to the Botanic Garden, walking to the sound of water. The city&#x27;s noise stays one level above — Edinburgh&#x27;s hidden green corridor.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Calton Hill</span>
+                    <span class="card-badge badge-emerald">The acropolis on the hill</span>
+                </div>
+                <p class="card-desc">A ten-minute climb to the hill of monuments: the unfinished &#x27;Parthenon&#x27;, the observatory and the city&#x27;s most famous panorama. Everyone comes at sunset, but the hill is wide — find your own stone and watch the light descend.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">The Old Town&#x27;s independent bookshops</span>
+                    <span class="card-badge badge-emerald">A book-scented refuge</span>
+                </div>
+                <p class="card-desc">The second-hand bookshops around Grassmarket and Victoria Street: maps, old editions and Scottish poetry between the shelves. The best shelter when rain strikes — the rule that &#x27;a dreich day is a bookshop day&#x27; is proven here.</p>
+            </div>
+            </div>
+            
+        <div class="callout-box success">
+            <div class="callout-title">✨ Mist strategy</div>
+            <p>Edinburgh&#x27;s hidden corners pair with the weather: Calton Hill and Duddingston on clear days, bookshops and museums on dreich days, Dean Village on any day. Don&#x27;t resent the sky — in this city every kind of weather has its own route.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 7. Tourist Traps & Smarter Alternatives -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Scam Prevention</span>
+                <h2 class="section-title">Tourist Traps to Avoid & Smarter Alternatives</h2>
+            </div>
+            <p class="section-intro">Edinburgh is an honest city; its traps are small but classic — know these four and save the budget for a dram.</p>
+            <div class="traps-list">
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🧣 TRAP</span>
+                    <h4>Mass-produced &#x27;Scottish&#x27; cashmere and tartan</h4>
+                </div>
+                <p>In some Royal Mile windows, imported goods labeled &#x27;Scottish cashmere&#x27; sell at hand-loom prices; the bagpipe loudspeaker doesn&#x27;t change the label of origin.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Read the label: look for &#x27;Made in Scotland&#x27; and choose the mill brands. For real tartan, go to an established shop that asks about clan patterns and sells by the meter — a merchant who tells the story knows the cloth.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🎫 TRAP</span>
+                    <h4>The ticket queue at the castle gate</h4>
+                </div>
+                <p>Edinburgh Castle runs timed entry: arrive at the gate on a summer day and you meet either a long queue or the &#x27;sold out&#x27; sign.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Buy a timed ticket from the official site days ahead; the first morning slot is best for calm and for views. To hear the One O&#x27;Clock Gun, be on the ramparts at 13:00.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🏨 TRAP</span>
+                    <h4>Arriving in August at the last minute</h4>
+                </div>
+                <p>In festival month, room prices triple or quadruple and still sell out; late seekers get flung to the city&#x27;s edge or over budget.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Lock the festival plan months ahead, or shift your visit to September: the same city at half the price with room to breathe. Early September&#x27;s post-festival calm is Edinburgh&#x27;s secret golden fortnight.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">👻 TRAP</span>
+                    <h4>Mediocre ghost tours</h4>
+                </div>
+                <p>Some graveyard and underground tours fill tickets with costumed jump-scares; the history is thin and the experience stays at funfair level.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Read reviews and pick small-group tours known for storytelling; alternatively, documented underground tours like the Real Mary King&#x27;s Close frighten with history — a real shiver instead of a cheap jump-scare.</div>
+            </div>
+            </div>
+            
+        <div class="callout-box warning">
+            <div class="callout-title">🛡️ Golden rule</div>
+            <p>In Edinburgh the most expensive things are tickets and August; the most precious things are free: the hills, the closes, the street music and the views. Save the money for one good dram, one good table and pre-booked tickets — collect the rest on foot.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 8. Step-by-Step 1-Day Itinerary -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Smart Itinerary</span>
+                <h2 class="section-title">Day 1: Step-by-Step Edinburgh Walking Tour</h2>
+            </div>
+            <p class="section-intro">If you hate planning, follow these flows. Times are flexible; keep the spirit, break the order.</p>
+            <div class="timeline">
+                
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">08:30</span>
+                    <h4 class="step-title">Full Scottish breakfast</h4>
+                </div>
+                <p class="step-desc">Take on the day with tattie scone and a slice of haggis: there are many slopes today, and fuel is essential.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">09:30</span>
+                    <h4 class="step-title">Edinburgh Castle</h4>
+                </div>
+                <p class="step-desc">Enter on the first timed slot: the crown room, the war memorial and the city from the ramparts. Be out before the One O&#x27;Clock Gun.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">12:00</span>
+                    <h4 class="step-title">The Royal Mile by its closes</h4>
+                </div>
+                <p class="step-desc">Walk the passages, not the main street: courtyards, views and St Giles&#x27; Cathedral. Pause among the colored facades of Victoria Street.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">14:00</span>
+                    <h4 class="step-title">Lunch and a museum</h4>
+                </div>
+                <p class="step-desc">Cullen skink or haggis around Grassmarket; then the roof terrace of the National Museum — free, with a view.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">16:30</span>
+                    <h4 class="step-title">Arthur&#x27;s Seat or Calton Hill</h4>
+                </div>
+                <p class="step-desc">Choose by your energy: the 45-minute summit climb or the 10-minute hill of monuments. Both are generous at sunset.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">19:30</span>
+                    <h4 class="step-title">Pub evening and a dram</h4>
+                </div>
+                <p class="step-desc">Dinner by a pub fire, then a whisky flight: find your answer to &#x27;peaty or sweet?&#x27; If there&#x27;s live folk music, the night stretches on its own.</p>
+            </div>
+            
+            </div>
+
+            <!-- Mobile App Locked Content: Days 2 & 3 + Live GPS Map -->
+            <div class="app-lock-banner" id="download">
+                <div class="app-lock-badge">MyWay Mobile Exclusive 📱</div>
+                <h3>Unlock Days 2 & 3 + Turn-by-Turn GPS Map Navigation</h3>
+                <p>Explore the complete 3-day hourly itinerary for Edinburgh, browse our 180+ verified place database offline, and plan collaborative daily itineraries with friends in the MyWay app.</p>
+                <div style="margin: 16px 0 20px; font-size: 13px; color: #CBD5E1; font-weight: 600;">
+                    📍 Day 2: New Town and village corners &bull; 📍 Day 3: Summit and harbor
+                </div>
+                <div class="app-lock-features">
+                    <div class="app-lock-feature-item">✓ Live Interactive GPS Map & Navigation</div>
+                    <div class="app-lock-feature-item">✓ Full 180+ Place Database (Offline Mode)</div>
+                    <div class="app-lock-feature-item">✓ Co-plan Hourly Trips with Friends</div>
+                </div>
+                <div class="store-btn-row">
+                    <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
+                         Download on App Store
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.anilaybakan.sehirkesif" class="store-pill-btn">
+                        ▶ Get on Google Play
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+
+        <!-- 9. Phrases -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Local Slang</span>
+                <h2 class="section-title">Useful Everyday Phrases in Edinburgh</h2>
+            </div>
+            <p class="section-intro">Scottish English comes with its own dictionary; these five phrases melt the ice instantly in pub and street.</p>
+            <div class="phrases-grid">
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Aye</div>
+                <div class="phrase-trans">Yes — short, clear and Scottish; you&#x27;ll hear it a hundred times a day</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Wee</div>
+                <div class="phrase-trans">Small, a little — &#x27;a wee dram&#x27;, &#x27;a wee walk&#x27;; the endearing word that fits any sentence</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Bonnie</div>
+                <div class="phrase-trans">Beautiful, lovely — said of views and people alike; the &#x27;bonnie Scotland&#x27; cliché is earned</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Slàinte mhath!</div>
+                <div class="phrase-trans">Cheers! — Gaelic for &#x27;good health&#x27;; said as the dram rises, and respected at the bar</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ How&#x27;s it gaun?</div>
+                <div class="phrase-trans">How&#x27;s it going? — the Scottish &#x27;what&#x27;s up&#x27;; the answer is usually &#x27;no bad&#x27;</div>
+            </div>
+            </div>
+        </section>
+        
+
+        <!-- Ad Placement 3: Bottom Banner -->
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
     </main>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h4>MyWay Travel</h4>
+                    <p>The ultimate smart travel guide and AI route planner for modern explorers. Stop being a tourist; experience cities like a local.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>City Guides</h5>
+                    <ul>
+                        <li><a href="/guides/">All Cities</a></li>
+                        <li><a href="../guides/barcelona.html">Barcelona</a></li>
+                        <li><a href="../guides/roma.html">Roma</a></li>
+                        <li><a href="../guides/paris.html">Paris</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Company</h5>
+                    <ul>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../support.html">Support</a></li>
+                        <li><a href="/#features">Features</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Legal</h5>
+                    <ul>
+                        <li><a href="../privacy.html">Privacy Policy</a></li>
+                        <li><a href="../terms.html">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 

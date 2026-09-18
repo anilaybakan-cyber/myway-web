@@ -3,11 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vienna Travel Guide & Smart Walking Routes | MyWay</title>
-    <meta name="description" content="Explore Vienna with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
+    <title>Vienna Travel Guide & Curated Walking Routes | MyWay</title>
+    <meta name="description" content="The ultimate Vienna travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
     
     <link rel="alternate" hreflang="en" href="/guides/viyana.html">
     <link rel="alternate" hreflang="tr" href="/tr/rehber/viyana.html">
+    <link rel="canonical" href="https://mywaytravelapp.com/guides/viyana.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mywaytravelapp.com/guides/viyana.html">
+    <meta property="og:title" content="Vienna Travel Guide & Curated Walking Routes | MyWay">
+    <meta property="og:description" content="The ultimate Vienna travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
+    <meta property="og:image" content="https://mywaytravelapp.com/images/cities/viyana.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Vienna Travel Guide & Curated Walking Routes | MyWay">
+    <meta name="twitter:description" content="The ultimate Vienna travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
+    <meta name="twitter:image" content="https://mywaytravelapp.com/images/cities/viyana.jpg">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
@@ -22,6 +36,37 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
          crossorigin="anonymous"></script>
 
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TravelGuide",
+      "name": "Vienna Travel Guide & Curated Walking Routes | MyWay",
+      "headline": "Vienna Gezi Rehberi & Akıllı Yürüyüş Rotaları",
+      "description": "The ultimate Vienna travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.",
+      "image": "https://mywaytravelapp.com/images/cities/viyana.jpg",
+      "inLanguage": "en",
+      "url": "https://mywaytravelapp.com/guides/viyana.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "MyWay Travel",
+        "url": "https://mywaytravelapp.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://mywaytravelapp.com/images/app_icon.png"
+        }
+      },
+      "about": {
+        "@type": "TouristDestination",
+        "name": "Vienna",
+        "containedInPlace": {
+          "@type": "Country",
+          "name": "Austria"
+        }
+      }
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -35,13 +80,17 @@
             --primary-light: #9D93FF;
             --primary-dark: #5B4FD6;
             --accent: #EC4899;
+            --emerald: #10B981;
+            --warning: #EF4444;
             --bg-dark: #0F0B1A;
             --bg-section: #130F22;
             --bg-card: rgba(255, 255, 255, 0.04);
+            --bg-card-hover: rgba(255, 255, 255, 0.07);
             --text-primary: #FFFFFF;
             --text-secondary: #9CA3AF;
             --text-muted: #6B7280;
             --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(123, 110, 246, 0.3);
             --radius-lg: 24px;
             --radius-md: 16px;
             --radius-sm: 12px;
@@ -52,15 +101,15 @@
         body {
             background-color: var(--bg-dark); color: var(--text-primary);
             font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6; overflow-x: hidden;
+            line-height: 1.7; overflow-x: hidden;
         }
         
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
         
         /* Navbar */
         .navbar {
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            background: rgba(15, 11, 26, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            background: rgba(15, 11, 26, 0.88); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-subtle); height: 72px; display: flex; align-items: center;
         }
         .navbar-inner {
@@ -114,18 +163,27 @@
         .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(123, 110, 246, 0.4); }
         .nav-toggle { display: none; background: none; border: none; color: #fff; cursor: pointer; padding: 8px; }
 
+        /* Breadcrumbs */
+        .breadcrumbs {
+            display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-muted);
+            margin-bottom: 16px; flex-wrap: wrap;
+        }
+        .breadcrumbs a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+        .breadcrumbs a:hover { color: #fff; }
+        .breadcrumbs span { color: var(--text-muted); }
+
         /* Guide Hero */
         .guide-hero {
-            position: relative; min-height: 440px; display: flex; align-items: flex-end;
-            padding: 120px 24px 44px; margin-top: 72px; overflow: hidden; background-color: #1A132F;
+            position: relative; min-height: 480px; display: flex; align-items: flex-end;
+            padding: 130px 24px 50px; margin-top: 72px; overflow: hidden; background-color: #1A132F;
         }
         .guide-hero-bg {
             position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-            filter: brightness(0.65);
+            filter: brightness(0.6);
         }
         .guide-hero-overlay {
             position: absolute; inset: 0;
-            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.4) 60%, transparent 100%);
+            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.5) 60%, rgba(15, 11, 26, 0.2) 100%);
         }
         .guide-hero-content { position: relative; z-index: 2; width: 100%; }
         .city-badge {
@@ -133,28 +191,34 @@
             backdrop-filter: blur(10px); padding: 6px 14px; border-radius: 99px; font-size: 13px;
             font-weight: 600; margin-bottom: 14px; border: 1px solid rgba(255, 255, 255, 0.15);
         }
-        .guide-title { font-size: clamp(32px, 6vw, 52px); font-weight: 800; line-height: 1.1; margin-bottom: 10px; }
-        .guide-tagline { font-size: 16px; color: var(--primary-light); max-width: 720px; font-weight: 500; line-height: 1.5; }
-        
+        .guide-title { font-size: clamp(34px, 6vw, 56px); font-weight: 800; line-height: 1.1; margin-bottom: 12px; }
+        .guide-tagline { font-size: 17px; color: var(--primary-light); max-width: 780px; font-weight: 500; line-height: 1.5; margin-bottom: 12px; }
+        .guide-editorial-meta { font-size: 13px; color: #94A3B8; display: flex; gap: 16px; align-items: center; }
+
         /* Sections */
-        .section { padding: 42px 0; border-bottom: 1px solid var(--border-subtle); }
-        .section-header { margin-bottom: 24px; }
-        .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); font-weight: 700; }
-        .section-title { font-size: 24px; font-weight: 700; margin-top: 4px; }
+        .section { padding: 50px 0; border-bottom: 1px solid var(--border-subtle); }
+        .section-header { margin-bottom: 26px; }
+        .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); font-weight: 700; display: block; margin-bottom: 6px; }
+        .section-title { font-size: clamp(22px, 3.5vw, 28px); font-weight: 800; margin-bottom: 10px; }
+        .section-intro { font-size: 15px; color: #D1D5DB; line-height: 1.8; margin-bottom: 22px; max-width: 900px; }
         
-        .intro-text { font-size: 15px; color: #D1D5DB; line-height: 1.8; margin-bottom: 20px; }
-        
-        /* Local Word */
-        .local-word-box {
+        /* Pro-Tip & Local Word Boxes */
+        .callout-box {
             background: rgba(123, 110, 246, 0.08); border-left: 4px solid var(--primary);
-            padding: 18px 22px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-top: 20px;
+            padding: 18px 22px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin: 24px 0;
         }
-        .word-title { font-size: 15px; color: #fff; margin-bottom: 4px; }
+        .callout-box.warning {
+            background: rgba(239, 68, 68, 0.08); border-left: 4px solid var(--warning);
+        }
+        .callout-box.success {
+            background: rgba(16, 185, 129, 0.08); border-left: 4px solid var(--emerald);
+        }
+        .callout-title { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+        .callout-box p { font-size: 14px; color: #D1D5DB; line-height: 1.6; }
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
-        .local-word-box p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        
+
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
@@ -164,8 +228,8 @@
         .fact-val { font-size: 15px; font-weight: 600; color: #fff; margin: 2px 0; }
         .fact-sub { font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
         
-        /* Rules */
-        .rules-list { display: flex; flex-direction: column; gap: 14px; }
+        /* Rules List */
+        .rules-list { display: flex; flex-direction: column; gap: 14px; margin: 20px 0; }
         .rule-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 20px; display: flex; gap: 16px; align-items: flex-start;
@@ -177,52 +241,94 @@
         }
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        
-        /* Hidden Gems & Eat Grid */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
-        .gem-card, .eat-card {
+
+        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
+        .feature-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative;
+            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
+            display: flex; flex-direction: column; justify-content: space-between;
         }
-        .gem-badge {
-            display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase;
-            color: #10B981; background: rgba(16, 185, 129, 0.12); padding: 4px 10px; border-radius: 99px;
-            margin-bottom: 10px;
+        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
+        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
+        .card-title-group { display: flex; align-items: center; gap: 10px; }
+        .card-icon { font-size: 20px; }
+        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+        .card-badge {
+            font-size: 11px; font-weight: 700; text-transform: uppercase;
+            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
         }
-        .gem-hook { font-size: 13px; color: var(--primary-light); font-style: italic; margin-bottom: 8px; }
-        .gem-card h4, .eat-card h4 { font-size: 16px; margin-bottom: 6px; }
-        .gem-card p, .eat-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        .card-tip-box {
-            margin-top: 10px; padding: 8px 12px; background: rgba(255, 255, 255, 0.04);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1;
-        }
+        .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
+        .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
+        .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
+        .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        /* Traps */
-        .traps-list { display: flex; flex-direction: column; gap: 14px; }
-        .trap-card {
-            background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.15);
-            border-radius: var(--radius-md); padding: 20px;
+        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        .card-footer-tip {
+            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
         }
-        .trap-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+
+        /* Traps List */
+        .traps-list { display: flex; flex-direction: column; gap: 16px; margin: 20px 0; }
+        .trap-card {
+            background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.18);
+            border-radius: var(--radius-md); padding: 22px;
+        }
+        .trap-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
         .trap-tag {
             background: #EF4444; color: #fff; font-size: 11px; font-weight: 700;
-            text-transform: uppercase; padding: 2px 8px; border-radius: 6px;
+            text-transform: uppercase; padding: 3px 8px; border-radius: 6px;
         }
-        .trap-header h4 { font-size: 16px; color: #fff; }
+        .trap-header h4 { font-size: 17px; color: #fff; font-weight: 700; }
         .trap-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
         .trap-solution {
-            margin-top: 10px; padding: 10px 14px; background: rgba(16, 185, 129, 0.08);
-            border-left: 3px solid #10B981; border-radius: 4px; font-size: 13px; color: #D1D5DB; line-height: 1.5;
+            margin-top: 12px; padding: 12px 16px; background: rgba(16, 185, 129, 0.08);
+            border-left: 3px solid #10B981; border-radius: 6px; font-size: 13px; color: #D1D5DB; line-height: 1.5;
         }
-        
-        /* App CTA Banner */
-        .app-cta-banner {
-            background: linear-gradient(135deg, rgba(123, 110, 246, 0.15), rgba(236, 72, 153, 0.1));
-            border: 1px solid rgba(157, 147, 255, 0.3); border-radius: var(--radius-lg);
-            padding: 44px 20px; text-align: center; margin: 50px 0; position: relative;
+
+        /* Timeline (Itinerary) */
+        .timeline { position: relative; padding-left: 32px; margin: 24px 0 32px; }
+        .timeline::before {
+            content: ''; position: absolute; left: 11px; top: 8px; bottom: 8px;
+            width: 2px; background: linear-gradient(to bottom, var(--primary), var(--accent));
         }
-        .app-cta-banner h3 { font-size: clamp(22px, 4vw, 28px); font-weight: 800; margin-bottom: 10px; }
-        .app-cta-banner p { color: var(--text-secondary); max-width: 580px; margin: 0 auto 24px; font-size: 15px; }
+        .timeline-step { position: relative; margin-bottom: 24px; }
+        .timeline-step:last-child { margin-bottom: 0; }
+        .timeline-dot {
+            position: absolute; left: -32px; top: 4px; width: 24px; height: 24px;
+            border-radius: 50%; background: #19142B; border: 2px solid var(--primary-light);
+            display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700;
+        }
+        .step-header { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; flex-wrap: wrap; }
+        .step-time {
+            background: rgba(123, 110, 246, 0.2); color: var(--primary-light); font-size: 12px;
+            font-weight: 700; padding: 2px 8px; border-radius: 6px;
+        }
+        .step-title { font-size: 16px; font-weight: 700; color: #fff; }
+        .step-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+        /* Mobile App Gate Banner (Days 2 & 3 + Live Map) */
+        .app-lock-banner {
+            background: linear-gradient(135deg, rgba(123, 110, 246, 0.16) 0%, rgba(236, 72, 153, 0.12) 100%);
+            border: 1.5px solid rgba(157, 147, 255, 0.35); border-radius: var(--radius-lg);
+            padding: 36px 28px; margin: 36px 0; text-align: center; position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        .app-lock-badge {
+            display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px; border-radius: 100px; font-size: 12px; font-weight: 700;
+            color: #fff; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .app-lock-banner h3 { font-size: clamp(22px, 3.5vw, 28px); font-weight: 800; margin-bottom: 8px; }
+        .app-lock-banner p { color: var(--text-secondary); max-width: 620px; margin: 0 auto 20px; font-size: 14px; line-height: 1.6; }
+        .app-lock-features {
+            display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 24px;
+            font-size: 13px; color: #E2E8F0; font-weight: 500;
+        }
+        .app-lock-feature-item { display: flex; align-items: center; gap: 6px; }
+
+        /* Store Buttons */
         .store-btn-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
         .store-pill-btn {
             display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: white;
@@ -231,10 +337,48 @@
         }
         .store-pill-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2); }
 
+        /* Ad Placement Slots */
+        .ad-placement-slot {
+            margin: 40px auto; text-align: center; max-width: 728px; min-height: 90px;
+            background: rgba(255, 255, 255, 0.02); border: 1px dashed rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-sm); padding: 10px; overflow: hidden;
+        }
+        .ad-label {
+            font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px;
+            color: var(--text-muted); display: block; margin-bottom: 6px;
+        }
+
+        /* Phrases Table */
+        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrase-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm); padding: 14px 18px;
+        }
+        .phrase-orig { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+        .phrase-trans { font-size: 13px; color: var(--text-secondary); }
+
         /* Footer */
         .footer {
-            border-top: 1px solid var(--border-subtle); padding: 40px 24px 30px;
-            color: var(--text-muted); font-size: 13px; text-align: center;
+            border-top: 1px solid var(--border-subtle); padding: 50px 24px 36px;
+            color: var(--text-muted); font-size: 13px; background: #0A0713;
+        }
+        .footer-grid {
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px;
+            max-width: 1080px; margin: 0 auto 40px; text-align: left;
+        }
+        .footer-brand h4 { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+        .footer-brand p { font-size: 13px; line-height: 1.6; color: var(--text-secondary); max-width: 340px; }
+        .footer-col h5 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+        .footer-col a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+        .footer-col a:hover { color: #fff; }
+        .footer-bottom {
+            text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 24px; max-width: 1080px; margin: 0 auto;
+        }
+
+        @media (max-width: 860px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
         @media (max-width: 768px) {
@@ -246,8 +390,9 @@
             }
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
-            .guide-hero { min-height: 380px; padding-top: 90px; }
+            .guide-hero { min-height: 420px; padding-top: 100px; }
             .cards-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
 
@@ -268,6 +413,8 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="/guides/" class="active">City Guides</a></li>
                 <li><a href="/#features">Features</a></li>
+                <li><a href="../about.html">About Us</a></li>
+                <li><a href="../support.html">Support</a></li>
             </ul>
             <div class="nav-actions">
                 <!-- Top Right Globe Dropdown -->
@@ -295,37 +442,58 @@
         <img src="../images/cities/viyana.jpg" alt="Vienna" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
+            <div class="breadcrumbs">
+                <a href="/">Home</a> <span>/</span>
+                <a href="/guides/">City Guides</a> <span>/</span>
+                <span>🇦🇹 Austria</span> <span>/</span>
+                <span style="color:#fff;">Vienna</span>
+            </div>
             <div class="city-badge">🇦🇹 Austria &bull; City Guides</div>
             <h1 class="guide-title">Vienna</h1>
             <p class="guide-tagline">Imperial elegance, coffeehouse philosophy and a slice of Sachertorte</p>
+            <div class="guide-editorial-meta">
+                <span>✍️ MyWay Editorial Team</span>
+                <span>•</span>
+                <span>🛡️ Verified Local Guide</span>
+            </div>
         </div>
     </header>
 
+    <!-- Ad Placement 1: Top Banner -->
+    <div class="container">
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    </div>
+
     <main class="container">
-        <!-- Overview -->
+        <!-- 1. Overview -->
         <section class="section">
             <div class="section-header">
-                <span class="section-label">Overview</span>
-                <h2 class="section-title">The Vibe of Vienna</h2>
+                <span class="section-label">Overview & Atmosphere</span>
+                <h2 class="section-title">The True Vibe of Vienna</h2>
             </div>
-            <p class="intro-text">Vienna neither locked its old splendour in a museum nor put it up for sale; it simply kept living in it. Trams glide past palaces, students snap up the standing tickets at the opera, and a retiree reading the paper in a marble coffeehouse sits for hours without anyone bringing the bill. This city smiles politely at hurry: &#x27;Sit down, have a Melange, the world can wait.&#x27; Do the same — Vienna only opens up once you slow down.</p>
+            <p class="section-intro">Vienna neither locked its old splendour in a museum nor put it up for sale; it simply kept living in it. Trams glide past palaces, students snap up the standing tickets at the opera, and a retiree reading the paper in a marble coffeehouse sits for hours without anyone bringing the bill. This city smiles politely at hurry: &#x27;Sit down, have a Melange, the world can wait.&#x27; Do the same — Vienna only opens up once you slow down.</p>
             
-        <div class="local-word-box">
-            <div class="word-title">🗣️ Local Concept: <strong>Schmäh</strong> <span class="pron">(shmay)</span></div>
+        <div class="callout-box">
+            <div class="callout-title">🗣️ Local Concept: <strong>Schmäh</strong> <span class="pron">(shmay)</span></div>
             <p>Vienna&#x27;s untranslatable humour: half mocking, half affectionate, always an elegant art of the well-placed jab. The waiter&#x27;s deadpan joke is Schmäh; the day you get it, you&#x27;ve become Viennese.</p>
         </div>
         
-        </section>
 
-        <!-- Quick Facts -->
-        
-        <section class="section">
-            <div class="section-header">
-                <span class="section-label">Essentials</span>
-                <h2 class="section-title">Quick Logistics</h2>
-            </div>
+            <!-- Quick Facts Grid -->
             <div class="facts-grid">
-                
             <div class="fact-card">
                 <div class="fact-icon">✈️</div>
                 <div>
@@ -361,20 +529,13 @@
                     <div class="fact-sub">City of Mozart, Beethoven, Strauss</div>
                 </div>
             </div>
-            
             </div>
-        </section>
-        
 
-        <!-- Rules & Secrets -->
-        
-        <section class="section">
-            <div class="section-header">
-                <span class="section-label">Insider Advice</span>
-                <h2 class="section-title">3 Unwritten Rules for Vienna</h2>
-            </div>
-            <div class="rules-list">
-                
+            <!-- 3 Unwritten Rules -->
+            
+            <div style="margin-top: 32px;">
+                <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 14px;">3 Unwritten Rules for Vienna</h3>
+                <div class="rules-list">
             <div class="rule-card">
                 <div class="rule-num">1</div>
                 <div class="rule-content">
@@ -398,29 +559,593 @@
                     <p>The U-Bahn has no turnstiles; the system runs on trust, but inspectors are plain-clothed and unforgiving. Buy a weekly or 72-hour pass on day one and explore with peace of mind.</p>
                 </div>
             </div>
+            </div>
+            </div>
             
+        </section>
+
+        <!-- 2. Transportation & Transit Logistics -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Getting Around</span>
+                <h2 class="section-title">Vienna Public Transit & Airport Transfers</h2>
+            </div>
+            <p class="section-intro">Vienna&#x27;s public transport is the city&#x27;s pride: punctual, clean and running through the night. Don&#x27;t even think about a car.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">✈️</span>
+                        <span class="card-title">Airport to the centre</span>
+                    </div>
+                </div>
+                <p class="card-desc">The CAT express reaches Wien Mitte in 16 minutes; the S7 commuter train does it slightly slower for half the price. Taxis have a flat rate, but with trains this comfortable they&#x27;re unnecessary.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚇</span>
+                        <span class="card-title">U-Bahn — the five-colour backbone</span>
+                    </div>
+                </div>
+                <p class="card-desc">Five lines weave the city together and run 24 hours on weekend nights. The 24/48/72-hour passes and the weekly card are tourist-friendly; validate your ticket on first boarding.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚋</span>
+                        <span class="card-title">Ring tour by tram</span>
+                    </div>
+                </div>
+                <p class="card-desc">Trams 1 and 2 carry you past the palaces of the Ringstrasse for the price of a normal ticket: skip the tourist bus, take a window seat.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚲</span>
+                        <span class="card-title">WienMobil bikes</span>
+                    </div>
+                </div>
+                <p class="card-desc">Shared bikes are a joy along the canal and out to the Prater; bike lanes are wide and drivers respectful. Pedalling the Danube Island is the city&#x27;s best summer escape.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚶</span>
+                        <span class="card-title">The 1st district on foot</span>
+                    </div>
+                </div>
+                <p class="card-desc">Everything inside the Ring is walkable end to end: cathedral, palace and coffeehouses are always ten minutes apart. Comfortable shoes are all the cobblestones ask for.</p>
+            </div>
+            </div>
+            
+        <div class="callout-box success">
+            <div class="callout-title">💡 Tram tip</div>
+            <p>Do the Ring tour in late afternoon: as the Opera, Parliament and Rathaus light up at golden hour, the window of tram 2 becomes the city&#x27;s cheapest palace box.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 3. Where to Stay (Neighborhoods) -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Neighborhood Guide</span>
+                <h2 class="section-title">Where to Stay in Vienna: Best Areas</h2>
+            </div>
+            <p class="section-intro">In Vienna the district (Bezirk) number is as much identity as address: 1st means grandeur, 7th means cool, 2nd means green.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Innere Stadt (1st Bezirk)</span>
+                    <span class="card-badge badge-purple">Most magnificent</span>
+                </div>
+                <p class="card-desc">The museum-city inside the Ring: cathedral, palace and coffeehouses right outside your door. Prices are at imperial levels, the streets surprisingly calm at night — the classic for a first visit.</p>
+                <div class="card-footer-tip">Walk to everything • Historic coffeehouses • Imperial prices</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Neubau (7th Bezirk)</span>
+                    <span class="card-badge badge-purple">Coolest</span>
+                </div>
+                <p class="card-desc">The design-and-café quarter behind the MuseumsQuartier: independent boutiques, third-wave coffee, young Vienna. Walking distance to the centre, the soul of a neighbourhood.</p>
+                <div class="card-footer-tip">Design shops • Café culture • MuseumsQuartier</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Leopoldstadt (2nd Bezirk)</span>
+                    <span class="card-badge badge-purple">Greenest</span>
+                </div>
+                <p class="card-desc">The district of the Prater and the Danube Canal: a giant park, the Ferris wheel, bars along the water. The area around the Karmeliter market is young and lively; prices friendlier than the centre.</p>
+                <div class="card-footer-tip">Prater park • Canal bars • Market quarter</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Josefstadt (8th Bezirk)</span>
+                    <span class="card-badge badge-purple">Most graceful</span>
+                </div>
+                <p class="card-desc">Vienna&#x27;s smallest district: theatres, antique dealers, quiet Biedermeier streets. Low on tourists, high on coffeehouses — for those after calm elegance.</p>
+                <div class="card-footer-tip">Biedermeier streets • Theatre district • Quiet nights</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Wieden (4th Bezirk)</span>
+                    <span class="card-badge badge-purple">Balanced pick</span>
+                </div>
+                <p class="card-desc">Neighbour to the Naschmarkt and Karlsplatz: walk to the market, walk to the opera, dine at a neighbourhood tavern in the evening. The address where central comfort meets neighbourhood prices.</p>
+                <div class="card-footer-tip">Naschmarkt next door • Karlskirche • Neighbourhood taverns</div>
+            </div>
             </div>
         </section>
         
 
-        <!-- CTA Banner -->
-        <section class="app-cta-banner">
-            <h3>Unlock the Full Guide in MyWay 🌟</h3>
-            <p>Discover hidden gems, curated local food, tourist traps to avoid, and step-by-step smart walking routes for Vienna in MyWay.</p>
-            <div class="store-btn-row">
-                <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
-                     Download on App Store
-                </a>
-                <a href="https://play.google.com/store/apps/details?id=com.anilaybakan.sehirkesif" class="store-pill-btn">
-                    ▶ Get on Google Play
-                </a>
+        <!-- Ad Placement 2: Mid-Article -->
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+
+        <!-- 4. Best Time to Visit -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Seasons & Weather</span>
+                <h2 class="section-title">Best Time to Visit Vienna</h2>
+            </div>
+            <p class="section-intro">Vienna is on stage in all four seasons: spring is a garden, summer a film, autumn a wine, winter a ball.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Spring</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Apr – Jun</span>
+                    </div>
+                    <span class="card-badge badge-amber">Garden Season</span>
+                </div>
+                <p class="card-desc">The gardens of Schönbrunn and Belvedere burst into flower, the Naschmarkt stalls overflow, coffeehouse tables spill onto the pavements. The city is at its most photogenic and most balanced.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Summer</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Jul – Aug</span>
+                    </div>
+                    <span class="card-badge badge-amber">Open-Air Season</span>
+                </div>
+                <p class="card-desc">Free concert films on a giant screen at Rathausplatz with world-food stands in front; the Danube Island and the canal &#x27;beaches&#x27; are the city&#x27;s summer resort. Hotels are relatively calm; some institutions take holidays.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Autumn</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Sep – Nov</span>
+                    </div>
+                    <span class="card-badge badge-amber">Harvest and Sturm</span>
+                </div>
+                <p class="card-desc">The harvest begins in the city&#x27;s own vineyards; half-fermented Sturm is poured at the heurigers and the smell of roast chestnuts drifts through the streets. By mid-November the Christmas markets switch their lights on early.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Winter</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Dec – Feb</span>
+                    </div>
+                    <span class="card-badge badge-amber">Balls and Markets</span>
+                </div>
+                <p class="card-desc">In December the square before the Rathaus becomes a sea of light; in January and February hundreds of balls are held — some sell tickets to visitors. On January 1st the whole city watches the New Year&#x27;s Concert on screens.</p>
+            </div>
             </div>
         </section>
+        
+
+        <!-- 5. Authentic Food & Dining -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Culinary Culture</span>
+                <h2 class="section-title">Authentic Local Dining & Food Secrets in Vienna</h2>
+            </div>
+            <p class="section-intro">Viennese cuisine is the empire&#x27;s inheritance: Hungarian goulash, Czech dumplings, Italian coffee — all ennobled in this city.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🍖</span>
+                        <span class="card-title">Wiener Schnitzel — the real one is veal</span>
+                    </div>
+                </div>
+                <p class="card-desc">A schnitzel overflowing the plate, paper-thin, fried in butter: potato salad on the side, lemon on top. Go where it says &#x27;vom Kalb&#x27; (veal); everything else is imitation.</p>
+                <div class="card-footer-tip">⭐ At a classic tavern · make it vom Kalb</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">☕</span>
+                        <span class="card-title">The coffeehouse ritual — Melange + Sachertorte</span>
+                    </div>
+                </div>
+                <p class="card-desc">Marble tables, newspapers, a waiter in no hurry: the coffeehouse is not a venue but a way of life. Don&#x27;t order your Sachertorte without Schlag — the cream is part of the balance.</p>
+                <div class="card-footer-tip">⭐ In a historic coffeehouse · never rushed</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🌭</span>
+                        <span class="card-title">The Würstelstand late-night classic</span>
+                    </div>
+                </div>
+                <p class="card-desc">Sausage stands are Vienna&#x27;s midnight kitchen: order the cheese-filled Käsekrainer with bread and sweet mustard. Opera-goers in black tie and night-shift workers share the same counter — the city&#x27;s most democratic table.</p>
+                <div class="card-footer-tip">⭐ After midnight · Käsekrainer</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🥩</span>
+                        <span class="card-title">Tafelspitz — the emperor&#x27;s pot</span>
+                    </div>
+                </div>
+                <p class="card-desc">Boiled beef with bone marrow, apple-horseradish and chive sauce: the dish Emperor Franz Joseph ate every day. It looks heavy, it eats elegantly.</p>
+                <div class="card-footer-tip">⭐ Imperial classic · sauces included</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🍷</span>
+                        <span class="card-title">A heuriger evening</span>
+                    </div>
+                </div>
+                <p class="card-desc">Wine taverns in the city&#x27;s own vineyards: young wine, cold platters from the buffet, long wooden tables. A pine branch over the door means they&#x27;re open — Vienna in its village clothes.</p>
+                <div class="card-footer-tip">⭐ At a vineyard tavern · open if the pine branch is out</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🥟</span>
+                        <span class="card-title">A Naschmarkt crawl</span>
+                    </div>
+                </div>
+                <p class="card-desc">The city&#x27;s century-old market: pickle vendors, meze counters and world kitchens side by side. On Saturdays a flea market joins in; grazing your way through is entirely allowed.</p>
+                <div class="card-footer-tip">⭐ Saturday morning · graze as you go</div>
+            </div>
+            </div>
+            
+        <div class="callout-box">
+            <div class="callout-title">🍷 The coffeehouse rule</div>
+            <p>Skip the famous coffeehouse with the queue and pick the quiet one around the corner: same Melange, same marble, more Schmäh. In Vienna the best coffeehouse is the one where you can get a seat.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 6. Handpicked Hidden Gems -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Off The Beaten Path</span>
+                <h2 class="section-title">Handpicked Hidden Gems in Vienna</h2>
+            </div>
+            <p class="section-intro">Everyone sees the palaces; these six are Vienna&#x27;s backstage.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Prunksaal — National Library</span>
+                    <span class="card-badge badge-emerald">The world&#x27;s most beautiful library</span>
+                </div>
+                <p class="card-desc">The baroque library hall inside the Hofburg: 200,000 leather-bound volumes, a frescoed dome, imperial globes. Less famous than the opera, with a shorter queue — Viennese splendour in distilled form.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Kirche am Steinhof</span>
+                    <span class="card-badge badge-emerald">The peak of art nouveau</span>
+                </div>
+                <p class="card-desc">Otto Wagner&#x27;s golden-domed church on a hilltop, standing inside hospital grounds — the city&#x27;s least-known masterpiece. It opens on Sunday afternoons; plan around that.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Zentralfriedhof</span>
+                    <span class="card-badge badge-emerald">A city of the dead, a park for the living</span>
+                </div>
+                <p class="card-desc">The vast cemetery where Beethoven, Schubert and the Strausses rest is also a park where deer wander: take tram 71 out and walk inside it for hours. Not mournful — serene.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">The Kahlenberg to Nussdorf walk</span>
+                    <span class="card-badge badge-emerald">Through the vineyards into the city</span>
+                </div>
+                <p class="card-desc">Take the bus to the top, then descend towards the city through the vines: the Danube, the domes and the vineyards in one frame. The walk ends at a heuriger&#x27;s door — not a coincidence, a tradition.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Palmenhaus and Schmetterlinghaus</span>
+                    <span class="card-badge badge-emerald">An imperial greenhouse with butterflies</span>
+                </div>
+                <p class="card-desc">The glass palace at the edge of the Burggarten: one wing a tropical butterfly house, the other a brasserie under palm trees. The greenest way to drink coffee in a palace garden.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Servitenviertel</span>
+                    <span class="card-badge badge-emerald">A little corner of Paris</span>
+                </div>
+                <p class="card-desc">Bistros and bookshops gathered around a church square in the 9th Bezirk: next door to the Freud Museum, far from the tourists. The city&#x27;s sweetest detour for an afternoon coffee.</p>
+            </div>
+            </div>
+            
+        <div class="callout-box success">
+            <div class="callout-title">✨ Museum tip</div>
+            <p>On Thursday evenings you can sit in the café under the dome of the Kunsthistorisches Museum with live music: two floors above the Bruegels, a Melange amid the marble — a museum ticket is the cheapest ball in town.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 7. Tourist Traps & Smarter Alternatives -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Scam Prevention</span>
+                <h2 class="section-title">Tourist Traps to Avoid & Smarter Alternatives</h2>
+            </div>
+            <p class="section-intro">Vienna is an honest city; its traps wear wigs and costumes, which makes them easy to spot.</p>
+            <div class="traps-list">
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🎻 TRAP</span>
+                    <h4>Costumed &#x27;Mozart concert&#x27; sellers</h4>
+                </div>
+                <p>The concerts hawked by bewigged sellers around the cathedral follow one formula: mediocre orchestra plus inflated price. Mozart would have laughed at the whole business.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Get the real thing for the same money: student or standing tickets at the Musikverein or Konzerthaus, or the State Opera&#x27;s few-euro Stehplatz.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🐴 TRAP</span>
+                    <h4>A fiaker ride without agreeing terms</h4>
+                </div>
+                <p>Carriage tours have official tariffs, but if duration and route aren&#x27;t agreed, a short ride can end with a long bill.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Confirm the tariff and duration before boarding; or do the same route on tram 2, passing the very same palaces.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">☕ TRAP</span>
+                    <h4>Losing an hour in one coffeehouse queue</h4>
+                </div>
+                <p>Waiting 45 minutes outside the one or two coffeehouses social media has polished is an injustice to the city&#x27;s two hundred others.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> When you see a queue, walk two streets on: in Vienna every neighbourhood has a marble-tabled, chandeliered, quiet coffeehouse of its own.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🍽️ TRAP</span>
+                    <h4>The &#x27;Viennese menu&#x27; at the cathedral&#x27;s feet</h4>
+                </div>
+                <p>The picture menus around Stephansplatz sell lukewarm schnitzel at tourist prices.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Go two streets deeper, or pick the neighbourhood taverns (Beisl) of the 4th and 7th Bezirk: the same schnitzel, half the price, the real thing.</div>
+            </div>
+            </div>
+            
+        <div class="callout-box warning">
+            <div class="callout-title">🛡️ Golden rule</div>
+            <p>Stay away from anyone who puts on a costume to sell you something in Vienna; in this city, real grandeur wears no uniform — it sits in a coffeehouse reading the paper.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 8. Step-by-Step 1-Day Itinerary -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Smart Itinerary</span>
+                <h2 class="section-title">Day 1: Step-by-Step Vienna Walking Tour</h2>
+            </div>
+            <p class="section-intro">If you hate planning, follow these flows. The times are flexible; keep the spirit, break the order.</p>
+            <div class="timeline">
+                
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">08:30</span>
+                    <h4 class="step-title">The cathedral and morning streets</h4>
+                </div>
+                <p class="step-desc">See the tiled roof of the Stephansdom in morning light; walk the imperial shopfronts of Graben and Kohlmarkt while they&#x27;re still empty.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">10:00</span>
+                    <h4 class="step-title">Hofburg + Prunksaal</h4>
+                </div>
+                <p class="step-desc">Pass through the palace courtyards, then stand quietly under the dome of the baroque library: Vienna&#x27;s most concentrated dose of beauty.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">12:30</span>
+                    <h4 class="step-title">Lunch at the Naschmarkt</h4>
+                </div>
+                <p class="step-desc">Graze stall by stall, then a sit-down break at a market tavern; if it&#x27;s Saturday, the flea market is a bonus.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">14:30</span>
+                    <h4 class="step-title">Belvedere — Klimt&#x27;s Kiss</h4>
+                </div>
+                <p class="step-desc">Stand before The Kiss in the Upper Belvedere, then look out over the city from the gardens; your art quota is full for the day.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">17:00</span>
+                    <h4 class="step-title">The Ring tour by tram</h4>
+                </div>
+                <p class="step-desc">From the window of tram 2, the parade of Opera, Parliament and Rathaus: at golden hour the palaces turn to light.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">19:30</span>
+                    <h4 class="step-title">Coffeehouse + a late-night close</h4>
+                </div>
+                <p class="step-desc">A long coffeehouse sit with Melange and Sachertorte; a Käsekrainer from a Würstelstand on the way home — an imperial day ends with a sausage.</p>
+            </div>
+            
+            </div>
+
+            <!-- Mobile App Locked Content: Days 2 & 3 + Live GPS Map -->
+            <div class="app-lock-banner" id="download">
+                <div class="app-lock-badge">MyWay Mobile Exclusive 📱</div>
+                <h3>Unlock Days 2 & 3 + Turn-by-Turn GPS Map Navigation</h3>
+                <p>Explore the complete 3-day hourly itinerary for Vienna, browse our 180+ verified place database offline, and plan collaborative daily itineraries with friends in the MyWay app.</p>
+                <div style="margin: 16px 0 20px; font-size: 13px; color: #CBD5E1; font-weight: 600;">
+                    📍 Day 2: Schönbrunn and the museums &bull; 📍 Day 3: Vineyards and farewell
+                </div>
+                <div class="app-lock-features">
+                    <div class="app-lock-feature-item">✓ Live Interactive GPS Map & Navigation</div>
+                    <div class="app-lock-feature-item">✓ Full 180+ Place Database (Offline Mode)</div>
+                    <div class="app-lock-feature-item">✓ Co-plan Hourly Trips with Friends</div>
+                </div>
+                <div class="store-btn-row">
+                    <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
+                         Download on App Store
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.anilaybakan.sehirkesif" class="store-pill-btn">
+                        ▶ Get on Google Play
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+
+        <!-- 9. Phrases -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Local Slang</span>
+                <h2 class="section-title">Useful Everyday Phrases in Vienna</h2>
+            </div>
+            <p class="section-intro">Viennese German is polite and musical; these five carry you from the coffeehouse door to the ballroom.</p>
+            <div class="phrases-grid">
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Grüß Gott</div>
+                <div class="phrase-trans">The Austrian greeting: &#x27;good day&#x27; — formal and valid everywhere</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Danke</div>
+                <div class="phrase-trans">Thank you — upgraded by vielen Dank</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Bitte</div>
+                <div class="phrase-trans">Please / you&#x27;re welcome / here you go — you&#x27;ll hear it fifty times a day</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Prost!</div>
+                <div class="phrase-trans">Cheers! — no glass is raised without eye contact</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Passt schon</div>
+                <div class="phrase-trans">&#x27;It&#x27;s fine, no problem&#x27; — the official phrase of Viennese ease; also how you say keep the change</div>
+            </div>
+            </div>
+        </section>
+        
+
+        <!-- Ad Placement 3: Bottom Banner -->
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
     </main>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h4>MyWay Travel</h4>
+                    <p>The ultimate smart travel guide and AI route planner for modern explorers. Stop being a tourist; experience cities like a local.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>City Guides</h5>
+                    <ul>
+                        <li><a href="/guides/">All Cities</a></li>
+                        <li><a href="../guides/barcelona.html">Barcelona</a></li>
+                        <li><a href="../guides/roma.html">Roma</a></li>
+                        <li><a href="../guides/paris.html">Paris</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Company</h5>
+                    <ul>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../support.html">Support</a></li>
+                        <li><a href="/#features">Features</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Legal</h5>
+                    <ul>
+                        <li><a href="../privacy.html">Privacy Policy</a></li>
+                        <li><a href="../terms.html">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 

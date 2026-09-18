@@ -3,11 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boston Travel Guide & Smart Walking Routes | MyWay</title>
-    <meta name="description" content="Explore Boston with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
+    <title>Boston Travel Guide & Curated Walking Routes | MyWay</title>
+    <meta name="description" content="The ultimate Boston travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
     
     <link rel="alternate" hreflang="en" href="/guides/boston.html">
     <link rel="alternate" hreflang="tr" href="/tr/rehber/boston.html">
+    <link rel="canonical" href="https://mywaytravelapp.com/guides/boston.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mywaytravelapp.com/guides/boston.html">
+    <meta property="og:title" content="Boston Travel Guide & Curated Walking Routes | MyWay">
+    <meta property="og:description" content="The ultimate Boston travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
+    <meta property="og:image" content="https://mywaytravelapp.com/images/cities/boston.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Boston Travel Guide & Curated Walking Routes | MyWay">
+    <meta name="twitter:description" content="The ultimate Boston travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
+    <meta name="twitter:image" content="https://mywaytravelapp.com/images/cities/boston.jpg">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
@@ -22,6 +36,37 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
          crossorigin="anonymous"></script>
 
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TravelGuide",
+      "name": "Boston Travel Guide & Curated Walking Routes | MyWay",
+      "headline": "Boston Gezi Rehberi & Akıllı Yürüyüş Rotaları",
+      "description": "The ultimate Boston travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.",
+      "image": "https://mywaytravelapp.com/images/cities/boston.jpg",
+      "inLanguage": "en",
+      "url": "https://mywaytravelapp.com/guides/boston.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "MyWay Travel",
+        "url": "https://mywaytravelapp.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://mywaytravelapp.com/images/app_icon.png"
+        }
+      },
+      "about": {
+        "@type": "TouristDestination",
+        "name": "Boston",
+        "containedInPlace": {
+          "@type": "Country",
+          "name": "USA"
+        }
+      }
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -35,13 +80,17 @@
             --primary-light: #9D93FF;
             --primary-dark: #5B4FD6;
             --accent: #EC4899;
+            --emerald: #10B981;
+            --warning: #EF4444;
             --bg-dark: #0F0B1A;
             --bg-section: #130F22;
             --bg-card: rgba(255, 255, 255, 0.04);
+            --bg-card-hover: rgba(255, 255, 255, 0.07);
             --text-primary: #FFFFFF;
             --text-secondary: #9CA3AF;
             --text-muted: #6B7280;
             --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(123, 110, 246, 0.3);
             --radius-lg: 24px;
             --radius-md: 16px;
             --radius-sm: 12px;
@@ -52,15 +101,15 @@
         body {
             background-color: var(--bg-dark); color: var(--text-primary);
             font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6; overflow-x: hidden;
+            line-height: 1.7; overflow-x: hidden;
         }
         
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
         
         /* Navbar */
         .navbar {
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            background: rgba(15, 11, 26, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            background: rgba(15, 11, 26, 0.88); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-subtle); height: 72px; display: flex; align-items: center;
         }
         .navbar-inner {
@@ -114,18 +163,27 @@
         .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(123, 110, 246, 0.4); }
         .nav-toggle { display: none; background: none; border: none; color: #fff; cursor: pointer; padding: 8px; }
 
+        /* Breadcrumbs */
+        .breadcrumbs {
+            display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-muted);
+            margin-bottom: 16px; flex-wrap: wrap;
+        }
+        .breadcrumbs a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+        .breadcrumbs a:hover { color: #fff; }
+        .breadcrumbs span { color: var(--text-muted); }
+
         /* Guide Hero */
         .guide-hero {
-            position: relative; min-height: 440px; display: flex; align-items: flex-end;
-            padding: 120px 24px 44px; margin-top: 72px; overflow: hidden; background-color: #1A132F;
+            position: relative; min-height: 480px; display: flex; align-items: flex-end;
+            padding: 130px 24px 50px; margin-top: 72px; overflow: hidden; background-color: #1A132F;
         }
         .guide-hero-bg {
             position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-            filter: brightness(0.65);
+            filter: brightness(0.6);
         }
         .guide-hero-overlay {
             position: absolute; inset: 0;
-            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.4) 60%, transparent 100%);
+            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.5) 60%, rgba(15, 11, 26, 0.2) 100%);
         }
         .guide-hero-content { position: relative; z-index: 2; width: 100%; }
         .city-badge {
@@ -133,28 +191,34 @@
             backdrop-filter: blur(10px); padding: 6px 14px; border-radius: 99px; font-size: 13px;
             font-weight: 600; margin-bottom: 14px; border: 1px solid rgba(255, 255, 255, 0.15);
         }
-        .guide-title { font-size: clamp(32px, 6vw, 52px); font-weight: 800; line-height: 1.1; margin-bottom: 10px; }
-        .guide-tagline { font-size: 16px; color: var(--primary-light); max-width: 720px; font-weight: 500; line-height: 1.5; }
-        
+        .guide-title { font-size: clamp(34px, 6vw, 56px); font-weight: 800; line-height: 1.1; margin-bottom: 12px; }
+        .guide-tagline { font-size: 17px; color: var(--primary-light); max-width: 780px; font-weight: 500; line-height: 1.5; margin-bottom: 12px; }
+        .guide-editorial-meta { font-size: 13px; color: #94A3B8; display: flex; gap: 16px; align-items: center; }
+
         /* Sections */
-        .section { padding: 42px 0; border-bottom: 1px solid var(--border-subtle); }
-        .section-header { margin-bottom: 24px; }
-        .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); font-weight: 700; }
-        .section-title { font-size: 24px; font-weight: 700; margin-top: 4px; }
+        .section { padding: 50px 0; border-bottom: 1px solid var(--border-subtle); }
+        .section-header { margin-bottom: 26px; }
+        .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); font-weight: 700; display: block; margin-bottom: 6px; }
+        .section-title { font-size: clamp(22px, 3.5vw, 28px); font-weight: 800; margin-bottom: 10px; }
+        .section-intro { font-size: 15px; color: #D1D5DB; line-height: 1.8; margin-bottom: 22px; max-width: 900px; }
         
-        .intro-text { font-size: 15px; color: #D1D5DB; line-height: 1.8; margin-bottom: 20px; }
-        
-        /* Local Word */
-        .local-word-box {
+        /* Pro-Tip & Local Word Boxes */
+        .callout-box {
             background: rgba(123, 110, 246, 0.08); border-left: 4px solid var(--primary);
-            padding: 18px 22px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-top: 20px;
+            padding: 18px 22px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin: 24px 0;
         }
-        .word-title { font-size: 15px; color: #fff; margin-bottom: 4px; }
+        .callout-box.warning {
+            background: rgba(239, 68, 68, 0.08); border-left: 4px solid var(--warning);
+        }
+        .callout-box.success {
+            background: rgba(16, 185, 129, 0.08); border-left: 4px solid var(--emerald);
+        }
+        .callout-title { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+        .callout-box p { font-size: 14px; color: #D1D5DB; line-height: 1.6; }
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
-        .local-word-box p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        
+
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
@@ -164,8 +228,8 @@
         .fact-val { font-size: 15px; font-weight: 600; color: #fff; margin: 2px 0; }
         .fact-sub { font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
         
-        /* Rules */
-        .rules-list { display: flex; flex-direction: column; gap: 14px; }
+        /* Rules List */
+        .rules-list { display: flex; flex-direction: column; gap: 14px; margin: 20px 0; }
         .rule-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 20px; display: flex; gap: 16px; align-items: flex-start;
@@ -177,52 +241,94 @@
         }
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        
-        /* Hidden Gems & Eat Grid */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
-        .gem-card, .eat-card {
+
+        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
+        .feature-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative;
+            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
+            display: flex; flex-direction: column; justify-content: space-between;
         }
-        .gem-badge {
-            display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase;
-            color: #10B981; background: rgba(16, 185, 129, 0.12); padding: 4px 10px; border-radius: 99px;
-            margin-bottom: 10px;
+        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
+        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
+        .card-title-group { display: flex; align-items: center; gap: 10px; }
+        .card-icon { font-size: 20px; }
+        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+        .card-badge {
+            font-size: 11px; font-weight: 700; text-transform: uppercase;
+            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
         }
-        .gem-hook { font-size: 13px; color: var(--primary-light); font-style: italic; margin-bottom: 8px; }
-        .gem-card h4, .eat-card h4 { font-size: 16px; margin-bottom: 6px; }
-        .gem-card p, .eat-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        .card-tip-box {
-            margin-top: 10px; padding: 8px 12px; background: rgba(255, 255, 255, 0.04);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1;
-        }
+        .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
+        .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
+        .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
+        .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        /* Traps */
-        .traps-list { display: flex; flex-direction: column; gap: 14px; }
-        .trap-card {
-            background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.15);
-            border-radius: var(--radius-md); padding: 20px;
+        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        .card-footer-tip {
+            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
         }
-        .trap-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+
+        /* Traps List */
+        .traps-list { display: flex; flex-direction: column; gap: 16px; margin: 20px 0; }
+        .trap-card {
+            background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.18);
+            border-radius: var(--radius-md); padding: 22px;
+        }
+        .trap-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
         .trap-tag {
             background: #EF4444; color: #fff; font-size: 11px; font-weight: 700;
-            text-transform: uppercase; padding: 2px 8px; border-radius: 6px;
+            text-transform: uppercase; padding: 3px 8px; border-radius: 6px;
         }
-        .trap-header h4 { font-size: 16px; color: #fff; }
+        .trap-header h4 { font-size: 17px; color: #fff; font-weight: 700; }
         .trap-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
         .trap-solution {
-            margin-top: 10px; padding: 10px 14px; background: rgba(16, 185, 129, 0.08);
-            border-left: 3px solid #10B981; border-radius: 4px; font-size: 13px; color: #D1D5DB; line-height: 1.5;
+            margin-top: 12px; padding: 12px 16px; background: rgba(16, 185, 129, 0.08);
+            border-left: 3px solid #10B981; border-radius: 6px; font-size: 13px; color: #D1D5DB; line-height: 1.5;
         }
-        
-        /* App CTA Banner */
-        .app-cta-banner {
-            background: linear-gradient(135deg, rgba(123, 110, 246, 0.15), rgba(236, 72, 153, 0.1));
-            border: 1px solid rgba(157, 147, 255, 0.3); border-radius: var(--radius-lg);
-            padding: 44px 20px; text-align: center; margin: 50px 0; position: relative;
+
+        /* Timeline (Itinerary) */
+        .timeline { position: relative; padding-left: 32px; margin: 24px 0 32px; }
+        .timeline::before {
+            content: ''; position: absolute; left: 11px; top: 8px; bottom: 8px;
+            width: 2px; background: linear-gradient(to bottom, var(--primary), var(--accent));
         }
-        .app-cta-banner h3 { font-size: clamp(22px, 4vw, 28px); font-weight: 800; margin-bottom: 10px; }
-        .app-cta-banner p { color: var(--text-secondary); max-width: 580px; margin: 0 auto 24px; font-size: 15px; }
+        .timeline-step { position: relative; margin-bottom: 24px; }
+        .timeline-step:last-child { margin-bottom: 0; }
+        .timeline-dot {
+            position: absolute; left: -32px; top: 4px; width: 24px; height: 24px;
+            border-radius: 50%; background: #19142B; border: 2px solid var(--primary-light);
+            display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700;
+        }
+        .step-header { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; flex-wrap: wrap; }
+        .step-time {
+            background: rgba(123, 110, 246, 0.2); color: var(--primary-light); font-size: 12px;
+            font-weight: 700; padding: 2px 8px; border-radius: 6px;
+        }
+        .step-title { font-size: 16px; font-weight: 700; color: #fff; }
+        .step-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+        /* Mobile App Gate Banner (Days 2 & 3 + Live Map) */
+        .app-lock-banner {
+            background: linear-gradient(135deg, rgba(123, 110, 246, 0.16) 0%, rgba(236, 72, 153, 0.12) 100%);
+            border: 1.5px solid rgba(157, 147, 255, 0.35); border-radius: var(--radius-lg);
+            padding: 36px 28px; margin: 36px 0; text-align: center; position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        .app-lock-badge {
+            display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px; border-radius: 100px; font-size: 12px; font-weight: 700;
+            color: #fff; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .app-lock-banner h3 { font-size: clamp(22px, 3.5vw, 28px); font-weight: 800; margin-bottom: 8px; }
+        .app-lock-banner p { color: var(--text-secondary); max-width: 620px; margin: 0 auto 20px; font-size: 14px; line-height: 1.6; }
+        .app-lock-features {
+            display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 24px;
+            font-size: 13px; color: #E2E8F0; font-weight: 500;
+        }
+        .app-lock-feature-item { display: flex; align-items: center; gap: 6px; }
+
+        /* Store Buttons */
         .store-btn-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
         .store-pill-btn {
             display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: white;
@@ -231,10 +337,48 @@
         }
         .store-pill-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2); }
 
+        /* Ad Placement Slots */
+        .ad-placement-slot {
+            margin: 40px auto; text-align: center; max-width: 728px; min-height: 90px;
+            background: rgba(255, 255, 255, 0.02); border: 1px dashed rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-sm); padding: 10px; overflow: hidden;
+        }
+        .ad-label {
+            font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px;
+            color: var(--text-muted); display: block; margin-bottom: 6px;
+        }
+
+        /* Phrases Table */
+        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrase-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm); padding: 14px 18px;
+        }
+        .phrase-orig { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+        .phrase-trans { font-size: 13px; color: var(--text-secondary); }
+
         /* Footer */
         .footer {
-            border-top: 1px solid var(--border-subtle); padding: 40px 24px 30px;
-            color: var(--text-muted); font-size: 13px; text-align: center;
+            border-top: 1px solid var(--border-subtle); padding: 50px 24px 36px;
+            color: var(--text-muted); font-size: 13px; background: #0A0713;
+        }
+        .footer-grid {
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px;
+            max-width: 1080px; margin: 0 auto 40px; text-align: left;
+        }
+        .footer-brand h4 { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+        .footer-brand p { font-size: 13px; line-height: 1.6; color: var(--text-secondary); max-width: 340px; }
+        .footer-col h5 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+        .footer-col a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+        .footer-col a:hover { color: #fff; }
+        .footer-bottom {
+            text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 24px; max-width: 1080px; margin: 0 auto;
+        }
+
+        @media (max-width: 860px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
         @media (max-width: 768px) {
@@ -246,8 +390,9 @@
             }
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
-            .guide-hero { min-height: 380px; padding-top: 90px; }
+            .guide-hero { min-height: 420px; padding-top: 100px; }
             .cards-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
 
@@ -268,6 +413,8 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="/guides/" class="active">City Guides</a></li>
                 <li><a href="/#features">Features</a></li>
+                <li><a href="../about.html">About Us</a></li>
+                <li><a href="../support.html">Support</a></li>
             </ul>
             <div class="nav-actions">
                 <!-- Top Right Globe Dropdown -->
@@ -295,37 +442,58 @@
         <img src="../images/cities/boston.jpg" alt="Boston" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
+            <div class="breadcrumbs">
+                <a href="/">Home</a> <span>/</span>
+                <a href="/guides/">City Guides</a> <span>/</span>
+                <span>🇺🇸 USA</span> <span>/</span>
+                <span style="color:#fff;">Boston</span>
+            </div>
             <div class="city-badge">🇺🇸 USA &bull; City Guides</div>
             <h1 class="guide-title">Boston</h1>
             <p class="guide-tagline">Brick streets where revolution was born, chowder steam and wicked pride</p>
+            <div class="guide-editorial-meta">
+                <span>✍️ MyWay Editorial Team</span>
+                <span>•</span>
+                <span>🛡️ Verified Local Guide</span>
+            </div>
         </div>
     </header>
 
+    <!-- Ad Placement 1: Top Banner -->
+    <div class="container">
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    </div>
+
     <main class="container">
-        <!-- Overview -->
+        <!-- 1. Overview -->
         <section class="section">
             <div class="section-header">
-                <span class="section-label">Overview</span>
-                <h2 class="section-title">The Vibe of Boston</h2>
+                <span class="section-label">Overview & Atmosphere</span>
+                <h2 class="section-title">The True Vibe of Boston</h2>
             </div>
-            <p class="intro-text">Boston is America&#x27;s most European city: brick sidewalks, gaslit streets and university rowers pulling along the river. Revolution fermented here — the red line of the Freedom Trail tells the whole story in four kilometers, from tea party to first shot. Across the river, Harvard and MIT run the world&#x27;s brain center; the North End&#x27;s Italian bakeries smell of cannoli, and oyster shells clink along the harbor. A Bostonian is &#x27;wicked&#x27; proud of the accent, the teams and the city — give it a few days and you will be too.</p>
+            <p class="section-intro">Boston is America&#x27;s most European city: brick sidewalks, gaslit streets and university rowers pulling along the river. Revolution fermented here — the red line of the Freedom Trail tells the whole story in four kilometers, from tea party to first shot. Across the river, Harvard and MIT run the world&#x27;s brain center; the North End&#x27;s Italian bakeries smell of cannoli, and oyster shells clink along the harbor. A Bostonian is &#x27;wicked&#x27; proud of the accent, the teams and the city — give it a few days and you will be too.</p>
             
-        <div class="local-word-box">
-            <div class="word-title">🗣️ Local Concept: <strong>Wicked</strong> <span class="pron">(WIK-id)</span></div>
+        <div class="callout-box">
+            <div class="callout-title">🗣️ Local Concept: <strong>Wicked</strong> <span class="pron">(WIK-id)</span></div>
             <p>In Boston English it means &#x27;very&#x27;: &#x27;wicked good&#x27;, &#x27;wicked smaht&#x27;. Nothing to do with evil — it adds emphasis and pride. Once a Bostonian declares the chowder &#x27;wicked good&#x27;, the debate is over. Use the word in the right place and the city takes you in.</p>
         </div>
         
-        </section>
 
-        <!-- Quick Facts -->
-        
-        <section class="section">
-            <div class="section-header">
-                <span class="section-label">Essentials</span>
-                <h2 class="section-title">Quick Logistics</h2>
-            </div>
+            <!-- Quick Facts Grid -->
             <div class="facts-grid">
-                
             <div class="fact-card">
                 <div class="fact-icon">✈️</div>
                 <div>
@@ -361,20 +529,13 @@
                     <div class="fact-sub">The Rs go missing: &#x27;pahk the cah&#x27;</div>
                 </div>
             </div>
-            
             </div>
-        </section>
-        
 
-        <!-- Rules & Secrets -->
-        
-        <section class="section">
-            <div class="section-header">
-                <span class="section-label">Insider Advice</span>
-                <h2 class="section-title">3 Unwritten Rules for Boston</h2>
-            </div>
-            <div class="rules-list">
-                
+            <!-- 3 Unwritten Rules -->
+            
+            <div style="margin-top: 32px;">
+                <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 14px;">3 Unwritten Rules for Boston</h3>
+                <div class="rules-list">
             <div class="rule-card">
                 <div class="rule-num">1</div>
                 <div class="rule-content">
@@ -398,29 +559,593 @@
                     <p>Boston is not only Boston: across the Charles lies Cambridge — Harvard&#x27;s yards, MIT&#x27;s corridors and the bookshops. Give the far bank half a day; the Esplanade riverside walk home is the city&#x27;s loveliest &#x27;bridge&#x27;.</p>
                 </div>
             </div>
+            </div>
+            </div>
             
+        </section>
+
+        <!-- 2. Transportation & Transit Logistics -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Getting Around</span>
+                <h2 class="section-title">Boston Public Transit & Airport Transfers</h2>
+            </div>
+            <p class="section-intro">Boston is compact and walkable; the T fills the gaps and ferries open the harbor — you don&#x27;t need a car, and a car is in fact a burden.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">✈️</span>
+                        <span class="card-title">Arriving from the airport</span>
+                    </div>
+                </div>
+                <p class="card-desc">Logan sits at the city&#x27;s edge: the Blue Line + Silver Line combination reaches the center in half an hour, and the water taxi entrance through the harbor is the most stylish hello. Taxis are quick but subject to tunnel traffic.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚇</span>
+                        <span class="card-title">The T</span>
+                    </div>
+                </div>
+                <p class="card-desc">America&#x27;s first subway, running since 1897: colored lines, boarded with a CharlieCard. The Green Line crawls like a tram but charms; the Red Line reaches Harvard. It closes early — check the last train.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚶</span>
+                        <span class="card-title">A walkable city</span>
+                    </div>
+                </div>
+                <p class="card-desc">Boston is America&#x27;s most walkable city: Beacon Hill to the North End, the Common to the harbor, everything within steps. Brick sidewalks dislike heels — comfortable shoes are the Freedom Trail&#x27;s official equipment.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">⛴️</span>
+                        <span class="card-title">Ferries and the harbor</span>
+                    </div>
+                </div>
+                <p class="card-desc">The Charlestown ferry glides from Long Wharf to the USS Constitution in ten minutes: a harbor tour at commuter fare. In summer, ferries run to the Harbor Islands (Spectacle, Georges) — the city&#x27;s least-known escape.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚲</span>
+                        <span class="card-title">Bluebikes and the Esplanade</span>
+                    </div>
+                </div>
+                <p class="card-desc">Bike share stations stand on every corner: the Esplanade and Memorial Drive routes are flat and scenic. On Sundays part of the riverside road closes to cars — the golden hour for pedaling.</p>
+            </div>
+            </div>
+            
+        <div class="callout-box success">
+            <div class="callout-title">💡 Harbor tip</div>
+            <p>On a sunny afternoon board the Charlestown ferry at Long Wharf: skyline, gliding sailboats and the USS Constitution in one ride. Walk back through the North End and join the cannoli queue — Boston&#x27;s two most efficient hours.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 3. Where to Stay (Neighborhoods) -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Neighborhood Guide</span>
+                <h2 class="section-title">Where to Stay in Boston: Best Areas</h2>
+            </div>
+            <p class="section-intro">In Boston the choice is a choice of atmosphere: Beacon Hill&#x27;s gas lamps, the North End&#x27;s bakery scent, Cambridge&#x27;s campus rhythm.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Back Bay</span>
+                    <span class="card-badge badge-purple">Most elegant</span>
+                </div>
+                <p class="card-desc">Brownstone terraces, Newbury Street shopping and Copley Square: Boston&#x27;s most photogenic quarter. Everything within a walk — the classic, polished base for a first visit.</p>
+                <div class="card-footer-tip">Brownstone streets • Newbury shopping • Central location</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Beacon Hill</span>
+                    <span class="card-badge badge-purple">Inside history</span>
+                </div>
+                <p class="card-desc">The gaslit, cobblestoned hill quarter: Acorn Street&#x27;s postcard frame lives here. Boutique hotels are few and precious — for waking up inside the historic atmosphere.</p>
+                <div class="card-footer-tip">Gas lamps • Acorn Street • Beside the Common</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">North End</span>
+                    <span class="card-badge badge-purple">Italian soul</span>
+                </div>
+                <p class="card-desc">Narrow streets, bakeries and pastry shops: America&#x27;s oldest Italian quarter. Lively at night, espresso-scented in the morning — the address for a table-first stay.</p>
+                <div class="card-footer-tip">Bakery scent • Narrow lanes • Walk to the harbor</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Cambridge</span>
+                    <span class="card-badge badge-purple">Campus rhythm</span>
+                </div>
+                <p class="card-desc">Harvard Square&#x27;s bookshops, cafes and buskers: the intellectual air of the far bank. Fifteen minutes to the center on the Red Line — prices a notch kinder.</p>
+                <div class="card-footer-tip">Harvard Square • Bookshop cafes • On the Red Line</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Seaport</span>
+                    <span class="card-badge badge-purple">The new harbor</span>
+                </div>
+                <p class="card-desc">The new district of glass towers, seafood restaurants and museums: the Harborwalk at your doorstep. For modern hotel seekers — a walk or short ride to the center.</p>
+                <div class="card-footer-tip">Harborwalk • Modern hotels • Oyster bars</div>
+            </div>
             </div>
         </section>
         
 
-        <!-- CTA Banner -->
-        <section class="app-cta-banner">
-            <h3>Unlock the Full Guide in MyWay 🌟</h3>
-            <p>Discover hidden gems, curated local food, tourist traps to avoid, and step-by-step smart walking routes for Boston in MyWay.</p>
-            <div class="store-btn-row">
-                <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
-                     Download on App Store
-                </a>
-                <a href="https://play.google.com/store/apps/details?id=com.anilaybakan.sehirkesif" class="store-pill-btn">
-                    ▶ Get on Google Play
-                </a>
+        <!-- Ad Placement 2: Mid-Article -->
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+
+        <!-- 4. Best Time to Visit -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Seasons & Weather</span>
+                <h2 class="section-title">Best Time to Visit Boston</h2>
+            </div>
+            <p class="section-intro">Boston is a city of seasons: an autumn leaf festival, spring graduation and rowing, summer harbor life, a winter harsh but heartfelt.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Spring</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Apr – Jun</span>
+                    </div>
+                    <span class="card-badge badge-amber">Oars and Magnolias</span>
+                </div>
+                <p class="card-desc">April magnolias dress the Back Bay facades, the Charles fills with rowing crews, and Marathon Monday turns the city into a festival. The weather is fickle but the energy high — hotels fill in graduation weeks.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Summer</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Jul – Aug</span>
+                    </div>
+                    <span class="card-badge badge-amber">Harbor Season</span>
+                </div>
+                <p class="card-desc">Summer Boston moves to the harbor: island ferries, oyster-bar terraces and the Esplanade&#x27;s open-air concerts. Humidity presses now and then, but the sea breeze arrives in time — the city&#x27;s most social season.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Autumn</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Sep – Nov</span>
+                    </div>
+                    <span class="card-badge badge-amber">New England Leaf Festival</span>
+                </div>
+                <p class="card-desc">October is Boston&#x27;s crown: the Common and the campuses turn crimson, the air runs clear and walker-friendly. The Head of the Charles regatta turns the river into a festival — New England fall is a feast even inside the city.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Winter</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Dec – Mar</span>
+                    </div>
+                    <span class="card-badge badge-amber">Nor&#x27;easters and Hot Chowder</span>
+                </div>
+                <p class="card-desc">Boston winter is serious: nor&#x27;easter storms bring snow and the wind cuts deep. The rewards are postcard Beacon Hill, empty museums and chowder in steamy pubs. The city works through winter — layer up and work with it.</p>
+            </div>
             </div>
         </section>
+        
+
+        <!-- 5. Authentic Food & Dining -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Culinary Culture</span>
+                <h2 class="section-title">Authentic Local Dining & Food Secrets in Boston</h2>
+            </div>
+            <p class="section-intro">The Boston table is a partnership of sea and migration: chowder steam, lobster rolls, Italian bakeries and the Dunkin cup — all civic identity.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🥣</span>
+                        <span class="card-title">New England clam chowder</span>
+                    </div>
+                </div>
+                <p class="card-desc">Cream, clams and potato: the absolute answer to a cold day. In a bread bowl or a classic cup — crumble the oyster crackers on top and skip the debate: the white one is the real one.</p>
+                <div class="card-footer-tip">⭐ The national bowl · with oyster crackers</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🦞</span>
+                        <span class="card-title">Lobster roll</span>
+                    </div>
+                </div>
+                <p class="card-desc">Lobster in a buttered, toasted roll: cold with mayo (Maine style) or warm with butter (Connecticut style). Beside the harbor with fries — the price is serious, the happiness guaranteed.</p>
+                <div class="card-footer-tip">⭐ Harbor classic · try it warm</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🥯</span>
+                        <span class="card-title">The North End cannoli duel</span>
+                    </div>
+                </div>
+                <p class="card-desc">Mike&#x27;s or Modern: the city&#x27;s sweetest feud. Crisp shell, ricotta filling and a queue — try both bakeries and choose your side. Espresso alongside is the Italian quarter&#x27;s etiquette.</p>
+                <div class="card-footer-tip">⭐ Sweet duel · try both</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🦪</span>
+                        <span class="card-title">The oyster bar ritual</span>
+                    </div>
+                </div>
+                <p class="card-desc">Wellfleet and Island Creek oysters on ice with mignonette: Boston&#x27;s centuries-old oyster bars are among America&#x27;s oldest. At happy hour the counter prices turn friendly.</p>
+                <div class="card-footer-tip">⭐ On ice · happy hour tip</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🍩</span>
+                        <span class="card-title">The Dunkin ritual</span>
+                    </div>
+                </div>
+                <p class="card-desc">In Boston, Dunkin is not a chain but an identity: a shop on every corner, an iced coffee in every hand — even in winter. Order it &#x27;regulah&#x27; and it comes with cream and sugar; this is the cheapest way to blend in.</p>
+                <div class="card-footer-tip">⭐ Civic identity · iced even in winter</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🍰</span>
+                        <span class="card-title">Boston cream pie</span>
+                    </div>
+                </div>
+                <p class="card-desc">The cake that calls itself a pie: vanilla custard layers under chocolate glaze — the official dessert bearing the city&#x27;s name. The version at its birthplace hotel is a pilgrimage; bakery versions are the daily reward.</p>
+                <div class="card-footer-tip">⭐ The city&#x27;s dessert · custard layers</div>
+            </div>
+            </div>
+            
+        <div class="callout-box">
+            <div class="callout-title">🍷 Table rule</div>
+            <p>The Faneuil–Quincy Market zone serves mediocrity at tourist prices: leave the chowder and lobster to the storied harborside bars, the pastry to the North End bakeries. Tip 18–20% — wherever you sit down, it applies.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 6. Handpicked Hidden Gems -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Off The Beaten Path</span>
+                <h2 class="section-title">Handpicked Hidden Gems in Boston</h2>
+            </div>
+            <p class="section-intro">Everyone walks the Freedom Trail; these six are Boston&#x27;s book-scented, sea-breezed hidden pages.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">The Mapparium</span>
+                    <span class="card-badge badge-emerald">The world inside a glass globe</span>
+                </div>
+                <p class="card-desc">You walk through the inside of a three-story stained-glass globe from 1935: standing on the glass bridge you study the borders of 1935, while the acoustics carry a whisper to the far shore. Boston&#x27;s strangest, most unforgettable half hour.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Castle Island</span>
+                    <span class="card-badge badge-emerald">A fortress with a city beach</span>
+                </div>
+                <p class="card-desc">A fort and shoreline reached on foot in South Boston: the lawns of Fort Independence, planes on approach, and a hot dog from the Sullivan&#x27;s stand. The locals&#x27; weekend classic — often missing from tourist maps.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">SoWa Open Market</span>
+                    <span class="card-badge badge-emerald">Sunday art market</span>
+                </div>
+                <p class="card-desc">On Sundays the South End&#x27;s old warehouse district opens with artist stalls, food trucks and a vintage market — and the gallery floors are open too. Boston&#x27;s most pleasant Sunday ritual.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">The Arnold Arboretum</span>
+                    <span class="card-badge badge-emerald">A forest inside the city</span>
+                </div>
+                <p class="card-desc">Harvard&#x27;s 281-acre tree collection: the jewel of the Emerald Necklace park chain. Leaves in October, lilacs in May — entry free, crowds far away.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Acorn Street at dawn</span>
+                    <span class="card-badge badge-emerald">The famous frame at its quietest</span>
+                </div>
+                <p class="card-desc">America&#x27;s most photographed street queues at midday and stands empty at 07:00: the cobbles, gas lamps and geraniums are yours. Pair it with Beacon Hill&#x27;s side lanes.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">The Harborwalk</span>
+                    <span class="card-badge badge-emerald">The path along the harbor</span>
+                </div>
+                <p class="card-desc">The walking path wrapping the harbor: piers, parks and skyline views from the Seaport to the North End. The Fan Pier stretch at sunset — the city&#x27;s best walk nobody talks about.</p>
+            </div>
+            </div>
+            
+        <div class="callout-box success">
+            <div class="callout-title">✨ Quiet hour strategy</div>
+            <p>Boston&#x27;s refinement opens early: Acorn Street at 07:00, the Freedom Trail at 08:00, Harvard Yard during class hours. The crowds arrive toward noon — take the morning for yourself and give midday to museums and the table.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 7. Tourist Traps & Smarter Alternatives -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Scam Prevention</span>
+                <h2 class="section-title">Tourist Traps to Avoid & Smarter Alternatives</h2>
+            </div>
+            <p class="section-intro">Boston is an honest city; its traps hide in the shadow of historic titles — know these four.</p>
+            <div class="traps-list">
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🍺 TRAP</span>
+                    <h4>The &#x27;Cheers&#x27; bar letdown</h4>
+                </div>
+                <p>The bar that &#x27;inspired&#x27; the show offers a tourist queue, a souvenir counter and an ordinary menu: the interior isn&#x27;t even the TV set.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Take the photo outside and drink your beer in Beacon Hill&#x27;s real neighborhood pubs. Boston&#x27;s true &#x27;everybody knows your name&#x27; bars are the storied dive bars on the corner.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🦞 TRAP</span>
+                    <h4>Lobster prices at Quincy Market</h4>
+                </div>
+                <p>The tourist market stalls sell a small lobster roll at peak price; you eat standing in a crowd and the flavor is average.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Walk a few blocks: the storied harborside oyster bars and Seaport restaurants serve serious lobster for the same money. Tour Quincy Market for its building, not your dinner.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🚗 TRAP</span>
+                    <h4>Renting a car in Boston</h4>
+                </div>
+                <p>Narrow one-way streets, an aggressive driving culture and $40–60-a-day parking: in Boston a car is a burden, not freedom.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> The T + walking + ferries cover the city completely; rent a car only for the day of a New England excursion. The &#x27;pahk the cah&#x27; joke is grounded in fact — there is no parking.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🎓 TRAP</span>
+                    <h4>The Harvard tour hustlers</h4>
+                </div>
+                <p>Around Harvard Square some &#x27;official campus tour&#x27; sellers ticket you for yards that are free to roam; the storytelling is thin, the route short.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> The campus yards are open to the public: walk them yourself and smile at the &#x27;three lies&#x27; of the John Harvard statue. The student-run free/tip-based tours tell the most entertaining version.</div>
+            </div>
+            </div>
+            
+        <div class="callout-box warning">
+            <div class="callout-title">🛡️ Golden rule</div>
+            <p>In Boston, history is free: the Freedom Trail&#x27;s line, the campus yards and the Harborwalk cost nothing. Save the budget for chowder, oysters and a Fenway ticket — the brick sidewalks tell the rest for free.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 8. Step-by-Step 1-Day Itinerary -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Smart Itinerary</span>
+                <h2 class="section-title">Day 1: Step-by-Step Boston Walking Tour</h2>
+            </div>
+            <p class="section-intro">If you hate planning, follow these flows. Times are flexible; keep the spirit, break the order.</p>
+            <div class="timeline">
+                
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">08:00</span>
+                    <h4 class="step-title">Beacon Hill and Acorn Street</h4>
+                </div>
+                <p class="step-desc">A morning walk in the gaslit streets: shoot Acorn Street while it&#x27;s still empty, then descend to the Common.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">09:30</span>
+                    <h4 class="step-title">Freedom Trail — first half</h4>
+                </div>
+                <p class="step-desc">Start at the Common: the State House, the burying grounds, the Old State House and the massacre site. The red line is your guide.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">12:30</span>
+                    <h4 class="step-title">Chowder break</h4>
+                </div>
+                <p class="step-desc">Clam chowder with oyster crackers by the harbor: in a bread bowl if it&#x27;s cold. Don&#x27;t forget to say &#x27;wicked good&#x27;.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">14:00</span>
+                    <h4 class="step-title">North End and Old North Church</h4>
+                </div>
+                <p class="step-desc">Through the Italian quarter&#x27;s narrow lanes onto Paul Revere&#x27;s route: the church of the two lanterns and the historic house.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">16:00</span>
+                    <h4 class="step-title">Ferry to Charlestown</h4>
+                </div>
+                <p class="step-desc">From Long Wharf by boat to the USS Constitution: the world&#x27;s oldest floating warship and the Bunker Hill obelisk.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">19:00</span>
+                    <h4 class="step-title">Cannoli and a pub finale</h4>
+                </div>
+                <p class="step-desc">Return to the North End: pick your side in the cannoli duel, then close the evening with a local beer in a storied pub.</p>
+            </div>
+            
+            </div>
+
+            <!-- Mobile App Locked Content: Days 2 & 3 + Live GPS Map -->
+            <div class="app-lock-banner" id="download">
+                <div class="app-lock-badge">MyWay Mobile Exclusive 📱</div>
+                <h3>Unlock Days 2 & 3 + Turn-by-Turn GPS Map Navigation</h3>
+                <p>Explore the complete 3-day hourly itinerary for Boston, browse our 180+ verified place database offline, and plan collaborative daily itineraries with friends in the MyWay app.</p>
+                <div style="margin: 16px 0 20px; font-size: 13px; color: #CBD5E1; font-weight: 600;">
+                    📍 Day 2: Cambridge and the river &bull; 📍 Day 3: Art, park and Fenway
+                </div>
+                <div class="app-lock-features">
+                    <div class="app-lock-feature-item">✓ Live Interactive GPS Map & Navigation</div>
+                    <div class="app-lock-feature-item">✓ Full 180+ Place Database (Offline Mode)</div>
+                    <div class="app-lock-feature-item">✓ Co-plan Hourly Trips with Friends</div>
+                </div>
+                <div class="store-btn-row">
+                    <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
+                         Download on App Store
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.anilaybakan.sehirkesif" class="store-pill-btn">
+                        ▶ Get on Google Play
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+
+        <!-- 9. Phrases -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Local Slang</span>
+                <h2 class="section-title">Useful Everyday Phrases in Boston</h2>
+            </div>
+            <p class="section-intro">The Boston accent swallows its Rs but its heart is wide; these five phrases warm the city to you wicked fast.</p>
+            <div class="phrases-grid">
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Wicked</div>
+                <div class="phrase-trans">Very — say &#x27;wicked good&#x27; and the Bostonian smiles; the city&#x27;s official adverb</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ The T</div>
+                <div class="phrase-trans">The subway&#x27;s name — &#x27;take the T&#x27; is the city&#x27;s transport sentence</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Dunks</div>
+                <div class="phrase-trans">The local name for Dunkin — a &#x27;Dunks run&#x27; is the official declaration of a coffee break</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Pahk the cah</div>
+                <div class="phrase-trans">The accent&#x27;s legendary &#x27;park the car&#x27; — make the joke before a local does</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Go Sox!</div>
+                <div class="phrase-trans">The Red Sox cheer — say it near Fenway and make instant friends</div>
+            </div>
+            </div>
+        </section>
+        
+
+        <!-- Ad Placement 3: Bottom Banner -->
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
     </main>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h4>MyWay Travel</h4>
+                    <p>The ultimate smart travel guide and AI route planner for modern explorers. Stop being a tourist; experience cities like a local.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>City Guides</h5>
+                    <ul>
+                        <li><a href="/guides/">All Cities</a></li>
+                        <li><a href="../guides/barcelona.html">Barcelona</a></li>
+                        <li><a href="../guides/roma.html">Roma</a></li>
+                        <li><a href="../guides/paris.html">Paris</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Company</h5>
+                    <ul>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../support.html">Support</a></li>
+                        <li><a href="/#features">Features</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Legal</h5>
+                    <ul>
+                        <li><a href="../privacy.html">Privacy Policy</a></li>
+                        <li><a href="../terms.html">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 

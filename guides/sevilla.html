@@ -3,11 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seville Travel Guide & Smart Walking Routes | MyWay</title>
-    <meta name="description" content="Explore Seville with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
+    <title>Seville Travel Guide & Curated Walking Routes | MyWay</title>
+    <meta name="description" content="The ultimate Seville travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
     
     <link rel="alternate" hreflang="en" href="/guides/sevilla.html">
     <link rel="alternate" hreflang="tr" href="/tr/rehber/sevilla.html">
+    <link rel="canonical" href="https://mywaytravelapp.com/guides/sevilla.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mywaytravelapp.com/guides/sevilla.html">
+    <meta property="og:title" content="Seville Travel Guide & Curated Walking Routes | MyWay">
+    <meta property="og:description" content="The ultimate Seville travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
+    <meta property="og:image" content="https://mywaytravelapp.com/images/cities/sevilla.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Seville Travel Guide & Curated Walking Routes | MyWay">
+    <meta name="twitter:description" content="The ultimate Seville travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
+    <meta name="twitter:image" content="https://mywaytravelapp.com/images/cities/sevilla.jpg">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
@@ -22,6 +36,37 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
          crossorigin="anonymous"></script>
 
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TravelGuide",
+      "name": "Seville Travel Guide & Curated Walking Routes | MyWay",
+      "headline": "Seville Gezi Rehberi & Akıllı Yürüyüş Rotaları",
+      "description": "The ultimate Seville travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.",
+      "image": "https://mywaytravelapp.com/images/cities/sevilla.jpg",
+      "inLanguage": "en",
+      "url": "https://mywaytravelapp.com/guides/sevilla.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "MyWay Travel",
+        "url": "https://mywaytravelapp.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://mywaytravelapp.com/images/app_icon.png"
+        }
+      },
+      "about": {
+        "@type": "TouristDestination",
+        "name": "Seville",
+        "containedInPlace": {
+          "@type": "Country",
+          "name": "Spain"
+        }
+      }
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -35,13 +80,17 @@
             --primary-light: #9D93FF;
             --primary-dark: #5B4FD6;
             --accent: #EC4899;
+            --emerald: #10B981;
+            --warning: #EF4444;
             --bg-dark: #0F0B1A;
             --bg-section: #130F22;
             --bg-card: rgba(255, 255, 255, 0.04);
+            --bg-card-hover: rgba(255, 255, 255, 0.07);
             --text-primary: #FFFFFF;
             --text-secondary: #9CA3AF;
             --text-muted: #6B7280;
             --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(123, 110, 246, 0.3);
             --radius-lg: 24px;
             --radius-md: 16px;
             --radius-sm: 12px;
@@ -52,15 +101,15 @@
         body {
             background-color: var(--bg-dark); color: var(--text-primary);
             font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6; overflow-x: hidden;
+            line-height: 1.7; overflow-x: hidden;
         }
         
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
         
         /* Navbar */
         .navbar {
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            background: rgba(15, 11, 26, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            background: rgba(15, 11, 26, 0.88); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-subtle); height: 72px; display: flex; align-items: center;
         }
         .navbar-inner {
@@ -114,18 +163,27 @@
         .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(123, 110, 246, 0.4); }
         .nav-toggle { display: none; background: none; border: none; color: #fff; cursor: pointer; padding: 8px; }
 
+        /* Breadcrumbs */
+        .breadcrumbs {
+            display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-muted);
+            margin-bottom: 16px; flex-wrap: wrap;
+        }
+        .breadcrumbs a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+        .breadcrumbs a:hover { color: #fff; }
+        .breadcrumbs span { color: var(--text-muted); }
+
         /* Guide Hero */
         .guide-hero {
-            position: relative; min-height: 440px; display: flex; align-items: flex-end;
-            padding: 120px 24px 44px; margin-top: 72px; overflow: hidden; background-color: #1A132F;
+            position: relative; min-height: 480px; display: flex; align-items: flex-end;
+            padding: 130px 24px 50px; margin-top: 72px; overflow: hidden; background-color: #1A132F;
         }
         .guide-hero-bg {
             position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-            filter: brightness(0.65);
+            filter: brightness(0.6);
         }
         .guide-hero-overlay {
             position: absolute; inset: 0;
-            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.4) 60%, transparent 100%);
+            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.5) 60%, rgba(15, 11, 26, 0.2) 100%);
         }
         .guide-hero-content { position: relative; z-index: 2; width: 100%; }
         .city-badge {
@@ -133,28 +191,34 @@
             backdrop-filter: blur(10px); padding: 6px 14px; border-radius: 99px; font-size: 13px;
             font-weight: 600; margin-bottom: 14px; border: 1px solid rgba(255, 255, 255, 0.15);
         }
-        .guide-title { font-size: clamp(32px, 6vw, 52px); font-weight: 800; line-height: 1.1; margin-bottom: 10px; }
-        .guide-tagline { font-size: 16px; color: var(--primary-light); max-width: 720px; font-weight: 500; line-height: 1.5; }
-        
+        .guide-title { font-size: clamp(34px, 6vw, 56px); font-weight: 800; line-height: 1.1; margin-bottom: 12px; }
+        .guide-tagline { font-size: 17px; color: var(--primary-light); max-width: 780px; font-weight: 500; line-height: 1.5; margin-bottom: 12px; }
+        .guide-editorial-meta { font-size: 13px; color: #94A3B8; display: flex; gap: 16px; align-items: center; }
+
         /* Sections */
-        .section { padding: 42px 0; border-bottom: 1px solid var(--border-subtle); }
-        .section-header { margin-bottom: 24px; }
-        .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); font-weight: 700; }
-        .section-title { font-size: 24px; font-weight: 700; margin-top: 4px; }
+        .section { padding: 50px 0; border-bottom: 1px solid var(--border-subtle); }
+        .section-header { margin-bottom: 26px; }
+        .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); font-weight: 700; display: block; margin-bottom: 6px; }
+        .section-title { font-size: clamp(22px, 3.5vw, 28px); font-weight: 800; margin-bottom: 10px; }
+        .section-intro { font-size: 15px; color: #D1D5DB; line-height: 1.8; margin-bottom: 22px; max-width: 900px; }
         
-        .intro-text { font-size: 15px; color: #D1D5DB; line-height: 1.8; margin-bottom: 20px; }
-        
-        /* Local Word */
-        .local-word-box {
+        /* Pro-Tip & Local Word Boxes */
+        .callout-box {
             background: rgba(123, 110, 246, 0.08); border-left: 4px solid var(--primary);
-            padding: 18px 22px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-top: 20px;
+            padding: 18px 22px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin: 24px 0;
         }
-        .word-title { font-size: 15px; color: #fff; margin-bottom: 4px; }
+        .callout-box.warning {
+            background: rgba(239, 68, 68, 0.08); border-left: 4px solid var(--warning);
+        }
+        .callout-box.success {
+            background: rgba(16, 185, 129, 0.08); border-left: 4px solid var(--emerald);
+        }
+        .callout-title { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+        .callout-box p { font-size: 14px; color: #D1D5DB; line-height: 1.6; }
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
-        .local-word-box p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        
+
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
@@ -164,8 +228,8 @@
         .fact-val { font-size: 15px; font-weight: 600; color: #fff; margin: 2px 0; }
         .fact-sub { font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
         
-        /* Rules */
-        .rules-list { display: flex; flex-direction: column; gap: 14px; }
+        /* Rules List */
+        .rules-list { display: flex; flex-direction: column; gap: 14px; margin: 20px 0; }
         .rule-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 20px; display: flex; gap: 16px; align-items: flex-start;
@@ -177,52 +241,94 @@
         }
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        
-        /* Hidden Gems & Eat Grid */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
-        .gem-card, .eat-card {
+
+        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
+        .feature-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative;
+            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
+            display: flex; flex-direction: column; justify-content: space-between;
         }
-        .gem-badge {
-            display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase;
-            color: #10B981; background: rgba(16, 185, 129, 0.12); padding: 4px 10px; border-radius: 99px;
-            margin-bottom: 10px;
+        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
+        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
+        .card-title-group { display: flex; align-items: center; gap: 10px; }
+        .card-icon { font-size: 20px; }
+        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+        .card-badge {
+            font-size: 11px; font-weight: 700; text-transform: uppercase;
+            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
         }
-        .gem-hook { font-size: 13px; color: var(--primary-light); font-style: italic; margin-bottom: 8px; }
-        .gem-card h4, .eat-card h4 { font-size: 16px; margin-bottom: 6px; }
-        .gem-card p, .eat-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        .card-tip-box {
-            margin-top: 10px; padding: 8px 12px; background: rgba(255, 255, 255, 0.04);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1;
-        }
+        .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
+        .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
+        .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
+        .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        /* Traps */
-        .traps-list { display: flex; flex-direction: column; gap: 14px; }
-        .trap-card {
-            background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.15);
-            border-radius: var(--radius-md); padding: 20px;
+        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        .card-footer-tip {
+            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
         }
-        .trap-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+
+        /* Traps List */
+        .traps-list { display: flex; flex-direction: column; gap: 16px; margin: 20px 0; }
+        .trap-card {
+            background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.18);
+            border-radius: var(--radius-md); padding: 22px;
+        }
+        .trap-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
         .trap-tag {
             background: #EF4444; color: #fff; font-size: 11px; font-weight: 700;
-            text-transform: uppercase; padding: 2px 8px; border-radius: 6px;
+            text-transform: uppercase; padding: 3px 8px; border-radius: 6px;
         }
-        .trap-header h4 { font-size: 16px; color: #fff; }
+        .trap-header h4 { font-size: 17px; color: #fff; font-weight: 700; }
         .trap-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
         .trap-solution {
-            margin-top: 10px; padding: 10px 14px; background: rgba(16, 185, 129, 0.08);
-            border-left: 3px solid #10B981; border-radius: 4px; font-size: 13px; color: #D1D5DB; line-height: 1.5;
+            margin-top: 12px; padding: 12px 16px; background: rgba(16, 185, 129, 0.08);
+            border-left: 3px solid #10B981; border-radius: 6px; font-size: 13px; color: #D1D5DB; line-height: 1.5;
         }
-        
-        /* App CTA Banner */
-        .app-cta-banner {
-            background: linear-gradient(135deg, rgba(123, 110, 246, 0.15), rgba(236, 72, 153, 0.1));
-            border: 1px solid rgba(157, 147, 255, 0.3); border-radius: var(--radius-lg);
-            padding: 44px 20px; text-align: center; margin: 50px 0; position: relative;
+
+        /* Timeline (Itinerary) */
+        .timeline { position: relative; padding-left: 32px; margin: 24px 0 32px; }
+        .timeline::before {
+            content: ''; position: absolute; left: 11px; top: 8px; bottom: 8px;
+            width: 2px; background: linear-gradient(to bottom, var(--primary), var(--accent));
         }
-        .app-cta-banner h3 { font-size: clamp(22px, 4vw, 28px); font-weight: 800; margin-bottom: 10px; }
-        .app-cta-banner p { color: var(--text-secondary); max-width: 580px; margin: 0 auto 24px; font-size: 15px; }
+        .timeline-step { position: relative; margin-bottom: 24px; }
+        .timeline-step:last-child { margin-bottom: 0; }
+        .timeline-dot {
+            position: absolute; left: -32px; top: 4px; width: 24px; height: 24px;
+            border-radius: 50%; background: #19142B; border: 2px solid var(--primary-light);
+            display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700;
+        }
+        .step-header { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; flex-wrap: wrap; }
+        .step-time {
+            background: rgba(123, 110, 246, 0.2); color: var(--primary-light); font-size: 12px;
+            font-weight: 700; padding: 2px 8px; border-radius: 6px;
+        }
+        .step-title { font-size: 16px; font-weight: 700; color: #fff; }
+        .step-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+        /* Mobile App Gate Banner (Days 2 & 3 + Live Map) */
+        .app-lock-banner {
+            background: linear-gradient(135deg, rgba(123, 110, 246, 0.16) 0%, rgba(236, 72, 153, 0.12) 100%);
+            border: 1.5px solid rgba(157, 147, 255, 0.35); border-radius: var(--radius-lg);
+            padding: 36px 28px; margin: 36px 0; text-align: center; position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        .app-lock-badge {
+            display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px; border-radius: 100px; font-size: 12px; font-weight: 700;
+            color: #fff; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .app-lock-banner h3 { font-size: clamp(22px, 3.5vw, 28px); font-weight: 800; margin-bottom: 8px; }
+        .app-lock-banner p { color: var(--text-secondary); max-width: 620px; margin: 0 auto 20px; font-size: 14px; line-height: 1.6; }
+        .app-lock-features {
+            display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 24px;
+            font-size: 13px; color: #E2E8F0; font-weight: 500;
+        }
+        .app-lock-feature-item { display: flex; align-items: center; gap: 6px; }
+
+        /* Store Buttons */
         .store-btn-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
         .store-pill-btn {
             display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: white;
@@ -231,10 +337,48 @@
         }
         .store-pill-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2); }
 
+        /* Ad Placement Slots */
+        .ad-placement-slot {
+            margin: 40px auto; text-align: center; max-width: 728px; min-height: 90px;
+            background: rgba(255, 255, 255, 0.02); border: 1px dashed rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-sm); padding: 10px; overflow: hidden;
+        }
+        .ad-label {
+            font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px;
+            color: var(--text-muted); display: block; margin-bottom: 6px;
+        }
+
+        /* Phrases Table */
+        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrase-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm); padding: 14px 18px;
+        }
+        .phrase-orig { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+        .phrase-trans { font-size: 13px; color: var(--text-secondary); }
+
         /* Footer */
         .footer {
-            border-top: 1px solid var(--border-subtle); padding: 40px 24px 30px;
-            color: var(--text-muted); font-size: 13px; text-align: center;
+            border-top: 1px solid var(--border-subtle); padding: 50px 24px 36px;
+            color: var(--text-muted); font-size: 13px; background: #0A0713;
+        }
+        .footer-grid {
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px;
+            max-width: 1080px; margin: 0 auto 40px; text-align: left;
+        }
+        .footer-brand h4 { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+        .footer-brand p { font-size: 13px; line-height: 1.6; color: var(--text-secondary); max-width: 340px; }
+        .footer-col h5 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+        .footer-col a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+        .footer-col a:hover { color: #fff; }
+        .footer-bottom {
+            text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 24px; max-width: 1080px; margin: 0 auto;
+        }
+
+        @media (max-width: 860px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
         @media (max-width: 768px) {
@@ -246,8 +390,9 @@
             }
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
-            .guide-hero { min-height: 380px; padding-top: 90px; }
+            .guide-hero { min-height: 420px; padding-top: 100px; }
             .cards-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
 
@@ -268,6 +413,8 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="/guides/" class="active">City Guides</a></li>
                 <li><a href="/#features">Features</a></li>
+                <li><a href="../about.html">About Us</a></li>
+                <li><a href="../support.html">Support</a></li>
             </ul>
             <div class="nav-actions">
                 <!-- Top Right Globe Dropdown -->
@@ -295,37 +442,58 @@
         <img src="../images/cities/sevilla.jpg" alt="Seville" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
+            <div class="breadcrumbs">
+                <a href="/">Home</a> <span>/</span>
+                <a href="/guides/">City Guides</a> <span>/</span>
+                <span>🇪🇸 Spain</span> <span>/</span>
+                <span style="color:#fff;">Seville</span>
+            </div>
             <div class="city-badge">🇪🇸 Spain &bull; City Guides</div>
             <h1 class="guide-title">Seville</h1>
             <p class="guide-tagline">The most Spanish city in Spain — and the one that earned it</p>
+            <div class="guide-editorial-meta">
+                <span>✍️ MyWay Editorial Team</span>
+                <span>•</span>
+                <span>🛡️ Verified Local Guide</span>
+            </div>
         </div>
     </header>
 
+    <!-- Ad Placement 1: Top Banner -->
+    <div class="container">
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    </div>
+
     <main class="container">
-        <!-- Overview -->
+        <!-- 1. Overview -->
         <section class="section">
             <div class="section-header">
-                <span class="section-label">Overview</span>
-                <h2 class="section-title">The Vibe of Seville</h2>
+                <span class="section-label">Overview & Atmosphere</span>
+                <h2 class="section-title">The True Vibe of Seville</h2>
             </div>
-            <p class="intro-text">Seville is the city that invented late nights and hosts the Holy Week procession that stops the entire country for a week. In July, the hottest city in Europe. In April, during Semana Santa and Feria de Abril, it transforms into something that has to be witnessed to be understood. The Alcázar is one of the most beautiful palaces ever built. The Cathedral is the largest Gothic structure in the world. But that is not the point. The point is the bar on Calle Gerona — where the bill is chalked on the wood and the same dish has been served since the Moors.</p>
+            <p class="section-intro">Seville is the city that invented late nights and hosts the Holy Week procession that stops the entire country for a week. In July, the hottest city in Europe. In April, during Semana Santa and Feria de Abril, it transforms into something that has to be witnessed to be understood. The Alcázar is one of the most beautiful palaces ever built. The Cathedral is the largest Gothic structure in the world. But that is not the point. The point is the bar on Calle Gerona — where the bill is chalked on the wood and the same dish has been served since the Moors.</p>
             
-        <div class="local-word-box">
-            <div class="word-title">🗣️ Local Concept: <strong>Tapas</strong> <span class="pron">(TAH-pahs)</span></div>
+        <div class="callout-box">
+            <div class="callout-title">🗣️ Local Concept: <strong>Tapas</strong> <span class="pron">(TAH-pahs)</span></div>
             <p>In Seville, the tapas culture is specific: a small plate of food, ordered at the bar, eaten standing or perched on a high stool, accompanied by a caña (small beer) or a glass of fino sherry. The ritual is to move between bars — one drink and one tapa per bar, then on to the next. One drink, one plate, three or four bars, two streets, two hours. A Tuesday evening in Seville looks like this. No table, no reservation — just the bar counter and an evening passing by.</p>
         </div>
         
-        </section>
 
-        <!-- Quick Facts -->
-        
-        <section class="section">
-            <div class="section-header">
-                <span class="section-label">Essentials</span>
-                <h2 class="section-title">Quick Logistics</h2>
-            </div>
+            <!-- Quick Facts Grid -->
             <div class="facts-grid">
-                
             <div class="fact-card">
                 <div class="fact-icon">✈️</div>
                 <div>
@@ -361,20 +529,13 @@
                     <div class="fact-sub">Order at the bar · caña + tapa · move between bars</div>
                 </div>
             </div>
-            
             </div>
-        </section>
-        
 
-        <!-- Rules & Secrets -->
-        
-        <section class="section">
-            <div class="section-header">
-                <span class="section-label">Insider Advice</span>
-                <h2 class="section-title">3 Unwritten Rules for Seville</h2>
-            </div>
-            <div class="rules-list">
-                
+            <!-- 3 Unwritten Rules -->
+            
+            <div style="margin-top: 32px;">
+                <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 14px;">3 Unwritten Rules for Seville</h3>
+                <div class="rules-list">
             <div class="rule-card">
                 <div class="rule-num">1</div>
                 <div class="rule-content">
@@ -398,29 +559,593 @@
                     <p>July and August: regularly 42°C. The city doesn&#x27;t fight it — it rearranges around it. Empty streets at 3pm. Full streets at 11pm. Out by 9am, inside by 13:00, back out at 19:00, stay out until the city forces you home. Arrive expecting summer logic from home and Seville will be miserable. Follow the local pattern and it&#x27;s extraordinary.</p>
                 </div>
             </div>
+            </div>
+            </div>
             
+        </section>
+
+        <!-- 2. Transportation & Transit Logistics -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Getting Around</span>
+                <h2 class="section-title">Seville Public Transit & Airport Transfers</h2>
+            </div>
+            <p class="section-intro">Seville&#x27;s historic centre is compact and flat. Most things are walkable. The bike network is the best in Spain. Use it.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">✈️</span>
+                        <span class="card-title">Airport → City Centre</span>
+                    </div>
+                </div>
+                <p class="card-desc">EA airport bus to Torre del Oro (riverside): every 30 minutes, 35 minutes, pay onboard. No train link. Taxis are metered. That&#x27;s it.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚃</span>
+                        <span class="card-title">MetroCentro tram — through the historic heart</span>
+                    </div>
+                </div>
+                <p class="card-desc">MetroCentro tram runs Plaza Nueva → Cathedral → Archivo de Indias → Nervión. €1.40 — machines at stops or tap contactless on the validator. Tarjeta Turista: 1-day or 3-day unlimited tram and bus. Runs until midnight weekdays, 2am Fri–Sat.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚌</span>
+                        <span class="card-title">Buses — the city backbone</span>
+                    </div>
+                </div>
+                <p class="card-desc">44 TUSSAM routes, red-and-yellow, cover everywhere the tram doesn&#x27;t. €1.40, contactless works. C5 loops the historic centre. Night buses run until 5:30am at weekends — relevant when dinner starts at 21:30.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚲</span>
+                        <span class="card-title">SEVIci bikes — the best way around</span>
+                    </div>
+                </div>
+                <p class="card-desc">180km+ of separated cycle lanes. Completely flat. SEVIci bikes: stations every few hundred metres, 7-day subscription for unlimited 30-minute trips. Alcázar to Triana bridge along the river — under 20 minutes. For anything under 3km: the bike is faster than anything else.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚶</span>
+                        <span class="card-title">On foot — the only real option in the centre</span>
+                    </div>
+                </div>
+                <p class="card-desc">Cathedral to Casa de Pilatos: 10 minutes. Triana bridge to Alcázar: 15 minutes. Alameda de Hércules to Plaza de España: 20 minutes. The patios, the orange trees, the Mudéjar tilework on ordinary corners — all between the monuments, not at them. Slow down.</p>
+            </div>
+            </div>
+            
+        <div class="callout-box success">
+            <div class="callout-title">💡 Guadalquivir river path — cycling at golden hour</div>
+            <p>The Guadalquivir path south from Torre del Oro: city skyline on the left, river and herons on the right. An hour before sunset the stone turns a colour between copper and gold — specific to this latitude, this river, this hour. SEVIci bike: Torre del Oro to Triana bridge in 20 minutes. On foot: an hour. Both correct. Free at all hours.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 3. Where to Stay (Neighborhoods) -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Neighborhood Guide</span>
+                <h2 class="section-title">Where to Stay in Seville: Best Areas</h2>
+            </div>
+            <p class="section-intro">Every barrio is walkable from every other. Neighbourhood choice is about which city you wake up inside — Santa Cruz and Triana are not the same city.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Santa Cruz</span>
+                    <span class="card-badge badge-purple">Most central</span>
+                </div>
+                <p class="card-desc">Streets too narrow for cars, too white for shade. Cathedral at the end of every other alley. Beautiful — and by 10am, belonging to everyone else. Stay here for monument proximity. Find another barrio for evenings.</p>
+                <div class="card-footer-tip">Cathedral steps away • Alcázar next door • Most tourist-facing</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">El Arenal</span>
+                    <span class="card-badge badge-purple">Best base</span>
+                </div>
+                <p class="card-desc">The neighbourhood where the Americas gold arrived and was taxed. Plaza de Toros at one end, Guadalquivir at the other. Central but less theatrical than Santa Cruz. Best river access.</p>
+                <div class="card-footer-tip">River access • Central but calmer • Near bullring</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Triana</span>
+                    <span class="card-badge badge-purple">Most local</span>
+                </div>
+                <p class="card-desc">Triana is not Seville — culturally convinced it&#x27;s something better, and not wrong. Azulejo tiles still fired by hand. Iron-and-glass market by the bridge. Bars on Calle Betis facing the Cathedral across the water. 15 minutes from centre. Feels like a different city.</p>
+                <div class="card-footer-tip">Flamenco roots • Best ceramics • 15 min from centre</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">La Macarena</span>
+                    <span class="card-badge badge-purple">Most local</span>
+                </div>
+                <p class="card-desc">Where Holy Week begins and is taken most seriously. Basílica de la Macarena — weeping Virgin, gold mantle, genuine devotion. Alameda de Hércules (1574): oldest public promenade in Europe, now lined with bars. No tourist trail. That&#x27;s the point.</p>
+                <div class="card-footer-tip">Alameda nightlife • Feria street market • Entirely local</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Centro / Alfalfa</span>
+                    <span class="card-badge badge-purple">Most lively</span>
+                </div>
+                <p class="card-desc">Plaza del Salvador, Calle Sierpes — where Sevillanos actually shop and eat. Less picturesque than Santa Cruz, far more alive. The best tapas bars are scattered through here.</p>
+                <div class="card-footer-tip">Best tapas scene • Plaza del Salvador • City at street level</div>
+            </div>
             </div>
         </section>
         
 
-        <!-- CTA Banner -->
-        <section class="app-cta-banner">
-            <h3>Unlock the Full Guide in MyWay 🌟</h3>
-            <p>Discover hidden gems, curated local food, tourist traps to avoid, and step-by-step smart walking routes for Seville in MyWay.</p>
-            <div class="store-btn-row">
-                <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
-                     Download on App Store
-                </a>
-                <a href="https://play.google.com/store/apps/details?id=com.anilaybakan.sehirkesif" class="store-pill-btn">
-                    ▶ Get on Google Play
-                </a>
+        <!-- Ad Placement 2: Mid-Article -->
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+
+        <!-- 4. Best Time to Visit -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Seasons & Weather</span>
+                <h2 class="section-title">Best Time to Visit Seville</h2>
+            </div>
+            <p class="section-intro">Seville has one genuinely difficult season. Every other month has something to recommend it.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Spring</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Mar – May</span>
+                    </div>
+                    <span class="card-badge badge-amber">The Essential Season</span>
+                </div>
+                <p class="card-desc">Semana Santa isn&#x27;t a festival — it&#x27;s the city stopping for a week to enact something it&#x27;s been rehearsing for four centuries. Pasos weighing five tonnes, carried on shoulders, moving to bell taps. Pointed hoods, candles, total silence in the crowd — not enforced, just arrived. Two weeks later: Feria de Abril, an entire temporary city of casetas, dancing sevillanas until 6am. Outside the festivals, April and May are ideal: orange blossom, bearable heat, Alcázar not yet at capacity.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Summer</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Jun – Aug</span>
+                    </div>
+                    <span class="card-badge badge-amber">Survive or Avoid</span>
+                </div>
+                <p class="card-desc">June: still manageable. July: 40°C regularly, Seville reorganises its entire day around this fact. Streets empty at 3pm. Streets full at 11pm. August is when Sevillanos who can afford to leave, leave. What remains runs on nocturnal logic: interesting if you understand it, brutal if you don&#x27;t.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Autumn</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Sep – Nov</span>
+                    </div>
+                    <span class="card-badge badge-amber">The Best-Kept Secret</span>
+                </div>
+                <p class="card-desc">City empties of tourists in late September. Alcázar bookable within days. Bars full of people with jobs here who know each other&#x27;s names. October light arrives at a lower angle and catches the Cathedral stone at a colour summer never allows — between honey and rust. Tourist photographs of Seville are almost always taken in summer. October is why Sevillanos don&#x27;t miss the tourists when they leave.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Winter</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Dec – Feb</span>
+                    </div>
+                    <span class="card-badge badge-amber">Quiet and Underrated</span>
+                </div>
+                <p class="card-desc">December: chestnuts, orange blossom, Calle Sierpes lit up, Cathedral nativity scenes that take weeks to construct. Cabalgata de Reyes (5 Jan): most theatrical Three Kings parade in Andalusia. After the 6th: Alcázar same-day bookable, tapas bars returned to their owners, winter light so clear the city looks freshly washed. 15°C.</p>
+            </div>
             </div>
         </section>
+        
+
+        <!-- 5. Authentic Food & Dining -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Culinary Culture</span>
+                <h2 class="section-title">Authentic Local Dining & Food Secrets in Seville</h2>
+            </div>
+            <p class="section-intro">Sevillian food doesn&#x27;t try to impress. Invented by people with very little: olive oil, chickpeas, offal, fish from 80km away. Arrived, over centuries, at something quietly extraordinary.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🫙</span>
+                        <span class="card-title">Espinacas con garbanzos — the Seville standard</span>
+                    </div>
+                </div>
+                <p class="card-desc">Spinach and chickpeas in a sauce of fried bread, cumin, paprika, saffron, sherry vinegar. Moorish recipe, survived the Reconquista intact. Chickpeas absorb and thicken; spinach darkens and sweetens. Warm, with bread, in every traditional tapas bar. The version at El Rinconcillo (open 1670) made the same way since the bar opened. Never skip it.</p>
+                <div class="card-footer-tip">⭐ Every traditional bar · order with fino · Moorish roots</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🥩</span>
+                        <span class="card-title">Jamón ibérico — the national obsession</span>
+                    </div>
+                </div>
+                <p class="card-desc">Iberian pigs, acorn-fed in the dehesa forests of Extremadura. Two-year cure. The fat is oleic acid — same as olive oil. Melts at body temperature. In a good Seville bar it arrives with your drink, sliced thin on a small plate. Eat at room temperature. Cold is wrong.</p>
+                <div class="card-footer-tip">⭐ Ibérico de bellota · room temperature · with bread and olive oil</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🐟</span>
+                        <span class="card-title">Pescaíto frito — fried fish, Andalusian style</span>
+                    </div>
+                </div>
+                <p class="card-desc">Seville is 80km from the Atlantic. Fish arrives fresh. Andalusian technique: light flour coating, hot olive oil, a few seconds, out. Crisp outside, barely cooked within, no grease trace when done right. Boquerones, cazón en adobo, chocos. Standing in Triana, cold manzanilla, warm evening.</p>
+                <div class="card-footer-tip">⭐ Boquerones · cazón en adobo · cold beer · lemon</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🧅</span>
+                        <span class="card-title">Salmorejo — Seville&#x27;s answer to gazpacho</span>
+                    </div>
+                </div>
+                <p class="card-desc">Gazpacho but with water removed and bread added. Blended until smooth, chilled until thick. Diced jamón and sliced egg on top. Deep brick-red. Should hold a spoon upright. Every restaurant in Seville makes it. A few are extraordinary.</p>
+                <div class="card-footer-tip">⭐ With egg and jamón · thicker than gazpacho · best cold</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🍷</span>
+                        <span class="card-title">Fino sherry — the correct drink</span>
+                    </div>
+                </div>
+                <p class="card-desc">Fino aged under flor yeast — stays pale, dry, saline instead of turning amber. Sea and cellar simultaneously. Order cold. Order another.</p>
+                <div class="card-footer-tip">⭐ Fino or manzanilla · always chilled · with everything</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🍩</span>
+                        <span class="card-title">Torrijas and pestiños — convent sweets</span>
+                    </div>
+                </div>
+                <p class="card-desc">During Semana Santa: convent tornos (revolving hatches) open. Place your order; the hatch turns; a hand you never see delivers it. Torrijas: wine-soaked bread, fried in olive oil, sugar and cinnamon. Heavier than French toast, better. Pestiños: honey-glazed dough with anise and sesame. Eaten warm outside the convent while processions pass.</p>
+                <div class="card-footer-tip">⭐ Convent tornos · Semana Santa tradition · anise and honey</div>
+            </div>
+            </div>
+            
+        <div class="callout-box">
+            <div class="callout-title">🍷 El Rinconcillo — the oldest tapas bar in Seville</div>
+            <p>El Rinconcillo, Calle Gerona, 1670. System unchanged: order at the bar, bartender chalks the tally on the wood, settle at the end. One street from the tourist routes. Espinacas con garbanzos. Jamón. Croquetas. Prices are what they should be. Service isn&#x27;t trying to charm you. Go Tuesday lunch. Take the stool nearest the barrel.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 6. Handpicked Hidden Gems -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Off The Beaten Path</span>
+                <h2 class="section-title">Handpicked Hidden Gems in Seville</h2>
+            </div>
+            <p class="section-intro">The Cathedral queue is one of the longest in Spain. Twenty metres away, through a passage, is a 16th-century arcaded square that almost no one enters. This is how Seville works.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Casa de Pilatos — Santa Cruz</span>
+                    <span class="card-badge badge-emerald">A palace that rivals the Alcázar — and almost no one goes</span>
+                </div>
+                <p class="card-desc">The Medinaceli family measured the distance from their door to a local chapel and found it matched Pontius Pilate&#x27;s house to Calvary. Named accordingly. Mudejar tilework, Gothic vaulting, Renaissance sculpture — shouldn&#x27;t cohere, entirely does. Lawrence of Arabia filmed here. The Crown filmed here. The Alcázar gets 90% of the visitors. Ticketed. Free Mondays 15:00–19:00 — queue at the door.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Archivo General de Indias — Cathedral Square</span>
+                    <span class="card-badge badge-emerald">Columbus&#x27;s handwriting, on the wall, for free</span>
+                </div>
+                <p class="card-desc">Between the Cathedral and the Alcázar. Not a church, not a palace — a Renaissance archive with 80 million pages on Spain&#x27;s colonisation of the Americas. Columbus&#x27;s letters: behind glass, in his handwriting. Designed by Juan de Herrera (El Escorial&#x27;s architect). The visitors in the Cathedral queue next door largely don&#x27;t know it exists. Free Tuesday to Sunday.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">La Carbonería — Santa Cruz</span>
+                    <span class="card-badge badge-emerald">The flamenco bar with no sign — and no tourists</span>
+                </div>
+                <p class="card-desc">No sign. Wooden door on Calle Levíes. Looks like a private courtyard — because it is. Inside: former coal yard, mismatched chairs, exposed brick, free flamenco every evening. Audience: mostly local. Performers: not on the tourist-tablao circuit. Informal — guitarist finishes, someone calls for another song, they agree. No ticket. No reservation. Arrive, order, sit, pay attention.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Palacio de las Dueñas — La Macarena</span>
+                    <span class="card-badge badge-emerald">A Moorish-inspired palace still owned by the poet&#x27;s family</span>
+                </div>
+                <p class="card-desc">The Duchess of Alba lived here until 2014. 15th century, Mudéjar-Renaissance — orange-tree courtyards, jasmine-covered arches. Antonio Machado born here in 1875. Rooms hold the personal collections of the most decorated family in Spanish history: Goyas, Rubens, Roman sculpture. Ticketed. Free Mondays from 16:00 — book online same morning.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Plaza del Cabildo — Cathedral Square</span>
+                    <span class="card-badge badge-emerald">The city&#x27;s oldest square — hidden inside the Cathedral&#x27;s shadow</span>
+                </div>
+                <p class="card-desc">South side of Cathedral square. Looks like a service entrance. Walk through — noise stops. 1572. A perfect semicircle of arches, designed for commerce, now a shortcut no one uses. Sunday mornings: a few stalls selling old coins and stamps. Otherwise: empty, quiet, surrounded by the highest tourist density in Andalusia. Seville in miniature. Free.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Metropol Parasol (Las Setas) — Plaza de la Encarnación</span>
+                    <span class="card-badge badge-emerald">Seville from above — without the queue or the ticket</span>
+                </div>
+                <p class="card-desc">Six mushroom-shaped laminated timber parasols, 28 metres up, dividing Seville since 2011. Locals call it Las Setas. Most have made peace with it. Rooftop walkway: Giralda, Alcázar gardens, Guadalquivir, the white barrios south. Go an hour before sunset — the light on the Cathedral from up there. Rooftop ticketed. Ground floor market and Antiquarium Roman ruins: free.</p>
+            </div>
+            </div>
+            
+        <div class="callout-box success">
+            <div class="callout-title">✨ Triana — cross the bridge and stay</div>
+            <p>Cross the Triana bridge. Walk one block: ceramics shops. Walk three blocks: Triana. Iron-and-glass market in a 19th-century castle gatehouse. Bars on Calle Betis facing the Cathedral — best view of the city, from the neighbourhood that always found the city slightly unnecessary. Flamenco peñas in the back streets — private clubs, serious practitioners, some admit visitors. Ask at the bar. Have dinner in Triana. Better food. Cheaper. No one trying to seat you.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 7. Tourist Traps & Smarter Alternatives -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Scam Prevention</span>
+                <h2 class="section-title">Tourist Traps to Avoid & Smarter Alternatives</h2>
+            </div>
+            <p class="section-intro">Seville is a welcoming city, but the classic games run in its tourist-heavy corners. Know these four and live Andalusia like a local.</p>
+            <div class="traps-list">
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">💃 TRAP</span>
+                    <h4>Dinner-package &#x27;flamenco shows&#x27;</h4>
+                </div>
+                <p>At the shows staged for bus tourists, flamenco becomes background music: frozen paella, a miked-up act, no soul.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Watch flamenco where it was born: a small tablao or a place like La Carbonería, drink in hand, two metres from the stage.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🐴 TRAP</span>
+                    <h4>Boarding a carriage without agreeing the price</h4>
+                </div>
+                <p>The horse carriages are a lovely classic, but board without talking money and the tour shortens while the bill grows.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Ask for the official tariff and settle it before boarding; or walk the same route — Santa Cruz exists to be walked.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🍽️ TRAP</span>
+                    <h4>&#x27;Menú turístico&#x27; right by the Cathedral and Alcázar</h4>
+                </div>
+                <p>The photo menus at the monument exits mean microwave paella and a swollen bill; nothing to do with Seville&#x27;s tapas soul.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Walk two streets: lean on a bar in Alfalfa, El Arenal, or across the river in Triana, and order tapas.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">☀️ TRAP</span>
+                    <h4>Sightseeing at summer midday</h4>
+                </div>
+                <p>In July and August the thermometer passes 40°C between 2 and 6 pm; queueing for monuments then melts your holiday.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Live like the city: sightsee early, take a long lunch and siesta somewhere cool, return to the streets at night — Seville blooms after dark.</div>
+            </div>
+            </div>
+            
+        <div class="callout-box warning">
+            <div class="callout-title">🛡️ The golden rule</div>
+            <p>The mark of a good bar in Seville is a standing crowd and napkins on the floor: if the counter is packed and the floor is littered, the kitchen is good — stay.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 8. Step-by-Step 1-Day Itinerary -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Smart Itinerary</span>
+                <h2 class="section-title">Day 1: Step-by-Step Seville Walking Tour</h2>
+            </div>
+            <p class="section-intro">If you hate planning, follow these flows. The times are flexible; keep the spirit, break the order.</p>
+            <div class="timeline">
+                
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">09:00</span>
+                    <h4 class="step-title">Real Alcázar — first slot</h4>
+                </div>
+                <p class="step-desc">Book weeks ahead and take the first entry: the gardens in the morning cool, before the crowds, are paradise itself.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">11:30</span>
+                    <h4 class="step-title">Cathedral + Giralda</h4>
+                </div>
+                <p class="step-desc">The world&#x27;s largest Gothic cathedral, then climb the ramped tower: Seville at your feet.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">14:00</span>
+                    <h4 class="step-title">Long lunch + siesta</h4>
+                </div>
+                <p class="step-desc">Match the city&#x27;s rhythm: salmorejo, espinacas, a glass of fino. Then no hurry — the hottest hours pass in the shade.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">18:00</span>
+                    <h4 class="step-title">Plaza de España + María Luisa Park</h4>
+                </div>
+                <p class="step-desc">Ceramic bridges and the canal in evening light; the city&#x27;s most generous photo stage.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">20:30</span>
+                    <h4 class="step-title">Tapas crawl in Triana</h4>
+                </div>
+                <p class="step-desc">Cross the bridge, go bar to bar around Calle Betis and the market: pescaíto frito + cold beer.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">22:30</span>
+                    <h4 class="step-title">Flamenco at night</h4>
+                </div>
+                <p class="step-desc">A small tablao or La Carbonería: the thing they call duende only comes out at this hour.</p>
+            </div>
+            
+            </div>
+
+            <!-- Mobile App Locked Content: Days 2 & 3 + Live GPS Map -->
+            <div class="app-lock-banner" id="download">
+                <div class="app-lock-badge">MyWay Mobile Exclusive 📱</div>
+                <h3>Unlock Days 2 & 3 + Turn-by-Turn GPS Map Navigation</h3>
+                <p>Explore the complete 3-day hourly itinerary for Seville, browse our 180+ verified place database offline, and plan collaborative daily itineraries with friends in the MyWay app.</p>
+                <div style="margin: 16px 0 20px; font-size: 13px; color: #CBD5E1; font-weight: 600;">
+                    📍 Day 2: Palaces and Macarena &bull; 📍 Day 3: The river and goodbye
+                </div>
+                <div class="app-lock-features">
+                    <div class="app-lock-feature-item">✓ Live Interactive GPS Map & Navigation</div>
+                    <div class="app-lock-feature-item">✓ Full 180+ Place Database (Offline Mode)</div>
+                    <div class="app-lock-feature-item">✓ Co-plan Hourly Trips with Friends</div>
+                </div>
+                <div class="store-btn-row">
+                    <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
+                         Download on App Store
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.anilaybakan.sehirkesif" class="store-pill-btn">
+                        ▶ Get on Google Play
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+
+        <!-- 9. Phrases -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Local Slang</span>
+                <h2 class="section-title">Useful Everyday Phrases in Seville</h2>
+            </div>
+            <p class="section-intro">Spanish is sung here rather than spoken; these five open Andalusian doors.</p>
+            <div class="phrases-grid">
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Buenas</div>
+                <div class="phrase-trans">The short all-day greeting — entering any shop or bar</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Gracias</div>
+                <div class="phrase-trans">Thank you — in the Andalusian accent: grasya</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Por favor</div>
+                <div class="phrase-trans">Please — add it to the end of your order</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ ¡Salud!</div>
+                <div class="phrase-trans">Cheers! — fino glasses rise to this</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ No pasa nada</div>
+                <div class="phrase-trans">No worries / never mind — the Andalusian philosophy of life in one phrase</div>
+            </div>
+            </div>
+        </section>
+        
+
+        <!-- Ad Placement 3: Bottom Banner -->
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
     </main>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h4>MyWay Travel</h4>
+                    <p>The ultimate smart travel guide and AI route planner for modern explorers. Stop being a tourist; experience cities like a local.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>City Guides</h5>
+                    <ul>
+                        <li><a href="/guides/">All Cities</a></li>
+                        <li><a href="../guides/barcelona.html">Barcelona</a></li>
+                        <li><a href="../guides/roma.html">Roma</a></li>
+                        <li><a href="../guides/paris.html">Paris</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Company</h5>
+                    <ul>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../support.html">Support</a></li>
+                        <li><a href="/#features">Features</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Legal</h5>
+                    <ul>
+                        <li><a href="../privacy.html">Privacy Policy</a></li>
+                        <li><a href="../terms.html">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 

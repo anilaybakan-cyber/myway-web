@@ -3,11 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New York Travel Guide & Smart Walking Routes | MyWay</title>
-    <meta name="description" content="Explore New York with step-by-step walking routes, local food spots, tourist traps to avoid, and hidden gems. Smart travel planner MyWay.">
+    <title>New York Travel Guide & Curated Walking Routes | MyWay</title>
+    <meta name="description" content="The ultimate New York travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
     
     <link rel="alternate" hreflang="en" href="/guides/newyork.html">
     <link rel="alternate" hreflang="tr" href="/tr/rehber/newyork.html">
+    <link rel="canonical" href="https://mywaytravelapp.com/guides/newyork.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mywaytravelapp.com/guides/newyork.html">
+    <meta property="og:title" content="New York Travel Guide & Curated Walking Routes | MyWay">
+    <meta property="og:description" content="The ultimate New York travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
+    <meta property="og:image" content="https://mywaytravelapp.com/images/cities/newyork.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="New York Travel Guide & Curated Walking Routes | MyWay">
+    <meta name="twitter:description" content="The ultimate New York travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.">
+    <meta name="twitter:image" content="https://mywaytravelapp.com/images/cities/newyork.jpg">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
@@ -22,6 +36,37 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
          crossorigin="anonymous"></script>
 
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TravelGuide",
+      "name": "New York Travel Guide & Curated Walking Routes | MyWay",
+      "headline": "New York Gezi Rehberi & Akıllı Yürüyüş Rotaları",
+      "description": "The ultimate New York travel guide: where to stay, what to eat, tourist traps to avoid, hidden gems, and Day 1 step-by-step walking itinerary.",
+      "image": "https://mywaytravelapp.com/images/cities/newyork.jpg",
+      "inLanguage": "en",
+      "url": "https://mywaytravelapp.com/guides/newyork.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "MyWay Travel",
+        "url": "https://mywaytravelapp.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://mywaytravelapp.com/images/app_icon.png"
+        }
+      },
+      "about": {
+        "@type": "TouristDestination",
+        "name": "New York",
+        "containedInPlace": {
+          "@type": "Country",
+          "name": "United States"
+        }
+      }
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -35,13 +80,17 @@
             --primary-light: #9D93FF;
             --primary-dark: #5B4FD6;
             --accent: #EC4899;
+            --emerald: #10B981;
+            --warning: #EF4444;
             --bg-dark: #0F0B1A;
             --bg-section: #130F22;
             --bg-card: rgba(255, 255, 255, 0.04);
+            --bg-card-hover: rgba(255, 255, 255, 0.07);
             --text-primary: #FFFFFF;
             --text-secondary: #9CA3AF;
             --text-muted: #6B7280;
             --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(123, 110, 246, 0.3);
             --radius-lg: 24px;
             --radius-md: 16px;
             --radius-sm: 12px;
@@ -52,15 +101,15 @@
         body {
             background-color: var(--bg-dark); color: var(--text-primary);
             font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6; overflow-x: hidden;
+            line-height: 1.7; overflow-x: hidden;
         }
         
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
         
         /* Navbar */
         .navbar {
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            background: rgba(15, 11, 26, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            background: rgba(15, 11, 26, 0.88); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-subtle); height: 72px; display: flex; align-items: center;
         }
         .navbar-inner {
@@ -114,18 +163,27 @@
         .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(123, 110, 246, 0.4); }
         .nav-toggle { display: none; background: none; border: none; color: #fff; cursor: pointer; padding: 8px; }
 
+        /* Breadcrumbs */
+        .breadcrumbs {
+            display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-muted);
+            margin-bottom: 16px; flex-wrap: wrap;
+        }
+        .breadcrumbs a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+        .breadcrumbs a:hover { color: #fff; }
+        .breadcrumbs span { color: var(--text-muted); }
+
         /* Guide Hero */
         .guide-hero {
-            position: relative; min-height: 440px; display: flex; align-items: flex-end;
-            padding: 120px 24px 44px; margin-top: 72px; overflow: hidden; background-color: #1A132F;
+            position: relative; min-height: 480px; display: flex; align-items: flex-end;
+            padding: 130px 24px 50px; margin-top: 72px; overflow: hidden; background-color: #1A132F;
         }
         .guide-hero-bg {
             position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-            filter: brightness(0.65);
+            filter: brightness(0.6);
         }
         .guide-hero-overlay {
             position: absolute; inset: 0;
-            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.4) 60%, transparent 100%);
+            background: linear-gradient(to top, var(--bg-dark) 10%, rgba(15, 11, 26, 0.5) 60%, rgba(15, 11, 26, 0.2) 100%);
         }
         .guide-hero-content { position: relative; z-index: 2; width: 100%; }
         .city-badge {
@@ -133,28 +191,34 @@
             backdrop-filter: blur(10px); padding: 6px 14px; border-radius: 99px; font-size: 13px;
             font-weight: 600; margin-bottom: 14px; border: 1px solid rgba(255, 255, 255, 0.15);
         }
-        .guide-title { font-size: clamp(32px, 6vw, 52px); font-weight: 800; line-height: 1.1; margin-bottom: 10px; }
-        .guide-tagline { font-size: 16px; color: var(--primary-light); max-width: 720px; font-weight: 500; line-height: 1.5; }
-        
+        .guide-title { font-size: clamp(34px, 6vw, 56px); font-weight: 800; line-height: 1.1; margin-bottom: 12px; }
+        .guide-tagline { font-size: 17px; color: var(--primary-light); max-width: 780px; font-weight: 500; line-height: 1.5; margin-bottom: 12px; }
+        .guide-editorial-meta { font-size: 13px; color: #94A3B8; display: flex; gap: 16px; align-items: center; }
+
         /* Sections */
-        .section { padding: 42px 0; border-bottom: 1px solid var(--border-subtle); }
-        .section-header { margin-bottom: 24px; }
-        .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); font-weight: 700; }
-        .section-title { font-size: 24px; font-weight: 700; margin-top: 4px; }
+        .section { padding: 50px 0; border-bottom: 1px solid var(--border-subtle); }
+        .section-header { margin-bottom: 26px; }
+        .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-light); font-weight: 700; display: block; margin-bottom: 6px; }
+        .section-title { font-size: clamp(22px, 3.5vw, 28px); font-weight: 800; margin-bottom: 10px; }
+        .section-intro { font-size: 15px; color: #D1D5DB; line-height: 1.8; margin-bottom: 22px; max-width: 900px; }
         
-        .intro-text { font-size: 15px; color: #D1D5DB; line-height: 1.8; margin-bottom: 20px; }
-        
-        /* Local Word */
-        .local-word-box {
+        /* Pro-Tip & Local Word Boxes */
+        .callout-box {
             background: rgba(123, 110, 246, 0.08); border-left: 4px solid var(--primary);
-            padding: 18px 22px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-top: 20px;
+            padding: 18px 22px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin: 24px 0;
         }
-        .word-title { font-size: 15px; color: #fff; margin-bottom: 4px; }
+        .callout-box.warning {
+            background: rgba(239, 68, 68, 0.08); border-left: 4px solid var(--warning);
+        }
+        .callout-box.success {
+            background: rgba(16, 185, 129, 0.08); border-left: 4px solid var(--emerald);
+        }
+        .callout-title { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+        .callout-box p { font-size: 14px; color: #D1D5DB; line-height: 1.6; }
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
-        .local-word-box p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        
+
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
@@ -164,8 +228,8 @@
         .fact-val { font-size: 15px; font-weight: 600; color: #fff; margin: 2px 0; }
         .fact-sub { font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
         
-        /* Rules */
-        .rules-list { display: flex; flex-direction: column; gap: 14px; }
+        /* Rules List */
+        .rules-list { display: flex; flex-direction: column; gap: 14px; margin: 20px 0; }
         .rule-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 20px; display: flex; gap: 16px; align-items: flex-start;
@@ -177,52 +241,94 @@
         }
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        
-        /* Hidden Gems & Eat Grid */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
-        .gem-card, .eat-card {
+
+        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
+        .feature-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative;
+            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
+            display: flex; flex-direction: column; justify-content: space-between;
         }
-        .gem-badge {
-            display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase;
-            color: #10B981; background: rgba(16, 185, 129, 0.12); padding: 4px 10px; border-radius: 99px;
-            margin-bottom: 10px;
+        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
+        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
+        .card-title-group { display: flex; align-items: center; gap: 10px; }
+        .card-icon { font-size: 20px; }
+        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+        .card-badge {
+            font-size: 11px; font-weight: 700; text-transform: uppercase;
+            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
         }
-        .gem-hook { font-size: 13px; color: var(--primary-light); font-style: italic; margin-bottom: 8px; }
-        .gem-card h4, .eat-card h4 { font-size: 16px; margin-bottom: 6px; }
-        .gem-card p, .eat-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        .card-tip-box {
-            margin-top: 10px; padding: 8px 12px; background: rgba(255, 255, 255, 0.04);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1;
-        }
+        .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
+        .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
+        .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
+        .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        /* Traps */
-        .traps-list { display: flex; flex-direction: column; gap: 14px; }
-        .trap-card {
-            background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.15);
-            border-radius: var(--radius-md); padding: 20px;
+        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        .card-footer-tip {
+            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
         }
-        .trap-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+
+        /* Traps List */
+        .traps-list { display: flex; flex-direction: column; gap: 16px; margin: 20px 0; }
+        .trap-card {
+            background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.18);
+            border-radius: var(--radius-md); padding: 22px;
+        }
+        .trap-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
         .trap-tag {
             background: #EF4444; color: #fff; font-size: 11px; font-weight: 700;
-            text-transform: uppercase; padding: 2px 8px; border-radius: 6px;
+            text-transform: uppercase; padding: 3px 8px; border-radius: 6px;
         }
-        .trap-header h4 { font-size: 16px; color: #fff; }
+        .trap-header h4 { font-size: 17px; color: #fff; font-weight: 700; }
         .trap-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
         .trap-solution {
-            margin-top: 10px; padding: 10px 14px; background: rgba(16, 185, 129, 0.08);
-            border-left: 3px solid #10B981; border-radius: 4px; font-size: 13px; color: #D1D5DB; line-height: 1.5;
+            margin-top: 12px; padding: 12px 16px; background: rgba(16, 185, 129, 0.08);
+            border-left: 3px solid #10B981; border-radius: 6px; font-size: 13px; color: #D1D5DB; line-height: 1.5;
         }
-        
-        /* App CTA Banner */
-        .app-cta-banner {
-            background: linear-gradient(135deg, rgba(123, 110, 246, 0.15), rgba(236, 72, 153, 0.1));
-            border: 1px solid rgba(157, 147, 255, 0.3); border-radius: var(--radius-lg);
-            padding: 44px 20px; text-align: center; margin: 50px 0; position: relative;
+
+        /* Timeline (Itinerary) */
+        .timeline { position: relative; padding-left: 32px; margin: 24px 0 32px; }
+        .timeline::before {
+            content: ''; position: absolute; left: 11px; top: 8px; bottom: 8px;
+            width: 2px; background: linear-gradient(to bottom, var(--primary), var(--accent));
         }
-        .app-cta-banner h3 { font-size: clamp(22px, 4vw, 28px); font-weight: 800; margin-bottom: 10px; }
-        .app-cta-banner p { color: var(--text-secondary); max-width: 580px; margin: 0 auto 24px; font-size: 15px; }
+        .timeline-step { position: relative; margin-bottom: 24px; }
+        .timeline-step:last-child { margin-bottom: 0; }
+        .timeline-dot {
+            position: absolute; left: -32px; top: 4px; width: 24px; height: 24px;
+            border-radius: 50%; background: #19142B; border: 2px solid var(--primary-light);
+            display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700;
+        }
+        .step-header { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; flex-wrap: wrap; }
+        .step-time {
+            background: rgba(123, 110, 246, 0.2); color: var(--primary-light); font-size: 12px;
+            font-weight: 700; padding: 2px 8px; border-radius: 6px;
+        }
+        .step-title { font-size: 16px; font-weight: 700; color: #fff; }
+        .step-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+        /* Mobile App Gate Banner (Days 2 & 3 + Live Map) */
+        .app-lock-banner {
+            background: linear-gradient(135deg, rgba(123, 110, 246, 0.16) 0%, rgba(236, 72, 153, 0.12) 100%);
+            border: 1.5px solid rgba(157, 147, 255, 0.35); border-radius: var(--radius-lg);
+            padding: 36px 28px; margin: 36px 0; text-align: center; position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        .app-lock-badge {
+            display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px; border-radius: 100px; font-size: 12px; font-weight: 700;
+            color: #fff; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .app-lock-banner h3 { font-size: clamp(22px, 3.5vw, 28px); font-weight: 800; margin-bottom: 8px; }
+        .app-lock-banner p { color: var(--text-secondary); max-width: 620px; margin: 0 auto 20px; font-size: 14px; line-height: 1.6; }
+        .app-lock-features {
+            display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 24px;
+            font-size: 13px; color: #E2E8F0; font-weight: 500;
+        }
+        .app-lock-feature-item { display: flex; align-items: center; gap: 6px; }
+
+        /* Store Buttons */
         .store-btn-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
         .store-pill-btn {
             display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: white;
@@ -231,10 +337,48 @@
         }
         .store-pill-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2); }
 
+        /* Ad Placement Slots */
+        .ad-placement-slot {
+            margin: 40px auto; text-align: center; max-width: 728px; min-height: 90px;
+            background: rgba(255, 255, 255, 0.02); border: 1px dashed rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-sm); padding: 10px; overflow: hidden;
+        }
+        .ad-label {
+            font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px;
+            color: var(--text-muted); display: block; margin-bottom: 6px;
+        }
+
+        /* Phrases Table */
+        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrase-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm); padding: 14px 18px;
+        }
+        .phrase-orig { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+        .phrase-trans { font-size: 13px; color: var(--text-secondary); }
+
         /* Footer */
         .footer {
-            border-top: 1px solid var(--border-subtle); padding: 40px 24px 30px;
-            color: var(--text-muted); font-size: 13px; text-align: center;
+            border-top: 1px solid var(--border-subtle); padding: 50px 24px 36px;
+            color: var(--text-muted); font-size: 13px; background: #0A0713;
+        }
+        .footer-grid {
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px;
+            max-width: 1080px; margin: 0 auto 40px; text-align: left;
+        }
+        .footer-brand h4 { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+        .footer-brand p { font-size: 13px; line-height: 1.6; color: var(--text-secondary); max-width: 340px; }
+        .footer-col h5 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+        .footer-col a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+        .footer-col a:hover { color: #fff; }
+        .footer-bottom {
+            text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 24px; max-width: 1080px; margin: 0 auto;
+        }
+
+        @media (max-width: 860px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
         @media (max-width: 768px) {
@@ -246,8 +390,9 @@
             }
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
-            .guide-hero { min-height: 380px; padding-top: 90px; }
+            .guide-hero { min-height: 420px; padding-top: 100px; }
             .cards-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
 
@@ -268,6 +413,8 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="/guides/" class="active">City Guides</a></li>
                 <li><a href="/#features">Features</a></li>
+                <li><a href="../about.html">About Us</a></li>
+                <li><a href="../support.html">Support</a></li>
             </ul>
             <div class="nav-actions">
                 <!-- Top Right Globe Dropdown -->
@@ -295,37 +442,58 @@
         <img src="../images/cities/newyork.jpg" alt="New York" class="guide-hero-bg">
         <div class="guide-hero-overlay"></div>
         <div class="container guide-hero-content">
+            <div class="breadcrumbs">
+                <a href="/">Home</a> <span>/</span>
+                <a href="/guides/">City Guides</a> <span>/</span>
+                <span>🇺🇸 United States</span> <span>/</span>
+                <span style="color:#fff;">New York</span>
+            </div>
             <div class="city-badge">🇺🇸 United States &bull; City Guides</div>
             <h1 class="guide-title">New York</h1>
             <p class="guide-tagline">The city that doesn't explain itself — and doesn't need to</p>
+            <div class="guide-editorial-meta">
+                <span>✍️ MyWay Editorial Team</span>
+                <span>•</span>
+                <span>🛡️ Verified Local Guide</span>
+            </div>
         </div>
     </header>
 
+    <!-- Ad Placement 1: Top Banner -->
+    <div class="container">
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+    </div>
+
     <main class="container">
-        <!-- Overview -->
+        <!-- 1. Overview -->
         <section class="section">
             <div class="section-header">
-                <span class="section-label">Overview</span>
-                <h2 class="section-title">The Vibe of New York</h2>
+                <span class="section-label">Overview & Atmosphere</span>
+                <h2 class="section-title">The True Vibe of New York</h2>
             </div>
-            <p class="intro-text">New York doesn&#x27;t have a single centre — it has five boroughs, hundreds of neighbourhoods, and more than eight million people who are completely indifferent to your being there. That is the point. The subway runs 24 hours. The delis have been open since before your parents were born. New York bagels are made with the city&#x27;s naturally soft water — bakers elsewhere can&#x27;t replicate the texture. The pizza is folded in half and eaten while walking. There is always something happening three blocks away that no travel guide will tell you about. The city rewards the curious and punishes anyone who expects it to be convenient.</p>
+            <p class="section-intro">New York doesn&#x27;t have a single centre — it has five boroughs, hundreds of neighbourhoods, and more than eight million people who are completely indifferent to your being there. That is the point. The subway runs 24 hours. The delis have been open since before your parents were born. New York bagels are made with the city&#x27;s naturally soft water — bakers elsewhere can&#x27;t replicate the texture. The pizza is folded in half and eaten while walking. There is always something happening three blocks away that no travel guide will tell you about. The city rewards the curious and punishes anyone who expects it to be convenient.</p>
             
-        <div class="local-word-box">
-            <div class="word-title">🗣️ Local Concept: <strong>Bodega</strong> <span class="pron">(bo-DAY-ga)</span></div>
+        <div class="callout-box">
+            <div class="callout-title">🗣️ Local Concept: <strong>Bodega</strong> <span class="pron">(bo-DAY-ga)</span></div>
             <p>A small neighbourhood convenience store — open at all hours, often with a deli counter, definitely with a cat somewhere inside. The bodega bacon, egg, and cheese on a roll is New York&#x27;s breakfast. Not the restaurant version: the version made on a flat-top grill behind the counter, wrapped in foil, eaten on the kerb or the subway.  It is one of the greatest things the city has produced.</p>
         </div>
         
-        </section>
 
-        <!-- Quick Facts -->
-        
-        <section class="section">
-            <div class="section-header">
-                <span class="section-label">Essentials</span>
-                <h2 class="section-title">Quick Logistics</h2>
-            </div>
+            <!-- Quick Facts Grid -->
             <div class="facts-grid">
-                
             <div class="fact-card">
                 <div class="fact-icon">✈️</div>
                 <div>
@@ -361,20 +529,13 @@
                     <div class="fact-sub">The city&#x27;s most honest meal · cash preferred · ticketed</div>
                 </div>
             </div>
-            
             </div>
-        </section>
-        
 
-        <!-- Rules & Secrets -->
-        
-        <section class="section">
-            <div class="section-header">
-                <span class="section-label">Insider Advice</span>
-                <h2 class="section-title">3 Unwritten Rules for New York</h2>
-            </div>
-            <div class="rules-list">
-                
+            <!-- 3 Unwritten Rules -->
+            
+            <div style="margin-top: 32px;">
+                <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 14px;">3 Unwritten Rules for New York</h3>
+                <div class="rules-list">
             <div class="rule-card">
                 <div class="rule-num">1</div>
                 <div class="rule-content">
@@ -398,29 +559,593 @@
                     <p>The best views in New York are free or cheap: Brooklyn Bridge (walk across, free), Staten Island Ferry (free), Roosevelt Island Tram (subway fare), High Line (free). The Empire State Building and One World Observatory are ticketed and expensive — try the free options first. To visit the Statue of Liberty up close requires a separate ferry ticket; seeing it from the Staten Island Ferry is free and often enough. Times Square: overwhelming in the daytime, worth one evening for the lights — but eat somewhere else. The best restaurant tables — Via Carota, Don Angie, Lilia — book weeks ahead.</p>
                 </div>
             </div>
+            </div>
+            </div>
             
+        </section>
+
+        <!-- 2. Transportation & Transit Logistics -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Getting Around</span>
+                <h2 class="section-title">New York Public Transit & Airport Transfers</h2>
+            </div>
+            <p class="section-intro">Take the metro or walk. Taxis only make sense late at night.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">✈️</span>
+                        <span class="card-title">Airport → City</span>
+                    </div>
+                </div>
+                <p class="card-desc">From JFK: AirTrain to Jamaica or Howard Beach, then subway — around 60 minutes, both ticketed separately. From LaGuardia: no rail link. Take the M60 bus to 125th Street subway station and continue to the city centre by metro. A direct taxi is also an option. From Newark: NJ Transit train to Penn Station, around 45 minutes. Taxis run on a meter; traffic makes both the time and the cost unpredictable.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚇</span>
+                        <span class="card-title">Subway — the city&#x27;s backbone</span>
+                    </div>
+                </div>
+                <p class="card-desc">472 stations across five boroughs, 24 hours. Tap a contactless card, phone or OMNY Card on the turnstile reader. $3.25, weekly cap $35. Lines run in two modes: local trains stop at every station, express trains skip some — check the map before you board or you might overshoot. Trains run less frequently at night but no line closes.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚌</span>
+                        <span class="card-title">Buses — slower but useful</span>
+                    </div>
+                </div>
+                <p class="card-desc">Same fare as the metro, tap OMNY. Useful for crosstown routes the metro doesn&#x27;t cover: M15, M34, M42. Slower than the metro in traffic, but you&#x27;re watching the city go by — sometimes that&#x27;s worth it.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">⛴️</span>
+                        <span class="card-title">Staten Island Ferry — free, always running</span>
+                    </div>
+                </div>
+                <p class="card-desc">Leaves from Whitehall Terminal every 30 minutes, 24 hours a day. 25 minutes past the Statue of Liberty, Governors Island and the lower Manhattan skyline — free in both directions. New Yorkers use it to commute; you&#x27;ll be getting the best free boat ride in the world.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🚶</span>
+                        <span class="card-title">Walking — the only way to actually see it</span>
+                    </div>
+                </div>
+                <p class="card-desc">Manhattan is a grid. Avenues run north-south; streets run east-west. Numbers increase heading north and west. Each block takes about one minute on foot — 20 blocks is roughly a mile. Below 14th Street the grid breaks down and you&#x27;ll need the map. The outer boroughs are not grids. Wear shoes you can walk in for six hours.</p>
+            </div>
+            </div>
+            
+        <div class="callout-box success">
+            <div class="callout-title">💡 Roosevelt Island Tram — $3, no line, better than any rooftop bar</div>
+            <p>The Roosevelt Island Tram runs from 59th Street and Second Avenue in Manhattan across the East River to Roosevelt Island. Same fare as the subway — no extra charge. It climbs 76 metres above the river — views of the Queensboro Bridge, the East River, the Manhattan and Queens skylines. The ride takes five minutes each way. New Yorkers use it to commute. Everyone else ignores it in favour of $40 observation decks. Go at sunset.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 3. Where to Stay (Neighborhoods) -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Neighborhood Guide</span>
+                <h2 class="section-title">Where to Stay in New York: Best Areas</h2>
+            </div>
+            <p class="section-intro">Manhattan is convenient and expensive. Brooklyn is interesting and cheaper. The outer boroughs are where the city actually lives.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Lower East Side / East Village</span>
+                    <span class="card-badge badge-purple">Most interesting</span>
+                </div>
+                <p class="card-desc">German, Jewish, Italian, Chinese, Puerto Rican — the neighbourhood where successive waves of immigrants arrived and left their mark. Katz&#x27;s has been on the same corner since 1888. Russ &amp; Daughters since 1914. The tenement buildings, the pickle shops, the narrow streets are still here. The East Village next door is younger, louder, cheaper. Both are lively well into the night.</p>
+                <div class="card-footer-tip">Katz&#x27;s &amp; Russ &amp; Daughters • Most historical • Bars until late</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">West Village / Greenwich Village</span>
+                    <span class="card-badge badge-purple">Most charming</span>
+                </div>
+                <p class="card-desc">Where the grid breaks and the streets become names instead of numbers. Brownstones, narrow lanes, jazz clubs that have been running since the 1950s. The most expensive neighbourhood in Manhattan, square foot for square foot. Via Carota on Grove Street is the best Italian restaurant in the city. The White Horse Tavern has been serving since 1880. Good for walking; stays loud late into the night, so not ideal if you need early mornings. Friends fan? The building used for exterior shots is on Grove Street, a few steps from Via Carota.</p>
+                <div class="card-footer-tip">Via Carota • Best streets for walking • Jazz history</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Midtown / Hell&#x27;s Kitchen</span>
+                    <span class="card-badge badge-purple">Most convenient</span>
+                </div>
+                <p class="card-desc">Hell&#x27;s Kitchen is Midtown&#x27;s west side — walkable to Central Park, Times Square, Penn Station, and Lincoln Center. Less expensive than the Village, better connected than Brooklyn. The restaurant scene is genuinely good and underappreciated. The downside: it is Midtown. The noise, the pace, and the lack of neighbourhood feel are real. Best if transit convenience is the priority.</p>
+                <div class="card-footer-tip">Central Park in 10 min • Penn Station nearby • Underrated food scene</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Williamsburg / Brooklyn</span>
+                    <span class="card-badge badge-purple">Most local</span>
+                </div>
+                <p class="card-desc">The most visited neighbourhood in Brooklyn — no longer the secret it once was, but still genuinely good. The L train runs to Manhattan in 10 minutes. The East River waterfront has the best skyline view in the city. The food and bar scene is excellent. Bedford Avenue is too crowded on weekends; go on a Tuesday evening — one of the most interesting stretches of street in the city at that hour.</p>
+                <div class="card-footer-tip">Best Manhattan skyline views • L train to Manhattan • Best bars in Brooklyn</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Upper West Side</span>
+                    <span class="card-badge badge-purple">Most liveable</span>
+                </div>
+                <p class="card-desc">The neighbourhood New Yorkers move to when they want to stay in Manhattan. Central Park to the east, Riverside Park to the west. Barney Greengrass on Amsterdam Avenue has been serving sturgeon and smoked fish since 1908. Go in the morning. Quieter than downtown, close to everything by metro.</p>
+                <div class="card-footer-tip">Central Park access • Barney Greengrass • Quiet and residential</div>
+            </div>
             </div>
         </section>
         
 
-        <!-- CTA Banner -->
-        <section class="app-cta-banner">
-            <h3>Unlock the Full Guide in MyWay 🌟</h3>
-            <p>Discover hidden gems, curated local food, tourist traps to avoid, and step-by-step smart walking routes for New York in MyWay.</p>
-            <div class="store-btn-row">
-                <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
-                     Download on App Store
-                </a>
-                <a href="https://play.google.com/store/apps/details?id=com.anilaybakan.sehirkesif" class="store-pill-btn">
-                    ▶ Get on Google Play
-                </a>
+        <!-- Ad Placement 2: Mid-Article -->
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+
+        <!-- 4. Best Time to Visit -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Seasons & Weather</span>
+                <h2 class="section-title">Best Time to Visit New York</h2>
+            </div>
+            <p class="section-intro">New York is a different city depending on which season you visit. Summer is brutal, winter is harsh, autumn is breathtaking, spring is unpredictable.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Autumn</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Sep – Nov</span>
+                    </div>
+                    <span class="card-badge badge-amber">The Best Season</span>
+                </div>
+                <p class="card-desc">September and October are when New York is most itself. The summer tourists have gone, the heat has broken, the light turns amber and low. In October, Central Park&#x27;s autumn foliage looks exactly like it does in the films — amber light filtering between the skyscrapers, the park turning gold and red. The restaurant scene comes back after summer — chefs return, new openings happen in the autumn. Halloween in New York is a full cultural event. The New York Marathon in early November closes the city&#x27;s streets in the best possible way. If you can only go once, go in October.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Spring</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Mar – May</span>
+                    </div>
+                    <span class="card-badge badge-amber">Tentative and Worth It</span>
+                </div>
+                <p class="card-desc">March is still winter. April is unpredictable — one day a coat, the next a t-shirt. When May arrives the city opens up: trees in bloom, pavements filling, parks coming back to life. Cherry blossoms at the Brooklyn Botanic Garden peak in late April — it gets crowded and it&#x27;s worth it. Governors Island opens its summer programme in May.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Summer</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Jun – Aug</span>
+                    </div>
+                    <span class="card-badge badge-amber">Hot, Humid, Crowded</span>
+                </div>
+                <p class="card-desc">July in Manhattan has its own smell: hot asphalt, humidity, food from every direction. Metro platforms are like ovens. But the city doesn&#x27;t stop: free outdoor concerts in Central Park (SummerStage), Shakespeare in the Park, and the Rockaway beaches are 60 minutes away on the A train. In summer, early morning and late evening are the best hours to be outside.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div>
+                        <span class="card-title">Winter</span>
+                        <span style="display:block; font-size:12px; color:var(--text-muted);">Dec – Feb</span>
+                    </div>
+                    <span class="card-badge badge-amber">Cold, Cheap, Genuinely Atmospheric</span>
+                </div>
+                <p class="card-desc">December is the most expensive month — the Rockefeller Center tree, the lights, the crowds, the prices. January and February are when the city empties of tourists; hotels drop by half, museums are quiet, restaurant tables are easy to find. When it snows everything changes: the streets go silent, Manhattan turns into a film set, Central Park becomes the most beautiful place in the world for a few hours. Get out before the ploughs arrive.</p>
+            </div>
             </div>
         </section>
+        
+
+        <!-- 5. Authentic Food & Dining -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Culinary Culture</span>
+                <h2 class="section-title">Authentic Local Dining & Food Secrets in New York</h2>
+            </div>
+            <p class="section-intro">New York has every cuisine on earth and opinions about all of them. Start with what the city invented.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🥩</span>
+                        <span class="card-title">Pastrami on rye — Katz&#x27;s Delicatessen</span>
+                    </div>
+                </div>
+                <p class="card-desc">Katz&#x27;s has been at 205 East Houston Street since 1888. You take a ticket at the door, walk to the counter, and ask the man to slice the pastrami for you. He will. The sandwich arrives piled obscenely high on rye bread with mustard. You eat it at a Formica table under fluorescent lights and signed celebrity photographs. The pastrami is hand-carved, fatty, and slow-cured. This is not a restaurant recommendation — it is an obligation.</p>
+                <div class="card-footer-tip">⭐ 205 E Houston St · take a ticket · weekday mornings less crowded · ticketed</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🥯</span>
+                        <span class="card-title">Bagel with lox — Russ &amp; Daughters</span>
+                    </div>
+                </div>
+                <p class="card-desc">Two blocks away, open since 1914. Russ &amp; Daughters is a smoked fish shop — the counter displays salmon, herring and sturgeon, and customers take their choices seriously. The bagel is hand-rolled, boiled and baked; you notice the difference when you bite into it. The Classic Board: smoked salmon, cream cheese, bagel. Wrapped in paper. Come for breakfast.</p>
+                <div class="card-footer-tip">⭐ 179 E Houston St · since 1914 · order the Classic Board</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🥚</span>
+                        <span class="card-title">Bacon, egg and cheese — any bodega</span>
+                    </div>
+                </div>
+                <p class="card-desc">Egg, American cheese and bacon cooked on a flat-top griddle, served on a Kaiser roll or bagel, wrapped in foil. The cheese should be fully melted into everything — that&#x27;s the standard. Restaurants make the same thing but the bodega version has its own character.</p>
+                <div class="card-footer-tip">⭐ Any bodega · eaten on the street or subway</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🍖</span>
+                        <span class="card-title">Chopped cheese — Harlem and the Bronx</span>
+                    </div>
+                </div>
+                <p class="card-desc">A bodega sandwich specific to Harlem and the Bronx — ground beef, onions and cheese chopped together on a griddle and served on a hoagie roll. Less famous than the pastrami but equally essential to understanding New York. The original is at Hajji&#x27;s, also known as the Blue Sky Deli, on First Avenue at 110th Street in East Harlem. Simple, fast and exactly what it should be.</p>
+                <div class="card-footer-tip">⭐ Hajji&#x27;s, First Ave &amp; 110th St · Harlem</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🍕</span>
+                        <span class="card-title">Pizza by the slice — Joe&#x27;s Pizza</span>
+                    </div>
+                </div>
+                <p class="card-desc">On Carmine Street in the West Village since 1975 — the reference point. Thin crust, foldable, the right amount of grease. There are tens of thousands of pizza places in the city; Joe&#x27;s is the standard everything else is measured against. Avoid the lunch rush — go just before or after. Take a slice, fold it, walk.</p>
+                <div class="card-footer-tip">⭐ 7 Carmine St, West Village · since 1975 · eat standing up</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <span class="card-icon">🥗</span>
+                        <span class="card-title">Dim sum — Flushing, Queens</span>
+                    </div>
+                </div>
+                <p class="card-desc">Manhattan Chinatown is for tourists; Flushing is the real thing. 30 minutes on the 7 train, Main Street: the largest Chinese community outside China. Most regional cuisines never made it to Manhattan. The basement food court of New World Mall alone is worth the trip. Korean supermarkets, Taiwanese desserts, Malaysian curry — all on the same street.</p>
+                <div class="card-footer-tip">⭐ 7 train to Flushing · better and cheaper than Manhattan Chinatown</div>
+            </div>
+            </div>
+            
+        <div class="callout-box">
+            <div class="callout-title">🍷 The bodega — how it works</div>
+            <p>Walk in. The cat will be somewhere. The deli counter is at the back. Order the bacon egg and cheese — specify your bread (roll, bagel, or hero) and your extras (salt pepper ketchup). Pay. Wait two minutes. Leave. If there&#x27;s a line, there&#x27;s a reason. If the prices seem high for a bodega, you&#x27;re in a neighbourhood where the rent is high. Find a different bodega. There are 13,000 of them in New York City.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 6. Handpicked Hidden Gems -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Off The Beaten Path</span>
+                <h2 class="section-title">Handpicked Hidden Gems in New York</h2>
+            </div>
+            <p class="section-intro">New York&#x27;s best-kept secrets are mostly hiding in plain sight, ignored because they require leaving the standard tourist loop.</p>
+            <div class="cards-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Grand Central Whispering Gallery</span>
+                    <span class="card-badge badge-emerald">The acoustic trick in Grand Central that no one uses</span>
+                </div>
+                <p class="card-desc">In the lower level of Grand Central Terminal, near the entrance to the Oyster Bar restaurant, four tiled arches meet at a corner. Stand at one corner, face the wall, and whisper. Someone standing at the diagonally opposite corner — 15 metres away — will hear you clearly, while no one in between will hear anything. The arches create a focused acoustic path. The effect is immediate and completely real. Free, no sign, no queue. Most of the thousands of people who walk through Grand Central every day have no idea it exists.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">The High Line</span>
+                    <span class="card-badge badge-emerald">A park 9 metres above street level with the best skyline view in the city</span>
+                </div>
+                <p class="card-desc">A 2.3-kilometre elevated park built on a disused freight rail line on Manhattan&#x27;s west side, running from the Meatpacking District to Hudson Yards. Open since 2009, free, and genuinely well-designed — native plantings, art installations, views across the Hudson River. The best section is the stretch between 14th and 20th Streets, where the old rail tracks are preserved in the planting. Go early in the morning before the crowds arrive, or in winter when it&#x27;s empty.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Governors Island</span>
+                    <span class="card-badge badge-emerald">An island 10 minutes from Manhattan that most New Yorkers have never been to</span>
+                </div>
+                <p class="card-desc">A 172-acre island in New York Harbor, open May to October. The ferry leaves from Pier 6 in lower Manhattan and the Battery Maritime Building in Brooklyn — ticketed; free on Saturdays and Sundays before 11am. Car-free, mostly open green space, with historic fortifications, art installations, and food vendors. The Hills — artificial mounds built from construction debris — offer elevated 360-degree views of the harbour, the Statue of Liberty, and the lower Manhattan skyline. Bike rentals available.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">The Met Cloisters — Fort Tryon Park</span>
+                    <span class="card-badge badge-emerald">Medieval art in a monastery, hidden in a park at the top of Manhattan</span>
+                </div>
+                <p class="card-desc">The Metropolitan Museum&#x27;s medieval art collection, housed in a purpose-built monastery assembled from five actual 12th–15th century French cloisters, transported stone by stone and reconstructed in Fort Tryon Park at the northern tip of Manhattan. The Unicorn Tapestries — seven 15th-century woven panels depicting a unicorn hunt — are here. So are Romanesque chapels, Gothic halls, a medieval herb garden, and views over the Hudson River to the New Jersey Palisades. Admission is covered by the standard Met ticket. Take the A train to 190th Street — about 45 minutes from Midtown. Almost nobody goes.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Greenacre Park — East 51st Street</span>
+                    <span class="card-badge badge-emerald">A secret waterfall park hidden between skyscrapers in Midtown</span>
+                </div>
+                <p class="card-desc">A privately owned, publicly accessible pocket park on East 51st Street between Second and Third Avenues — marked by a small gate that most people walk past without noticing. Inside: a 12-metre waterfall, honey locust trees, moveable chairs, and a snack bar. The waterfall is loud enough to block the sound of Midtown traffic almost completely. A quiet, shaded place to sit in the middle of the loudest part of the city. Free. Open weekdays.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <span class="card-title">Sylvan Terrace — Washington Heights</span>
+                    <span class="card-badge badge-emerald">The neighbourhood that looks like 1900 — and is still lived in</span>
+                </div>
+                <p class="card-desc">A single block of wooden rowhouses in Washington Heights, built in 1882, that survived the 20th century almost unchanged. Twenty houses, two storeys each, original wooden façades painted in pastels. The street is cobblestone. It sits next to the Morris-Jumel Mansion, the oldest house in Manhattan, in a neighbourhood that most visitors never reach. Take the C train to 163rd Street. The street is free and always open. The Morris-Jumel Mansion next door is ticketed.</p>
+            </div>
+            </div>
+            
+        <div class="callout-box success">
+            <div class="callout-title">✨ Flushing, Queens — the most underrated neighbourhood in New York</div>
+            <p>Take the 7 train from Times Square to Main Street-Flushing — about 30 minutes. You arrive in the largest Chinese community outside China: a grid of streets dense with restaurants, bakeries, grocery stores, and food courts serving regional Chinese cuisines that don&#x27;t exist anywhere in Manhattan. The New World Mall basement food court alone contains more interesting food than most of midtown. Also: Korean supermarkets, Taiwanese bubble tea, Malaysian curry. No tourist infrastructure, no English menus everywhere, prices a fraction of Manhattan. This is what New York has always been — a city of arrivals, still arriving.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 7. Tourist Traps & Smarter Alternatives -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Scam Prevention</span>
+                <h2 class="section-title">Tourist Traps to Avoid & Smarter Alternatives</h2>
+            </div>
+            <p class="section-intro">New York is a city of speed; its traps work fast too. Know these four and spend your dollars on the real New York.</p>
+            <div class="traps-list">
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🦸 TRAP</span>
+                    <h4>Costumed characters in Times Square</h4>
+                </div>
+                <p>The photo with Elmo or a superhero starts &#x27;free&#x27; and ends with an aggressive tip demand. The square&#x27;s chain restaurants are the same game in food form.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> See the square, take your photo, leave in five minutes; eat two avenues over in Hell&#x27;s Kitchen.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🎭 TRAP</span>
+                    <h4>&#x27;Discount Broadway tickets&#x27; on the street</h4>
+                </div>
+                <p>Hand-sold tickets are fake or void; the tourist always loses.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> For same-day discounts use the official TKTS booth, or try the shows&#x27; own lottery apps.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🗽 TRAP</span>
+                    <h4>&#x27;Statue of Liberty tour&#x27; hawkers</h4>
+                </div>
+                <p>The boats touted around Battery Park don&#x27;t even get close; imitations of the official ferry are pricey disappointments.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Go official with Statue City Cruises, or take the zero-dollar classic: the Staten Island Ferry passes the statue for free.</div>
+            </div>
+            
+            <div class="trap-card">
+                <div class="trap-header">
+                    <span class="trap-tag">🚕 TRAP</span>
+                    <h4>&#x27;Need a taxi?&#x27; people at the airport</h4>
+                </div>
+                <p>The unlicensed drivers who approach you at JFK charge triple; the real taxi line is outside with a flat rate.</p>
+                <div class="trap-solution"><strong>💡 What to Do Instead:</strong> Use the official taxi line (JFK–Manhattan is a flat fare) or ride AirTrain + subway into town: cheapest, and often fastest.</div>
+            </div>
+            </div>
+            
+        <div class="callout-box warning">
+            <div class="callout-title">🛡️ The golden rule</div>
+            <p>In New York, everything that shouts at you is expensive and everything that ignores you is good. The best places don&#x27;t invite you in — and don&#x27;t need a queue at the door.</p>
+        </div>
+        
+        </section>
+        
+
+        <!-- 8. Step-by-Step 1-Day Itinerary -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Smart Itinerary</span>
+                <h2 class="section-title">Day 1: Step-by-Step New York Walking Tour</h2>
+            </div>
+            <p class="section-intro">If you hate planning, follow these flows. The times are flexible; keep the spirit, break the order.</p>
+            <div class="timeline">
+                
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">08:30</span>
+                    <h4 class="step-title">Central Park morning</h4>
+                </div>
+                <p class="step-desc">Walk Bethesda Terrace and The Mall with the joggers; the park belongs to New Yorkers in the morning and tourists by day.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">10:30</span>
+                    <h4 class="step-title">Met or MoMA — choose one</h4>
+                </div>
+                <p class="step-desc">They don&#x27;t fit in one day. Choose, give it two hours; walk Fifth Avenue on the way out.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">13:00</span>
+                    <h4 class="step-title">A slice or pastrami</h4>
+                </div>
+                <p class="step-desc">A slice at Joe&#x27;s or pastrami on rye at Katz&#x27;s: both standing, both legend.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">15:00</span>
+                    <h4 class="step-title">High Line + Chelsea Market</h4>
+                </div>
+                <p class="step-desc">Walk the old rail line, snack in the market below; carry on to the glass of Hudson Yards.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">17:30</span>
+                    <h4 class="step-title">Sunset on the Brooklyn Bridge</h4>
+                </div>
+                <p class="step-desc">Enter from the Manhattan side and walk to DUMBO: as the sun drops, the city behind you turns into a postcard.</p>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="timeline-dot">•</div>
+                <div class="step-header">
+                    <span class="step-time">20:00</span>
+                    <h4 class="step-title">West Village evening</h4>
+                </div>
+                <p class="step-desc">A bistro on the tree-lined streets, then a jazz club. The New York night writes itself.</p>
+            </div>
+            
+            </div>
+
+            <!-- Mobile App Locked Content: Days 2 & 3 + Live GPS Map -->
+            <div class="app-lock-banner" id="download">
+                <div class="app-lock-badge">MyWay Mobile Exclusive 📱</div>
+                <h3>Unlock Days 2 & 3 + Turn-by-Turn GPS Map Navigation</h3>
+                <p>Explore the complete 3-day hourly itinerary for New York, browse our 180+ verified place database offline, and plan collaborative daily itineraries with friends in the MyWay app.</p>
+                <div style="margin: 16px 0 20px; font-size: 13px; color: #CBD5E1; font-weight: 600;">
+                    📍 Day 2: Downtown and Brooklyn &bull; 📍 Day 3: Uptown and goodbye
+                </div>
+                <div class="app-lock-features">
+                    <div class="app-lock-feature-item">✓ Live Interactive GPS Map & Navigation</div>
+                    <div class="app-lock-feature-item">✓ Full 180+ Place Database (Offline Mode)</div>
+                    <div class="app-lock-feature-item">✓ Co-plan Hourly Trips with Friends</div>
+                </div>
+                <div class="store-btn-row">
+                    <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-pill-btn">
+                         Download on App Store
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.anilaybakan.sehirkesif" class="store-pill-btn">
+                        ▶ Get on Google Play
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+
+        <!-- 9. Phrases -->
+        
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Local Slang</span>
+                <h2 class="section-title">Useful Everyday Phrases in New York</h2>
+            </div>
+            <p class="section-intro">The language is English, but New York speaks its own dictionary; keep these five in your pocket.</p>
+            <div class="phrases-grid">
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ How you doin&#x27;?</div>
+                <div class="phrase-trans">Hello — no answer expected; reply with the same</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Bodega</div>
+                <div class="phrase-trans">The corner store — home of your sandwich, your coffee and your midnight needs</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Slice</div>
+                <div class="phrase-trans">A slice of pizza — say &#x27;a slice to go&#x27;, take it, eat while walking</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Schmear</div>
+                <div class="phrase-trans">The cream cheese on your bagel — &#x27;bagel with a schmear&#x27; is a complete order</div>
+            </div>
+            
+            <div class="phrase-card">
+                <div class="phrase-orig">🗣️ Uptown / Downtown</div>
+                <div class="phrase-trans">North / south — subway directions are asked with these, not addresses</div>
+            </div>
+            </div>
+        </section>
+        
+
+        <!-- Ad Placement 3: Bottom Banner -->
+        
+    <div class="ad-placement-slot">
+        <span class="ad-label">REKLAM / SPONSORED</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3430388081048209"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
     </main>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h4>MyWay Travel</h4>
+                    <p>The ultimate smart travel guide and AI route planner for modern explorers. Stop being a tourist; experience cities like a local.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>City Guides</h5>
+                    <ul>
+                        <li><a href="/guides/">All Cities</a></li>
+                        <li><a href="../guides/barcelona.html">Barcelona</a></li>
+                        <li><a href="../guides/roma.html">Roma</a></li>
+                        <li><a href="../guides/paris.html">Paris</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Company</h5>
+                    <ul>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../support.html">Support</a></li>
+                        <li><a href="/#features">Features</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Legal</h5>
+                    <ul>
+                        <li><a href="../privacy.html">Privacy Policy</a></li>
+                        <li><a href="../terms.html">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 

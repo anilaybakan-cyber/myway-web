@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyWay Travel App</title>
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: #0B0813;
+            color: #FFFFFF;
+            font-family: 'Outfit', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            text-align: center;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 28px;
+            padding: 40px 32px;
+            max-width: 440px;
+            width: 100%;
+            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5);
+        }
+        .flag-badge {
+            font-size: 54px;
+            margin-bottom: 16px;
+            display: inline-block;
+            animation: bounce 1.8s infinite ease-in-out;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        h1 {
+            font-size: 26px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #FFFFFF 0%, #A29BFE 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        p {
+            font-size: 15px;
+            line-height: 1.5;
+            color: #A0A0B2;
+            margin-bottom: 28px;
+        }
+        .btn-primary {
+            display: block;
+            width: 100%;
+            background: #6C5CE7;
+            color: #FFFFFF;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            padding: 16px;
+            border-radius: 16px;
+            margin-bottom: 12px;
+            transition: transform 0.2s, background 0.2s;
+        }
+        .btn-primary:active {
+            transform: scale(0.98);
+            background: #5B4BC4;
+        }
+        .store-badges {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .store-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .store-badge:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+    </style>
+    <script>
+        (function() {
+            var PACKAGE = "com.anilaybakan.sehirkesif";
+            var IOS_APP_URL = "https://apps.apple.com/app/myway-travel-guide/id6502758832";
+            var ANDROID_APP_URL = "https://play.google.com/store/apps/details?id=com.anilaybakan.sehirkesif";
+
+            var pathParts = window.location.pathname.split("/").filter(Boolean);
+            var filtered = pathParts.filter(function(p) {
+                return p !== "lang" && p !== "language" && p !== "index.html";
+            });
+            var params = new URLSearchParams(window.location.search);
+            var lang = (params.get("lang") || params.get("code") || filtered[0] || "it").toLowerCase();
+
+            if (lang === "ita" || lang === "italiano") lang = "it";
+            if (lang === "esp" || lang === "spanish" || lang === "espanol") lang = "es";
+            if (lang === "eng") lang = "en";
+            if (lang === "tur" || lang === "turkce") lang = "tr";
+
+            var ua = navigator.userAgent || "";
+            var isAndroid = /android/i.test(ua);
+            var isIOS = /iphone|ipad|ipod/i.test(ua);
+
+            var deepLinkPath = "lang/" + encodeURIComponent(lang);
+            var appSchemeUri = "myway://" + deepLinkPath;
+
+            // Attempt to open native app
+            if (isAndroid) {
+                window.location.replace("intent://" + deepLinkPath + "#Intent;scheme=myway;package=" + PACKAGE + ";end");
+            } else if (isIOS) {
+                window.location.replace(appSchemeUri);
+            }
+
+            window.onload = function() {
+                var btn = document.getElementById("open-btn");
+                var title = document.getElementById("title");
+                var desc = document.getElementById("desc");
+                var flag = document.getElementById("flag");
+
+                if (btn) btn.href = isAndroid ? ("intent://" + deepLinkPath + "#Intent;scheme=myway;package=" + PACKAGE + ";end") : appSchemeUri;
+
+                if (lang === "it") {
+                    flag.innerText = "🇮🇹";
+                    title.innerText = "Benvenuto su MyWay!";
+                    desc.innerText = "Esplora il mondo a modo tuo. MyWay è ora completamente disponibile in Italiano!";
+                    btn.innerText = "Apri MyWay";
+                } else if (lang === "es") {
+                    flag.innerText = "🇪🇸";
+                    title.innerText = "¡Bienvenido a MyWay!";
+                    desc.innerText = "Explora el mundo a tu manera. ¡MyWay ya está completamente disponible en Español!";
+                    btn.innerText = "Abrir MyWay";
+                } else if (lang === "tr") {
+                    flag.innerText = "🇹🇷";
+                    title.innerText = "MyWay'e Hoş Geldin!";
+                    desc.innerText = "Şehirleri kendi rotanla keşfet. Uygulamayı hemen aç!";
+                    btn.innerText = "MyWay'i Aç";
+                } else {
+                    flag.innerText = "🇬🇧";
+                    title.innerText = "Welcome to MyWay!";
+                    desc.innerText = "Explore the world your way. Opening in your preferred language!";
+                    btn.innerText = "Open MyWay";
+                }
+            };
+        })();
+    </script>
+</head>
+<body>
+    <div class="card">
+        <div class="flag-badge" id="flag">🌍</div>
+        <h1 id="title">MyWay Travel</h1>
+        <p id="desc">Opening MyWay in your language...</p>
+        <a id="open-btn" class="btn-primary" href="myway://">Apri MyWay</a>
+        <div class="store-badges">
+            <a class="store-badge" href="https://apps.apple.com/app/myway-travel-guide/id6502758832" target="_blank">
+                App Store
+            </a>
+            <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.anilaybakan.sehirkesif" target="_blank">
+                Google Play
+            </a>
+        </div>
+    </div>
+</body>
+</html>
