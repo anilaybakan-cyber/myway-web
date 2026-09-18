@@ -453,6 +453,10 @@
             background: #0B0814;
             z-index: 1;
         }
+        .route-map-canvas .leaflet-tile {
+            filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.6);
+            -webkit-filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.6);
+        }
         .route-map-footer {
             padding: 10px 18px;
             background: rgba(15, 11, 26, 0.75);
@@ -1379,9 +1383,8 @@
             attributionControl: false
         });
 
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-            maxZoom: 19,
-            subdomains: 'abcd'
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19
         }).addTo(map);
 
         var latlngs = [];
