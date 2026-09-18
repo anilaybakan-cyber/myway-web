@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyWay – Akıllı Seyahat & Günlük Rota Planlayıcı</title>
-    <meta name="description" content="Arkadaşlarınızla ortak seyahat planlayın, 112+ dünya şehri için adım adım yürüyüş rotaları, gizli mekanlar ve kapsamlı gezi rehberleri.">
+    <title>MyWay - Akıllı Seyahat & Günlük Rota Planlayıcı</title>
+    <meta name="description" content="Arkadaşlarınızla ortak seyahat planlayın, rotalarınızı tek tıkla paylaşın. 112+ şehir için akıllı yürüyüş rotaları ve yerel gezi rehberi.">
     <meta name="keywords" content="travel app, city guide, smart routes, travel planner, seyahat rehberi, rota planlayıcı">
-    <meta property="og:title" content="MyWay – Akıllı Seyahat & Günlük Rota Planlayıcı">
-    <meta property="og:description" content="Arkadaşlarınızla ortak seyahat planlayın, 112+ dünya şehri için adım adım yürüyüş rotaları, gizli mekanlar ve kapsamlı gezi rehberleri.">
+    <meta property="og:title" content="MyWay – Smart Travel Routes & City Guide">
+    <meta property="og:description" content="Discover hidden gems, create smart routes, and explore 112+ world cities with comprehensive travel guides. iOS & Android İçin Yayında.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://mywaytravelapp.com/tr/">
+    <meta property="og:url" content="https://mywaytravelapp.com">
     <meta property="og:image" content="https://mywaytravelapp.com/images/cities/barcelona.jpg">
-    <link rel="canonical" href="https://mywaytravelapp.com/tr/">
+    <link rel="canonical" href="https://mywaytravelapp.com">
     
     <link rel="alternate" hreflang="en" href="https://mywaytravelapp.com/">
     <link rel="alternate" hreflang="tr" href="https://mywaytravelapp.com/tr/">
@@ -28,7 +28,22 @@
     </script>
 
     <!-- Smart Geo & Language Detection -->
-    
+    <script>
+      (function() {
+        try {
+          var userChoice = localStorage.getItem('myway_user_lang');
+          if (userChoice === 'en') return;
+          if (userChoice === 'tr') { window.location.replace('/tr/'); return; }
+          if (/bot|googlebot|crawler|spider|robot|crawling/i.test(navigator.userAgent)) return;
+          var userLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+          var tz = '';
+          try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch(e) {}
+          if (userLang.indexOf('tr') === 0 || tz.indexOf('Istanbul') !== -1 || tz.indexOf('Turkey') !== -1) {
+            window.location.replace('/tr/');
+          }
+        } catch(e) {}
+      })();
+    </script>
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
@@ -41,7 +56,7 @@
       "@type": "WebSite",
       "name": "MyWay Travel",
       "url": "https://mywaytravelapp.com",
-      "description": "Arkadaşlarınızla ortak seyahat planlayın, 112+ dünya şehri için adım adım yürüyüş rotaları, gizli mekanlar ve kapsamlı gezi rehberleri.",
+      "description": "Discover hidden gems, create smart routes, and explore 112+ world cities with comprehensive travel guides. iOS & Android İçin Yayında.",
       "publisher": {
         "@type": "Organization",
         "name": "MyWay Travel App",
@@ -170,36 +185,44 @@
         .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(123, 110, 246, 0.4); }
         .nav-toggle { display: none; background: none; border: none; color: #fff; cursor: pointer; padding: 8px; }
 
-        /* Background Video */
+        /* Fixed Cinematic Background Video */
         .site-video-container {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100vh;
-            overflow: hidden; z-index: 0;
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            overflow: hidden; z-index: 0; pointer-events: none;
         }
         .site-video-bg {
-            width: 100%; height: 100%; object-fit: cover; filter: brightness(0.35);
+            width: 100%; height: 100%; object-fit: cover;
+            filter: brightness(0.66) saturate(1.24);
+            transform: scale(1.02);
         }
         .site-video-overlay {
             position: absolute; inset: 0;
-            background: linear-gradient(to bottom, rgba(15, 11, 26, 0.3) 0%, rgba(15, 11, 26, 0.8) 75%, var(--bg-dark) 100%);
+            background:
+                radial-gradient(ellipse 90% 70% at 50% 15%, rgba(123, 110, 246, 0.22) 0%, transparent 65%),
+                radial-gradient(ellipse 80% 60% at 85% 65%, rgba(236, 72, 153, 0.15) 0%, transparent 60%),
+                radial-gradient(ellipse 80% 60% at 15% 80%, rgba(99, 102, 241, 0.16) 0%, transparent 60%),
+                linear-gradient(to bottom, rgba(15, 11, 26, 0.38) 0%, rgba(15, 11, 26, 0.52) 50%, rgba(15, 11, 26, 0.68) 100%);
         }
 
         /* Hero */
         .hero {
-            position: relative; z-index: 1; min-height: 100vh; display: flex;
+            position: relative; z-index: 2; min-height: 100vh; display: flex;
             align-items: center; justify-content: center; text-align: center;
             padding: 130px 24px 70px;
         }
-        .hero-content { max-width: 820px; margin: 0 auto; }
+        .hero-content { max-width: 820px; margin: 0 auto; position: relative; z-index: 2; }
         .hero-badge {
             display: inline-flex; align-items: center; gap: 8px;
             padding: 6px 16px; border-radius: 100px;
-            background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
             font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 24px;
         }
         .hero-badge-dot { width: 8px; height: 8px; border-radius: 50%; background: #10B981; }
         .hero h1 {
             font-size: clamp(38px, 6.5vw, 64px); font-weight: 900;
             line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 20px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
         }
         .purple-text {
             color: var(--primary);
@@ -209,30 +232,33 @@
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
         .hero-description {
-            font-size: clamp(16px, 2vw, 19px); color: #E2E8F0; line-height: 1.7;
+            font-size: clamp(16px, 2vw, 19px); color: #F1F5F9; line-height: 1.7;
             max-width: 660px; margin: 0 auto 36px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
         }
         .store-buttons { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 30px; }
         .store-btn {
             display: inline-flex; align-items: center; gap: 12px; padding: 12px 24px;
             background: #fff; color: #0F0B1A; border-radius: 14px; font-weight: 700;
             font-size: 15px; transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
         }
-        .store-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,255,255,0.2); }
+        .store-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(255,255,255,0.3); }
         .store-btn svg { width: 24px; height: 24px; }
         .store-btn-label { display: flex; flex-direction: column; text-align: left; line-height: 1.2; }
         .store-btn-label small { font-size: 10px; font-weight: 500; color: #64748B; }
 
         .hero-guides-btn {
             display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px;
-            background: rgba(123, 110, 246, 0.15); border: 1.5px solid rgba(123, 110, 246, 0.4);
+            background: rgba(123, 110, 246, 0.2); border: 1.5px solid rgba(123, 110, 246, 0.5);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
             border-radius: 100px; color: #fff; font-size: 14px; font-weight: 600;
             transition: all 0.2s ease;
         }
-        .hero-guides-btn:hover { background: var(--primary); border-color: var(--primary); transform: translateY(-2px); }
+        .hero-guides-btn:hover { background: var(--primary); border-color: var(--primary); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(123, 110, 246, 0.4); }
 
         /* Stats */
-        .stats { padding: 60px 0; border-bottom: 1px solid var(--border-subtle); position: relative; z-index: 2; }
+        .stats { padding: 65px 0; border-bottom: 1px solid var(--border-subtle); position: relative; z-index: 2; }
         .stats-grid {
             display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
             max-width: 900px; margin: 0 auto; text-align: center;
@@ -242,54 +268,135 @@
             background: linear-gradient(135deg, #fff, var(--primary-light));
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
-        .stat-item p { font-size: 14px; color: var(--text-secondary); margin-top: 4px; font-weight: 500; }
+        .stat-item p { font-size: 14px; color: #CBD5E1; margin-top: 4px; font-weight: 500; }
 
-        /* Featured City Guides Grid */
-        .home-guides-section { padding: 80px 0; border-bottom: 1px solid var(--border-subtle); position: relative; z-index: 2; }
-        .home-guides-header { text-align: center; margin-bottom: 44px; }
+        /* Featured City Guides Grid with Ambient Aura */
+        .home-guides-section {
+            padding: 90px 0;
+            border-bottom: 1px solid var(--border-subtle);
+            position: relative;
+            z-index: 2;
+        }
+        .home-guides-section::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 900px;
+            max-width: 100vw;
+            height: 500px;
+            background: radial-gradient(ellipse, rgba(123, 110, 246, 0.25) 0%, rgba(99, 102, 241, 0.12) 40%, transparent 70%);
+            filter: blur(100px);
+            pointer-events: none;
+            z-index: -1;
+        }
+        .home-guides-header { text-align: center; margin-bottom: 48px; position: relative; z-index: 2; }
         .home-guides-grid {
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 22px; margin-bottom: 36px;
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; margin-bottom: 40px;
+            position: relative; z-index: 2;
         }
         .home-guide-card {
-            position: relative; height: 320px; border-radius: 20px; overflow: hidden;
+            position: relative; height: 330px; border-radius: 22px; overflow: hidden;
             display: flex; flex-direction: column; justify-content: flex-end;
-            text-decoration: none; color: white; border: 1px solid var(--border-subtle);
-            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none; color: white;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(22, 17, 38, 0.55);
+            backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            box-shadow: 0 14px 35px rgba(0, 0, 0, 0.45);
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
         }
         .home-guide-card:hover {
-            transform: translateY(-6px); border-color: var(--primary-light);
-            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 25px rgba(123, 110, 246, 0.25);
+            transform: translateY(-8px) scale(1.015);
+            border-color: rgba(123, 110, 246, 0.7);
+            box-shadow: 0 24px 50px rgba(0, 0, 0, 0.65), 0 0 35px rgba(123, 110, 246, 0.35);
         }
         .home-guide-card img {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .home-guide-card:hover img { transform: scale(1.06); }
+        .home-guide-card:hover img { transform: scale(1.08); }
         .home-guide-overlay {
             position: absolute; inset: 0;
-            background: linear-gradient(to top, rgba(15, 11, 26, 0.95) 0%, rgba(15, 11, 26, 0.4) 60%, rgba(15, 11, 26, 0.1) 100%);
+            background: linear-gradient(to top, rgba(10, 7, 18, 0.92) 0%, rgba(15, 11, 26, 0.32) 55%, rgba(0, 0, 0, 0.05) 100%);
+            transition: background 0.3s ease;
         }
-        .home-guide-content { position: relative; z-index: 2; padding: 20px; }
-        .home-guide-badge { font-size: 12px; font-weight: 600; color: #CBD5E1; margin-bottom: 4px; }
-        .home-guide-title { font-size: 22px; font-weight: 800; margin-bottom: 6px; letter-spacing: -0.5px; }
-        .home-guide-tagline { font-size: 12px; color: var(--text-secondary); line-height: 1.4; margin-bottom: 8px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-        .home-guide-link { font-size: 12px; font-weight: 700; color: var(--primary-light); }
-        .home-guides-all-btn-wrap { text-align: center; margin-top: 10px; }
+        .home-guide-card:hover .home-guide-overlay {
+            background: linear-gradient(to top, rgba(10, 7, 18, 0.84) 0%, rgba(15, 11, 26, 0.18) 55%, transparent 100%);
+        }
+        .home-guide-content { position: relative; z-index: 2; padding: 22px; }
+        .home-guide-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: rgba(15, 11, 26, 0.6); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            padding: 4px 11px; border-radius: 99px;
+            font-size: 11px; font-weight: 700; color: #E2E8F0;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            margin-bottom: 8px; width: fit-content;
+        }
+        .home-guide-title {
+            font-size: 23px; font-weight: 800; margin-bottom: 6px; letter-spacing: -0.5px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        }
+        .home-guide-tagline {
+            font-size: 13px; color: #CBD5E1; line-height: 1.45; margin-bottom: 10px;
+            display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+        }
+        .home-guide-link {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-size: 13px; font-weight: 700; color: #A78BFA;
+            transition: gap 0.2s ease, color 0.2s ease;
+        }
+        .home-guide-card:hover .home-guide-link { color: #C4B5FD; gap: 9px; }
+        .home-guides-all-btn-wrap { text-align: center; margin-top: 14px; position: relative; z-index: 2; }
 
         /* Editorial Curation Section */
-        .home-curation-section { padding: 80px 0; border-bottom: 1px solid var(--border-subtle); position: relative; z-index: 2; }
+        .home-curation-section { padding: 90px 0; border-bottom: 1px solid var(--border-subtle); position: relative; z-index: 2; overflow: hidden; }
+        .home-curation-section::before {
+            content: '';
+            position: absolute;
+            top: 25%;
+            left: -80px;
+            width: 750px;
+            height: 480px;
+            background: radial-gradient(ellipse, rgba(168, 85, 247, 0.16) 0%, rgba(123, 110, 246, 0.08) 50%, transparent 70%);
+            filter: blur(120px);
+            pointer-events: none;
+            z-index: -1;
+        }
         .curation-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 40px; }
         .curation-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 32px 24px; transition: border-color 0.2s, background 0.2s;
+            background: rgba(22, 17, 38, 0.55); border: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border-radius: var(--radius-md); padding: 32px 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+            transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
         }
-        .curation-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
+        .curation-card:hover {
+            border-color: rgba(123, 110, 246, 0.65);
+            background: rgba(32, 24, 56, 0.75);
+            transform: translateY(-5px);
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 25px rgba(123, 110, 246, 0.28);
+        }
         .curation-icon { font-size: 32px; margin-bottom: 16px; }
         .curation-card h3 { font-size: 19px; font-weight: 700; margin-bottom: 10px; color: #fff; }
-        .curation-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+        .curation-card p { font-size: 14px; color: #CBD5E1; line-height: 1.7; }
 
         /* Screenshots Carousel */
-        .screenshots { padding: 80px 0; border-bottom: 1px solid var(--border-subtle); position: relative; z-index: 2; text-align: center; }
+        .screenshots { padding: 90px 0; border-bottom: 1px solid var(--border-subtle); position: relative; z-index: 2; text-align: center; overflow: hidden; }
+        .screenshots::before {
+            content: '';
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 850px;
+            height: 460px;
+            background: radial-gradient(ellipse, rgba(123, 110, 246, 0.2) 0%, rgba(236, 72, 153, 0.12) 45%, transparent 70%);
+            filter: blur(120px);
+            pointer-events: none;
+            z-index: -1;
+        }
         .carousel-wrapper { overflow: hidden; padding: 40px 0; position: relative; }
         .carousel-track {
             display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory;
@@ -310,30 +417,65 @@
         .carousel-dot.active { background: var(--primary-light); width: 24px; border-radius: 4px; }
 
         /* Features */
-        .features { padding: 80px 0; border-bottom: 1px solid var(--border-subtle); position: relative; z-index: 2; }
-        .features-header { text-align: center; margin-bottom: 48px; }
+        .features { padding: 90px 0; border-bottom: 1px solid var(--border-subtle); position: relative; z-index: 2; overflow: hidden; }
+        .features::before {
+            content: '';
+            position: absolute;
+            top: 25%;
+            right: 5%;
+            width: 750px;
+            height: 480px;
+            background: radial-gradient(ellipse, rgba(236, 72, 153, 0.16) 0%, rgba(123, 110, 246, 0.14) 40%, transparent 70%);
+            filter: blur(110px);
+            pointer-events: none;
+            z-index: -1;
+        }
+        .features-header { text-align: center; margin-bottom: 48px; position: relative; z-index: 2; }
         .features-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;
+            position: relative; z-index: 2;
         }
         .feature-box {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            background: rgba(22, 17, 38, 0.55); border: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
             border-radius: var(--radius-md); padding: 32px 24px; display: flex; flex-direction: column;
             justify-content: space-between;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+            transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .feature-box:hover {
+            border-color: rgba(123, 110, 246, 0.65);
+            background: rgba(32, 24, 56, 0.75);
+            transform: translateY(-5px);
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 25px rgba(123, 110, 246, 0.28);
         }
         .feature-icon-wrap {
             width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center;
-            margin-bottom: 20px; background: rgba(123, 110, 246, 0.12); border: 1px solid rgba(123, 110, 246, 0.25);
+            margin-bottom: 20px; background: rgba(123, 110, 246, 0.15); border: 1px solid rgba(123, 110, 246, 0.3);
         }
         .feature-icon-wrap img { width: 28px; height: 28px; }
         .feature-box h3 { font-size: 19px; font-weight: 700; margin-bottom: 10px; color: #fff; }
-        .feature-box p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+        .feature-box p { font-size: 14px; color: #CBD5E1; line-height: 1.7; }
 
         /* CTA */
-        .cta { padding: 90px 24px; text-align: center; position: relative; z-index: 2; }
-        .cta-content { max-width: 700px; margin: 0 auto; }
+        .cta { padding: 100px 24px; text-align: center; position: relative; z-index: 2; overflow: hidden; }
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 850px;
+            height: 420px;
+            background: radial-gradient(ellipse, rgba(123, 110, 246, 0.28) 0%, rgba(236, 72, 153, 0.16) 40%, transparent 70%);
+            filter: blur(110px);
+            pointer-events: none;
+            z-index: -1;
+        }
+        .cta-content { max-width: 700px; margin: 0 auto; position: relative; z-index: 2; }
 
         /* Footer */
-        .footer { padding: 60px 24px 36px; border-top: 1px solid var(--border-subtle); background: #0A0713; position: relative; z-index: 2; }
+        .footer { padding: 60px 24px 36px; border-top: 1px solid var(--border-subtle); background: rgba(12, 9, 22, 0.88); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); position: relative; z-index: 2; }
         .footer-grid {
             display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px;
             max-width: 1200px; margin: 0 auto 40px; text-align: left;
@@ -395,7 +537,7 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="navbar-inner">
-            <a href="../" class="nav-brand">
+            <a href="/" class="nav-brand">
                 <img src="../images/app_icon.png" alt="MyWay" width="40" height="40">
                 <span>MyWay</span>
             </a>
@@ -403,8 +545,8 @@
                 <li><a href="/tr/rehber/">Şehir Rehberleri</a></li>
                 <li><a href="#features">Özellikler</a></li>
                 <li><a href="#screenshots">Galeri</a></li>
-                <li><a href="/tr/about.html">Hakkımızda</a></li>
-                <li><a href="/tr/support.html">Destek</a></li>
+                <li><a href="../about.html">Hakkımızda</a></li>
+                <li><a href="../support.html">Destek</a></li>
             </ul>
             <div class="nav-actions">
                 <!-- Top Right Globe Dropdown -->
@@ -437,12 +579,12 @@
         <div class="hero-content">
             <div class="hero-badge">
                 <span class="hero-badge-dot"></span>
-                iOS ve Android'de Yayında
+                iOS & Android İçin Yayında
             </div>
 
             <h1>Şehirleri Keşfetmenin<br><span class="purple-text">En Akıllı Yolu.</span></h1>
 
-            <p class="hero-description">Gizli mekanları keşfedin, akıllı rotalar oluşturun ve şehri bir yerli gibi gezin. 112+ şehir için özenle hazırlanmış bağımsız seyahat rehberiniz.</p>
+            <p class="hero-description">Gizli kalmış yerleri keşfedin, akıllı rotalar oluşturun ve şehri bir yerli gibi gezin. 112+ özenle hazırlanmış şehir rehberi ve yapay zeka destekli rota planlama.</p>
 
             <div class="store-buttons" id="download">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-btn store-btn--apple" id="appStoreBtn">
@@ -450,7 +592,7 @@
                         <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.17c.66-.81 1.11-1.93.99-3.06-1 .04-2.22.67-2.94 1.51-.64.73-1.2 1.88-1.05 2.99 1.12.09 2.26-.55 3-.14"/>
                     </svg>
                     <div class="store-btn-label">
-                        <small>Hemen İndirin</small>
+                        <small>Download on the</small>
                         <span>App Store</span>
                     </div>
                 </a>
@@ -460,7 +602,7 @@
                         <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58 33.3-60.1-60.1L472.2 216c16.2 9.3 16.2 27.9 0 37.2zm-96.6 86.3L104.6 499l220.7-126.7-60.1-60.4z"/>
                     </svg>
                     <div class="store-btn-label">
-                        <small>Hemen İndirin</small>
+                        <small>Get it on</small>
                         <span>Google Play</span>
                     </div>
                 </a>
@@ -468,7 +610,7 @@
 
             <div>
                 <a href="/tr/rehber/" class="hero-guides-btn">
-                    🗺️ 112+ Özenle Hazırlanmış Şehir Rehberini İnceleyin &rarr;
+                    🗺️ 112+ Şehir Rehberini Keşfedin &rarr;
                 </a>
             </div>
         </div>
@@ -479,11 +621,11 @@
         <div class="stats-grid">
             <div class="stat-item">
                 <h3>112+</h3>
-                <p>Kapsanan Şehir</p>
+                <p>Şehir Rehberi</p>
             </div>
             <div class="stat-item">
                 <h3>18.000+</h3>
-                <p>Özenle Seçilmiş Mekan</p>
+                <p>Seçkin Mekân</p>
             </div>
             <div class="stat-item">
                 <h3>800+</h3>
@@ -497,9 +639,9 @@
     <section class="home-guides-section">
         <div class="container">
             <div class="home-guides-header">
-                <span class="section-label">Kapsamlı Şehir Rehberleri</span>
-                <h2 class="section-title">Dünyanın En Sevilen Rotaları</h2>
-                <p class="section-subtitle" style="margin: 0 auto;">Nerede kalınır, ne yenir, turist tuzakları ve 1. gün saat saat yürüyüş rotalarıyla zenginleştirilmiş derin rehberler.</p>
+                <span class="section-label">Özenle Hazırlanmış Rehberler</span>
+                <h2 class="section-title">Öne Çıkan Popüler Rotalar</h2>
+                <p class="section-subtitle" style="margin: 0 auto;">Nerede kalınır, yerel lezzetler, dolandırıcılık önlemleri ve 1. gün adım adım yürüyüş rotaları.</p>
             </div>
 
             <div class="home-guides-grid">
@@ -510,18 +652,18 @@
             <div class="home-guide-content">
                 <div class="home-guide-badge">🇪🇸 İspanya</div>
                 <h3 class="home-guide-title">Barcelona</h3>
-                <p class="home-guide-tagline">Gaudí mimarisi, gotik sokaklar ve Akdeniz lezzetleri</p>
+                <p class="home-guide-tagline">Gaudí mimarisi, gotik sokaklar ve deniz kenarı tapas lezzetleri</p>
                 <div class="home-guide-link">Rehberi Oku &rarr;</div>
             </div>
         </a>
         
         <a href="/tr/rehber/roma.html" class="home-guide-card">
-            <img src="../images/cities/roma.jpg" alt="Roma" loading="lazy">
+            <img src="../images/cities/roma.jpg" alt="Rome" loading="lazy">
             <div class="home-guide-overlay"></div>
             <div class="home-guide-content">
                 <div class="home-guide-badge">🇮🇹 İtalya</div>
-                <h3 class="home-guide-title">Roma</h3>
-                <p class="home-guide-tagline">Antik tarih, nefis makarnalar ve büyüleyici meydanlar</p>
+                <h3 class="home-guide-title">Rome</h3>
+                <p class="home-guide-tagline">Antik harikalar, ikonik makarnalar ve tarihi ara sokaklar</p>
                 <div class="home-guide-link">Rehberi Oku &rarr;</div>
             </div>
         </a>
@@ -532,7 +674,7 @@
             <div class="home-guide-content">
                 <div class="home-guide-badge">🇫🇷 Fransa</div>
                 <h3 class="home-guide-title">Paris</h3>
-                <p class="home-guide-tagline">Sanat, bohem kafeler ve Sen Nehri kıyısında yürüyüş</p>
+                <p class="home-guide-tagline">Sanat, bohem bistrolar ve Seine kenarında romantik yürüyüşler</p>
                 <div class="home-guide-link">Rehberi Oku &rarr;</div>
             </div>
         </a>
@@ -543,7 +685,7 @@
             <div class="home-guide-content">
                 <div class="home-guide-badge">🇳🇱 Hollanda</div>
                 <h3 class="home-guide-title">Amsterdam</h3>
-                <p class="home-guide-tagline">Tarihi kanallar, bisiklet rotaları ve saklı avlular</p>
+                <p class="home-guide-tagline">Historic canals, cycling trails, and hidden courtyards</p>
                 <div class="home-guide-link">Rehberi Oku &rarr;</div>
             </div>
         </a>
@@ -552,42 +694,42 @@
             <img src="../images/cities/tokyo.jpg" alt="Tokyo" loading="lazy">
             <div class="home-guide-overlay"></div>
             <div class="home-guide-content">
-                <div class="home-guide-badge">🇯🇵 Japonya</div>
+                <div class="home-guide-badge">🇯🇵 Japan</div>
                 <h3 class="home-guide-title">Tokyo</h3>
-                <p class="home-guide-tagline">Gökdelenlerin ve bin yıllık tapınakların büyüleyici uyumu</p>
+                <p class="home-guide-tagline">Futuristic skyline meets timeless shrine traditions</p>
                 <div class="home-guide-link">Rehberi Oku &rarr;</div>
             </div>
         </a>
         
         <a href="/tr/rehber/londra.html" class="home-guide-card">
-            <img src="../images/cities/londra.jpg" alt="Londra" loading="lazy">
+            <img src="../images/cities/londra.jpg" alt="London" loading="lazy">
             <div class="home-guide-overlay"></div>
             <div class="home-guide-content">
-                <div class="home-guide-badge">🇬🇧 İngiltere</div>
-                <h3 class="home-guide-title">Londra</h3>
-                <p class="home-guide-tagline">Ücretsiz müzeler, kraliyet parkları ve tarihi pub'lar</p>
+                <div class="home-guide-badge">🇬🇧 UK</div>
+                <h3 class="home-guide-title">London</h3>
+                <p class="home-guide-tagline">Free world-class museums, royal parks, and historic pubs</p>
                 <div class="home-guide-link">Rehberi Oku &rarr;</div>
             </div>
         </a>
         
         <a href="/tr/rehber/istanbul.html" class="home-guide-card">
-            <img src="../images/cities/istanbul.jpg" alt="İstanbul" loading="lazy">
+            <img src="../images/cities/istanbul.jpg" alt="Istanbul" loading="lazy">
             <div class="home-guide-overlay"></div>
             <div class="home-guide-content">
                 <div class="home-guide-badge">🇹🇷 Türkiye</div>
-                <h3 class="home-guide-title">İstanbul</h3>
-                <p class="home-guide-tagline">İki kıtanın birleştiği asırlık kültür ve lezzet başkenti</p>
+                <h3 class="home-guide-title">Istanbul</h3>
+                <p class="home-guide-tagline">Two continents united: rich history and culinary legacy</p>
                 <div class="home-guide-link">Rehberi Oku &rarr;</div>
             </div>
         </a>
         
         <a href="/tr/rehber/floransa.html" class="home-guide-card">
-            <img src="../images/cities/floransa.jpg" alt="Floransa" loading="lazy">
+            <img src="../images/cities/floransa.jpg" alt="Florence" loading="lazy">
             <div class="home-guide-overlay"></div>
             <div class="home-guide-content">
                 <div class="home-guide-badge">🇮🇹 İtalya</div>
-                <h3 class="home-guide-title">Floransa</h3>
-                <p class="home-guide-tagline">Rönesans'ın doğduğu açık hava müzesi ve şarap durakları</p>
+                <h3 class="home-guide-title">Florence</h3>
+                <p class="home-guide-tagline">The cradle of Renaissance art and Tuscan culinary stops</p>
                 <div class="home-guide-link">Rehberi Oku &rarr;</div>
             </div>
         </a>
@@ -598,18 +740,18 @@
             <div class="home-guide-content">
                 <div class="home-guide-badge">🇪🇸 İspanya</div>
                 <h3 class="home-guide-title">Madrid</h3>
-                <p class="home-guide-tagline">Canlı meydanlar, dünya çapında müzeler ve tapas geceleri</p>
+                <p class="home-guide-tagline">Bustling plazas, Prado masterpieces, and late-night tapas</p>
                 <div class="home-guide-link">Rehberi Oku &rarr;</div>
             </div>
         </a>
         
         <a href="/tr/rehber/venedik.html" class="home-guide-card">
-            <img src="../images/cities/venedik.jpg" alt="Venedik" loading="lazy">
+            <img src="../images/cities/venedik.jpg" alt="Venice" loading="lazy">
             <div class="home-guide-overlay"></div>
             <div class="home-guide-content">
                 <div class="home-guide-badge">🇮🇹 İtalya</div>
-                <h3 class="home-guide-title">Venedik</h3>
-                <p class="home-guide-tagline">Sular üzerindeki rüya: gondollar, köprüler ve gizli geçitler</p>
+                <h3 class="home-guide-title">Venice</h3>
+                <p class="home-guide-tagline">A floating dream: canal bridges and tucked-away bacari</p>
                 <div class="home-guide-link">Rehberi Oku &rarr;</div>
             </div>
         </a>
@@ -620,18 +762,18 @@
             <div class="home-guide-content">
                 <div class="home-guide-badge">🇩🇪 Almanya</div>
                 <h3 class="home-guide-title">Berlin</h3>
-                <p class="home-guide-tagline">Avrupa'nın yaratıcı başkenti, zengin tarih ve açık hava sanatı</p>
+                <p class="home-guide-tagline">Europe's creative capital, deep history, and open-air art</p>
                 <div class="home-guide-link">Rehberi Oku &rarr;</div>
             </div>
         </a>
         
         <a href="/tr/rehber/viyana.html" class="home-guide-card">
-            <img src="../images/cities/viyana.jpg" alt="Viyana" loading="lazy">
+            <img src="../images/cities/viyana.jpg" alt="Vienna" loading="lazy">
             <div class="home-guide-overlay"></div>
             <div class="home-guide-content">
                 <div class="home-guide-badge">🇦🇹 Avusturya</div>
-                <h3 class="home-guide-title">Viyana</h3>
-                <p class="home-guide-tagline">İmparatorluk sarayları, klasik müzik ve nostaljik kahvehaneler</p>
+                <h3 class="home-guide-title">Vienna</h3>
+                <p class="home-guide-tagline">Imperial palaces, classical symphonies, and coffee culture</p>
                 <div class="home-guide-link">Rehberi Oku &rarr;</div>
             </div>
         </a>
@@ -640,7 +782,7 @@
 
             <div class="home-guides-all-btn-wrap">
                 <a href="/tr/rehber/" class="hero-guides-btn">
-                    Tüm 112+ Şehir Rehberini Gör &rarr;
+                    Explore All 112+ City Guides &rarr;
                 </a>
             </div>
         </div>
@@ -650,26 +792,26 @@
     <section class="home-curation-section">
         <div class="container">
             <div style="text-align: center; max-width: 700px; margin: 0 auto;">
-                <span class="section-label">Yayın İlkelerimiz</span>
-                <h2 class="section-title">Neden MyWay Rehberleri Farklı?</h2>
-                <p class="section-subtitle" style="margin: 0 auto;">Sponsorlu reklamlardan ve yapay turist listelerinden arındırılmış, bağımsız seyahat kürasyonu.</p>
+                <span class="section-label">Our Editorial Standards</span>
+                <h2 class="section-title">Why MyWay Guides Are Different</h2>
+                <p class="section-subtitle" style="margin: 0 auto;">Zero sponsored fluff. Real local insights, verified maps, and authentic recommendations.</p>
             </div>
 
             <div class="curation-grid">
                 <div class="curation-card">
                     <div class="curation-icon">🛡️</div>
-                    <h3>Sıfır Turist Tuzağı</h3>
-                    <p>La Rambla'daki mikrodalga paellalar veya Roma'daki fahiş menüler yerine, yerlilerin gittiği gerçek lezzet duraklarını ve akıllı alternatifleri listeliyoruz.</p>
+                    <h3>Zero Tourist Traps</h3>
+                    <p>We call out overpriced tourist traps and direct you to the authentic local eateries where residents actually eat.</p>
                 </div>
                 <div class="curation-card">
                     <div class="curation-icon">⏱️</div>
-                    <h3>Saat Saat Optimize Rotalar</h3>
-                    <p>Şehirde rastgele kaybolmak yerine, yürüme mesafeleri ve açılış saatleri optimize edilmiş, enerjinizi koruyan akıllı günlük akışlar.</p>
+                    <h3>Optimized Daily Pacing</h3>
+                    <p>Designed around realistic walking times, opening hours, and neighborhood geography to save energy and time.</p>
                 </div>
                 <div class="curation-card">
                     <div class="curation-icon">🗺️</div>
-                    <h3>18.000+ Doğrulanmış Mekan</h3>
-                    <p>Tarihi anıtlardan saklı avlulara, butik kafelerden panoramik teraslara kadar her mekan bizzat küratörlerimiz tarafından incelendi.</p>
+                    <h3>18,000+ Verified Places</h3>
+                    <p>From iconic monuments to secluded courtyards and scenic rooftops, curated and verified for quality.</p>
                 </div>
             </div>
         </div>
@@ -678,9 +820,9 @@
     <!-- Screenshots Carousel -->
     <section class="screenshots" id="screenshots">
         <div class="container">
-            <span class="section-label">Uygulama Önizleme</span>
-            <h2 class="section-title">Uygulamayı İnceleyin</h2>
-            <p class="section-subtitle" style="margin: 0 auto;">Kişiselleştirilmiş önerilerden akıllı rota planlamaya — mükemmel bir seyahat için ihtiyacınız olan her şey.</p>
+            <span class="section-label">App Preview</span>
+            <h2 class="section-title">See It in Action</h2>
+            <p class="section-subtitle" style="margin: 0 auto;">From personalized discoveries to smart route planning — everything you need for the perfect trip.</p>
         </div>
 
         <div class="carousel-wrapper">
@@ -695,9 +837,9 @@
     <section class="features" id="features">
         <div class="container">
             <div class="features-header">
-                <span class="section-label">Neden MyWay</span>
-                <h2 class="section-title">Bir Şehri Gezmek İçin<br>İhtiyacınız Olan Her Şey</h2>
-                <p class="section-subtitle" style="margin: 0 auto;">Turist gibi değil, bir yerli gibi gezin. Seyahatinizi kolaylaştıran akıllı araçlarla keşfe başlayın.</p>
+                <span class="section-label">Why MyWay</span>
+                <h2 class="section-title">Everything You Need<br>to Explore a City</h2>
+                <p class="section-subtitle" style="margin: 0 auto;">Stop being a tourist. Start exploring like a local with tools that actually make a difference.</p>
             </div>
 
             <div class="features-grid">
@@ -706,8 +848,8 @@
                     <div class="feature-icon-wrap">
                         <img src="../images/icon_oneri.png" alt="AI Icon">
                     </div>
-                    <h3>Kişiselleştirilmiş Öneriler</h3>
-                    <p>MyWay seyahat tarzınızı öğrenir; sadece sizin ilgi alanlarınıza özel gizli lezzet duraklarını, tarihi mekanları ve saklı köşeleri önünüze getirir.</p>
+                    <h3>AI-Powered Suggestions</h3>
+                    <p>MyWay learns your travel style and curates hidden gems, local favorites, and secret spots tailored just for you. Personalized recommendations that go beyond any guidebook.</p>
                 </div>
 
                 <!-- Feature 2: Smart Routes -->
@@ -715,8 +857,8 @@
                     <div class="feature-icon-wrap">
                         <img src="../images/icon_myroute.png" alt="Routes Icon">
                     </div>
-                    <h3>Akıllı Günlük Rota Planlayıcı</h3>
-                    <p>Sürükle-bırak kolaylığıyla gün gün optimize edilmiş rotalar oluşturun. Yürüme sürelerini, mesafeleri ve günlük haritanızı tek ekranda görün.</p>
+                    <h3>Smart Route Builder</h3>
+                    <p>Build optimized multi-day itineraries with drag-and-drop simplicity. See walking times, distances, and daily maps at a glance.</p>
                 </div>
 
                 <!-- Feature 3: Ready Routes -->
@@ -724,8 +866,8 @@
                     <div class="feature-icon-wrap">
                         <img src="../images/icon_readyroute.png" alt="Ready Routes Icon">
                     </div>
-                    <h3>Hazır Tematik Rotalar</h3>
-                    <p>Şehrin ruhunu yansıtan uzman rotaları takip edin — Gotik Mahalle yürüyüşlerinden tarihi mimari ve lezzet turlarına kadar.</p>
+                    <h3>Ready-Made Routes</h3>
+                    <p>Follow expert-curated routes designed to show you the soul of each city — from Gothic Quarter walks to architecture trails.</p>
                 </div>
 
                 <!-- Feature 4: Nearby -->
@@ -733,8 +875,8 @@
                     <div class="feature-icon-wrap">
                         <img src="../images/icon_nearby.png" alt="Nearby Icon">
                     </div>
-                    <h3>Yakınımdaki Mekanlar</h3>
-                    <p>Bulunduğunuz konuma en yakın en iyi restoranları, kafeleri ve tarihi noktaları bulun. Kategoriye ve mesafeye göre kolayca filtreleyin.</p>
+                    <h3>Çevremdeki Mekanlar</h3>
+                    <p>Bulunduğunuz konuma en yakın en iyi restoran, kafe, bar ve tarihi yerleri anında görün.</p>
                 </div>
 
                 <!-- Feature 5: City Guides -->
@@ -742,8 +884,8 @@
                     <div class="feature-icon-wrap">
                         <img src="../images/icon_guide.png" alt="Guides Icon">
                     </div>
-                    <h3>Detaylı Şehir Rehberleri</h3>
-                    <p>Mevsimsel öneriler, yerel sırlar, turist tuzakları ve pratik ulaşım ipuçları içeren kapsamlı rehberler.</p>
+                    <h3>Kapsamlı Şehir Rehberleri</h3>
+                    <p>Mevsimsel öneriler, yerel sırlar, güvenlik tüyoları ve 112+ şehir için detaylı rehberler.</p>
                 </div>
 
                 <!-- Feature 6: Travel Profile -->
@@ -751,8 +893,8 @@
                     <div class="feature-icon-wrap">
                         <img src="../images/icon_profile.png" alt="Profile Icon">
                     </div>
-                    <h3>Seyahat Profili & Anılar</h3>
-                    <p>Gezdiğiniz şehirleri işaretleyin, anılarınızı kaydedin ve seyahat geçmişinizi oluşturun. Kişisel seyahat günlüğünüz her zaman cebinizde.</p>
+                    <h3>Seyahat Günlüğü</h3>
+                    <p>Ziyaret ettiğiniz yerleri kaydedin, seyahat anılarınızı biriktirin ve seyahat günlüğünüzü oluşturun.</p>
                 </div>
             </div>
         </div>
@@ -762,16 +904,16 @@
     <!-- CTA Section -->
     <section class="cta" id="cta">
         <div class="cta-content">
-            <span class="section-label">Keşfe Başlayın</span>
-            <h2 class="section-title">Kendi Tarzınızla<br><span class="gradient-text">Gezmeye Hazır Mısınız?</span></h2>
-            <p class="section-subtitle" style="margin: 0 auto 32px;">Zaman kaybetmeden, akıllıca gezen binlerce gezgine katılın. MyWay'i indirin ve bir sonraki maceranızı planlayın.</p>
+            <span class="section-label">Keşfetmeye Başlayın</span>
+            <h2 class="section-title">Kendi Yolunuzla<br><span class="gradient-text">Seyahat Edin</span></h2>
+            <p class="section-subtitle" style="margin: 0 auto 32px;">Zamanını boşa harcamadan, akıllıca gezen binlerce gezgine katılın. MyWay'i indirin ve maceranızı planlayın.</p>
             <div class="store-buttons">
                 <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="store-btn store-btn--apple">
                     <svg viewBox="0 0 24 24" fill="currentColor">
                         <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.17c.66-.81 1.11-1.93.99-3.06-1 .04-2.22.67-2.94 1.51-.64.73-1.2 1.88-1.05 2.99 1.12.09 2.26-.55 3-.14"/>
                     </svg>
                     <div class="store-btn-label">
-                        <small>Hemen İndirin</small>
+                        <small>Download on the</small>
                         <span>App Store</span>
                     </div>
                 </a>
@@ -780,7 +922,7 @@
                         <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58 33.3-60.1-60.1L472.2 216c16.2 9.3 16.2 27.9 0 37.2zm-96.6 86.3L104.6 499l220.7-126.7-60.1-60.4z"/>
                     </svg>
                     <div class="store-btn-label">
-                        <small>Hemen İndirin</small>
+                        <small>Get it on</small>
                         <span>Google Play</span>
                     </div>
                 </a>
@@ -794,7 +936,7 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <h4>MyWay Travel</h4>
-                    <p>Modern kaşifler için nihai seyahat arkadaşı. Keşfet, planla ve gez — hepsi tek bir uygulamada.</p>
+                    <p>Modern gezginler için en akıllı seyahat rehberi. Keşfet, planla, gez — hepsi tek uygulamada.</p>
                 </div>
                 <div class="footer-col">
                     <h5>Keşfet</h5>
@@ -807,15 +949,15 @@
                 <div class="footer-col">
                     <h5>Yasal</h5>
                     <ul>
-                        <li><a href="/tr/about.html">Hakkımızda</a></li>
-                        <li><a href="../privacy-tr.html">Gizlilik Politikası</a></li>
-                        <li><a href="../terms-tr.html">Kullanım Koşulları</a></li>
+                        <li><a href="../about.html">Hakkımızda</a></li>
+                        <li><a href="../privacy.html">Gizlilik Politikası</a></li>
+                        <li><a href="../terms.html">Kullanım Koşulları</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h5>İletişim</h5>
                     <ul>
-                        <li><a href="/tr/support.html">Destek</a></li>
+                        <li><a href="../support.html">Destek</a></li>
                         <li><a href="mailto:support@mywaytravelapp.com">support@mywaytravelapp.com</a></li>
                         <li><a href="https://www.instagram.com/mywaytravelapp/" target="_blank" rel="noopener">Instagram</a></li>
                     </ul>
@@ -823,7 +965,7 @@
             </div>
             <div class="footer-bottom">
                 <p>© 2026 MyWay Travel App. Tüm hakları saklıdır.</p>
-                <p>Dünya çapındaki tüm gezginler için özenle üretildi.</p>
+                <p>Tüm dünyadaki gezginler için özenle geliştirildi.</p>
             </div>
         </div>
     </footer>
