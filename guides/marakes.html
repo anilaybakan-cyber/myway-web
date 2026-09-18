@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Marrakech Public Transit & Airport Transfers</h2>
             </div>
             <p class="section-intro">The medina on foot, the rest by little beige taxis: distances are short — keep your haggling reflexes on.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Airport to the centre</span>
+                        <h3 class="card-title">Airport to the centre</h3>
                     </div>
                 </div>
                 <p class="card-desc">Menara is 20 minutes from town: fix the taxi price before boarding or book a riad transfer. Bus 19 is the budget friend — it calls at the square and Gueliz.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">The medina on foot</span>
+                        <h3 class="card-title">The medina on foot</h3>
                     </div>
                 </div>
                 <p class="card-desc">The square, the souks and the palaces are within walking distance; getting lost in the derbs is part of the programme. Mopeds squeeze through even the narrow lanes — walk to the side, keep an ear behind you.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚕</span>
-                        <span class="card-title">Petit taxi — the little beige ones</span>
+                        <h3 class="card-title">Petit taxi — the little beige ones</h3>
                     </div>
                 </div>
                 <p class="card-desc">The vehicle for short city hops: ask for the meter, and if it stays off, agree the price first. The night tariff is higher than the day&#x27;s — that&#x27;s normal; don&#x27;t normalise the outrageous.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🐎</span>
-                        <span class="card-title">The calèche — a carriage tour</span>
+                        <h3 class="card-title">The calèche — a carriage tour</h3>
                     </div>
                 </div>
                 <p class="card-desc">A carriage ride along the ramparts is a classic pleasure: fix route and price before boarding, and choose a carriage with well-kept horses. Timed to sunset, the tour paints the red walls ember-orange.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚐</span>
-                        <span class="card-title">Atlas and desert escapes</span>
+                        <h3 class="card-title">Atlas and desert escapes</h3>
                     </div>
                 </div>
                 <p class="card-desc">The Ourika Valley and Atlas villages are an hour away, the Agafay desert 45 minutes: plan a day with a small-group tour or private driver. Leaving the city doubles Marrakech.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Where to Stay in Marrakech: Best Areas</h2>
             </div>
             <p class="section-intro">In Marrakech you choose between two worlds: the riad serenity of the medina, or the poolside spaciousness of the new town?</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Medina — around the square</span>
+                    <h3 class="card-title">Medina — around the square</h3>
                     <span class="card-badge badge-purple">Most atmospheric</span>
                 </div>
                 <p class="card-desc">Riads within walking distance of Jemaa el-Fnaa and the souks: the city&#x27;s pulse at your doorstep. The square&#x27;s hum may reach you at night — the price of atmosphere, with a minaret view from the terrace as reward.</p>
-                <div class="card-footer-tip">Near the square • Riad terraces • The pulse at the door</div>
+                <div class="card-footer-tip">📍 Near the square • Riad terraces • The pulse at the door</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Medina — Kasbah and Mellah</span>
+                    <h3 class="card-title">Medina — Kasbah and Mellah</h3>
                     <span class="card-badge badge-purple">Most historic</span>
                 </div>
                 <p class="card-desc">The district of the Saadian tombs, palace ruins and the spice square: one notch calmer than the square&#x27;s bustle, dense with history. Stork nests on the ramparts are the neighbourhood&#x27;s signature.</p>
-                <div class="card-footer-tip">Saadian tombs • Spice square • Storks on the walls</div>
+                <div class="card-footer-tip">📍 Saadian tombs • Spice square • Storks on the walls</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Gueliz — the New Town</span>
+                    <h3 class="card-title">Gueliz — the New Town</h3>
                     <span class="card-badge badge-purple">Most modern</span>
                 </div>
                 <p class="card-desc">French-era boulevards, cafés, galleries and shopping: the airy base for those who want distance from the medina&#x27;s intensity. Walking distance to Majorelle, a short taxi to the medina.</p>
-                <div class="card-footer-tip">Boulevard cafés • Near Majorelle • Modern comfort</div>
+                <div class="card-footer-tip">📍 Boulevard cafés • Near Majorelle • Modern comfort</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Hivernage</span>
+                    <h3 class="card-title">Hivernage</h3>
                     <span class="card-badge badge-purple">Most comfortable</span>
                 </div>
                 <p class="card-desc">The district of large pool hotels and night clubs: palm-lined avenues, spas and quiet nights. For comfort-first travellers — five minutes to the medina by taxi.</p>
-                <div class="card-footer-tip">Pool hotels • Spa culture • Quiet nights</div>
+                <div class="card-footer-tip">📍 Pool hotels • Spa culture • Quiet nights</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">The Palmeraie and country hotels</span>
+                    <h3 class="card-title">The Palmeraie and country hotels</h3>
                     <span class="card-badge badge-purple">The escape base</span>
                 </div>
                 <p class="card-desc">Pool villas among the palm groves and desert camps towards Agafay: city by day, starlit silence by night. Works with a car or shuttle — a honeymoon classic.</p>
-                <div class="card-footer-tip">Palm grove • Starry nights • Poolside</div>
+                <div class="card-footer-tip">📍 Palm grove • Starry nights • Poolside</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Best Time to Visit Marrakech</h2>
             </div>
             <p class="section-intro">The red city&#x27;s calendar is written by the sun: spring and autumn gold, summer a furnace, winter a sunny-cool surprise.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Spring</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Mar – May</span>
+                        <h3 class="card-title">Spring</h3>
+                        <span class="season-months">Mar – May</span>
                     </div>
                     <span class="card-badge badge-amber">Orange Blossom Season</span>
                 </div>
                 <p class="card-desc">The gardens smell of orange blossom, snow still shines on the Atlas peaks, and the terraces are exactly right. Marrakech&#x27;s best-loved window — crowds and prices to match.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Summer</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Jun – Aug</span>
+                        <h3 class="card-title">Summer</h3>
+                        <span class="season-months">Jun – Aug</span>
                     </div>
                     <span class="card-badge badge-amber">The Furnace Months</span>
                 </div>
                 <p class="card-desc">The heat is serious: life moves to morning, night and the poolside. Prices fall and the square still fills at night — summer Marrakech is possible, provided the plan is built on shade and air-conditioning.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Autumn</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Sep – Nov</span>
+                        <h3 class="card-title">Autumn</h3>
+                        <span class="season-months">Sep – Nov</span>
                     </div>
                     <span class="card-badge badge-amber">Golden Light</span>
                 </div>
                 <p class="card-desc">The heat breaks in September; October-November is the city&#x27;s most balanced stretch: mild days, cool evenings, ideal for Atlas outings. The light turns to the tone photographers call &#x27;Marrakech gold&#x27;.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Winter</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Dec – Feb</span>
+                        <h3 class="card-title">Winter</h3>
+                        <span class="season-months">Dec – Feb</span>
                     </div>
                     <span class="card-badge badge-amber">Sunny Coolness</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🏺</span>
-                        <span class="card-title">Tanjia — the legend cooked in ash</span>
+                        <h3 class="card-title">Tanjia — the legend cooked in ash</h3>
                     </div>
                 </div>
                 <p class="card-desc">Meat slow-cooked in the urn falls apart in strands, the preserved-lemon scent wrapping the plate: a ritual of Marrakech, distinct from tagine. Ask for a place that makes the real thing — it&#x27;s served from the urn.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍲</span>
-                        <span class="card-title">The tagine variations</span>
+                        <h3 class="card-title">The tagine variations</h3>
                     </div>
                 </div>
                 <p class="card-desc">Lamb with prunes and almonds, chicken with lemon and olives, kefta with egg: under the conical lid every house tells a different story. Order at your riad the evening before — always a step ahead of the souk menu.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍢</span>
-                        <span class="card-title">The square&#x27;s stalls — a table of smoke</span>
+                        <h3 class="card-title">The square&#x27;s stalls — a table of smoke</h3>
                     </div>
                 </div>
                 <p class="card-desc">The hundred-stall open kitchen assembled each evening: skewers over coals, harira, snail soup. The crowded stall is the fresh stall — memorise its number and come back tomorrow night.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥗</span>
-                        <span class="card-title">Moroccan salads and zaalouk</span>
+                        <h3 class="card-title">Moroccan salads and zaalouk</h3>
                     </div>
                 </div>
                 <p class="card-desc">Smoky aubergine zaalouk, carrot taktouka, plates of olives: the colourful army that dresses the table before the main. Wiping with bread is the custom — the fork is optional.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍊</span>
-                        <span class="card-title">Square oranges and avocado shakes</span>
+                        <h3 class="card-title">Square oranges and avocado shakes</h3>
                     </div>
                 </div>
                 <p class="card-desc">The juice carts are the square&#x27;s daytime classic; the milk bars&#x27; avocado-almond shake is the locals&#x27; cooling secret. Both cost a few dirhams, both are legends.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍬</span>
-                        <span class="card-title">Mint tea and Moroccan sweets</span>
+                        <h3 class="card-title">Mint tea and Moroccan sweets</h3>
                     </div>
                 </div>
                 <p class="card-desc">Gazelle horns (kaab el ghazal), honey-dripping chebakia and almond-paste parcels: the tea ceremony&#x27;s sweet army. On a terrace, facing the sunset — state your sugar level at the start.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Everyone knows Majorelle; these six are the red city&#x27;s concealed courtyards.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Le Jardin Secret</span>
-                    <span class="card-badge badge-emerald">Paradise behind the walls</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Paradise behind the walls</span>
                 </div>
+                <h3 class="card-title">Le Jardin Secret</h3>
                 <p class="card-desc">A restored palace garden in the souk&#x27;s middle: the water channels of Islamic garden art, a cactus collection and medina rooftops from its tower. Two steps from the chaos, a mathematical serenity.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">The Maison de la Photographie terrace</span>
-                    <span class="card-badge badge-emerald">The city&#x27;s best roof</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ The city&#x27;s best roof</span>
                 </div>
+                <h3 class="card-title">The Maison de la Photographie terrace</h3>
                 <p class="card-desc">The museum of old Moroccan photographs is crowned by one of the medina&#x27;s finest terraces: see the collection, drink your tea on the roof, catch the Atlas on the horizon. Modest entry, generous view.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">The El Badi Palace ramparts</span>
-                    <span class="card-badge badge-emerald">A palace with morning storks</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ A palace with morning storks</span>
                 </div>
+                <h3 class="card-title">The El Badi Palace ramparts</h3>
                 <p class="card-desc">The giant ruin of the Saadian golden age: sunken pools, orange-tree pits and storks nesting on the walls. Go early — the storks&#x27; clatter comes before the crowds&#x27; chatter.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Bahia&#x27;s quiet rooms and the Saadian tombs at opening</span>
-                    <span class="card-badge badge-emerald">Splendour behind doors</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Splendour behind doors</span>
                 </div>
+                <h3 class="card-title">Bahia&#x27;s quiet rooms and the Saadian tombs at opening</h3>
                 <p class="card-desc">The Bahia Palace&#x27;s back courtyards and the Saadian tombs&#x27; tiled chambers are nearly empty at opening time: see the zellij and cedar ceilings without a queue. Buy the same ticket at noon and you buy the queue with it.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Rahba Kedima</span>
-                    <span class="card-badge badge-emerald">The locals&#x27; spice square</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ The locals&#x27; spice square</span>
                 </div>
+                <h3 class="card-title">Rahba Kedima</h3>
                 <p class="card-desc">The old grain square inside the main souk: spice pyramids, herbalists&#x27; shops and stalls of woven hats. The terrace cafés around it are the souk-fatigue&#x27;s official remedy.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">An Agafay dinner</span>
-                    <span class="card-badge badge-emerald">Sunset at the desert&#x27;s threshold</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Sunset at the desert&#x27;s threshold</span>
                 </div>
+                <h3 class="card-title">An Agafay dinner</h3>
                 <p class="card-desc">A stony desert plateau 45 minutes from town: tented camps, camel silhouettes and sunset tables against the Atlas. &#x27;The desert for those without time for the Sahara&#x27; — with the dinner + stars combination.</p>
             </div>
             </div>

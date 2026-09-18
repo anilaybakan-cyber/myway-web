@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Milano Şehir İçi Ulaşım & Transfer</h2>
             </div>
             <p class="section-intro">Milano&#x27;nun ulaşım ağı verimli ve kapsamlı. Metro hızlı, tramvaylar atmosferik ve tarihi merkez yaklaşık bir saatte yürünerek geçilebilecek kadar kompakt.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Malpensa (MXP) → Şehir Merkezi</span>
+                        <h3 class="card-title">Malpensa (MXP) → Şehir Merkezi</h3>
                     </div>
                 </div>
                 <p class="card-desc">Malpensa Express treni en iyi seçenek: Milano Centrale veya Cadorna&#x27;ya 50 dakikada direkt, her 30 dakikada bir sefer. Otobüsten çok daha hızlı ve konforlu. Malpensa&#x27;dan taksi çok pahalı ve trafikte benzer süre alıyor. Treni önceden rezerve etmek en avantajlı yol.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Linate (LIN) → Şehir Merkezi</span>
+                        <h3 class="card-title">Linate (LIN) → Şehir Merkezi</h3>
                     </div>
                 </div>
                 <p class="card-desc">2023&#x27;te açılan M4 metro hattı Linate&#x27;yi şehir merkezine yaklaşık 30 dakikada direkt bağlıyor; İtalya&#x27;nın en iyi havalimanı bağlantılarından biri. Sık aralıklarla çalışıyor ve Duomo&#x27;nun hemen yanındaki San Babila&#x27;ya ulaştırıyor. Taksiden çok daha ucuz ve hızlı.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚇</span>
-                        <span class="card-title">Metro</span>
+                        <h3 class="card-title">Metro</h3>
                     </div>
                 </div>
                 <p class="card-desc">Dört hat (M1 kırmızı, M2 yeşil, M3 sarı, M4 mavi) şehri iyi kaplıyor. Biletleri istasyon makinelerinden al; tekil bilet tüm yüzey ulaşımında (tramvay, otobüs) 90 dakika geçerli ama yalnızca tek metro yolculuğuna izin veriyor. Günlük kart dört ve üzeri yolculukta değer. Binmeden önce biletini geçerli kıl; denetmenler düzenli kontrol yapıyor.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚃</span>
-                        <span class="card-title">Tramvaylar — Milano&#x27;nun gizli keyfi</span>
+                        <h3 class="card-title">Tramvaylar — Milano&#x27;nun gizli keyfi</h3>
                     </div>
                 </div>
                 <p class="card-desc">Milano 1876&#x27;dan beri tramvay işletiyor; özgün turuncu vagonların bir kısmı hâlâ hizmet veriyor. Metrodan yavaş ama şehri sokak seviyesinde yaşatıyor. Duomo&#x27;dan Brera ve Porta Genova&#x27;ya uzanan 1 numaralı hat özellikle güzel bir güzergah. Metro ile aynı bilet geçerli. Otur ve şehri seyret.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">Yürüyüş — en iyi yol</span>
+                        <h3 class="card-title">Yürüyüş — en iyi yol</h3>
                     </div>
                 </div>
                 <p class="card-desc">Tarihi merkez yaklaşık 3 km çapında. Duomo&#x27;dan Castello Sforzesco&#x27;ya 15 dakika. Duomo&#x27;dan Santa Maria delle Grazie&#x27;ye (Son Akşam Yemeği) 20 dakika. Duomo&#x27;dan Navigli&#x27;ye 25 dakika. Yürümek metronun asla gösteremeyeceği şeyleri açıyor: gizli avlular, tramvay hatları, mahalle kafeleri. Her zaman önce yürü.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Nerede Kalınır? Milano Mahalleleri</h2>
             </div>
             <p class="section-intro">Milano&#x27;nun mahalleleri birbirinden keskin biçimde ayrışıyor. Doğru semt tamamen hangi şehri deneyimlemek istediğine bağlı.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Duomo &amp; Centro Storico</span>
+                    <h3 class="card-title">Duomo &amp; Centro Storico</h3>
                     <span class="card-badge badge-purple">En merkezi</span>
                 </div>
                 <p class="card-desc">Her şey yürüme mesafesinde: Duomo, Galleria, La Scala, Castello Sforzesco. Pahalı, turistik ve en yerel deneyim değil. Ama ilk kez gelip maksimum erişim isteyenler için konum tartışmasız. İki üç gece için buna değer.</p>
-                <div class="card-footer-tip">Maksimum erişim • Turistik • İlk kez gelenler için</div>
+                <div class="card-footer-tip">📍 Maksimum erişim • Turistik • İlk kez gelenler için</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Brera</span>
+                    <h3 class="card-title">Brera</h3>
                     <span class="card-badge badge-purple">En yaratıcı</span>
                 </div>
                 <p class="card-desc">Milano&#x27;nun sanat bölgesi ve en güzel mahallesi. Arnavut kaldırımlı sokaklar, Pinacoteca di Brera, bağımsız galeriler, şehrin en iyi aperitivo barları ve restoranları. Milanlı yaratıcıların yaşayıp yediği yer. Pahalı ama gerçekten güzel. Sadece gezip dolaşmak için şehrin en iyi mahallesi.</p>
-                <div class="card-footer-tip">En güzel • En iyi restoranlar • Sanat ve kültür</div>
+                <div class="card-footer-tip">📍 En güzel • En iyi restoranlar • Sanat ve kültür</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Navigli</span>
+                    <h3 class="card-title">Navigli</h3>
                     <span class="card-badge badge-purple">En atmosferik</span>
                 </div>
                 <p class="card-desc">Kanal bölgesi. Aperitivo merkezi, Pazar bit pazarı, bağımsız barlar ve restoranlar, gerçek mahalle hissi. Biraz ham ve kaba kenarlı; bu tam olarak amacı. Duomo&#x27;dan uzak ama tramvay bağlıyor. Gece vakti en Milanlı yer.</p>
-                <div class="card-footer-tip">Aperitivo başkenti • Kanal yürüyüşleri • En iyi gece hayatı</div>
+                <div class="card-footer-tip">📍 Aperitivo başkenti • Kanal yürüyüşleri • En iyi gece hayatı</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Isola &amp; Porta Nuova</span>
+                    <h3 class="card-title">Isola &amp; Porta Nuova</h3>
                     <span class="card-badge badge-purple">En yükselen</span>
                 </div>
                 <p class="card-desc">Milano&#x27;nun en ilginç karşıtlığı: Isola soylulaşmaya direnen ve fark etmeden havalı olan bir işçi mahallesi; Porta Nuova ise Bosco Verticale&#x27;nin (Dikey Orman) yükseldiği parlak finans bölgesi. İkisi birlikte Milano&#x27;nun iki yüzünü gösteriyor. Mükemmel ulaşım, gerçek yerel enerji, giderek daha iyi yemek.</p>
-                <div class="card-footer-tip">Bosco Verticale • Yerel enerji • En iyi değer</div>
+                <div class="card-footer-tip">📍 Bosco Verticale • Yerel enerji • En iyi değer</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Porta Romana &amp; Città Studi</span>
+                    <h3 class="card-title">Porta Romana &amp; Città Studi</h3>
                     <span class="card-badge badge-purple">En uygun fiyat</span>
                 </div>
                 <p class="card-desc">Merkezin güney ve doğusu: öğrenci mahalleleri, yerel trattolialar, harika kahve, turistik fiyat farkı yok. Ana noktalardan biraz uzak ama metro ile iyi bağlantılı. Milanlıların gerçekte yaşadığı yer. Özgün, uygun fiyatlı ve giderek daha ilgi çekici.</p>
-                <div class="card-footer-tip">En uygun fiyat • Öğrenci enerjisi • Yerel trattolialar</div>
+                <div class="card-footer-tip">📍 En uygun fiyat • Öğrenci enerjisi • Yerel trattolialar</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Milano İçin En İyi Ziyaret Zamanı</h2>
             </div>
             <p class="section-intro">Milano gerçek bir karasal iklime sahip: kavurucu yazlar, soğuk sisli kışlar ve her biri bambaşka bir şehir sunan iki ara mevsim. Moda haftaları şehri yılda iki kez baştan aşağı dönüştürüyor.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">İlkbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Mar – May</span>
+                        <h3 class="card-title">İlkbahar</h3>
+                        <span class="season-months">Mar – May</span>
                     </div>
                     <span class="card-badge badge-amber">En İyi Dönem</span>
                 </div>
                 <p class="card-desc">Nisan ve Mayıs Milano&#x27;nun zirvesi: ılık hava, Parco Sempione&#x27;de çiçekler, açık teraslar, kışın ardından yeniden nefes alan bir şehir. Moda kalabalığı çekilmiş, Milano yeniden kendine ait. Müze kuyrukları çekilebilir. Öğleden sonra geç saatlerde Duomo üzerindeki ışık olağanüstü. Milano Tasarım Haftası&#x27;na (Salone del Mobile, genellikle Nisan sonu) denk geliyorsan özellikle bu hafta için plan yap; tüm şehri ele geçiriyor.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Yaz</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Haz – Ağu</span>
+                        <h3 class="card-title">Yaz</h3>
+                        <span class="season-months">Haz – Ağu</span>
                     </div>
                     <span class="card-badge badge-amber">Sıcak ve Yerel</span>
                 </div>
                 <p class="card-desc">Temmuz ve Ağustos ciddi sıcaklar getiriyor; düzenli olarak 35°C&#x27;yi aşıyor ve nem yüksek. Milanlıların büyük kısmı sahile veya göllere çekiliyor. Ağustos&#x27;ta restoran ve dükkanlar kapanıyor. Ama şehirde kalanlar için başka türlü bir Milano açılıyor: gerçek sessizlik, düşen fiyatlar ve şehrin temposunu olduğu gibi yaşamak. Lago di Como ve Lago di Garda günübirlik gezi için her zaman erişilebilir.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Sonbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Eyl – Kas</span>
+                        <h3 class="card-title">Sonbahar</h3>
+                        <span class="season-months">Eyl – Kas</span>
                     </div>
                     <span class="card-badge badge-amber">Altın Haftalar</span>
                 </div>
                 <p class="card-desc">Eylül Milano Moda Haftası ile şehri en elektrik yüklü haline getiriyor. Kültür sezonu açılıyor, La Scala Aralık&#x27;ta perdesini kaldırıyor, büyük sergiler kapılarını açıyor. Ekim ve Kasım altın dönem: amber ışık, daha düşük fiyatlar ve şehir tam gaz. Kasım&#x27;dan itibaren sis (la nebbia) yerleşmeye başlıyor ve Milano&#x27;ya hiçbir başka İtalyan şehrin sahip olmadığı sinematik bir hava katıyor.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Kış</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Ara – Şub</span>
+                        <h3 class="card-title">Kış</h3>
+                        <span class="season-months">Ara – Şub</span>
                     </div>
                     <span class="card-badge badge-amber">Sisli ve Festif</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍚</span>
-                        <span class="card-title">Risotto alla Milanese — gerçek olanı</span>
+                        <h3 class="card-title">Risotto alla Milanese — gerçek olanı</h3>
                     </div>
                 </div>
                 <p class="card-desc">Safranla altın sarısına boyanmış, en az 18 dakika karıştırılmış risotto. Milano&#x27;nun en önemli yemeği ve bir kaza eseri: 1574&#x27;te Duomo&#x27;nun inşası sırasında, cam ustasının safran boyalarıyla çalışan çırağı, bir düğün risottosuna şaka olsun diye safran kattı. Misafirler bayıldı. Her yerde ısmarla, ama özellikle Navigli veya Brera&#x27;daki geleneksel trattoliada.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥩</span>
-                        <span class="card-title">Cotoletta alla Milanese — Wiener Schnitzel değil</span>
+                        <h3 class="card-title">Cotoletta alla Milanese — Wiener Schnitzel değil</h3>
                     </div>
                 </div>
                 <p class="card-desc">Kemikli dana pirzolası, ince dövülmüş, galeta unuyla kaplanmış ve tereyağında — zeytinyağında değil — kızartılmış. Avusturya&#x27;nın Wiener Schnitzel&#x27;inden yüzyıllarca önce icat edildi; Milanlılar bunu büyük bir ciddiyetle söyler. Kemik tutma yeri olmazsa olmaz. Gerçek bir Milanlı trattoliada tabağın kenarından sarkarak gelir. Tereddütsüz ısmarla.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥪</span>
-                        <span class="card-title">Mortadellalı panino — gerçek sokak yemeği</span>
+                        <h3 class="card-title">Mortadellalı panino — gerçek sokak yemeği</h3>
                     </div>
                 </div>
                 <p class="card-desc">Bologna krediyi alır ama Milano en iyi yapar: taze bir rosetta ekmeği, ortasından yarılmış, kâğıt inceliğinde dilimlenmiş mortadella ile doldurulmuş. Sabah saatlerinde herhangi bir iyi Milanlı fırında veya şarküteride bul. Neredeyse hiçbir şeye mal olmaz ve İtalya&#x27;da yiyeceğin en iyi şeylerden biri. Fazla düşünme.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍹</span>
-                        <span class="card-title">Campari — burada icat edildi</span>
+                        <h3 class="card-title">Campari — burada icat edildi</h3>
                     </div>
                 </div>
                 <p class="card-desc">Campari 1860&#x27;ta Gaspare Campari tarafından Galleria Vittorio Emanuele II&#x27;deki barında icat edildi. O bar, Camparino in Galleria adıyla hâlâ ayakta; dünyanın en tarihi barlarından biri. Campari Soda (klasik olan) veya Negroni ısmarla. Aperol gayet iyi; Campari Milanlıdır.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍷</span>
-                        <span class="card-title">Aperitivo — içki kılığına girmiş akşam yemeği</span>
+                        <h3 class="card-title">Aperitivo — içki kılığına girmiş akşam yemeği</h3>
                     </div>
                 </div>
                 <p class="card-desc">Her gün 18:00–20:00 arasında Milano&#x27;daki neredeyse her bar, her içkiyle birlikte büfe sunuyor. Kalite cips kasesinden sıcak makarna ve risotto tabağına kadar değişiyor. Navigli ve Isola&#x27;da bir içkinin bedeli karşılığında çok iyi yenebiliyor. Milanlılar hafta içi böyle yiyor. Katıl.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">☕</span>
-                        <span class="card-title">Kahve — Milanlı kuralları</span>
+                        <h3 class="card-title">Kahve — Milanlı kuralları</h3>
                     </div>
                 </div>
                 <p class="card-desc">Milano İtalya&#x27;nın en zengin kahve kültürlerinden birine sahip. Montenapoleone&#x27;deki Caffè Cova (1817&#x27;den beri) ve Corso Giacomo Matteotti&#x27;deki Sant&#x27;Ambroeus tarihi kurumlar. Tezgah başında iç; oturmak çok daha pahalı. Öğün sonrasında espresso; cappuccino yalnızca öğleden önce. Bunlar öneri değil.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Milano en iyi şeylerini işaretsiz kapıların arkasına, özel avlulara ve lüks binaların altına saklıyor. Bu şehir meraklıyı ödüllendiriyor.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Villa Invernizzi — Via Cappuccini</span>
-                    <span class="card-badge badge-emerald">Şehir merkezinde flamingolar — özel bahçe, kamusal görünüm</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Şehir merkezinde flamingolar — özel bahçe, kamusal görünüm</span>
                 </div>
+                <h3 class="card-title">Villa Invernizzi — Via Cappuccini</h3>
                 <p class="card-desc">Porta Venezia metrosundan iki dakika yürüyüşle, Via Cappuccini&#x27;deki bir demir kapının arkasında, Invernizzi ailesine ait özel bahçede onlarca yıldır bir pembe flamingo kolonisi yaşıyor. Yerel halk sabah işe giderken parmak aralıklarından bakıyor. Ziyaretçilerin büyük çoğunluğu hiç bulamıyor. Kapının önünde dur, içeri bak ve büyük bir Avrupa şehrinin tam ortasında olduğunu hatırla.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Ca&#x27; de l&#x27;Oreggia — Via Serbelloni 10</span>
-                    <span class="card-badge badge-emerald">Bir duvardaki bronz kulak — Milano&#x27;nun en tuhaf kapı zili</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Bir duvardaki bronz kulak — Milano&#x27;nun en tuhaf kapı zili</span>
                 </div>
+                <h3 class="card-title">Ca&#x27; de l&#x27;Oreggia — Via Serbelloni 10</h3>
                 <p class="card-desc">Via Serbelloni&#x27;de, Villa Necchi Campiglio&#x27;nun yanı başında, Palazzo Sola Busca&#x27;nın duvarından bronz bir insan kulağı fırlamış. Dünyanın ilk interkomlarından biri; 1930&#x27;larda Art Nouveau heykeltıraş Adolfo Wildt tarafından kulak biçiminde tasarlandı. Bina, Milanca diyalektte &#x27;Ca&#x27; de l&#x27;Oreggia&#x27; yani Kulak Evi adıyla tanındı. Milanlı işlevselliğin güzelliğe nasıl dönüştüğünü anlatan küçük ve mükemmel bir detay.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">San Bernardino alle Ossa — Piazza Santo Stefano</span>
-                    <span class="card-badge badge-emerald">Tamamen insan kemiklerinden yapılmış bir şapel</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Tamamen insan kemiklerinden yapılmış bir şapel</span>
                 </div>
+                <h3 class="card-title">San Bernardino alle Ossa — Piazza Santo Stefano</h3>
                 <p class="card-desc">Duomo&#x27;dan birkaç adım ötede, Piazza Santo Stefano&#x27;daki bir kapıdan girilince duvarları ve tavanı 17. yüzyılda yanı başındaki taşan mezarlıktan toplanan insan kafatası ve kemiklerle tamamen kaplı küçük bir şapel çıkıyor karşına. Etkisi olağanüstü: ürkütücüden çok ortaçağ, felsefi ve derinden tuhaf. Hiçbir turist haritası buraya yönlendirmiyor. Giriş ücretsiz.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Vigna di Leonardo — Casa degli Atellani</span>
-                    <span class="card-badge badge-emerald">Leonardo&#x27;nun bağı — hâlâ şarap üretiyor</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Leonardo&#x27;nun bağı — hâlâ şarap üretiyor</span>
                 </div>
+                <h3 class="card-title">Vigna di Leonardo — Casa degli Atellani</h3>
                 <p class="card-desc">Leonardo da Vinci&#x27;ye 1498&#x27;de, Son Akşam Yemeği&#x27;ni bitirmesinden iki yıl önce, Ludovico Sforza tarafından bir Milano bağı hediye edildi. İkinci Dünya Savaşı bombardımanında yok olan bağ, hayatta kalan kökün DNA analizi kullanılarak orijinal Malvasia üzümü yeniden yaratılıp titizlikle restore edildi. Bugün yılda yaklaşık 350 şişe üretiyor. Bağı ve tarihi evi ziyaret edebilirsin. Önceden rezervasyon şart.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Labirinto di Arnaldo Pomodoro — Via Solari</span>
-                    <span class="card-badge badge-emerald">Fendi binasının altındaki labirent</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Fendi binasının altındaki labirent</span>
                 </div>
+                <h3 class="card-title">Labirinto di Arnaldo Pomodoro — Via Solari</h3>
                 <p class="card-desc">Via Solari&#x27;deki Fendi binasının altında, sanatçı Arnaldo Pomodoro bronz, metal ve fiberglastan oluşan yeraltı bir heykel labirenti yarattı. Arkaik sembollerle ve hem kadim hem fütüristik hissettiren yüzeylerle işlenmiş odalar ağı boyunca ilerleyerek geçiyorsun. İtalya&#x27;daki en olağanüstü sanat deneyimlerinden biri. Küçük gruplar halinde, önceden rezervasyon zorunlu; Fondazione Arnaldo Pomodoro bünyesinde.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Duomo Çatı Terasları</span>
-                    <span class="card-badge badge-emerald">Duomo çatısı — neredeyse hiç kimse çıkmıyor</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Duomo çatısı — neredeyse hiç kimse çıkmıyor</span>
                 </div>
+                <h3 class="card-title">Duomo Çatı Terasları</h3>
                 <p class="card-desc">Duomo&#x27;nun 135 kulesi, 3.400 heykeli ve çok az ziyaretçinin ulaştığı çatı terasları var. Mermer zirveler arasında göz hizasında yürüyorsun; tüm şehir ayaklarının altında uzanıyor, açık günlerde Alpler görünüyor. Asansör ve merdiven seçenekleri mevcut. En iyi ışık için öğleden sonra geç saatlerini tercih et. Duomo içinden ayrı bir bilet gerekiyor; çok değer.</p>
             </div>
             </div>

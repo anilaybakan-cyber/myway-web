@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Valencia Public Transit & Airport Transfers</h2>
             </div>
             <p class="section-intro">Valencia is small and flat. Cycling is the best option for getting around. For metro and bus, use the SUMA card system.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Airport → City</span>
+                        <h3 class="card-title">Airport → City</h3>
                     </div>
                 </div>
                 <p class="card-desc">Metro Line 3 or Line 5 takes you from the airport to the city centre in about 20 minutes. Ticket €5.60 — airport surcharge included. Taxi to the centre around €20-25. Metro is easily the most practical option. SUMA card is valid on the airport line but the airport surcharge is paid separately.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚇</span>
-                        <span class="card-title">Metro and tram</span>
+                        <h3 class="card-title">Metro and tram</h3>
                     </div>
                 </div>
                 <p class="card-desc">5 metro lines and 4 tram lines under the Metrovalencia network. SUMA card (card itself €1.10) valid on all lines. Single fare approximately €1.50, 10-trip SUMA for Zone A €8.90. Runs from 5am to 1am, 24 hours on Friday and Saturday nights. The centre, Ruzafa, beach and City of Arts and Sciences are all reachable by metro or tram.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚌</span>
-                        <span class="card-title">EMT Buses</span>
+                        <h3 class="card-title">EMT Buses</h3>
                     </div>
                 </div>
                 <p class="card-desc">Over 200 routes covering every corner of the city. Same SUMA card system applies. Cash payment on the bus is possible but slightly more expensive (€2). Night routes run after the metro closes. Bus is the most practical option for El Cabanyal and some coastal points.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚲</span>
-                        <span class="card-title">Valenbisi — bike sharing</span>
+                        <h3 class="card-title">Valenbisi — bike sharing</h3>
                     </div>
                 </div>
                 <p class="card-desc">275 stations and 2,750 bikes across the city. Annual subscription €25, daily €3.60. First 30 minutes free, hourly rate after that. Payment by contactless bank card at the station. Ideal for cycling along the Turia Gardens, to the beaches and around Ruzafa. The flat city makes it easy going.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">Walking</span>
+                        <h3 class="card-title">Walking</h3>
                     </div>
                 </div>
                 <p class="card-desc">Valencia&#x27;s centre is small and walkable. From the Mercado Central: Cathedral 5 minutes, Turia Gardens entrance 10 minutes, Ruzafa 20 minutes. City of Arts and Sciences is 45 minutes on foot from the centre — long but a beautiful route through the Turia Gardens. Choose shaded routes on hot summer days.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Where to Stay in Valencia: Best Areas</h2>
             </div>
             <p class="section-intro">Location matters in Valencia but the city is small enough that everywhere is easily accessible from everywhere.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Ciutat Vella — historic centre</span>
+                    <h3 class="card-title">Ciutat Vella — historic centre</h3>
                     <span class="card-badge badge-purple">Most central</span>
                 </div>
                 <p class="card-desc">Cathedral, Mercado Central, La Lonja and El Carmen neighbourhood are all in this area. Walking distance to everything. Busy and touristy but the right place to experience Valencia&#x27;s historic fabric. Staying in El Carmen means being close to nightlife — though equally close to morning noise.</p>
-                <div class="card-footer-tip">Cathedral and Mercado Central • El Carmen nightlife • Historic fabric</div>
+                <div class="card-footer-tip">📍 Cathedral and Mercado Central • El Carmen nightlife • Historic fabric</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Ruzafa (Russafa)</span>
+                    <h3 class="card-title">Ruzafa (Russafa)</h3>
                     <span class="card-badge badge-purple">Most lively</span>
                 </div>
                 <p class="card-desc">Creative neighbourhood — cafés, restaurants, bars and art galleries. Weekend Mercado de Ruzafa and an evening vermouth culture. 20 minutes on foot or 10 minutes to the metro. The best option for experiencing Valencia like a local.</p>
-                <div class="card-footer-tip">Mercado de Ruzafa • Vermouth culture • Art and cafés</div>
+                <div class="card-footer-tip">📍 Mercado de Ruzafa • Vermouth culture • Art and cafés</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">El Cabanyal</span>
+                    <h3 class="card-title">El Cabanyal</h3>
                     <span class="card-badge badge-purple">Most beachside</span>
                 </div>
                 <p class="card-desc">5 minutes&#x27; walk to the beach. Former fishing neighbourhood, now home to artists and young families. Colourful azulejo-tiled houses, narrow streets. The neighbourhood was saved from demolition and is now a protected area. 20 minutes to the centre by tram.</p>
-                <div class="card-footer-tip">5 minutes to beach • Fishing neighbourhood character • Azulejo architecture</div>
+                <div class="card-footer-tip">📍 5 minutes to beach • Fishing neighbourhood character • Azulejo architecture</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Ensanche</span>
+                    <h3 class="card-title">Ensanche</h3>
                     <span class="card-badge badge-purple">Most modern</span>
                 </div>
                 <p class="card-desc">Elegantly planned neighbourhood from the 19th century — wide boulevards, Modernist buildings, Mercado de Colón. Close to business, quiet but lively. Borders Ruzafa.</p>
-                <div class="card-footer-tip">Mercado de Colón • Modernist architecture • Wide boulevards</div>
+                <div class="card-footer-tip">📍 Mercado de Colón • Modernist architecture • Wide boulevards</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Near City of Arts and Sciences</span>
+                    <h3 class="card-title">Near City of Arts and Sciences</h3>
                     <span class="card-badge badge-purple">Architectural experience</span>
                 </div>
                 <p class="card-desc">Santiago Calatrava&#x27;s futuristic structures — L&#x27;Hemisfèric, Museu de les Ciències, L&#x27;Oceanogràfic — are in this area. Staying here means you can see the buildings in their quiet early-morning state before the crowds arrive. 15 minutes to the centre by tram.</p>
-                <div class="card-footer-tip">Calatrava architecture • L&#x27;Oceanogràfic • End of Turia Gardens</div>
+                <div class="card-footer-tip">📍 Calatrava architecture • L&#x27;Oceanogràfic • End of Turia Gardens</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Best Time to Visit Valencia</h2>
             </div>
             <p class="section-intro">Valencia is sunny year-round but each season offers a different city.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Spring</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Mar – May</span>
+                        <h3 class="card-title">Spring</h3>
+                        <span class="season-months">Mar – May</span>
                     </div>
                     <span class="card-badge badge-amber">Las Fallas and the city in bloom</span>
                 </div>
                 <p class="card-desc">March begins with Las Fallas — the city&#x27;s biggest festival runs 12-19 March. April and May are festival-free but ideal: temperatures 18-24°C, the scent of orange blossom in the air, crowds below summer levels. Semana Santa brings religious processions in April. This period offers the chance to see Valencia both at its most festive and at its most peaceful.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Summer</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Jun – Aug</span>
+                        <h3 class="card-title">Summer</h3>
+                        <span class="season-months">Jun – Aug</span>
                     </div>
                     <span class="card-badge badge-amber">Beach season and nightlife</span>
                 </div>
                 <p class="card-desc">July and August are hot but not as crowded as Barcelona. Beaches — La Malvarrosa and Les Arenes — quiet on weekdays, busy on weekends. Nightlife runs late: dinner at 10pm, bars open until 3am. Feria de Julio brings concerts across the city. Before 10am and after 7pm the heat becomes bearable.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Autumn</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Sep – Nov</span>
+                        <h3 class="card-title">Autumn</h3>
+                        <span class="season-months">Sep – Nov</span>
                     </div>
                     <span class="card-badge badge-amber">Second best time</span>
                 </div>
                 <p class="card-desc">September and October are Valencia&#x27;s most comfortable period. Summer crowds gone, temperatures still 20-25°C, swimming in the sea still possible. Orange harvest begins. 9 October is Valencia&#x27;s Day of the Valencian Community — the official regional holiday celebrated since 1238, with processions, traditional costumes and flower offerings; an authentic local celebration even if not as large as Las Fallas. Rain increases from November but the city is quiet and prices are low.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Winter</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Dec – Feb</span>
+                        <h3 class="card-title">Winter</h3>
+                        <span class="season-months">Dec – Feb</span>
                     </div>
                     <span class="card-badge badge-amber">Quiet and sunny</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥘</span>
-                        <span class="card-title">Paella Valenciana</span>
+                        <h3 class="card-title">Paella Valenciana</h3>
                     </div>
                 </div>
                 <p class="card-desc">The city&#x27;s most iconic dish and also its most adulterated. If there are 10 types of paella on the menu, a photo menu, or they&#x27;re serving it in the evening — don&#x27;t go in. Real paella is a lunch dish, cooked over wood fire, taking 40-50 minutes. La Pepica (on Malvarrosa beach, since 1898) or restaurants in El Palmar village are the most reliable options. €15-25 per person.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥛</span>
-                        <span class="card-title">Orxata con fartons</span>
+                        <h3 class="card-title">Orxata con fartons</h3>
                     </div>
                 </div>
                 <p class="card-desc">A sweet, cold drink made from chufa (tiger nuts). No milk, gluten-free and vegan. Alongside it, a farton — a long, lightly sweet roll made specifically for dipping into it. Between 5pm and 7pm, Valencians sit down for this pair. Try Horchatería Santa Catalina or anywhere with an &#x27;orxata artesana&#x27; sign. Stay well away from the pasteurised supermarket version.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥂</span>
-                        <span class="card-title">Agua de Valencia</span>
+                        <h3 class="card-title">Agua de Valencia</h3>
                     </div>
                 </div>
                 <p class="card-desc">Fresh orange juice, cava (Spanish sparkling wine), vodka or gin, sugar — Valencia&#x27;s cocktail, served in a large jug. Invented in 1959 at Café Madrid. The real version made with fresh orange juice is completely different from the tourist version made with concentrate. The price tells you: €8-12 per jug.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🦑</span>
-                        <span class="card-title">Tapas — in El Cabanyal</span>
+                        <h3 class="card-title">Tapas — in El Cabanyal</h3>
                     </div>
                 </div>
                 <p class="card-desc">El Cabanyal is Valencia&#x27;s former fishing neighbourhood — the freshest seafood in the city comes from here. Clóchinas (Valencia&#x27;s own small, intensely flavoured mussels, May-August season), coquilles (scallops) and pulpo (octopus) are the classics here. Bar Casa Montaña has been open since 1836 — small plates €3-5, excellent wine selection.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🫔</span>
-                        <span class="card-title">Buñuelo</span>
+                        <h3 class="card-title">Buñuelo</h3>
                     </div>
                 </div>
                 <p class="card-desc">Deep-fried dough ball — crispy on the outside, soft inside. The sweet version is served with icing sugar. €1-2 at stalls inside Mercado Central or on the street. A breakfast or mid-morning snack. Found everywhere during Las Fallas.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍚</span>
-                        <span class="card-title">Arroz al horno</span>
+                        <h3 class="card-title">Arroz al horno</h3>
                     </div>
                 </div>
                 <p class="card-desc">Paella&#x27;s sibling but very different: rice baked in the oven with chickpeas, aubergine, tomatoes, sausage and pork ribs, served in a clay pot. A winter dish — October to March. It lives in paella&#x27;s shadow but is every bit as delicious.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Valencia&#x27;s best corners are usually two streets away or just outside the city.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Estación del Norte</span>
-                    <span class="card-badge badge-emerald">Tourists constantly walk past Spain&#x27;s most beautiful train station</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Tourists constantly walk past Spain&#x27;s most beautiful train station</span>
                 </div>
+                <h3 class="card-title">Estación del Norte</h3>
                 <p class="card-desc">A Modernist train station built in 1917 — one of Valencia&#x27;s most important architectural buildings, yet most visitors walk past without going inside. Stained glass windows, ceramic panels and ironwork decorated with orange blossom, orange trees and Valencian symbols. Valencia&#x27;s agricultural culture is embedded in this building&#x27;s walls. Go inside even if you&#x27;re not catching a train.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Jardines del Turia</span>
-                    <span class="card-badge badge-emerald">Turia Gardens — former riverbed, now a 9km park</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Turia Gardens — former riverbed, now a 9km park</span>
                 </div>
+                <h3 class="card-title">Jardines del Turia</h3>
                 <p class="card-desc">After the 1957 flood disaster, the Turia riverbed was drained and turned into a 9-kilometre green corridor running right through the heart of the city. Cycling paths, walking trails, playgrounds and Gulliver Park all along this corridor. Valencians run here, cycle, have picnics. Completely free.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Albufera Lake</span>
-                    <span class="card-badge badge-emerald">Albufera Lake — the true home of paella and a flamingo paradise</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Albufera Lake — the true home of paella and a flamingo paradise</span>
                 </div>
+                <h3 class="card-title">Albufera Lake</h3>
                 <p class="card-desc">20 kilometres south of Valencia, a freshwater lake separated from the Mediterranean by natural sand barriers. A 21,000-hectare natural park. El Palmar village sits in the middle of the lake and can be explored by wooden boat. At sunset the lake turns red — a spectacular sight. Just 40 minutes by bus from the city centre.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">El Carmen neighbourhood</span>
-                    <span class="card-badge badge-emerald">El Carmen — a medieval neighbourhood still alive at midnight</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ El Carmen — a medieval neighbourhood still alive at midnight</span>
                 </div>
+                <h3 class="card-title">El Carmen neighbourhood</h3>
                 <p class="card-desc">Narrow streets enclosed by medieval walls inside Ciutat Vella. Artist studios, alternative cafés and street art by day; bars and live music venues by night. Torres de Serranos offers one of the city&#x27;s finest panoramas — free. Quietest in the early morning hours; nightlife peaks on Friday and Saturday.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">La Lonja de la Seda (Silk Exchange)</span>
-                    <span class="card-badge badge-emerald">La Lonja de la Seda — UNESCO&#x27;s greatest gift to Valencia</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ La Lonja de la Seda — UNESCO&#x27;s greatest gift to Valencia</span>
                 </div>
+                <h3 class="card-title">La Lonja de la Seda (Silk Exchange)</h3>
                 <p class="card-desc">Built between 1482 and 1548, a UNESCO World Heritage Site. One of Spain&#x27;s finest examples of late Gothic architecture. The spiral columns and vaulted ceiling of the Salon de Contratación tell the story of Valencia&#x27;s golden age of trade. 3 minutes&#x27; walk from the Mercado Central, with a fraction of the crowds.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Bioparc Valencia</span>
-                    <span class="card-badge badge-emerald">Bioparc — not a zoo, but a window onto the African savannah</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Bioparc — not a zoo, but a window onto the African savannah</span>
                 </div>
+                <h3 class="card-title">Bioparc Valencia</h3>
                 <p class="card-desc">At the western end of the Turia Gardens. Not a traditional caged zoo — all animals are in open areas that replicate their natural habitats, at the same observation level as visitors. Gorillas, chimpanzees, elephants and hippos observed this way is a different experience altogether. Valencia&#x27;s finest activity for children, though adults are equally captivated.</p>
             </div>
             </div>

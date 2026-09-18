@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Lisbon Public Transit & Airport Transfers</h2>
             </div>
             <p class="section-intro">The metro is fast, trams are beautiful but slow, the ferry is scenic. And walking — in Lisbon, really walking is the most beautiful way to discover everything.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Airport → City</span>
+                        <h3 class="card-title">Airport → City</h3>
                     </div>
                 </div>
                 <p class="card-desc">The red metro line (Aeroporto station) connects directly to Baixa-Chiado — about 25 minutes, no surcharge. Use your Viva Viagem card for a standard fare. Taxis and Uber are also available; 15-20 minutes to the centre, €10-15 depending on traffic. The metro is the most practical option: cheaper than a taxi, faster than a bus.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚇</span>
-                        <span class="card-title">Metro — fast and reliable</span>
+                        <h3 class="card-title">Metro — fast and reliable</h3>
                     </div>
                 </div>
                 <p class="card-desc">4 lines (blue, yellow, green, red), 56 stations. Single fare €1.80. With zapping (pre-loaded credit), each journey is €1.47. Runs from 6:30am to 1:00am. Viva Viagem card costs €0.50 — bought once and reloaded repeatedly. The airport, Baixa, Chiado, Marquês de Pombal and Oriente are all on the metro lines.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚋</span>
-                        <span class="card-title">Trams and elevators</span>
+                        <h3 class="card-title">Trams and elevators</h3>
                     </div>
                 </div>
                 <p class="card-desc">Tram 28E has a beautiful route but is not recommended due to tourist crowds and pickpocket risk. Tram 15E goes to Belém — more modern, less crowded, the better choice. The elevadores are a completely different experience: Elevador da Bica, Elevador da Glória and Elevador de Santa Justa — valid with the Viva Viagem card.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">⛴️</span>
-                        <span class="card-title">Tagus Ferry — the city&#x27;s finest view</span>
+                        <h3 class="card-title">Tagus Ferry — the city&#x27;s finest view</h3>
                     </div>
                 </div>
                 <p class="card-desc">From Cais do Sodré pier to Cacilhas: just €1.30, 10 minutes. From the other side you see the Lisbon skyline, the Ponte 25 de Abril bridge and the Cristo Rei statue. Most beautiful at sunset.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">Walking — and the reality of the hills</span>
+                        <h3 class="card-title">Walking — and the reality of the hills</h3>
                     </div>
                 </div>
                 <p class="card-desc">Lisbon has seven hills and they really are steep. Comfortable, non-slip shoes are essential — cobblestones become like an ice rink when wet. The centre is small: Baixa to Alfama on foot is 20 minutes, Chiado to Bairro Alto is 5 minutes. But budget time and breath for climbing to Graça or the heights of Alfama.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Where to Stay in Lisbon: Best Areas</h2>
             </div>
             <p class="section-intro">Where you stay in Lisbon determines how many hills you&#x27;ll climb. The centre is practical, Alfama characterful, Príncipe Real elegant.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Baixa / Chiado</span>
+                    <h3 class="card-title">Baixa / Chiado</h3>
                     <span class="card-badge badge-purple">Most central</span>
                 </div>
                 <p class="card-desc">The flat ground of the city. Baixa is busy with shopping streets and Praça do Comércio; Chiado right beside it is far more refined — bookshops, cafés, Livraria Bertrand. Close to the metro, trams and ferry. Walking distance to everything. Busy but the right choice if you want to be central.</p>
-                <div class="card-footer-tip">Close to everything • Chiado&#x27;s cultural life • Metro connections</div>
+                <div class="card-footer-tip">📍 Close to everything • Chiado&#x27;s cultural life • Metro connections</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Alfama</span>
+                    <h3 class="card-title">Alfama</h3>
                     <span class="card-badge badge-purple">Most characterful</span>
                 </div>
                 <p class="card-desc">Lisbon&#x27;s oldest neighbourhood, dating from the Moorish period. Narrow streets, azulejo-clad buildings, laundry hanging from windows, cats on every corner. São Jorge Castle at the top. Fado lives here — at night music seeps through doorways. Touristic but still a living neighbourhood. Steep and tiring — but something different at every step.</p>
-                <div class="card-footer-tip">Heart of fado • São Jorge Castle • Historic fabric</div>
+                <div class="card-footer-tip">📍 Heart of fado • São Jorge Castle • Historic fabric</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Príncipe Real</span>
+                    <h3 class="card-title">Príncipe Real</h3>
                     <span class="card-badge badge-purple">Most elegant</span>
                 </div>
                 <p class="card-desc">Elegant buildings, tree-lined squares, design shops and good restaurants. An organic market sets up at Praça do Príncipe Real on Sundays. Walking distance to Bairro Alto and Chiado. Lisbon&#x27;s quietest and most refined neighbourhood.</p>
-                <div class="card-footer-tip">Organic market • Design shops • Quiet and elegant</div>
+                <div class="card-footer-tip">📍 Organic market • Design shops • Quiet and elegant</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Mouraria / Intendente</span>
+                    <h3 class="card-title">Mouraria / Intendente</h3>
                     <span class="card-badge badge-purple">Most authentic</span>
                 </div>
                 <p class="card-desc">Just below Alfama, the neighbourhood where the Moors settled after being expelled from Lisbon. Multicultural, noisy, colourful — Portuguese, African and Asian communities here. Fado has its roots here too — the first voices rose in these streets. Intendente square comes alive at night. Not touristic; real Lisbon life flows through these neighbourhoods.</p>
-                <div class="card-footer-tip">Multicultural • Roots of fado • Nightlife</div>
+                <div class="card-footer-tip">📍 Multicultural • Roots of fado • Nightlife</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Belém</span>
+                    <h3 class="card-title">Belém</h3>
                     <span class="card-badge badge-purple">Historic district</span>
                 </div>
                 <p class="card-desc">6 kilometres from the centre, by tram 15E or train. The Jerónimos Monastery, Tower of Belém and Monument to the Discoveries are here. The original Pastéis de Belém is here — Rua de Belém 84-92, since 1837. The queue is long but moves fast. If you want to try them in the city centre, Manteigaria (Chiado) is at least as good. Try to plan a separate day for a museum visit.</p>
-                <div class="card-footer-tip">Jerónimos Monastery • Pastéis de Belém • Historic monuments</div>
+                <div class="card-footer-tip">📍 Jerónimos Monastery • Pastéis de Belém • Historic monuments</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Best Time to Visit Lisbon</h2>
             </div>
             <p class="section-intro">Lisbon can be visited year-round but is at its best when it&#x27;s neither too cold nor too hot.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Spring</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Mar – Jun</span>
+                        <h3 class="card-title">Spring</h3>
+                        <span class="season-months">Mar – Jun</span>
                     </div>
                     <span class="card-badge badge-amber">The best time</span>
                 </div>
                 <p class="card-desc">May and June are Lisbon&#x27;s most beautiful months. Jacaranda trees burst into purple blossom in May — Avenida Fontes Pereira de Melo and Príncipe Real are the best places to start. The weather is mild, sunny but not overwhelming. In June, Festas de Santo António — the city&#x27;s biggest festival, sardine grills, street music, processions.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Summer</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Jul – Aug</span>
+                        <h3 class="card-title">Summer</h3>
+                        <span class="season-months">Jul – Aug</span>
                     </div>
                     <span class="card-badge badge-amber">Hot but breezy</span>
                 </div>
                 <p class="card-desc">July and August are the busiest months. Temperatures reach 30-35°C but the Atlantic breeze keeps it from feeling oppressive. Sardine season runs May to August. Museums are crowded, restaurants need bookings. For beaches, Cascais and Estoril are 40 minutes by train.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Autumn</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Sep – Nov</span>
+                        <h3 class="card-title">Autumn</h3>
+                        <span class="season-months">Sep – Nov</span>
                     </div>
                     <span class="card-badge badge-amber">Quiet and beautiful</span>
                 </div>
                 <p class="card-desc">September and October are Lisbon&#x27;s most comfortable period. The summer crowds have gone, the weather is still mild, museums and restaurants are quieter. In autumn the sun hits at a lower angle — the light is soft, shadows are long, everything turns golden. Photographers&#x27; favourite season. Rain begins from November.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Winter</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Dec – Feb</span>
+                        <h3 class="card-title">Winter</h3>
+                        <span class="season-months">Dec – Feb</span>
                     </div>
                     <span class="card-badge badge-amber">Wet but quiet</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥐</span>
-                        <span class="card-title">Pastel de nata</span>
+                        <h3 class="card-title">Pastel de nata</h3>
                     </div>
                 </div>
                 <p class="card-desc">An egg custard tart invented by monastery monks. The top is caramelised and lightly scorched, the pastry layered and crisp. Dust with cinnamon and icing sugar. At the counter, standing, with an espresso. Manteigaria (Chiado): when the bell rings, they&#x27;ve just come out of the oven. Pastéis de Belém is the original — since 1837, in Belém — but Manteigaria is at least as good and right in the city centre.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥩</span>
-                        <span class="card-title">Bifana</span>
+                        <h3 class="card-title">Bifana</h3>
                     </div>
                 </div>
                 <p class="card-desc">Pork marinated in white wine, garlic and rosemary, stuffed into a papo seco roll. The bread absorbs the sauce — this is critical. If there&#x27;s a yellow mustard bottle on the counter, that place knows what it&#x27;s doing. As Bifanas do Afonso, Rua da Madalena 146 — standing, fast, cheap.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🐟</span>
-                        <span class="card-title">Bacalhau à Brás</span>
+                        <h3 class="card-title">Bacalhau à Brás</h3>
                     </div>
                 </div>
                 <p class="card-desc">Salt cod, thin matchstick fries, egg, onion, olives and parsley — all cooked together in one pan. The result looks simple but the flavour is layered. Said to have been invented in the 19th century by a tavern owner in Bairro Alto. Start your bacalhau journey in Lisbon here — the most approachable, most classic version for first-timers.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🐟</span>
-                        <span class="card-title">Grilled sardines</span>
+                        <h3 class="card-title">Grilled sardines</h3>
                     </div>
                 </div>
                 <p class="card-desc">Lisbon&#x27;s seasonal dish from May to August. During the Santo António festival in June, the smell of grilled sardines fills every street corner — that smell is the scent of Lisbon&#x27;s summer. With only lemon and bread. Fresh sardines are hard to find in winter; better not to order them in that season.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍒</span>
-                        <span class="card-title">Ginjinha</span>
+                        <h3 class="card-title">Ginjinha</h3>
                     </div>
                 </div>
                 <p class="card-desc">Sour cherry liqueur, in a small glass, €1.50. Around 5pm there&#x27;s a strange moment in Lisbon — lunch is over, evening hasn&#x27;t arrived yet, nobody&#x27;s hungry but everyone is stopping somewhere. This is exactly the moment for ginjinha. A Ginjinha has been at Largo de São Domingos since 1840 — go in, say what you want, take it, leave. A few doors along is Ginjinha Sem Rival. Try both; it takes ten minutes, the difference is yours to decide.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🛒</span>
-                        <span class="card-title">Tasca lunch</span>
+                        <h3 class="card-title">Tasca lunch</h3>
                     </div>
                 </div>
                 <p class="card-desc">Small, family-run, usually no printed menu or written on a chalkboard. Ask for the prato do dia (dish of the day), they&#x27;ll tell you what&#x27;s available, you take it. Fish, meat, a little wine — €8-12 all in. These kind of tascas are still going strong in Mouraria and Intendente. Zé da Mouraria is legendary: lunch service only, cash preferred. Reservation essential.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Lisbon&#x27;s best places usually appear when you climb a staircase or turn into a narrow street.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Miradouro da Graça</span>
-                    <span class="card-badge badge-emerald">The viewpoint Lisbonites go to, not the one tourists photograph</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ The viewpoint Lisbonites go to, not the one tourists photograph</span>
                 </div>
+                <h3 class="card-title">Miradouro da Graça</h3>
                 <p class="card-desc">Behind São Jorge Castle, in the Graça neighbourhood. Most tourists end up at Portas do Sol or Santa Luzia — Graça is less known, quieter, the view equally beautiful. Go in the early morning or before sunset. If you&#x27;re going at sunset, don&#x27;t forget to bring a beer. Sit, take a sip and enjoy the moment. In the view before you, the Tagus, Alfama and the whole city will be waiting.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Livraria Bertrand</span>
-                    <span class="card-badge badge-emerald">Portugal&#x27;s book paradise — Europe&#x27;s oldest bookshop</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Portugal&#x27;s book paradise — Europe&#x27;s oldest bookshop</span>
                 </div>
+                <h3 class="card-title">Livraria Bertrand</h3>
                 <p class="card-desc">In Chiado, Rua Garrett 73. Open since 1732 — according to the Guinness Book of Records, the world&#x27;s oldest bookshop still in operation. Small rooms, old wooden shelves, books in Portuguese and foreign languages. Even if you don&#x27;t buy a book, go in, sit, stay a few minutes. You feel as though a whole history has settled over you.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Elevador da Bica</span>
-                    <span class="card-badge badge-emerald">Lisbon by elevator — the descent of Bica</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Lisbon by elevator — the descent of Bica</span>
                 </div>
+                <h3 class="card-title">Elevador da Bica</h3>
                 <p class="card-desc">A steep funicular tram connecting the Bica neighbourhood to Cais do Sodré. Running since 1892. Not for the photograph — ride it because this is genuinely the way to travel this route. Your Viva Viagem card is valid here. At the bottom, walking distance to Mercado da Ribeira. At the top, get lost in Bica&#x27;s narrow streets.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Conserveira de Lisboa</span>
-                    <span class="card-badge badge-emerald">Tinned fish — Lisbon&#x27;s most beautiful souvenir shops</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Tinned fish — Lisbon&#x27;s most beautiful souvenir shops</span>
                 </div>
+                <h3 class="card-title">Conserveira de Lisboa</h3>
                 <p class="card-desc">At the entrance to Alfama, Rua dos Bacalhoeiros 34. Open since 1930. Inside, dozens of sardine, tuna and octopus tins — in colourful cans with designs from another era. A wonderful option for putting memories in your suitcase before you leave or bringing gifts for loved ones, at reasonable prices.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Cacilhas Ferry</span>
-                    <span class="card-badge badge-emerald">Cross the Tagus and come back — Lisbon&#x27;s skyline for €1.30</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Cross the Tagus and come back — Lisbon&#x27;s skyline for €1.30</span>
                 </div>
+                <h3 class="card-title">Cacilhas Ferry</h3>
                 <p class="card-desc">From Cais do Sodré pier to Cacilhas: 10 minutes, €1.30. As the ferry moves, the Lisbon skyline, the Ponte 25 de Abril bridge and the Cristo Rei statue on the hill gradually come into sharper view. The finest view is during the crossing. Once you arrive in Cacilhas, you can eat fresh fish at the small restaurants on the waterfront while looking back at the city. Try to return at sunset — Lisbon takes on the most beautiful shade of orange at that hour.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Calçada Portuguesa — Rossio Square</span>
-                    <span class="card-badge badge-emerald">Portugal&#x27;s history set into the pavement</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Portugal&#x27;s history set into the pavement</span>
                 </div>
+                <h3 class="card-title">Calçada Portuguesa — Rossio Square</h3>
                 <p class="card-desc">Portugal&#x27;s distinctive handmade black-and-white cobblestone mosaic. The finest example is in Rossio Square: wave-like curves simulating the sea, every stone placed by hand. The Portuguese took this technique to Brazil too. That&#x27;s why it&#x27;s no coincidence that Rio de Janeiro&#x27;s famous pavements show the same craftsmanship. To see the mosaic&#x27;s full pattern you need to look from slightly above; from the balcony of a café at the edge of the square, or from nearby steps, the whole design reveals itself.</p>
             </div>
             </div>

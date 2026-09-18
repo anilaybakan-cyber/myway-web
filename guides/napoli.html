@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Naples Public Transit & Airport Transfers</h2>
             </div>
             <p class="section-intro">The metro has become an art gallery, funiculars climb the hills, buses are chaotic but they work. Walking is the best option for the centre.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Airport → City</span>
+                        <h3 class="card-title">Airport → City</h3>
                     </div>
                 </div>
                 <p class="card-desc">The Alibus (ANM) goes from the airport to Piazza Garibaldi (Naples Centrale train station) and Piazza Municipio. Ticket €5, departures every 15-20 minutes. Fixed-price taxi to the city centre: €25-35. Alibus is the most practical option — cheaper than a taxi. There&#x27;s no direct metro connection from the airport; Alibus drops you at Piazza Garibaldi where you can connect to the metro.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚇</span>
-                        <span class="card-title">Line 1 — Art Metro</span>
+                        <h3 class="card-title">Line 1 — Art Metro</h3>
                     </div>
                 </div>
                 <p class="card-desc">One of Naples&#x27; most special experiences: Toledo, Università, Garibaldi and Municipio stations were designed by international artists. Toledo station was voted Europe&#x27;s most beautiful metro station in 2012. Single fare €1.50, valid 90 minutes, funiculars included. Runs the full length of the historic centre.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚡</span>
-                        <span class="card-title">Funiculars — the climb to Vomero</span>
+                        <h3 class="card-title">Funiculars — the climb to Vomero</h3>
                     </div>
                 </div>
                 <p class="card-desc">Four funicular lines climb Naples&#x27; hills: Funicolare Centrale from Piazzetta Augusteo to Vomero; Funicolare di Chiaia from Via del Parco Margherita to Vomero; Funicolare di Montesanto from Piazza Montesanto to San Martino; Funicolare di Mergellina from the Mergellina waterfront to the Posillipo hilltop. Same ticket system, €1.50.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚌</span>
-                        <span class="card-title">Bus — chaotic but comprehensive</span>
+                        <h3 class="card-title">Bus — chaotic but comprehensive</h3>
                     </div>
                 </div>
                 <p class="card-desc">City buses run on the same ticket system. Necessary for reaching neighbourhoods the metro and funiculars can&#x27;t access. Can run late during busy hours. Buy tickets in advance — not available on the bus. Available at stops or tabacchi shops.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">Walking — and caution</span>
+                        <h3 class="card-title">Walking — and caution</h3>
                     </div>
                 </div>
                 <p class="card-desc">Spaccanapoli, Via dei Tribunali, Quartieri Spagnoli and the historic centre are all walkable. Pavements are narrow, scooters come from every direction — be careful. Safe to walk at night but avoid isolated streets and don&#x27;t carry valuables visibly. The centre isn&#x27;t large: 15 minutes from Piazza del Gesù to Toledo.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Where to Stay in Naples: Best Areas</h2>
             </div>
             <p class="section-intro">Naples&#x27; neighbourhoods are very different from each other. The historic centre is close to everything, Vomero is quiet and panoramic, Chiaia is modern and on the waterfront.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Centro Storico — historic centre</span>
+                    <h3 class="card-title">Centro Storico — historic centre</h3>
                     <span class="card-badge badge-purple">Most central</span>
                 </div>
                 <p class="card-desc">Spaccanapoli, Via dei Tribunali, San Gregorio Armeno (the Christmas figurine street) are all in this neighbourhood. The neighbourhood itself, Naples&#x27; historic centre (Centro Storico), has been a UNESCO World Heritage Site since 1995. Walking distance to everything but busy and noisy. Nightlife is lively, early morning is the quietest. Budget hotels and small family guesthouses (B&amp;B) are most plentiful in this area.</p>
-                <div class="card-footer-tip">Spaccanapoli • UNESCO World Heritage • Close to everything</div>
+                <div class="card-footer-tip">📍 Spaccanapoli • UNESCO World Heritage • Close to everything</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Quartieri Spagnoli</span>
+                    <h3 class="card-title">Quartieri Spagnoli</h3>
                     <span class="card-badge badge-purple">Most authentic</span>
                 </div>
                 <p class="card-desc">A grid of narrow streets built for Spanish soldiers in the 16th century. Laundry hangs from window to window, children play in the alleyways, a bar on every corner. Diego Maradona&#x27;s mural portrait is here — on Via Emanuele De Deo. Touristy but still a real neighbourhood. Walking distance to Toledo metro and Via Toledo.</p>
-                <div class="card-footer-tip">Maradona mural • Narrow street grid • Local neighbourhood life</div>
+                <div class="card-footer-tip">📍 Maradona mural • Narrow street grid • Local neighbourhood life</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Chiaia</span>
+                    <h3 class="card-title">Chiaia</h3>
                     <span class="card-badge badge-purple">Most modern</span>
                 </div>
                 <p class="card-desc">Modern neighbourhood on the Bay waterfront, stretching along the Lungomare. High-quality restaurants, bars and shops. Mergellina harbour is nearby. An evening walk along the Lungomare is one of Naples&#x27; most enjoyable activities. Slightly further from the historic centre but easily reached by taxi or metro.</p>
-                <div class="card-footer-tip">Lungomare waterfront • Modern restaurants • Mergellina harbour</div>
+                <div class="card-footer-tip">📍 Lungomare waterfront • Modern restaurants • Mergellina harbour</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Vomero</span>
+                    <h3 class="card-title">Vomero</h3>
                     <span class="card-badge badge-purple">Most quiet</span>
                 </div>
                 <p class="card-desc">The hilltop neighbourhood reached by funicular. Castel Sant&#x27;Elmo and Certosa di San Martino are here — both among the city&#x27;s finest viewpoints. Away from the crowds of the historic centre, quieter and more local. Ten minutes to the centre by funicular. Good for morning local cafés and market shopping.</p>
-                <div class="card-footer-tip">Castel Sant&#x27;Elmo • Certosa di San Martino • Funicular access</div>
+                <div class="card-footer-tip">📍 Castel Sant&#x27;Elmo • Certosa di San Martino • Funicular access</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Near Piazza Garibaldi</span>
+                    <h3 class="card-title">Near Piazza Garibaldi</h3>
                     <span class="card-badge badge-purple">Close to the train station</span>
                 </div>
                 <p class="card-desc">Walking distance to Naples Centrale. The Circumvesuviana train (Pompeii, Herculaneum, Sorrento) departs from here. Practical for day trips. The neighbourhood itself is very touristy but the most central point for transport. Prices are relatively reasonable.</p>
-                <div class="card-footer-tip">Naples Centrale • Circumvesuviana • Practical for day trips</div>
+                <div class="card-footer-tip">📍 Naples Centrale • Circumvesuviana • Practical for day trips</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Best Time to Visit Naples</h2>
             </div>
             <p class="section-intro">Naples can be visited year-round but summer brings higher temperatures and tourist density.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Spring</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Apr – May</span>
+                        <h3 class="card-title">Spring</h3>
+                        <span class="season-months">Apr – May</span>
                     </div>
                     <span class="card-badge badge-amber">The best time</span>
                 </div>
                 <p class="card-desc">April and May are Naples&#x27; most balanced period. Temperatures around 18-24°C, the Bay at its most vivid, tourists present but away from peak season. Maggio dei Monumenti (May Monuments Month): normally closed historic buildings and private spaces open for visits — follow this programme. Semana Santa (Easter) period brings religious processions and ceremonies through the city.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Summer</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Jun – Aug</span>
+                        <h3 class="card-title">Summer</h3>
+                        <span class="season-months">Jun – Aug</span>
                     </div>
                     <span class="card-badge badge-amber">Hot, crowded and lively</span>
                 </div>
                 <p class="card-desc">July and August are the busiest and hottest months. The Amalfi Coast and Capri are at their peak — you won&#x27;t get in without reservations. But Naples itself is something else on summer evenings: aperitivo on the Lungomare, fish restaurants in Posillipo, gelato in Mergellina. The city is at its most alive and bearable before 10am and after 8pm.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Autumn</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Sep – Nov</span>
+                        <h3 class="card-title">Autumn</h3>
+                        <span class="season-months">Sep – Nov</span>
                     </div>
                     <span class="card-badge badge-amber">Second best time</span>
                 </div>
                 <p class="card-desc">September and October see the crowds thin while the weather stays mild. The sea is still warm enough to swim. The Amalfi Coast and Capri are much more comfortable to visit. Trattorias open with new seasonal menus — walnut pasta, courgette flowers, fresh fish. Rain increases in November but museums and historic sites are nearly empty.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Winter</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Dec – Feb</span>
+                        <h3 class="card-title">Winter</h3>
+                        <span class="season-months">Dec – Feb</span>
                     </div>
                     <span class="card-badge badge-amber">Quiet and affordable</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍕</span>
-                        <span class="card-title">Neapolitan pizza — the real thing</span>
+                        <h3 class="card-title">Neapolitan pizza — the real thing</h3>
                     </div>
                 </div>
                 <p class="card-desc">Margherita (San Marzano tomatoes, mozzarella di bufala, basil) or Marinara (tomatoes, garlic, oregano — no cheese). No other options, no other options needed. L&#x27;Antica Pizzeria da Michele at Via Cesare Sersale 1 — since 1870, only these two varieties, cash payment, long queue. Sorbillo on Via dei Tribunali — shorter queue, same quality. Order another before you&#x27;re halfway through the first.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍕</span>
-                        <span class="card-title">Pizza fritta</span>
+                        <h3 class="card-title">Pizza fritta</h3>
                     </div>
                 </div>
                 <p class="card-desc">During World War II Naples was bombed, the wood-fired ovens were destroyed but frying oil was still available — so pizza began to be cooked in hot oil rather than an oven. Pizza fritta was born from these difficulties. The dough is filled with ricotta, cicoli (fried pork skin) and provola cheese and puffs up in hot oil. Sophia Loren fried this pizza in a famous film scene. €3-5, a full meal on its own. The pizzeria called 1947 Pizza Fritta is at Via Pietro Colletta 29-31.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥐</span>
-                        <span class="card-title">Sfogliatella</span>
+                        <h3 class="card-title">Sfogliatella</h3>
                     </div>
                 </div>
                 <p class="card-desc">A shell-shaped ricotta pastry — layered and crispy outside, filled with cinnamon ricotta and candied fruit inside. Two versions: riccia (crispy layered) and frolla (covered in short pastry on the outside, softer). The fresh version comes out of the oven in the early morning hours. La Sfogliatella Mary is inside Galleria Umberto I. An espresso alongside — this is the authentic Neapolitan morning.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍟</span>
-                        <span class="card-title">Cuoppo</span>
+                        <h3 class="card-title">Cuoppo</h3>
                     </div>
                 </div>
                 <p class="card-desc">Mixed fried food in a paper cone: the seafood version (cuoppo di mare) has prawns, squid, mussels; the land version (cuoppo di terra) has courgette flowers, aubergine, potato chips. Around Pignasecca Market or Piazza Monteoliveto. €4-6. Eat while walking — no seating.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍝</span>
-                        <span class="card-title">Ragù napoletano</span>
+                        <h3 class="card-title">Ragù napoletano</h3>
                     </div>
                 </div>
                 <p class="card-desc">Pork and tomato sauce cooked for hours — sometimes 5-6 hours — on the lowest heat. Monday and Thursday are the traditional days; your chance of finding it at trattorias is highest on those days. Served with spaghetti, rigatoni or ziti. Crusco bread alongside, the meal is complete. Trattoria da Nennella in Quartieri Spagnoli.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">☕</span>
-                        <span class="card-title">Espresso — and caffè sospeso</span>
+                        <h3 class="card-title">Espresso — and caffè sospeso</h3>
                     </div>
                 </div>
                 <p class="card-desc">Neapolitan espresso: strong, small and €1-1.50. Drink at the counter, standing, fast — this is Naples coffee culture. The caffè sospeso (suspended coffee) tradition: an extra coffee paid into the till, for someone without means later. To take part, say &#x27;sospeso&#x27; and pay for two coffees, leaving one behind. One of Naples&#x27; most humane rituals.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Naples&#x27; most interesting corners are usually just one street away from the crowds — some in the city&#x27;s underground, some on its hilltops.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Toledo Metro Station</span>
-                    <span class="card-badge badge-emerald">Europe&#x27;s most beautiful metro station — and an art gallery</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Europe&#x27;s most beautiful metro station — and an art gallery</span>
                 </div>
+                <h3 class="card-title">Toledo Metro Station</h3>
                 <p class="card-desc">Toledo station on Line 1 won the award for Europe&#x27;s most beautiful metro station in 2012. Designed by Oscar Tusquets: blue-purple mosaic surfaces that give a cave-like feeling as you descend deeper, themes of sea and light. No extra charge for entry — included in a standard metro ticket. Add Municipio, Università and Garibaldi stations: each is the work of a different artist. This metro line alone is worth making the journey for.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Galleria Borbonica</span>
-                    <span class="card-badge badge-emerald">WWII shelter, Bourbon tunnel and abandoned cars</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ WWII shelter, Bourbon tunnel and abandoned cars</span>
                 </div>
+                <h3 class="card-title">Galleria Borbonica</h3>
                 <p class="card-desc">On Via Morelli, near Chiaia. Built in the 19th century as an escape tunnel for King Ferdinand II. Later became a hospital, police depot and World War II air raid shelter. Inside, old cars and motorcycles from the 1940s-50s are still there. Different from Napoli Sotterranea: here it&#x27;s not ancient Rome but recent history. Several different tour options available. Advance reservation essential.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Castel Sant&#x27;Elmo</span>
-                    <span class="card-badge badge-emerald">Vesuvius and Bay views — the city&#x27;s finest viewpoint</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Vesuvius and Bay views — the city&#x27;s finest viewpoint</span>
                 </div>
+                <h3 class="card-title">Castel Sant&#x27;Elmo</h3>
                 <p class="card-desc">A star-shaped castle on the Vomero hilltop, reachable by funicular. Dating from the 14th century. From its terraces: Vesuvius, the Bay, Capri and the whole city visible 360 degrees. The adjacent Certosa di San Martino (former Carthusian monastery) converted to a museum — the city&#x27;s richest museum in terms of Neapolitan art and history. Both reachable by the same funicular.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Quartieri Spagnoli murals</span>
-                    <span class="card-badge badge-emerald">Maradona&#x27;s home and a neighbourhood&#x27;s memory</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Maradona&#x27;s home and a neighbourhood&#x27;s memory</span>
                 </div>
+                <h3 class="card-title">Quartieri Spagnoli murals</h3>
                 <p class="card-desc">Diego Maradona&#x27;s enormous portrait on Via Emanuele De Deo has been here since 1990 — painted, removed, painted again. Naples, which Maradona led to championships in 1987 and 1990, regards him like a saint; there are statues and shrines to him on the street. Walking through the neighbourhood you see not just Maradona but dozens of other murals: paintings telling of Naples&#x27; identity, history and politics. Free, walkable.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Teatro Greco-Romano di Neapolis</span>
-                    <span class="card-badge badge-emerald">An ancient Roman theatre under a house</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ An ancient Roman theatre under a house</span>
                 </div>
+                <h3 class="card-title">Teatro Greco-Romano di Neapolis</h3>
                 <p class="card-desc">In Spaccanapoli, on Via Anticaglia. A 2nd-century Roman theatre now buried under buildings. The old arches of the theatre are visible through the narrow streets between them. Literally the traces of a history built over by the city. Some sections can be visited on guided tours; consider combining with Napoli Sotterranea.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Museo di Capodimonte</span>
-                    <span class="card-badge badge-emerald">Naples&#x27; quietest museum — and its most comprehensive collection</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Naples&#x27; quietest museum — and its most comprehensive collection</span>
                 </div>
+                <h3 class="card-title">Museo di Capodimonte</h3>
                 <p class="card-desc">In the north of the city, inside Capodimonte Park. Former Bourbon palace, now museum. Caravaggio, Titian, Raphael, Botticelli — and Andy Warhol&#x27;s famous Vesuvius series. A fraction of the Naples National Museum&#x27;s visitor numbers. The extensive park is also free to walk through. 30-40 minutes by bus from the city centre but a place where you could spend hours.</p>
             </div>
             </div>

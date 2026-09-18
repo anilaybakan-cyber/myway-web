@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">San Sebastián Şehir İçi Ulaşım & Transfer</h2>
             </div>
             <p class="section-intro">Donostia kompakt ve düzdür: plajlar, eski şehir ve Gros yürüyerek birbirine bağlanır; tepeler için füniküler, çevre için otobüs yeter.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Havalimanlarından merkeze</span>
+                        <h3 class="card-title">Havalimanlarından merkeze</h3>
                     </div>
                 </div>
                 <p class="card-desc">Şehrin küçük havalimanı (EAS) 20 dakikadır; uluslararası uçuşların çoğu Bilbao&#x27;ya (BIO) iner — oradan direkt otobüs bir saat çeyrekte gara bırakır. Biarritz (BIQ) üçüncü alternatiftir.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">Promenad boyu yayan</span>
+                        <h3 class="card-title">Promenad boyu yayan</h3>
                     </div>
                 </div>
                 <p class="card-desc">Zurriola&#x27;dan La Concha&#x27;ya, oradan Ondarreta&#x27;ya kesintisiz sahil yürüyüşü: şehrin ana ulaşım aksı plaj korkuluğudur. Beyaz korkuluklu promenad, akşam pasosunun resmi pistidir.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚌</span>
-                        <span class="card-title">Şehir otobüsleri (Dbus)</span>
+                        <h3 class="card-title">Şehir otobüsleri (Dbus)</h3>
                     </div>
                 </div>
                 <p class="card-desc">Tepe mahalleler ve Miramón tarafı için temiz bir ağ: temassız kartla binilir. Turistik rotada nadiren gerekir — şehir ayak şehridir.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚠</span>
-                        <span class="card-title">Igueldo füniküleri</span>
+                        <h3 class="card-title">Igueldo füniküleri</h3>
                     </div>
                 </div>
                 <p class="card-desc">1912&#x27;den beri çalışan ahşap vagonlar Monte Igueldo&#x27;ya çıkar: tepede nostaljik lunapark ve şehrin en ünlü manzarası — La Concha&#x27;nın tam kartpostal açısı.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚄</span>
-                        <span class="card-title">Bask kaçamakları</span>
+                        <h3 class="card-title">Bask kaçamakları</h3>
                     </div>
                 </div>
                 <p class="card-desc">Hondarribia&#x27;ya otobüs 40 dakika, Getaria-Zarautz sahili yarım saat, Bilbao ve Guggenheim bir saat çeyrek: Donostia, Bask kıyısının mükemmel üssüdür. Topo treni sınırdan Fransa&#x27;ya bile geçer.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Nerede Kalınır? San Sebastián Mahalleleri</h2>
             </div>
             <p class="section-intro">Donostia&#x27;da mesafeler kısa, karakter farkları nettir: eski şehrin gürültülü kalbi, Centro&#x27;nun zarafeti, Gros&#x27;un sörfçü rahatlığı.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Parte Vieja (Eski Şehir)</span>
+                    <h3 class="card-title">Parte Vieja (Eski Şehir)</h3>
                     <span class="card-badge badge-purple">Pintxo kalbi</span>
                 </div>
                 <p class="card-desc">Bar yoğunluğunun dünya rekoru sokaklar: kapıdan çık, tezgaha otur. Gece gürültüsü pazarlığın parçası — kulak tıkacıyla gel, iştahla in.</p>
-                <div class="card-footer-tip">Bar tezgahları • Her yere sıfır • Gece gürültülü</div>
+                <div class="card-footer-tip">📍 Bar tezgahları • Her yere sıfır • Gece gürültülü</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Centro (Área Romántica)</span>
+                    <h3 class="card-title">Centro (Área Romántica)</h3>
                     <span class="card-badge badge-purple">En zarif</span>
                 </div>
                 <p class="card-desc">Belle époque cepheler, katedral çevresi ve La Concha&#x27;ya iki adım: alışveriş, pastane ve sakin geceler. Klasik Donostia konforunun adresi.</p>
-                <div class="card-footer-tip">Belle époque • La Concha&#x27;ya yakın • Sakin geceler</div>
+                <div class="card-footer-tip">📍 Belle époque • La Concha&#x27;ya yakın • Sakin geceler</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Gros</span>
+                    <h3 class="card-title">Gros</h3>
                     <span class="card-badge badge-purple">En rahat</span>
                 </div>
                 <p class="card-desc">Zurriola plajının sörfçü mahallesi: üçüncü dalga kahveciler, genç pintxo barları ve plaj ritmi. Eski şehre köprüyle beş dakika — yerli hayatın en samimi dozu.</p>
-                <div class="card-footer-tip">Sörf plajı • Genç barlar • Köprüyle merkez</div>
+                <div class="card-footer-tip">📍 Sörf plajı • Genç barlar • Köprüyle merkez</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Antiguo ve Ondarreta</span>
+                    <h3 class="card-title">Antiguo ve Ondarreta</h3>
                     <span class="card-badge badge-purple">En sakin</span>
                 </div>
                 <p class="card-desc">Ondarreta plajının arkasındaki oturaklı mahalle: aile plajı, tenis kulübü sakinliği ve Igueldo eteği. Merkeze promenad yürüyüşüyle 20 dakika — huzur öncelikliye.</p>
-                <div class="card-footer-tip">Aile plajı • Sakin sokaklar • Promenad yürüyüşü</div>
+                <div class="card-footer-tip">📍 Aile plajı • Sakin sokaklar • Promenad yürüyüşü</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Amara</span>
+                    <h3 class="card-title">Amara</h3>
                     <span class="card-badge badge-purple">Pratik seçim</span>
                 </div>
                 <p class="card-desc">Gar ve otobüs terminaline komşu modern mahalle: fiyatlar bir kademe dostane, merkez yürüme mesafesinde. Bask turu üssü olarak mantıklı.</p>
-                <div class="card-footer-tip">Terminale yakın • Uygun fiyat • Modern apartmanlar</div>
+                <div class="card-footer-tip">📍 Terminale yakın • Uygun fiyat • Modern apartmanlar</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">San Sebastián İçin En İyi Ziyaret Zamanı</h2>
             </div>
             <p class="section-intro">Atlantik&#x27;in yeşil kıyısında hava piyangodur ama şehir her mevsim lezzetlidir: eylül film, ocak davul, yaz plaj demektir.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">İlkbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Nis – Haz</span>
+                        <h3 class="card-title">İlkbahar</h3>
+                        <span class="season-months">Nis – Haz</span>
                     </div>
                     <span class="card-badge badge-amber">Yeşil Sezon</span>
                 </div>
                 <p class="card-desc">Tepeler yemyeşil, plaj yürüyüşleri serin ve canlıdır; yağmur her an misafir olabilir. Sidra sezonunun son demleri nisana taşar — teraslar haziranda tam kadro açılır.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Yaz</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Tem – Ağu</span>
+                        <h3 class="card-title">Yaz</h3>
+                        <span class="season-months">Tem – Ağu</span>
                     </div>
                     <span class="card-badge badge-amber">Plaj ve Festival</span>
                 </div>
                 <p class="card-desc">Şehir plaj moduna geçer: La Concha şemsiyelerle çiçeklenir, temmuzda caz festivali sahilleri sahneye çevirir, ağustos ortasında Semana Grande havai fişek yarışmasıyla taçlanır. Fiyat ve doluluk zirvededir.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Sonbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Eyl – Kas</span>
+                        <h3 class="card-title">Sonbahar</h3>
+                        <span class="season-months">Eyl – Kas</span>
                     </div>
                     <span class="card-badge badge-amber">Film ve Hasat</span>
                 </div>
                 <p class="card-desc">Eylül şehrin yıldız ayıdır: film festivali kırmızı halıyı serer, deniz hâlâ yüzülür, ışık fotoğraf ışığıdır. Ekim-kasım sakin, lezzet ve yürüyüş odaklı gezginin penceresidir.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Kış</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Ara – Mar</span>
+                        <h3 class="card-title">Kış</h3>
+                        <span class="season-months">Ara – Mar</span>
                     </div>
                     <span class="card-badge badge-amber">Davul ve Fırtına</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍢</span>
-                        <span class="card-title">Gilda ile açılış</span>
+                        <h3 class="card-title">Gilda ile açılış</h3>
                     </div>
                 </div>
                 <p class="card-desc">Kürdanda üçlü klasik: ançüez, zeytin, guindilla. Yanında bir kadeh txakoli — turun resmi başlama düdüğü. Tuz-ekşi-acı dengesi damağı yolculuğa hazırlar.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍳</span>
-                        <span class="card-title">Tortilla nöbeti</span>
+                        <h3 class="card-title">Tortilla nöbeti</h3>
                     </div>
                 </div>
                 <p class="card-desc">Bazı barların patates omleti günde iki kez tezgaha çıkar ve dakikalar içinde biter: akışkan iç, karamelize soğan. Çıkış saatini sor, nöbete katıl — bu şehirde tortilla ciddi iştir.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥩</span>
-                        <span class="card-title">Txuleta — Bask bifteği</span>
+                        <h3 class="card-title">Txuleta — Bask bifteği</h3>
                     </div>
                 </div>
                 <p class="card-desc">Yaşlı inekten, kalın kesim, közde mühürlenmiş ve içi kızıl: Bask et kültürünün zirvesi. Pintxo halinden tam porsiyona her ölçekte bulunur — kanlı sevmeyen baştan söylesin.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🐟</span>
-                        <span class="card-title">Ançüez ve morina ustalığı</span>
+                        <h3 class="card-title">Ançüez ve morina ustalığı</h3>
                     </div>
                 </div>
                 <p class="card-desc">Kantabrik ançüezi tereyağlı tostta, morina (bakalao) pil-pil sosunda: kıyının iki gururu. Getaria yönüne uzanırsan közde kalkan (rodaballo) efsanesi seni bekler.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🧀</span>
-                        <span class="card-title">La Viña usulü cheesecake</span>
+                        <h3 class="card-title">La Viña usulü cheesecake</h3>
                     </div>
                 </div>
                 <p class="card-desc">Dışı yanık, içi krema Bask cheesecake&#x27;i bu şehrin eski mahallesinde doğdu ve dünyayı fethetti: orijinalini yerinde, oda sıcaklığında ye. Yanına tatlı şeri klasik eşliktir.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍎</span>
-                        <span class="card-title">Sidra ve txotx ritüeli</span>
+                        <h3 class="card-title">Sidra ve txotx ritüeli</h3>
                     </div>
                 </div>
                 <p class="card-desc">Sagardotegi&#x27;de fıçı açılır, &#x27;txotx!&#x27; nidasıyla sıraya girilir, bardak yandan tutulur: elma şarabı köpüğünü havada yapar. Ocak-nisan sezonunda menü sabittir — omlet, morina, txuleta, ceviz.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">La Concha&#x27;yı herkes görür; bu altısı Donostia&#x27;nın perde arkası.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Peine del Viento</span>
-                    <span class="card-badge badge-emerald">Rüzgarın orgu</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Rüzgarın orgu</span>
                 </div>
+                <h3 class="card-title">Peine del Viento</h3>
                 <p class="card-desc">Chillida&#x27;nın &#x27;Rüzgar Tarağı&#x27; heykelleri Ondarreta&#x27;nın ucunda kayalara çakılıdır: fırtınada altındaki hava delikleri org gibi üfler, dalga taşın üstünden patlar. Şehrin sanatla doğayı evlendirdiği nokta.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Santa Clara adası</span>
-                    <span class="card-badge badge-emerald">Koydaki ada plajı</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Koydaki ada plajı</span>
                 </div>
+                <h3 class="card-title">Santa Clara adası</h3>
                 <p class="card-desc">Koyun ortasındaki küçük adaya yazın tekne servisi işler: mini plaj, ada barı ve La Concha&#x27;ya ters açı. İddialıysan yüzerek git — yerlilerin yaz klasiği.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Paseo Nuevo turu</span>
-                    <span class="card-badge badge-emerald">Dalgaların balkonu</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Dalgaların balkonu</span>
                 </div>
+                <h3 class="card-title">Paseo Nuevo turu</h3>
                 <p class="card-desc">Urgull&#x27;un etrafını dönen deniz seviyesi korniş: sakin günde meditasyon, fırtınada dalga tiyatrosu. Büyük dalgada ıslanmadan izlemek ustalık ister — akvaryum köşesinden başla.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Monte Igueldo lunaparkı</span>
-                    <span class="card-badge badge-emerald">Tepedeki zaman kapsülü</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Tepedeki zaman kapsülü</span>
                 </div>
+                <h3 class="card-title">Monte Igueldo lunaparkı</h3>
                 <p class="card-desc">1912&#x27;den kalma tepe lunaparkı: ahşap &#x27;İsviçre dağı&#x27; treni uçurum kenarında döner, aşağıda La Concha uzanır. Nostalji + manzara ikilisinin dünyadaki en zarif örneklerinden.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Bretxa pazarı tezgahları</span>
-                    <span class="card-badge badge-emerald">Pazarın alt katı</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Pazarın alt katı</span>
                 </div>
+                <h3 class="card-title">Bretxa pazarı tezgahları</h3>
                 <p class="card-desc">Eski şehrin pazarında balıkçı ve kasap tezgahları şeflerle omuz omuza alışveriş yapar: ançüez fileto, idiazabal peyniri ve sezon mantarları. Pintxo&#x27;ların hammaddesi burada seçilir.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Zurriola gün batımı</span>
-                    <span class="card-badge badge-emerald">Nehir ağzında sörf kültürü</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Nehir ağzında sörf kültürü</span>
                 </div>
+                <h3 class="card-title">Zurriola gün batımı</h3>
                 <p class="card-desc">Gros&#x27;un plajı akşamüstü sörfçü siluetleriyle dolar: dalgaların arkasında Kursaal küpleri ışıldar. Havlusuz gel, korkuluğa yaslan — şehrin en genç saatini izle.</p>
             </div>
             </div>

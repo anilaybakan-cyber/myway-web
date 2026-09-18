@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Frankfurt Public Transit & Airport Transfers</h2>
             </div>
             <p class="section-intro">RMV&#x27;s ultra-reliable S-Bahn, U-Bahn, and tram network makes traveling across Frankfurt fast and effortless.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚆</span>
-                        <span class="card-title">Airport S-Bahn (S8 &amp; S9)</span>
+                        <h3 class="card-title">Airport S-Bahn (S8 &amp; S9)</h3>
                     </div>
                 </div>
                 <p class="card-desc">Departs every 15 minutes from Terminal 1 directly to Frankfurt Central Station and Hauptwache.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚇</span>
-                        <span class="card-title">U-Bahn &amp; Trams</span>
+                        <h3 class="card-title">U-Bahn &amp; Trams</h3>
                     </div>
                 </div>
                 <p class="card-desc">Nine underground lines and extensive trams connect business districts, Sachsenhausen, and Museumsufer.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">Walking the Altstadt</span>
+                        <h3 class="card-title">Walking the Altstadt</h3>
                     </div>
                 </div>
                 <p class="card-desc">The newly rebuilt New Old Town (Neue Altstadt), Cathedral, and Main riverbanks are all under 10 minutes on foot.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚲</span>
-                        <span class="card-title">Cycling the Main River</span>
+                        <h3 class="card-title">Cycling the Main River</h3>
                     </div>
                 </div>
                 <p class="card-desc">Dedicated flat cycling paths line both banks of the Main, offering uninterrupted city and park riding.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🎫</span>
-                        <span class="card-title">Frankfurt Card</span>
+                        <h3 class="card-title">Frankfurt Card</h3>
                     </div>
                 </div>
                 <p class="card-desc">Free transit throughout Frankfurt (including the airport) plus up to 50% discount on museums and Main river cruises.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Where to Stay in Frankfurt: Best Areas</h2>
             </div>
             <p class="section-intro">From the historic charm of Römer to the rustic vibe of Sachsenhausen and the modern high-rises of Westend.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Altstadt &amp; Innenstadt</span>
+                    <h3 class="card-title">Altstadt &amp; Innenstadt</h3>
                     <span class="card-badge badge-purple">Historic &amp; Central</span>
                 </div>
                 <p class="card-desc">Stay steps from Römerberg, the Zeil shopping boulevard, and the Cathedral. Ideal for first-timers.</p>
-                <div class="card-footer-tip">Central • Historic • Shopping</div>
+                <div class="card-footer-tip">📍 Central • Historic • Shopping</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Sachsenhausen-Nord</span>
+                    <h3 class="card-title">Sachsenhausen-Nord</h3>
                     <span class="card-badge badge-purple">Apple Wine &amp; Riverside</span>
                 </div>
                 <p class="card-desc">Charming cobblestones south of the river, surrounded by traditional taverns, jazz clubs, and art museums.</p>
-                <div class="card-footer-tip">Taverns • Museums • Atmospheric</div>
+                <div class="card-footer-tip">📍 Taverns • Museums • Atmospheric</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Westend</span>
+                    <h3 class="card-title">Westend</h3>
                     <span class="card-badge badge-purple">Elegant &amp; Peaceful</span>
                 </div>
                 <p class="card-desc">Graceful 19th-century villas, wide tree-lined boulevards, upscale bistros, and the lush Palmengarten botanical gardens.</p>
-                <div class="card-footer-tip">Upscale • Quiet • Green</div>
+                <div class="card-footer-tip">📍 Upscale • Quiet • Green</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Bahnhofsviertel</span>
+                    <h3 class="card-title">Bahnhofsviertel</h3>
                     <span class="card-badge badge-purple">Hip &amp; Food Scene</span>
                 </div>
                 <p class="card-desc">Frankfurt&#x27;s edgiest, trendiest district; renowned for cutting-edge third-wave cafes, speakeasies, and world cuisine.</p>
-                <div class="card-footer-tip">Foodies • Bars • Vibrant</div>
+                <div class="card-footer-tip">📍 Foodies • Bars • Vibrant</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Ostend &amp; ECB</span>
+                    <h3 class="card-title">Ostend &amp; ECB</h3>
                     <span class="card-badge badge-purple">Modern &amp; Design</span>
                 </div>
                 <p class="card-desc">Industrial chic around the European Central Bank, Hafenpark riverside skateparks, and design hotels.</p>
-                <div class="card-footer-tip">Design • ECB • Riverfront</div>
+                <div class="card-footer-tip">📍 Design • ECB • Riverfront</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Best Time to Visit Frankfurt</h2>
             </div>
             <p class="section-intro">From spring apple blossom festivals to summer riverside terraces and winter glühwein markets.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Spring</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Apr – Jun</span>
+                        <h3 class="card-title">Spring</h3>
+                        <span class="season-months">Apr – Jun</span>
                     </div>
                     <span class="card-badge badge-amber">Green Sauce &amp; Blossom Season</span>
                 </div>
                 <p class="card-desc">May brings the beloved Grüne Soße Festival on Roßmarkt celebrating the city&#x27;s signature seven-herb sauce.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Summer</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Jul – Aug</span>
+                        <h3 class="card-title">Summer</h3>
+                        <span class="season-months">Jul – Aug</span>
                     </div>
                     <span class="card-badge badge-amber">Museumsuferfest &amp; River Vibe</span>
                 </div>
                 <p class="card-desc">Over 2 million visitors gather along the Main for three days of world music, open-air art, and synchronized fireworks.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Autumn</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Sep – Oct</span>
+                        <h3 class="card-title">Autumn</h3>
+                        <span class="season-months">Sep – Oct</span>
                     </div>
                     <span class="card-badge badge-amber">Frankfurt Book Fair &amp; Fresh Cider</span>
                 </div>
                 <p class="card-desc">The world&#x27;s largest book fair (Frankfurter Buchmesse) electrifies the city alongside freshly pressed &#x27;Süßer&#x27; cloudy cider.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Winter</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Nov – Dec</span>
+                        <h3 class="card-title">Winter</h3>
+                        <span class="season-months">Nov – Dec</span>
                     </div>
                     <span class="card-badge badge-amber">Römerberg Christmas Market</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🌿</span>
-                        <span class="card-title">Frankfurter Grüne Soße</span>
+                        <h3 class="card-title">Frankfurter Grüne Soße</h3>
                     </div>
                 </div>
                 <p class="card-desc">Cold, creamy herb sauce made strictly from seven fresh local herbs (borage, chervil, cress, parsley, burnet, sorrel, chives), served with boiled eggs and potatoes.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🌭</span>
-                        <span class="card-title">Frankfurter Würstchen</span>
+                        <h3 class="card-title">Frankfurter Würstchen</h3>
                     </div>
                 </div>
                 <p class="card-desc">Pure pork smoked sausages in natural sheep casing, gently heated in hot water and served with sharp mustard and crusty rolls.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🧀</span>
-                        <span class="card-title">Handkäs mit Musik</span>
+                        <h3 class="card-title">Handkäs mit Musik</h3>
                     </div>
                 </div>
                 <p class="card-desc">Translucent sour-milk cheese topped with diced raw onions and caraway; spread onto dense rye sourdough with thick farm butter.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥩</span>
-                        <span class="card-title">Frankfurter Rippchen mit Kraut</span>
+                        <h3 class="card-title">Frankfurter Rippchen mit Kraut</h3>
                     </div>
                 </div>
                 <p class="card-desc">Cured and gently cooked pork ribs served steaming on a mountain of wine sauerkraut with creamy mashed potatoes.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍬</span>
-                        <span class="card-title">Bethmännchen</span>
+                        <h3 class="card-title">Bethmännchen</h3>
                     </div>
                 </div>
                 <p class="card-desc">Traditional marzipan confectionery flavored with rosewater and adorned with three halved almonds representing the Bethmann brothers.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🎂</span>
-                        <span class="card-title">Frankfurter Kranz</span>
+                        <h3 class="card-title">Frankfurter Kranz</h3>
                     </div>
                 </div>
                 <p class="card-desc">Crown-shaped sponge cake layered with rich buttercream and red berry jam, coated in crunchy caramelized hazelnut brittle (Krokant).</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Quiet river wine terraces, medieval castle suburbs, and secluded sculpture gardens.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Höchst Historic Old Town</span>
-                    <span class="card-badge badge-emerald">Historic Suburb</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Historic Suburb</span>
                 </div>
+                <h3 class="card-title">Höchst Historic Old Town</h3>
                 <p class="card-desc">Just 10 minutes west by S-Bahn, Höchst feels like a centuries-old village with timbered houses, a moated castle, and porcelain manufactory.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Liebieghaus Sculpture Garden Cafe</span>
-                    <span class="card-badge badge-emerald">Secret Garden</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Secret Garden</span>
                 </div>
+                <h3 class="card-title">Liebieghaus Sculpture Garden Cafe</h3>
                 <p class="card-desc">A tranquil 19th-century villa garden on Museumsufer featuring antique marble sculptures and a hidden terrace cafe under sycamores.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Holzhausen Park &amp; Baroque Moat</span>
-                    <span class="card-badge badge-emerald">Water Castle</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Water Castle</span>
                 </div>
+                <h3 class="card-title">Holzhausen Park &amp; Baroque Moat</h3>
                 <p class="card-desc">A serene North End park centered on a miniature baroque moated castle where classical concerts echo across reflecting ponds.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Kaiserdom Imperial Cloister &amp; Tower</span>
-                    <span class="card-badge badge-emerald">Cathedral Vista</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Cathedral Vista</span>
                 </div>
+                <h3 class="card-title">Kaiserdom Imperial Cloister &amp; Tower</h3>
                 <p class="card-desc">Climb 328 stone steps up the red sandstone tower of St. Bartholomew&#x27;s Cathedral for an extraordinary direct look down at Römerberg.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Kleinmarkthalle Upper Terrace Wine Bar</span>
-                    <span class="card-badge badge-emerald">Rooftop Vibe</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Rooftop Vibe</span>
                 </div>
+                <h3 class="card-title">Kleinmarkthalle Upper Terrace Wine Bar</h3>
                 <p class="card-desc">Head up to the market hall&#x27;s mezzanine terrace on Saturday afternoon to sip local Riesling alongside lively Frankfurt residents.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Lohrberg Orchard Hill Viewpoint</span>
-                    <span class="card-badge badge-emerald">Panoramic Hill</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Panoramic Hill</span>
                 </div>
+                <h3 class="card-title">Lohrberg Orchard Hill Viewpoint</h3>
                 <p class="card-desc">Frankfurt&#x27;s only remaining vineyard hill in Seckbach; enjoy apple wine and rustic snacks with a sweeping vista of the entire skyscraper skyline.</p>
             </div>
             </div>

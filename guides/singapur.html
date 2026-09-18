@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Singapore Public Transit & Airport Transfers</h2>
             </div>
             <p class="section-intro">Singapore&#x27;s transport is a machine that runs without friction: the MRT goes everywhere, a contactless card opens every gate, and the ride app waits in reserve.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Changi to the centre</span>
+                        <h3 class="card-title">Changi to the centre</h3>
                     </div>
                 </div>
                 <p class="card-desc">The MRT&#x27;s green-blue combination reaches the centre in 40 minutes; a taxi takes 25 at a reasonable metered fare. If your flight is early or late, give the Jewel waterfall an hour — this airport is a sight in itself.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚇</span>
-                        <span class="card-title">The MRT — cold, fast, flawless</span>
+                        <h3 class="card-title">The MRT — cold, fast, flawless</h3>
                     </div>
                 </div>
                 <p class="card-desc">The metro web covers the island: tap through with a contactless bank card and the daily cap calculates itself. Take the no-eating rule seriously — and enjoy the air-conditioning.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚌</span>
-                        <span class="card-title">The double-decker buses</span>
+                        <h3 class="card-title">The double-decker buses</h3>
                     </div>
                 </div>
                 <p class="card-desc">The bus network opens the neighbourhoods the MRT misses: the top-deck front seat is the air-conditioned way to learn the city. The same card works — remember to tap off as well.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">Walking — a morning and evening affair</span>
+                        <h3 class="card-title">Walking — a morning and evening affair</h3>
                     </div>
                 </div>
                 <p class="card-desc">Marina Bay, the river and the neighbourhood cores are walkable, but budget for the humidity. Use the shaded routes and air-conditioned shopping links as corridors — the locals do.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚕</span>
-                        <span class="card-title">Taxis and the apps</span>
+                        <h3 class="card-title">Taxis and the apps</h3>
                     </div>
                 </div>
                 <p class="card-desc">Taxis are metered and honest; the apps (Grab) show the fare upfront. Peak and night surcharges are normal — not a surprise, a tariff.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Where to Stay in Singapore: Best Areas</h2>
             </div>
             <p class="section-intro">In Singapore choosing a neighbourhood is choosing a theme: the bay skyline, Chinatown&#x27;s shophouses, Arab Street&#x27;s colours or Katong&#x27;s Peranakan façades.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Marina Bay and the Civic District</span>
+                    <h3 class="card-title">Marina Bay and the Civic District</h3>
                     <span class="card-badge badge-purple">Most iconic</span>
                 </div>
                 <p class="card-desc">The bay skyline, museums and light shows at your door: Singapore&#x27;s showcase face. High prices, flawless views and location — the showy base for a first visit.</p>
-                <div class="card-footer-tip">Bay views • Museum district • The light show</div>
+                <div class="card-footer-tip">📍 Bay views • Museum district • The light show</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Chinatown and Tanjong Pagar</span>
+                    <h3 class="card-title">Chinatown and Tanjong Pagar</h3>
                     <span class="card-badge badge-purple">Most delicious</span>
                 </div>
                 <p class="card-desc">Shophouse façades, temples and hawker centres interlocked, with night bars and boutique hotels on the same streets. The natural centre of a food-first visit.</p>
-                <div class="card-footer-tip">Hawker heaven • Shophouse fabric • Night bars</div>
+                <div class="card-footer-tip">📍 Hawker heaven • Shophouse fabric • Night bars</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Kampong Glam and Arab Street</span>
+                    <h3 class="card-title">Kampong Glam and Arab Street</h3>
                     <span class="card-badge badge-purple">Most colourful</span>
                 </div>
                 <p class="card-desc">Fabric shops, cafés and murals around the Sultan Mosque: Haji Lane&#x27;s boutiques are the young crowd&#x27;s route. Characterful small hotels — for those after colour and rhythm.</p>
-                <div class="card-footer-tip">Haji Lane • Wall art • Boutique hotels</div>
+                <div class="card-footer-tip">📍 Haji Lane • Wall art • Boutique hotels</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Little India</span>
+                    <h3 class="card-title">Little India</h3>
                     <span class="card-badge badge-purple">Most vivid</span>
                 </div>
                 <p class="card-desc">Spice scent, garland stalls and Mustafa, the 24-hour shopping legend: the friendliest prices in town. Dense, noisy and utterly alive — Singapore unfiltered.</p>
-                <div class="card-footer-tip">Spice bazaar • Fair prices • 24-hour life</div>
+                <div class="card-footer-tip">📍 Spice bazaar • Fair prices • 24-hour life</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Katong and Joo Chiat</span>
+                    <h3 class="card-title">Katong and Joo Chiat</h3>
                     <span class="card-badge badge-purple">Most characterful</span>
                 </div>
                 <p class="card-desc">Pastel Peranakan façades, laksa stalls and walking distance to the shore: graceful neighbourhood life off the tourist route. A quarter hour to the centre by MRT.</p>
-                <div class="card-footer-tip">Peranakan façades • Laksa territory • Near the shore</div>
+                <div class="card-footer-tip">📍 Peranakan façades • Laksa territory • Near the shore</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Best Time to Visit Singapore</h2>
             </div>
             <p class="section-intro">On the equator there are no seasons, only rhythm: 30 degrees all year, sudden downpours and a festival calendar — plan by the events, not the rain.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Spring</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Feb – Apr</span>
+                        <h3 class="card-title">Spring</h3>
+                        <span class="season-months">Feb – Apr</span>
                     </div>
                     <span class="card-badge badge-amber">Festival Spring</span>
                 </div>
                 <p class="card-desc">The year&#x27;s relatively dry slice: Chinese New Year colours February, and April passes comfortably for hawker crawls. The humidity is its usual self — the early-morning plan remains the golden rule.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Summer</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">May – Aug</span>
+                        <h3 class="card-title">Summer</h3>
+                        <span class="season-months">May – Aug</span>
                     </div>
                     <span class="card-badge badge-amber">The Hot Routine</span>
                 </div>
                 <p class="card-desc">The equatorial routine runs in full: morning sun, a short violent afternoon shower, a warm evening. June-July&#x27;s Great Singapore Sale calls the shoppers, July&#x27;s food festival the flavour hunters.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Autumn</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Sep – Nov</span>
+                        <h3 class="card-title">Autumn</h3>
+                        <span class="season-months">Sep – Nov</span>
                     </div>
                     <span class="card-badge badge-amber">Lights and Race Season</span>
                 </div>
                 <p class="card-desc">In September the Formula 1 night race pulls the city inside the circuit — hotels peak that week. In October-November Deepavali turns Little India into a sea of light. The rains build with November.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Winter</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Dec – Jan</span>
+                        <h3 class="card-title">Winter</h3>
+                        <span class="season-months">Dec – Jan</span>
                     </div>
                     <span class="card-badge badge-amber">Monsoon and Sparkle</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍗</span>
-                        <span class="card-title">Hainanese chicken rice — the national plate</span>
+                        <h3 class="card-title">Hainanese chicken rice — the national plate</h3>
                     </div>
                 </div>
                 <p class="card-desc">Silken poached chicken, rice cooked in chicken fat, ginger and chilli sauce: simplicity&#x27;s summit. Every Singaporean has a sworn stall — join the one with the queue.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍜</span>
-                        <span class="card-title">Laksa and char kway teow</span>
+                        <h3 class="card-title">Laksa and char kway teow</h3>
                     </div>
                 </div>
                 <p class="card-desc">Coconut-spiced laksa soup and wok-smoky char kway teow noodles: two heavyweights, two different stalls. Katong laksa is eaten with a spoon only — the noodles come pre-cut.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🦀</span>
-                        <span class="card-title">Chilli crab — the shell feast</span>
+                        <h3 class="card-title">Chilli crab — the shell feast</h3>
                     </div>
                 </div>
                 <p class="card-desc">Crab in sweet-hot tomato sauce with mantou buns for dunking: Singapore&#x27;s celebration plate. Eaten by hand, apron on, billed by weight — ask the price first.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍞</span>
-                        <span class="card-title">Kaya toast + soft eggs + kopi</span>
+                        <h3 class="card-title">Kaya toast + soft eggs + kopi</h3>
                     </div>
                 </div>
                 <p class="card-desc">Toast with coconut kaya jam, half-boiled eggs with soy sauce, and kopi whose ordering language is an art of its own: the kopitiam breakfast&#x27;s holy trio.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍢</span>
-                        <span class="card-title">Satay and the night stalls</span>
+                        <h3 class="card-title">Satay and the night stalls</h3>
                     </div>
                 </div>
                 <p class="card-desc">Marinated skewers over coals, peanut sauce and cucumber-onion garnish: ordered by the dozen in the evening satay streets. Iced sugarcane juice alongside — the night classic.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥭</span>
-                        <span class="card-title">Ais kacang and tropical sweets</span>
+                        <h3 class="card-title">Ais kacang and tropical sweets</h3>
                     </div>
                 </div>
                 <p class="card-desc">Shaved ice under coloured syrups, red beans and corn: the official cure for tropical heat. Mango sticky rice and the durian courage test play in the same sweet league.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Everyone sees the supertrees; these six are the garden city&#x27;s hidden layers.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">The Southern Ridges walk</span>
-                    <span class="card-badge badge-emerald">A skywalk through the forest</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ A skywalk through the forest</span>
                 </div>
+                <h3 class="card-title">The Southern Ridges walk</h3>
                 <p class="card-desc">From the rippling wooden bridge of Henderson Waves onto forest-crest walkways: you cross the city&#x27;s south at canopy level. Start early — the macaques and birds wake before you.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Pulau Ubin</span>
-                    <span class="card-badge badge-emerald">A time-capsule island</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ A time-capsule island</span>
                 </div>
+                <h3 class="card-title">Pulau Ubin</h3>
                 <p class="card-desc">Ten minutes by boat from Changi jetty into 1960s Singapore: village houses, dirt tracks and the Chek Jawa wetlands. Rent a bike — the island is the wild sibling the city-state kept.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">The MacRitchie TreeTop Walk</span>
-                    <span class="card-badge badge-emerald">Nature at first light</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Nature at first light</span>
                 </div>
+                <h3 class="card-title">The MacRitchie TreeTop Walk</h3>
                 <p class="card-desc">The rainforest reserve&#x27;s suspension bridge crosses above the canopy: monkey families, monitor lizards and silence. The full loop takes three hours — carry water, walk in the morning cool.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Tiong Bahru</span>
-                    <span class="card-badge badge-emerald">The neighbourhood classic</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ The neighbourhood classic</span>
                 </div>
+                <h3 class="card-title">Tiong Bahru</h3>
                 <p class="card-desc">A market, independent bookshops and one of the city&#x27;s oldest hawker centres among 1930s art deco blocks: chwee kueh (steamed rice cakes) is the morning classic. An elegance not yet fully on the tourist route.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">The Botanic Gardens at 7 am</span>
-                    <span class="card-badge badge-emerald">The botanical heart</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ The botanical heart</span>
                 </div>
+                <h3 class="card-title">The Botanic Gardens at 7 am</h3>
                 <p class="card-desc">The UNESCO gardens are famous for the orchids, but the real magic is at 7 am: tai chi groups, rain-tree shade and nearly empty paths. Entry free — Singapore&#x27;s most generous gift.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Sentosa&#x27;s quiet end — Tanjong Beach</span>
-                    <span class="card-badge badge-emerald">Sunset at the island&#x27;s end</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Sunset at the island&#x27;s end</span>
                 </div>
+                <h3 class="card-title">Sentosa&#x27;s quiet end — Tanjong Beach</h3>
                 <p class="card-desc">Step away from Sentosa&#x27;s theme-park face: Tanjong beach at the southern tip is nearly empty on weekdays. Palm shade, warm water and a ship-silhouetted sunset — the island&#x27;s calm face.</p>
             </div>
             </div>

@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Prague Public Transit & Airport Transfers</h2>
             </div>
             <p class="section-intro">Prague is a compact city built for walking and trams. The historic centre is largely pedestrianised. The tram is the right way to move across the city; the metro handles the longer distances.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Airport → City Centre</span>
+                        <h3 class="card-title">Airport → City Centre</h3>
                     </div>
                 </div>
                 <p class="card-desc">Bus 119 runs from the airport to Nádraží Veleslavín (Metro Line A, green line) every 10–15 minutes. From there, the metro takes you to the centre in another 10 minutes. Total journey approximately 35 minutes. The Airport Express bus (AE) goes directly to the main train station but requires a separate ticket. Taxis are metered but expensive — always agree the fare before boarding or use the Bolt or Uber apps.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚇</span>
-                        <span class="card-title">Metro — three lines, fast and clean</span>
+                        <h3 class="card-title">Metro — three lines, fast and clean</h3>
                     </div>
                 </div>
                 <p class="card-desc">Three lines: A (green), B (yellow), C (red). Line A covers the Old Town and castle district. Line B runs east–west through the new city. Line C connects the main train station and the south. The metro closes around midnight. Note: the metro does not reach Malá Strana or the castle — for those, take the tram.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚃</span>
-                        <span class="card-title">Trams — the best way to see the city</span>
+                        <h3 class="card-title">Trams — the best way to see the city</h3>
                     </div>
                 </div>
                 <p class="card-desc">Tram 22 is the classic route — National Theatre through Malá Strana, up to Prague Castle. Board at the middle door, stamp your ticket in the yellow machine immediately, and sit on the right side heading toward the castle. Daytime trams run until midnight; night lines (91–99) cover the city every 30 minutes until around 4:30am.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">On foot — the best decisions</span>
+                        <h3 class="card-title">On foot — the best decisions</h3>
                     </div>
                 </div>
                 <p class="card-desc">Most of the historic centre is 20–30 minutes on foot from most other parts. Charles Bridge to Prague Castle is 20 minutes uphill through Malá Strana. Old Town Square to Wenceslas Square is 10 minutes. Vinohrady to the National Museum is 15 minutes. The city rewards walking: the passages, the courtyards, the stairways cut through hillsides, the Art Nouveau doorways — all of these are invisible from the tram.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚕</span>
-                        <span class="card-title">Taxis — use apps only</span>
+                        <h3 class="card-title">Taxis — use apps only</h3>
                     </div>
                 </div>
                 <p class="card-desc">Street taxis in Prague have a long history of overcharging tourists. Always use Bolt or Uber — fixed price, traceable route, no negotiation. From the Old Town to Vinohrady should cost around CZK 80–120. From the airport to the centre, CZK 400–600. Never accept a taxi from someone approaching you at tourist sites or the airport arrivals hall.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Where to Stay in Prague: Best Areas</h2>
             </div>
             <p class="section-intro">Prague&#x27;s neighbourhoods are dramatically different. The historic centre is beautiful but increasingly given over to tourism. The best base for a genuine experience of the city is one district further out.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Vinohrady — Prague 2/3</span>
+                    <h3 class="card-title">Vinohrady — Prague 2/3</h3>
                     <span class="card-badge badge-purple">Best base</span>
                 </div>
                 <p class="card-desc">The neighbourhood Praguers recommend most. Art Nouveau apartment buildings, tree-lined streets, the best café and restaurant scene in the city, wine bars that stay open late, and a genuinely local atmosphere. Two metro stops from the Old Town but feels entirely separate from the tourist circuit. The correct answer to &#x27;where should I stay in Prague&#x27; for anyone who has been before.</p>
-                <div class="card-footer-tip">Best restaurants • Art Nouveau streets • Most local feel</div>
+                <div class="card-footer-tip">📍 Best restaurants • Art Nouveau streets • Most local feel</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Malá Strana (Lesser Town) — Prague 1</span>
+                    <h3 class="card-title">Malá Strana (Lesser Town) — Prague 1</h3>
                     <span class="card-badge badge-purple">Most atmospheric</span>
                 </div>
                 <p class="card-desc">The Baroque quarter below the castle — cobbled streets, hidden gardens, palaces repurposed as embassies, the finest architecture in Central Europe largely unchanged since the 18th century. Expensive and increasingly touristy but still magical. The best neighbourhood in Prague to simply wander without a destination.</p>
-                <div class="card-footer-tip">Baroque architecture • Hidden gardens • Below the castle</div>
+                <div class="card-footer-tip">📍 Baroque architecture • Hidden gardens • Below the castle</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Žižkov — Prague 3</span>
+                    <h3 class="card-title">Žižkov — Prague 3</h3>
                     <span class="card-badge badge-purple">Most local</span>
                 </div>
                 <p class="card-desc">The working-class quarter east of the centre — rough around the edges, home to the television tower, the highest density of hospodas per capita in Prague, and a creative scene that has been quietly developing for a decade. Not beautiful in the conventional sense but completely alive. Where Prague&#x27;s artists, musicians, and night owls actually live.</p>
-                <div class="card-footer-tip">Most hospodas • Creative scene • Entirely untouristy</div>
+                <div class="card-footer-tip">📍 Most hospodas • Creative scene • Entirely untouristy</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Holešovice — Prague 7</span>
+                    <h3 class="card-title">Holešovice — Prague 7</h3>
                     <span class="card-badge badge-purple">Most creative</span>
                 </div>
                 <p class="card-desc">The former industrial district north of the centre, now Prague&#x27;s most creative neighbourhood — the DOX Centre for Contemporary Art, the Manifesto food market, independent coffee shops, and a young local crowd. Not central but excellent tram connections. The neighbourhood with the most energy in Prague right now.</p>
-                <div class="card-footer-tip">Contemporary art • Food markets • Young and creative</div>
+                <div class="card-footer-tip">📍 Contemporary art • Food markets • Young and creative</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Staré Město (Old Town) — Prague 1</span>
+                    <h3 class="card-title">Staré Město (Old Town) — Prague 1</h3>
                     <span class="card-badge badge-purple">Most central</span>
                 </div>
                 <p class="card-desc">Walking distance from everything, beautiful at 6am before the tourists arrive, overrun by 10am. The most convenient base but the least authentic experience. If you stay in the Old Town, use it as a launchpad — eat, drink, and spend your evenings in Vinohrady or Žižkov.</p>
-                <div class="card-footer-tip">Most central • All monuments walking distance • Crowded by day</div>
+                <div class="card-footer-tip">📍 Most central • All monuments walking distance • Crowded by day</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Best Time to Visit Prague</h2>
             </div>
             <p class="section-intro">Prague works in every season — each one offers a different city. The question is how you feel about crowds.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Spring</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Mar – May</span>
+                        <h3 class="card-title">Spring</h3>
+                        <span class="season-months">Mar – May</span>
                     </div>
                     <span class="card-badge badge-amber">The Best Season</span>
                 </div>
                 <p class="card-desc">April and May are when Prague is at its finest. The gardens open, chestnut trees bloom along every boulevard, terraces fill up. The weather is ideal for walking, the light is clear and long, and the tourist crowds are still manageable. May is one of the best months to visit Prague — the castle gardens, the Baroque parks of Malá Strana, Letná — all at their most beautiful.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Summer</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Jun – Aug</span>
+                        <h3 class="card-title">Summer</h3>
+                        <span class="season-months">Jun – Aug</span>
                     </div>
                     <span class="card-badge badge-amber">Crowded but Alive</span>
                 </div>
                 <p class="card-desc">June is the best summer month — long evenings, the city alive but not yet overwhelmed, outdoor concerts in the castle and gardens. July and August bring the peak tourist crowds: Charles Bridge becomes a slow-moving procession, Old Town Square a permanent photo opportunity. But the Náplavka riverside fills with locals in the evenings, the Letná beer garden is at its best, and the Baroque gardens are in full bloom. The city is beautiful even at its most crowded.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Autumn</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Sep – Nov</span>
+                        <h3 class="card-title">Autumn</h3>
+                        <span class="season-months">Sep – Nov</span>
                     </div>
                     <span class="card-badge badge-amber">The Local&#x27;s Season</span>
                 </div>
                 <p class="card-desc">September is the best-kept secret of Prague travel. The summer tourists have left, the light turns amber renginde and low, the vineyards of Vinohrady and Grébovka are harvesting, and the city returns to its own pace. October brings the most beautiful colours — the parks of Vinohrady, the chestnut walks of Malá Strana, Stromovka turning gold. November is cold and grey but the hospodas are full and the city has never felt more authentically itself.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Winter</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Dec – Feb</span>
+                        <h3 class="card-title">Winter</h3>
+                        <span class="season-months">Dec – Feb</span>
                     </div>
                     <span class="card-badge badge-amber">Magical and Underrated</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥩</span>
-                        <span class="card-title">Svíčková na smetaně — the national dish</span>
+                        <h3 class="card-title">Svíčková na smetaně — the national dish</h3>
                     </div>
                 </div>
                 <p class="card-desc">Slow-braised beef in root vegetable cream sauce, served with bread dumplings, lemon, whipped cream, and cranberry sauce. The combination is richer and more complex than it sounds. A good svíčková takes hours to prepare; the sauce should be thick, amber renginde, and slightly sweet-sour. Avoid places that serve it as a tourist dish. The best versions are in proper hospodas and traditional Czech restaurants away from the Old Town.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍲</span>
-                        <span class="card-title">Guláš — the Czech version</span>
+                        <h3 class="card-title">Guláš — the Czech version</h3>
                     </div>
                 </div>
                 <p class="card-desc">Czech guláš is a richer, darker version of the Hungarian original — beef or pork braised for hours in paprika and spices until the sauce is thick and deep. Served almost universally with bread dumplings (houskový knedlík) to absorb the sauce. A staple of every hospoda menu. A bowl of guláš and a beer is the best lunch Prague offers.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍺</span>
-                        <span class="card-title">Czech beer — the best in the world</span>
+                        <h3 class="card-title">Czech beer — the best in the world</h3>
                     </div>
                 </div>
                 <p class="card-desc">The Czech Republic invented Pilsner in 1842 in Plzeň (Pilsen). Pilsner Urquell is the original and still the standard. Kozel is the preferred dark lager. Staropramen is the Prague local. Bernard is the independent alternative. Czech beer is served at the correct temperature, in the correct glass, with a dense foam head that is not optional. A half-litre of draft beer in a proper hospoda costs CZK 40–60 — less than in almost any other European capital.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥐</span>
-                        <span class="card-title">Trdelník — eat it once</span>
+                        <h3 class="card-title">Trdelník — eat it once</h3>
                     </div>
                 </div>
                 <p class="card-desc">The chimney cake sold on every tourist street is not actually a traditional Czech dish — it is a Hungarian/Slovak pastry that became a Prague tourist fixture in the 2000s. It is fine. But eat it once, with cinnamon sugar rather than Nutella, and then find something more interesting. The real Czech street food is langos (fried dough with cheese and sour cream) or a párek v rohlíku (sausage in a bread roll) from a street stand.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🫙</span>
-                        <span class="card-title">Roast pork, dumplings, sauerkraut</span>
+                        <h3 class="card-title">Roast pork, dumplings, sauerkraut</h3>
                     </div>
                 </div>
                 <p class="card-desc">Vepřo knedlo zelo — roast pork with bread dumplings and sauerkraut — is the other national standard. Simple, filling, and cheap. The pork should be fatty and slow-roasted, the dumplings should absorb the gravy, the sauerkraut should be sharp enough to cut through both. Available in every proper Czech restaurant. Avoid places where it arrives looking like a photograph — the best versions are never photogenic.</p>
@@ -787,33 +932,11 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🦆</span>
-                        <span class="card-title">Roast duck — the autumn speciality</span>
+                        <h3 class="card-title">Roast duck — the autumn speciality</h3>
                     </div>
                 </div>
                 <p class="card-desc">Pečená kachna (roast duck) is the Czech autumn and winter dish par excellence — slow-roasted until the skin is lacquered and crisp, served with red cabbage, sauerkraut, and bread or potato dumplings. The combination of rich duck fat, sharp cabbage, and absorbent dumplings is one of the great plates of Central European cooking. Available year-round but at its best from September onward, when Czech restaurants make it a seasonal centrepiece. Order it in a proper Czech restaurant, not a tourist menu.</p>
                 <div class="card-footer-tip">⭐ With red cabbage and dumplings · best September–February · order in a proper Czech restaurant</div>
-            </div>
-            
-            <div class="feature-card">
-                <div class="card-header">
-                    <div class="card-title-group">
-                        <span class="card-icon">🍷</span>
-                        <span class="card-title">Moravian wine — underrated</span>
-                    </div>
-                </div>
-                <p class="card-desc">Moravia, the eastern Czech region, produces wine that almost no one outside the country knows about. Welschriesling, Müller-Thurgau, Grüner Veltliner, Palava — white wines with a mineral, slightly oxidative character. The wine bars of Vinohrady are the best place to find them. Ask for Moravské víno (Moravian wine) and let the server guide you. A carafe of house wine in a Vinohrady wine bar costs less than a glass in Paris.</p>
-                <div class="card-footer-tip">⭐ Moravian wine · Vinohrady wine bars · cheaper than anywhere</div>
-            </div>
-            
-            <div class="feature-card">
-                <div class="card-header">
-                    <div class="card-title-group">
-                        <span class="card-icon">☕</span>
-                        <span class="card-title">Czech coffee culture</span>
-                    </div>
-                </div>
-                <p class="card-desc">Prague has developed a serious third-wave coffee scene in the last decade — EMA Espresso Bar, Kavárna Místo, Můj šálek kávy, and others. But the traditional Czech café (kavárna) is a different and equally valid institution: large, slightly faded, Art Nouveau interiors, newspapers on wooden holders, a long menu of coffee preparations, and cakes. Café Imperial on Na Příkopě is the most spectacular example. Both traditions coexist and both are worth experiencing.</p>
-                <div class="card-footer-tip">⭐ EMA Espresso Bar · Kavárna Místo · Café Imperial for the room</div>
             </div>
             </div>
             
@@ -834,51 +957,51 @@
             </div>
             <p class="section-intro">Prague hides its best things just outside the sight lines of the tourist routes — one street over from Charles Bridge, one tram stop past the Old Town, one door further into Malá Strana.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Wallenstein Garden (Valdštejnská zahrada) — Malá Strana</span>
-                    <span class="card-badge badge-emerald">The most beautiful Baroque garden in Prague — and almost no one goes</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ The most beautiful Baroque garden in Prague — and almost no one goes</span>
                 </div>
+                <h3 class="card-title">Wallenstein Garden (Valdštejnská zahrada) — Malá Strana</h3>
                 <p class="card-desc">Built between 1623 and 1630 for Albrecht of Wallenstein — the military commander who wanted a garden that rivalled Prague Castle — the Wallenstein Garden is one of the finest early Baroque gardens in Central Europe. White peacocks roam freely between bronze statues of Greek gods, a koi pond, a grotto wall of artificial stalactites, and a sala terrena pavilion decorated with Trojan War frescoes. It sits directly behind the Malostranska metro exit. Almost no tourist finds it. Free entry. Open April to October.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Vyšehrad — the forgotten fortress</span>
-                    <span class="card-badge badge-emerald">A medieval fortress with the best views in the city — and almost no queue</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ A medieval fortress with the best views in the city — and almost no queue</span>
                 </div>
+                <h3 class="card-title">Vyšehrad — the forgotten fortress</h3>
                 <p class="card-desc">While tourists queue for Prague Castle, Vyšehrad sits on a clifftop above the Vltava on the south side of the city — a 10th-century fortress with the best panoramic view of Prague, a Romanesque rotunda, the National Cemetery where Dvořák and Smetana are buried, and a park full of locals having picnics. The grounds are entirely free. The Basilica of St. Peter and St. Paul inside requires a ticket. Walk the ramparts at dusk and watch the city below.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Nový Svět — the forgotten lane</span>
-                    <span class="card-badge badge-emerald">A fairy-tale lane from the 14th century — three minutes from the castle</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ A fairy-tale lane from the 14th century — three minutes from the castle</span>
                 </div>
+                <h3 class="card-title">Nový Svět — the forgotten lane</h3>
                 <p class="card-desc">Nový Svět (&#x27;New World&#x27;) is a narrow cobbled lane tucked below the castle walls in Hradčany — a row of tiny medieval cottages that housed castle servants from the 14th century onward. It is three minutes from the castle entrance and almost completely unknown to visitors. At any time of day, it is quiet. In the early morning, before the castle crowds arrive, it is one of the most atmospheric streets in Europe. Free to walk. Go before 9am.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Vrtba Garden (Vrtbovská zahrada) — Malá Strana</span>
-                    <span class="card-badge badge-emerald">The finest Baroque garden in Malá Strana — ticketed but completely uncrowded</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ The finest Baroque garden in Malá Strana — ticketed but completely uncrowded</span>
                 </div>
+                <h3 class="card-title">Vrtba Garden (Vrtbovská zahrada) — Malá Strana</h3>
                 <p class="card-desc">Hidden behind an unmarked door on Karmelitská Street, the Vrtba Garden is a terraced Baroque masterpiece built in 1720 — sculptures by Matyáš Bernard Braun, frescoes by Václav Vavřinec Reiner, and a staircase that climbs to a terrace with one of the best views of Prague Castle and Malá Strana rooftops. Voted the second most beautiful historic garden in Europe. Ticketed entry. Almost no one visits — even in peak season, you may have it nearly to yourself.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Café Imperial — Na Příkopě</span>
-                    <span class="card-badge badge-emerald">The Art Nouveau café that Kafka and Einstein used to visit</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ The Art Nouveau café that Kafka and Einstein used to visit</span>
                 </div>
+                <h3 class="card-title">Café Imperial — Na Příkopě</h3>
                 <p class="card-desc">Opened in 1914, Café Imperial has a dining room covered floor-to-ceiling in hand-painted Art Nouveau ceramic tiles — walls, pillars, ceiling — an interior that has no equivalent anywhere in Prague. Kafka used to work nearby; Einstein lived in Prague for a year. The café serves traditional Czech food alongside the coffee and cakes. Go mid-morning, when it is calmer, and sit long enough to look properly at the room. No entry fee — just the cost of a coffee.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Náplavka — Vltava embankment</span>
-                    <span class="card-badge badge-emerald">The riverside that belongs to Prague — not to tourism</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ The riverside that belongs to Prague — not to tourism</span>
                 </div>
+                <h3 class="card-title">Náplavka — Vltava embankment</h3>
                 <p class="card-desc">The Náplavka is a riverside embankment on the left bank of the Vltava, south of the National Theatre. During the day it is a pleasant walk. On Friday evenings from spring through autumn, it becomes something else entirely — food stalls, a farmers market, people sitting along the stone wall with wine and beer, DJs occasionally, the whole city seeming to be here at once. Free. No reservation. One of the best evenings Prague has to offer.</p>
             </div>
             </div>

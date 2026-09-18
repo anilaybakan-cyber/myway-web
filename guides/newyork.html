@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">New York Public Transit & Airport Transfers</h2>
             </div>
             <p class="section-intro">Take the metro or walk. Taxis only make sense late at night.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Airport → City</span>
+                        <h3 class="card-title">Airport → City</h3>
                     </div>
                 </div>
                 <p class="card-desc">From JFK: AirTrain to Jamaica or Howard Beach, then subway — around 60 minutes, both ticketed separately. From LaGuardia: no rail link. Take the M60 bus to 125th Street subway station and continue to the city centre by metro. A direct taxi is also an option. From Newark: NJ Transit train to Penn Station, around 45 minutes. Taxis run on a meter; traffic makes both the time and the cost unpredictable.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚇</span>
-                        <span class="card-title">Subway — the city&#x27;s backbone</span>
+                        <h3 class="card-title">Subway — the city&#x27;s backbone</h3>
                     </div>
                 </div>
                 <p class="card-desc">472 stations across five boroughs, 24 hours. Tap a contactless card, phone or OMNY Card on the turnstile reader. $3.25, weekly cap $35. Lines run in two modes: local trains stop at every station, express trains skip some — check the map before you board or you might overshoot. Trains run less frequently at night but no line closes.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚌</span>
-                        <span class="card-title">Buses — slower but useful</span>
+                        <h3 class="card-title">Buses — slower but useful</h3>
                     </div>
                 </div>
                 <p class="card-desc">Same fare as the metro, tap OMNY. Useful for crosstown routes the metro doesn&#x27;t cover: M15, M34, M42. Slower than the metro in traffic, but you&#x27;re watching the city go by — sometimes that&#x27;s worth it.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">⛴️</span>
-                        <span class="card-title">Staten Island Ferry — free, always running</span>
+                        <h3 class="card-title">Staten Island Ferry — free, always running</h3>
                     </div>
                 </div>
                 <p class="card-desc">Leaves from Whitehall Terminal every 30 minutes, 24 hours a day. 25 minutes past the Statue of Liberty, Governors Island and the lower Manhattan skyline — free in both directions. New Yorkers use it to commute; you&#x27;ll be getting the best free boat ride in the world.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">Walking — the only way to actually see it</span>
+                        <h3 class="card-title">Walking — the only way to actually see it</h3>
                     </div>
                 </div>
                 <p class="card-desc">Manhattan is a grid. Avenues run north-south; streets run east-west. Numbers increase heading north and west. Each block takes about one minute on foot — 20 blocks is roughly a mile. Below 14th Street the grid breaks down and you&#x27;ll need the map. The outer boroughs are not grids. Wear shoes you can walk in for six hours.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Where to Stay in New York: Best Areas</h2>
             </div>
             <p class="section-intro">Manhattan is convenient and expensive. Brooklyn is interesting and cheaper. The outer boroughs are where the city actually lives.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Lower East Side / East Village</span>
+                    <h3 class="card-title">Lower East Side / East Village</h3>
                     <span class="card-badge badge-purple">Most interesting</span>
                 </div>
                 <p class="card-desc">German, Jewish, Italian, Chinese, Puerto Rican — the neighbourhood where successive waves of immigrants arrived and left their mark. Katz&#x27;s has been on the same corner since 1888. Russ &amp; Daughters since 1914. The tenement buildings, the pickle shops, the narrow streets are still here. The East Village next door is younger, louder, cheaper. Both are lively well into the night.</p>
-                <div class="card-footer-tip">Katz&#x27;s &amp; Russ &amp; Daughters • Most historical • Bars until late</div>
+                <div class="card-footer-tip">📍 Katz&#x27;s &amp; Russ &amp; Daughters • Most historical • Bars until late</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">West Village / Greenwich Village</span>
+                    <h3 class="card-title">West Village / Greenwich Village</h3>
                     <span class="card-badge badge-purple">Most charming</span>
                 </div>
                 <p class="card-desc">Where the grid breaks and the streets become names instead of numbers. Brownstones, narrow lanes, jazz clubs that have been running since the 1950s. The most expensive neighbourhood in Manhattan, square foot for square foot. Via Carota on Grove Street is the best Italian restaurant in the city. The White Horse Tavern has been serving since 1880. Good for walking; stays loud late into the night, so not ideal if you need early mornings. Friends fan? The building used for exterior shots is on Grove Street, a few steps from Via Carota.</p>
-                <div class="card-footer-tip">Via Carota • Best streets for walking • Jazz history</div>
+                <div class="card-footer-tip">📍 Via Carota • Best streets for walking • Jazz history</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Midtown / Hell&#x27;s Kitchen</span>
+                    <h3 class="card-title">Midtown / Hell&#x27;s Kitchen</h3>
                     <span class="card-badge badge-purple">Most convenient</span>
                 </div>
                 <p class="card-desc">Hell&#x27;s Kitchen is Midtown&#x27;s west side — walkable to Central Park, Times Square, Penn Station, and Lincoln Center. Less expensive than the Village, better connected than Brooklyn. The restaurant scene is genuinely good and underappreciated. The downside: it is Midtown. The noise, the pace, and the lack of neighbourhood feel are real. Best if transit convenience is the priority.</p>
-                <div class="card-footer-tip">Central Park in 10 min • Penn Station nearby • Underrated food scene</div>
+                <div class="card-footer-tip">📍 Central Park in 10 min • Penn Station nearby • Underrated food scene</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Williamsburg / Brooklyn</span>
+                    <h3 class="card-title">Williamsburg / Brooklyn</h3>
                     <span class="card-badge badge-purple">Most local</span>
                 </div>
                 <p class="card-desc">The most visited neighbourhood in Brooklyn — no longer the secret it once was, but still genuinely good. The L train runs to Manhattan in 10 minutes. The East River waterfront has the best skyline view in the city. The food and bar scene is excellent. Bedford Avenue is too crowded on weekends; go on a Tuesday evening — one of the most interesting stretches of street in the city at that hour.</p>
-                <div class="card-footer-tip">Best Manhattan skyline views • L train to Manhattan • Best bars in Brooklyn</div>
+                <div class="card-footer-tip">📍 Best Manhattan skyline views • L train to Manhattan • Best bars in Brooklyn</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Upper West Side</span>
+                    <h3 class="card-title">Upper West Side</h3>
                     <span class="card-badge badge-purple">Most liveable</span>
                 </div>
                 <p class="card-desc">The neighbourhood New Yorkers move to when they want to stay in Manhattan. Central Park to the east, Riverside Park to the west. Barney Greengrass on Amsterdam Avenue has been serving sturgeon and smoked fish since 1908. Go in the morning. Quieter than downtown, close to everything by metro.</p>
-                <div class="card-footer-tip">Central Park access • Barney Greengrass • Quiet and residential</div>
+                <div class="card-footer-tip">📍 Central Park access • Barney Greengrass • Quiet and residential</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Best Time to Visit New York</h2>
             </div>
             <p class="section-intro">New York is a different city depending on which season you visit. Summer is brutal, winter is harsh, autumn is breathtaking, spring is unpredictable.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Autumn</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Sep – Nov</span>
+                        <h3 class="card-title">Autumn</h3>
+                        <span class="season-months">Sep – Nov</span>
                     </div>
                     <span class="card-badge badge-amber">The Best Season</span>
                 </div>
                 <p class="card-desc">September and October are when New York is most itself. The summer tourists have gone, the heat has broken, the light turns amber and low. In October, Central Park&#x27;s autumn foliage looks exactly like it does in the films — amber light filtering between the skyscrapers, the park turning gold and red. The restaurant scene comes back after summer — chefs return, new openings happen in the autumn. Halloween in New York is a full cultural event. The New York Marathon in early November closes the city&#x27;s streets in the best possible way. If you can only go once, go in October.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Spring</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Mar – May</span>
+                        <h3 class="card-title">Spring</h3>
+                        <span class="season-months">Mar – May</span>
                     </div>
                     <span class="card-badge badge-amber">Tentative and Worth It</span>
                 </div>
                 <p class="card-desc">March is still winter. April is unpredictable — one day a coat, the next a t-shirt. When May arrives the city opens up: trees in bloom, pavements filling, parks coming back to life. Cherry blossoms at the Brooklyn Botanic Garden peak in late April — it gets crowded and it&#x27;s worth it. Governors Island opens its summer programme in May.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Summer</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Jun – Aug</span>
+                        <h3 class="card-title">Summer</h3>
+                        <span class="season-months">Jun – Aug</span>
                     </div>
                     <span class="card-badge badge-amber">Hot, Humid, Crowded</span>
                 </div>
                 <p class="card-desc">July in Manhattan has its own smell: hot asphalt, humidity, food from every direction. Metro platforms are like ovens. But the city doesn&#x27;t stop: free outdoor concerts in Central Park (SummerStage), Shakespeare in the Park, and the Rockaway beaches are 60 minutes away on the A train. In summer, early morning and late evening are the best hours to be outside.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Winter</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Dec – Feb</span>
+                        <h3 class="card-title">Winter</h3>
+                        <span class="season-months">Dec – Feb</span>
                     </div>
                     <span class="card-badge badge-amber">Cold, Cheap, Genuinely Atmospheric</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥩</span>
-                        <span class="card-title">Pastrami on rye — Katz&#x27;s Delicatessen</span>
+                        <h3 class="card-title">Pastrami on rye — Katz&#x27;s Delicatessen</h3>
                     </div>
                 </div>
                 <p class="card-desc">Katz&#x27;s has been at 205 East Houston Street since 1888. You take a ticket at the door, walk to the counter, and ask the man to slice the pastrami for you. He will. The sandwich arrives piled obscenely high on rye bread with mustard. You eat it at a Formica table under fluorescent lights and signed celebrity photographs. The pastrami is hand-carved, fatty, and slow-cured. This is not a restaurant recommendation — it is an obligation.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥯</span>
-                        <span class="card-title">Bagel with lox — Russ &amp; Daughters</span>
+                        <h3 class="card-title">Bagel with lox — Russ &amp; Daughters</h3>
                     </div>
                 </div>
                 <p class="card-desc">Two blocks away, open since 1914. Russ &amp; Daughters is a smoked fish shop — the counter displays salmon, herring and sturgeon, and customers take their choices seriously. The bagel is hand-rolled, boiled and baked; you notice the difference when you bite into it. The Classic Board: smoked salmon, cream cheese, bagel. Wrapped in paper. Come for breakfast.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥚</span>
-                        <span class="card-title">Bacon, egg and cheese — any bodega</span>
+                        <h3 class="card-title">Bacon, egg and cheese — any bodega</h3>
                     </div>
                 </div>
                 <p class="card-desc">Egg, American cheese and bacon cooked on a flat-top griddle, served on a Kaiser roll or bagel, wrapped in foil. The cheese should be fully melted into everything — that&#x27;s the standard. Restaurants make the same thing but the bodega version has its own character.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍖</span>
-                        <span class="card-title">Chopped cheese — Harlem and the Bronx</span>
+                        <h3 class="card-title">Chopped cheese — Harlem and the Bronx</h3>
                     </div>
                 </div>
                 <p class="card-desc">A bodega sandwich specific to Harlem and the Bronx — ground beef, onions and cheese chopped together on a griddle and served on a hoagie roll. Less famous than the pastrami but equally essential to understanding New York. The original is at Hajji&#x27;s, also known as the Blue Sky Deli, on First Avenue at 110th Street in East Harlem. Simple, fast and exactly what it should be.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍕</span>
-                        <span class="card-title">Pizza by the slice — Joe&#x27;s Pizza</span>
+                        <h3 class="card-title">Pizza by the slice — Joe&#x27;s Pizza</h3>
                     </div>
                 </div>
                 <p class="card-desc">On Carmine Street in the West Village since 1975 — the reference point. Thin crust, foldable, the right amount of grease. There are tens of thousands of pizza places in the city; Joe&#x27;s is the standard everything else is measured against. Avoid the lunch rush — go just before or after. Take a slice, fold it, walk.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥗</span>
-                        <span class="card-title">Dim sum — Flushing, Queens</span>
+                        <h3 class="card-title">Dim sum — Flushing, Queens</h3>
                     </div>
                 </div>
                 <p class="card-desc">Manhattan Chinatown is for tourists; Flushing is the real thing. 30 minutes on the 7 train, Main Street: the largest Chinese community outside China. Most regional cuisines never made it to Manhattan. The basement food court of New World Mall alone is worth the trip. Korean supermarkets, Taiwanese desserts, Malaysian curry — all on the same street.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">New York&#x27;s best-kept secrets are mostly hiding in plain sight, ignored because they require leaving the standard tourist loop.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Grand Central Whispering Gallery</span>
-                    <span class="card-badge badge-emerald">The acoustic trick in Grand Central that no one uses</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ The acoustic trick in Grand Central that no one uses</span>
                 </div>
+                <h3 class="card-title">Grand Central Whispering Gallery</h3>
                 <p class="card-desc">In the lower level of Grand Central Terminal, near the entrance to the Oyster Bar restaurant, four tiled arches meet at a corner. Stand at one corner, face the wall, and whisper. Someone standing at the diagonally opposite corner — 15 metres away — will hear you clearly, while no one in between will hear anything. The arches create a focused acoustic path. The effect is immediate and completely real. Free, no sign, no queue. Most of the thousands of people who walk through Grand Central every day have no idea it exists.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">The High Line</span>
-                    <span class="card-badge badge-emerald">A park 9 metres above street level with the best skyline view in the city</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ A park 9 metres above street level with the best skyline view in the city</span>
                 </div>
+                <h3 class="card-title">The High Line</h3>
                 <p class="card-desc">A 2.3-kilometre elevated park built on a disused freight rail line on Manhattan&#x27;s west side, running from the Meatpacking District to Hudson Yards. Open since 2009, free, and genuinely well-designed — native plantings, art installations, views across the Hudson River. The best section is the stretch between 14th and 20th Streets, where the old rail tracks are preserved in the planting. Go early in the morning before the crowds arrive, or in winter when it&#x27;s empty.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Governors Island</span>
-                    <span class="card-badge badge-emerald">An island 10 minutes from Manhattan that most New Yorkers have never been to</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ An island 10 minutes from Manhattan that most New Yorkers have never been to</span>
                 </div>
+                <h3 class="card-title">Governors Island</h3>
                 <p class="card-desc">A 172-acre island in New York Harbor, open May to October. The ferry leaves from Pier 6 in lower Manhattan and the Battery Maritime Building in Brooklyn — ticketed; free on Saturdays and Sundays before 11am. Car-free, mostly open green space, with historic fortifications, art installations, and food vendors. The Hills — artificial mounds built from construction debris — offer elevated 360-degree views of the harbour, the Statue of Liberty, and the lower Manhattan skyline. Bike rentals available.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">The Met Cloisters — Fort Tryon Park</span>
-                    <span class="card-badge badge-emerald">Medieval art in a monastery, hidden in a park at the top of Manhattan</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Medieval art in a monastery, hidden in a park at the top of Manhattan</span>
                 </div>
+                <h3 class="card-title">The Met Cloisters — Fort Tryon Park</h3>
                 <p class="card-desc">The Metropolitan Museum&#x27;s medieval art collection, housed in a purpose-built monastery assembled from five actual 12th–15th century French cloisters, transported stone by stone and reconstructed in Fort Tryon Park at the northern tip of Manhattan. The Unicorn Tapestries — seven 15th-century woven panels depicting a unicorn hunt — are here. So are Romanesque chapels, Gothic halls, a medieval herb garden, and views over the Hudson River to the New Jersey Palisades. Admission is covered by the standard Met ticket. Take the A train to 190th Street — about 45 minutes from Midtown. Almost nobody goes.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Greenacre Park — East 51st Street</span>
-                    <span class="card-badge badge-emerald">A secret waterfall park hidden between skyscrapers in Midtown</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ A secret waterfall park hidden between skyscrapers in Midtown</span>
                 </div>
+                <h3 class="card-title">Greenacre Park — East 51st Street</h3>
                 <p class="card-desc">A privately owned, publicly accessible pocket park on East 51st Street between Second and Third Avenues — marked by a small gate that most people walk past without noticing. Inside: a 12-metre waterfall, honey locust trees, moveable chairs, and a snack bar. The waterfall is loud enough to block the sound of Midtown traffic almost completely. A quiet, shaded place to sit in the middle of the loudest part of the city. Free. Open weekdays.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Sylvan Terrace — Washington Heights</span>
-                    <span class="card-badge badge-emerald">The neighbourhood that looks like 1900 — and is still lived in</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ The neighbourhood that looks like 1900 — and is still lived in</span>
                 </div>
+                <h3 class="card-title">Sylvan Terrace — Washington Heights</h3>
                 <p class="card-desc">A single block of wooden rowhouses in Washington Heights, built in 1882, that survived the 20th century almost unchanged. Twenty houses, two storeys each, original wooden façades painted in pastels. The street is cobblestone. It sits next to the Morris-Jumel Mansion, the oldest house in Manhattan, in a neighbourhood that most visitors never reach. Take the C train to 163rd Street. The street is free and always open. The Morris-Jumel Mansion next door is ticketed.</p>
             </div>
             </div>

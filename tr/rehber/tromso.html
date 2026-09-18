@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Tromsø Şehir İçi Ulaşım & Transfer</h2>
             </div>
             <p class="section-intro">Merkez ada üstünde ve yürünecek kadar küçük; teleferik, otobüs ve tur minibüsleri gerisini halleder.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Havalimanından merkeze</span>
+                        <h3 class="card-title">Havalimanından merkeze</h3>
                     </div>
                 </div>
                 <p class="card-desc">Havalimanı adanın öbür ucunda: Flybussen 15 dakikada merkeze iner, şehir otobüsü daha ucuza biraz uzun sürer. Taksi kısa ama Norveç tarifesiyle çalışır — otobüs kazanır.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">Merkez yayan</span>
+                        <h3 class="card-title">Merkez yayan</h3>
                     </div>
                 </div>
                 <p class="card-desc">Liman, katedral, ana cadde (Storgata) ve müzeler 15 dakikalık daire içindedir. Kışın kaldırımlar buzlanır: çivili tabanlık ya da tabanı dişli bot, burada aksesuar değil ihtiyaçtır.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚡</span>
-                        <span class="card-title">Fjellheisen teleferiği</span>
+                        <h3 class="card-title">Fjellheisen teleferiği</h3>
                     </div>
                 </div>
                 <p class="card-desc">Karşı yakadaki Storsteinen tepesine dört dakikada çıkarır: şehir, köprü, fiyort ve dağlar tek karede. Gün batımı ve aurora saatlerinde kuyruk olur — bileti önceden al, akşam çık.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚌</span>
-                        <span class="card-title">Şehir otobüsleri</span>
+                        <h3 class="card-title">Şehir otobüsleri</h3>
                     </div>
                 </div>
                 <p class="card-desc">Troms fylkeskart uygulamasıyla bilet al: Arktik Katedral, Telegrafbukta plajı ve Prestvannet gölü hatları turist için de işler. Nakit geçmez, kart ve uygulama konuşur.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚐</span>
-                        <span class="card-title">Tur minibüsleri — ışık peşinde</span>
+                        <h3 class="card-title">Tur minibüsleri — ışık peşinde</h3>
                     </div>
                 </div>
                 <p class="card-desc">Aurora turları bulut haritasına göre bazen Finlandiya sınırına kadar sürer: küçük grup, esnek rota ve termos ikramı olan operatörleri seç. Balina turları kasım-ocakta limandan kalkar.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Nerede Kalınır? Tromsø Mahalleleri</h2>
             </div>
             <p class="section-intro">Tromsø&#x27;da seçim ışığa göre yapılır: merkezde liman ve pub&#x27;lar, köprü ötesinde katedral ve teleferik, ada dışında karanlık gökyüzü kabinleri.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Merkez — Storgata ve liman</span>
+                    <h3 class="card-title">Merkez — Storgata ve liman</h3>
                     <span class="card-badge badge-purple">En pratik</span>
                 </div>
                 <p class="card-desc">Ahşap evli ana cadde, liman restoranları ve tur kalkış iskeleleri: her şey kapının önünde. Aurora turları otelden alır — kısa kutup ziyaretinin verimli üssü.</p>
-                <div class="card-footer-tip">Tur kalkışları • Liman manzarası • Pub&#x27;lara yürüme</div>
+                <div class="card-footer-tip">📍 Tur kalkışları • Liman manzarası • Pub&#x27;lara yürüme</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Tromsdalen (köprü ötesi)</span>
+                    <h3 class="card-title">Tromsdalen (köprü ötesi)</h3>
                     <span class="card-badge badge-purple">Manzara tarafı</span>
                 </div>
                 <p class="card-desc">Arktik Katedral&#x27;in ve teleferiğin yakası: şehir silüetine karşıdan bakarsın, sabah dağ dibinde uyanırsın. Merkeze köprüden yürüyüş 20 dakika — sakinlik ve manzara dengesi.</p>
-                <div class="card-footer-tip">Arktik Katedral • Teleferiğe yakın • Şehir silüeti</div>
+                <div class="card-footer-tip">📍 Arktik Katedral • Teleferiğe yakın • Şehir silüeti</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Kvaløya adası</span>
+                    <h3 class="card-title">Kvaløya adası</h3>
                     <span class="card-badge badge-purple">Işık avcısına</span>
                 </div>
                 <p class="card-desc">&#x27;Balina adası&#x27;: şehir ışıklarından uzak fiyort kıyıları, aurora kabinleri ve ren geyiği çiftlikleri. Araçla 30-40 dakika — gökyüzü karanlığı garantili, market planını önceden yap.</p>
-                <div class="card-footer-tip">Karanlık gökyüzü • Fiyort kabinleri • Araç gerekir</div>
+                <div class="card-footer-tip">📍 Karanlık gökyüzü • Fiyort kabinleri • Araç gerekir</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Sommarøy</span>
+                    <h3 class="card-title">Sommarøy</h3>
                     <span class="card-badge badge-purple">En uçta</span>
                 </div>
                 <p class="card-desc">Bir saat mesafede beyaz kumlu koyları olan balıkçı köyü: turkuaz su, kutup manzarası ve mutlak sessizlik. Bir gecelik &#x27;dünyanın ucu&#x27; deneyimi için birebir.</p>
-                <div class="card-footer-tip">Beyaz kum koyları • Balıkçı köyü • Mutlak sessizlik</div>
+                <div class="card-footer-tip">📍 Beyaz kum koyları • Balıkçı köyü • Mutlak sessizlik</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Prestvannet ve yukarı mahalleler</span>
+                    <h3 class="card-title">Prestvannet ve yukarı mahalleler</h3>
                     <span class="card-badge badge-purple">Dengeli seçim</span>
                 </div>
                 <p class="card-desc">Adanın tepesindeki göl çevresi: merkeze yürüme mesafesi ama şehir ışığından bir kademe uzak. Göl donunca aurora&#x27;yı mahalleden izleyenler olur — apart ve pansiyon bölgesi.</p>
-                <div class="card-footer-tip">Göl kenarı • Merkeze yürüme • Apart seçenekleri</div>
+                <div class="card-footer-tip">📍 Göl kenarı • Merkeze yürüme • Apart seçenekleri</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Tromsø İçin En İyi Ziyaret Zamanı</h2>
             </div>
             <p class="section-intro">Tromsø&#x27;da mevsim seçmek, ışık seçmektir: kutup gecesi mi, gece yarısı güneşi mi, yoksa ikisinin arasındaki altın geçişler mi?</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">İlkbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Mar – May</span>
+                        <h3 class="card-title">İlkbahar</h3>
+                        <span class="season-months">Mar – May</span>
                     </div>
                     <span class="card-badge badge-amber">Beyaz Bahar</span>
                 </div>
                 <p class="card-desc">Mart, kutbun cömert ayıdır: gün ışığı hızla uzar, kar hâlâ derindir ve aurora sezonu finalini yapar. Nisan-mayısta kar çekilir, deniz kuşları döner ve şehir güneşe alışma provası yapar.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Yaz</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Haz – Ağu</span>
+                        <h3 class="card-title">Yaz</h3>
+                        <span class="season-months">Haz – Ağu</span>
                     </div>
                     <span class="card-badge badge-amber">Gece Yarısı Güneşi</span>
                 </div>
                 <p class="card-desc">İki aydan uzun süre güneş ufka değip geri yükselir: gece yarısı dağ yürüyüşleri, fiyort turları ve uyku düzeninin tatlı kaosu. Yeşil dağlar, puffin turları ve bitmeyen gün — aurora&#x27;sız ama bambaşka bir Tromsø.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Sonbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Eyl – Kas</span>
+                        <h3 class="card-title">Sonbahar</h3>
+                        <span class="season-months">Eyl – Kas</span>
                     </div>
                     <span class="card-badge badge-amber">İlk Perdeler</span>
                 </div>
                 <p class="card-desc">Ağustos sonunda gökyüzü yeniden kararır ve ilk aurora perdeleri açılır; eylül-ekim hem renkli dağlar hem ışık avı sunar. Kasımda ringa sürüleri fiyortlara girer — balinalar peşinden gelir.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Kış</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Ara – Şub</span>
+                        <h3 class="card-title">Kış</h3>
+                        <span class="season-months">Ara – Şub</span>
                     </div>
                     <span class="card-badge badge-amber">Kutup Gecesi Sahnesi</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🐟</span>
-                        <span class="card-title">Skrei — kış morinası</span>
+                        <h3 class="card-title">Skrei — kış morinası</h3>
                     </div>
                 </div>
                 <p class="card-desc">Sezonunda (oca-nis) menülerin baş köşesindedir: sıkı beyaz et, sade haşlama ya da fırında. Cesur olan mølje&#x27;yi dener — karaciğer ve yumurta dahil, yerlisi gibi.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🦀</span>
-                        <span class="card-title">Kral yengeci safarisi</span>
+                        <h3 class="card-title">Kral yengeci safarisi</h3>
                     </div>
                 </div>
                 <p class="card-desc">Barents&#x27;in dev yengeci Tromsø restoranlarında buharda servis edilir; safari turlarında kendin çekip aynı gün yersin. Tatlı, yoğun et — fiyatı da kral gibidir, paylaşarak söyle.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍲</span>
-                        <span class="card-title">Fiskesuppe — kremalı balık çorbası</span>
+                        <h3 class="card-title">Fiskesuppe — kremalı balık çorbası</h3>
                     </div>
                 </div>
                 <p class="card-desc">Somon, morina ve kabuklularla koyu kremalı çorba: kutup soğuğunun birinci ilacı. Liman kenarı lokantalarında ekmeği bol, porsiyonu dürüsttür.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🦌</span>
-                        <span class="card-title">Ren geyiği — Sami mirası</span>
+                        <h3 class="card-title">Ren geyiği — Sami mirası</h3>
                     </div>
                 </div>
                 <p class="card-desc">Izgara ren fileto ya da geleneksel bidos yahnisi: Sami mutfağının şehirdeki temsilcisi. Kızılcık ve püreyle — kutup proteinin en yerlisi.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍺</span>
-                        <span class="card-title">Mack ve Ølhallen</span>
+                        <h3 class="card-title">Mack ve Ølhallen</h3>
                     </div>
                 </div>
                 <p class="card-desc">Dünyanın en kuzeydeki bira fabrikası Mack&#x27;in tarihi bira salonu Ølhallen, 1928&#x27;den beri açık: fıçıdan kutup birası, duvarda kutup ayısı. Şehrin en samimi &#x27;ilk bira&#x27; adresi.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🧇</span>
-                        <span class="card-title">Kafe waffle&#x27;ı ve brunost</span>
+                        <h3 class="card-title">Kafe waffle&#x27;ı ve brunost</h3>
                     </div>
                 </div>
                 <p class="card-desc">Ahşap kafelerde kalp şeklinde waffle, üstünde brunost ya da ekşi krema-reçel: kutup gecesinin resmi ikindi ritüeli. Yanında filtre kahve, camda kar — mørketid böyle güzelleşir.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Teleferiğe herkes çıkar; bu altısı Tromsø&#x27;nun yerlilere kalan yüzü.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Prestvannet gölü</span>
-                    <span class="card-badge badge-emerald">Şehrin tepesindeki ayna</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Şehrin tepesindeki ayna</span>
                 </div>
+                <h3 class="card-title">Prestvannet gölü</h3>
                 <p class="card-desc">Adanın zirvesindeki küçük göl: yazın kuş cenneti, kışın donmuş beyaz düzlük. Merkezden 20 dakikalık yokuş — şehir ışıklarının üstünde, aurora&#x27;nın mahalle içi izleme noktası.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Arktik Katedral gece yarısı konserleri</span>
-                    <span class="card-badge badge-emerald">Kutup gecesine yazılmış katedral</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Kutup gecesine yazılmış katedral</span>
                 </div>
+                <h3 class="card-title">Arktik Katedral gece yarısı konserleri</h3>
                 <p class="card-desc">Üçgen beyaz katedralin içinde yaz gecesi ve mørketid konserleri düzenlenir: org, vokal ve devasa vitray. Gece yarısı güneşi konseri, turistik görünüp yerlisiyle dolan ender etkinliktir.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Telegrafbukta</span>
-                    <span class="card-badge badge-emerald">Şehir plajında kutup yüzüşü</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Şehir plajında kutup yüzüşü</span>
                 </div>
+                <h3 class="card-title">Telegrafbukta</h3>
                 <p class="card-desc">Adanın güney ucundaki park-plaj: yazın gece yarısı güneşi piknikleri, kışın cesaret yüzüşleri. Yerel gençliğin mangal sahili — turist rotasının dışında kalmış şehir klasiği.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Polar Müzesi</span>
-                    <span class="card-badge badge-emerald">Kaşiflerin son limanı</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Kaşiflerin son limanı</span>
                 </div>
+                <h3 class="card-title">Polar Müzesi</h3>
                 <p class="card-desc">1830&#x27;ların gümrük binasında fok avcılarından Amundsen&#x27;e kutup hikayeleri: ahşap zeminler gıcırdar, hikayeler sert ve sahicidir. Amundsen son yolculuğuna bu limandan uçtu.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Fjellheisen&#x27;den Sherpa merdiveni</span>
-                    <span class="card-badge badge-emerald">Katedralin altın perdesi</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Katedralin altın perdesi</span>
                 </div>
+                <h3 class="card-title">Fjellheisen&#x27;den Sherpa merdiveni</h3>
                 <p class="card-desc">Teleferiğin parasını vermek istemeyene Nepal&#x27;li ustaların ördüğü taş merdiven: 1200 basamakla Storsteinen&#x27;e çıkar. Yazın gece yarısı güneşiyle tırman — zirve terası aynı, hikaye daha iyi.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Sommarøy ve Hillesøy koyları</span>
-                    <span class="card-badge badge-emerald">Ada ötesi turkuaz</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Ada ötesi turkuaz</span>
                 </div>
+                <h3 class="card-title">Sommarøy ve Hillesøy koyları</h3>
                 <p class="card-desc">Bir saatlik yolda Karayip renkli koylar: beyaz kum, turkuaz su, sıfır kalabalık. Yazın gece yarısı güneşi pikniği, kışın kar altında sörfçüler — kutbun sürreal kartpostalı.</p>
             </div>
             </div>

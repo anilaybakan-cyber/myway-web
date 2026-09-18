@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Prag Şehir İçi Ulaşım & Transfer</h2>
             </div>
             <p class="section-intro">Prag yürümek ve tramvay için tasarlanmış kompakt bir şehir. Tarihi merkez büyük ölçüde araçsız. Tramvay şehir içinde dolaşmanın doğru yolu; metro ise uzun mesafeleri hallediyor.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Havalimanı → Şehir Merkezi</span>
+                        <h3 class="card-title">Havalimanı → Şehir Merkezi</h3>
                     </div>
                 </div>
                 <p class="card-desc">119 numaralı otobüs havalimanından her 10–15 dakikada bir Nádraží Veleslavín&#x27;e (Metro A hattı, yeşil hat) gidiyor. Oradan metro merkeze 10 dakikada ulaştırıyor. Toplam yolculuk yaklaşık 35 dakika. Airport Express otobüsü (AE) doğrudan ana tren istasyonuna gidiyor ancak ayrı bilet gerektiriyor. Taksiler sayaçlı ama pahalı — her zaman binmeden önce ücret konuş ya da Bolt veya Uber kullan.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚇</span>
-                        <span class="card-title">Metro — üç hat, hızlı ve temiz</span>
+                        <h3 class="card-title">Metro — üç hat, hızlı ve temiz</h3>
                     </div>
                 </div>
                 <p class="card-desc">Üç hat: A (yeşil), B (sarı), C (kırmızı). A hattı Eski Şehir ve kale bölgesini kapsıyor. B hattı doğu-batı yönünde ilerliyor. C hattı ana tren istasyonunu ve güneyi birleştiriyor. Metro yaklaşık gece yarısında kapanıyor. Malá Strana&#x27;ya ve kaleye metro ulaşmıyor; bunlar için tramvay gerekiyor.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚃</span>
-                        <span class="card-title">Tramvay — şehri görmenin en iyi yolu</span>
+                        <h3 class="card-title">Tramvay — şehri görmenin en iyi yolu</h3>
                     </div>
                 </div>
                 <p class="card-desc">Tramvay 22, Ulusal Tiyatro&#x27;dan Malá Strana üzerinden Prag Kalesi&#x27;ne uzanıyor. Orta kapıdan bin, binişte sarı makinede biletini damgala ve kaleye giderken sağ tarafa otur. Tramvay gece yarısına kadar çalışıyor; gece hatları (91–99 numaralı) ise yaklaşık 04:30&#x27;a kadar her 30 dakikada bir şehri kapsıyor.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">Yürüyüş — en iyi kararlar</span>
+                        <h3 class="card-title">Yürüyüş — en iyi kararlar</h3>
                     </div>
                 </div>
                 <p class="card-desc">Tarihi merkezin büyük bölümü her yerden yürüyerek 20–30 dakika. Charles Köprüsü&#x27;nden Prag Kalesi&#x27;ne Malá Strana üzerinden yokuş yukarı 20 dakika. Eski Şehir Meydanı&#x27;ndan Wenceslas Meydanı&#x27;na 10 dakika. Vinohrady&#x27;den Ulusal Müze&#x27;ye 15 dakika. Şehir yürüyüşü ödüllendiriyor: pasajlar, avlular, tepeleri kesen merdivenler, Art Nouveau kapı çerçeveleri — hepsi tramvaydan görünmez.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚕</span>
-                        <span class="card-title">Taksi — yalnızca uygulama kullan</span>
+                        <h3 class="card-title">Taksi — yalnızca uygulama kullan</h3>
                     </div>
                 </div>
                 <p class="card-desc">Prag&#x27;da sokak taksileri turistleri fazla ücretlendirme konusunda uzun bir geçmişe sahip. Her zaman Bolt veya Uber kullan — sabit fiyat, takip edilebilir güzergah, pazarlık yok. Eski Şehir&#x27;den Vinohrady&#x27;ye yaklaşık 80–120 CZK olmalı. Havalimanından merkeze 400–600 CZK. Turistik yerlerde ya da havalimanı geliş salonunda sana yaklaşan kişilerin teklifini asla kabul etme.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Nerede Kalınır? Prag Mahalleleri</h2>
             </div>
             <p class="section-intro">Prag&#x27;ın mahalleleri birbirinden dramatik biçimde farklı. Tarihi merkez güzel ama giderek turizme teslim oluyor. Gerçek deneyim için en iyi konaklama lokasyonu bir mahalle dışarısı.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Vinohrady — Prag 2/3</span>
+                    <h3 class="card-title">Vinohrady — Prag 2/3</h3>
                     <span class="card-badge badge-purple">En iyi üs</span>
                 </div>
                 <p class="card-desc">Praglıların en çok önerdiği mahalle. Art Nouveau apartmanlar, ağaçlarla kaplı sokaklar, şehrin en iyi kafe ve restoran sahnesi, geç saatlere kadar açık şarap barları ve gerçek yerel bir atmosfer. Eski Şehir&#x27;den iki metro durağı uzakta ama turist güzergahından tamamen ayrı hissettiriyor. Prag&#x27;ı daha önce ziyaret etmiş biri için &#x27;nerede kalmalıyım&#x27; sorusunun doğru cevabı.</p>
-                <div class="card-footer-tip">En iyi restoranlar • Art Nouveau sokaklar • En yerel his</div>
+                <div class="card-footer-tip">📍 En iyi restoranlar • Art Nouveau sokaklar • En yerel his</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Malá Strana (Küçük Şehir) — Prag 1</span>
+                    <h3 class="card-title">Malá Strana (Küçük Şehir) — Prag 1</h3>
                     <span class="card-badge badge-purple">En atmosferik</span>
                 </div>
                 <p class="card-desc">Kalenin altındaki Barok semt; arnavut kaldırımlı sokaklar, gizli bahçeler, büyükelçiliklere dönüştürülmüş saraylar, 18. yüzyıldan bu yana büyük ölçüde değişmemiş Orta Avrupa&#x27;nın en güzel mimarisi. Pahalı ve giderek turistik ama hâlâ büyülü. Prag&#x27;da amaçsızca dolaşmak için en iyi mahalle.</p>
-                <div class="card-footer-tip">Barok mimari • Gizli bahçeler • Kalenin altında</div>
+                <div class="card-footer-tip">📍 Barok mimari • Gizli bahçeler • Kalenin altında</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Žižkov — Prag 3</span>
+                    <h3 class="card-title">Žižkov — Prag 3</h3>
                     <span class="card-badge badge-purple">En yerel</span>
                 </div>
                 <p class="card-desc">Merkezin doğusundaki işçi sınıfı mahallesi; biraz pürüzlü, televizyon kulesinin yurdu, Prag&#x27;da kişi başına en yoğun hospoda sayısı ve on yıldır sessizce gelişen yaratıcı sahne. Geleneksel anlamda güzel değil ama tamamen diri. Prag&#x27;ın sanatçıları, müzisyenleri ve gece kuşlarının gerçekten yaşadığı yer.</p>
-                <div class="card-footer-tip">En fazla hospoda • Yaratıcı sahne • Hiç turistik değil</div>
+                <div class="card-footer-tip">📍 En fazla hospoda • Yaratıcı sahne • Hiç turistik değil</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Holešovice — Prag 7</span>
+                    <h3 class="card-title">Holešovice — Prag 7</h3>
                     <span class="card-badge badge-purple">En yaratıcı</span>
                 </div>
                 <p class="card-desc">Merkezin kuzeyindeki eski sanayi bölgesi, artık Prag&#x27;ın en yaratıcı mahallesi. DOX Çağdaş Sanat Merkezi, Manifesto yemek pazarı, bağımsız kahve dükkanları ve genç yerel bir kalabalık. Merkezi değil ama mükemmel tramvay bağlantısı. Şu an Prag&#x27;da en fazla enerjinin olduğu mahalle.</p>
-                <div class="card-footer-tip">Çağdaş sanat • Yemek pazarları • Genç ve yaratıcı</div>
+                <div class="card-footer-tip">📍 Çağdaş sanat • Yemek pazarları • Genç ve yaratıcı</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Staré Město (Eski Şehir) — Prag 1</span>
+                    <h3 class="card-title">Staré Město (Eski Şehir) — Prag 1</h3>
                     <span class="card-badge badge-purple">En merkezi</span>
                 </div>
                 <p class="card-desc">Her şeye yürüme mesafesi, turistler gelmeden önce sabah 06:00&#x27;da güzel, 10:00&#x27;da zaten dolmuş. En kullanışlı üs ama en az özgün deneyim. Eski Şehir&#x27;de kalıyorsan onu bir fırlatma rampası olarak kullan; yemek, içmek ve akşamlarını Vinohrady ya da Žižkov&#x27;da geçir.</p>
-                <div class="card-footer-tip">En merkezi • Tüm anıtlar yürüme mesafesi • Gündüz kalabalık</div>
+                <div class="card-footer-tip">📍 En merkezi • Tüm anıtlar yürüme mesafesi • Gündüz kalabalık</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Prag İçin En İyi Ziyaret Zamanı</h2>
             </div>
             <p class="section-intro">Prag her mevsim işliyor — her biri farklı bir şehir sunuyor. Soru kalabalıkla ilişkinle ilgili.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">İlkbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Mar – May</span>
+                        <h3 class="card-title">İlkbahar</h3>
+                        <span class="season-months">Mar – May</span>
                     </div>
                     <span class="card-badge badge-amber">En İyi Sezon</span>
                 </div>
                 <p class="card-desc">Nisan ve Mayıs Prag&#x27;ın en iyi olduğu dönem. Bahçeler açılıyor, kestane ağaçları her bulvarda çiçek açıyor, teraslar doluyor. Hava berrak, günler uzun ve yürümek için sıcaklık ideal. Turist kalabalığı henüz zirveye ulaşmamış. Prag&#x27;ı ziyaret etmek için en iyi aylardan biri kesinlikle Mayıs. Kale bahçeleri, Malá Strana&#x27;nın Barok parkları, Letná — hepsi en güzel halinde.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Yaz</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Haz – Ağu</span>
+                        <h3 class="card-title">Yaz</h3>
+                        <span class="season-months">Haz – Ağu</span>
                     </div>
                     <span class="card-badge badge-amber">Kalabalık ama Canlı</span>
                 </div>
                 <p class="card-desc">Haziran en iyi yaz ayı; uzun akşamlar, şehir canlı ama henüz bunalmamış, kale ve bahçelerde açık hava konserleri. Temmuz ve Ağustos zirve turist kalabalığını getiriyor; Charles Köprüsü yavaş ilerleyen bir insan selini, Eski Şehir Meydanı ise sürekli bir fotoğraf fırsatını hatırlatıyor. Ama Náplavka kıyısı akşamları yerli halkla doluyor, Letná bira bahçesi en iyi döneminde ve Barok bahçeler tam çiçekte.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Sonbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Eyl – Kas</span>
+                        <h3 class="card-title">Sonbahar</h3>
+                        <span class="season-months">Eyl – Kas</span>
                     </div>
                     <span class="card-badge badge-amber">Yerli Sezonu</span>
                 </div>
                 <p class="card-desc">Eylül, Prag seyahatinin en az bilinen sırrı. Yaz turistleri gitmiş, ışık amber renginde ve alçak bir hal almış, Vinohrady ve Grébovka&#x27;nın bağları hasat döneminde ve şehir kendi temposuna dönmüş. Ekim en güzel renkleri getiriyor; Vinohrady parkları, Malá Strana&#x27;nın kestane yürüyüşleri, altın sarısına bürünen Stromovka. Kasım soğuk ve griye dönüyor; ama birahaneler (hospoda) dolu, sokaklar yerel halkla çarpışıyor ve şehir yılın en özgün haline kavuşuyor.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Kış</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Ara – Şub</span>
+                        <h3 class="card-title">Kış</h3>
+                        <span class="season-months">Ara – Şub</span>
                     </div>
                     <span class="card-badge badge-amber">Büyülü ve Hafife Alınan</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥩</span>
-                        <span class="card-title">Svíčková na smetaně — ulusal yemek</span>
+                        <h3 class="card-title">Svíčková na smetaně — ulusal yemek</h3>
                     </div>
                 </div>
                 <p class="card-desc">Kök sebze krema sosunda yavaşça pişirilmiş dana bonfile; ekmek köftesi, limon, krem şanti ve kızılcık sosuyla geliyor. İyi bir svíčková hazırlanması saatler alır; sos kalın, amber renginde ve hafifçe tatlı-ekşi olmalı. Eski Şehir&#x27;den uzakta, gerçek birahanelerde ve geleneksel Çek restoranlarında en iyi versiyonlar.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍲</span>
-                        <span class="card-title">Gulaş — Çek usulü</span>
+                        <h3 class="card-title">Gulaş — Çek usulü</h3>
                     </div>
                 </div>
                 <p class="card-desc">Çek gulaşı Macar orijinalinin daha yoğun, daha koyu bir versiyonu; dana ya da domuz eti kırmızı biber ve baharatlarla saatlerce pişirilir, kalın bir sos içinde servis edilir. Yanında neredeyse zorunlu olarak ekmek köftesi (houskový knedlík) gelir. Her birahane menüsünün vazgeçilmezi. Bir kase gulaş ve bir bira; Prag&#x27;ın en iyi öğle yemeği.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍺</span>
-                        <span class="card-title">Çek birası — dünyanın en iyisi</span>
+                        <h3 class="card-title">Çek birası — dünyanın en iyisi</h3>
                     </div>
                 </div>
                 <p class="card-desc">Çek Cumhuriyeti, 1842&#x27;de Plzeň&#x27;de (Pilsen) Pilsner&#x27;ı icat etti. Pilsner Urquell orijinal ve hâlâ standart. Kozel tercih edilen koyu lager. Staropramen Prag&#x27;ın yerel markası. Bernard bağımsız alternatif. Çek birası doğru sıcaklıkta, doğru bardakta, zorunlu olan yoğun köpükle servis edilir. Gerçek bir hospodada yarım litre bira 40–60 CZK; neredeyse her Avrupa başkentinden ucuz.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥐</span>
-                        <span class="card-title">Trdelník — bir kez ye</span>
+                        <h3 class="card-title">Trdelník — bir kez ye</h3>
                     </div>
                 </div>
                 <p class="card-desc">Her turist sokağında satılan boru kek aslında geleneksel bir Çek yemeği değil; 2000&#x27;lerde Prag&#x27;ın turist simgesi haline gelmiş Macar/Slovak bir pasta. İyidir. Ama bir kez ye, tarçınlı şeker versiyonuyla (Nutella&#x27;lı değil), sonra daha ilginç bir şey bul. Gerçek Çek sokak yemeği langos (peynirli ve ekşi kremayla kızarmış hamur) ya da sokak tezgahlarından párek v rohlíku (ekmek içinde sosis).</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🫙</span>
-                        <span class="card-title">Kavrulmuş domuz, köfte, lahana</span>
+                        <h3 class="card-title">Kavrulmuş domuz, köfte, lahana</h3>
                     </div>
                 </div>
                 <p class="card-desc">Vepřo knedlo zelo; ekmek köftesi ve lahanayla kavrulmuş domuz, ikinci ulusal standart. Basit, doyurucu ve ucuz. Domuz yağlı ve yavaş pişirilmiş olmalı, köfteler sosu emmeli, lahana her ikisini de keserek geçecek kadar keskin olmalı. Her gerçek Çek restoranında mevcut. Fotoğraf gibi görünen yerleri tercih etme; en iyi versiyonlar hiçbir zaman fotojenik değil.</p>
@@ -787,33 +932,11 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🦆</span>
-                        <span class="card-title">Fırın ördek — sonbaharın özel yemeği</span>
+                        <h3 class="card-title">Fırın ördek — sonbaharın özel yemeği</h3>
                     </div>
                 </div>
                 <p class="card-desc">Pečená kachna (fırın ördek), Çek sonbahar ve kış mutfağının baş tacı. Derisi parlak ve çıtır çıtır olana kadar yavaşça pişiriliyor; kırmızı lahana, ekşi lahana ve ekmek ya da patates köftesiyle servis ediliyor. Zengin ördek yağı, keskin lahana ve sosu emen köftelerden oluşan bu kombinasyon, Orta Avrupa mutfağının en iyi tabağından biri. Yıl boyunca bulunsa da Eylül&#x27;den itibaren en iyi halinde; Çek restoranları onu mevsimlik bir baş yemek olarak öne çıkarıyor. Gerçek bir Çek restoranında söyle, turist menüsünde değil.</p>
                 <div class="card-footer-tip">⭐ Kırmızı lahana ve köftesiyle · Eylül–Şubat arası en iyi · gerçek Çek restoranında</div>
-            </div>
-            
-            <div class="feature-card">
-                <div class="card-header">
-                    <div class="card-title-group">
-                        <span class="card-icon">🍷</span>
-                        <span class="card-title">Moravya şarabı — gizli kalmış</span>
-                    </div>
-                </div>
-                <p class="card-desc">Çekya&#x27;nın doğu bölgesi Moravya, ülke dışında neredeyse hiç bilinmeyen şaraplar üretiyor. Welschriesling, Müller-Thurgau, Grüner Veltliner, Palava; mineral, hafifçe oksidatif karakterde beyaz şaraplar. Vinohrady&#x27;nin şarap barları onları bulmak için en iyi yer. Moravské víno (Moravya şarabı) iste ve serverin seni yönlendirmesine izin ver. Vinohrady&#x27;deki bir şarap barında ev şarabının sürahisi, Paris&#x27;teki bir kadehten ucuz.</p>
-                <div class="card-footer-tip">⭐ Moravya şarabı · Vinohrady şarap barları · her yerden ucuz</div>
-            </div>
-            
-            <div class="feature-card">
-                <div class="card-header">
-                    <div class="card-title-group">
-                        <span class="card-icon">☕</span>
-                        <span class="card-title">Çek kahve kültürü</span>
-                    </div>
-                </div>
-                <p class="card-desc">Prag son on yılda ciddi bir üçüncü dalga kahve sahnesi geliştirdi; EMA Espresso Bar, Kavárna Místo, Můj šálek kávy ve diğerleri. Ama geleneksel Çek kafesi (kavárna) farklı ve eşit derecede değerli bir kurum: geniş, hafif soluk Art Nouveau iç mekanlar, ahşap tutamaçlı gazeteler, uzun kahve çeşitleri menüsü ve pastalar. Na Příkopě&#x27;deki Café Imperial en görkemli örnek. Her iki gelenek bir arada yaşıyor ve ikisi de yaşanmaya değer.</p>
-                <div class="card-footer-tip">⭐ EMA Espresso Bar · Kavárna Místo · Café Imperial mekan için</div>
             </div>
             </div>
             
@@ -834,51 +957,51 @@
             </div>
             <p class="section-intro">Prag en iyi şeylerini turist güzergahlarının hemen dışına saklıyor; Charles Köprüsü&#x27;nden bir sokak ötede, Eski Şehir&#x27;den bir tramvay durağı uzakta, Malá Strana&#x27;nın bir kapı daha içinde.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Wallenstein Garden (Valdštejnská zahrada) — Malá Strana</span>
-                    <span class="card-badge badge-emerald">Prag&#x27;ın en güzel Barok bahçesi — ve neredeyse kimse gitmiyor</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Prag&#x27;ın en güzel Barok bahçesi — ve neredeyse kimse gitmiyor</span>
                 </div>
+                <h3 class="card-title">Wallenstein Garden (Valdštejnská zahrada) — Malá Strana</h3>
                 <p class="card-desc">Prag Kalesi&#x27;ni geride bırakacak bir bahçe isteyen askeri komutan Wallenstein için 1623–1630 yılları arasında inşa edilen bu bahçe, Orta Avrupa&#x27;nın en güzel erken Barok bahçelerinden biri. Beyaz tavus kuşları Grek tanrılarının bronz heykelleri arasında serbestçe dolaşıyor; sazan gölü, yapay sarkıtlı bir grottan duvarı ve Truva Savaşı freskolarıyla süslenmiş bir sala terrena pavyonu var. Malostranska metro çıkışının hemen arkasında. Neredeyse hiçbir turist buluyor. Giriş ücretsiz. Nisan–Ekim arası açık.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Vyšehrad — unutulan kale</span>
-                    <span class="card-badge badge-emerald">Şehrin en iyi manzarasıyla ortaçağ kalesi — ve neredeyse kuyruk yok</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Şehrin en iyi manzarasıyla ortaçağ kalesi — ve neredeyse kuyruk yok</span>
                 </div>
+                <h3 class="card-title">Vyšehrad — unutulan kale</h3>
                 <p class="card-desc">Turistler Prag Kalesi için kuyruk beklerken Vyšehrad, şehrin güneyinde Vltava&#x27;nın üzerindeki bir yalıçıkta oturuyor; en iyi panoramik Prag manzarasıyla 10. yüzyıldan kalma bir kale, Romanesque bir rotunda, Dvořák ve Smetana&#x27;nın gömülü olduğu Ulusal Mezarlık ve piknik yapan yerel halkla dolu bir park. Alanın kendisi tamamen ücretsiz. İçerideki St. Peter ve Paul Bazilikası bilet gerektiriyor. Alacakaranlıkta surlarda yürü ve altındaki şehri izle.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Nový Svět — unutulan sokak</span>
-                    <span class="card-badge badge-emerald">14. yüzyıldan kalma bir masal sokağı — kaleden üç dakika uzakta</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ 14. yüzyıldan kalma bir masal sokağı — kaleden üç dakika uzakta</span>
                 </div>
+                <h3 class="card-title">Nový Svět — unutulan sokak</h3>
                 <p class="card-desc">Nový Svět (&#x27;Yeni Dünya&#x27;), Hradčany&#x27;de kale duvarlarının altına gizlenmiş dar, arnavut kaldırımlı bir sokak; 14. yüzyıldan itibaren kale hizmetkarlarını barındıran küçük ortaçağ evlerinden oluşan bir sıra. Kale girişinden üç dakika uzakta ve ziyaretçilere neredeyse tamamen bilinmiyor. Günün her saatinde sakin. Kale kalabalığı gelmeden sabah erkenden, Avrupa&#x27;nın en atmosferik sokaklarından biri. Yürümek ücretsiz. Sabah 09:00&#x27;dan önce git.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Vrtba Garden (Vrtbovská zahrada) — Malá Strana</span>
-                    <span class="card-badge badge-emerald">Malá Strana&#x27;nın en güzel Barok bahçesi — biletli ama neredeyse hiç kalabalık yok</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Malá Strana&#x27;nın en güzel Barok bahçesi — biletli ama neredeyse hiç kalabalık yok</span>
                 </div>
+                <h3 class="card-title">Vrtba Garden (Vrtbovská zahrada) — Malá Strana</h3>
                 <p class="card-desc">Karmelitská Sokağı&#x27;ndaki işaretsiz bir kapının ardında saklı olan Vrtba Bahçesi, 1720&#x27;de inşa edilmiş basamaklı bir Barok şaheser; Matyáš Bernard Braun&#x27;un heykelleri, Václav Vavřinec Reiner&#x27;in freskoları ve Prag Kalesi ile Malá Strana çatılarının en iyi manzaralarından birine açılan bir teras. Avrupa&#x27;nın ikinci en güzel tarihi bahçesi seçildi. Biletli giriş. Neredeyse kimse gitmiyor; zirve sezonda bile neredeyse ıssız bulabilirsin.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Café Imperial — Na Příkopě</span>
-                    <span class="card-badge badge-emerald">Kafka ve Einstein&#x27;ın gittiği Art Nouveau kafe</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Kafka ve Einstein&#x27;ın gittiği Art Nouveau kafe</span>
                 </div>
+                <h3 class="card-title">Café Imperial — Na Příkopě</h3>
                 <p class="card-desc">1914&#x27;te açılan Café Imperial&#x27;ın yemek salonunun duvarları, sütunları ve tavanı el yapımı Art Nouveau seramik karolarla kaplı; Prag&#x27;da hiçbir eşdeğeri olmayan bir iç mekan. Kafka yakında çalışırdı; Einstein bir yıl Prag&#x27;da yaşadı. Kafe, kahve ve pastanın yanı sıra geleneksel Çek yemekleri de sunuyor. Daha sakin olduğu sabah ortasında git ve mekanı gereği gibi inceleyecek kadar uzun otur. Giriş ücretsiz; sadece bir şeyler söyle.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Náplavka — Vltava rıhtımı</span>
-                    <span class="card-badge badge-emerald">Praga ait kıyı — turizme değil</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Praga ait kıyı — turizme değil</span>
                 </div>
+                <h3 class="card-title">Náplavka — Vltava rıhtımı</h3>
                 <p class="card-desc">Náplavka, Vltava&#x27;nın sol kıyısında Ulusal Tiyatro&#x27;nun güneyinde bir nehir rıhtımı. Gündüzleri güzel bir yürüyüş. İlkbahardan sonbahara Cuma akşamları ise bambaşka bir hal alıyor; yemek tezgahları, çiftçi pazarı, taş duvar boyunca şarap ve bira içen insanlar, zaman zaman DJ&#x27;ler, şehrin tamamı buradaymış gibi. Ücretsiz. Rezervasyon yok. Prag&#x27;ın sunduğu en iyi akşamlardan biri. Giriş ücretsiz.</p>
             </div>
             </div>

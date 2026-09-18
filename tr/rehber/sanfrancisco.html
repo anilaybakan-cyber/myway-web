@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">San Francisco Şehir İçi Ulaşım & Transfer</h2>
             </div>
             <p class="section-intro">SF kompakt ama dikeydir: Muni ve BART omurga, teleferik nostaljik şölen, yürüyüş ise yokuşlu bir spor dalıdır.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Havalimanından geliş</span>
+                        <h3 class="card-title">Havalimanından geliş</h3>
                     </div>
                 </div>
                 <p class="card-desc">SFO&#x27;dan BART treni merkeze yarım saatte bağlar: ucuz ve dertsiz. Uygulama araçları trafiğe göre 25-45 dakikadır — iniş saatin yoğunsa BART neredeyse her zaman kazanır.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚋</span>
-                        <span class="card-title">Teleferik ustalığı</span>
+                        <h3 class="card-title">Teleferik ustalığı</h3>
                     </div>
                 </div>
                 <p class="card-desc">Cable car bir müze parçası değil çalışan ulaşımdır: Powell hatlarının kuyruğu turistiktir, California hattı ise aynı deneyimi kuyruksuz verir. Basamakta ayakta tutunmak deneyimin zirvesidir — sıkı tutun.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚇</span>
-                        <span class="card-title">Muni ve BART</span>
+                        <h3 class="card-title">Muni ve BART</h3>
                     </div>
                 </div>
                 <p class="card-desc">Muni metro-otobüs ağı şehri, BART körfezi kapsar: Clipper kart ikisinde de geçer. Tarihi F hattı tramvayları Castro&#x27;dan Wharf&#x27;a vintage vagonlarla iner — ulaşım fiyatına nostalji turu.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">Yokuş yürüyüşü sanatı</span>
+                        <h3 class="card-title">Yokuş yürüyüşü sanatı</h3>
                     </div>
                 </div>
                 <p class="card-desc">SF yürüyerek gezilir ama rota akıllıca çizilir: yokuşları çıkarken merdivenli sokakları (Filbert, Lyon) seç, inişleri manzaraya ayır. Her tepe bir mahalle, her mahalle başka bir şehirdir.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚲</span>
-                        <span class="card-title">Köprüye pedal</span>
+                        <h3 class="card-title">Köprüye pedal</h3>
                     </div>
                 </div>
                 <p class="card-desc">Klasik rota: Wharf&#x27;tan bisikletle Golden Gate&#x27;i geç, Sausalito&#x27;ya in, feribotla dön. Köprü üstünde rüzgar ciddidir — sıkı ceket ve iki saat ayır; &#x27;bike the bridge, ferry back&#x27; formülü şehrin en iyi yarım günüdür.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Nerede Kalınır? San Francisco Mahalleleri</h2>
             </div>
             <p class="section-intro">SF&#x27;de mahalle seçimi mikroklima seçimidir: Mission&#x27;ın güneşi, North Beach&#x27;in İtalyan ruhu, Marina&#x27;nın körfez esintisi.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">North Beach</span>
+                    <h3 class="card-title">North Beach</h3>
                     <span class="card-badge badge-purple">İtalyan ruhu</span>
                 </div>
                 <p class="card-desc">Beat kuşağının kitapçısı, espresso barları ve Washington Square&#x27;in çimleri: SF&#x27;nin en karakterli mahallesi. Teleferiğe ve Wharf&#x27;a yürüme mesafesi — atmosfer arayanın klasiği.</p>
-                <div class="card-footer-tip">Espresso barları • Beat mirası • Yürünebilir konum</div>
+                <div class="card-footer-tip">📍 Espresso barları • Beat mirası • Yürünebilir konum</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Mission</span>
+                    <h3 class="card-title">Mission</h3>
                     <span class="card-badge badge-purple">Güneşli ve genç</span>
                 </div>
                 <p class="card-desc">Şehrin en güneşli mikroklıması: mural sokakları, taquería&#x27;lar ve vintage dükkanlar. Dolores Park&#x27;ın çimleri hafta sonu şehrin salonudur — genç ve renkli taraf.</p>
-                <div class="card-footer-tip">Mural sokaklar • Taquería cenneti • Güneşli park</div>
+                <div class="card-footer-tip">📍 Mural sokaklar • Taquería cenneti • Güneşli park</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Marina ve Cow Hollow</span>
+                    <h3 class="card-title">Marina ve Cow Hollow</h3>
                     <span class="card-badge badge-purple">Körfez esintisi</span>
                 </div>
                 <p class="card-desc">Palace of Fine Arts&#x27;a ve körfez yürüyüşüne komşu pastel mahalle: kahvaltı mekanları ve butikler. Golden Gate manzaralı koşu parkuru kapıda — sportif ve ferah üs.</p>
-                <div class="card-footer-tip">Körfez yürüyüşü • Kahvaltı sahnesi • Köprüye yakın</div>
+                <div class="card-footer-tip">📍 Körfez yürüyüşü • Kahvaltı sahnesi • Köprüye yakın</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Nob Hill ve Union Square</span>
+                    <h3 class="card-title">Nob Hill ve Union Square</h3>
                     <span class="card-badge badge-purple">Klasik merkez</span>
                 </div>
                 <p class="card-desc">Teleferik hatlarının kesişimi, tarihi oteller ve merkezi konum: her yere bağlantı buradan geçer. Yokuşlar ciddidir — karşılığı manzara ve pratikliktir.</p>
-                <div class="card-footer-tip">Teleferik kavşağı • Tarihi oteller • Merkezi konum</div>
+                <div class="card-footer-tip">📍 Teleferik kavşağı • Tarihi oteller • Merkezi konum</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Hayes Valley</span>
+                    <h3 class="card-title">Hayes Valley</h3>
                     <span class="card-badge badge-purple">Zarif ve yeni</span>
                 </div>
                 <p class="card-desc">Butikler, şarap barları ve opera-senfoni binalarına komşuluk: SF&#x27;nin zarif küçük mahallesi. Alamo Square&#x27;in Painted Ladies&#x27;i yürüme mesafesinde.</p>
-                <div class="card-footer-tip">Butik sokaklar • Şarap barları • Alamo&#x27;ya yürüme</div>
+                <div class="card-footer-tip">📍 Butik sokaklar • Şarap barları • Alamo&#x27;ya yürüme</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">San Francisco İçin En İyi Ziyaret Zamanı</h2>
             </div>
             <p class="section-intro">SF&#x27;nin takvimi ters çalışır: en sıcak aylar eylül-ekim, en sisli aylar yaz ortasıdır — Karl&#x27;ın programını bilen kazanır.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">İlkbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Mar – May</span>
+                        <h3 class="card-title">İlkbahar</h3>
+                        <span class="season-months">Mar – May</span>
                     </div>
                     <span class="card-badge badge-amber">Berrak Pencere</span>
                 </div>
                 <p class="card-desc">Kış yağmurları tepeleri yeşertmiştir, hava berrak ve ılıktır: köprü manzaraları net, kalabalık yaz seviyesinin altındadır. Presidio ve Marin patikaları en güzel mevsimini yaşar.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Yaz</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Haz – Ağu</span>
+                        <h3 class="card-title">Yaz</h3>
+                        <span class="season-months">Haz – Ağu</span>
                     </div>
                     <span class="card-badge badge-amber">Karl&#x27;ın Sahnesi</span>
                 </div>
                 <p class="card-desc">Yaz SF&#x27;de sis mevsimidir: sabah açık, öğleden sonra Karl sahnede. Mission güneşliyken köprü görünmez olabilir — mikroklimaları takip et, katmanlı giyin. Kalabalık zirvededir, hava değildir.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Sonbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Eyl – Kas</span>
+                        <h3 class="card-title">Sonbahar</h3>
+                        <span class="season-months">Eyl – Kas</span>
                     </div>
                     <span class="card-badge badge-amber">Yerlinin Yazı</span>
                 </div>
                 <p class="card-desc">Eylül-ekim SF&#x27;nin gerçek yazıdır: Karl tatile çıkar, sıcaklık zirve yapar, gökyüzü berraklaşır. Plaj günleri, açık hava festivalleri ve net köprü manzaraları — takvimin en akıllı seçimi budur.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Kış</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Ara – Şub</span>
+                        <h3 class="card-title">Kış</h3>
+                        <span class="season-months">Ara – Şub</span>
                     </div>
                     <span class="card-badge badge-amber">Yağmur ve Yeşillenme</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🌯</span>
-                        <span class="card-title">Mission burrito</span>
+                        <h3 class="card-title">Mission burrito</h3>
                     </div>
                 </div>
                 <p class="card-desc">Folyolu dev klasik: al pastor ya da carne asada, &#x27;super&#x27; versiyonu guacamole&#x27;li. Mission&#x27;ın köklü taquería&#x27;larında kuyruk hızlı akar — tezgahta karar vermiş ol, folyoyu katman katman soy.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍞</span>
-                        <span class="card-title">Ekşi maya ve chowder</span>
+                        <h3 class="card-title">Ekşi maya ve chowder</h3>
                     </div>
                 </div>
                 <p class="card-desc">SF&#x27;nin ekşi mayası şehir kadar eskidir — mayası sisli havadan beslenir derler. Clam chowder&#x27;ı ekmek kasesinde, körfez kenarında iç: turistik ama meşru bir klasik.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥟</span>
-                        <span class="card-title">Dim sum sabahı</span>
+                        <h3 class="card-title">Dim sum sabahı</h3>
                     </div>
                 </div>
                 <p class="card-desc">Amerika&#x27;nın en eski Çin Mahallesi ve Richmond bulvarları dim sum cennetleridir: arabadan seçilen buharlı sepetler, hızlı tezgahlar. Char siu bao ve ha gow başlangıç noktandır.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🦀</span>
-                        <span class="card-title">Dungeness yengeci</span>
+                        <h3 class="card-title">Dungeness yengeci</h3>
                     </div>
                 </div>
                 <p class="card-desc">Kasım-haziran sezonunda körfezin tatlı etli yengeci: buharda sade ya da sarımsak-tereyağ usulü. Sezonun açılışı şehirde küçük bir bayramdır — mevsimindeysen tereddüt etme.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">☕</span>
-                        <span class="card-title">Üçüncü dalga kahve hacı turu</span>
+                        <h3 class="card-title">Üçüncü dalga kahve hacı turu</h3>
                     </div>
                 </div>
                 <p class="card-desc">Kahvenin üçüncü dalgası bu şehirde şekillendi: single origin, pour over ve kahve tadım barları. Mahalle kavurucuları arasında sabah turu — SF kahveyi ciddiye alır, sen de al.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥃</span>
-                        <span class="card-title">Buena Vista Irish coffee</span>
+                        <h3 class="card-title">Buena Vista Irish coffee</h3>
                     </div>
                 </div>
                 <p class="card-desc">Irish coffee Amerika&#x27;ya 1952&#x27;de bu barın tezgahından girdi: barmen aynı anda on bardağı dizip şovunu yapar. Wharf dönüşü ritüeli — kuyruk olabilir, sıcak bardak değer.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Köprüyü herkes görür; bu altısı SF&#x27;nin dalga sesli, mozaik basamaklı saklı yüzü.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Sutro Baths ve Lands End</span>
-                    <span class="card-badge badge-emerald">Okyanusa açılan harabe</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Okyanusa açılan harabe</span>
                 </div>
+                <h3 class="card-title">Sutro Baths ve Lands End</h3>
                 <p class="card-desc">Bir zamanların dev yüzme sarayının okyanus kenarındaki kalıntıları ve klif patikası: dalgalar, servi ağaçları ve köprünün uzak karesi. Gün batımında SF&#x27;nin en dramatik köşesi.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">16th Avenue Basamakları</span>
-                    <span class="card-badge badge-emerald">Mozaik merdiven</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Mozaik merdiven</span>
                 </div>
+                <h3 class="card-title">16th Avenue Basamakları</h3>
                 <p class="card-desc">Deniz temalı mozaikle kaplı 163 basamak: tırmandıkça desen tamamlanır, tepeden okyanus açılır. Moraga Street&#x27;in sakin mahallesinde — sabah ışığında en güzel halidir.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Marin Headlands</span>
-                    <span class="card-badge badge-emerald">Köprünün karşı locası</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Köprünün karşı locası</span>
                 </div>
+                <h3 class="card-title">Marin Headlands</h3>
                 <p class="card-desc">Köprünün karşı tepelerindeki eski topçu mevzileri: Battery Spencer&#x27;dan kuleler kucağına düşer, şehir arkada dizilir. Bisikletle ya da araçla — SF fotoğrafının tahtı burasıdır.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Musée Mécanique</span>
-                    <span class="card-badge badge-emerald">Jetonlu zaman makinesi</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Jetonlu zaman makinesi</span>
                 </div>
+                <h3 class="card-title">Musée Mécanique</h3>
                 <p class="card-desc">Wharf&#x27;ın ucunda yüzlerce antika jetonlu makine: falcı otomatlar, mekanik panayırlar ve gülen Laffing Sal. Girişi ücretsiz, jetonu bozuk para — nostaljinin en eğlenceli müzesi.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Clarion Alley ve Balmy Alley</span>
-                    <span class="card-badge badge-emerald">Devrimin duvarları</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Devrimin duvarları</span>
                 </div>
+                <h3 class="card-title">Clarion Alley ve Balmy Alley</h3>
                 <p class="card-desc">Mission&#x27;ın iki mural sokağı: politik duvar resimleri, sürekli değişen katmanlar ve mahalle hikayeleri. Taquería turuyla birleştir — SF&#x27;nin vicdanı bu duvarlarda konuşur.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Fort Point</span>
-                    <span class="card-badge badge-emerald">Köprünün altındaki kale</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Köprünün altındaki kale</span>
                 </div>
+                <h3 class="card-title">Fort Point</h3>
                 <p class="card-desc">Golden Gate&#x27;in TAM altındaki iç savaş dönemi kalesi: tuğla kemerlerin üstünde köprünün çelik gövdesi yükselir. Hitchcock&#x27;un Vertigo&#x27;sundan tanıdık — sörfçüleri izleyen en iyi nokta.</p>
             </div>
             </div>

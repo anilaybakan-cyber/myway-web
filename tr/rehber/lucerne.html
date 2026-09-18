@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Lucerne Şehir İçi Ulaşım & Transfer</h2>
             </div>
             <p class="section-intro">Lucerne bir ulaşım balesi sahneler: vapur, dişli tren, teleferik ve tren aynı biletli sistemde dans eder.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Zürih&#x27;ten geliş</span>
+                        <h3 class="card-title">Zürih&#x27;ten geliş</h3>
                     </div>
                 </div>
                 <p class="card-desc">Zürih havalimanından direkt tren bir saatte Lucerne garına iner: gar, göl kıyısının ve eski şehrin tam dibindedir. Bilet yerine Swiss Travel Pass hesabı yap — vapur ve dağlar da dahil olur.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">Eski şehir yayan</span>
+                        <h3 class="card-title">Eski şehir yayan</h3>
                     </div>
                 </div>
                 <p class="card-desc">Kapellbrücke, meydanlar ve Musegg surları arasında her şey çeyrek saatlik dairededir: kaldırım taşı, fresk ve çeşme — yürümek gezinin kendisidir.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">⛴️</span>
-                        <span class="card-title">Göl vapurları</span>
+                        <h3 class="card-title">Göl vapurları</h3>
                     </div>
                 </div>
                 <p class="card-desc">Tarihi buharlılar ve modern vapurlar Vierwaldstättersee&#x27;nin köylerine tarifeyle çalışır: Weggis, Vitznau ve Flüelen hattı manzara klasiğidir. Birinci mevki güvertesi az farkla loca keyfi verir.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚞</span>
-                        <span class="card-title">Dağ trenleri ve teleferikler</span>
+                        <h3 class="card-title">Dağ trenleri ve teleferikler</h3>
                     </div>
                 </div>
                 <p class="card-desc">Vitznau&#x27;dan Rigi&#x27;ye Avrupa&#x27;nın ilk dişli treni, Alpnachstad&#x27;dan Pilatus&#x27;a dünyanın en dik dişli hattı tırmanır: ikisi de mühendislik gösterisidir. &#x27;Altın tur&#x27; kombinasyonu vapur + tren + teleferiği tek halkada toplar.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚌</span>
-                        <span class="card-title">Şehir otobüsleri</span>
+                        <h3 class="card-title">Şehir otobüsleri</h3>
                     </div>
                 </div>
                 <p class="card-desc">Ulaşım müzesi ve göl kıyısı mahalleler için otobüs ağı pratiktir: bilet uygulamadan ya da otomattan. Otelde konaklayanlara verilen misafir kartı çoğu zaman şehir içini bedava yapar — resepsiyona sor.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Nerede Kalınır? Lucerne Mahalleleri</h2>
             </div>
             <p class="section-intro">Lucerne&#x27;de soru manzara sorusudur: köprüye mi, göle mi, dağa mı bakarak uyanmak istersin?</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Altstadt (Eski Şehir)</span>
+                    <h3 class="card-title">Altstadt (Eski Şehir)</h3>
                     <span class="card-badge badge-purple">En atmosferli</span>
                 </div>
                 <p class="card-desc">Freskli meydanların ve köprülerin arasında: her şeye yürüme, sabah köprü fotoğrafı kapının önünde. Gece sakin, konum kusursuz — ilk ziyaretin klasiği.</p>
-                <div class="card-footer-tip">Freskli cepheler • Köprüye iki adım • Sakin geceler</div>
+                <div class="card-footer-tip">📍 Freskli cepheler • Köprüye iki adım • Sakin geceler</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Göl kıyısı — Nationalquai</span>
+                    <h3 class="card-title">Göl kıyısı — Nationalquai</h3>
                     <span class="card-badge badge-purple">En manzaralı</span>
                 </div>
                 <p class="card-desc">Rıhtım boyunca tarihi grand oteller ve göl-dağ panoraması: pencereden Pilatus, kahvaltıda kuğular. Fiyat manzarayla orantılı — İsviçre klasiği yaşamak isteyene.</p>
-                <div class="card-footer-tip">Grand oteller • Pilatus manzarası • Rıhtım yürüyüşü</div>
+                <div class="card-footer-tip">📍 Grand oteller • Pilatus manzarası • Rıhtım yürüyüşü</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Gar çevresi ve Neustadt</span>
+                    <h3 class="card-title">Gar çevresi ve Neustadt</h3>
                     <span class="card-badge badge-purple">En pratik</span>
                 </div>
                 <p class="card-desc">Garın arkasındaki modern kuşak: dağ ve göl bağlantılarına sıfır, fiyatlar bir kademe dostane. Erken tren, geç vapur planlayanların verimli üssü.</p>
-                <div class="card-footer-tip">Gara sıfır • Uygun fiyat • Bağlantı üssü</div>
+                <div class="card-footer-tip">📍 Gara sıfır • Uygun fiyat • Bağlantı üssü</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Tribschen ve göl güneyi</span>
+                    <h3 class="card-title">Tribschen ve göl güneyi</h3>
                     <span class="card-badge badge-purple">En sakin</span>
                 </div>
                 <p class="card-desc">Wagner&#x27;in villasının bulunduğu yeşil yarımada tarafı: göl kenarı yürüyüşleri, lido plajı ve mahalle sükuneti. Merkeze otobüs ya da keyifli kıyı yürüyüşüyle bağlanır.</p>
-                <div class="card-footer-tip">Kıyı yürüyüşü • Lido plajı • Mahalle huzuru</div>
+                <div class="card-footer-tip">📍 Kıyı yürüyüşü • Lido plajı • Mahalle huzuru</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Weggis ve Vitznau</span>
+                    <h3 class="card-title">Weggis ve Vitznau</h3>
                     <span class="card-badge badge-purple">Göl karşısı kaçış</span>
                 </div>
                 <p class="card-desc">Vapurla yarım saatte göl rivierası: palmiyeli rıhtımlar, Rigi&#x27;nin eteği ve spa otelleri. Lucerne&#x27;i üs değil manzara yapan seçim — dağ treni kapının dibinde.</p>
-                <div class="card-footer-tip">Göl rivierası • Rigi treni • Spa otelleri</div>
+                <div class="card-footer-tip">📍 Göl rivierası • Rigi treni • Spa otelleri</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Lucerne İçin En İyi Ziyaret Zamanı</h2>
             </div>
             <p class="section-intro">Lucerne dört mevsim sahnededir: yazın göl, kışın karlı zirveler, şubatta ise Avrupa&#x27;nın en gürültülü karnavallarından biri.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">İlkbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Nis – Haz</span>
+                        <h3 class="card-title">İlkbahar</h3>
+                        <span class="season-months">Nis – Haz</span>
                     </div>
                     <span class="card-badge badge-amber">Taze Sezon</span>
                 </div>
                 <p class="card-desc">Kar zirvelerde parlarken göl kıyısı yeşillenir: vapur sezonu tam açılır, teraslar kurulur, kalabalık yaz seviyesinin altındadır. Dağ + göl dengesinin en ferah dönemi.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Yaz</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Tem – Ağu</span>
+                        <h3 class="card-title">Yaz</h3>
+                        <span class="season-months">Tem – Ağu</span>
                     </div>
                     <span class="card-badge badge-amber">Göl Sezonu Zirvesi</span>
                 </div>
                 <p class="card-desc">Şehir en kalabalık ve en parlak halindedir: lido plajında göl yüzmesi, akşam rıhtım konserleri ve ağustos ortasında başlayan klasik müzik festivali. Dağ trenlerinde sabah erken kuraldır.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Sonbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Eyl – Kas</span>
+                        <h3 class="card-title">Sonbahar</h3>
+                        <span class="season-months">Eyl – Kas</span>
                     </div>
                     <span class="card-badge badge-amber">Altın Göl</span>
                 </div>
                 <p class="card-desc">Eylül berrak ve sakindir; ekimde yamaçlar bakıra döner ve &#x27;sis denizi&#x27; mevsimi başlar — şehir sisin altında, zirveler güneşin üstündedir. Fotoğrafçının Lucerne&#x27;i budur.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Kış</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Ara – Şub</span>
+                        <h3 class="card-title">Kış</h3>
+                        <span class="season-months">Ara – Şub</span>
                     </div>
                     <span class="card-badge badge-amber">Işık ve Karnaval</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥧</span>
-                        <span class="card-title">Lozärner Chügelipastete</span>
+                        <h3 class="card-title">Lozärner Chügelipastete</h3>
                     </div>
                 </div>
                 <p class="card-desc">Çıtır milföy kubbesinin altında kremalı güveç: şehrin kendi icadı, pazar öğlenlerinin klasiği. Porsiyon cömerttir — açlıkla gel.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🧀</span>
-                        <span class="card-title">Fondue ve raclette</span>
+                        <h3 class="card-title">Fondue ve raclette</h3>
                     </div>
                 </div>
                 <p class="card-desc">Erimiş peynirin iki mezhebi: fondüde ekmek banılır, raclette&#x27;te patatese peynir kazınır. Kışın klasik, yazın turist için her mevsim — beyaz şarap eşliği gelenektir.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🐟</span>
-                        <span class="card-title">Göl balığı — Egli ve felchen</span>
+                        <h3 class="card-title">Göl balığı — Egli ve felchen</h3>
                     </div>
                 </div>
                 <p class="card-desc">Vierwaldstättersee&#x27;nin levreği (Egli) tereyağında, felchen ızgarada: rıhtım restoranlarının yerli gururu. Yanında beyaz şarap ve göl manzarası — sadelik burada lükstür.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥔</span>
-                        <span class="card-title">Älplermagronen — dağcı makarnası</span>
+                        <h3 class="card-title">Älplermagronen — dağcı makarnası</h3>
                     </div>
                 </div>
                 <p class="card-desc">Makarna, patates, krema ve dağ peyniri aynı tencerede; yanında elma püresi: Alp kulübelerinin doyurucu klasiği. Dağ istasyonu restoranlarında en sahici halini bulursun.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥨</span>
-                        <span class="card-title">Fırın kültürü ve Willisauer Ringli</span>
+                        <h3 class="card-title">Fırın kültürü ve Willisauer Ringli</h3>
                     </div>
                 </div>
                 <p class="card-desc">Taze brezel, tereyağlı gipfeli ve bölgenin taş gibi sert tarçınlı halkası Willisauer Ringli: fırın tezgahları bütçe dostu öğünün adresidir. Ringli&#x27;yi ısırma — kır, em, sabret.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍫</span>
-                        <span class="card-title">Çikolata finali</span>
+                        <h3 class="card-title">Çikolata finali</h3>
                     </div>
                 </div>
                 <p class="card-desc">Şehrin tarihi şekerlemecilerinde pralin tezgahları ve sıcak çikolata: yağmurlu gün planının en meşru hali. Süpermarket rafındaki İsviçre çikolatası da hediyelik dengesidir — ikisi ayrı lig, ikisi de gerçek.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Köprüyü herkes görür; bu altısı Lucerne&#x27;in perde arkası.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Musegg surları ve kuleleri</span>
-                    <span class="card-badge badge-emerald">Surlarda saat dersi</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Surlarda saat dersi</span>
                 </div>
+                <h3 class="card-title">Musegg surları ve kuleleri</h3>
                 <p class="card-desc">Eski şehir surlarının dokuz kulesinden birkaçı gezilir: Zyt kulesinin saati, şehir saatlerinden bir dakika önce çalma imtiyazına sahiptir. Surlardan göl-şehir-dağ üçlüsü tek karededir — giriş ücretsiz.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Aslan Anıtı&#x27;nın sessiz saati</span>
-                    <span class="card-badge badge-emerald">Dünyanın en hüzünlü taşı</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Dünyanın en hüzünlü taşı</span>
                 </div>
+                <h3 class="card-title">Aslan Anıtı&#x27;nın sessiz saati</h3>
                 <p class="card-desc">Mark Twain&#x27;in &#x27;dünyanın en hüzünlü taşı&#x27; dediği yaralı aslan, kaya yüzeyine oyulmuş yatar: sabah 8&#x27;de önünde neredeyse kimse yoktur. Kalabalık gelmeden git — hüzün, sessizlikte çalışır.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Château Gütsch füniküleri</span>
-                    <span class="card-badge badge-emerald">Füniküler + jugendstil</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Füniküler + jugendstil</span>
                 </div>
+                <h3 class="card-title">Château Gütsch füniküleri</h3>
                 <p class="card-desc">Mini füniküler şehrin üstündeki masal şatosu oteline tırmanır: terastan göl ve çatılar ayaklarının altındadır. Bir kahve fiyatına şehrin en zarif balkonu.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Tribschen&#x27;de Wagner Müzesi</span>
-                    <span class="card-badge badge-emerald">Bestecinin göl evi</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Bestecinin göl evi</span>
                 </div>
+                <h3 class="card-title">Tribschen&#x27;de Wagner Müzesi</h3>
                 <p class="card-desc">Wagner&#x27;in yıllarca yaşadığı göl kenarı villası: besteci burada Siegfried Idyll&#x27;i yazdı. Kıyı yürüyüşüyle gidilir — müze + piknik çimeni + göl banyosu aynı yarım güne sığar.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Bourbaki Panoraması</span>
-                    <span class="card-badge badge-emerald">Panoramanın atası</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Panoramanın atası</span>
                 </div>
+                <h3 class="card-title">Bourbaki Panoraması</h3>
                 <p class="card-desc">1881&#x27;den kalma 112 metrelik dairesel dev tablo, Fransız ordusunun İsviçre&#x27;ye sığınışını anlatır: sinemadan önceki &#x27;sürükleyici deneyim&#x27;. Yağmurlu günün en şaşırtıcı planı.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Lido ve Ufschötti çimenleri</span>
-                    <span class="card-badge badge-emerald">Gölde yüzme kültürü</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Gölde yüzme kültürü</span>
                 </div>
+                <h3 class="card-title">Lido ve Ufschötti çimenleri</h3>
                 <p class="card-desc">Şehir plajı Lido kumuyla, Ufschötti parkı çimeniyle göl yüzmesinin iki adresidir: berrak su, Pilatus fonu ve İsviçre usulü sessiz güneşlenme. Yazın 18 sonrası yerlilerin saatidir.</p>
             </div>
             </div>

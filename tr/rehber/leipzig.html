@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Leipzig Şehir İçi Ulaşım & Transfer</h2>
             </div>
             <p class="section-intro">City-Tunnel yeraltı S-Bahn hattı ve LVB sarı tramvayları kenti mükemmel şekilde birleştirir.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚆</span>
-                        <span class="card-title">S-Bahn City-Tunnel (S5/S5X)</span>
+                        <h3 class="card-title">S-Bahn City-Tunnel (S5/S5X)</h3>
                     </div>
                 </div>
                 <p class="card-desc">LEJ Havalimanı&#x27;ndan kalkan trenler kentin altından geçen tünel istasyonlarına (Markt ve Hauptbahnhof) 14 dakikada varır.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚋</span>
-                        <span class="card-title">LVB Sarı Tramvayları</span>
+                        <h3 class="card-title">LVB Sarı Tramvayları</h3>
                     </div>
                 </div>
                 <p class="card-desc">Merkez tren garından güneydeki bohem KarLi caddesine ve batıdaki sanat semti Plagwitz&#x27;e kesintisiz ulaşım.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🛶</span>
-                        <span class="card-title">Karl-Heine-Kanalı Su Yolları</span>
+                        <h3 class="card-title">Karl-Heine-Kanalı Su Yolları</h3>
                     </div>
                 </div>
                 <p class="card-desc">Beyaz Köprü iskelesinden kano veya elektrikli tekne kiralayarak kentin endüstriyel tuğla fabrikaları arasından kürek çekin.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🏛️</span>
-                        <span class="card-title">Leipzig Hauptbahnhof</span>
+                        <h3 class="card-title">Leipzig Hauptbahnhof</h3>
                     </div>
                 </div>
                 <p class="card-desc">Yüzölçümü bakımından Avrupa&#x27;nın en büyük terminal garı; 3 katlı dev alışveriş pasajı ve kültür merkezidir.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚲</span>
-                        <span class="card-title">Nextbike Leipzig Bisikletleri</span>
+                        <h3 class="card-title">Nextbike Leipzig Bisikletleri</h3>
                     </div>
                 </div>
                 <p class="card-desc">Düz coğrafyası ve geniş yeşil parklarıyla ünlü Leipzig&#x27;de bisiklet en popüler ulaşım aracıdır.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Nerede Kalınır? Leipzig Mahalleleri</h2>
             </div>
             <p class="section-intro">Tarihi Markt ve pasajlar çevresi mi, öğrenci enerjili KarLi mi, yoksa endüstriyel Plagwitz mi?</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Zentrum &amp; Markt</span>
+                    <h3 class="card-title">Zentrum &amp; Markt</h3>
                     <span class="card-badge badge-purple">Tarihi Kalp</span>
                 </div>
                 <p class="card-desc">Thomaskirche, Mädler-Passage, Eski Belediye Binası ve Gewandhaus&#x27;a adım mesafesinde en prestijli merkez.</p>
-                <div class="card-footer-tip">Thomaskirche • Tarihi Pasajlar • Merkezi</div>
+                <div class="card-footer-tip">📍 Thomaskirche • Tarihi Pasajlar • Merkezi</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Plagwitz</span>
+                    <h3 class="card-title">Plagwitz</h3>
                     <span class="card-badge badge-purple">Sanat &amp; Endüstriyel Loft</span>
                 </div>
                 <p class="card-desc">Spinnerei sanat kompleksi, kanal kenarı bistroları, bağımsız tasarım atölyeleri ve hip gençlik atmosferi.</p>
-                <div class="card-footer-tip">Spinnerei • Kanal Boyu • Tasarım Loftlar</div>
+                <div class="card-footer-tip">📍 Spinnerei • Kanal Boyu • Tasarım Loftlar</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Südvorstadt &amp; KarLi</span>
+                    <h3 class="card-title">Südvorstadt &amp; KarLi</h3>
                     <span class="card-badge badge-purple">Bohem &amp; Gece Hayatı</span>
                 </div>
                 <p class="card-desc">Karl-Liebknecht-Straße boyunca uzanan vegan kafeler, butik barlar, pub&#x27;lar ve öğrenci canlılığı.</p>
-                <div class="card-footer-tip">KarLi • Canlı Barlar • Gençlik</div>
+                <div class="card-footer-tip">📍 KarLi • Canlı Barlar • Gençlik</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Musikviertel</span>
+                    <h3 class="card-title">Musikviertel</h3>
                     <span class="card-badge badge-purple">Zarif &amp; Akademik</span>
                 </div>
                 <p class="card-desc">Görkemli 19. yüzyıl saray yavruları, Albertina Üniversite Kütüphanesi ve yemyeşil Clara-Zetkin Parkı kıyısı.</p>
-                <div class="card-footer-tip">Klasik Mimari • Kütüphaneler • Parklar</div>
+                <div class="card-footer-tip">📍 Klasik Mimari • Kütüphaneler • Parklar</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Gohlis</span>
+                    <h3 class="card-title">Gohlis</h3>
                     <span class="card-badge badge-purple">Sakin &amp; Barok</span>
                 </div>
                 <p class="card-desc">Schiller Evi ve Rokoko tarzı Gohliser Schlösschen sarayına ev sahipliği yapan huzurlu kuzey semti.</p>
-                <div class="card-footer-tip">Schiller Evi • Sakin Konaklama • Barok Saray</div>
+                <div class="card-footer-tip">📍 Schiller Evi • Sakin Konaklama • Barok Saray</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Leipzig İçin En İyi Ziyaret Zamanı</h2>
             </div>
             <p class="section-intro">İlkbaharda dünya çapında Bachfest festivali, yazın kanallarda açık hava sinemaları ve kışın tarihi Noel pazarı.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">İlkbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Nis – Haz</span>
+                        <h3 class="card-title">İlkbahar</h3>
+                        <span class="season-months">Nis – Haz</span>
                     </div>
                     <span class="card-badge badge-amber">Bachfest Leipzig &amp; Kitap Fuarı</span>
                 </div>
                 <p class="card-desc">Haziran ayında dünyanın dört bir yanından gelen orkestralarla kiliseler ve meydanlarda 100&#x27;den fazla konser.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Yaz</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Tem – Ağu</span>
+                        <h3 class="card-title">Yaz</h3>
+                        <span class="season-months">Tem – Ağu</span>
                     </div>
                     <span class="card-badge badge-amber">Kanal Sezonu &amp; Açık Hava</span>
                 </div>
                 <p class="card-desc">Karl-Heine-Kanalı&#x27;nda kürek çekmek, Clara-Zetkin-Park çimlerinde piknikler ve Spinnerei yaz galerileri.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Sonbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Eyl – Kas</span>
+                        <h3 class="card-title">Sonbahar</h3>
+                        <span class="season-months">Eyl – Kas</span>
                     </div>
                     <span class="card-badge badge-amber">9 Ekim Barışçıl Devrim Işık Festivali</span>
                 </div>
                 <p class="card-desc">1989&#x27;da komünist rejimi deviren 70 bin kişinin tarihi yürüyüşünün mumlar ve ışık enstalasyonlarıyla anıldığı anlamlı gece.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Kış</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Ara – Şub</span>
+                        <h3 class="card-title">Kış</h3>
+                        <span class="season-months">Ara – Şub</span>
                     </div>
                     <span class="card-badge badge-amber">Tarihi Markt Noel Masalı</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥧</span>
-                        <span class="card-title">Leipziger Lerche</span>
+                        <h3 class="card-title">Leipziger Lerche</h3>
                     </div>
                 </div>
                 <p class="card-desc">Kıtır tart hamuru içine badem ezmesi, fındık ve tam ortasında kuşun kalbini simgeleyen bir damla çilek reçeliyle fırınlanan simge tatlı.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥗</span>
-                        <span class="card-title">Leipziger Allerlei</span>
+                        <h3 class="card-title">Leipziger Allerlei</h3>
                     </div>
                 </div>
                 <p class="card-desc">Taze genç bezelye, havuç, kuşkonmaz, morel mantarı ve nehir kereviti kuyruklarıyla tereyağında hazırlanan tarihi aristokrat yemeği.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍺</span>
-                        <span class="card-title">Leipziger Gose</span>
+                        <h3 class="card-title">Leipziger Gose</h3>
                     </div>
                 </div>
                 <p class="card-desc">Geleneksel uzun boyunlu bardaklarda servis edilen, tuz ve kişnişle mayalanmış ferahlatıcı tarihi ekşi buğday birası.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍖</span>
-                        <span class="card-title">Sächsischer Sauerbraten</span>
+                        <h3 class="card-title">Sächsischer Sauerbraten</h3>
                     </div>
                 </div>
                 <p class="card-desc">Zencefilli çörek sosu ve kırmızı şarapla marine edilmiş yumuşacık dana rosto; yanında kırmızı lahana ve patates köftesiyle.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥞</span>
-                        <span class="card-title">Quarkkeulchen</span>
+                        <h3 class="card-title">Quarkkeulchen</h3>
                     </div>
                 </div>
                 <p class="card-desc">Haşlanmış patates ve taze süzme peynir (Quark) hamuruyla tavada kızartılan, üzerine tarçın şekeri ve elma püresi dökülen sıcak tatlı.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">☕</span>
-                        <span class="card-title">Coffe Baum Kahve Ritüeli</span>
+                        <h3 class="card-title">Coffe Baum Kahve Ritüeli</h3>
                     </div>
                 </div>
                 <p class="card-desc">Avrupa&#x27;nın 1711&#x27;den beri kesintisiz çalışan en eski kahvehanelerinden birinde Saksonya&#x27;nın ünlü &#x27;Schälchen Heeßen&#x27; kahve keyfi.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Müzik dehalarının izlerinden devasa anıtlara ve sanat fabrikalarına.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Baumwollspinnerei Sanat Fabrikası</span>
-                    <span class="card-badge badge-emerald">Nadir</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Nadir</span>
                 </div>
+                <h3 class="card-title">Baumwollspinnerei Sanat Fabrikası</h3>
                 <p class="card-desc">Bir zamanlar Avrupa&#x27;nın en büyük pamuk ipliği fabrikası olan, günümüzde Neo Rauch ve Yeni Leipzig Ekolü&#x27;nün 100&#x27;den fazla sanat atölyesine ev sahipliği yapan dev tuğla vaha.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Völkerschlachtdenkmal (Uluslar Muharebesi Anıtı)</span>
-                    <span class="card-badge badge-emerald">Çok Nadir</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Çok Nadir</span>
                 </div>
+                <h3 class="card-title">Völkerschlachtdenkmal (Uluslar Muharebesi Anıtı)</h3>
                 <p class="card-desc">1813&#x27;te Napolyon&#x27;un yenildiği savaşın anısına dikilen, 91 metre yüksekliği ve devasa taş savaşçı heykelleriyle Avrupa&#x27;nın en büyük anıt yapısı.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Mädler-Passage ve Barthels Hof İç Avluları</span>
-                    <span class="card-badge badge-emerald">Gizli</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Gizli</span>
                 </div>
+                <h3 class="card-title">Mädler-Passage ve Barthels Hof İç Avluları</h3>
                 <p class="card-desc">Dışarıdan fark edilmeyen, birbirine bağlanan tarihi kervansaray avluları ve cam tavanlı Rönesans-Art Deco geçitler.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Karl-Heine-Kanalı ve Stelzenhaus</span>
-                    <span class="card-badge badge-emerald">Nadir</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Nadir</span>
                 </div>
+                <h3 class="card-title">Karl-Heine-Kanalı ve Stelzenhaus</h3>
                 <p class="card-desc">Su üzerine çelik kazıklar üstüne inşa edilmiş 19. yüzyıl tarihi dalgalı çatılı fabrika binası ve altından geçen kano parkuru.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Bibliotheca Albertina Görkemli Salonu</span>
-                    <span class="card-badge badge-emerald">Gizli</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Gizli</span>
                 </div>
+                <h3 class="card-title">Bibliotheca Albertina Görkemli Salonu</h3>
                 <p class="card-desc">1891 yapımı Leipzig Üniversitesi merkez kütüphanesinin neorönesans fresklerle süslü sessiz ve büyüleyici okuma salonu.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Gohliser Schlösschen Barok Köşkü</span>
-                    <span class="card-badge badge-emerald">Çok Nadir</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Çok Nadir</span>
                 </div>
+                <h3 class="card-title">Gohliser Schlösschen Barok Köşkü</h3>
                 <p class="card-desc">Kentin kuzeyinde yeşil ağaçlar arasına saklanan, Saksonya Rokoko mimarisinin en zarif yazlık saray köşkü ve heykelli bahçesi.</p>
             </div>
             </div>

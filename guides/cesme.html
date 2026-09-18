@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Cesme Public Transit & Airport Transfers</h2>
             </div>
             <p class="section-intro">A motorway links Izmir to the peninsula in under an hour; inside, dolmus minibuses weave the Cesme–Alacati–Ilica triangle, and the far coves call for a steering wheel.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Arriving from Izmir</span>
+                        <h3 class="card-title">Arriving from Izmir</h3>
                     </div>
                 </div>
                 <p class="card-desc">One hour from Adnan Menderes Airport on the motorway: airport transfers and buses run steadily. Intercity buses to Cesme&#x27;s bus station leave Izmir at all hours.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚐</span>
-                        <span class="card-title">The dolmus triangle</span>
+                        <h3 class="card-title">The dolmus triangle</h3>
                     </div>
                 </div>
                 <p class="card-desc">Minibuses shuttle all day between Cesme center, Alacati and Ilica: cheap and practical. Night returns run late in season — asking the time of the last dolmus is still good Aegean manners.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚗</span>
-                        <span class="card-title">A car for cove-hunting</span>
+                        <h3 class="card-title">A car for cove-hunting</h3>
                     </div>
                 </div>
                 <p class="card-desc">Dolmus service to far corners like Altinkum, Pirlanta and Ildiri is sparse: cove-hopping calls for a rental car or scooter. On summer weekends, parking inside Alacati tests your patience — leave the car outside and walk.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">⛴️</span>
-                        <span class="card-title">The Chios ferry</span>
+                        <h3 class="card-title">The Chios ferry</h3>
                     </div>
                 </div>
                 <p class="card-desc">The ferry from Cesme harbor to Chios takes half an hour: bring your passport, go in the morning, return in the evening. Greek coffee, mastika liqueur and lanes that echo old Aegean towns — the peninsula&#x27;s shortest trip abroad.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚲</span>
-                        <span class="card-title">Bikes and e-scooters</span>
+                        <h3 class="card-title">Bikes and e-scooters</h3>
                     </div>
                 </div>
                 <p class="card-desc">Inner Alacati and the Ilica seafront are made for pedaling: flat, scenic and pleasant. Factor in the midday heat and the evening wind — the morning ride always wins.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Where to Stay in Cesme: Best Areas</h2>
             </div>
             <p class="section-intro">The peninsula&#x27;s choice is a triangle: Alacati&#x27;s stone hotels, Ilica&#x27;s beach, Cesme center&#x27;s marina — plus quiet Dalyan for those who want calm.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Alacati</span>
+                    <h3 class="card-title">Alacati</h3>
                     <span class="card-badge badge-purple">Most character</span>
                 </div>
                 <p class="card-desc">Courtyard boutique hotels inside the stone streets: breakfast in the garden, evenings at street tables. Busy and pricey on summer weekends — but this is the capital of atmosphere.</p>
-                <div class="card-footer-tip">Stone hotels • Courtyard breakfast • Street tables</div>
+                <div class="card-footer-tip">📍 Stone hotels • Courtyard breakfast • Street tables</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Ilica</span>
+                    <h3 class="card-title">Ilica</h3>
                     <span class="card-badge badge-purple">Best beach</span>
                 </div>
                 <p class="card-desc">The peninsula&#x27;s beach classic with white sand and warm, shallow sea: thermal springs bubble up right at the shore. Perfect for families and long beach days — ten minutes to the center by dolmus.</p>
-                <div class="card-footer-tip">Warm shallow sea • White sand • Thermal springs</div>
+                <div class="card-footer-tip">📍 Warm shallow sea • White sand • Thermal springs</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Cesme center</span>
+                    <h3 class="card-title">Cesme center</h3>
                     <span class="card-badge badge-purple">Most practical</span>
                 </div>
                 <p class="card-desc">Hotels around the castle, marina and bazaar: the ferry pier and bus station at hand. A sensible base for exploring the whole peninsula.</p>
-                <div class="card-footer-tip">Marina strolls • Near the ferry • Bazaar life</div>
+                <div class="card-footer-tip">📍 Marina strolls • Near the ferry • Bazaar life</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Dalyan (Cesme)</span>
+                    <h3 class="card-title">Dalyan (Cesme)</h3>
                     <span class="card-badge badge-purple">Quietest</span>
                 </div>
                 <p class="card-desc">A hushed neighborhood of fishing boats and canal-side fish restaurants: quayside tables at night, stillness by day. Away from the crowds, close to the sea.</p>
-                <div class="card-footer-tip">Fishing quay • Canal-side dining • Quiet nights</div>
+                <div class="card-footer-tip">📍 Fishing quay • Canal-side dining • Quiet nights</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Pasalimani &amp; Ayayorgi side</span>
+                    <h3 class="card-title">Pasalimani &amp; Ayayorgi side</h3>
                     <span class="card-badge badge-purple">Cove-front</span>
                 </div>
                 <p class="card-desc">Boutique hotels above sheltered coves, with beach clubs as neighbors: turquoise by day, clinking glasses by night. Protected from the wind — for those who want to wake up on the water.</p>
-                <div class="card-footer-tip">Sheltered coves • Near beach clubs • Turquoise views</div>
+                <div class="card-footer-tip">📍 Sheltered coves • Near beach clubs • Turquoise views</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Best Time to Visit Cesme</h2>
             </div>
             <p class="section-intro">Cesme&#x27;s calendar opens with the herb festival and closes with September gold; July–August is windy and full, winter is calm and true.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Spring</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Apr – Jun</span>
+                        <h3 class="card-title">Spring</h3>
+                        <span class="season-months">Apr – Jun</span>
                     </div>
                     <span class="card-badge badge-amber">Herb Festival Spring</span>
                 </div>
                 <p class="card-desc">April is the holiday of the herbs: at the Alacati Herb Festival the stalls drown in green, from şevketibostan to wild fennel. In May–June the sea warms and the streets are still uncrowded — the peninsula&#x27;s most elegant window.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Summer</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Jul – Aug</span>
+                        <h3 class="card-title">Summer</h3>
+                        <span class="season-months">Jul – Aug</span>
                     </div>
                     <span class="card-badge badge-amber">Wind and Stage</span>
                 </div>
                 <p class="card-desc">The surf bays fill with sails, the beach clubs build their stages, and Izmir moves to the peninsula on weekends. The sea is clear, the wind is lively, the prices are at their peak — plan around the Friday–Sunday traffic.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Autumn</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Sep – Nov</span>
+                        <h3 class="card-title">Autumn</h3>
+                        <span class="season-months">Sep – Nov</span>
                     </div>
                     <span class="card-badge badge-amber">September Gold</span>
                 </div>
                 <p class="card-desc">September is the peninsula&#x27;s finest month: the sea holds its summer warmth, the coves are calm, Alacati&#x27;s tables are easy. October carries on with grape harvest and quiet beach days — this is the connoisseur&#x27;s season.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Winter</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Dec – Mar</span>
+                        <h3 class="card-title">Winter</h3>
+                        <span class="season-months">Dec – Mar</span>
                     </div>
                     <span class="card-badge badge-amber">The Quiet Peninsula</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥪</span>
-                        <span class="card-title">Cesme kumru</span>
+                        <h3 class="card-title">Cesme kumru</h3>
                     </div>
                 </div>
                 <p class="card-desc">Sesame bread, melted kasar, sucuk: a warm balance of three. The post-beach standing classic — the argument between &#x27;extra sucuk&#x27; and &#x27;plain cheese&#x27; people never ends, so try both.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🌿</span>
-                        <span class="card-title">Wild herb meze spread</span>
+                        <h3 class="card-title">Wild herb meze spread</h3>
                     </div>
                 </div>
                 <p class="card-desc">Şevketibostan, sea beans, wild fennel, cibes greens: Aegean herbs meeting olive oil are the stars of the meze fridge. Order whatever the season gave — the herb table doesn&#x27;t do scripts.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🐟</span>
-                        <span class="card-title">Fish in Dalyan</span>
+                        <h3 class="card-title">Fish in Dalyan</h3>
                     </div>
                 </div>
                 <p class="card-desc">Catch of the day along the canal where the fishing boats tie up: sea bream, sea bass, dentex in season. At a quayside table with the sunset — choose from the display, ask the price before it hits the scale.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍨</span>
-                        <span class="card-title">Mastic everything</span>
+                        <h3 class="card-title">Mastic everything</h3>
                     </div>
                 </div>
                 <p class="card-desc">Mastic pudding, mastic ice cream, mastic cookies and Turkish coffee with mastic: the resin of the island across the water is this coast&#x27;s sweet signature. Have the pudding from a bakery, the ice cream on an evening stroll.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🌱</span>
-                        <span class="card-title">Mastic artichoke season</span>
+                        <h3 class="card-title">Mastic artichoke season</h3>
                     </div>
                 </div>
                 <p class="card-desc">In spring the peninsula&#x27;s stalls turn to artichokes: braised in olive oil, grilled, or raw in salads. In the April–May window it&#x27;s the star of every menu — don&#x27;t miss its season.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍳</span>
-                        <span class="card-title">Alacati breakfast</span>
+                        <h3 class="card-title">Alacati breakfast</h3>
                     </div>
                 </div>
                 <p class="card-desc">A spread breakfast in a stone courtyard: village cheeses, sautéed wild greens, mastic jam and griddle borek. The long ritual of a weekend morning — table in the shade, tea well-steeped, hurrying forbidden.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Everyone knows Alacati&#x27;s main street; these six are the peninsula&#x27;s hidden face.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Ildiri (Erythrai)</span>
-                    <span class="card-badge badge-emerald">Seaside village with an ancient theater</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Seaside village with an ancient theater</span>
                 </div>
+                <h3 class="card-title">Ildiri (Erythrai)</h3>
                 <p class="card-desc">A quiet village at the peninsula&#x27;s northern tip, built over ancient Erythrai: island views from the theater ruins, a small fishing pier below. A silent sunset classic the crowds never reach.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Germiyan</span>
-                    <span class="card-badge badge-emerald">Greek-built vineyard village</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Greek-built vineyard village</span>
                 </div>
+                <h3 class="card-title">Germiyan</h3>
                 <p class="card-desc">A calm inland village of stone houses and vineyards: it comes alive on weekends with village breakfasts and a handicraft market. Alacati as it was twenty years ago — authentic and unhurried.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Ayayorgi Cove</span>
-                    <span class="card-badge badge-emerald">Chain of coves</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Chain of coves</span>
                 </div>
+                <h3 class="card-title">Ayayorgi Cove</h3>
                 <p class="card-desc">A sheltered, pine-shaded cove of turquoise water: almost private in the early morning, shifting to beach-club rhythm in the afternoon. Both moods are lovely — go knowing the hour.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Altinkum</span>
-                    <span class="card-badge badge-emerald">Caribbean illusion</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Caribbean illusion</span>
                 </div>
+                <h3 class="card-title">Altinkum</h3>
                 <p class="card-desc">Fine white sand and transparent shallows: the peninsula&#x27;s clearest beach. Wavy on a windy day, mirror-flat in the morning — bring your umbrella, settle for the simple beach shack, enjoy the wildness.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">The Chios escape</span>
-                    <span class="card-badge badge-emerald">Greece in half an hour</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Greece in half an hour</span>
                 </div>
+                <h3 class="card-title">The Chios escape</h3>
                 <p class="card-desc">Half an hour by ferry to Chios: mastic villages, the Genoese-patterned stone houses of Pyrgi, and quiet Greek tavernas. The Aegean&#x27;s easiest day trip abroad — passport required.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Alacati surf bay at dawn</span>
-                    <span class="card-badge badge-emerald">The surf kitchen</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ The surf kitchen</span>
                 </div>
+                <h3 class="card-title">Alacati surf bay at dawn</h3>
                 <p class="card-desc">Go to the surf bay early: as the wind wakes, sails slip into the water one by one and the schools give their first lessons. Even with no plans to surf, take your coffee and watch from the jetty — the peninsula&#x27;s most dynamic view.</p>
             </div>
             </div>

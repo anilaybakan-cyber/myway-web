@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Marakeş Şehir İçi Ulaşım & Transfer</h2>
             </div>
             <p class="section-intro">Medine yayan, geri kalanı küçük bej taksilerle: mesafeler kısa, pazarlık reflekleri açık olsun.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Havalimanından merkeze</span>
+                        <h3 class="card-title">Havalimanından merkeze</h3>
                     </div>
                 </div>
                 <p class="card-desc">Menara şehre 20 dakikadır: taksi fiyatını binmeden kes ya da riyad transferi ayarlat. 19 numaralı otobüs bütçe dostudur — meydana ve Gueliz&#x27;e uğrar.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">Medine yayan</span>
+                        <h3 class="card-title">Medine yayan</h3>
                     </div>
                 </div>
                 <p class="card-desc">Meydan, çarşılar ve saraylar yürüme mesafesindedir; derb&#x27;lerde kaybolmak programın parçasıdır. Motosikletler dar sokaklarda da hız keser — kenardan yürü, kulağın arkada olsun.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚕</span>
-                        <span class="card-title">Petit taxi — bej küçükler</span>
+                        <h3 class="card-title">Petit taxi — bej küçükler</h3>
                     </div>
                 </div>
                 <p class="card-desc">Şehir içi kısa mesafelerin aracı: taksimetre iste, açılmıyorsa fiyatı baştan konuş. Gece tarifesi gündüzden yüksektir — normaldir, fahişi normalleştirme.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🐎</span>
-                        <span class="card-title">Kalesh — fayton turu</span>
+                        <h3 class="card-title">Kalesh — fayton turu</h3>
                     </div>
                 </div>
                 <p class="card-desc">Surlar boyu fayton turu klasik bir keyiftir: rotayı ve fiyatı binmeden netleştir, atların bakımlı olduğu faytonu seç. Gün batımına denk gelen tur, kızıl surları köz rengine boyar.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚐</span>
-                        <span class="card-title">Atlas ve çöl kaçamakları</span>
+                        <h3 class="card-title">Atlas ve çöl kaçamakları</h3>
                     </div>
                 </div>
                 <p class="card-desc">Ourika Vadisi ve Atlas köyleri bir saat, Agafay çölü 45 dakika mesafededir: küçük grup turları ya da özel şoförle gün planla. Şehirden çıkmak, Marakeş&#x27;i ikiye katlar.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Nerede Kalınır? Marakeş Mahalleleri</h2>
             </div>
             <p class="section-intro">Marakeş&#x27;te iki dünya arasında seçim yaparsın: medinenin riyad sükuneti mi, yeni şehrin havuzlu ferahlığı mı?</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Medine — meydan çevresi</span>
+                    <h3 class="card-title">Medine — meydan çevresi</h3>
                     <span class="card-badge badge-purple">En atmosferli</span>
                 </div>
                 <p class="card-desc">Jemaa el-Fnaa&#x27;ya ve çarşılara yürüme mesafesinde riyadlar: şehrin nabzı kapının dibinde. Gece meydan uğultusu duyulabilir — atmosferin bedeli, terastan minare manzarası ödülüdür.</p>
-                <div class="card-footer-tip">Meydana yakın • Riyad terasları • Nabız kapıda</div>
+                <div class="card-footer-tip">📍 Meydana yakın • Riyad terasları • Nabız kapıda</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Medine — Kasbah ve Mellah</span>
+                    <h3 class="card-title">Medine — Kasbah ve Mellah</h3>
                     <span class="card-badge badge-purple">En tarihi</span>
                 </div>
                 <p class="card-desc">Saadi mezarları, saray kalıntıları ve baharat meydanının bölgesi: meydan koşuşturmasından bir kademe sakin, tarih yoğunluğu yüksek. Leylek yuvalı surlar mahallenin imzasıdır.</p>
-                <div class="card-footer-tip">Saadi mezarları • Baharat meydanı • Leylekli surlar</div>
+                <div class="card-footer-tip">📍 Saadi mezarları • Baharat meydanı • Leylekli surlar</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Gueliz — Yeni Şehir</span>
+                    <h3 class="card-title">Gueliz — Yeni Şehir</h3>
                     <span class="card-badge badge-purple">En modern</span>
                 </div>
                 <p class="card-desc">Fransız dönemi bulvarları, kafeler, galeriler ve alışveriş: medine yoğunluğuna mesafe isteyenlerin ferah üssü. Majorelle&#x27;e yürüme mesafesi, medineye kısa taksi.</p>
-                <div class="card-footer-tip">Bulvar kafeleri • Majorelle yakını • Modern konfor</div>
+                <div class="card-footer-tip">📍 Bulvar kafeleri • Majorelle yakını • Modern konfor</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Hivernage</span>
+                    <h3 class="card-title">Hivernage</h3>
                     <span class="card-badge badge-purple">En konforlu</span>
                 </div>
                 <p class="card-desc">Havuzlu büyük oteller ve gece kulüplerinin bölgesi: palmiyeli caddeler, spa&#x27;lar ve sakin geceler. Konfor önceliklilere — medineye taksiyle beş dakika.</p>
-                <div class="card-footer-tip">Havuzlu oteller • Spa kültürü • Sakin geceler</div>
+                <div class="card-footer-tip">📍 Havuzlu oteller • Spa kültürü • Sakin geceler</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Palmeraie ve çevre kır otelleri</span>
+                    <h3 class="card-title">Palmeraie ve çevre kır otelleri</h3>
                     <span class="card-badge badge-purple">Kaçış üssü</span>
                 </div>
                 <p class="card-desc">Palmiye korulukları içinde havuzlu kır evleri ve Agafay yönünde çöl kampları: gündüz şehir, akşam yıldız sessizliği. Araç ya da servisle işler — balayı klasiği.</p>
-                <div class="card-footer-tip">Palmiye koruluğu • Yıldızlı geceler • Havuz başı</div>
+                <div class="card-footer-tip">📍 Palmiye koruluğu • Yıldızlı geceler • Havuz başı</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Marakeş İçin En İyi Ziyaret Zamanı</h2>
             </div>
             <p class="section-intro">Kızıl şehrin takvimi güneşle yazılır: bahar ve sonbahar altın, yaz fırın, kış güneşli-serin bir sürprizdir.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">İlkbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Mar – May</span>
+                        <h3 class="card-title">İlkbahar</h3>
+                        <span class="season-months">Mar – May</span>
                     </div>
                     <span class="card-badge badge-amber">Portakal Çiçeği Sezonu</span>
                 </div>
                 <p class="card-desc">Bahçeler portakal çiçeğiyle kokar, Atlas zirvelerinde kar hâlâ parlar, teraslar tam kıvamındadır. Marakeş&#x27;in en sevilen penceresi — kalabalığı da fiyatı da buna göre.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Yaz</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Haz – Ağu</span>
+                        <h3 class="card-title">Yaz</h3>
+                        <span class="season-months">Haz – Ağu</span>
                     </div>
                     <span class="card-badge badge-amber">Fırın Ayları</span>
                 </div>
                 <p class="card-desc">Sıcak ciddidir: hayat sabaha, geceye ve havuz başına taşınır. Fiyatlar düşer, meydan geceleri yine dolar — programı gölge ve klimayla kurmak şartıyla yaz Marakeş&#x27;i mümkündür.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Sonbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Eyl – Kas</span>
+                        <h3 class="card-title">Sonbahar</h3>
+                        <span class="season-months">Eyl – Kas</span>
                     </div>
                     <span class="card-badge badge-amber">Altın Işık</span>
                 </div>
                 <p class="card-desc">Eylülde sıcak kırılır, ekim-kasım şehrin en dengeli dönemidir: gündüz ılık, akşam serin, Atlas gezileri için ideal. Işık, fotoğrafçıların &#x27;Marakeş altını&#x27; dediği tona döner.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Kış</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Ara – Şub</span>
+                        <h3 class="card-title">Kış</h3>
+                        <span class="season-months">Ara – Şub</span>
                     </div>
                     <span class="card-badge badge-amber">Güneşli Serinlik</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🏺</span>
-                        <span class="card-title">Tanjia — külde pişen efsane</span>
+                        <h3 class="card-title">Tanjia — külde pişen efsane</h3>
                     </div>
                 </div>
                 <p class="card-desc">Testide saatlerce pişen et lif lif dağılır, konfit limon kokusu tabağı sarar: Marakeş&#x27;e özgü, tajine&#x27;den ayrı bir ritüel. Gerçeğini yapan lokantaya sor — testiyle servis edilir.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍲</span>
-                        <span class="card-title">Tajine çeşitlemeleri</span>
+                        <h3 class="card-title">Tajine çeşitlemeleri</h3>
                     </div>
                 </div>
                 <p class="card-desc">Erikli-bademli kuzu, limonlu-zeytinli tavuk, kefta-yumurta: konik kapağın altında her ev başka hikaye anlatır. Riyadında akşamdan sipariş — çarşı menüsünün hep bir adım önünde.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍢</span>
-                        <span class="card-title">Meydan tezgahları — duman sofrası</span>
+                        <h3 class="card-title">Meydan tezgahları — duman sofrası</h3>
                     </div>
                 </div>
                 <p class="card-desc">Akşam kurulan yüz tezgahlı açık mutfak: közde şiş, harira ve salyangoz çorbası. Kalabalık tezgah taze tezgahtır — numarasını ezberle, ertesi akşam yine gel.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥗</span>
-                        <span class="card-title">Fas mezeleri ve zaalouk</span>
+                        <h3 class="card-title">Fas mezeleri ve zaalouk</h3>
                     </div>
                 </div>
                 <p class="card-desc">Közlenmiş patlıcanlı zaalouk, havuçlu taktouka, zeytin tabakları: ana yemekten önce masayı donatan renkli ordu. Ekmekle sıyırmak usuldendir — çatal opsiyoneldir.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍊</span>
-                        <span class="card-title">Meydan portakalı ve avokado kokteyli</span>
+                        <h3 class="card-title">Meydan portakalı ve avokado kokteyli</h3>
                     </div>
                 </div>
                 <p class="card-desc">Sıkma portakal arabaları meydanın gündüz klasiği; süt bar&#x27;ların avokado-badem kokteyli ise yerlilerin serinleme sırrıdır. İkisi de birkaç dirhem, ikisi de efsane.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍬</span>
-                        <span class="card-title">Nane çayı ve Fas tatlıları</span>
+                        <h3 class="card-title">Nane çayı ve Fas tatlıları</h3>
                     </div>
                 </div>
                 <p class="card-desc">Gazellerin boynuzu (kaab el ghazal), bal damlayan chebakia ve badem ezmeli zarflar: çay seremonisinin tatlı ordusu. Terasta, gün batımına karşı — şeker ayarını baştan söyle.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Majorelle&#x27;i herkes bilir; bu altısı kızıl şehrin saklı avluları.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Le Jardin Secret</span>
-                    <span class="card-badge badge-emerald">Duvarların ardındaki cennet</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Duvarların ardındaki cennet</span>
                 </div>
+                <h3 class="card-title">Le Jardin Secret</h3>
                 <p class="card-desc">Çarşının ortasında restore edilmiş saray bahçesi: İslam bahçe sanatının su kanalları, kaktüs koleksiyonu ve kulesinden medine damları. Kaosun iki adım ötesinde matematiksel bir sükunet.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Maison de la Photographie terası</span>
-                    <span class="card-badge badge-emerald">Şehrin en iyi çatısı</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Şehrin en iyi çatısı</span>
                 </div>
+                <h3 class="card-title">Maison de la Photographie terası</h3>
                 <p class="card-desc">Eski Fas fotoğraflarının müzesi, medinenin en iyi teraslarından biriyle taçlanır: sergiyi gez, çatıda çayını iç, Atlas&#x27;ı ufukta yakala. Giriş mütevazı, manzara cömert.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">El Badi Sarayı surları</span>
-                    <span class="card-badge badge-emerald">Sabah leylekleriyle saray</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Sabah leylekleriyle saray</span>
                 </div>
+                <h3 class="card-title">El Badi Sarayı surları</h3>
                 <p class="card-desc">Saadi altın çağının dev harabesi: çökmüş havuzlar, portakal çukur bahçeleri ve surlarda yuva kuran leylekler. Sabah erken git — leylek sesi, kalabalık sesinden önce gelir.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Bahia&#x27;nın sessiz odaları ve Saadi mezarları sabahı</span>
-                    <span class="card-badge badge-emerald">Kapı ardı ihtişam</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Kapı ardı ihtişam</span>
                 </div>
+                <h3 class="card-title">Bahia&#x27;nın sessiz odaları ve Saadi mezarları sabahı</h3>
                 <p class="card-desc">Bahia Sarayı&#x27;nın arka avluları ve Saadi mezarlarının çinili odaları açılış saatinde neredeyse boştur: zellij ve sedir tavan işçiliğini kuyruksuz gör. Aynı bileti öğlen alan, kuyruğu da alır.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Rahba Kedima</span>
-                    <span class="card-badge badge-emerald">Yerlilerin baharat meydanı</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Yerlilerin baharat meydanı</span>
                 </div>
+                <h3 class="card-title">Rahba Kedima</h3>
                 <p class="card-desc">Ana çarşının içindeki eski tahıl meydanı: baharat piramitleri, şifalı ot dükkanları ve örgü şapka tezgahları. Çevresindeki teras kafeler, çarşı yorgunluğunun resmi molasıdır.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Agafay kır sofrası</span>
-                    <span class="card-badge badge-emerald">Çölün eşiğinde gün batımı</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Çölün eşiğinde gün batımı</span>
                 </div>
+                <h3 class="card-title">Agafay kır sofrası</h3>
                 <p class="card-desc">Şehre 45 dakikada taşlı çöl platosu: çadır kampları, deve silüetleri ve Atlas fonlu gün batımı sofraları. &#x27;Sahra&#x27;ya vakti olmayanın çölü&#x27; — akşam yemeği + yıldız kombinasyonuyla.</p>
             </div>
             </div>

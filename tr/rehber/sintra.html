@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Sintra Şehir İçi Ulaşım & Transfer</h2>
             </div>
             <p class="section-intro">Sintra&#x27;ya tren, Sintra&#x27;da otobüs ve ayak: bu üçlü kuralı bozan, gününü park yeri ararken bitirir.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚄</span>
-                        <span class="card-title">Lizbon&#x27;dan tren</span>
+                        <h3 class="card-title">Lizbon&#x27;dan tren</h3>
                     </div>
                 </div>
                 <p class="card-desc">Rossio garından her 20-30 dakikada bir tren, 40 dakikada Sintra&#x27;ya varır: Viva Viagem kartına biner, turnikede okutursun. Sabah ilk trenler kalabalığın önüne geçmenin tek yoludur.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚌</span>
-                        <span class="card-title">434 — Pena döngüsü</span>
+                        <h3 class="card-title">434 — Pena döngüsü</h3>
                     </div>
                 </div>
                 <p class="card-desc">Gardan kalkan 434, tarihi merkez, Mağribi Kalesi ve Pena&#x27;yı dolaşıp gara döner: tek yön işler, günlük bilet mantıklıdır. Kuyruğu sabah erken saatte en kısadır.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚌</span>
-                        <span class="card-title">435 — vadi hattı</span>
+                        <h3 class="card-title">435 — vadi hattı</h3>
                     </div>
                 </div>
                 <p class="card-desc">Regaleira, Seteais ve Monserrate&#x27;ye giden 435, Pena kalabalığından bağımsız çalışır: vadinin sakin saraylarına ulaşmanın rahat yolu.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">Orman patikaları</span>
+                        <h3 class="card-title">Orman patikaları</h3>
                     </div>
                 </div>
                 <p class="card-desc">Merkezden Regaleira&#x27;ya 10 dakika, Pena&#x27;ya Vila Sassetti patikasından 45 dakikalık orman tırmanışı: eğreltiler, dev sekoyalar ve sis arasında yürüyüş, otobüsten güzeldir. İniş yönünde denemek dizlere naziktir.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚐</span>
-                        <span class="card-title">Cabo da Roca bağlantısı</span>
+                        <h3 class="card-title">Cabo da Roca bağlantısı</h3>
                     </div>
                 </div>
                 <p class="card-desc">Avrupa&#x27;nın en batı ucu Cabo da Roca&#x27;ya gardan kalkan sahil otobüsüyle 40 dakika: Sintra + okyanus ucu kombinasyonu, aynı günün en iyi ikinci perdesidir.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Nerede Kalınır? Sintra Mahalleleri</h2>
             </div>
             <p class="section-intro">Günübirlikçiler akşam trenle döner; kalanlar ise sisin çöktüğü, sarayların sustuğu asıl Sintra&#x27;yı görür.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Tarihi merkez (Vila)</span>
+                    <h3 class="card-title">Tarihi merkez (Vila)</h3>
                     <span class="card-badge badge-purple">En atmosferli</span>
                 </div>
                 <p class="card-desc">Milli Saray&#x27;ın bacalarının dibindeki dar sokaklar: pastane kokusu, azulejo cepheler ve akşam çöken masal sessizliği. Gündüz kalabalık, gece tamamen senin.</p>
-                <div class="card-footer-tip">Saraylara yürüme • Akşam sessizliği • Pastane komşuluğu</div>
+                <div class="card-footer-tip">📍 Saraylara yürüme • Akşam sessizliği • Pastane komşuluğu</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">São Pedro de Penaferrim</span>
+                    <h3 class="card-title">São Pedro de Penaferrim</h3>
                     <span class="card-badge badge-purple">En yerel</span>
                 </div>
                 <p class="card-desc">Merkezin yukarısındaki sakin mahalle: antikacılar, aile lokantaları ve ayın ikinci-dördüncü pazarları kurulan tarihi panayır. Turist dalgasının dışında gerçek kasaba hayatı.</p>
-                <div class="card-footer-tip">Antikacılar • Aile lokantaları • Pazar panayırı</div>
+                <div class="card-footer-tip">📍 Antikacılar • Aile lokantaları • Pazar panayırı</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Yamaç quinta&#x27;ları</span>
+                    <h3 class="card-title">Yamaç quinta&#x27;ları</h3>
                     <span class="card-badge badge-purple">En romantik</span>
                 </div>
                 <p class="card-desc">Ormanın içine saklanmış tarihi konak oteller: sarmaşıklı bahçeler, çeşmeli avlular, sis manzaralı kahvaltılar. Sintra&#x27;nın ruhunu konaklamaya çeviren seçenek — balayı klasiği.</p>
-                <div class="card-footer-tip">Tarihi konaklar • Bahçe kahvaltısı • Sis manzarası</div>
+                <div class="card-footer-tip">📍 Tarihi konaklar • Bahçe kahvaltısı • Sis manzarası</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Colares</span>
+                    <h3 class="card-title">Colares</h3>
                     <span class="card-badge badge-purple">Bağ yakası</span>
                 </div>
                 <p class="card-desc">Dağın denize bakan eteğindeki bağ köyü: dünyanın en eski kum bağlarından Colares şarabı burada doğar. Kiralık evler ve kırsal huzur — araçlıya sahil + saray dengesi.</p>
-                <div class="card-footer-tip">Colares bağları • Kırsal huzur • Sahile yakın</div>
+                <div class="card-footer-tip">📍 Colares bağları • Kırsal huzur • Sahile yakın</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Praia das Maçãs ve Azenhas do Mar</span>
+                    <h3 class="card-title">Praia das Maçãs ve Azenhas do Mar</h3>
                     <span class="card-badge badge-purple">Okyanus kenarı</span>
                 </div>
                 <p class="card-desc">Sintra&#x27;nın plaj köyleri: uçurumdan dökülen beyaz evler, okyanus havuzu ve balık lokantaları. Yazın tarihi tramvay merkeze bağlar — saray sabahı, okyanus akşamı.</p>
-                <div class="card-footer-tip">Okyanus havuzu • Balık lokantaları • Tarihi tramvay</div>
+                <div class="card-footer-tip">📍 Okyanus havuzu • Balık lokantaları • Tarihi tramvay</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Sintra İçin En İyi Ziyaret Zamanı</h2>
             </div>
             <p class="section-intro">Serra&#x27;nın mikroklimasında dört mevsim aynı gün yaşanabilir; asıl seçim kalabalık takvimiyle yapılır.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">İlkbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Nis – Haz</span>
+                        <h3 class="card-title">İlkbahar</h3>
+                        <span class="season-months">Nis – Haz</span>
                     </div>
                     <span class="card-badge badge-amber">Kamelya ve Sis Dansı</span>
                 </div>
                 <p class="card-desc">Bahçeler kamelya ve manolyayla açar, orman en parlak yeşiline döner, hava yürüyüş için ideal serinliktedir. Kalabalık yaz seviyesinin altında — Sintra&#x27;nın en dengeli sezonu.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Yaz</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Tem – Ağu</span>
+                        <h3 class="card-title">Yaz</h3>
+                        <span class="season-months">Tem – Ağu</span>
                     </div>
                     <span class="card-badge badge-amber">Kalabalık Zirvesi, Serin Dağ</span>
                 </div>
                 <p class="card-desc">Lizbon kavrulurken serra 5-8 derece serindir: bu yüzden herkes buradadır. Saraylar saatli biletle dolar, 434 kuyruğu uzar. Erken gel-geç kal stratejisi ve plaj kaçamağı yazın anahtarıdır.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Sonbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Eyl – Kas</span>
+                        <h3 class="card-title">Sonbahar</h3>
+                        <span class="season-months">Eyl – Kas</span>
                     </div>
                     <span class="card-badge badge-amber">Altın Orman</span>
                 </div>
                 <p class="card-desc">Eylül hâlâ yazdır ama ekimle birlikte orman bakıra döner, sis sahneye daha sık çıkar ve saraylar nefes alır. Fotoğrafçının ve yavaş gezenin mevsimi.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Kış</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Ara – Mar</span>
+                        <h3 class="card-title">Kış</h3>
+                        <span class="season-months">Ara – Mar</span>
                     </div>
                     <span class="card-badge badge-amber">Sisli Masal, Boş Saraylar</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥐</span>
-                        <span class="card-title">Travesseiro — sıcak yastık</span>
+                        <h3 class="card-title">Travesseiro — sıcak yastık</h3>
                     </div>
                 </div>
                 <p class="card-desc">Badem kremalı milföy rulosu, fırından çıktığı anda: dışı çıtır, içi ılık. Piriquita fırınının klasiği — kuyruk uzunsa bil ki fırından yeni tepsi çıkmıştır.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🧀</span>
-                        <span class="card-title">Queijada de Sintra</span>
+                        <h3 class="card-title">Queijada de Sintra</h3>
                     </div>
                 </div>
                 <p class="card-desc">İnce gevrek hamurda tarçınlı taze peynir tatlısı: 13. yüzyıldan beri yapılan, yarım düzinelik kağıt rulolarda satılan minik efsane. Travesseiro ile karşılaştırmalı tadım şarttır.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🐟</span>
-                        <span class="card-title">Azenhas do Mar&#x27;da okyanus balığı</span>
+                        <h3 class="card-title">Azenhas do Mar&#x27;da okyanus balığı</h3>
                     </div>
                 </div>
                 <p class="card-desc">Uçurum köyünün lokantalarında günün balığı ve deniz böcekleri: dalga sesi ve okyanus havuzu manzarası dahildir. Saray yorgunluğunun en güzel ilacı.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍖</span>
-                        <span class="card-title">Leitão ve dağ sofrası</span>
+                        <h3 class="card-title">Leitão ve dağ sofrası</h3>
                     </div>
                 </div>
                 <p class="card-desc">Çevre köylerin fırın domuzu (leitão) ve közde chouriço&#x27;su hafta sonu sofralarının klasiğidir: São Pedro&#x27;nun aile lokantalarında bol garnitürle. Doyurucu, dürüst, yerli.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍷</span>
-                        <span class="card-title">Colares şarabı</span>
+                        <h3 class="card-title">Colares şarabı</h3>
                     </div>
                 </div>
                 <p class="card-desc">Filoksera vebasını kumda atlatmış asırlık asmalardan gelen nadir şarap: tuzlu Atlantik karakterli Ramisco kırmızısı. Az üretilir, zor bulunur — gördüğün yerde kadehle dene.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">☕</span>
-                        <span class="card-title">Ginjinha molası ve bica</span>
+                        <h3 class="card-title">Ginjinha molası ve bica</h3>
                     </div>
                 </div>
                 <p class="card-desc">Vişne likörü ginjinha küçük kadehte, espresso (bica) yanında: gezi arası Portekiz molasının özeti. Çikolata kadehte ginjinha, turistik ama tatlı bir oyundur.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Pena&#x27;yı herkes görür; bu altısı Sintra&#x27;nın sisin ardına sakladıkları.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Regaleira&#x27;nın Başlangıç Kuyusu</span>
-                    <span class="card-badge badge-emerald">Yerin altına inen kule</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Yerin altına inen kule</span>
                 </div>
+                <h3 class="card-title">Regaleira&#x27;nın Başlangıç Kuyusu</h3>
                 <p class="card-desc">Quinta da Regaleira&#x27;nın ters kulesi: 27 metre spiral merdivenle yerin altına iner, dipten mağara tünelleriyle şelaleye bağlanır. Masonik semboller ve yosunlu taşlarla, Sintra gizeminin damıtılmış hali. Sabah ilk saatte gir — kuyuyu boş yakalamak mümkündür.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Mağribi Kalesi sis nöbeti</span>
-                    <span class="card-badge badge-emerald">Bulutların içinde surlar</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Bulutların içinde surlar</span>
                 </div>
+                <h3 class="card-title">Mağribi Kalesi sis nöbeti</h3>
                 <p class="card-desc">9. yüzyıl surları dağın sırtında dalgalanır: açık günde Atlantik&#x27;e, sisli günde bulut denizine bakarsın. Pena&#x27;nın kuyruğuna dönen kalabalık buraya az uğrar — sur yürüyüşü çoğu zaman sakindir.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Monserrate Sarayı</span>
-                    <span class="card-badge badge-emerald">Botanik saray</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Botanik saray</span>
                 </div>
+                <h3 class="card-title">Monserrate Sarayı</h3>
                 <p class="card-desc">Hint-Gotik kubbeli sarayın çevresinde dünyanın bitkileri vadiye yayılır: eğreltilikler, Meksika bahçesi, gül vadisi. Sintra&#x27;nın en az kalabalık, en çok küçümsenen incisi — yarım gün hak eder.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Convento dos Capuchos</span>
-                    <span class="card-badge badge-emerald">Mantar kaplı sessizlik</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Mantar kaplı sessizlik</span>
                 </div>
+                <h3 class="card-title">Convento dos Capuchos</h3>
                 <p class="card-desc">Ormanın derinliğinde mantar kaplı hücreli 16. yüzyıl keşiş manastırı: Pena&#x27;nın ihtişamının tam zıttı, taş ve sessizlik. &#x27;Sintra&#x27;nın öbür yüzü&#x27; diye buna denir.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Vila Sassetti patikası</span>
-                    <span class="card-badge badge-emerald">Saray bahçesinde patika</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Saray bahçesinde patika</span>
                 </div>
+                <h3 class="card-title">Vila Sassetti patikası</h3>
                 <p class="card-desc">Merkezden Pena&#x27;ya çıkan taş döşeli orman patikası, İtalyan usulü villanın bahçesinden geçer: sekoyalar, çeşmeler ve kuş sesi. 434 kuyruğunun en zarif alternatifi — iniş yönünde de güzeldir.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Azenhas do Mar</span>
-                    <span class="card-badge badge-emerald">Uçurumdaki beyaz köy</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Uçurumdaki beyaz köy</span>
                 </div>
+                <h3 class="card-title">Azenhas do Mar</h3>
                 <p class="card-desc">Okyanus uçurumundan dökülen beyaz evler ve kayalara oyulmuş deniz havuzu: Sintra biletlerinin yorgunluğunu tuzlu havayla silen köy. Gün batımında yukarıdaki viewpointten bak — kartpostal kendini çeker.</p>
             </div>
             </div>

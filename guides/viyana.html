@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Vienna Public Transit & Airport Transfers</h2>
             </div>
             <p class="section-intro">Vienna&#x27;s public transport is the city&#x27;s pride: punctual, clean and running through the night. Don&#x27;t even think about a car.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Airport to the centre</span>
+                        <h3 class="card-title">Airport to the centre</h3>
                     </div>
                 </div>
                 <p class="card-desc">The CAT express reaches Wien Mitte in 16 minutes; the S7 commuter train does it slightly slower for half the price. Taxis have a flat rate, but with trains this comfortable they&#x27;re unnecessary.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚇</span>
-                        <span class="card-title">U-Bahn — the five-colour backbone</span>
+                        <h3 class="card-title">U-Bahn — the five-colour backbone</h3>
                     </div>
                 </div>
                 <p class="card-desc">Five lines weave the city together and run 24 hours on weekend nights. The 24/48/72-hour passes and the weekly card are tourist-friendly; validate your ticket on first boarding.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚋</span>
-                        <span class="card-title">Ring tour by tram</span>
+                        <h3 class="card-title">Ring tour by tram</h3>
                     </div>
                 </div>
                 <p class="card-desc">Trams 1 and 2 carry you past the palaces of the Ringstrasse for the price of a normal ticket: skip the tourist bus, take a window seat.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚲</span>
-                        <span class="card-title">WienMobil bikes</span>
+                        <h3 class="card-title">WienMobil bikes</h3>
                     </div>
                 </div>
                 <p class="card-desc">Shared bikes are a joy along the canal and out to the Prater; bike lanes are wide and drivers respectful. Pedalling the Danube Island is the city&#x27;s best summer escape.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">The 1st district on foot</span>
+                        <h3 class="card-title">The 1st district on foot</h3>
                     </div>
                 </div>
                 <p class="card-desc">Everything inside the Ring is walkable end to end: cathedral, palace and coffeehouses are always ten minutes apart. Comfortable shoes are all the cobblestones ask for.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Where to Stay in Vienna: Best Areas</h2>
             </div>
             <p class="section-intro">In Vienna the district (Bezirk) number is as much identity as address: 1st means grandeur, 7th means cool, 2nd means green.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Innere Stadt (1st Bezirk)</span>
+                    <h3 class="card-title">Innere Stadt (1st Bezirk)</h3>
                     <span class="card-badge badge-purple">Most magnificent</span>
                 </div>
                 <p class="card-desc">The museum-city inside the Ring: cathedral, palace and coffeehouses right outside your door. Prices are at imperial levels, the streets surprisingly calm at night — the classic for a first visit.</p>
-                <div class="card-footer-tip">Walk to everything • Historic coffeehouses • Imperial prices</div>
+                <div class="card-footer-tip">📍 Walk to everything • Historic coffeehouses • Imperial prices</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Neubau (7th Bezirk)</span>
+                    <h3 class="card-title">Neubau (7th Bezirk)</h3>
                     <span class="card-badge badge-purple">Coolest</span>
                 </div>
                 <p class="card-desc">The design-and-café quarter behind the MuseumsQuartier: independent boutiques, third-wave coffee, young Vienna. Walking distance to the centre, the soul of a neighbourhood.</p>
-                <div class="card-footer-tip">Design shops • Café culture • MuseumsQuartier</div>
+                <div class="card-footer-tip">📍 Design shops • Café culture • MuseumsQuartier</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Leopoldstadt (2nd Bezirk)</span>
+                    <h3 class="card-title">Leopoldstadt (2nd Bezirk)</h3>
                     <span class="card-badge badge-purple">Greenest</span>
                 </div>
                 <p class="card-desc">The district of the Prater and the Danube Canal: a giant park, the Ferris wheel, bars along the water. The area around the Karmeliter market is young and lively; prices friendlier than the centre.</p>
-                <div class="card-footer-tip">Prater park • Canal bars • Market quarter</div>
+                <div class="card-footer-tip">📍 Prater park • Canal bars • Market quarter</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Josefstadt (8th Bezirk)</span>
+                    <h3 class="card-title">Josefstadt (8th Bezirk)</h3>
                     <span class="card-badge badge-purple">Most graceful</span>
                 </div>
                 <p class="card-desc">Vienna&#x27;s smallest district: theatres, antique dealers, quiet Biedermeier streets. Low on tourists, high on coffeehouses — for those after calm elegance.</p>
-                <div class="card-footer-tip">Biedermeier streets • Theatre district • Quiet nights</div>
+                <div class="card-footer-tip">📍 Biedermeier streets • Theatre district • Quiet nights</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Wieden (4th Bezirk)</span>
+                    <h3 class="card-title">Wieden (4th Bezirk)</h3>
                     <span class="card-badge badge-purple">Balanced pick</span>
                 </div>
                 <p class="card-desc">Neighbour to the Naschmarkt and Karlsplatz: walk to the market, walk to the opera, dine at a neighbourhood tavern in the evening. The address where central comfort meets neighbourhood prices.</p>
-                <div class="card-footer-tip">Naschmarkt next door • Karlskirche • Neighbourhood taverns</div>
+                <div class="card-footer-tip">📍 Naschmarkt next door • Karlskirche • Neighbourhood taverns</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Best Time to Visit Vienna</h2>
             </div>
             <p class="section-intro">Vienna is on stage in all four seasons: spring is a garden, summer a film, autumn a wine, winter a ball.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Spring</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Apr – Jun</span>
+                        <h3 class="card-title">Spring</h3>
+                        <span class="season-months">Apr – Jun</span>
                     </div>
                     <span class="card-badge badge-amber">Garden Season</span>
                 </div>
                 <p class="card-desc">The gardens of Schönbrunn and Belvedere burst into flower, the Naschmarkt stalls overflow, coffeehouse tables spill onto the pavements. The city is at its most photogenic and most balanced.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Summer</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Jul – Aug</span>
+                        <h3 class="card-title">Summer</h3>
+                        <span class="season-months">Jul – Aug</span>
                     </div>
                     <span class="card-badge badge-amber">Open-Air Season</span>
                 </div>
                 <p class="card-desc">Free concert films on a giant screen at Rathausplatz with world-food stands in front; the Danube Island and the canal &#x27;beaches&#x27; are the city&#x27;s summer resort. Hotels are relatively calm; some institutions take holidays.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Autumn</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Sep – Nov</span>
+                        <h3 class="card-title">Autumn</h3>
+                        <span class="season-months">Sep – Nov</span>
                     </div>
                     <span class="card-badge badge-amber">Harvest and Sturm</span>
                 </div>
                 <p class="card-desc">The harvest begins in the city&#x27;s own vineyards; half-fermented Sturm is poured at the heurigers and the smell of roast chestnuts drifts through the streets. By mid-November the Christmas markets switch their lights on early.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Winter</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Dec – Feb</span>
+                        <h3 class="card-title">Winter</h3>
+                        <span class="season-months">Dec – Feb</span>
                     </div>
                     <span class="card-badge badge-amber">Balls and Markets</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍖</span>
-                        <span class="card-title">Wiener Schnitzel — the real one is veal</span>
+                        <h3 class="card-title">Wiener Schnitzel — the real one is veal</h3>
                     </div>
                 </div>
                 <p class="card-desc">A schnitzel overflowing the plate, paper-thin, fried in butter: potato salad on the side, lemon on top. Go where it says &#x27;vom Kalb&#x27; (veal); everything else is imitation.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">☕</span>
-                        <span class="card-title">The coffeehouse ritual — Melange + Sachertorte</span>
+                        <h3 class="card-title">The coffeehouse ritual — Melange + Sachertorte</h3>
                     </div>
                 </div>
                 <p class="card-desc">Marble tables, newspapers, a waiter in no hurry: the coffeehouse is not a venue but a way of life. Don&#x27;t order your Sachertorte without Schlag — the cream is part of the balance.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🌭</span>
-                        <span class="card-title">The Würstelstand late-night classic</span>
+                        <h3 class="card-title">The Würstelstand late-night classic</h3>
                     </div>
                 </div>
                 <p class="card-desc">Sausage stands are Vienna&#x27;s midnight kitchen: order the cheese-filled Käsekrainer with bread and sweet mustard. Opera-goers in black tie and night-shift workers share the same counter — the city&#x27;s most democratic table.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥩</span>
-                        <span class="card-title">Tafelspitz — the emperor&#x27;s pot</span>
+                        <h3 class="card-title">Tafelspitz — the emperor&#x27;s pot</h3>
                     </div>
                 </div>
                 <p class="card-desc">Boiled beef with bone marrow, apple-horseradish and chive sauce: the dish Emperor Franz Joseph ate every day. It looks heavy, it eats elegantly.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍷</span>
-                        <span class="card-title">A heuriger evening</span>
+                        <h3 class="card-title">A heuriger evening</h3>
                     </div>
                 </div>
                 <p class="card-desc">Wine taverns in the city&#x27;s own vineyards: young wine, cold platters from the buffet, long wooden tables. A pine branch over the door means they&#x27;re open — Vienna in its village clothes.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥟</span>
-                        <span class="card-title">A Naschmarkt crawl</span>
+                        <h3 class="card-title">A Naschmarkt crawl</h3>
                     </div>
                 </div>
                 <p class="card-desc">The city&#x27;s century-old market: pickle vendors, meze counters and world kitchens side by side. On Saturdays a flea market joins in; grazing your way through is entirely allowed.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Everyone sees the palaces; these six are Vienna&#x27;s backstage.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Prunksaal — National Library</span>
-                    <span class="card-badge badge-emerald">The world&#x27;s most beautiful library</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ The world&#x27;s most beautiful library</span>
                 </div>
+                <h3 class="card-title">Prunksaal — National Library</h3>
                 <p class="card-desc">The baroque library hall inside the Hofburg: 200,000 leather-bound volumes, a frescoed dome, imperial globes. Less famous than the opera, with a shorter queue — Viennese splendour in distilled form.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Kirche am Steinhof</span>
-                    <span class="card-badge badge-emerald">The peak of art nouveau</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ The peak of art nouveau</span>
                 </div>
+                <h3 class="card-title">Kirche am Steinhof</h3>
                 <p class="card-desc">Otto Wagner&#x27;s golden-domed church on a hilltop, standing inside hospital grounds — the city&#x27;s least-known masterpiece. It opens on Sunday afternoons; plan around that.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Zentralfriedhof</span>
-                    <span class="card-badge badge-emerald">A city of the dead, a park for the living</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ A city of the dead, a park for the living</span>
                 </div>
+                <h3 class="card-title">Zentralfriedhof</h3>
                 <p class="card-desc">The vast cemetery where Beethoven, Schubert and the Strausses rest is also a park where deer wander: take tram 71 out and walk inside it for hours. Not mournful — serene.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">The Kahlenberg to Nussdorf walk</span>
-                    <span class="card-badge badge-emerald">Through the vineyards into the city</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Through the vineyards into the city</span>
                 </div>
+                <h3 class="card-title">The Kahlenberg to Nussdorf walk</h3>
                 <p class="card-desc">Take the bus to the top, then descend towards the city through the vines: the Danube, the domes and the vineyards in one frame. The walk ends at a heuriger&#x27;s door — not a coincidence, a tradition.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Palmenhaus and Schmetterlinghaus</span>
-                    <span class="card-badge badge-emerald">An imperial greenhouse with butterflies</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ An imperial greenhouse with butterflies</span>
                 </div>
+                <h3 class="card-title">Palmenhaus and Schmetterlinghaus</h3>
                 <p class="card-desc">The glass palace at the edge of the Burggarten: one wing a tropical butterfly house, the other a brasserie under palm trees. The greenest way to drink coffee in a palace garden.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Servitenviertel</span>
-                    <span class="card-badge badge-emerald">A little corner of Paris</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ A little corner of Paris</span>
                 </div>
+                <h3 class="card-title">Servitenviertel</h3>
                 <p class="card-desc">Bistros and bookshops gathered around a church square in the 9th Bezirk: next door to the Freud Museum, far from the tourists. The city&#x27;s sweetest detour for an afternoon coffee.</p>
             </div>
             </div>

@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Ksamil Şehir İçi Ulaşım & Transfer</h2>
             </div>
             <p class="section-intro">Ksamil küçük, çevresi cömerttir: furgonlar, scooterlar ve tekneler bu burnun üç tekerleğidir.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">⛴️</span>
-                        <span class="card-title">Korfu üzerinden geliş</span>
+                        <h3 class="card-title">Korfu üzerinden geliş</h3>
                     </div>
                 </div>
                 <p class="card-desc">En pratik rota Korfu havalimanına uçup limandan Sarandë feribotuna binmektir: yarım saatte Arnavutluk&#x27;tasın. Pasaport kontrolü var — sezonda feribot biletini önceden al.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚐</span>
-                        <span class="card-title">Sarandë-Ksamil furgonları</span>
+                        <h3 class="card-title">Sarandë-Ksamil furgonları</h3>
                     </div>
                 </div>
                 <p class="card-desc">Minibüsler gün boyu sahil yolunda mekik dokur: ucuz, sık ve plaj çantasına alışkın. Butrint yönüne giden hat Ksamil&#x27;in içinden geçer — el kaldır, biner; söyle, iner.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🛵</span>
-                        <span class="card-title">Scooter — koy anahtarı</span>
+                        <h3 class="card-title">Scooter — koy anahtarı</h3>
                     </div>
                 </div>
                 <p class="card-desc">Gizli koylar ve Mavi Göz için scooter özgürlüktür: yollar kısa ama virajlı, kask pazarlık konusu değil. Yazın erken kirala, gölgeye park et.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">Köy içi yayan</span>
+                        <h3 class="card-title">Köy içi yayan</h3>
                     </div>
                 </div>
                 <p class="card-desc">Ksamil merkezden en uzak plaja yürüyüş 20 dakikayı geçmez: patikalar zeytinlerin arasından koylara iner. Terlik yerine sandalet — patikalar taşlıdır.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚤</span>
-                        <span class="card-title">Tekne ve kano</span>
+                        <h3 class="card-title">Tekne ve kano</h3>
                     </div>
                 </div>
                 <p class="card-desc">Plajlardan kalkan küçük tekneler adalara ve komşu koylara atar; kano kiralayıp dört adayı kendi kürek ritminde turlamak sabahın en iyi planıdır. Fiyatı binmeden netleştir.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Nerede Kalınır? Ksamil Mahalleleri</h2>
             </div>
             <p class="section-intro">Ksamil&#x27;de soru mesafedir: plaja mı sıfır, tepeden manzara mı, yoksa Sarandë&#x27;nin hareketi mi?</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Ksamil merkez</span>
+                    <h3 class="card-title">Ksamil merkez</h3>
                     <span class="card-badge badge-purple">En pratik</span>
                 </div>
                 <p class="card-desc">Ana plajlara ve restoranlara yürüme mesafesi: yazın canlı, akşamları hareketli. Apart ve küçük oteller çoğunluktadır — plaj öncelikliyse doğru adres.</p>
-                <div class="card-footer-tip">Plaja yürüme • Restoran bolluğu • Yazın canlı</div>
+                <div class="card-footer-tip">📍 Plaja yürüme • Restoran bolluğu • Yazın canlı</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Güney koylar cephesi</span>
+                    <h3 class="card-title">Güney koylar cephesi</h3>
                     <span class="card-badge badge-purple">En manzaralı</span>
                 </div>
                 <p class="card-desc">Mirror Beach ve Pema e Thatë yönündeki tepe otelleri: turkuaz koylara yukarıdan bakan teraslar, sakin geceler. Araç ya da scooter işleri kolaylaştırır.</p>
-                <div class="card-footer-tip">Koy manzarası • Sakin geceler • Araçla rahat</div>
+                <div class="card-footer-tip">📍 Koy manzarası • Sakin geceler • Araçla rahat</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Lagün tarafı</span>
+                    <h3 class="card-title">Lagün tarafı</h3>
                     <span class="card-badge badge-purple">En sakin</span>
                 </div>
                 <p class="card-desc">Butrint lagününe bakan pansiyonlar: midye çiftlikleri, kuş sesi ve gün doğumu sisi. Plaj kalabalığından uzak, doğa yakın — huzur öncelikliye.</p>
-                <div class="card-footer-tip">Lagün manzarası • Kuş cenneti • Sessizlik</div>
+                <div class="card-footer-tip">📍 Lagün manzarası • Kuş cenneti • Sessizlik</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Sarandë</span>
+                    <h3 class="card-title">Sarandë</h3>
                     <span class="card-badge badge-purple">Hareket üssü</span>
                 </div>
                 <p class="card-desc">20 dakika kuzeydeki şehir: uzun kordon, gece hayatı, feribot limanı ve geniş otel yelpazesi. Ksamil&#x27;e furgonla gidip gelmek kolay — akşam hareketi arayana.</p>
-                <div class="card-footer-tip">Kordon yürüyüşü • Gece hayatı • Feribot limanı</div>
+                <div class="card-footer-tip">📍 Kordon yürüyüşü • Gece hayatı • Feribot limanı</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Ksamil tepeleri</span>
+                    <h3 class="card-title">Ksamil tepeleri</h3>
                     <span class="card-badge badge-purple">Dengeli seçim</span>
                 </div>
                 <p class="card-desc">Köyün üstündeki yamaç apartları: hem merkeze hem koylara birkaç dakika, fiyatlar sahil cephesinden dostane. Balkondan Korfu gün batımı çoğu odada bonus.</p>
-                <div class="card-footer-tip">Korfu manzarası • Uygun fiyat • Merkeze yakın</div>
+                <div class="card-footer-tip">📍 Korfu manzarası • Uygun fiyat • Merkeze yakın</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Ksamil İçin En İyi Ziyaret Zamanı</h2>
             </div>
             <p class="section-intro">İyon güneşi cömerttir: mayıs-ekim uzun bir yaz, temmuz-ağustos dolu bir sahne, kış ise yerlilere kalan sessiz bir burun.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">İlkbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Nis – Haz</span>
+                        <h3 class="card-title">İlkbahar</h3>
+                        <span class="season-months">Nis – Haz</span>
                     </div>
                     <span class="card-badge badge-amber">Sezon Kapısı</span>
                 </div>
                 <p class="card-desc">Mayısta deniz serin ama yüzülür, koylar neredeyse boştur; haziran dengenin zirvesidir — her şey açık, kalabalık henüz yolda. Butrint ve Mavi Göz bu ışıkta en güzelidir.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Yaz</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Tem – Ağu</span>
+                        <h3 class="card-title">Yaz</h3>
+                        <span class="season-months">Tem – Ağu</span>
                     </div>
                     <span class="card-badge badge-amber">Turkuaz Zirve</span>
                 </div>
                 <p class="card-desc">Bölgenin en yoğun iki ayı: koylar dolar, akşamlar uzar, fiyatlar tırmanır. Deniz muhteşemdir ama sabah stratejisi şarttır — erken gelen kartpostalı, geç gelen kalabalığı bulur.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Sonbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Eyl – Kas</span>
+                        <h3 class="card-title">Sonbahar</h3>
+                        <span class="season-months">Eyl – Kas</span>
                     </div>
                     <span class="card-badge badge-amber">Sıcak Deniz, Boş Koy</span>
                 </div>
                 <p class="card-desc">Eylül bilenlerin ayıdır: deniz yaz sıcaklığında, kalabalık çekilmiş, fiyatlar inmiştir. Ekimde yüzme hâlâ mümkün, kasımda burun kışlık sessizliğine döner.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Kış</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Ara – Mar</span>
+                        <h3 class="card-title">Kış</h3>
+                        <span class="season-months">Ara – Mar</span>
                     </div>
                     <span class="card-badge badge-amber">Sessiz Burun</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🦪</span>
-                        <span class="card-title">Butrint midyesi</span>
+                        <h3 class="card-title">Butrint midyesi</h3>
                     </div>
                 </div>
                 <p class="card-desc">Lagünün midyesi küçük, tatlı ve yoğundur: beyaz şarapta buharlanmış hali klasik, limonla çiğe yakın servis cesur seçimdir. Kilosu şaşırtıcı dosttur — doyana kadar söyle.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🐟</span>
-                        <span class="card-title">Günün balığı ızgarada</span>
+                        <h3 class="card-title">Günün balığı ızgarada</h3>
                     </div>
                 </div>
                 <p class="card-desc">Levrek, çipura ya da sabah ağından ne çıktıysa: kiloyla seçilir, közde pişer, zeytinyağı-limonla gelir. Fiyatı tartıdan önce sor — usul budur.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🐙</span>
-                        <span class="card-title">Izgara ahtapot</span>
+                        <h3 class="card-title">Izgara ahtapot</h3>
                     </div>
                 </div>
                 <p class="card-desc">Güneşte kurutulup közlenen ahtapot sahil lokantalarının gururudur: dışı isli, içi yumuşak. Yanında roka ve soğuk beyaz — plaj öğleden sonrasının taçlı tabağı.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥧</span>
-                        <span class="card-title">Byrek sabahı</span>
+                        <h3 class="card-title">Byrek sabahı</h3>
                     </div>
                 </div>
                 <p class="card-desc">Ispanaklı, peynirli ya da kıymalı el açması börek: fırından sıcak alınır, ayaküstü yenir. Bir byrek + ayran usulü &#x27;dhallë&#x27; — plaj öncesi kahvaltının yerli formülü.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍲</span>
-                        <span class="card-title">Fërgesë ve köy tabakları</span>
+                        <h3 class="card-title">Fërgesë ve köy tabakları</h3>
                     </div>
                 </div>
                 <p class="card-desc">Biber, domates ve lor peynirinin güveçte buluşması: Arnavut ev mutfağının özeti. Tavë kosi (yoğurtlu kuzu güveci) görürsen tereddüt etme — iç bölgelerin klasiği sahile inmiş demektir.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥃</span>
-                        <span class="card-title">Raki ritüeli ve yerel şarap</span>
+                        <h3 class="card-title">Raki ritüeli ve yerel şarap</h3>
                     </div>
                 </div>
                 <p class="card-desc">Üzüm rakisi yemek önü ikramın resmi dilidir: küçük kadehte, &#x27;Gëzuar!&#x27; eşliğinde. Arnavut şarapçılığı da yükselişte — sor, yerel şişeyi dene.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Ana plajı herkes bilir; bu altısı burnun sakladığı yüzü.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Butrint Antik Kenti</span>
-                    <span class="card-badge badge-emerald">İki bin beş yüz yıllık komşu</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ İki bin beş yüz yıllık komşu</span>
                 </div>
+                <h3 class="card-title">Butrint Antik Kenti</h3>
                 <p class="card-desc">Lagünün ucundaki UNESCO alanı: Yunan tiyatrosu, Roma hamamı, Bizans vaftizhanesi ve Venedik kulesi aynı ormanın gölgesinde. Sabah ilk saatte gir — taşların arasında kaplumbağalar ve sen.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Syri i Kaltër — Mavi Göz</span>
-                    <span class="card-badge badge-emerald">Kaynayan mavi kaynak</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Kaynayan mavi kaynak</span>
                 </div>
+                <h3 class="card-title">Syri i Kaltër — Mavi Göz</h3>
                 <p class="card-desc">Yerin derinliğinden kaynayan buz mavisi kaynak: dibinin derinliği hâlâ tam ölçülemedi. Su 10 derecedir — cesaret dalışı yasak ama seyri bedava. Sabah erken git, öğlen kuyruğuna kalma.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Plazhi i Pasqyrave — Ayna Plajı</span>
-                    <span class="card-badge badge-emerald">Ayna gibi koy</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Ayna gibi koy</span>
                 </div>
+                <h3 class="card-title">Plazhi i Pasqyrave — Ayna Plajı</h3>
                 <p class="card-desc">Sarandë yolundaki kayalıkların arasında saklı küçük koy: su o kadar durgun ki adını &#x27;ayna&#x27;dan alır. Merdivenli iniş kalabalığı eler — erken saatte neredeyse özel plajdır.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Pema e Thatë</span>
-                    <span class="card-badge badge-emerald">Burnun ucundaki yalnızlık</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Burnun ucundaki yalnızlık</span>
                 </div>
+                <h3 class="card-title">Pema e Thatë</h3>
                 <p class="card-desc">&#x27;Kuru Ağaç&#x27; plajı: Ksamil&#x27;in güney ucunda, çam ve zeytin arasından inilen uzun sakin kumsal. Korfu tam karşıda — kalabalık arkada.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Lëkurësi Kalesi gün batımı</span>
-                    <span class="card-badge badge-emerald">Tepeden üç ülke manzarası</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Tepeden üç ülke manzarası</span>
                 </div>
+                <h3 class="card-title">Lëkurësi Kalesi gün batımı</h3>
                 <p class="card-desc">Sarandë&#x27;nin üstündeki Osmanlı kalesi: körfez, Ksamil burnu, Korfu ve arkada Yunan dağları tek terasta. Gün batımına bir kadeh eşliğinde çık — rivieranın balkonu burasıdır.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Dört adaya kano seferi</span>
-                    <span class="card-badge badge-emerald">Kürek sesiyle ada turu</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Kürek sesiyle ada turu</span>
                 </div>
+                <h3 class="card-title">Dört adaya kano seferi</h3>
                 <p class="card-desc">Ksamil&#x27;in adacıklarına en güzel ulaşım kanodur: koy koy geç, ıssız çakıl şeritlerine çık, şnorkelle kayalıkları tara. Motor sesi yok, sıra yok — sabah 8&#x27;in ödülü.</p>
             </div>
             </div>

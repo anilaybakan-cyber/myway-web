@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Miami Şehir İçi Ulaşım & Transfer</h2>
             </div>
             <p class="section-intro">Miami yayılmış bir şerittir: araç ya da uygulama aracı esas, Metromover merkezde ücretsiz sürpriz, plaj bölgesi yürünebilir.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Havalimanından geliş</span>
+                        <h3 class="card-title">Havalimanından geliş</h3>
                     </div>
                 </div>
                 <p class="card-desc">MIA merkeze ve plaja 20-30 dakikadır: uygulama araçları pratik, taksiler plaja sabit tarifelidir. Fort Lauderdale&#x27;e inersen Brightline treni şık ve hızlı bağlantıdır.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚝</span>
-                        <span class="card-title">Metromover ve Metrorail</span>
+                        <h3 class="card-title">Metromover ve Metrorail</h3>
                     </div>
                 </div>
                 <p class="card-desc">Downtown&#x27;ın havadan ücretsiz Metromover&#x27;ı Brickell&#x27;den Bayside&#x27;a süzülür: turist için sürpriz ikram. Metrorail havalimanı ve Coconut Grove hattında işe yarar — plaja raylı sistem gitmez.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚗</span>
-                        <span class="card-title">Araç ve köprüler</span>
+                        <h3 class="card-title">Araç ve köprüler</h3>
                     </div>
                 </div>
                 <p class="card-desc">Mahalleler arası araç şarttır: MacArthur Causeway&#x27;den plaja geçiş, yat ve kruvaziyer manzarasıyla şehrin en güzel sürüşüdür. Park South Beach&#x27;te pahalı ve oyunludur — garaj uygulamalarını kullan.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚲</span>
-                        <span class="card-title">Citi Bike ve sahil yolu</span>
+                        <h3 class="card-title">Citi Bike ve sahil yolu</h3>
                     </div>
                 </div>
                 <p class="card-desc">Plaj boyu bisiklet yolu Lummus Park&#x27;tan kuzeye uzanır: sabah serinliğinde pedal, art deco cepheler eşliğinde. South Beach içinde bisiklet arabadan hızlıdır.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">⛴️</span>
-                        <span class="card-title">Tekne perspektifi</span>
+                        <h3 class="card-title">Tekne perspektifi</h3>
                     </div>
                 </div>
                 <p class="card-desc">Miami denizden başka şehirdir: Biscayne Körfezi turları, yat kiralamaları ve Key Biscayne feribotu silüeti sudan gösterir. Gün batımı seferi, şehrin neon profilini altın ışıkta sunar.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Nerede Kalınır? Miami Mahalleleri</h2>
             </div>
             <p class="section-intro">Miami&#x27;de seçim sahne seçimidir: South Beach&#x27;in art deco vitrini, Wynwood&#x27;un duvar sanatı, Brickell&#x27;in kuleleri ya da Grove&#x27;un banyan gölgesi.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">South Beach</span>
+                    <h3 class="card-title">South Beach</h3>
                     <span class="card-badge badge-purple">Art deco vitrini</span>
                 </div>
                 <p class="card-desc">Pastel oteller, Ocean Drive neonları ve plaj kapıda: Miami kartpostalının içinde uyanırsın. Gece gürültüsüne hazır ol — sakinlik isteyen kuzeye, Mid-Beach&#x27;e kaysın.</p>
-                <div class="card-footer-tip">Plaj kapıda • Art deco oteller • Gece neonları</div>
+                <div class="card-footer-tip">📍 Plaj kapıda • Art deco oteller • Gece neonları</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Wynwood ve Midtown</span>
+                    <h3 class="card-title">Wynwood ve Midtown</h3>
                     <span class="card-badge badge-purple">Sanat ruhu</span>
                 </div>
                 <p class="card-desc">Mural duvarlar, galeriler, bira imalathaneleri ve üçüncü dalga kahve: Miami&#x27;nin yaratıcı sahnesi. Plaja araçla on beş dakika — genç ve karakterli üs.</p>
-                <div class="card-footer-tip">Mural sokaklar • Galeri geceleri • Kahve sahnesi</div>
+                <div class="card-footer-tip">📍 Mural sokaklar • Galeri geceleri • Kahve sahnesi</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Brickell</span>
+                    <h3 class="card-title">Brickell</h3>
                     <span class="card-badge badge-purple">Kule manzarası</span>
                 </div>
                 <p class="card-desc">Finans bölgesinin gökdelen otelleri, çatı havuzları ve nehir kenarı restoranları: modern Miami&#x27;nin merkezi. Metromover ile Downtown&#x27;a bağlı — şehir odaklı konaklamaya pratik.</p>
-                <div class="card-footer-tip">Çatı havuzları • Nehir kenarı • Metromover üstünde</div>
+                <div class="card-footer-tip">📍 Çatı havuzları • Nehir kenarı • Metromover üstünde</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Little Havana çevresi</span>
+                    <h3 class="card-title">Little Havana çevresi</h3>
                     <span class="card-badge badge-purple">Küba ruhu</span>
                 </div>
                 <p class="card-desc">Calle Ocho&#x27;nun domino parkı, puro atölyeleri ve kahve pencereleri: Miami&#x27;nin en sahici mahallesinde gündelik hayat. Butik konaklama sınırlı ama ruhu emsalsiz.</p>
-                <div class="card-footer-tip">Calle Ocho • Ventanita komşusu • Domino sesleri</div>
+                <div class="card-footer-tip">📍 Calle Ocho • Ventanita komşusu • Domino sesleri</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Coconut Grove</span>
+                    <h3 class="card-title">Coconut Grove</h3>
                     <span class="card-badge badge-purple">Banyan gölgesi</span>
                 </div>
                 <p class="card-desc">Körfez kenarında yelken direkleri, banyan ağaçlı sokaklar ve sakin kafeler: Miami&#x27;nin en eski ve en yeşil mahallesi. Aile ve sükunet arayana zarif seçim.</p>
-                <div class="card-footer-tip">Marina yürüyüşü • Banyan sokaklar • Sakin akşamlar</div>
+                <div class="card-footer-tip">📍 Marina yürüyüşü • Banyan sokaklar • Sakin akşamlar</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Miami İçin En İyi Ziyaret Zamanı</h2>
             </div>
             <p class="section-intro">Miami&#x27;nin takvimi nem ve kasırgayla pazarlıktır: aralık-nisan kartpostal, yaz yerlinin sabır sınavı, ekim sonu dönüm noktasıdır.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">İlkbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Mar – May</span>
+                        <h3 class="card-title">İlkbahar</h3>
+                        <span class="season-months">Mar – May</span>
                     </div>
                     <span class="card-badge badge-amber">Zirvenin Uzantısı</span>
                 </div>
                 <p class="card-desc">Mart-nisan Miami&#x27;nin en dolu halidir: bahar tatilcileri, müzik festivalleri ve mükemmel deniz. Mayıs sakinleşir ve nem yükselmeye başlar — dengeli deneyim için nisan sonu-mayıs başı tatlı noktadır.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Yaz</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Haz – Eyl</span>
+                        <h3 class="card-title">Yaz</h3>
+                        <span class="season-months">Haz – Eyl</span>
                     </div>
                     <span class="card-badge badge-amber">Nem ve Sağanak Sezonu</span>
                 </div>
                 <p class="card-desc">Yaz Miami&#x27;si nemli ve gök gürültülüdür: ikindi sağanağı ritüel gibi gelir geçer, sonrası buharlı güneş. Oteller yılın en ucuz halindedir — sabah plaj, öğlen müze, akşam sofra düzeniyle yaz da keyifli geçer.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Sonbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Eki – Kas</span>
+                        <h3 class="card-title">Sonbahar</h3>
+                        <span class="season-months">Eki – Kas</span>
                     </div>
                     <span class="card-badge badge-amber">Dönüm Noktası</span>
                 </div>
                 <p class="card-desc">Ekim sonunda nem kırılır ve şehir nefes alır: plajlar sakin, fiyatlar hâlâ dost, aralık başındaki Art Basel öncesi galeriler ısınır. Kasım, bilenlerin Miami ayıdır.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Kış</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Ara – Şub</span>
+                        <h3 class="card-title">Kış</h3>
+                        <span class="season-months">Ara – Şub</span>
                     </div>
                     <span class="card-badge badge-amber">Kartpostal Mevsimi</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥪</span>
-                        <span class="card-title">Cubano sandviçi</span>
+                        <h3 class="card-title">Cubano sandviçi</h3>
                     </div>
                 </div>
                 <p class="card-desc">Jambon, rosto domuz, İsviçre peyniri, turşu ve hardal: preste ısıtılmış Küba ekmeğinde. Çıtırtı ustalık işaretidir — Little Havana&#x27;nın köklü tezgahlarında dene, &#x27;medianoche&#x27; versiyonu gece yarısı klasiğidir.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">☕</span>
-                        <span class="card-title">Cafecito ve pastelito ritüeli</span>
+                        <h3 class="card-title">Cafecito ve pastelito ritüeli</h3>
                     </div>
                 </div>
                 <p class="card-desc">Ventanita önünde cafecito, yanında guava dolgulu pastelito: Miami sabahının (ve ikindisinin) resmi ikilisi. Colada aldıysan bardakları dağıt — paylaşmak protokolün kendisidir.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥘</span>
-                        <span class="card-title">Ropa vieja sofrası</span>
+                        <h3 class="card-title">Ropa vieja sofrası</h3>
                     </div>
                 </div>
                 <p class="card-desc">&#x27;Eski kıyafet&#x27; adlı didiklenmiş dana yahnisi: siyah fasulye, pirinç ve tatlı muz kızartmasıyla. Küba ev mutfağının başyapıtı — Little Havana lokantalarında porsiyonlar cömerttir.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🦀</span>
-                        <span class="card-title">Stone crab mevsimi</span>
+                        <h3 class="card-title">Stone crab mevsimi</h3>
                     </div>
                 </div>
                 <p class="card-desc">Ekim-mayıs arası Florida&#x27;nın taş yengeci kıskaçları soğuk servis edilir, hardal sosuyla: Miami&#x27;nin mevsimlik lüksü. Kıskaç boyu fiyatı belirler — mevsimindeysen kaçırma.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🐟</span>
-                        <span class="card-title">Ceviche ve Latin füzyon</span>
+                        <h3 class="card-title">Ceviche ve Latin füzyon</h3>
                     </div>
                 </div>
                 <p class="card-desc">Peru göçü Miami&#x27;ye dünya çapında ceviche getirdi: taze balık, limon, ají biberi. Şehrin şık restoranları Latin füzyonun laboratuvarıdır — tiradito ve arepa aynı menüde buluşur.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍧</span>
-                        <span class="card-title">Küba tatlıları ve batido</span>
+                        <h3 class="card-title">Küba tatlıları ve batido</h3>
                     </div>
                 </div>
                 <p class="card-desc">Üç sütlü tres leches, karamelli flan ve tropik meyveli batido (milkshake): guanabana ya da mamey tadını başka nerede bulacaksın? Sıcak öğleden sonranın tatlı çözümü.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Ocean Drive&#x27;ı herkes görür; bu altısı Miami&#x27;nin banyan gölgeli, fener ışıklı saklı yüzü.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Vizcaya Müzesi ve Bahçeleri</span>
-                    <span class="card-badge badge-emerald">Körfeze bakan saray</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Körfeze bakan saray</span>
                 </div>
+                <h3 class="card-title">Vizcaya Müzesi ve Bahçeleri</h3>
                 <p class="card-desc">1916&#x27;dan kalma İtalyan usulü villa: mermer teraslar, labirent bahçeler ve körfeze inen taş rıhtım. Miami&#x27;nin en zarif sabahı — ışık için erken git, quinceañera fotoğraf çekimlerine denk gelmek de şovun parçası.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Venetian Pool</span>
-                    <span class="card-badge badge-emerald">Tarihi mercan havuzu</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Tarihi mercan havuzu</span>
                 </div>
+                <h3 class="card-title">Venetian Pool</h3>
                 <p class="card-desc">Coral Gables&#x27;ta mercan taşı ocağından dönüştürülmüş 1924 tarihli halk havuzu: şelaleler, mağaralar ve palmiyeler. Dünyanın en güzel belediye havuzu — yaz sabahı erken git.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Bill Baggs ve Key Biscayne feneri</span>
-                    <span class="card-badge badge-emerald">Fenerli ada plajı</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Fenerli ada plajı</span>
                 </div>
+                <h3 class="card-title">Bill Baggs ve Key Biscayne feneri</h3>
                 <p class="card-desc">Şehirden köprüyle yirmi dakikada ada sakinliği: 1825 feneri, dalgasız plaj ve piknik korulukları. Miami silüetine uzaktan bakmanın en huzurlu adresi.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Domino Park (Calle Ocho)</span>
-                    <span class="card-badge badge-emerald">Domino seslerinin parkı</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Domino seslerinin parkı</span>
                 </div>
+                <h3 class="card-title">Domino Park (Calle Ocho)</h3>
                 <p class="card-desc">Little Havana&#x27;nın kalbinde Máximo Gómez Parkı: guayabera gömlekli ustalar gün boyu domino döver, puro dumanı süzülür. İzlemek serbest, saygı esastır — Miami&#x27;nin en sahici köşesi.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">MiMo Bulvarı</span>
-                    <span class="card-badge badge-emerald">Pastel motel şeridi</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Pastel motel şeridi</span>
                 </div>
+                <h3 class="card-title">MiMo Bulvarı</h3>
                 <p class="card-desc">Biscayne Bulvarı&#x27;nın 50&#x27;lerden kalma neon tabelalı &#x27;Miami Modern&#x27; motelleri: restore lobiler, retro yüzme havuzları ve fotojenik cepheler. Art deco&#x27;nun az bilinen kardeşi — arabayla süzül, tabelalarda dur.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Everglades Shark Valley</span>
-                    <span class="card-badge badge-emerald">Timsahlı ufuk</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Timsahlı ufuk</span>
                 </div>
+                <h3 class="card-title">Everglades Shark Valley</h3>
                 <p class="card-desc">Bir saat batıda Everglades&#x27;in 24 kilometrelik döngü yolu: bisikletle timsahların yanından geçer, gözlem kulesinden &#x27;çimen nehri&#x27; ufka uzanır. Miami&#x27;nin vahşi arka bahçesi — sabah erken, su şişesiyle.</p>
             </div>
             </div>

@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Palermo Şehir İçi Ulaşım & Transfer</h2>
             </div>
             <p class="section-intro">Palermo tarihi merkezi yürüyerek gezilebilir. Otobüs ve tramvay çevre semtlere ve Mondello plajına ulaşmak için kullanılıyor.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Havalimanı → Palermo merkezi</span>
+                        <h3 class="card-title">Havalimanı → Palermo merkezi</h3>
                     </div>
                 </div>
                 <p class="card-desc">Trinacria Express treni havalimanından Palermo Centrale tren istasyonuna 35-45 dakikada ulaşıyor, 6,50 euro. Her 30-60 dakikada sefer var. Prestia e Comandè otobüsü da havalimanından merkeze gidiyor, yaklaşık 50 dakika, 6 euro. Taksi sabit fiyat yaklaşık 45 euro. Tren en pratik ve en ucuz seçenek — tren istasyonu tarihi merkezin hemen yakınında.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚌</span>
-                        <span class="card-title">AMAT otobüs ve tramvay</span>
+                        <h3 class="card-title">AMAT otobüs ve tramvay</h3>
                     </div>
                 </div>
                 <p class="card-desc">100 otobüs hattı ve 4 tramvay hattıyla şehrin her noktasına ulaşım mümkün. Tek biniş 1,40 euro, 90 dakika geçerli. Günlük pas 3,50 euro. Biletler tabacchi ve edicole&#x27;den alınıyor — otobüste satılan 1,80 euro. Binince mutlaka validatöre vur. Mondello plajı için 806 numaralı otobüs. Monreale için 389 numaralı otobüs.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚂</span>
-                        <span class="card-title">Tren — Sicilya içi bağlantılar</span>
+                        <h3 class="card-title">Tren — Sicilya içi bağlantılar</h3>
                     </div>
                 </div>
                 <p class="card-desc">Palermo Centrale istasyonundan Catania&#x27;ya (yaklaşık 3 saat), Agrigento&#x27;ya (2 saat) ve Cefalù&#x27;ya (1 saat) tren seferleri var. Trenitalia ile bilet rezervasyonu şart. Cefalù için tren ideal — uygun fiyatlı ve manzaralı. Sicilya genelinde yolculuk planlarken tren tarifelerini önceden kontrol et.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚗</span>
-                        <span class="card-title">Araç kiralama — şehir dışı için</span>
+                        <h3 class="card-title">Araç kiralama — şehir dışı için</h3>
                     </div>
                 </div>
                 <p class="card-desc">Palermo tarihi merkezi içinde araç kullanmak gereksiz — trafik kaotik, park imkansız. Ama Sicilya&#x27;nın iç kesimleri, Agrigento tapınakları, Segesta veya kıyı köyleri için araç en iyi seçenek. Merkez dışında büyük otoparklara bırak. Hafta sonu kiralamalar çok daha ucuz.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">Yürüyüş — tarihi merkez için ideal</span>
+                        <h3 class="card-title">Yürüyüş — tarihi merkez için ideal</h3>
                     </div>
                 </div>
                 <p class="card-desc">Palermo tarihi merkezi küçük ve yürünebilir. Quattro Canti&#x27;den Teatro Massimo 10 dakika, Ballarò Pazarı 10 dakika, Vucciria 15 dakika, Cattedrale 10 dakika. Dar sokaklarda scooter ve araçlara dikkat et. Sabah ve akşamüstü en keyifli saatler. Free Centro Storico servisi yorulduğunda ücretsiz alternatifsiz.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Nerede Kalınır? Palermo Mahalleleri</h2>
             </div>
             <p class="section-intro">Palermo&#x27;da tarihi merkez en merkezi ama her mahallenin karakteri farklı.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Albergheria — Ballarò çevresi</span>
+                    <h3 class="card-title">Albergheria — Ballarò çevresi</h3>
                     <span class="card-badge badge-purple">En özgün</span>
                 </div>
                 <p class="card-desc">Ballarò Pazarı&#x27;nın etrafındaki tarihi mahalle. Dar sokaklar, renkli tezgahlar, restore edilmekte olan Barok binalar. En özgün ve en yerel Palermo deneyimi. Bazı bölümleri hala çökmekte olan yapılarla dolu ama aynı zamanda sanatçı atölyeleri ve küçük oteller canlanıyor. Cappella Palatina&#x27;ya yürüme mesafesinde.</p>
-                <div class="card-footer-tip">Ballarò Pazarı • Cappella Palatina yakını • En yerel mahalle</div>
+                <div class="card-footer-tip">📍 Ballarò Pazarı • Cappella Palatina yakını • En yerel mahalle</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Kalsa — tarihi liman mahallesi</span>
+                    <h3 class="card-title">Kalsa — tarihi liman mahallesi</h3>
                     <span class="card-badge badge-purple">En karakterli</span>
                 </div>
                 <p class="card-desc">Limanın yakınında, Piazza Marina çevresinde. Arap döneminden kalma saray kalıntıları, Palazzo Chiaramonte ve şehrin en iyi restoranlarından bazıları burada. Gece hayatı canlı. Müzeler yoğun. Güzel korso ve deniz manzarası. Tarihi merkezin en şık ve en restore edilmiş mahallesi.</p>
-                <div class="card-footer-tip">Piazza Marina • Palazzo Chiaramonte • Canlı gece hayatı</div>
+                <div class="card-footer-tip">📍 Piazza Marina • Palazzo Chiaramonte • Canlı gece hayatı</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Capo — pazar mahallesi</span>
+                    <h3 class="card-title">Capo — pazar mahallesi</h3>
                     <span class="card-badge badge-purple">En yerel</span>
                 </div>
                 <p class="card-desc">Teatro Massimo&#x27;nun hemen arkasında, Capo Pazarı&#x27;nın çevresinde. Sakin ve yerel. Capo Pazarı sabahları canlı — Ballarò&#x27;ya kıyasla biraz daha az kalabalık. Küçük trattorialar ve aile lokantaları bölgede. Merkezi konum ama Kalsa&#x27;dan biraz daha sessiz.</p>
-                <div class="card-footer-tip">Capo Pazarı • Teatro Massimo yakını • Sakin ve yerel</div>
+                <div class="card-footer-tip">📍 Capo Pazarı • Teatro Massimo yakını • Sakin ve yerel</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Politeama çevresi</span>
+                    <h3 class="card-title">Politeama çevresi</h3>
                     <span class="card-badge badge-purple">En modern</span>
                 </div>
                 <p class="card-desc">Teatro Politeama etrafındaki daha modern bölge. Butikler, kafeler, büyük oteller. Tarihi merkezden biraz uzak ama temiz ve düzenli. Piazza Castelnuovo ve çevresi alışveriş için iyi. İş seyahati veya konfor önceliği olanlar için.</p>
-                <div class="card-footer-tip">Teatro Politeama • Mağazalar ve kafeler • Modern ve düzenli</div>
+                <div class="card-footer-tip">📍 Teatro Politeama • Mağazalar ve kafeler • Modern ve düzenli</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Mondello — plaj bölgesi</span>
+                    <h3 class="card-title">Mondello — plaj bölgesi</h3>
                     <span class="card-badge badge-purple">Deniz için</span>
                 </div>
                 <p class="card-desc">Şehrin 10 kilometre kuzey-batısında, Palermitanların sevdiği plaj kasabası. Art Nouveau villaları, uzun kumlu plaj, taze balık restoranları. Şehir merkezine AMAT 806 numaralı otobüsle 30-40 dakika. Yaz akşamları Palermitanlarla dolup taşıyor. Plaj tatili önceliği olanlar için Palermo merkezi yerine daha doğru seçenek.</p>
-                <div class="card-footer-tip">Uzun kumlu plaj • Art Nouveau villalar • Taze balık restoranları</div>
+                <div class="card-footer-tip">📍 Uzun kumlu plaj • Art Nouveau villalar • Taze balık restoranları</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Palermo İçin En İyi Ziyaret Zamanı</h2>
             </div>
             <p class="section-intro">Palermo yıl boyu ziyaret edilebilir — yaz çok sıcak ama canlı, ilkbahar ve sonbahar en dengeli dönem.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">İlkbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Nis – Haz</span>
+                        <h3 class="card-title">İlkbahar</h3>
+                        <span class="season-months">Nis – Haz</span>
                     </div>
                     <span class="card-badge badge-amber">En iyi dönem</span>
                 </div>
                 <p class="card-desc">Nisan ve Mayıs Palermo&#x27;nun altın dönemi. Hava 18-24°C, turistler var ama kalabalık değil, fiyatlar uygun. Paskalya dönemi (Semana Santa) Palermo&#x27;da çok canlı kutlanıyor — dini törenler, sokak geçitleri, özel tatlılar. Haziran ortasından itibaren sıcaklık artıyor ama hala güzel.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Yaz</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Haz – Ağu</span>
+                        <h3 class="card-title">Yaz</h3>
+                        <span class="season-months">Haz – Ağu</span>
                     </div>
                     <span class="card-badge badge-amber">Sıcak ve canlı</span>
                 </div>
                 <p class="card-desc">Temmuz ve Ağustos çok sıcak — 35-38°C normal. Müzeler klimalı ama sokak gezisi öğleden sonra zor. Çözüm: sabah 08:00-12:00 arası yoğun gezi, öğle pausa (dinlenme molası), akşam 18:00 sonrası tekrar çıkış. Santa Rosalia Festivali 11-15 Eylül Palermo&#x27;nun en büyük dini ve kültür şölenlerinden biri.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Sonbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Eyl – Kas</span>
+                        <h3 class="card-title">Sonbahar</h3>
+                        <span class="season-months">Eyl – Kas</span>
                     </div>
                     <span class="card-badge badge-amber">İkinci en iyi dönem</span>
                 </div>
                 <p class="card-desc">Eylül ve Ekim sıcaklık tolere edilebilir seviyeye iniyor, turist kalabalığı azalıyor. Sicilya üzüm bozumu bu dönemde — iç kesimdeki köyler ve bodegalar canlı. Kasım&#x27;da zaman zaman yağmur ama şehir sakin ve fiyatlar çok uygun. Agrumi (turunçgil) hasatı başlıyor — portakal, mandalina, bergamot.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Kış</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Ara – Şub</span>
+                        <h3 class="card-title">Kış</h3>
+                        <span class="season-months">Ara – Şub</span>
                     </div>
                     <span class="card-badge badge-amber">Sakin ve ucuz</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍊</span>
-                        <span class="card-title">Arancina</span>
+                        <h3 class="card-title">Arancina</h3>
                     </div>
                 </div>
                 <p class="card-desc">Kızarmış pirinç topu — et ragù veya beşamel veya fıstıklı. Palermo&#x27;nun en bilinen sokak yemeği. Via Maqueda üzerindeki Ke Palle tezgahı veya Ballarò Pazarı en iyi adresler. Sabah ve öğle saatlerinde taze çıkıyor. 2-3 euro. Dikkat: Palermo&#x27;da yuvarlak, Katanya&#x27;da sivri — ve bu fark gurur meselesi.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥙</span>
-                        <span class="card-title">Pani ca meusa</span>
+                        <h3 class="card-title">Pani ca meusa</h3>
                     </div>
                 </div>
                 <p class="card-desc">Pişirilmiş sığır dalağı ve trakea, sıcak ekmek arası. Garip geliyor ama Palermo&#x27;nun en karakteristik lezzeti bu. Noni Franchino — Vucciria yakınında, 1945&#x27;ten beri aynı yerde. Maritata (peynir eklenmiş) versiyonu ilk denenler için biraz daha yumuşak bir giriş. 3-4 euro, doyurucu.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍟</span>
-                        <span class="card-title">Panelle e crocchè</span>
+                        <h3 class="card-title">Panelle e crocchè</h3>
                     </div>
                 </div>
                 <p class="card-desc">Nohut unu kızartması (panelle) ve patates kızartması (crocchè) — ikisi birlikte yuvarlak bir ekmeğin arasına konuyor. Sicilya&#x27;nın en ucuz ve en lezzetli atıştırmalığı. Friggitorie (kızartma dükkanları) sabahtan öğleye kadar açık. Ballarò ve Capo pazarlarında her köşede. 1-2 euro. Hem kahvaltı hem öğle arası.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍝</span>
-                        <span class="card-title">Pasta alla Norma</span>
+                        <h3 class="card-title">Pasta alla Norma</h3>
                     </div>
                 </div>
                 <p class="card-desc">Palermo değil, Katanya kökenli ama Sicilya&#x27;nın her yerinde — kızarmış patlıcan, domates sosu, tuz ricottası ve fesleğenle hazırlanan makarna. İsmi Bellini&#x27;nin operasından geliyor. Yerel trattorialarda 8-12 euro. Her yerde var ama kalitesi fark ediyor — taze kızarmış patlıcan ve iyi tuz ricottası şart.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥐</span>
-                        <span class="card-title">Granita e brioche</span>
+                        <h3 class="card-title">Granita e brioche</h3>
                     </div>
                 </div>
                 <p class="card-desc">Sicilya&#x27;nın kahvaltısı — yarı donmuş granita (limon, badem, fıstık veya kahve) ve tereyağlı brioche. Sabah 07:00-09:00 arası pastanelerde taze. Palermo&#x27;da limon ve badem en klasik tatlar. Brioche içine batırarak veya kaşıkla birlikte yeniliyor. 2-3 euro. Bu kahvaltıyı yaşamadan Palermo tamamlanmaz.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍰</span>
-                        <span class="card-title">Cannoli ve cassata</span>
+                        <h3 class="card-title">Cannoli ve cassata</h3>
                     </div>
                 </div>
                 <p class="card-desc">Cannoli: çıtır kızarmış hamur tüpü içine taze ricotta kremi, şekerlenmiş meyve ve fıstık. Cassata: pandispanya, ricotta kreması, yeşil badem ezmesi ve şekerlenmiş meyve ile hazırlanan geleneksel pasta. İkisi de taze yapılanı çok farklı. Antica Focacceria San Francesco veya Pasticceria Cappello en güvenilir adresler. 2-4 euro.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Palermo&#x27;nun en güzel köşeleri çoğunlukla bir kapının arkasında, bir ayin saatinde ya da birkaç adım ötedeki yan sokakta.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Cappella Palatina</span>
-                    <span class="card-badge badge-emerald">İtalya&#x27;nın tartışmasız en güzel kilise içi — kalabalıktan kaçınmak için erken git</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ İtalya&#x27;nın tartışmasız en güzel kilise içi — kalabalıktan kaçınmak için erken git</span>
                 </div>
+                <h3 class="card-title">Cappella Palatina</h3>
                 <p class="card-desc">Normanlar Sarayı içinde, 12. yüzyıldan kalma şaheser. Altın işlemeli ahşap tavan, zemin ve duvarları kaplayan Bizans mozaikleri, Arap-Norman-Bizans mimarisi tek bir mekanda. Dünyanın hiçbir yerinde bu kadar farklı kültürün tek bir yapıda bu denli başarılı sentezi yok. Önceden online rezervasyon şart — yaz aylarında günler önceden doluyor. Sabah 08:30-09:00 ilk sefer en sakin.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Monastero di Santa Caterina d&#x27;Alessandria</span>
-                    <span class="card-badge badge-emerald">Manastır rahibelerinin el yapımı tatlıları — gizli avlu kafesi</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Manastır rahibelerinin el yapımı tatlıları — gizli avlu kafesi</span>
                 </div>
+                <h3 class="card-title">Monastero di Santa Caterina d&#x27;Alessandria</h3>
                 <p class="card-desc">Piazza Pretoria&#x27;nın (Utanç Çeşmesi&#x27;nin yanında) hemen üzerinde. Rahibe tarikatının manastırı onlarca yıl kapalıydı, şimdi ziyarete açık. İçeride Barok kilise muhteşem. Ama asıl sır: manastır rahibeleri yüzyıllık tariflere göre cannoli, cassata ve sigara böreği şeklindeki tatlılar yapıyor — kapıdaki küçük dükkan ve terastaki kafe bunları satıyor. Piazza Pretoria&#x27;ya bakan teras hem manzaralı hem sakin.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Vucciria Pazarı ve gecesi</span>
-                    <span class="card-badge badge-emerald">Vucciria — gece yarısı sokak pazarına dönen mahalle</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Vucciria — gece yarısı sokak pazarına dönen mahalle</span>
                 </div>
+                <h3 class="card-title">Vucciria Pazarı ve gecesi</h3>
                 <p class="card-desc">Gündüzleri Ballarò kadar canlı değil artık — ama geceleri tamamen değişiyor. Akşam 20:00&#x27;den sonra sokaklar genç Palermitanlarla dolup taşıyor, masalar sokaklara çıkıyor, müzik başlıyor. Ucuz şarap, pani ca meusa, sokak müzisyenleri. Palermo&#x27;nun en özgür ve en canlı gece mekanı. Turistik değil, yerel bir gece bu.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Monte Pellegrino ve Santa Rosalia Tapınağı</span>
-                    <span class="card-badge badge-emerald">Monte Pellegrino — şehrin tepesinden Palermo körfezi</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Monte Pellegrino — şehrin tepesinden Palermo körfezi</span>
                 </div>
+                <h3 class="card-title">Monte Pellegrino ve Santa Rosalia Tapınağı</h3>
                 <p class="card-desc">Palermo körfezinin kuzeyinde yükselen 600 metre kaya kütlesi. Tepede Santa Rosalia Tapınağı — bir mağaranın içine inşa edilmiş, Palermo&#x27;nun koruyucu azizine adanmış. AMAT 812 numaralı otobüsle çıkılıyor. Tepeden Palermo şehri, körfez ve Mondello plajı 360 derece görünüyor. Tapınak içi etkileyici. Yürüyerek çıkmak da mümkün — yaklaşık 1,5 saat.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Catacombe dei Cappuccini</span>
-                    <span class="card-badge badge-emerald">Sicilya katakombu — 8.000 iskeletle dolu manastır bodruğu</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Sicilya katakombu — 8.000 iskeletle dolu manastır bodruğu</span>
                 </div>
+                <h3 class="card-title">Catacombe dei Cappuccini</h3>
                 <p class="card-desc">Şehir merkezinden 2 kilometre batıda. 1599-1871 yılları arasında Palermoların mumyalanarak sergilendiği Kapuçin keşiş manastırının bodruğu. Erkek, kadın, çocuk, papaz — 8.000&#x27;den fazla ceset hala burada giysili olarak duruyor. Rahatsız edici ama benzersiz. Bu mekan hakkında ne düşüneceğini bilemezsin ama Palermo&#x27;nun ölüme farklı baktığını anlıyorsun. Sabah erkenden git — sonrasında Ballarò&#x27;da iştahın açılır.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Mondello plajı</span>
-                    <span class="card-badge badge-emerald">Mondello — Palermitanların plajı, turistlerin değil</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Mondello — Palermitanların plajı, turistlerin değil</span>
                 </div>
+                <h3 class="card-title">Mondello plajı</h3>
                 <p class="card-desc">Palermo şehir merkezinden AMAT 806 otobüsüyle 30-40 dakika. Uzun beyaz kum plajı, Art Nouveau dönem balıkçı kulübesi. Yaz öğleden sonraları Palermitanların buluşma noktası. Taze balık restoranları hem lezzetli hem görece makul fiyatlı. Hafta içi öğle saatlerinde plaj neredeyse boş. Cefalù&#x27;ya kadar gitme vaktin yoksa Mondello iyi bir alternatif.</p>
             </div>
             </div>

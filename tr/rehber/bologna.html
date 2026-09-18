@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Bologna Şehir İçi Ulaşım & Transfer</h2>
             </div>
             <p class="section-intro">Bologna İtalya&#x27;nın en kolay yürünebilir şehri. Tarihi merkeze girdiğinde neredeyse hiç ulaşıma ihtiyacın kalmıyor. Asıl mesele havalimanından nasıl geleceğin.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Havalimanı (BLQ) → Şehir Merkezi</span>
+                        <h3 class="card-title">Havalimanı (BLQ) → Şehir Merkezi</h3>
                     </div>
                 </div>
                 <p class="card-desc">Marconi Express monorayı en hızlısı: havalimanından doğrudan Bologna Centrale&#x27;ye 7 dakikada, her 15 dakikada bir kalkış yapıyor. Centrale&#x27;den tarihi merkeze yürüyerek 15 dakika. Aerobus servisi daha uygun fiyatlı ve Piazza Maggiore yakınına bırakıyor; otelin merkezdeyse iyi bir alternatif. Taksi yaklaşık 20 dakika ve çok daha pahalı.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">Yürüyüş — asıl ulaşım aracın</span>
+                        <h3 class="card-title">Yürüyüş — asıl ulaşım aracın</h3>
                     </div>
                 </div>
                 <p class="card-desc">Tarihi merkez yaklaşık 2 km çapında. UNESCO listesindeki 40 km portiko her havada tamamen korunaklı yürüyüş sunuyor. Bologna Centrale&#x27;den Piazza Maggiore&#x27;ye 15 dakika. Gitmen gereken neredeyse her yer 20 dakika içinde; hem bedava hem de en güzel yol bu.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚌</span>
-                        <span class="card-title">Şehir Otobüsleri (TPER)</span>
+                        <h3 class="card-title">Şehir Otobüsleri (TPER)</h3>
                     </div>
                 </div>
                 <p class="card-desc">Merkezde otobüse nadiren ihtiyaç duyarsın ama San Luca bazilikasına, Giardini Margherita parkına veya surların dışındaki mahallelere ulaşmak için işe yarıyor. Biletleri tabacchi&#x27;den, duraklardaki makinelerden veya Roger ya da Muver uygulamasından alabilirsin. Binmeden önce biletini mutlaka geçerli kıl.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚲</span>
-                        <span class="card-title">Bisiklet</span>
+                        <h3 class="card-title">Bisiklet</h3>
                     </div>
                 </div>
                 <p class="card-desc">Bologna bisiklet dostudur; şehir genelinde özel şeritler var. BikeMi veya Mobike uygulamaları üzerinden ya da istasyon yakınındaki dükkanlardan kiralayabilirsin. Düz arazi işi kolaylaştırıyor. Bolognina veya Zona Universitaria gibi mahallelere ulaşmak için ideal bir seçenek.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚆</span>
-                        <span class="card-title">Bologna üs olarak — günübirlik geziler</span>
+                        <h3 class="card-title">Bologna üs olarak — günübirlik geziler</h3>
                     </div>
                 </div>
                 <p class="card-desc">Bologna Centrale İtalya&#x27;nın büyük tren merkezlerinden biri. Floransa yüksek hızlı trenle 35 dakika, Milano 1 saat, Venedik 1.5 saat, Roma 2 saat. Dünyanın en iyi balzamik sirkesine ve Ferrari müzesine ev sahipliği yapan Modena ise sadece 17 dakika ötede. İtalya&#x27;nın en iyi üslerinden biri.</p>
@@ -613,41 +758,41 @@
                 <h2 class="section-title">Nerede Kalınır? Bologna Mahalleleri</h2>
             </div>
             <p class="section-intro">Bologna&#x27;nın tarihi merkezi kompakt; surların içinde neredeyse her yer iyi bir seçim. Farklar mesafe değil, atmosfer konusunda.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-4">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Centro Storico (Piazza Maggiore çevresi)</span>
+                    <h3 class="card-title">Centro Storico (Piazza Maggiore çevresi)</h3>
                     <span class="card-badge badge-purple">En merkezi</span>
                 </div>
                 <p class="card-desc">Bologna&#x27;nın mutlak kalbi. Ortaçağ mimarisi, Due Torri (İki Kule), en iyi trattolialar, Piazza Maggiore&#x27;nin kendisi. Her yere yürüme mesafesinde. Hafta sonu geceleri öğrenciler meydanları doldurduğunda biraz hareketleniyor ama Roma veya Floransa&#x27;ya kıyasla hâlâ son derece sakin.</p>
-                <div class="card-footer-tip">Her yere yürünebilir • Tarihi atmosfer • En iyi restoranlar yakın</div>
+                <div class="card-footer-tip">📍 Her yere yürünebilir • Tarihi atmosfer • En iyi restoranlar yakın</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Zona Universitaria (Via Zamboni çevresi)</span>
+                    <h3 class="card-title">Zona Universitaria (Via Zamboni çevresi)</h3>
                     <span class="card-badge badge-purple">En öğrenci</span>
                 </div>
                 <p class="card-desc">Via Zamboni ve Piazza Verdi çevresindeki bu bölge şehrin öğrenci kalbi. Bağımsız kitapçılar, uygun fiyatlı aperitivo barlar, sokak sanatı ve dünyanın en eski üniversitesinin canlı atmosferi iç içe. 1088 ve günümüzü aynı anda hissediyorsun. Genç gezginler için bulunmaz bir enerji.</p>
-                <div class="card-footer-tip">Genç enerji • Uygun fiyatlı aperitivo • Kitapçı ve sanat</div>
+                <div class="card-footer-tip">📍 Genç enerji • Uygun fiyatlı aperitivo • Kitapçı ve sanat</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Quadrilatero &amp; Santo Stefano</span>
+                    <h3 class="card-title">Quadrilatero &amp; Santo Stefano</h3>
                     <span class="card-badge badge-purple">En yerel</span>
                 </div>
                 <p class="card-desc">Eski pazar bölgesi ve güzel Piazza Santo Stefano çevresi. Ana merkezden daha sakin, inanılmaz atmosferli; en iyi yiyecek dükkanları ve 1465&#x27;ten beri kapılarını açan Osteria del Sole burada. Bologna&#x27;nın en özgün köşesi.</p>
-                <div class="card-footer-tip">En iyi yiyecek dükkanları • En atmosferik • Gece sakin</div>
+                <div class="card-footer-tip">📍 En iyi yiyecek dükkanları • En atmosferik • Gece sakin</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Bolognina (İstasyonun Kuzeyi)</span>
+                    <h3 class="card-title">Bolognina (İstasyonun Kuzeyi)</h3>
                     <span class="card-badge badge-purple">En uygun fiyat</span>
                 </div>
                 <p class="card-desc">Bologna Centrale&#x27;nin hemen kuzeyinde, bu eski işçi mahallesi hızla şehrin en ilginç noktasına dönüşüyor. Çok kültürlü yemek sahnesi, yerel barlar, sokak sanatı ve gerçek mahalle hayatı. Tarihi merkeze yürüyerek 10 dakika; hiçbir şeyden ödün vermeden bütçeni korumanın en akıllı yolu.</p>
-                <div class="card-footer-tip">En uygun fiyat • Çok kültürlü • Merkeze 10 dk</div>
+                <div class="card-footer-tip">📍 En uygun fiyat • Çok kültürlü • Merkeze 10 dk</div>
             </div>
             </div>
         </section>
@@ -662,45 +807,45 @@
                 <h2 class="section-title">Bologna İçin En İyi Ziyaret Zamanı</h2>
             </div>
             <p class="section-intro">Bologna her mevsim için bir şehir; ama her biri tamamen farklı bir şey sunuyor. Kalabalık konusunda hiç endişelenme; diğer İtalyan şehirleriyle kıyaslanamayacak kadar sakin.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">İlkbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Mar – May</span>
+                        <h3 class="card-title">İlkbahar</h3>
+                        <span class="season-months">Mar – May</span>
                     </div>
                     <span class="card-badge badge-amber">Mükemmel Hava</span>
                 </div>
                 <p class="card-desc">Ilık sıcaklıklar, piazza&#x27;larda çiçekler, ilkbahar ürünleriyle dolu pazarlar: enginar, kuşkonmaz, bezelye. Üniversite hâlâ tam canlılığında ve Piazza Maggiore açık hava etkinlikleriyle hayat buluyor. Henüz kalabalık değil. Bologna&#x27;nın en enerjik ve en kolay sevildiği dönem bu.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Yaz</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Haz – Ağu</span>
+                        <h3 class="card-title">Yaz</h3>
+                        <span class="season-months">Haz – Ağu</span>
                     </div>
                     <span class="card-badge badge-amber">Sıcak ve Yerel</span>
                 </div>
                 <p class="card-desc">Temmuz ve Ağustos&#x27;ta öğrenciler şehri terk ediyor ve ortalık sessizleşiyor. Sıcaklıklar 35°C&#x27;yi aşabiliyor, nem yüksek. Ama trattolialar daha tenha, fiyatlar düşüyor ve şehir hiçbir dönemde bu kadar yerel hissettirmiyor. Piazza Maggiore&#x27;deki Sotto le Stelle del Cinema açık hava film festivali başlı başına bir neden.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Sonbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Eyl – Kas</span>
+                        <h3 class="card-title">Sonbahar</h3>
+                        <span class="season-months">Eyl – Kas</span>
                     </div>
                     <span class="card-badge badge-amber">En İyi Mevsim</span>
                 </div>
                 <p class="card-desc">Eylül&#x27;den Kasım&#x27;a Bologna zirvesine ulaşıyor. Öğrenciler geri dönüyor, pazarlar trüf, porcini ve av etiyle dolup taşıyor, kiremit üzerindeki ışık altın bir tona bürünüyor ve yemek sahnesi en zengin haline geliyor. Yakındaki Alba&#x27;da beyaz trüf sezonu ise trenle 45 dakika ötede.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Kış</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Ara – Şub</span>
+                        <h3 class="card-title">Kış</h3>
+                        <span class="season-months">Ara – Şub</span>
                     </div>
                     <span class="card-badge badge-amber">Sisli ve Sıcak</span>
                 </div>
@@ -723,7 +868,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍝</span>
-                        <span class="card-title">Tagliatelle al Ragù — gerçek olanı</span>
+                        <h3 class="card-title">Tagliatelle al Ragù — gerçek olanı</h3>
                     </div>
                 </div>
                 <p class="card-desc">Spagetti bolognese değil; gerçeği tagliatelle ile gelir. Taze, yumurtalı ve el ile açılmış bu pasta, neredeyse turuncu renkte yavaş pişirilmiş et ragùsuyla servis edilir. Tarif Bologna Ticaret Odası&#x27;na tescillenmiş. Bu yemeği olmayan bir restoran Bologna&#x27;yı anlamamış demektir.</p>
@@ -734,7 +879,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥟</span>
-                        <span class="card-title">Tortellini in Brodo</span>
+                        <h3 class="card-title">Tortellini in Brodo</h3>
                     </div>
                 </div>
                 <p class="card-desc">Domuz filetosu, mortadella, prosciutto, Parmigiano-Reggiano ve hindistan ceviziyle doldurulmuş minik makarna; berrak et suyunda servis edilir. Bolognalılar bunu Noel Arifesi&#x27;nde yer. Sen geldiğin gün yemeliydin.</p>
@@ -745,7 +890,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥩</span>
-                        <span class="card-title">Mortadella — bildiğin şey değil</span>
+                        <h3 class="card-title">Mortadella — bildiğin şey değil</h3>
                     </div>
                 </div>
                 <p class="card-desc">Orijinali IGP korumalı, yalnızca Bologna&#x27;da üretilen, Antep fıstığı ve karabiberle dolu, ipeksi ve tatlı bir et. Başka yerlerde satılan işlenmiş versiyonuyla hiçbir benzerliği yok. Quadrilatero&#x27;daki herhangi bir salumeria&#x27;da ince dilimlettir. İçi mortadellayla dolu bir crescentina sandviç de mutlaka dene.</p>
@@ -756,7 +901,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🧀</span>
-                        <span class="card-title">Parmigiano-Reggiano — çağları tatmak</span>
+                        <h3 class="card-title">Parmigiano-Reggiano — çağları tatmak</h3>
                     </div>
                 </div>
                 <p class="card-desc">Bu peynirin üretildiği yerden yalnızca 30 km uzaktasın. İyi bir salumeria&#x27;da 24, 36 ve 48 ay olgunlaşmış versiyonları yan yana tattır. Fark olağanüstü. Eve bir dilim al; başka her yerden çok daha uygun fiyatlı.</p>
@@ -767,7 +912,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍷</span>
-                        <span class="card-title">Aperitivo Kültürü</span>
+                        <h3 class="card-title">Aperitivo Kültürü</h3>
                     </div>
                 </div>
                 <p class="card-desc">Her akşam 18:00–20:00 arasında Bologna&#x27;nın barları her içkiyle birlikte ücretsiz yemek sunuyor. Gerçek yemek: makarna, bruschetta, et ve peynir. Bir Spritz ya da Lambrusco ısmarla, yanında bedava ye. Şehrin akşam ritüeli budur.</p>
@@ -778,7 +923,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍦</span>
-                        <span class="card-title">Gelato — ama doğru şekilde</span>
+                        <h3 class="card-title">Gelato — ama doğru şekilde</h3>
                     </div>
                 </div>
                 <p class="card-desc">Mat görünümlü, parlak değil; yüksek kuleler halinde değil düz metal kaplarda saklanan gelatoyu tercih et. Cremeria Funivia ve Gelateria Gianni yerel halkın gözde mekanları. Neon renkli kuleler gördüğünde o kapıdan geçme.</p>
@@ -803,51 +948,51 @@
             </div>
             <p class="section-intro">Bologna merakı İtalya&#x27;daki az sayıda şehir kadar ödüllendiriyor. En iyi şeyler işaretsiz kapıların arkasında, ortaçağ kulelerinde ve küçük pencerelerin önünde.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Finestrella di Via Piella</span>
-                    <span class="card-badge badge-emerald">Küçük Venedik&#x27;e açılan pencere</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Küçük Venedik&#x27;e açılan pencere</span>
                 </div>
+                <h3 class="card-title">Finestrella di Via Piella</h3>
                 <p class="card-desc">Via Piella&#x27;daki bir duvara açılmış küçük pencere; içinden bakınca yukarıdaki ortaçağ binalarını yansıtan Bologna&#x27;nın gizli kanallarından birini görürsün. &quot;La Piccola Venezia&quot; (Little Venice) olarak biliniyor. En güzel ışık için sabahın erken saatlerinde ya da akşam üstü git. 20 metre ileride sokaktaki ızgaradan ikinci bir kanal manzarası daha var.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Osteria del Sole — kapıda tabela yok</span>
-                    <span class="card-badge badge-emerald">Bologna&#x27;nın en eski barı, 1465&#x27;ten beri</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Bologna&#x27;nın en eski barı, 1465&#x27;ten beri</span>
                 </div>
+                <h3 class="card-title">Osteria del Sole — kapıda tabela yok</h3>
                 <p class="card-desc">1465&#x27;ten beri Quadrilatero&#x27;da gizlenmiş; kapıda tabelası yok. İçeride alçak tavanlar, uzun ortak ahşap masalar ve öğle vakti şarap içen yerli halk. Yemek servis edilmiyor: kendi yemeğini dışarıdaki pazar tezgahlarından getir, tezgah başında bir bardak ev şarabı sipariş et. İtalya&#x27;nın en özgün yerlerinden biri.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Santo Stefano — the Seven Churches</span>
-                    <span class="card-badge badge-emerald">Bir binada yedi kilise</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Bir binada yedi kilise</span>
                 </div>
+                <h3 class="card-title">Santo Stefano — the Seven Churches</h3>
                 <p class="card-desc">Dışarıdan bakınca sıradan hantal bir ortaçağ yapısı. İçeride ise farklı yüzyıllardan birbirine bağlı yedi kilise kompleksi var; 5. yüzyıla kadar uzanıyor. Bologna&#x27;nın en olağanüstü ve en gözden kaçan anıtlarından biri. Neredeyse kuyruk yok, neredeyse turist yok. Ücretsiz giriş.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Archiginnasio Anatomical Theatre</span>
-                    <span class="card-badge badge-emerald">Ortaçağ anatomi tiyatrosu</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Ortaçağ anatomi tiyatrosu</span>
                 </div>
+                <h3 class="card-title">Archiginnasio Anatomical Theatre</h3>
                 <p class="card-desc">Dünyanın en eski üniversitesinin bir zamanlar ana binası olan Archiginnasio&#x27;nun içinde; tamamen ahşaptan oyulmuş, mum ışığıyla aydınlatılmış ve erken dönem tıp öğrencilerinin insan üzerinde diseksiyonlar izlediği korunmuş bir 17. yüzyıl anatomi tiyatrosu. İtalya&#x27;nın en olağanüstü odalarından biri. Oldukça uygun bir giriş ücreti var; neredeyse her zaman tenha.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Biblioteca Salaborsa — cam zemin, antik Roma</span>
-                    <span class="card-badge badge-emerald">Kütüphanenin altında Roma harabeleri</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Kütüphanenin altında Roma harabeleri</span>
                 </div>
+                <h3 class="card-title">Biblioteca Salaborsa — cam zemin, antik Roma</h3>
                 <p class="card-desc">Piazza Maggiore&#x27;nin yanındaki halk kütüphanesinin şeffaf cam zemini var; aşağıdan Roma yollarının ve binalarının kazılmış kalıntılarına bakabilirsin. Girişi ücretsiz. Neredeyse hiçbir turist farkında değil. Git, aşağı bak, sessiz kal.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Neptune Çeşmesi — tek özel açı</span>
-                    <span class="card-badge badge-emerald">Neptune&#x27;un 1566&#x27;dan gelen gizli sırrı</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Neptune&#x27;un 1566&#x27;dan gelen gizli sırrı</span>
                 </div>
+                <h3 class="card-title">Neptune Çeşmesi — tek özel açı</h3>
                 <p class="card-desc">Çeşmenin tam güneybatı köşesinden bakınca Neptune&#x27;un uzanmış elinin baş parmağı, heykeltıraş Giambologna&#x27;nın 1566&#x27;da sansürcülerden kasıtlı olarak sakladığı bir optik illüzyon yaratıyor. O açıyı bulduğunda ne demek istediğimizi anlayacaksın.</p>
             </div>
             </div>

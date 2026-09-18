@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Midilli Şehir İçi Ulaşım & Transfer</h2>
             </div>
             <p class="section-intro">Midilli&#x27;de ulaşımın anahtarı kendi tekerleklerindir; gerisi detay.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">⛴️</span>
-                        <span class="card-title">Feribot — Ayvalık ve Pire</span>
+                        <h3 class="card-title">Feribot — Ayvalık ve Pire</h3>
                     </div>
                 </div>
                 <p class="card-desc">Türkiye&#x27;den Ayvalık-Mytilini hattı yazın her gün, kışın seyrekleşir; yaklaşık 40 dakika. Pire&#x27;den gelen büyük feribotlar ise 8-10 saatlik gece yolculuğudur. Biletini önceden al, pasaport kontrolü için erken git.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚗</span>
-                        <span class="card-title">Kiralık araba — adanın anahtarı</span>
+                        <h3 class="card-title">Kiralık araba — adanın anahtarı</h3>
                     </div>
                 </div>
                 <p class="card-desc">Limanda ve havalimanında ofisler var; yazın önceden ayırt. Molivos, Plomari, Sigri gibi uçlara günübirlik gitmenin tek konforlu yolu. Benzin istasyonları köylerde seyrek — depoyu yarımın altına düşürme.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚌</span>
-                        <span class="card-title">KTEL otobüsleri</span>
+                        <h3 class="card-title">KTEL otobüsleri</h3>
                     </div>
                 </div>
                 <p class="card-desc">Mytilini&#x27;den büyük kasabalara günde birkaç sefer; ucuz ama saatler kısıtlı. Araç kiralamayacaksan rotanı otobüs saatlerine göre kur, son seferi kaçırma.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🛵</span>
-                        <span class="card-title">Scooter ve ATV</span>
+                        <h3 class="card-title">Scooter ve ATV</h3>
                     </div>
                 </div>
                 <p class="card-desc">Kısa mesafeler ve Mytilini çevresi için pratik; ama ada rüzgarlı ve yollar virajlı — uzun etaplar için araba daha güvenli.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚕</span>
-                        <span class="card-title">Taksi</span>
+                        <h3 class="card-title">Taksi</h3>
                     </div>
                 </div>
                 <p class="card-desc">Mytilini&#x27;de bulunur, köylerde nadir. Uzun mesafe için binmeden fiyatı netleştir; havalimanı-merkez arası kısa ve makul.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Nerede Kalınır? Midilli Mahalleleri</h2>
             </div>
             <p class="section-intro">Midilli&#x27;de &#x27;merkez&#x27; diye tek bir yer yok; ada dört ayrı karaktere bölünür. Seçimin, tatilinin türünü belirler.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Mytilini — ada başkenti</span>
+                    <h3 class="card-title">Mytilini — ada başkenti</h3>
                     <span class="card-badge badge-purple">En pratik</span>
                 </div>
                 <p class="card-desc">Liman, çarşı, restoranlar ve gece hayatı burada. Feribotla gelen için ilk ve son gece ideali; neoklasik konakları ve kalesiyle kendi başına da güzel. Ada turu için üs olarak biraz güneydoğuda kalır.</p>
-                <div class="card-footer-tip">Feribota yakın • Çarşı ve barlar • Neoklasik konaklar</div>
+                <div class="card-footer-tip">📍 Feribota yakın • Çarşı ve barlar • Neoklasik konaklar</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Molivos (Mithymna) — kuzeyin incisi</span>
+                    <h3 class="card-title">Molivos (Mithymna) — kuzeyin incisi</h3>
                     <span class="card-badge badge-purple">En romantik</span>
                 </div>
                 <p class="card-desc">Taş evleri, begonvilli sokakları ve tepedeki Bizans kalesiyle adanın kartpostalı. Günbatımı limanı, sanatçı ruhu ve butik pansiyonları ile Midilli&#x27;nin en çok aşık olunan köşesi. Mytilini&#x27;ye 60 km — ama değer.</p>
-                <div class="card-footer-tip">Kale manzarası • Günbatımı limanı • Butik pansiyonlar</div>
+                <div class="card-footer-tip">📍 Kale manzarası • Günbatımı limanı • Butik pansiyonlar</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Plomari — uzo kasabası</span>
+                    <h3 class="card-title">Plomari — uzo kasabası</h3>
                     <span class="card-badge badge-purple">En lezzetli</span>
                 </div>
                 <p class="card-desc">Güney kıyısında, uzo damıtımevlerinin başkenti. Deniz kenarı tavernaları, taş köprülü deresi ve ciddiye alınan meze kültürüyle yemek-içki odaklı tatilin adresi. Agios Isidoros plajı hemen bitişikte.</p>
-                <div class="card-footer-tip">Uzo damıtımevleri • Agios Isidoros plajı • Meze kültürü</div>
+                <div class="card-footer-tip">📍 Uzo damıtımevleri • Agios Isidoros plajı • Meze kültürü</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Skala Eresou — batının özgür ruhu</span>
+                    <h3 class="card-title">Skala Eresou — batının özgür ruhu</h3>
                     <span class="card-badge badge-purple">En sakin</span>
                 </div>
                 <p class="card-desc">Şair Sappho&#x27;nun doğduğu antik Eresos&#x27;un sahili: uzun kumsal, rahat kafeler ve dünyanın her yerinden gelen sadık bir ziyaretçi kitlesi. Adanın en iyi günbatımlarından biri ve en rahat atmosferi burada.</p>
-                <div class="card-footer-tip">Uzun kumsal • Sappho&#x27;nun köyü • Rahat atmosfer</div>
+                <div class="card-footer-tip">📍 Uzun kumsal • Sappho&#x27;nun köyü • Rahat atmosfer</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Petra ve çevresi — aileler için</span>
+                    <h3 class="card-title">Petra ve çevresi — aileler için</h3>
                     <span class="card-badge badge-purple">Aile dostu</span>
                 </div>
                 <p class="card-desc">Molivos&#x27;un komşusu Petra, kayanın üstündeki kilisesi ve sığ denizli uzun plajıyla ailelerin klasiği. Fiyatlar Molivos&#x27;tan yumuşak, kuzey rotalarına aynı derecede yakın.</p>
-                <div class="card-footer-tip">Sığ deniz • Kaya üstünde kilise • Uygun fiyat</div>
+                <div class="card-footer-tip">📍 Sığ deniz • Kaya üstünde kilise • Uygun fiyat</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Midilli İçin En İyi Ziyaret Zamanı</h2>
             </div>
             <p class="section-intro">Midilli dört mevsim yaşayan bir ada; turist sezonu kısa, güzellik sezonu uzundur.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">İlkbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Nis – Haz</span>
+                        <h3 class="card-title">İlkbahar</h3>
+                        <span class="season-months">Nis – Haz</span>
                     </div>
                     <span class="card-badge badge-amber">Çiçek ve Kuş Mevsimi</span>
                 </div>
                 <p class="card-desc">Ada Avrupa&#x27;nın en iyi kuş gözlem noktalarından birine döner: Kalloni tuzlalarında flamingolar, tepelerde yabani orkideler. Hava ılık, deniz henüz serin, fiyatlar kışın devamı. Yürüyüş ve keşif için en iyi pencere.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Yaz</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Tem – Ağu</span>
+                        <h3 class="card-title">Yaz</h3>
+                        <span class="season-months">Tem – Ağu</span>
                     </div>
                     <span class="card-badge badge-amber">Deniz Sezonu</span>
                 </div>
                 <p class="card-desc">Deniz 25 dereceyi bulur, plajlar canlanır, köy panayırları (panigiri) peş peşe gelir. Yunan adası standartlarında bile Midilli yazın sakin sayılır — Mykonos kalabalığı burada yok. Ağustos ortası Meryem Ana yortusunda her yer dolu.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Sonbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Eyl – Kas</span>
+                        <h3 class="card-title">Sonbahar</h3>
+                        <span class="season-months">Eyl – Kas</span>
                     </div>
                     <span class="card-badge badge-amber">Hasat Zamanı</span>
                 </div>
                 <p class="card-desc">Eylül adanın gizli zirvesi: deniz sıcak, kalabalık gitmiş, ışık yumuşamış. Ekim-Kasım&#x27;da zeytin hasadı başlar; ada gerçek işine döner ve misafirini işin içine almaktan çekinmez.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Kış</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Ara – Mar</span>
+                        <h3 class="card-title">Kış</h3>
+                        <span class="season-months">Ara – Mar</span>
                     </div>
                     <span class="card-badge badge-amber">Yerlilerin Adası</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🐟</span>
-                        <span class="card-title">Kalloni sardalyası (sardeles pastes)</span>
+                        <h3 class="card-title">Kalloni sardalyası (sardeles pastes)</h3>
                     </div>
                 </div>
                 <p class="card-desc">Kalloni Körfezi&#x27;nin ünlü sardalyası tuzda birkaç saat dinlendirilip çiğ denecek tazelikte servis edilir; Yunanistan&#x27;ın en meşhur mezesi sayılır. Ağustos sardalya festivalinin yıldızıdır.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥃</span>
-                        <span class="card-title">Plomari uzosu</span>
+                        <h3 class="card-title">Plomari uzosu</h3>
                     </div>
                 </div>
                 <p class="card-desc">Anasonlu ulusal içki en iyi halini bu adada bulur; Plomari ve Mytilini damıtımevleri dünyaya ihraç eder. Buzla bulutlanır, mezeyle açılır, sohbetle biter.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🧀</span>
-                        <span class="card-title">Ladotyri — zeytinyağında peynir</span>
+                        <h3 class="card-title">Ladotyri — zeytinyağında peynir</h3>
                     </div>
                 </div>
                 <p class="card-desc">Adanın koruma statülü koyun peyniri zeytinyağı dolu küplerde olgunlaşır; sert, tuzlu ve karakterli. Izgarası (saganaki) ayrı bir şölen.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🫒</span>
-                        <span class="card-title">Zeytin ve zeytinyağı</span>
+                        <h3 class="card-title">Zeytin ve zeytinyağı</h3>
                     </div>
                 </div>
                 <p class="card-desc">On bir milyon ağacın adasında zeytinyağı içecek kadar tazedir. Köy pazarından bir şişe soğuk sıkım al; valizde en değerli hediye o olacak.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🦑</span>
-                        <span class="card-title">Izgara ahtapot ve kalamar</span>
+                        <h3 class="card-title">Izgara ahtapot ve kalamar</h3>
                     </div>
                 </div>
                 <p class="card-desc">Liman tavernalarının önünde güneşte kuruyan ahtapotlar akşamın menüsüdür: közde, limonla, deniz kenarında. Molivos ve Skala Sikamnias limanları klasik adresler.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍯</span>
-                        <span class="card-title">Baklava ve amygdalota</span>
+                        <h3 class="card-title">Baklava ve amygdalota</h3>
                     </div>
                 </div>
                 <p class="card-desc">Osmanlı mirası tatlı geleneği adada capcanlı: fıstıklı baklava, badem kurabiyesi amygdalota ve dondurmalı ekmek kadayıfı. Mytilini çarşısının pastaneleri yüz yıllık.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Midilli&#x27;nin en güzel yerleri tabelasızdır; bu altısı için yerliden tüyo almana gerek kalmadı.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Sigri Taşlaşmış Ormanı</span>
-                    <span class="card-badge badge-emerald">20 milyon yıllık orman</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ 20 milyon yıllık orman</span>
                 </div>
+                <h3 class="card-title">Sigri Taşlaşmış Ormanı</h3>
                 <p class="card-desc">Adanın batı ucunda, volkanik külle mühürlenmiş 20 milyon yıllık sekoya gövdeleri: UNESCO korumalı jeopark, açık hava müzesi ve ay yüzeyini andıran manzara. Dünyada eşi çok az.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Skala Sikamnias</span>
-                    <span class="card-badge badge-emerald">Kayanın üstünde köy</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Kayanın üstünde köy</span>
                 </div>
+                <h3 class="card-title">Skala Sikamnias</h3>
                 <p class="card-desc">Kuzey kıyısının minicik balıkçı limanı: kayanın üstünde Panagia Gorgona şapeli, dut ağacı gölgeli tavernalar ve yazar Stratis Myrivilis&#x27;in edebiyata taşıdığı atmosfer. Ada sakinliğinin damıtılmış hali.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Eftalou Kaplıcası</span>
-                    <span class="card-badge badge-emerald">Sıcak kaynak — denizin dibinde</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Sıcak kaynak — denizin dibinde</span>
                 </div>
+                <h3 class="card-title">Eftalou Kaplıcası</h3>
                 <p class="card-desc">Molivos yakınında, çakıl plajın üstünde taş kubbeli bir Osmanlı hamamı: 43 derecelik şifalı su, iki adım ötede serin Ege. Sıcak-soğuk ritüeli için giriş ücreti sembolik.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Moni Limonos</span>
-                    <span class="card-badge badge-emerald">Bizans manastırı — tepede</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Bizans manastırı — tepede</span>
                 </div>
+                <h3 class="card-title">Moni Limonos</h3>
                 <p class="card-desc">Adanın en büyük manastırı: avlusunda tavus kuşları, kütüphanesinde el yazmaları, sessizliğinde yüzyıllar. Kalloni yolunun üstünde, çoğu ziyaretçinin hiç sapmadığı bir dünya.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Kalloni Tuzlaları</span>
-                    <span class="card-badge badge-emerald">Flamingolu tuzlalar</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Flamingolu tuzlalar</span>
                 </div>
+                <h3 class="card-title">Kalloni Tuzlaları</h3>
                 <p class="card-desc">İlkbahar ve sonbaharda binlerce flamingo ve 250&#x27;den fazla kuş türü: Avrupa&#x27;nın en iyi kuş gözlem noktalarından biri. Dürbün al, gözlem kulübesine otur, bekle.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Agiasos</span>
-                    <span class="card-badge badge-emerald">Ağaçların içinde köy</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Ağaçların içinde köy</span>
                 </div>
+                <h3 class="card-title">Agiasos</h3>
                 <p class="card-desc">Olympos Dağı&#x27;nın eteğinde, kestane ormanının içinde bir dağ köyü: seramik atölyeleri, asırlık Meryem Ana kilisesi ve serin taş sokaklar. Yazın adanın en serin kaçış noktası.</p>
             </div>
             </div>

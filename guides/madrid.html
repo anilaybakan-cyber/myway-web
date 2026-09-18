@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Madrid Public Transit & Airport Transfers</h2>
             </div>
             <p class="section-intro">The metro goes everywhere but the city centre is small enough to walk. Taxis are possible but not necessary.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Airport → City</span>
+                        <h3 class="card-title">Airport → City</h3>
                     </div>
                 </div>
                 <p class="card-desc">Metro Line 8 to Nuevos Ministerios, 25 minutes, then transfer to the city centre. The ticket is the standard metro fare plus a €3 airport supplement — around €5 total. Fixed-price taxi from the airport: €33. Terminals T1-T2-T3 are connected; T4 is separate, 10 minutes by metro.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚇</span>
-                        <span class="card-title">Metro — the city&#x27;s backbone</span>
+                        <h3 class="card-title">Metro — the city&#x27;s backbone</h3>
                     </div>
                 </div>
                 <p class="card-desc">13 lines, over 300 stations. Single ticket €1.50–2, depending on distance. The 10-trip ticket (MetroBus) is €7.30 — valid on both metro and bus, and can be shared between people (each person taps separately). You need to buy a Multi Card at a station machine first (€2.50). Runs 6am to 1:30am.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚌</span>
-                        <span class="card-title">EMT buses — for late nights</span>
+                        <h3 class="card-title">EMT buses — for late nights</h3>
                     </div>
                 </div>
                 <p class="card-desc">Over 200 daytime routes, 35 night routes (Búho). Daytime runs 6am–11:30pm. Night buses depart from Cibeles — the only option once the metro closes. Pay by card directly or with the 10-trip ticket.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚲</span>
-                        <span class="card-title">BiciMAD — electric bikes</span>
+                        <h3 class="card-title">BiciMAD — electric bikes</h3>
                     </div>
                 </div>
                 <p class="card-desc">Electric bike sharing stations across the city. €0.50 per 30 minutes or a monthly flat rate of €10. Ideal routes along Paseo del Prado, Retiro and Madrid Río.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">Walking — the best option</span>
+                        <h3 class="card-title">Walking — the best option</h3>
                     </div>
                 </div>
                 <p class="card-desc">The city centre is smaller than you think. From Sol: La Latina 15 minutes, Malasaña 20 minutes, Chueca 10 minutes. Safe at night. You can spend a full day without needing the metro.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Where to Stay in Madrid: Best Areas</h2>
             </div>
             <p class="section-intro">Location matters a lot in Madrid — the city lives at night and the neighbourhood&#x27;s character shapes your evenings directly.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">La Latina / Lavapiés</span>
+                    <h3 class="card-title">La Latina / Lavapiés</h3>
                     <span class="card-badge badge-purple">Most historic, most alive</span>
                 </div>
                 <p class="card-desc">La Latina is one of Madrid&#x27;s oldest neighbourhoods. Cava Baja is lined with tapas bars and historic taverns. Plaza de la Paja is a quiet medieval square. El Rastro passes through on Sundays. Next door, Lavapiés is multicultural, artistic and constantly changing — the Mercado de San Fernando is here.</p>
-                <div class="card-footer-tip">El Rastro Sunday • Cava Baja tapas • Historic streets</div>
+                <div class="card-footer-tip">📍 El Rastro Sunday • Cava Baja tapas • Historic streets</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Malasaña</span>
+                    <h3 class="card-title">Malasaña</h3>
                     <span class="card-badge badge-purple">Most alternative</span>
                 </div>
                 <p class="card-desc">The Movida Madrileña movement of the 1980s was born here. It still carries that spirit: street art, vintage shops, small bars and cafés. Plaza del Dos de Mayo fills up in the evening. Busy but authentic. Ten minutes&#x27; walk from Gran Vía but feels like another world.</p>
-                <div class="card-footer-tip">Street art • Vintage shops • Nightlife</div>
+                <div class="card-footer-tip">📍 Street art • Vintage shops • Nightlife</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Chueca</span>
+                    <h3 class="card-title">Chueca</h3>
                     <span class="card-badge badge-purple">Most lively</span>
                 </div>
                 <p class="card-desc">Colourful, modern, with a strong nightlife scene. The Mercado de San Antón is here — three floors, with a rooftop bar at the top. Bodega de la Ardosa has been pouring vermouth straight from the barrel since 1892. Shares a border with Malasaña — five minutes between them.</p>
-                <div class="card-footer-tip">Mercado de San Antón • Bodega de la Ardosa • Nightlife</div>
+                <div class="card-footer-tip">📍 Mercado de San Antón • Bodega de la Ardosa • Nightlife</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Chamberí</span>
+                    <h3 class="card-title">Chamberí</h3>
                     <span class="card-badge badge-purple">Most local, most quiet</span>
                 </div>
                 <p class="card-desc">The neighbourhood Madrid residents choose when they want to stay in Madrid. Families having morning coffee around Plaza de Olavide, elderly couples sharing newspapers. No tourist pressure. Andén 0 — the ghost metro station — is here. 15-20 minutes&#x27; walk to the city centre.</p>
-                <div class="card-footer-tip">Plaza de Olavide • Andén 0 • Quiet neighbourhood rhythm</div>
+                <div class="card-footer-tip">📍 Plaza de Olavide • Andén 0 • Quiet neighbourhood rhythm</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Barrio de las Letras</span>
+                    <h3 class="card-title">Barrio de las Letras</h3>
                     <span class="card-badge badge-purple">Most cultural</span>
                 </div>
                 <p class="card-desc">Between the Prado and Puerta del Sol, where Lope de Vega and Cervantes lived. Quotes from writers are set into the pavement of Calle de las Huertas — look down as you walk. The Thyssen and Reina Sofía are within walking distance. It quietens early in the morning — that&#x27;s when it&#x27;s at its best.</p>
-                <div class="card-footer-tip">Calle de las Huertas quotes • Close to museums • Literary history</div>
+                <div class="card-footer-tip">📍 Calle de las Huertas quotes • Close to museums • Literary history</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Best Time to Visit Madrid</h2>
             </div>
             <p class="section-intro">Madrid has a continental climate — summers are very hot, winters cold, spring and autumn are excellent.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Spring</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Apr – Jun</span>
+                        <h3 class="card-title">Spring</h3>
+                        <span class="season-months">Apr – Jun</span>
                     </div>
                     <span class="card-badge badge-amber">The best time</span>
                 </div>
                 <p class="card-desc">April to June is Madrid&#x27;s most balanced period. There&#x27;s sun but the temperature is right for exploring. The rose garden Rosaleda in Retiro Park is in bloom in May. Fiestas de San Isidro in May — Madrid&#x27;s biggest local festival, street musicians, traditional costumes, open-air concerts. Almond blossom at Quinta de los Molinos in late March.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Autumn</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Sep – Nov</span>
+                        <h3 class="card-title">Autumn</h3>
+                        <span class="season-months">Sep – Nov</span>
                     </div>
                     <span class="card-badge badge-amber">Breathing after summer</span>
                 </div>
                 <p class="card-desc">From mid-September to November Madrid comes back to life. Museums open new exhibitions, restaurants launch new menus. Retiro Park turns golden in autumn — weekday mornings are its finest hours. Crowds are lower than summer.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Summer</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Jul – Aug</span>
+                        <h3 class="card-title">Summer</h3>
+                        <span class="season-months">Jul – Aug</span>
                     </div>
                     <span class="card-badge badge-amber">Hot but the city never sleeps</span>
                 </div>
                 <p class="card-desc">July and August are Madrid&#x27;s hottest months — 40°C is normal. Between 2pm and 7pm being outside is tough. But nightlife peaks. Veranos de la Villa: open-air concerts, film screenings and cultural events all summer. Picnics by the lake in Casa de Campo. Rooftop bars are at their liveliest this season.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Winter</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Dec – Feb</span>
+                        <h3 class="card-title">Winter</h3>
+                        <span class="season-months">Dec – Feb</span>
                     </div>
                     <span class="card-badge badge-amber">Quiet but easy on the wallet</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🦑</span>
-                        <span class="card-title">Bocadillo de calamares</span>
+                        <h3 class="card-title">Bocadillo de calamares</h3>
                     </div>
                 </div>
                 <p class="card-desc">Fried calamari in a bread roll, a squeeze of lemon — that&#x27;s it. Bar La Campana is right behind Plaza Mayor, open since 1979. There&#x27;s a queue but it moves fast. A beer alongside, eaten standing in Plaza Mayor. Eat this before you think about where else to go in Madrid.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍳</span>
-                        <span class="card-title">Huevos rotos</span>
+                        <h3 class="card-title">Huevos rotos</h3>
                     </div>
                 </div>
                 <p class="card-desc">Fried eggs over crispy potatoes, with jamón or chorizo. The egg is broken so the yolk spreads over the potatoes — that&#x27;s where the name comes from. Specific to Madrid. Casa Lucio is famous but crowded; you&#x27;ll find the same dish at smaller bars in La Latina.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥘</span>
-                        <span class="card-title">Cocido madrileño</span>
+                        <h3 class="card-title">Cocido madrileño</h3>
                     </div>
                 </div>
                 <p class="card-desc">A stew of chickpeas, pork, chicken, morcilla and vegetables — served in three stages. First the chickpea broth, then the vegetables, then the meats. A winter dish, November to March. Taberna La Bola has been making it since 1870. Advance reservation essential.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍟</span>
-                        <span class="card-title">Patatas bravas</span>
+                        <h3 class="card-title">Patatas bravas</h3>
                     </div>
                 </div>
                 <p class="card-desc">Crispy potatoes with two sauces — one spicy (brava), one garlicky aioli. In the Madrid version, the sauce is poured over the potatoes. Every tapas bar has its own recipe. Docamar on Alcalá is the city&#x27;s most famous patatas bravas bar.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍩</span>
-                        <span class="card-title">Churros con chocolate</span>
+                        <h3 class="card-title">Churros con chocolate</h3>
                     </div>
                 </div>
                 <p class="card-desc">At the end of a night out at 2am, or Sunday morning with bleary eyes. Chocolatería San Ginés has been open since 1894, right next to Puerta del Sol. Churros straight from the hot oil, chocolate thick and dark. Sitting here late at night is part of the Madrid experience.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍶</span>
-                        <span class="card-title">Vermut ritual</span>
+                        <h3 class="card-title">Vermut ritual</h3>
                     </div>
                 </div>
                 <p class="card-desc">Sunday after El Rastro or weekday lunch breaks. Vermouth on tap, olives alongside. Bodega de la Ardosa in Chueca has been serving vermouth straight from the barrel since 1892. Casa Alberto in Barrio de las Letras since 1827. This isn&#x27;t just a drink — it&#x27;s a ritual of pausing.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Madrid is a big city but its best corners appear as soon as you walk two blocks and turn.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Andén 0 — Ghost Station</span>
-                    <span class="card-badge badge-emerald">There&#x27;s another metro hidden under the metro</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ There&#x27;s another metro hidden under the metro</span>
                 </div>
+                <h3 class="card-title">Andén 0 — Ghost Station</h3>
                 <p class="card-desc">Under Puerta del Sol metro station, an unused station dating from 1919. Converted into a museum in 2021. Original infrastructure from the construction of the metro preserved — old signs and vehicles. Ticketed; tours at specific times. The starting point of Spain&#x27;s first metro line.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Calle de las Huertas</span>
-                    <span class="card-badge badge-emerald">Poetry set into the pavement — the literary quarter</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Poetry set into the pavement — the literary quarter</span>
                 </div>
+                <h3 class="card-title">Calle de las Huertas</h3>
                 <p class="card-desc">In Barrio de las Letras, between Puerta del Sol and the Prado. Quotes from Cervantes, Lope de Vega and other Golden Age writers are set into the pavement of the street where they lived — look down as you walk. Before 10am, before tour groups arrive, there&#x27;s no crowd. Lope de Vega&#x27;s house is open as a museum.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Cerro del Tío Pío — Siete Tetas</span>
-                    <span class="card-badge badge-emerald">The city&#x27;s most local hill for sunset</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ The city&#x27;s most local hill for sunset</span>
                 </div>
+                <h3 class="card-title">Cerro del Tío Pío — Siete Tetas</h3>
                 <p class="card-desc">In the Vallecas neighbourhood, walking distance from Line 1 Buenos Aires stop. Seven small hills — known locally as &#x27;Siete Tetas&#x27;. One of the least crowded spots in the city for Madrid&#x27;s skyline and sunset. Bring a picnic blanket and food; sit with the local crowd in the late afternoon.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Casa Alberto</span>
-                    <span class="card-badge badge-emerald">Open since 1827 — on the same spot</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Open since 1827 — on the same spot</span>
                 </div>
+                <h3 class="card-title">Casa Alberto</h3>
                 <p class="card-desc">In Barrio de las Letras, Calle de las Huertas 18. Open since 1827. Wooden bar, vermouth from the barrel, old Madrid photographs on the walls. Drink the vermouth on tap, order caracoles (snails) alongside — in season.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Quinta de los Molinos</span>
-                    <span class="card-badge badge-emerald">Almond blossom in March — Madrid&#x27;s most invisible festival</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Almond blossom in March — Madrid&#x27;s most invisible festival</span>
                 </div>
+                <h3 class="card-title">Quinta de los Molinos</h3>
                 <p class="card-desc">On Alcalá, near the Ventas bullring. 1,500 almond trees — in late March they all blossom at once, ground and air turning white. Less known than Japanese cherry blossom but equally striking. Free, park always open. Go on a Sunday morning — neighbours walk here.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Círculo de Bellas Artes Rooftop</span>
-                    <span class="card-badge badge-emerald">Look out over the city from above Gran Vía</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Look out over the city from above Gran Vía</span>
                 </div>
+                <h3 class="card-title">Círculo de Bellas Artes Rooftop</h3>
                 <p class="card-desc">Alcalá 42, right at the corner of Gran Vía. Pay €5 and go up to the rooftop — Gran Vía, the Royal Palace, the Sierra de Guadarrama mountains visible 360 degrees. There&#x27;s a bar. Inside there are art exhibitions too, often free. Most beautiful at sunset.</p>
             </div>
             </div>

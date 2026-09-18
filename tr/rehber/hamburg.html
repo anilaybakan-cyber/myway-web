@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Hamburg Şehir İçi Ulaşım & Transfer</h2>
             </div>
             <p class="section-intro">Liman feribotları, S-Bahn, U-Bahn ve otobüsler HVV bilet sistemi altında mükemmel entegredir.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚆</span>
-                        <span class="card-title">Havalimanı S-Bahn (S1)</span>
+                        <h3 class="card-title">Havalimanı S-Bahn (S1)</h3>
                     </div>
                 </div>
                 <p class="card-desc">HAM Havalimanı terminallerinden doğrudan kalkan S1 treniyle Hauptbahnhof ana tren garına 25 dakikada ulaşılır.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚢</span>
-                        <span class="card-title">62 Numaralı Liman Feribotu</span>
+                        <h3 class="card-title">62 Numaralı Liman Feribotu</h3>
                     </div>
                 </div>
                 <p class="card-desc">Landungsbrücken&#x27;den kalkan belediye feribotu normal biletle Elbe kıyılarını, lüks villaları ve dev konteyner gemilerini gezdirir.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚇</span>
-                        <span class="card-title">U-Bahn U3 Panoramik Hattı</span>
+                        <h3 class="card-title">U-Bahn U3 Panoramik Hattı</h3>
                     </div>
                 </div>
                 <p class="card-desc">Liman boyunca yer üstünden giden U3 sarı metro hattı Landungsbrücken ve Elbphilharmonie arasında muazzam sahil manzarası sunar.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">Eski Elbe Tüneli (Alter Elbtunnel)</span>
+                        <h3 class="card-title">Eski Elbe Tüneli (Alter Elbtunnel)</h3>
                     </div>
                 </div>
                 <p class="card-desc">1911 yapımı nehrin 24 metre altından geçen tarihi çinili yaya tüneli; nehrin karşı kıyısına yürüyüp kenti seyretmek için harikadır.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚲</span>
-                        <span class="card-title">StadtRAD kırmızı bisikletler</span>
+                        <h3 class="card-title">StadtRAD kırmızı bisikletler</h3>
                     </div>
                 </div>
                 <p class="card-desc">İlk 30 dakikası tamamen ücretsiz olan belediye bisikletleriyle Alster Gölü kıyısında turlamak çok popülerdir.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Nerede Kalınır? Hamburg Mahalleleri</h2>
             </div>
             <p class="section-intro">Hafencity&#x27;nin modern mimarisi mi, St. Georg&#x27;un Alster gölü kıyısı mı, yoksa Sternschanze&#x27;nin bohem enerjisi mi?</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">HafenCity &amp; Speicherstadt</span>
+                    <h3 class="card-title">HafenCity &amp; Speicherstadt</h3>
                     <span class="card-badge badge-purple">Modern &amp; Prestij</span>
                 </div>
                 <p class="card-desc">Elbphilharmonie ve tarihi kanallara yürüme mesafesinde; çağdaş mimari, tasarım oteller ve sakin liman geceleri.</p>
-                <div class="card-footer-tip">Elbphilharmonie • UNESCO kanalları • Lüks oteller</div>
+                <div class="card-footer-tip">📍 Elbphilharmonie • UNESCO kanalları • Lüks oteller</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Altstadt &amp; Neustadt</span>
+                    <h3 class="card-title">Altstadt &amp; Neustadt</h3>
                     <span class="card-badge badge-purple">Tarihi Merkez</span>
                 </div>
                 <p class="card-desc">Rathaus belediye binası, Jungfernstieg alışveriş caddesi ve Alster Gölü&#x27;ne adım mesafesinde en merkezi nokta.</p>
-                <div class="card-footer-tip">Rathaus • Alster gölü • Merkezi</div>
+                <div class="card-footer-tip">📍 Rathaus • Alster gölü • Merkezi</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Sternschanze (Schanzenviertel)</span>
+                    <h3 class="card-title">Sternschanze (Schanzenviertel)</h3>
                     <span class="card-badge badge-purple">Bohem &amp; Alternatif</span>
                 </div>
                 <p class="card-desc">Bağımsız kafeler, butikler, sokak sanatı ve gençlik enerjisiyle kentin en popüler hipster mahallesi.</p>
-                <div class="card-footer-tip">Schanze kafeleri • Sokak sanatı • Butik barlar</div>
+                <div class="card-footer-tip">📍 Schanze kafeleri • Sokak sanatı • Butik barlar</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">St. Pauli &amp; Reeperbahn</span>
+                    <h3 class="card-title">St. Pauli &amp; Reeperbahn</h3>
                     <span class="card-badge badge-purple">Gece Hayatı &amp; Müzik</span>
                 </div>
                 <p class="card-desc">The Beatles&#x27;ın kariyerine başladığı kulüpler, müzikholler, tiyatrolar ve canlı gece kulüpleri bölgesi.</p>
-                <div class="card-footer-tip">Reeperbahn • Beatles mirası • Canlı müzik</div>
+                <div class="card-footer-tip">📍 Reeperbahn • Beatles mirası • Canlı müzik</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">St. Georg &amp; Lange Reihe</span>
+                    <h3 class="card-title">St. Georg &amp; Lange Reihe</h3>
                     <span class="card-badge badge-purple">Kozmopolit &amp; Göl Kıyısı</span>
                 </div>
                 <p class="card-desc">Dış Alster gölüne komşu, gökkuşağı bayrakları, renkli bistrolar ve merkez tren garına yakın canlı semt.</p>
-                <div class="card-footer-tip">Alster gölü • Lange Reihe • Kozmopolit</div>
+                <div class="card-footer-tip">📍 Alster gölü • Lange Reihe • Kozmopolit</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Hamburg İçin En İyi Ziyaret Zamanı</h2>
             </div>
             <p class="section-intro">Yaz aylarında liman festivalleri ve açık hava terasları, kışın ise kanallarda büyüleyici ışıklar.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">İlkbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Nis – Haz</span>
+                        <h3 class="card-title">İlkbahar</h3>
+                        <span class="season-months">Nis – Haz</span>
                     </div>
                     <span class="card-badge badge-amber">Liman Doğum Günü (Hafengeburtstag)</span>
                 </div>
                 <p class="card-desc">Mayıs ayında Elbe Nehri üzerinde yüzlerce tarihi yelkenli geminin geçit töreni yaptığı devasa festival dönemi.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Yaz</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Tem – Ağu</span>
+                        <h3 class="card-title">Yaz</h3>
+                        <span class="season-months">Tem – Ağu</span>
                     </div>
                     <span class="card-badge badge-amber">Göl Kenarı ve Açık Hava</span>
                 </div>
                 <p class="card-desc">Övelgönne kumsalında dev konteyner gemilerini izleyerek güneşlenmek ve Alster kanallarında kano turları.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Sonbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Eyl – Kas</span>
+                        <h3 class="card-title">Sonbahar</h3>
+                        <span class="season-months">Eyl – Kas</span>
                     </div>
                     <span class="card-badge badge-amber">Misty Speicherstadt</span>
                 </div>
                 <p class="card-desc">Elbphilharmonie konser sezonu açılır; sisli günlerde kırmızı tuğlalı antrepolar gotik ve büyüleyici bir atmosfere bürünür.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Kış</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Ara – Şub</span>
+                        <h3 class="card-title">Kış</h3>
+                        <span class="season-months">Ara – Şub</span>
                     </div>
                     <span class="card-badge badge-amber">Işıklar ve Deniz Masalı</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🐟</span>
-                        <span class="card-title">Taze Liman Fischbrötchen</span>
+                        <h3 class="card-title">Taze Liman Fischbrötchen</h3>
                     </div>
                 </div>
                 <p class="card-desc">Çıtır yuvarlak ekmek içinde kuzey denizi karidesi (Nordseekrabben), marine ringa balığı (Matjes) veya somon; soğan dilimleriyle sunulur.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥩</span>
-                        <span class="card-title">Geleneksel Denizci Labskaus</span>
+                        <h3 class="card-title">Geleneksel Denizci Labskaus</h3>
                     </div>
                 </div>
                 <p class="card-desc">Tuzlanmış sığır eti, patates ve pancarın püre haline getirilip üzerine sahanda yumurta, kornişon turşu ve ringa balığı konduğu tarihi denizci yemeği.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥐</span>
-                        <span class="card-title">Tarçınlı Çıtır Franzbrötchen</span>
+                        <h3 class="card-title">Tarçınlı Çıtır Franzbrötchen</h3>
                     </div>
                 </div>
                 <p class="card-desc">Kentin fırınlarından sabah taze çıkan, içi yumuşacık tereyağlı, dışı çıtır karamelize tarçınlı çörek; kahvenin en iyi eşlikçisi.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍲</span>
-                        <span class="card-title">Hamburger Aalsuppe (Yılanbalığı Çorbası)</span>
+                        <h3 class="card-title">Hamburger Aalsuppe (Yılanbalığı Çorbası)</h3>
                     </div>
                 </div>
                 <p class="card-desc">Kurutulmuş meyveler, sebzeler ve tütsülenmiş yılanbalığıyla tatlı-tuzlu dengesinde hazırlanan zengin tarihi çorba.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍓</span>
-                        <span class="card-title">Rote Grütze &amp; Vaniljesaus</span>
+                        <h3 class="card-title">Rote Grütze &amp; Vaniljesaus</h3>
                     </div>
                 </div>
                 <p class="card-desc">Kırmızı dağ meyvelerinin (ahududu, vişne, çilek) hafif kıvamlı kompostosu; soğuk vanilya sosu veya dondurmayla servis edilir.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍺</span>
-                        <span class="card-title">Astra &amp; Holsten Biraları</span>
+                        <h3 class="card-title">Astra &amp; Holsten Biraları</h3>
                     </div>
                 </div>
                 <p class="card-desc">St. Pauli&#x27;nin kalpli çapa amblemli kült birası Astra ve köklü Hamburg lager biraları.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Turistik iskelelerin ötesinde Hamburg&#x27;un mühendislik harikalarını saklayan altı durak.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Miniatur Wunderland</span>
-                    <span class="card-badge badge-emerald">Minyatür Mucizesi</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Minyatür Mucizesi</span>
                 </div>
+                <h3 class="card-title">Miniatur Wunderland</h3>
                 <p class="card-desc">Dünyanın en büyük minyatür demiryolu; hareket eden uçakları, binlerce treni ve ışık şovlarıyla her yaştan gezgini büyüleyen şaheser.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Alter Elbtunnel (Eski Elbe Tüneli)</span>
-                    <span class="card-badge badge-emerald">Tarihi Nehir Altı Tüneli</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Tarihi Nehir Altı Tüneli</span>
                 </div>
+                <h3 class="card-title">Alter Elbtunnel (Eski Elbe Tüneli)</h3>
                 <p class="card-desc">1911 yapımı devasa asansörlerle inilen 426 metrelik çinili tünel; nehrin karşısındaki Steinwerder seyir noktasına yürüyüş.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Aziz Nikolai Kilisesi Harabesi</span>
-                    <span class="card-badge badge-emerald">Gotik Savaş Anıtı</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Gotik Savaş Anıtı</span>
                 </div>
+                <h3 class="card-title">Aziz Nikolai Kilisesi Harabesi</h3>
                 <p class="card-desc">İkinci Dünya Savaşı&#x27;nda yıkılan ve barış anıtı olarak bırakılan devasa kara gotik kule; cam asansörle çıkılan seyir terası.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Elbstrand Övelgönne Kumsalı</span>
-                    <span class="card-badge badge-emerald">Nehir Kumsalı</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Nehir Kumsalı</span>
                 </div>
+                <h3 class="card-title">Elbstrand Övelgönne Kumsalı</h3>
                 <p class="card-desc">Kentin ortasında dev konteyner gemilerinin birkaç yüz metre önünüzden geçtiği altın kumlu kumsal ve tarihi kaptan evleri.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Krameramtsstuben Evleri</span>
-                    <span class="card-badge badge-emerald">17. Yüzyıl Dul Kadınlar Avlusu</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ 17. Yüzyıl Dul Kadınlar Avlusu</span>
                 </div>
+                <h3 class="card-title">Krameramtsstuben Evleri</h3>
                 <p class="card-desc">Aziz Michaelis Kilisesi yanında 1620&#x27;lerden günümüze kalan ahşap karkaslı daracık tarihi bakkallar loncası evleri.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Planten un Blomen Parkı</span>
-                    <span class="card-badge badge-emerald">Yeşil Park Vahası</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Yeşil Park Vahası</span>
                 </div>
+                <h3 class="card-title">Planten un Blomen Parkı</h3>
                 <p class="card-desc">Avrupa&#x27;nın en büyük Japon bahçesine, çay evine ve yaz geceleri müzikli su fıskiyesi gösterilerine ev sahipliği yapan huzur bahçesi.</p>
             </div>
             </div>

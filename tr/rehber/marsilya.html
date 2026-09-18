@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Marseille Şehir İçi Ulaşım & Transfer</h2>
             </div>
             <p class="section-intro">Marseille büyük ve tepeli bir şehir. Merkez yürünebilir. Calanques, plajlar ve dış mahalleler için otobüs gerekiyor. RTM ağı her yeri kapsıyor — kullan.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Havalimanı → Şehir Merkezi</span>
+                        <h3 class="card-title">Havalimanı → Şehir Merkezi</h3>
                     </div>
                 </div>
                 <p class="card-desc">Navette Marseille servisi havalimanından Saint-Charles tren garına her 15–20 dakikada bir gidiyor, yolculuk yaklaşık 25 dakika sürüyor, ödeme araçta yapılıyor. Saint-Charles&#x27;tan metro ve tramvay şehrin geri kalanına bağlıyor. Taksiler sayaçla çalışıyor ve belirgin biçimde daha pahalı.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚇</span>
-                        <span class="card-title">Metro — iki hat, iyi konumlanmış</span>
+                        <h3 class="card-title">Metro — iki hat, iyi konumlanmış</h3>
                     </div>
                 </div>
                 <p class="card-desc">1. hat doğu-batı ekseninde merkezi kesiyor: Vieux-Port, Noailles, Castellane. 2. hat kuzey-güney: Saint-Charles, Joliette (MuCEM için), Rond-Point du Prado. Tek bilet 1,70 Euro, tüm RTM araçlarında 60 dakika geçerli. 24 saatlik pass 5,20 Euro. Her istasyondaki makinelerden satılıyor.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚌</span>
-                        <span class="card-title">Otobüsler — kıyı için zorunlu</span>
+                        <h3 class="card-title">Otobüsler — kıyı için zorunlu</h3>
                     </div>
                 </div>
                 <p class="card-desc">60 numaralı otobüs Hôtel de Ville&#x27;den Notre-Dame de la Garde&#x27;a. 83 numaralı otobüs Corniche boyunca — Vallon des Auffes, Prado plajları, Malmousque. B1 otobüsü Castellane metrosundan Sormiou koyuna. Metroyla aynı RTM bileti. 83&#x27;ün kıyı güzergahı Fransa&#x27;nın en güzel kentsel otobüs yolculuklarından biri.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚲</span>
-                        <span class="card-title">Le Vélo — merkez boyunca bisiklet</span>
+                        <h3 class="card-title">Le Vélo — merkez boyunca bisiklet</h3>
                     </div>
                 </div>
                 <p class="card-desc">100&#x27;den fazla istasyon, 1.000 bisiklet. Abonelikle ilk 30 dakika ücretsiz. Merkez yeterince düz — liman bölgesini terk ettiğinde yokuşlar başlıyor. Vieux-Port&#x27;tan Le Panier&#x27;e, Cours Julien&#x27;e ya da deniz kıyısı boyunca MuCEM&#x27;e kadar kullanışlı.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">Yürüyüş — Le Panier&#x27;i tanımanın tek yolu</span>
+                        <h3 class="card-title">Yürüyüş — Le Panier&#x27;i tanımanın tek yolu</h3>
                     </div>
                 </div>
                 <p class="card-desc">Vieux-Port&#x27;tan MuCEM&#x27;e: 10 dakika. Vieux-Port&#x27;tan Le Panier&#x27;e: 15 dakika yokuş yukarı. Notre-Dame de la Garde: limandan 30–40 dakika dik yokuş ya da 60 numaralı otobüs. Le Panier&#x27;in dar sokakları başka türlü gezilemez. Yürünecek ayakkabıyla gel.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Nerede Kalınır? Marseille Mahalleleri</h2>
             </div>
             <p class="section-intro">Marseille&#x27;nin mahalleleri birbirinden farklı. Vieux-Port&#x27;a yakın olmak pratik ama şehrin gerçekten yaşadığı yer her zaman orası değil.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Le Panier</span>
+                    <h3 class="card-title">Le Panier</h3>
                     <span class="card-badge badge-purple">En atmosferik</span>
                 </div>
                 <p class="card-desc">Şehrin en eski bölümü, Vieux-Port&#x27;un üzerinde. Dar sokaklar, sokak sanatı, Vieille Charité — 17. yüzyıldan kalma, şimdi sergi mekânı olarak kullanılan bir yardım evi. Sabahları sakin; 11:00&#x27;den sonra günübirlikçiler geliyor. Şehri görmek değil hissetmek istiyorsan konaklama için en iyi mahalle.</p>
-                <div class="card-footer-tip">En eski mahalle • Vieux-Port&#x27;a 10 dk • Sokak sanatı ve galeriler</div>
+                <div class="card-footer-tip">📍 En eski mahalle • Vieux-Port&#x27;a 10 dk • Sokak sanatı ve galeriler</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Vieux-Port / 1. arrondissement</span>
+                    <h3 class="card-title">Vieux-Port / 1. arrondissement</h3>
                     <span class="card-badge badge-purple">En merkezi</span>
                 </div>
                 <p class="card-desc">Eski limanın çevresinde. Her şey buradan başlıyor. Sabah balık pazarı, gün batımında aperitif terasları, rıhtımdan Château d&#x27;If&#x27;e feribot. Merkezi, pahalı ve geceleri gürültülü. MuCEM, Le Panier ve feribot terminaline yakın. Kısa konaklamalar için iyi.</p>
-                <div class="card-footer-tip">Château d&#x27;If feribotu • Balık pazarı kapıda • Geceleri gürültülü</div>
+                <div class="card-footer-tip">📍 Château d&#x27;If feribotu • Balık pazarı kapıda • Geceleri gürültülü</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Noailles / Notre-Dame du Mont</span>
+                    <h3 class="card-title">Noailles / Notre-Dame du Mont</h3>
                     <span class="card-badge badge-purple">En yerel</span>
                 </div>
                 <p class="card-desc">Noailles Marseille&#x27;in en çok kültürlü mahallesi — Cezayirli, Faslı, Komor, Ermeni topluluklar şehir büyük bir varış limanıyken buraya geldi ve kaldı. Pazar sokaklara taşıyor: baharatlar, zeytinler, ekmek, ucuz taze ürünler. Hemen üzerindeki Notre-Dame du Mont, genç Marsilyalıların gerçekten gittiği yer. Cours Julien kenarda — sokak sanatı, Çarşamba sabahı organik pazar.</p>
-                <div class="card-footer-tip">Marché de Noailles • Cours Julien yakını • Gerçek şehir hayatı</div>
+                <div class="card-footer-tip">📍 Marché de Noailles • Cours Julien yakını • Gerçek şehir hayatı</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Joliette / Euromed</span>
+                    <h3 class="card-title">Joliette / Euromed</h3>
                     <span class="card-badge badge-purple">En modern</span>
                 </div>
                 <p class="card-desc">MuCEM çevresindeki yenilenen liman bölgesi. Yeni oteller, Docks (19. yüzyıldan kalma depo, şimdi ofis ve restoranlar) ve MuCEM ile Fort Saint-Jean&#x27;a doğrudan erişim. Henüz tam anlamıyla bir mahalle değil — topluluktan çok altyapı. MuCEM ve liman bölgesi öncelikliyse iyi seçenek.</p>
-                <div class="card-footer-tip">MuCEM ve Fort Saint-Jean • Modern oteller • Vieux-Port&#x27;a 10 dk</div>
+                <div class="card-footer-tip">📍 MuCEM ve Fort Saint-Jean • Modern oteller • Vieux-Port&#x27;a 10 dk</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Prado / 8. arrondissement</span>
+                    <h3 class="card-title">Prado / 8. arrondissement</h3>
                     <span class="card-badge badge-purple">En sakin seçenek</span>
                 </div>
                 <p class="card-desc">Merkezin güneyinde, kıyı boyunca. Prado plajlarına, Parc Borély&#x27;e ve Calanques yolunun başlangıcına erişim. Daha yaşayan, daha Marsilyalı, daha az turistik. Merkeze metro veya otobüsle. Calanques ana hedefse doğru seçenek.</p>
-                <div class="card-footer-tip">Prado plajları • Parc Borély • Calanques erişimi</div>
+                <div class="card-footer-tip">📍 Prado plajları • Parc Borély • Calanques erişimi</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Marseille İçin En İyi Ziyaret Zamanı</h2>
             </div>
             <p class="section-intro">Marseille&#x27;de yılda 300 güneşli gün var. Mesele gidip gitmemek değil, kalabalıktan ne zaman kaçınacağını bilmek.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">İlkbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Nis – Haz</span>
+                        <h3 class="card-title">İlkbahar</h3>
+                        <span class="season-months">Nis – Haz</span>
                     </div>
                     <span class="card-badge badge-amber">Doğru Sezon</span>
                 </div>
                 <p class="card-desc">Mayıs ve Haziran en iyi aylar. Sıcaklık 20–25°C civarında, deniz ısınıyor, Calanques tam erişilebilir ve turist kalabalığı henüz gelmemiş. Vieux-Port sabah pazarı en canlı döneminde. Konaklama fiyatları Ağustos&#x27;tan yüzde 30–40 düşük. Mayıs&#x27;taki Marseille şehrin kendisi için tercih ettiği versiyonu.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Yaz</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Tem – Ağu</span>
+                        <h3 class="card-title">Yaz</h3>
+                        <span class="season-months">Tem – Ağu</span>
                     </div>
                     <span class="card-badge badge-amber">Sıcak ve Kalabalık</span>
                 </div>
                 <p class="card-desc">Temmuz ve Ağustos: güneyin tamamı burada. Vieux-Port restoranları fiyatlarını ikiye katlamış. Şehrin kendisi hâlâ Marseille — plajlar, pastis, geç akşam yemekleri — ama sabır gerektiriyor. Yazın gidiyorsan akşam Vieux-Port&#x27;tan uzaklaş ve iç mahallelerde ye. Mahalleler turistleri emiyor; liman ememiyor.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Sonbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Eyl – Kas</span>
+                        <h3 class="card-title">Sonbahar</h3>
+                        <span class="season-months">Eyl – Kas</span>
                     </div>
                     <span class="card-badge badge-amber">En İyi Saklanan Sır</span>
                 </div>
                 <p class="card-desc">Eylül ve Ekim: deniz en sıcak hâlinde (22–24°C), Calanques tam açık, kalabalık gitmiş ve şehir kendi ritmine dönmüş. Restoran fiyatları düşüyor. Otel bulunabilirliği açılıyor. Işık daha alçak ve altın tonlamalı. Ağustos için ayrılanlar geri dönüyor. Bu, Marsilyalıların gerçekten tercih ettiği şehir versiyonu — ve hemen hemen hiçbir ziyaretçi bilmiyor.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Kış</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Ara – Mar</span>
+                        <h3 class="card-title">Kış</h3>
+                        <span class="season-months">Ara – Mar</span>
                     </div>
                     <span class="card-badge badge-amber">Ilıman ve Gözden Kaçan</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🐟</span>
-                        <span class="card-title">Bouillabaisse — orijinal</span>
+                        <h3 class="card-title">Bouillabaisse — orijinal</h3>
                     </div>
                 </div>
                 <p class="card-desc">Bir çorba değil — bir yöntem. Belirli kaya balıkları (rascasse, grondin, Saint-Pierre, vive), safran, rezene ve zeytinyağı suyunda pişiriliyor, sonra iki aşamada ayrı tabaklar olarak servis ediliyor: önce rouille (sarımsak-safran mayonezi) sürülmüş kızarmış ekmek dilimlerine batırılarak içilen et suyu, sonra balıklar ayrıca. Bouillabaisse Şartnamesi gerekli balık türlerini tanımlıyor. Doğru yapılınca saatler alıyor ve fiyatı yüksek. Ucuz versiyonları balık çorbası. Bu ise mimari.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥜</span>
-                        <span class="card-title">Panisse — Marseille sokak yemeği</span>
+                        <h3 class="card-title">Panisse — Marseille sokak yemeği</h3>
                     </div>
                 </div>
                 <p class="card-desc">Dışı çıtır içi yumuşak, kızartılmış kalın nohut unu keki — çubuk veya yuvarlak olarak servis ediliyor. Cenevizli göçmenler getirdi, Marseille benimsedi ve kendi malı yaptı. Marché de Noailles&#x27;de ve şehrin sokak tezgâhlarında bulunuyor. Sıcak, ucuz ve göründüğünden iyi. L&#x27;Estaque&#x27;ta soğuk birayla versiyonu doğru siparişin ta kendisi.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🧄</span>
-                        <span class="card-title">Rouille — vazgeçilmez sos</span>
+                        <h3 class="card-title">Rouille — vazgeçilmez sos</h3>
                     </div>
                 </div>
                 <p class="card-desc">Sarımsak, safran ve zeytinyağından yapılan yoğun, parlak turuncu bir emülsiyon — aioli&#x27;den (sarımsaklı mayonez) daha keskin, mayonezden daha az narin. Bouillabaisse suyuna batırılan krutona sürülüyor. Aynı zamanda ızgara balık ve kızartılmış sebzeyle yeniyor. Rengi safrandan ve biberden geliyor; kuvveti sarımsaktan. Her Marseille restoranı kendi versiyonunu yapıyor. Kalitesi önemli ölçüde değişiyor.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍪</span>
-                        <span class="card-title">Navette — Saint-Victor&#x27;un bisküvisi</span>
+                        <h3 class="card-title">Navette — Saint-Victor&#x27;un bisküvisi</h3>
                     </div>
                 </div>
                 <p class="card-desc">Portakal çiçeği suyu aromalı, tekne biçimli kuru bir bisküvi — 1781&#x27;den bu yana Abbaye Saint-Victor yakınındaki Four des Navettes fırınında yapılıyor. Şekil, Meryem Magdalena ve ilk Hristiyanları Provence&#x27;a taşıdığı söylenen küçük teknelere gönderme yapıyor. Fırında yıl boyu satılıyor. Sert ve kuru — kahveye veya pastis&#x27;e bandırılmak için yapılmış. Bir atıştırmalık değil; bir gelenek.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🫒</span>
-                        <span class="card-title">Tapenade ve anchoïade — Provence&#x27;ın temelleri</span>
+                        <h3 class="card-title">Tapenade ve anchoïade — Provence&#x27;ın temelleri</h3>
                     </div>
                 </div>
                 <p class="card-desc">Tapenade: siyah zeytin, kapari, hamsi ve zeytinyağı ezilerek yapılan bir ezmedir — adı Provençal dilinde kapari anlamına gelen &#x27;tapeno&#x27;dan geliyor. Anchoïade: daha kaba ve daha keskin, hamsi ve sarımsaktan yapılmış bir ezme. İkisi de ekmeğe sürülüyor, yemeklerden önce servis ediliyor, şehrin her kafesinde masaya geliyor. Marseille Provence&#x27;ın kıyısında oturuyor; bu lezzetler uzun süredir var.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">☕</span>
-                        <span class="card-title">Barda kahve — gerçek Marseille ritmi</span>
+                        <h3 class="card-title">Barda kahve — gerçek Marseille ritmi</h3>
                     </div>
                 </div>
                 <p class="card-desc">Barda dur. Bir petit café (küçük siyah kahve) söyle. Öde ve on dakika içinde ayrıl. Vieux-Port kafelerinde masada oturmanın fiyatı barda durmaktan belirgin biçimde yüksek — yerliler doğrudan tezgâha gider. Noailles pazarında bir sabah, bir tezgâhta kahve, mahallenin açılışını izlemek: şehrin en dürüst versiyonu bu. Bir Euro&#x27;dan az tutuyor ve Marseille&#x27;de başka hiçbir şey sana bunu anlatmaz.</p>
@@ -812,76 +957,52 @@
             </div>
             <p class="section-intro">Marseille liman ve bazilika ile tanınıyor. İkisi de değer. Ama şehrin çoğu ziyaretçinin hiç ulaşamadığı ikinci bir katmanı var.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Vallon des Auffes</span>
-                    <span class="card-badge badge-emerald">Bir yol köprüsünün altına gizlenmiş küçük balıkçı koyu — Vieux-Port&#x27;tan 15 dakika</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Bir yol köprüsünün altına gizlenmiş küçük balıkçı koyu — Vieux-Port&#x27;tan 15 dakika</span>
                 </div>
+                <h3 class="card-title">Vallon des Auffes</h3>
                 <p class="card-desc">Corniche&#x27;i taşıyan viyadüğün altından geçilerek ulaşılan küçük bir koy. Bir düzine renkli balıkçı teknesi, kayalara oyulmuş bir avuç ev, iki üç balık restoranı. Balıkçılar hâlâ orada — gösteri için değil. Yazın yerel halk gün batımında ellerinde şişeyle kayaların üzerine oturuyor. 83 numaralı otobüs tam üstten geçiyor; otobüs penceresinden aşağıya bak ve neden inmen gerektiğini anlayacaksın. Ücretsiz, her zaman açık.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">L&#x27;Estaque</span>
-                    <span class="card-badge badge-emerald">Cézanne ve Braque&#x27;ın çalıştığı, hiçbir rehberin yönlendirmediği köy</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Cézanne ve Braque&#x27;ın çalıştığı, hiçbir rehberin yönlendirmediği köy</span>
                 </div>
+                <h3 class="card-title">L&#x27;Estaque</h3>
                 <p class="card-desc">Merkezin 10 kilometre kuzeyinde, körfezin kıyısında. Cézanne 1870&#x27;ten 1882&#x27;ye kadar defalarca buraya geldi; Braque, Dufy ve Derain da aynı yolu izledi. Körfez ve fabrika bacaları, Kübizm&#x27;in temelini oluşturan onlarca eserde göründü. Köyde bugün küçük bir plaj, birkaç balıkçı restoranı ve neredeyse hiç ziyaretçi yok. Joliette metrosundan 35 numaralı otobüsle 25 dakika. Chichi frégi (liman yakınında tezgâhlardan satılan kızarmış hamur) yerel atıştırmalık. Hafta içi git.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">La Vieille Charité — Le Panier</span>
-                    <span class="card-badge badge-emerald">17. yüzyıldan kalma yardım evi, şehrin en güzel kültür mekânına dönüşmüş</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ 17. yüzyıldan kalma yardım evi, şehrin en güzel kültür mekânına dönüşmüş</span>
                 </div>
+                <h3 class="card-title">La Vieille Charité — Le Panier</h3>
                 <p class="card-desc">1671 ile 1749 arasında, Marseille&#x27;in en önemli Barok mimarı Pierre Puget tarafından, yoksullar için barınak olarak inşa edildi. Üç kat kemerli galeri, ortada küçük kubbeli bir şapel. Şimdi Akdeniz Arkeolojisi Müzesi ile Afrika, Okyanusya ve Amerika Sanatı Müzesi&#x27;ne ev sahipliği yapıyor. Mimari tek başına Le Panier&#x27;e tırmanışı haklı kılıyor. Avluya giriş ücretsiz; müzeler biletli.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">La Friche la Belle de Mai</span>
-                    <span class="card-badge badge-emerald">Turistlerin henüz bulmadığı çatı barıyla eski tütün fabrikası</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Turistlerin henüz bulmadığı çatı barıyla eski tütün fabrikası</span>
                 </div>
+                <h3 class="card-title">La Friche la Belle de Mai</h3>
                 <p class="card-desc">Belle de Mai mahallesinde, merkezden yürüyerek 15 dakika uzakta, 45.000 m²&#x27;lik eski bir SEITA tütün fabrikası. Kültür kompleksine dönüştürülmüş: sanatçı stüdyoları, gösteri salonları, sinema, sergi alanları, ortak bahçeler ve şehir manzaralı çatı terası. Çatı barı yazın açık — içecek, şehir manzarası, turist altyapısı yok. Standart güzergâhta değil çünkü liman bölgesini gerçekten terk etmeyi gerektiriyor. Réformés-Canebière&#x27;den 49 numaralı otobüsle.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Cathédrale de la Major</span>
-                    <span class="card-badge badge-emerald">Notre-Dame de Paris&#x27;ten büyük katedral — kimsenin girmediği</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Notre-Dame de Paris&#x27;ten büyük katedral — kimsenin girmediği</span>
                 </div>
+                <h3 class="card-title">Cathédrale de la Major</h3>
                 <p class="card-desc">Fransa&#x27;nın en büyük kiliselerinden biri. 19. yüzyılın ikinci yarısında dönüşümlü yeşil ve beyaz taşla çizgili Romanesk-Bizans üslubunda inşa edilmiş — içeride altın mozaikler, yükselen kubbeler. MuCEM&#x27;in tam yanında duruyor ve ziyaretçilerin büyük çoğunluğu müzeye geçmek için önünden geçiyor. Giriş ücretsiz. İçerisi karanlık, serin ve neredeyse tamamen boş. Hemen dışarıdaki kalabalıkla yarattığı tezat mutlak.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Calanque de Sormiou</span>
-                    <span class="card-badge badge-emerald">Calanques tur teknelerinin atladığı koy</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Calanques tur teknelerinin atladığı koy</span>
                 </div>
+                <h3 class="card-title">Calanque de Sormiou</h3>
                 <p class="card-desc">Şehre en yakın ve en erişilebilir kalanques — B1 otobüsü Castellane metrosundan doğrudan yürüyüş başlangıcına gidiyor. Beyaz kireçtaşı kayalıklarla çevrili turkuaz bir koya 30 dakika yürüyüş. Yazın araçla erişim kısıtlı; ilkbahar ve sonbaharda patika neredeyse boş. Aşağıda küçük mevsimlik bir restoran var. Su beş metre derinlikte dip görünecek kadar berrak. Ücretsiz.</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Cours Julien</span>
-                    <span class="card-badge badge-emerald">Marsilyalıların takıldığı bohem meydan</span>
-                </div>
-                <p class="card-desc">Vieux-Port&#x27;tan 15 dakika yürüyüş. Sokak sanatı, bağımsız kafeler, plak dükkanları, vintage mağazalar ve Fransa&#x27;nın en büyük açık hava sokak sanatı alanlarından biri. Çarşamba sabahları Place Jean Jaurès&#x27;de organik üretici pazarı kuruluyor — otuz kadar yerel çiftçi, Provence&#x27;tan taze ürünler. Akşamları barlar dolup taşıyor, kalabalık tamamen yerel. Vieux-Port&#x27;un yarı fiyatına yemek, iki katı atmosfer. Ücretsiz gezmek için, yemek için, oturmak için.</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Palais Longchamp</span>
-                    <span class="card-badge badge-emerald">İki müze, muhteşem bahçe — neredeyse hiç turist</span>
-                </div>
-                <p class="card-desc">1869&#x27;da şehre su getiren kanalı kutlamak için inşa edilmiş — su deposunun üstüne yapılmış bir saray. Orta kısımda büyük bir şelale ve heykel grubu, iki kanatta Güzel Sanatlar Müzesi ve Doğa Tarihi Müzesi. Arkasında geniş bir park: piknik alanları, oyun bahçeleri, gölge ağaçlar. Tramvay T2 ile Longchamp durağından 3 dakika. Bahçe ve dış alan her zaman ücretsiz; müzeler biletli, her ayın ilk Pazarı ücretsiz.</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Notre-Dame de la Garde — La Bonne Mère</span>
-                    <span class="card-badge badge-emerald">Şehrin tepesinden 360 derece — yokuşa değer</span>
-                </div>
-                <p class="card-desc">Marseille&#x27;nin en yüksek noktasında, 162 metre yükseklikte. Yokuşlu patikadan 30–40 dakika yürüyüş ya da Hôtel de Ville&#x27;den 60 numaralı otobüsle. Tepeden şehrin tamamı, Vieux-Port, adalar ve açık deniz görünüyor. İçeride: duvarlara asılı yüzlerce adak levhası (ex-voto) — gemicilerin, annelerin, hayatta kalanların bıraktığı. Bazilika 19. yüzyıldan kalma, Bizans-Romanesk karışımı. Giriş ücretsiz. Alacakaranlıkta git — ışık o saatte bambaşka.</p>
             </div>
             </div>
             

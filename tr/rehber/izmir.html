@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">İzmir Şehir İçi Ulaşım & Transfer</h2>
             </div>
             <p class="section-intro">Havalimanından merkeze İZBAN banliyö treni bağlanır; şehir içinde tramvay hatları, metro ve körfezi süsleyen vapurlar son derece keyifli bir ağ oluşturur.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚆</span>
-                        <span class="card-title">Havalimanı &amp; İZBAN hattı</span>
+                        <h3 class="card-title">Havalimanı &amp; İZBAN hattı</h3>
                     </div>
                 </div>
                 <p class="card-desc">Adnan Menderes Havalimanı terminalinden doğrudan İZBAN trenine binerek Alsancak, Karşıyaka ve Menemen yönlerine kesintisiz ulaşabilirsiniz.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚢</span>
-                        <span class="card-title">Körfez Vapurları</span>
+                        <h3 class="card-title">Körfez Vapurları</h3>
                     </div>
                 </div>
                 <p class="card-desc">Konak, Alsancak, Pasaport, Karşıyaka ve Bostanlı iskeleleri arasında çalışan nostaljik vapurlar, şehri denizden yaşamanın en keyifli yoludur.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚋</span>
-                        <span class="card-title">Konak ve Karşıyaka Tramvayları</span>
+                        <h3 class="card-title">Konak ve Karşıyaka Tramvayları</h3>
                     </div>
                 </div>
                 <p class="card-desc">Sahil boyunca uzanan modern tramvay hatları, Fahrettin Altay&#x27;dan Alsancak ve Halkapınar&#x27;a kadar panoramik sahil manzarası sunar.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">Kordon ve Sevgi Yolu yürüyüşü</span>
+                        <h3 class="card-title">Kordon ve Sevgi Yolu yürüyüşü</h3>
                     </div>
                 </div>
                 <p class="card-desc">Alsancak, Kordon boyu ve Konak Meydanı yaya dostudur; geniş yürüyüş yolları ve bisiklet kiralama istasyonları (BİSİM) mevcuttur.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚇</span>
-                        <span class="card-title">İzmir Metrosu</span>
+                        <h3 class="card-title">İzmir Metrosu</h3>
                     </div>
                 </div>
                 <p class="card-desc">Bornova Ege Üniversitesi&#x27;nden Konak, Üçyol ve Fahrettin Altay&#x27;a kadar uzanan metro hattı şehrin doğu-batı omurgasını oluşturur.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Nerede Kalınır? İzmir Mahalleleri</h2>
             </div>
             <p class="section-intro">Kordon&#x27;un deniz manzarası mı, Kemeraltı&#x27;nın tarihi otelleri mi, yoksa Karşıyaka&#x27;nın huzurlu sahil dokusu mu?</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Alsancak &amp; Kordon</span>
+                    <h3 class="card-title">Alsancak &amp; Kordon</h3>
                     <span class="card-badge badge-purple">Merkezi &amp; Canlı</span>
                 </div>
                 <p class="card-desc">Kafeler, publar, seçkin butikler ve gün batımı manzarasıyla ilk kez gelenler için en ideal, en hareketli bölge.</p>
-                <div class="card-footer-tip">Kordon çimleri • Canlı akşamlar • Yürünebilir</div>
+                <div class="card-footer-tip">📍 Kordon çimleri • Canlı akşamlar • Yürünebilir</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Konak &amp; Çankaya</span>
+                    <h3 class="card-title">Konak &amp; Çankaya</h3>
                     <span class="card-badge badge-purple">Tarih &amp; Alışveriş</span>
                 </div>
                 <p class="card-desc">Tarihi Saat Kulesi, Kemeraltı Çarşısı ve metro istasyonlarına adım mesafesinde, zengin ulaşım seçenekleri sunan merkezi bölge.</p>
-                <div class="card-footer-tip">Saat Kulesi • Kemeraltı • Metro kesişimi</div>
+                <div class="card-footer-tip">📍 Saat Kulesi • Kemeraltı • Metro kesişimi</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Karşıyaka &amp; Bostanlı</span>
+                    <h3 class="card-title">Karşıyaka &amp; Bostanlı</h3>
                     <span class="card-badge badge-purple">Lokal &amp; Sahil</span>
                 </div>
                 <p class="card-desc">Körfezin kuzey yakasında nezih, sakin, modern restoranlar ve ünlü Bostanlı gün batımı seyir terasıyla çevrili sahil semti.</p>
-                <div class="card-footer-tip">Bostanlı terası • Huzurlu sahil • Vapur iskelesi</div>
+                <div class="card-footer-tip">📍 Bostanlı terası • Huzurlu sahil • Vapur iskelesi</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Bornova</span>
+                    <h3 class="card-title">Bornova</h3>
                     <span class="card-badge badge-purple">Genç &amp; Kültür</span>
                 </div>
                 <p class="card-desc">Ege Üniversitesi kampüsü, tarihi levanten köşkleri, küçük parkları ve genç nüfusuyla enerjik ve uygun fiyatlı atmosfer.</p>
-                <div class="card-footer-tip">Levanten köşkleri • Öğrenci kafeleri • Metroya yakın</div>
+                <div class="card-footer-tip">📍 Levanten köşkleri • Öğrenci kafeleri • Metroya yakın</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Urla &amp; Çeşme Yarımadası</span>
+                    <h3 class="card-title">Urla &amp; Çeşme Yarımadası</h3>
                     <span class="card-badge badge-purple">Gastronomi &amp; Doğa</span>
                 </div>
                 <p class="card-desc">Şehir merkezine 35 dakika mesafede, bağ rotaları, taş butik oteller, Michelin yıldızlı zeytinyağlı restoranları ve sakin koylar.</p>
-                <div class="card-footer-tip">Bağ yolu • Butik taş oteller • Michelin restoranları</div>
+                <div class="card-footer-tip">📍 Bağ yolu • Butik taş oteller • Michelin restoranları</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">İzmir İçin En İyi Ziyaret Zamanı</h2>
             </div>
             <p class="section-intro">Akdeniz ikliminin hüküm sürdüğü İzmir&#x27;de bahar ayları ve sonbahar gün batımları paha biçilmezdir.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">İlkbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Nis – Haz</span>
+                        <h3 class="card-title">İlkbahar</h3>
+                        <span class="season-months">Nis – Haz</span>
                     </div>
                     <span class="card-badge badge-amber">Çiçek Açan Ege</span>
                 </div>
                 <p class="card-desc">Körfez meltemi eşliğinde sokak festivalleri, enginar hasadı ve tarihi ören yerlerinde huzurlu geziler için ideal dönem.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Sonbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Eyl – Kas</span>
+                        <h3 class="card-title">Sonbahar</h3>
+                        <span class="season-months">Eyl – Kas</span>
                     </div>
                     <span class="card-badge badge-amber">Altın Gün Batımları</span>
                 </div>
                 <p class="card-desc">Yazın kavurucu sıcakları yerini tatlı bir ılıklığa bırakır; Kordon çimlerinde akşam sohbetleri ve Efes antik kenti turları için en güzel mevsimdir.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Yaz</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Tem – Ağu</span>
+                        <h3 class="card-title">Yaz</h3>
+                        <span class="season-months">Tem – Ağu</span>
                     </div>
                     <span class="card-badge badge-amber">Canlı Ege Akşamları</span>
                 </div>
                 <p class="card-desc">Gündüzleri deniz ve plaj kaçamakları, akşamları ise Kordon ve Bostanlı boyunca cıvıl cıvıl teraslar ve açık hava konserleri.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Kış</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Ara – Şub</span>
+                        <h3 class="card-title">Kış</h3>
+                        <span class="season-months">Ara – Şub</span>
                     </div>
                     <span class="card-badge badge-amber">Ilıman Ege Kışı</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥐</span>
-                        <span class="card-title">Sıcak Boyoz &amp; Fırın Yumurta</span>
+                        <h3 class="card-title">Sıcak Boyoz &amp; Fırın Yumurta</h3>
                     </div>
                 </div>
                 <p class="card-desc">Taş fırından yeni çıkmış çıtır çıtır kat kat boyoz ve yanında saatlerce fırınlanıp kabuğu karamelize olmuş haşlanmış yumurta.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥖</span>
-                        <span class="card-title">Hakiki Çeşme Kumrusu</span>
+                        <h3 class="card-title">Hakiki Çeşme Kumrusu</h3>
                     </div>
                 </div>
                 <p class="card-desc">Nohut mayalı özel gevrek ekmek arasında kömür ateşinde pişen sucuk, salam, kaşar peyniri ve domates dilimleriyle sıcak şölen.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥨</span>
-                        <span class="card-title">Pekmezli İzmir Gevreği</span>
+                        <h3 class="card-title">Pekmezli İzmir Gevreği</h3>
                     </div>
                 </div>
                 <p class="card-desc">Kaynar pekmez kazanında ön pişirme yapılıp bol susamla taş fırında kavrulan çıtır simit; tulum peyniriyle sokak klasiği.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍰</span>
-                        <span class="card-title">Kemeraltı Şambali Tatlısı</span>
+                        <h3 class="card-title">Kemeraltı Şambali Tatlısı</h3>
                     </div>
                 </div>
                 <p class="card-desc">İrmik, yoğurt ve şerbetle tepside pişen, üzeri bademli, arasına kaymak konularak servis edilen tarihi sokak tatlısı.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍲</span>
-                        <span class="card-title">Zeytinyağlı Ege Otları &amp; Enginar</span>
+                        <h3 class="card-title">Zeytinyağlı Ege Otları &amp; Enginar</h3>
                     </div>
                 </div>
                 <p class="card-desc">Şevketi bostan, radika, cibez ve taze bakla; tarladan sofraya sızma zeytinyağı ve limon sosuyla Ege sağlığı.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🐟</span>
-                        <span class="card-title">Kordon Balık &amp; Deniz Mezesi</span>
+                        <h3 class="card-title">Kordon Balık &amp; Deniz Mezesi</h3>
                     </div>
                 </div>
                 <p class="card-desc">Kordon boyunda körfeze karşı deniz börülcesi, fava, ahtapot ızgara ve taze çipura veya levrek ziyafeti.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Klasik durakların ötesinde, İzmir&#x27;in geçmişini ve bohem enerjisini fısıldayan altı özel köşe.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Tarihi Asansör &amp; Dario Moreno Sokağı</span>
-                    <span class="card-badge badge-emerald">Tarihi Manzara Asansörü</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Tarihi Manzara Asansörü</span>
                 </div>
+                <h3 class="card-title">Tarihi Asansör &amp; Dario Moreno Sokağı</h3>
                 <p class="card-desc">1907 yılında iki cadde arasındaki dik yokuşu bağlamak için yapılan kule; tepesindeki seyir terası körfezin en büyüleyici manzarasını sunar.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Kızlarağası Hanı Çay Avlusu</span>
-                    <span class="card-badge badge-emerald">Közde Kahve Cenneti</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Közde Kahve Cenneti</span>
                 </div>
+                <h3 class="card-title">Kızlarağası Hanı Çay Avlusu</h3>
                 <p class="card-desc">1744 yapımı Osmanlı hanı içinde fincanda mangal kömüründe pişen köpüklü kahve ve antikacılar çarşısı.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Smyrna Agorası ve Su Kanalları</span>
-                    <span class="card-badge badge-emerald">Antik Çağ Kalıntısı</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Antik Çağ Kalıntısı</span>
                 </div>
+                <h3 class="card-title">Smyrna Agorası ve Su Kanalları</h3>
                 <p class="card-desc">Roma İmparatoru Marcus Aurelius döneminden kalan devasa bazilika ve altından hâlâ berrak suların aktığı iki bin yıllık su kanalları.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Arkas Sanat Merkezi</span>
-                    <span class="card-badge badge-emerald">Kültür Sanat Vahası</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Kültür Sanat Vahası</span>
                 </div>
+                <h3 class="card-title">Arkas Sanat Merkezi</h3>
                 <p class="card-desc">Kordon üzerindeki tarihi Fransız Konsolosluğu binasında yer alan, uluslararası resim ve heykel sergilerine ev sahipliği yapan zarif müze.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Bostanlı Gün Batımı Seyir Terası</span>
-                    <span class="card-badge badge-emerald">Ahşap Seyir Balkonu</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Ahşap Seyir Balkonu</span>
                 </div>
+                <h3 class="card-title">Bostanlı Gün Batımı Seyir Terası</h3>
                 <p class="card-desc">Karşıyaka sahilinde dalgaların üstüne uzanan kademeli ahşap teras; akşamları gençlerin müzik yaptığı ve güneşi batırdığı büyüleyici nokta.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Bornova Levanten Köşkleri</span>
-                    <span class="card-badge badge-emerald">Levanten Mirası</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Levanten Mirası</span>
                 </div>
+                <h3 class="card-title">Bornova Levanten Köşkleri</h3>
                 <p class="card-desc">19. yüzyılda Ege ticaretini yöneten Levanten ailelerin görkemli bahçeli malikaneleri, taş kütüphaneleri ve nostaljik sokakları.</p>
             </div>
             </div>

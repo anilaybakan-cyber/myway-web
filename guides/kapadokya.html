@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Cappadocia Public Transit & Airport Transfers</h2>
             </div>
             <p class="section-intro">Two airports feed the region; minibuses link the towns, but the freedom of the valleys lives behind a steering wheel or in a tour van.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Arriving from the airports</span>
+                        <h3 class="card-title">Arriving from the airports</h3>
                     </div>
                 </div>
                 <p class="card-desc">Nevsehir (NAV) is 40 minutes away, Kayseri (ASR) an hour: shared shuttle transfers run from both to the hotels. Book the transfer with your flight — for late-night arrivals it&#x27;s the only option.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚐</span>
-                        <span class="card-title">Town-to-town minibuses</span>
+                        <h3 class="card-title">Town-to-town minibuses</h3>
                     </div>
                 </div>
                 <p class="card-desc">Minibuses circle between Goreme, Uchisar, Urgup and Avanos all day: cheap and practical. Evening services end early — plan your after-sunset return in advance.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚗</span>
-                        <span class="card-title">Rental car and scooter</span>
+                        <h3 class="card-title">Rental car and scooter</h3>
                     </div>
                 </div>
                 <p class="card-desc">The freest option for valley trailheads, underground cities and far points like Ihlara: roads are quiet, parking is easy. Scooter and ATV rental is everywhere in Goreme — come prepared for dust and sun.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚌</span>
-                        <span class="card-title">The color-coded tours</span>
+                        <h3 class="card-title">The color-coded tours</h3>
                     </div>
                 </div>
                 <p class="card-desc">The Green Tour covers Ihlara and Derinkuyu, the Red Tour circles Goreme&#x27;s surroundings: a tidy solution if you have no car. Small-group tours include lunch — a guide&#x27;s geology stories double the scenery.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥾</span>
-                        <span class="card-title">Valley trails</span>
+                        <h3 class="card-title">Valley trails</h3>
                     </div>
                 </div>
                 <p class="card-desc">The Rose Valley, Kizilcukur, Love Valley and Pigeon Valley trails start on foot from the towns: waymarks fade in places, so download an offline map. Early morning or the cool of late afternoon is hiking&#x27;s golden hour.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Where to Stay in Cappadocia: Best Areas</h2>
             </div>
             <p class="section-intro">In Cappadocia choosing a hotel means choosing a town: balloon-view Goreme, castle-view Uchisar, vineyard-cellared Urgup, mansion-lined Mustafapasa.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Goreme</span>
+                    <h3 class="card-title">Goreme</h3>
                     <span class="card-badge badge-purple">Balloon views</span>
                 </div>
                 <p class="card-desc">The town directly beneath the balloons: cave-hotel terraces open onto the world&#x27;s most famous sunrise. The widest choice of restaurants and tours — central, but lively in season.</p>
-                <div class="card-footer-tip">Terrace views • Cave hotels • Close to everything</div>
+                <div class="card-footer-tip">📍 Terrace views • Cave hotels • Close to everything</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Uchisar</span>
+                    <h3 class="card-title">Uchisar</h3>
                     <span class="card-badge badge-purple">Best views</span>
                 </div>
                 <p class="card-desc">At the foot of the castle rock, the region&#x27;s highest point: stone mansion hotels look down over the valleys. Five minutes to Goreme, one notch quieter — the town for view devotees.</p>
-                <div class="card-footer-tip">Castle views • Stone mansions • Quiet evenings</div>
+                <div class="card-footer-tip">📍 Castle views • Stone mansions • Quiet evenings</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Urgup</span>
+                    <h3 class="card-title">Urgup</h3>
                     <span class="card-badge badge-purple">Vines and wine</span>
                 </div>
                 <p class="card-desc">A settled town of wine cellars and stone mansions: its restaurant scene is the region&#x27;s most ambitious. Close to the balloon launch fields by car — a balanced base for lovers of town life.</p>
-                <div class="card-footer-tip">Wine cellars • Fine restaurants • Town life</div>
+                <div class="card-footer-tip">📍 Wine cellars • Fine restaurants • Town life</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Ortahisar</span>
+                    <h3 class="card-title">Ortahisar</h3>
                     <span class="card-badge badge-purple">Local rhythm</span>
                 </div>
                 <p class="card-desc">A town around its castle rock that still lives by farming: lemon storage caves, old stone lanes, coffeehouses far from the tourist eye. For those who want Cappadocia&#x27;s everyday face.</p>
-                <div class="card-footer-tip">Castle rock • Local coffeehouse • Quiet lanes</div>
+                <div class="card-footer-tip">📍 Castle rock • Local coffeehouse • Quiet lanes</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Mustafapasa</span>
+                    <h3 class="card-title">Mustafapasa</h3>
                     <span class="card-badge badge-purple">Greek mansions</span>
                 </div>
                 <p class="card-desc">Formerly Sinasos: a town like an open-air museum with carved Greek mansions, churches and a silent square. Away from the crowds, high on elegance — they call it a second-visit town; come on your first.</p>
-                <div class="card-footer-tip">Carved mansions • Silent square • Fine stonework</div>
+                <div class="card-footer-tip">📍 Carved mansions • Silent square • Fine stonework</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Best Time to Visit Cappadocia</h2>
             </div>
             <p class="section-intro">Cappadocia flies in all four seasons; spring and autumn are the golden balance, and a snow-covered fairy chimney in winter is a different fairytale altogether.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Spring</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Apr – Jun</span>
+                        <h3 class="card-title">Spring</h3>
+                        <span class="season-months">Apr – Jun</span>
                     </div>
                     <span class="card-badge badge-amber">Green of the Valleys</span>
                 </div>
                 <p class="card-desc">The valleys turn green, apricot trees blossom, and the hiking trails live their finest season. Flying weather is good, the crowds are thinner than summer — the season of photographers and hikers.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Summer</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Jul – Aug</span>
+                        <h3 class="card-title">Summer</h3>
+                        <span class="season-months">Jul – Aug</span>
                     </div>
                     <span class="card-badge badge-amber">Long Days</span>
                 </div>
                 <p class="card-desc">Days are long, the flight calendar is full, evenings are terrace dinners. The midday sun is harsh in the valleys — build your program around morning and late afternoon, and leave noon to the coolness of your cave hotel. The night sky is a star map.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Autumn</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Sep – Nov</span>
+                        <h3 class="card-title">Autumn</h3>
+                        <span class="season-months">Sep – Nov</span>
                     </div>
                     <span class="card-badge badge-amber">Harvest Light</span>
                 </div>
                 <p class="card-desc">The grape harvest begins in September, the valleys turn gold, and the light works in photography&#x27;s service. The weather is balanced and the flight rate high — this is Cappadocia&#x27;s most mature season.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Winter</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Dec – Mar</span>
+                        <h3 class="card-title">Winter</h3>
+                        <span class="season-months">Dec – Mar</span>
                     </div>
                     <span class="card-badge badge-amber">Snowy Fairy Chimneys</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🏺</span>
-                        <span class="card-title">Testi kebab</span>
+                        <h3 class="card-title">Testi kebab</h3>
                     </div>
                 </div>
                 <p class="card-desc">Meat sealed in a clay jug and cooked for hours over embers: the jug is cracked at your table and the steam rises. A true testi house seals the jug to order — ask when you walk in, because a good testi cannot be rushed.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍲</span>
-                        <span class="card-title">Tandoor soups and beans</span>
+                        <h3 class="card-title">Tandoor soups and beans</h3>
                     </div>
                 </div>
                 <p class="card-desc">Dishes that cook overnight in an earthen oven are this kitchen&#x27;s foundation: tandoor white beans, wedding soup with lentils. The most honest answer to a cold valley evening — look for a village lokanta.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍇</span>
-                        <span class="card-title">Emir grape wines</span>
+                        <h3 class="card-title">Emir grape wines</h3>
                     </div>
                 </div>
                 <p class="card-desc">Emir, the native white grape of the volcanic soil, is the signature of these vineyards: mineral, fresh, made to be drunk in a stone cellar. Do a tasting in the cellars of Urgup and around — ask for a local cheese plate alongside.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥟</span>
-                        <span class="card-title">Manti with pastirma</span>
+                        <h3 class="card-title">Manti with pastirma</h3>
                     </div>
                 </div>
                 <p class="card-desc">Neighboring Kayseri&#x27;s heritage is honored at this table: tiny dumplings lined up on the spoon, with a plate of pastirma and sucuk beside. The &#x27;forty manti to a spoon&#x27; claim is taken seriously around here.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥞</span>
-                        <span class="card-title">Village breakfast and gozleme</span>
+                        <h3 class="card-title">Village breakfast and gozleme</h3>
                     </div>
                 </div>
                 <p class="card-desc">A vineyard-house breakfast: village cheese, apricot jam, tandoor bread and gozleme off the griddle. The long breakfast after a balloon morning is this land&#x27;s reward system.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🎃</span>
-                        <span class="card-title">Pumpkin seeds and apricot sweets</span>
+                        <h3 class="card-title">Pumpkin seeds and apricot sweets</h3>
                     </div>
                 </div>
                 <p class="card-desc">Nevsehir is the capital of the pumpkin seed: the crackling snack of every table. For dessert, candied pumpkin comes with tahini and dried apricots with walnuts — the earth&#x27;s sweet summary.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Everyone sees the Goreme Open Air Museum; these six are the tale&#x27;s less-read pages.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Kizilcukur (Red Valley)</span>
-                    <span class="card-badge badge-emerald">Sunset valley</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Sunset valley</span>
                 </div>
+                <h3 class="card-title">Kizilcukur (Red Valley)</h3>
                 <p class="card-desc">Named for red cliffs that blaze in the setting sun: the trail winds through vineyards and hides rock churches with grape-vine frescoes. Enter an hour before sunset — the valley slowly turns to embers.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Cavusin</span>
-                    <span class="card-badge badge-emerald">Rock-church village</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Rock-church village</span>
                 </div>
+                <h3 class="card-title">Cavusin</h3>
                 <p class="card-desc">A quiet settlement between Goreme and Avanos, at the foot of an abandoned cliff village: the Church of St. John the Baptist carved into the basalt face is among the region&#x27;s oldest. Tour buses stop for five minutes — you go slow.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Mustafapasa (Sinasos)</span>
-                    <span class="card-badge badge-emerald">Greek mansion town</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Greek mansion town</span>
                 </div>
+                <h3 class="card-title">Mustafapasa (Sinasos)</h3>
                 <p class="card-desc">An old Greek town of carved stone mansions, frescoed churches and a silent square: the finest stonework hides in the door lintels. One coffeehouse break is enough to tell you this place&#x27;s soul.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Ihlara Valley</span>
-                    <span class="card-badge badge-emerald">Canyon monasteries</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Canyon monasteries</span>
                 </div>
+                <h3 class="card-title">Ihlara Valley</h3>
                 <p class="card-desc">A lush green canyon a hundred meters deep: the trail along the Melendiz stream is full of frescoed rock churches with running water for a soundtrack. The exact opposite of Cappadocia&#x27;s arid image — cool, watered, green.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Ortahisar</span>
-                    <span class="card-badge badge-emerald">Shadow of the castle rock</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Shadow of the castle rock</span>
                 </div>
+                <h3 class="card-title">Ortahisar</h3>
                 <p class="card-desc">A town at the foot of a giant castle rock that still lives by farming: lemon storage caves carved into the rock, old stone lanes, a local coffeehouse on the square. This is everyday Cappadocia behind the tourist showcase.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Avanos workshops</span>
-                    <span class="card-badge badge-emerald">The potter&#x27;s river</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ The potter&#x27;s river</span>
                 </div>
+                <h3 class="card-title">Avanos workshops</h3>
                 <p class="card-desc">The red clay of the Kizilirmak river has been shaped here for millennia: Hittite forms still spin on the master&#x27;s kick wheel. Sit at the wheel yourself — the clay collapses in your hands, the master smiles, and the second try is always better.</p>
             </div>
             </div>

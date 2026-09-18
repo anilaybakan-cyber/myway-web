@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Philadelphia Şehir İçi Ulaşım & Transfer</h2>
             </div>
             <p class="section-intro">Philly kompakt ve yürünebilirdir: tarihi bölge yayadır, SEPTA metrosu ve otobüsleri kalanı bağlar, Indego bisikletleri araları doldurur.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Havalimanından geliş</span>
+                        <h3 class="card-title">Havalimanından geliş</h3>
                     </div>
                 </div>
                 <p class="card-desc">PHL&#x27;den SEPTA Airport Line treni Center City&#x27;ye 25 dakikada bağlar: ucuz ve dertsiz. Uygulama araçları trafiğe göre 20-40 dakikadır — tren çoğu saatte kazanır.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">Yürünebilir çekirdek</span>
+                        <h3 class="card-title">Yürünebilir çekirdek</h3>
                     </div>
                 </div>
                 <p class="card-desc">Old City&#x27;den Rittenhouse&#x27;a, City Hall&#x27;dan güney mahallelerine Center City yürüyerek gezilir: ızgara plan kaybolmayı zorlaştırır. Tarihi bölge tamamen yayadır — rahat ayakkabı, tuğla kaldırımın dostudur.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚇</span>
-                        <span class="card-title">SEPTA metro ve otobüsler</span>
+                        <h3 class="card-title">SEPTA metro ve otobüsler</h3>
                     </div>
                 </div>
                 <p class="card-desc">İki metro hattı (turuncu kuzey-güney, mavi doğu-batı) turistin işini görür: stadyumlara ve müze bölgesine pratik. Key kart ya da temassız ödeme — Fishtown için mavi hat + yürüyüş formülü işler.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚲</span>
-                        <span class="card-title">Indego bisikletleri</span>
+                        <h3 class="card-title">Indego bisikletleri</h3>
                     </div>
                 </div>
                 <p class="card-desc">Paylaşımlı bisiklet istasyonları merkezde yaygındır: Schuylkill nehir yolu, müzeden Boathouse Row&#x27;a düz ve manzaralı pedal sunar. Nehir kıyısı, Philly&#x27;nin en sakin ulaşım hattıdır.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🌉</span>
-                        <span class="card-title">Nehirler arası geçişler</span>
+                        <h3 class="card-title">Nehirler arası geçişler</h3>
                     </div>
                 </div>
                 <p class="card-desc">Delaware kıyısında Race Street İskelesi ve yaz aylarında Spruce Street Harbor Park; Schuylkill tarafında müze aksı: iki nehir arasında gezmek Philly gününün doğal ritmidir.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Nerede Kalınır? Philadelphia Mahalleleri</h2>
             </div>
             <p class="section-intro">Philly&#x27;de seçim doku seçimidir: Old City&#x27;nin tarihi tuğlaları, Rittenhouse&#x27;un zarif meydanı, Fishtown&#x27;ın genç enerjisi.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Old City</span>
+                    <h3 class="card-title">Old City</h3>
                     <span class="card-badge badge-purple">Tarihin içi</span>
                 </div>
                 <p class="card-desc">Independence Hall&#x27;a ve Elfreth&#x27;s Alley&#x27;ye yürüme mesafesi: galeriler, tuğla sokaklar ve ilk cuma sanat geceleri. Tarih odaklı ziyaretin doğal üssü.</p>
-                <div class="card-footer-tip">Tarihe komşu • Galeri sokakları • İlk cuma geceleri</div>
+                <div class="card-footer-tip">📍 Tarihe komşu • Galeri sokakları • İlk cuma geceleri</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Rittenhouse Square</span>
+                    <h3 class="card-title">Rittenhouse Square</h3>
                     <span class="card-badge badge-purple">En zarif</span>
                 </div>
                 <p class="card-desc">Meydanın çınarları çevresinde şık oteller, restoranlar ve butikler: Philly&#x27;nin en cilalı köşesi. Her yere yürünür — konfor ve konum zirvede.</p>
-                <div class="card-footer-tip">Meydan hayatı • Şık sofralar • Merkezi konum</div>
+                <div class="card-footer-tip">📍 Meydan hayatı • Şık sofralar • Merkezi konum</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Midtown Village</span>
+                    <h3 class="card-title">Midtown Village</h3>
                     <span class="card-badge badge-purple">Dengeli merkez</span>
                 </div>
                 <p class="card-desc">13th Street&#x27;in restoran sokakları, City Hall&#x27;a komşuluk ve iki metro hattına erişim: pratik ve canlı üs. Gece sofraları kapının dibinde.</p>
-                <div class="card-footer-tip">Restoran sokağı • Metro kavşağı • Canlı akşamlar</div>
+                <div class="card-footer-tip">📍 Restoran sokağı • Metro kavşağı • Canlı akşamlar</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Fishtown</span>
+                    <h3 class="card-title">Fishtown</h3>
                     <span class="card-badge badge-purple">Genç enerji</span>
                 </div>
                 <p class="card-desc">Eski işçi mahallesinin dönüşen hali: müzik mekanları, üçüncü dalga kahve, ödüllü lokantalar. Merkeze mavi hatla on dakika — Philly&#x27;nin yaratıcı bugünü.</p>
-                <div class="card-footer-tip">Müzik mekanları • Kahve sahnesi • Ödüllü mutfaklar</div>
+                <div class="card-footer-tip">📍 Müzik mekanları • Kahve sahnesi • Ödüllü mutfaklar</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">University City</span>
+                    <h3 class="card-title">University City</h3>
                     <span class="card-badge badge-purple">Kampüs yakası</span>
                 </div>
                 <p class="card-desc">Penn ve Drexel kampüslerinin nehir karşısı dünyası: müzeler, botanik bahçe ve öğrenci fiyatlı sofralar. Trenle merkez beş dakika — sakin ve ekonomik taraf.</p>
-                <div class="card-footer-tip">Kampüs ritmi • Ekonomik sofralar • Tren bağlantısı</div>
+                <div class="card-footer-tip">📍 Kampüs ritmi • Ekonomik sofralar • Tren bağlantısı</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Philadelphia İçin En İyi Ziyaret Zamanı</h2>
             </div>
             <p class="section-intro">Philly dört mevsim yaşar: bahar çiçekli ve ferah, yaz nemli ve şenlikli, güz altın, kış sert ama müze dostudur.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">İlkbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Mar – May</span>
+                        <h3 class="card-title">İlkbahar</h3>
+                        <span class="season-months">Mar – May</span>
                     </div>
                     <span class="card-badge badge-amber">Kiraz Çiçeği ve Meydanlar</span>
                 </div>
                 <p class="card-desc">Nisan kiraz çiçekleri Fairmount Park&#x27;ı süsler, meydanlar yeniden dolar, tarihi bölge en rahat gezme havasını yakalar. Kalabalık yaz seviyesinde değildir — Philly baharı yürüyüş şehri vaadini tam yerine getirir.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Yaz</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Haz – Ağu</span>
+                        <h3 class="card-title">Yaz</h3>
+                        <span class="season-months">Haz – Ağu</span>
                     </div>
                     <span class="card-badge badge-amber">Nemli ve Şenlikli</span>
                 </div>
                 <p class="card-desc">Yaz Philly&#x27;si nemli ama cömerttir: Spruce Street Harbor Park&#x27;ın hamakları, açık hava sinemaları ve 4 Temmuz&#x27;un ana sahnesi — bağımsızlığın doğduğu şehirde kutlama başka türlü coşkuludur.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Sonbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Eyl – Kas</span>
+                        <h3 class="card-title">Sonbahar</h3>
+                        <span class="season-months">Eyl – Kas</span>
                     </div>
                     <span class="card-badge badge-amber">Altın Tuğla Mevsimi</span>
                 </div>
                 <p class="card-desc">Ekim Philly&#x27;nin zirvesidir: Wissahickon vadisi kızıla döner, tuğla cepheler altın ışıkta parlar, kahve mevsimi açılır. Eagles maç günü şehir yeşile bürünür — &#x27;Go Birds&#x27; selamı her kapıyı açar.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Kış</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Ara – Şub</span>
+                        <h3 class="card-title">Kış</h3>
+                        <span class="season-months">Ara – Şub</span>
                     </div>
                     <span class="card-badge badge-amber">Müze ve Buz Pisti</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥖</span>
-                        <span class="card-title">Cheesesteak</span>
+                        <h3 class="card-title">Cheesesteak</h3>
                     </div>
                 </div>
                 <p class="card-desc">İnce kıyılmış biftek, eriyen peynir ve İtalyan ekmeği: şehrin imzası. Whiz, provolone ya da American — tartışma sonsuz, lezzet garantidir. Mahalle steak dükkanları turist düellosundan hep bir adım öndedir.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥪</span>
-                        <span class="card-title">Roast pork sandviçi</span>
+                        <h3 class="card-title">Roast pork sandviçi</h3>
                     </div>
                 </div>
                 <p class="card-desc">Yerlinin gizli favorisi: yavaş pişmiş domuz rosto, sote broccoli rabe ve keskin provolone. Cheesesteak&#x27;in gölgesinde kalmış başyapıt — Reading Terminal&#x27;deki ustası öğlen kuyruğuyla haklıdır.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🏛️</span>
-                        <span class="card-title">Reading Terminal turu</span>
+                        <h3 class="card-title">Reading Terminal turu</h3>
                     </div>
                 </div>
                 <p class="card-desc">1893&#x27;ten beri açık pazar: Amish tezgahları, yüz mutfak ve tarihi neonlar. Kahvaltıdan tatlıya tek çatıda tur — öğlen kalabalığı atmosferin parçasıdır, masayı önce kap.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥨</span>
-                        <span class="card-title">Soft pretzel sabahı</span>
+                        <h3 class="card-title">Soft pretzel sabahı</h3>
                     </div>
                 </div>
                 <p class="card-desc">Philly pretzel&#x27;i ince, yumuşak ve sekiz şeklindedir: sabah fırından sıcak, hardal eşliğinde. Şehir günde ortalama bir pretzel yer — sen de kotanı doldur.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥙</span>
-                        <span class="card-title">Hoagie</span>
+                        <h3 class="card-title">Hoagie</h3>
                     </div>
                 </div>
                 <p class="card-desc">İtalyan ekmeğinde soğuk et, peynir, marul ve yağ-sirke: Philly&#x27;nin sandviç mirası. &#x27;Old school İtalyan hoagie&#x27; bir deli tezgahından alınır — pikniğin ve nehir kıyısının resmi yemeği.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍧</span>
-                        <span class="card-title">Water ice ve Tastykake</span>
+                        <h3 class="card-title">Water ice ve Tastykake</h3>
                     </div>
                 </div>
                 <p class="card-desc">Yazın köşe dükkanından &#x27;wooder ice&#x27; (meyve buzu), yıl boyu markette Tastykake: Philly&#x27;nin tatlı kimliği. Mango ya da kiraz — kaşık küçük, nostalji büyüktür.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Özgürlük Çanı&#x27;nı herkes görür; bu altısı Philly&#x27;nin mozaik kaplı, dere sesli saklı yüzü.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Magic Gardens</span>
-                    <span class="card-badge badge-emerald">Mozaik rüya evi</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Mozaik rüya evi</span>
                 </div>
+                <h3 class="card-title">Magic Gardens</h3>
                 <p class="card-desc">Sanatçı Isaiah Zagar&#x27;ın South Street&#x27;te otuz yılda ördüğü mozaik labirent: ayna kırıkları, şişeler ve halk sanatı, iki katlı bir rüya avlusunda. Philly&#x27;nin en fotojenik yarım saati — bileti önceden al.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Elfreth&#x27;s Alley</span>
-                    <span class="card-badge badge-emerald">Amerika&#x27;nın en eski sokağı</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Amerika&#x27;nın en eski sokağı</span>
                 </div>
+                <h3 class="card-title">Elfreth&#x27;s Alley</h3>
                 <p class="card-desc">1703&#x27;ten beri kesintisiz oturulan sokak: otuz iki Georgian ev, arnavut kaldırımı ve çiçekli pencereler. Sabah erken git — Amerika&#x27;nın en eski &#x27;mahallesi&#x27; sana kalır.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">9th Street İtalyan Pazarı</span>
-                    <span class="card-badge badge-emerald">Yüzyıllık İtalyan pazarı</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Yüzyıllık İtalyan pazarı</span>
                 </div>
+                <h3 class="card-title">9th Street İtalyan Pazarı</h3>
                 <p class="card-desc">Amerika&#x27;nın en eski açık hava pazarlarından: peynirciler, kasaplar, taquería&#x27;lar ve varil ateşleri. İtalyan mirasla Meksika bugünü aynı tezgahta — cumartesi sabahı en canlı halidir.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Wissahickon Valley</span>
-                    <span class="card-badge badge-emerald">Şehir içinde kanyon</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Şehir içinde kanyon</span>
                 </div>
+                <h3 class="card-title">Wissahickon Valley</h3>
                 <p class="card-desc">Şehir sınırında 800 hektarlık orman vadisi: dere, taş köprüler ve Forbidden Drive&#x27;ın araçsız patikası. Philly&#x27;linin doğa sığınağı — sonbaharda kızıl şölene döner.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Boathouse Row gece ışıkları</span>
-                    <span class="card-badge badge-emerald">Nehirde ışık dizisi</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Nehirde ışık dizisi</span>
                 </div>
+                <h3 class="card-title">Boathouse Row gece ışıkları</h3>
                 <p class="card-desc">Schuylkill kıyısındaki Victorian kürek kulüpleri gece binlerce ampulle çizilir: nehre yansıyan ışık dizisi şehrin en romantik karesidir. Batı kıyısından ya da Spring Garden köprüsünden izle.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Fishtown ve Kensington muralları</span>
-                    <span class="card-badge badge-emerald">Duvarların katedrali</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Duvarların katedrali</span>
                 </div>
+                <h3 class="card-title">Fishtown ve Kensington muralları</h3>
                 <p class="card-desc">Mural Arts&#x27;ın en cesur duvarları kuzey mahallelerindedir: dev portreler, mahalle hikayeleri ve fabrika cepheleri. Rehberli mural turu ya da kendi rotanla — şehrin galerisi ücretsizdir.</p>
             </div>
             </div>

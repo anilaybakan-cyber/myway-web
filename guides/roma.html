@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Rome Public Transit & Airport Transfers</h2>
             </div>
             <p class="section-intro">Rome&#x27;s historic centre is compact and best navigated on foot. Public transport fills the gaps. The metro is limited but useful; buses and trams cover everything else.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Fiumicino Airport → City Centre</span>
+                        <h3 class="card-title">Fiumicino Airport → City Centre</h3>
                     </div>
                 </div>
                 <p class="card-desc">The Leonardo Express train runs directly from Fiumicino to Roma Termini every 30 minutes, taking 32 minutes. It is the most reliable option. Regional trains (FL1) are slower and cheaper but stop at multiple stations. Taxis from Fiumicino to the city centre are fixed rate — agree it before you get in. Private transfer apps (Uber Black operates in Rome) are reliable but more expensive than the train.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚇</span>
-                        <span class="card-title">Metro — two lines, limited but useful</span>
+                        <h3 class="card-title">Metro — two lines, limited but useful</h3>
                     </div>
                 </div>
                 <p class="card-desc">Rome has only two metro lines: A (orange) and B (blue), intersecting at Termini. Line A reaches the Vatican (Ottaviano), Trastevere area (via bus from Spagna), and the Spanish Steps. Line B reaches the Colosseum (Colosseo stop). The historic centre — Pantheon, Piazza Navona, Campo de&#x27; Fiori, Trastevere — is not served by metro. Single tickets cost €1.50 and are valid for 100 minutes across all transport. Validate before boarding.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚌</span>
-                        <span class="card-title">Buses and trams — the real network</span>
+                        <h3 class="card-title">Buses and trams — the real network</h3>
                     </div>
                 </div>
                 <p class="card-desc">Rome&#x27;s bus network is extensive but slow in traffic. Bus 40 and 64 connect Termini to the Vatican. Tram 8 runs from Largo Argentina to Trastevere — the most useful tram in the historic centre. Bus 23 follows the Tiber from the Vatican south to Testaccio. The same €1.50 ticket works on all services. Download the Moovit or Google Maps app for real-time routes — the official timetables are aspirational.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">On foot — the only way to see it</span>
+                        <h3 class="card-title">On foot — the only way to see it</h3>
                     </div>
                 </div>
                 <p class="card-desc">The Pantheon to the Colosseum is 25 minutes on foot through the Forum. Campo de&#x27; Fiori to Trastevere is 10 minutes across the bridge. Piazza Navona to the Spanish Steps is 20 minutes. Rome&#x27;s historic centre is built for walking. The streets that matter — the passages, the courtyards, the early Christian churches hidden behind unassuming doors — are all between the monuments, not at them.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚕</span>
-                        <span class="card-title">Taxis — white, metered, from official ranks</span>
+                        <h3 class="card-title">Taxis — white, metered, from official ranks</h3>
                     </div>
                 </div>
                 <p class="card-desc">Rome&#x27;s official taxis are white and metered. Take them from the official taxi ranks (not from anyone approaching you). From Termini to the historic centre costs around €12–18. Fixed fares apply to and from the airports. Uber Black operates in Rome but is pricier than official taxis. Never accept rides from unmarked cars or drivers approaching in airports or train stations.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Where to Stay in Rome: Best Areas</h2>
             </div>
             <p class="section-intro">Rome&#x27;s rioni (historical neighbourhoods) are all distinct. Where you sleep defines your version of the city.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Trastevere</span>
+                    <h3 class="card-title">Trastevere</h3>
                     <span class="card-badge badge-purple">Most atmospheric</span>
                 </div>
                 <p class="card-desc">The neighbourhood across the Tiber — medieval streets, ivy-covered facades, the city&#x27;s best-known evening scene, trattorias that have been there for generations, and a genuine residential community still intact behind the tourist-facing streets. Busy at night, quiet in the morning. No metro access — arrive by tram 8 or bus, or walk across the river.</p>
-                <div class="card-footer-tip">Best evening atmosphere • Medieval streets • Tram 8 access</div>
+                <div class="card-footer-tip">📍 Best evening atmosphere • Medieval streets • Tram 8 access</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Testaccio</span>
+                    <h3 class="card-title">Testaccio</h3>
                     <span class="card-badge badge-purple">Most local</span>
                 </div>
                 <p class="card-desc">Rome&#x27;s most authentic foodie neighbourhood — working-class, unpretentious, home to the city&#x27;s best market, the best offal cooking in Italy, and a piazza where locals actually sit in the evenings. No tourist trail runs through it. The Pyramid of Cestius is at the end of the street. The Protestant Cemetery — where Keats is buried — is a ten-minute walk. Excellent metro connection on Line B.</p>
-                <div class="card-footer-tip">Best food market • Entirely local • Metro Line B</div>
+                <div class="card-footer-tip">📍 Best food market • Entirely local • Metro Line B</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Monti</span>
+                    <h3 class="card-title">Monti</h3>
                     <span class="card-badge badge-purple">Best base</span>
                 </div>
                 <p class="card-desc">The neighbourhood between the Colosseum and Termini — Rome&#x27;s most liveable central district. Independent wine bars, trattorias, vintage shops, cobbled streets, and a local crowd that mixes with visitors without being overwhelmed by them. Walking distance from the Forum, the Colosseum, and the Baths of Caracalla. Metro Line B at Cavour.</p>
-                <div class="card-footer-tip">Most central • Best wine bars • Metro Line B</div>
+                <div class="card-footer-tip">📍 Most central • Best wine bars • Metro Line B</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Prati</span>
+                    <h3 class="card-title">Prati</h3>
                     <span class="card-badge badge-purple">Most comfortable</span>
                 </div>
                 <p class="card-desc">The residential neighbourhood directly north of the Vatican — wide streets, excellent bakeries, local bars with no tourist pricing, and a calm that is rare in central Rome. Not atmospheric in the Trastevere sense, but extremely comfortable and well-connected. The right base if the Vatican is the priority and you want to sleep somewhere that does not feel like a film set.</p>
-                <div class="card-footer-tip">Near the Vatican • Residential calm • Good value</div>
+                <div class="card-footer-tip">📍 Near the Vatican • Residential calm • Good value</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Centro Storico (Historic Centre)</span>
+                    <h3 class="card-title">Centro Storico (Historic Centre)</h3>
                     <span class="card-badge badge-purple">Most central</span>
                 </div>
                 <p class="card-desc">The area around the Pantheon, Piazza Navona, and Campo de&#x27; Fiori — walking distance from everything, extraordinary at dawn before the crowds arrive, and increasingly difficult to recommend for the money. Expensive, noisy at night, and largely given over to tourism. If you stay here, use it as a launchpad and eat, drink, and spend your evenings in Trastevere or Testaccio.</p>
-                <div class="card-footer-tip">Everything walking distance • Expensive • Dawn is extraordinary</div>
+                <div class="card-footer-tip">📍 Everything walking distance • Expensive • Dawn is extraordinary</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Best Time to Visit Rome</h2>
             </div>
             <p class="section-intro">Rome has no bad season — but it has very different versions of itself depending on when you arrive.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Spring</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Mar – May</span>
+                        <h3 class="card-title">Spring</h3>
+                        <span class="season-months">Mar – May</span>
                     </div>
                     <span class="card-badge badge-amber">The Best Season</span>
                 </div>
                 <p class="card-desc">April and May are when Rome is at its finest. The wisteria blooms on the Villa Borghese terraces, the light is soft and warm without being brutal, the outdoor markets are at their most abundant, and the tourist crowds — while present — have not yet reached their summer peak. Easter brings the city to a standstill and fills it with pilgrims; either plan around it deliberately or avoid it entirely. May is one of the best months to visit Rome.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Summer</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Jun – Aug</span>
+                        <h3 class="card-title">Summer</h3>
+                        <span class="season-months">Jun – Aug</span>
                     </div>
                     <span class="card-badge badge-amber">Hot and Crowded</span>
                 </div>
                 <p class="card-desc">June is still manageable — long evenings, aperitivo on every piazza, outdoor cinema at Villa Borghese. July and August are genuinely difficult: 38°C heat, queues at every monument, and a Vatican Museums experience that is memorable for the wrong reasons. Romans themselves leave in August — Ferragosto (15 August) empties the city and closes many restaurants. If you come in summer, book everything weeks in advance, arrive at monuments at opening time, and retreat indoors between 13:00 and 17:00.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Autumn</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Sep – Nov</span>
+                        <h3 class="card-title">Autumn</h3>
+                        <span class="season-months">Sep – Nov</span>
                     </div>
                     <span class="card-badge badge-amber">The Best-Kept Secret</span>
                 </div>
                 <p class="card-desc">September and October are the best months to visit Rome for experienced travellers. The summer tourists have left, the heat breaks, the light turns amber renginde and low over the terracotta rooftops, and the city returns to its own rhythm. The markets fill with porcini mushrooms, artichokes, and early truffles. The aperitivo hour extends as the evenings cool. October is perhaps the finest month in Rome.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Winter</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Dec – Feb</span>
+                        <h3 class="card-title">Winter</h3>
+                        <span class="season-months">Dec – Feb</span>
                     </div>
                     <span class="card-badge badge-amber">Empty and Extraordinary</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍝</span>
-                        <span class="card-title">Cacio e pepe — the Roman standard</span>
+                        <h3 class="card-title">Cacio e pepe — the Roman standard</h3>
                     </div>
                 </div>
                 <p class="card-desc">Pecorino Romano, black pepper, pasta water, tonnarelli. Nothing else. The correct version is silky, not clumped. A great cacio e pepe is one of the finest things Italy produces. Order it at Tonnarello in Trastevere, Da Enzo al 29, or — if you can get a reservation — Felice a Testaccio. Do not order it in a restaurant with a photograph menu.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍳</span>
-                        <span class="card-title">Carbonara — not what you think it is</span>
+                        <h3 class="card-title">Carbonara — not what you think it is</h3>
                     </div>
                 </div>
                 <p class="card-desc">Roman carbonara has four ingredients: guanciale (cured pork cheek), Pecorino Romano, egg yolk, and black pepper. No cream. No pancetta. No bacon. No parmesan. The cream version served in tourist restaurants across Europe is not carbonara; it is an approximation built for people who have never tasted the real thing. A correct carbonara is rich, unctuous, and slightly sticky. Ask for guanciale if you are not sure what you are being served.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥩</span>
-                        <span class="card-title">Quinto quarto — the fifth quarter</span>
+                        <h3 class="card-title">Quinto quarto — the fifth quarter</h3>
                     </div>
                 </div>
                 <p class="card-desc">Roman cuisine was built around the quinto quarto — the offal left after the four prime cuts went to the wealthy: tripe (trippa), oxtail (coda alla vaccinara), sweetbreads, offal pasta. This is not nose-to-tail adventurism; it is the original Roman diet. Trippa alla romana (tripe in tomato sauce with mint and Pecorino) is served on Saturdays at neighbourhood trattorias. Coda alla vaccinara (oxtail braised with tomato, celery, and dark chocolate) is one of the great slow-cooked dishes of Europe. Order it in Testaccio.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🌸</span>
-                        <span class="card-title">Carciofi alla giudia — Jewish artichoke</span>
+                        <h3 class="card-title">Carciofi alla giudia — Jewish artichoke</h3>
                     </div>
                 </div>
                 <p class="card-desc">The deep-fried artichoke of the Jewish Ghetto — opened like a flower, submerged twice in hot oil until the leaves are crisp and golden and the heart is tender. A dish with a history of nearly 500 years in the same streets. Served only in season (October through spring). The best versions are at Da Giggetto and Sora Margherita in the Ghetto. One of the dishes that defines Rome.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍕</span>
-                        <span class="card-title">Pizza al taglio — by the slice</span>
+                        <h3 class="card-title">Pizza al taglio — by the slice</h3>
                     </div>
                 </div>
                 <p class="card-desc">Roman pizza is not Neapolitan. It is thin, crisp-based, cut into rectangles, sold by weight, and eaten standing up or walking. A Roman morning includes a slice of pizza bianca (plain, oiled, salted flatbread) from the forno around the corner. The best pizza al taglio in Rome is at Roscioli, Bonci (Pizzarium), and Forno di Campo de&#x27; Fiori. It is the correct breakfast, the correct lunch, and the correct late-night snack.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">☕</span>
-                        <span class="card-title">Coffee — standing, at the bar</span>
+                        <h3 class="card-title">Coffee — standing, at the bar</h3>
                     </div>
                 </div>
                 <p class="card-desc">An espresso in Rome is €1–1.50 at the bar. Sitting doubles the price. Cappuccino is a morning drink — ordering one after lunch is understood but mildly noted. A macchiato (espresso with a drop of milk) is the local midday coffee. Sant&#x27;Eustachio il Caffè near the Pantheon serves what many consider the best espresso in Rome. The queue moves fast. Drink it standing.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Rome hides its most extraordinary things in plain sight — behind unassuming doors, beneath ordinary churches, at the end of streets every tourist passes without looking up.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Aventine Keyhole (Knights of Malta Priory)</span>
-                    <span class="card-badge badge-emerald">The best view in Rome — through a keyhole</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ The best view in Rome — through a keyhole</span>
                 </div>
+                <h3 class="card-title">Aventine Keyhole (Knights of Malta Priory)</h3>
                 <p class="card-desc">On the Aventine Hill, in the gate of the Priory of the Knights of Malta, is a keyhole. Peer through it and the perfectly framed dome of St. Peter&#x27;s Basilica appears at the end of a manicured garden path — three countries visible at once: Italy, the garden of the Sovereign Order of Malta, and the Vatican. Designed in the 18th century by architect and engraver Giovanni Battista Piranesi. The alignment may or may not be intentional — no one has ever been entirely certain. Free entry, accessible at all hours. Queue of one at a time.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Basilica di San Clemente — near the Colosseum</span>
-                    <span class="card-badge badge-emerald">Two thousand years of history stacked in one building</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Two thousand years of history stacked in one building</span>
                 </div>
+                <h3 class="card-title">Basilica di San Clemente — near the Colosseum</h3>
                 <p class="card-desc">Three minutes from the Colosseum, an unremarkable-looking church hides one of the most extraordinary layered sites in Rome. The ground-floor 12th-century basilica is beautiful and free to enter. Below it is a 4th-century early Christian basilica with medieval frescoes. Below that, a 2nd-century Roman house and a functioning Mithraic temple — you can still hear an ancient stream running underground. The experience of descending through twenty centuries in one building is unlike anything else in Rome. Upper church free. Underground excavations ticketed (€10), advance booking required online.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Palazzo Doria Pamphilj — Via del Corso</span>
-                    <span class="card-badge badge-emerald">The private art collection the Vatican doesn&#x27;t tell you about</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ The private art collection the Vatican doesn&#x27;t tell you about</span>
                 </div>
+                <h3 class="card-title">Palazzo Doria Pamphilj — Via del Corso</h3>
                 <p class="card-desc">On the Via del Corso, the most central street in Rome, a door leads into the largest privately-owned palace in the city — still occupied by the Doria Pamphilj family, whose ancestor commissioned Velázquez&#x27;s Portrait of Pope Innocent X. The gallery holds Caravaggio, Raphael, Titian, and Velázquez. The audioguide is narrated by Prince Jonathan Doria Pamphilj himself. Unlike the Vatican, there are no crowds. Unlike the Borghese, it is almost unknown to non-Italian visitors. Ticketed entry (€16), advance booking required.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Quartiere Coppedè — Trieste neighbourhood</span>
-                    <span class="card-badge badge-emerald">A fairy-tale neighbourhood built in one decade — and entirely forgotten</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ A fairy-tale neighbourhood built in one decade — and entirely forgotten</span>
                 </div>
+                <h3 class="card-title">Quartiere Coppedè — Trieste neighbourhood</h3>
                 <p class="card-desc">Between 1913 and 1926, architect Gino Coppedè built a neighbourhood of 26 small palaces and 17 villas in the Trieste district — a collision of Art Nouveau, Baroque, Gothic, and Greek revival so extreme it looks like a film set. Swagged stone garlands, bronze spiders, fairy-tale arches, elaborate ironwork. An entire tram stop away from any tourist route. Almost no one goes. Completely free to walk through. Enter through the arch on Via Tagliamento.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Giardino degli Aranci — Aventine Hill</span>
-                    <span class="card-badge badge-emerald">Rome&#x27;s most beautiful orange garden — and one of its best views</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Rome&#x27;s most beautiful orange garden — and one of its best views</span>
                 </div>
+                <h3 class="card-title">Giardino degli Aranci — Aventine Hill</h3>
                 <p class="card-desc">The Garden of Oranges on the Aventine Hill is a formal garden of bitter orange trees, pine umbrella trees, and rose bushes, with a terrace at one end that offers one of the finest panoramic views of Rome — the dome of St. Peter&#x27;s above the city&#x27;s terracotta rooftops and the Tiber below. Almost entirely unknown to non-Italian visitors. Two minutes from the Aventine Keyhole. Free entry. Open from early morning to sunset.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Largo di Torre Argentina — Historic Centre</span>
-                    <span class="card-badge badge-emerald">Julius Caesar&#x27;s assassination site — with a hundred cats</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Julius Caesar&#x27;s assassination site — with a hundred cats</span>
                 </div>
+                <h3 class="card-title">Largo di Torre Argentina — Historic Centre</h3>
                 <p class="card-desc">In the middle of central Rome, surrounded by traffic, a sunken square reveals four Republican-era temples from the 3rd and 2nd centuries BC — among the oldest ruins visible in the city. This is the site where Julius Caesar was assassinated on 15 March 44 BC. A cat sanctuary, run by volunteers, houses over a hundred cats among the ruins. The cats have been there for generations. The archaeological site is ticketed. The cats can be seen for free from the street level.</p>
             </div>
             </div>

@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Valensiya Şehir İçi Ulaşım & Transfer</h2>
             </div>
             <p class="section-intro">Valensiya küçük ve düz. Bisiklet ise ulaşım için en iyi seçenek. Ancak metro ve otobüs kullanacaksan SUMA kart sistemi.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Havalimanı → Şehir</span>
+                        <h3 class="card-title">Havalimanı → Şehir</h3>
                     </div>
                 </div>
                 <p class="card-desc">Metro Line 3 veya Line 5 havalimanından şehir merkezine ~20 dakikada ulaştırıyor. Bilet 5,60 euro — havalimanı ek ücreti dahil. Merkeze taksi 20-25 euro arası. Metro açık ara en pratik seçenek. SUMA kartı havalimanı hattında da geçerli ama havalimanı ek ücreti ayrıca ödeniyor.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚇</span>
-                        <span class="card-title">Metro ve tramvay</span>
+                        <h3 class="card-title">Metro ve tramvay</h3>
                     </div>
                 </div>
                 <p class="card-desc">5 metro hattı ve 4 tramvay hattı Metrovalencia çatısı altında. SUMA kartı (karton kart 1,10 euro) tüm hatlar için geçerli. Tek biniş yaklaşık 1,50 euro, Zone A için 10&#x27;lu SUMA bileti 8,90 euro. Sabah 05:00&#x27;den gece 01:00&#x27;e kadar çalışıyor, Cuma ve Cumartesi geceleri 24 saat. Merkez, Ruzafa, plaj ve Sanat ve Bilimler Şehri hepsi metro veya tramvayla ulaşılabilir.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚌</span>
-                        <span class="card-title">EMT Otobüsleri</span>
+                        <h3 class="card-title">EMT Otobüsleri</h3>
                     </div>
                 </div>
                 <p class="card-desc">200&#x27;den fazla hat şehrin her köşesini kapsıyor. Aynı SUMA kartı sistemi geçerli. Otobüste nakit ödeme de mümkün ama biraz daha pahalı (2 euro). Gece hatları metro kapandıktan sonra çalışıyor. El Cabanyal ve bazı kıyı noktalarına otobüs en pratik seçenek.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚲</span>
-                        <span class="card-title">Valenbisi — bisiklet paylaşımı</span>
+                        <h3 class="card-title">Valenbisi — bisiklet paylaşımı</h3>
                     </div>
                 </div>
                 <p class="card-desc">Şehir genelinde 275 istasyon, 2.750 bisiklet. Yıllık abonelik 25 euro, günlük 3,60 euro. İlk 30 dakika ücretsiz, sonrası saatlik ücret. Ödeme temassız kredi kartıyla istasyondan yapılıyor. Turia Bahçeleri boyunca, plajlara ve Ruzafa&#x27;ya bisikletle gitmek için ideal. Şehir düz olduğu için çok yorucu değil.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">Yürüyüş</span>
+                        <h3 class="card-title">Yürüyüş</h3>
                     </div>
                 </div>
                 <p class="card-desc">Valensiya merkezi küçük ve yürünebilir. Mercado Central&#x27;den Katedrali 5 dakika, Turia Bahçeleri girişine 10 dakika, Ruzafa&#x27;ya 20 dakika. Sanat ve Bilimler Şehri merkezden yürüyerek 45 dakika — uzun ama Turia Bahçeleri üzerinden güzel bir yol. Sıcak yaz günlerinde gölgeli rotalar tercih et.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Nerede Kalınır? Valensiya Mahalleleri</h2>
             </div>
             <p class="section-intro">Valensiya&#x27;da konum önemli ama şehir küçük olduğu için her yerden her yere kolay ulaşılıyor.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Ciutat Vella — tarihi merkez</span>
+                    <h3 class="card-title">Ciutat Vella — tarihi merkez</h3>
                     <span class="card-badge badge-purple">En merkezi</span>
                 </div>
                 <p class="card-desc">Katedral, Mercado Central, La Lonja ve El Carmen mahallesi bu bölgede. Her şeye yürüme mesafesinde. Kalabalık ve turistik ama Valensiya&#x27;nın tarihi dokusunu yaşamak için doğru yer. El Carmen içinde kalmak gece hayatına yakın olmak kadar ama sabah gürültüsüne de yakın olmak olabilir.</p>
-                <div class="card-footer-tip">Katedral ve Mercado Central • El Carmen gece hayatı • Tarihi dokular</div>
+                <div class="card-footer-tip">📍 Katedral ve Mercado Central • El Carmen gece hayatı • Tarihi dokular</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Ruzafa (Russafa)</span>
+                    <h3 class="card-title">Ruzafa (Russafa)</h3>
                     <span class="card-badge badge-purple">En canlı</span>
                 </div>
                 <p class="card-desc">Yaratıcı mahalle — kafeler, restoranlar, barlar ve sanat galerileri. Hafta sonu Mercado de Ruzafa ve akşamları vermouth kültürü. Merkeze yürüyerek 20 dakika veya metroya 10 dakika. Valensiya&#x27;yı yerel gibi yaşamak için en iyi seçenek.</p>
-                <div class="card-footer-tip">Mercado de Ruzafa • Vermouth kültürü • Sanat ve kafeler</div>
+                <div class="card-footer-tip">📍 Mercado de Ruzafa • Vermouth kültürü • Sanat ve kafeler</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">El Cabanyal</span>
+                    <h3 class="card-title">El Cabanyal</h3>
                     <span class="card-badge badge-purple">En sahil</span>
                 </div>
                 <p class="card-desc">Plaja yürüyerek 5 dakika. Eski balıkçı mahallesi, şimdi sanatçılar ve genç aileler burada. Renkli azulejo kaplı evler, dar sokaklar. Yıkım planlarından kurtarılan mahalle artık korunan alan. Merkeze tramvayla 20 dakika.</p>
-                <div class="card-footer-tip">Plaja 5 dakika • Balıkçı mahallesi karakteri • Azulejo mimarisi</div>
+                <div class="card-footer-tip">📍 Plaja 5 dakika • Balıkçı mahallesi karakteri • Azulejo mimarisi</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Ensanche</span>
+                    <h3 class="card-title">Ensanche</h3>
                     <span class="card-badge badge-purple">En modern</span>
                 </div>
                 <p class="card-desc">19. yüzyılda planlı inşa edilmiş şık mahalle — geniş bulvarlar, Modernist binalar, Mercado de Colón. İş dünyasına yakın, sakin ama canlı. Ruzafa&#x27;ya sınır komşusu.</p>
-                <div class="card-footer-tip">Mercado de Colón • Modernist mimari • Geniş bulvarlar</div>
+                <div class="card-footer-tip">📍 Mercado de Colón • Modernist mimari • Geniş bulvarlar</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Sanat ve Bilimler Şehri yakını</span>
+                    <h3 class="card-title">Sanat ve Bilimler Şehri yakını</h3>
                     <span class="card-badge badge-purple">Mimari deneyim</span>
                 </div>
                 <p class="card-desc">Santiago Calatrava&#x27;nın tasarladığı fütüristik yapılar — L&#x27;Hemisfèric, Museu de les Ciències, L&#x27;Oceanogràfic — bu bölgede. Sabahın erken saatlerinde ziyaretçi kalabalığı henüz gelmeden yapıları sakin haliyle görmek mümkün. Merkeze tramvayla 15 dakika.</p>
-                <div class="card-footer-tip">Calatrava mimarisi • L&#x27;Oceanogràfic • Turia Bahçeleri sonu</div>
+                <div class="card-footer-tip">📍 Calatrava mimarisi • L&#x27;Oceanogràfic • Turia Bahçeleri sonu</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Valensiya İçin En İyi Ziyaret Zamanı</h2>
             </div>
             <p class="section-intro">Valensiya yıl boyu güneşli ama her mevsim farklı bir şehir sunuyor.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">İlkbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Mar – May</span>
+                        <h3 class="card-title">İlkbahar</h3>
+                        <span class="season-months">Mar – May</span>
                     </div>
                     <span class="card-badge badge-amber">Las Fallas ve çiçek açan şehir</span>
                 </div>
                 <p class="card-desc">Mart Las Fallas ile başlıyor — 12-19 Mart şehrin en büyük festivali. Nisan ve Mayıs festivalsiz ama ideal: hava 18-24°C, portakal bahçelerinde çiçek kokusu, kalabalık yaz kadar değil. Semana Santa dönemi Nisan&#x27;da dini törenler. Bu dönem Valensiya&#x27;yı hem festivalin coşkusuyla hem de sakin haliyle görme fırsatı.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Yaz</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Haz – Ağu</span>
+                        <h3 class="card-title">Yaz</h3>
+                        <span class="season-months">Haz – Ağu</span>
                     </div>
                     <span class="card-badge badge-amber">Plaj sezonu ve gece hayatı</span>
                 </div>
                 <p class="card-desc">Temmuz ve Ağustos sıcak ama Barselona kadar kalabalık değil. Plajlar — La Malvarrosa ve Les Arenes — hafta içi sakin, hafta sonu kalabalık. Gece hayatı uzun: akşam yemeği 22:00&#x27;de, barlar 03:00&#x27;e kadar açık. Feria de Julio şehir genelinde konserler. Sabah 07:00-10:00 ve akşam 19:00 sonrası sıcaklık katlanılır.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Sonbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Eyl – Kas</span>
+                        <h3 class="card-title">Sonbahar</h3>
+                        <span class="season-months">Eyl – Kas</span>
                     </div>
                     <span class="card-badge badge-amber">İkinci en iyi dönem</span>
                 </div>
                 <p class="card-desc">Eylül ve Ekim Valensiya&#x27;nın en rahat dönemi. Yaz kalabalığı bitmiş, hava hala 20-25°C, denizde yüzmek hala mümkün. Portakal hasatı başlıyor. 9 Ekim ise Valensiya&#x27;nın Toplum Günü — 1238&#x27;den bu yana kutlanan resmi bayram. Şehirde geçit törenleri, geleneksel kostümler ve çiçek sunumu var; Las Fallas kadar büyük olmasa da otantik bir yerel kutlama. Kasım&#x27;dan itibaren yağmur artar ama şehir sakin ve fiyatlar düşük.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Kış</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Ara – Şub</span>
+                        <h3 class="card-title">Kış</h3>
+                        <span class="season-months">Ara – Şub</span>
                     </div>
                     <span class="card-badge badge-amber">Sakin ve güneşli</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥘</span>
-                        <span class="card-title">Paella Valenciana</span>
+                        <h3 class="card-title">Paella Valenciana</h3>
                     </div>
                 </div>
                 <p class="card-desc">Şehrin en ikonik yemeği ve aynı zamanda en çok tahrif edileni. Menüde 10 çeşit paella varsa, fotoğraf menüsü varsa, akşam da servis ediyorsa — içeri girme. Gerçek paella öğle yemeği, odun ateşinde, 40-50 dakika pişirilir. La Pepica (Malvarrosa plajında, 1898&#x27;den beri) veya El Palmar köyündeki restoranlar en güvenilir seçenekler. Kişi başı 15-25 euro.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥛</span>
-                        <span class="card-title">Orxata con fartons</span>
+                        <h3 class="card-title">Orxata con fartons</h3>
                     </div>
                 </div>
                 <p class="card-desc">Kofaya benzer yumrulardan (chufa) yapılan tatlı ve soğuk içecek. Süt değil, gluten yok ve vegan. Yanında da mutlaka bir &#x27;farton&#x27; yani içine batırmak için yapılmış uzun, hafif tatlı bir poğaça. Öğleden sonra 17:00-19:00 arası Valensiyalılar bu ikili için oturuyor. Horchatería Santa Catalina veya &#x27;orxata artesana&#x27; tabelası olan herhangi bir yerde mutlaka dene. Süpermarketteki pastörize versiyonundan uzak dur.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥂</span>
-                        <span class="card-title">Agua de Valencia</span>
+                        <h3 class="card-title">Agua de Valencia</h3>
                     </div>
                 </div>
                 <p class="card-desc">Taze portakal suyu, cava (İspanyol köpüklü şarabı), votka veya cin, şeker — büyük carafta servis edilen Valensiya&#x27;nın kokteyli. 1959&#x27;da Café Madrid&#x27;de icat edilmiş. Taze portakal suyu ile yapılan gerçeği ile konsantreden yapılan turistik versiyonu çok farklı. Fiyatı bunu söylüyor: 8-12 euro/karaf.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🦑</span>
-                        <span class="card-title">Tapas — El Cabanyal&#x27;da</span>
+                        <h3 class="card-title">Tapas — El Cabanyal&#x27;da</h3>
                     </div>
                 </div>
                 <p class="card-desc">El Cabanyal eski balıkçı mahallesi — Valensiya&#x27;nın en taze deniz ürünleri buradan. Clóchinas (Valensiya midyesi, küçük ve yoğun aromalı, Mayıs-Ağustos sezonu), coquilles (tarak), pulpo (ahtapot). Bar Casa Montaña 1836&#x27;dan beri açık — küçük tabaklar 3-5 euro, şarap seçkisi zengin.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🫔</span>
-                        <span class="card-title">Buñuelo</span>
+                        <h3 class="card-title">Buñuelo</h3>
                     </div>
                 </div>
                 <p class="card-desc">Yağda kızartılmış, dışı çıtır içi yumuşak hamur topu. Tatlı versiyonu pudra şekeriyle servis ediliyor. Mercado Central içinde veya sokak tezgahlarında 1-2 euro. Las Fallas döneminde şehrin her köşesinde bulunuyor.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍚</span>
-                        <span class="card-title">Arroz al horno</span>
+                        <h3 class="card-title">Arroz al horno</h3>
                     </div>
                 </div>
                 <p class="card-desc">Paella&#x27;nın kardeşi ama bir o kadar da farklı: nohut, patlıcan, domates, sosis ve domuz kaburgasıyla fırında pişirilen pilav, toprak kaplarda servis ediliyor. Kış aylarının yemeği — Ekim&#x27;den Mart&#x27;a. Paella&#x27;nın gölgesinde kalan ama en az onun kadar lezzetli.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Valensiya&#x27;nın en iyi köşeleri çoğunlukla iki cadde ötede ya da şehrin hemen dışında.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Estación del Norte</span>
-                    <span class="card-badge badge-emerald">İspanya&#x27;nın en güzel tren istasyonunu turistler sürekli pas geçiyor</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ İspanya&#x27;nın en güzel tren istasyonunu turistler sürekli pas geçiyor</span>
                 </div>
+                <h3 class="card-title">Estación del Norte</h3>
                 <p class="card-desc">1917&#x27;de inşa edilmiş Modernist tren istasyonu — Valensiya&#x27;nın en önemli mimari yapılarından biri ama ziyaretçilerin büyük bölümü içine girmeden geçiyor. Portakal çiçeği, portakal ağacı ve Valensiya sembolleriyle işlenmiş vitray pencereler, seramik paneller ve demir işçiliği. Valensiya&#x27;nın tarım kültürü bu binanın duvarlarına işlenmiş. Trende yolculuğun olmasa bile içine gir.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Jardines del Turia</span>
-                    <span class="card-badge badge-emerald">Turia Bahçeleri — eski nehir yatağı, şimdi 9 km park</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Turia Bahçeleri — eski nehir yatağı, şimdi 9 km park</span>
                 </div>
+                <h3 class="card-title">Jardines del Turia</h3>
                 <p class="card-desc">1957&#x27;deki sel felaketinden sonra Turia Nehri&#x27;nin yatağı kurutulup şehrin tam ortasına 9 kilometrelik yeşil parka dönüştürüldü. Bisiklet yolları, yürüyüş parkurları, oyun alanları ve Gulliver Parkı bu koridorda. Valensiyalılar burada koşuyor, bisiklete biniyor, piknik yapıyor. Tamamen ücretsiz.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Albufera Gölü</span>
-                    <span class="card-badge badge-emerald">Albufera Gölü — paellanın gerçek anavatanı ve flamingo cenneti</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Albufera Gölü — paellanın gerçek anavatanı ve flamingo cenneti</span>
                 </div>
+                <h3 class="card-title">Albufera Gölü</h3>
                 <p class="card-desc">Valensiya&#x27;nın 20 kilometre güneyinde, Akdeniz kıyısında doğal kum bariyerleriyle ayrılmış tatlı su gölü. 21.000 hektarlık doğal bir park. El Palmar köyü gölün ortasında ve tahta teknelerle gezilebiliyor. Gün batımında ise kırmızı renge bürünen göl tam bir görsel şölen sunuyor. Buraya ulaşmak ise şehir merkezinden otobüsle sadece 40 dakika.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">El Carmen mahallesi</span>
-                    <span class="card-badge badge-emerald">El Carmen — gece yarısı hala yaşayan Orta Çağ mahallesi</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ El Carmen — gece yarısı hala yaşayan Orta Çağ mahallesi</span>
                 </div>
+                <h3 class="card-title">El Carmen mahallesi</h3>
                 <p class="card-desc">Ciudat Vella içinde, Orta Çağ surlarıyla çevrili dar sokaklar. Gündüz sanatçı atölyeleri, alternatif kafeler ve sokak sanatı; gece bar ve konser mekanları. Torres de Quart ve Torres de Serranos — şehrin en iyi panorama noktalarından biri, ücretsiz — bu mahallede. Sabahın erken saatleri en sakin, gece hayatı Cuma-Cumartesi.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">La Lonja de la Seda (İpek Borsası)</span>
-                    <span class="card-badge badge-emerald">La Lonja de la Seda — UNESCO&#x27;nun Valensiya&#x27;ya en büyük armağanı</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ La Lonja de la Seda — UNESCO&#x27;nun Valensiya&#x27;ya en büyük armağanı</span>
                 </div>
+                <h3 class="card-title">La Lonja de la Seda (İpek Borsası)</h3>
                 <p class="card-desc">1482-1548 yılları arasında inşa edilmiş, UNESCO Dünya Mirası. Geç Gotik mimarinin İspanya&#x27;daki en iyi örneklerinden biri. İçindeki Salon de Contratación&#x27;un spiral sütunları ve tonozlu tavanı Valensiya&#x27;nın ticaretteki altın çağını anlatıyor. Mercado Central&#x27;e 3 dakika yürüyüş ama çok az kalabalık.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Bioparc Valencia</span>
-                    <span class="card-badge badge-emerald">Bioparc — hayvanat bahçesi değil, Afrika savanasına pencere</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Bioparc — hayvanat bahçesi değil, Afrika savanasına pencere</span>
                 </div>
+                <h3 class="card-title">Bioparc Valencia</h3>
                 <p class="card-desc">Turia Bahçeleri&#x27;nin batı ucunda, geleneksel bir hayvanat bahçesi değil — tüm canlılar doğal habitatlarını andıran açık alanlarda ve ziyaretçilerle neredeyse aynı seviyede. Goriller, şempanzeler, filler ve suaygırları bu şekilde gözlemlemek başka bir his. Çocuklar için Valensiya&#x27;nın en iyi durağı ama yetişkinler de aynı şekilde etkileniyor.</p>
             </div>
             </div>

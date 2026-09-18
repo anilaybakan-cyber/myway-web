@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Dallas Public Transit & Airport Transfers</h2>
             </div>
             <p class="section-intro">The Metroplex is a highway empire: the car is the base, DART completes it, and the historic trolley decorates Uptown.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Arriving from the airports</span>
+                        <h3 class="card-title">Arriving from the airports</h3>
                     </div>
                 </div>
                 <p class="card-desc">From DFW the DART orange line reaches Downtown in an hour — cheap and painless; Love Field is ten minutes from town. If renting a car, DFW&#x27;s rental center is enormous: budget for the shuttle.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚈</span>
-                        <span class="card-title">DART light rail</span>
+                        <h3 class="card-title">DART light rail</h3>
                     </div>
                 </div>
                 <p class="card-desc">One of America&#x27;s longest light-rail networks: the Downtown, Deep Ellum, Fair Park and Plano lines serve visitors well. Buy tickets on the GoPass app — the carless traveler&#x27;s best friend.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚗</span>
-                        <span class="card-title">The car and highway manners</span>
+                        <h3 class="card-title">The car and highway manners</h3>
                     </div>
                 </div>
                 <p class="card-desc">The stacked interchanges (&#x27;mixmasters&#x27;) frighten at first sight: trust the navigation and change lanes early. Parking is paid Downtown, easy in most neighborhoods — in Texas, the car is freedom itself.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚋</span>
-                        <span class="card-title">The M-Line trolley</span>
+                        <h3 class="card-title">The M-Line trolley</h3>
                     </div>
                 </div>
                 <p class="card-desc">Uptown&#x27;s restored heritage streetcar runs free along McKinney Avenue: wooden benches, brass bells. Pair it with a Katy Trail walk — Dallas&#x27;s most graceful transport nostalgia.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">Walking within neighborhoods</span>
+                        <h3 class="card-title">Walking within neighborhoods</h3>
                     </div>
                 </div>
                 <p class="card-desc">Dallas as a whole can&#x27;t be walked, but its neighborhoods can: Bishop Arts&#x27; shops, Deep Ellum&#x27;s murals, the Arts District&#x27;s museum axis. Klyde Warren Park bridges the highway on foot.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Where to Stay in Dallas: Best Areas</h2>
             </div>
             <p class="section-intro">In Dallas the choice is a choice of texture: Downtown&#x27;s towers, Uptown&#x27;s porches, Deep Ellum&#x27;s neon or Bishop Arts&#x27; bungalow streets.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Downtown</span>
+                    <h3 class="card-title">Downtown</h3>
                     <span class="card-badge badge-purple">Beside the icons</span>
                 </div>
                 <p class="card-desc">Reunion Tower, Dealey Plaza and the Arts District within walking distance: a wide range from historic hotels to modern towers. Quieter at night — a practical base for the sight-packed traveler.</p>
-                <div class="card-footer-tip">Museum axis • Historic hotels • DART junction</div>
+                <div class="card-footer-tip">📍 Museum axis • Historic hotels • DART junction</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Uptown</span>
+                    <h3 class="card-title">Uptown</h3>
                     <span class="card-badge badge-purple">Liveliest</span>
                 </div>
                 <p class="card-desc">McKinney Avenue&#x27;s restaurants, the trolley and the Katy Trail: Dallas&#x27;s walkable, young, polished side. The densest nightlife and dining in the city.</p>
-                <div class="card-footer-tip">Trolley line • Katy Trail • Restaurant row</div>
+                <div class="card-footer-tip">📍 Trolley line • Katy Trail • Restaurant row</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Deep Ellum</span>
+                    <h3 class="card-title">Deep Ellum</h3>
                     <span class="card-badge badge-purple">Music soul</span>
                 </div>
                 <p class="card-desc">Mural-covered warehouse streets, live music clubs and craft beer: the creative quarter born from the blues. Loud at night, photogenic by day — the address for atmosphere seekers.</p>
-                <div class="card-footer-tip">Mural streets • Live music • Craft beer</div>
+                <div class="card-footer-tip">📍 Mural streets • Live music • Craft beer</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Bishop Arts District</span>
+                    <h3 class="card-title">Bishop Arts District</h3>
                     <span class="card-badge badge-purple">Bungalow calm</span>
                 </div>
                 <p class="card-desc">Boutique shops, bakeries and taquerías among Oak Cliff&#x27;s porched bungalows: Dallas&#x27;s village-scale corner. Ten minutes over the bridge to the center — the calm, characterful side.</p>
-                <div class="card-footer-tip">Boutique shops • Porched streets • Taquería neighbors</div>
+                <div class="card-footer-tip">📍 Boutique shops • Porched streets • Taquería neighbors</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Fort Worth (Sundance Square)</span>
+                    <h3 class="card-title">Fort Worth (Sundance Square)</h3>
                     <span class="card-badge badge-purple">Second-city base</span>
                 </div>
                 <p class="card-desc">The Metroplex&#x27;s other star: Sundance Square&#x27;s plaza, the cowboy heritage of the Stockyards and world-class museums. Giving it a night or two makes this a two-city trip.</p>
-                <div class="card-footer-tip">Plaza life • Near the Stockyards • Museum district</div>
+                <div class="card-footer-tip">📍 Plaza life • Near the Stockyards • Museum district</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Best Time to Visit Dallas</h2>
             </div>
             <p class="section-intro">Dallas&#x27;s calendar is a bargain with the heat: spring and fall are the golden window, summer is a furnace, and October means the State Fair.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Spring</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Mar – May</span>
+                        <h3 class="card-title">Spring</h3>
+                        <span class="season-months">Mar – May</span>
                     </div>
                     <span class="card-badge badge-amber">Bluebonnet Spring</span>
                 </div>
                 <p class="card-desc">April is Texas&#x27;s flower month: bluebonnet fields paint the roadsides blue and the Arboretum becomes a blossom festival. The air is mild, the patios open — and it&#x27;s storm season too: thunder asks your plans to stay flexible.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Summer</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Jun – Aug</span>
+                        <h3 class="card-title">Summer</h3>
+                        <span class="season-months">Jun – Aug</span>
                     </div>
                     <span class="card-badge badge-amber">The Texas Furnace</span>
                 </div>
                 <p class="card-desc">Summer Dallas is serious heat: noon hits 38°C and life moves to air-conditioned interiors and the evening hours. A hotel pool is summer&#x27;s gold standard — early morning and post-sunset outdoors, museums and tables between.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Autumn</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Sep – Nov</span>
+                        <h3 class="card-title">Autumn</h3>
+                        <span class="season-months">Sep – Nov</span>
                     </div>
                     <span class="card-badge badge-amber">State Fair Season</span>
                 </div>
                 <p class="card-desc">In late September the State Fair of Texas turns Fair Park into a month-long festival: the Big Tex statue, corny dog aromas and the Ferris wheel. October–November air is made for walking — Dallas&#x27;s most pleasant weeks.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Winter</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Dec – Feb</span>
+                        <h3 class="card-title">Winter</h3>
+                        <span class="season-months">Dec – Feb</span>
                     </div>
                     <span class="card-badge badge-amber">Mild and Lit</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍖</span>
-                        <span class="card-title">Brisket</span>
+                        <h3 class="card-title">Brisket</h3>
                     </div>
                 </div>
                 <p class="card-desc">Beef brisket smoked twelve hours over oak: black &#x27;bark&#x27; outside, a pink smoke ring within. Cut by the pound at the counter — ask for the moist side and eat it with white bread and pickles. This is the throne of Texas barbecue.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🫕</span>
-                        <span class="card-title">Tex-Mex and the queso ritual</span>
+                        <h3 class="card-title">Tex-Mex and the queso ritual</h3>
                     </div>
                 </div>
                 <p class="card-desc">It opens with the chips-salsa-queso trio and continues with enchiladas and tacos: Tex-Mex is its own cuisine and Dallas is one of its capitals. The yellow-cheese, ground-beef &#x27;Tex-Mex enchilada&#x27; is nostalgia itself.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍹</span>
-                        <span class="card-title">The frozen margarita</span>
+                        <h3 class="card-title">The frozen margarita</h3>
                     </div>
                 </div>
                 <p class="card-desc">The machine-churned margarita was invented in Dallas in 1971: the city&#x27;s coldest point of pride. Salted rim, ice crystals and Texas heat — the equation was written here; solve it on site.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥩</span>
-                        <span class="card-title">Chicken fried steak</span>
+                        <h3 class="card-title">Chicken fried steak</h3>
                     </div>
                 </div>
                 <p class="card-desc">The Texas giant of crisp-battered steak: peppered white gravy on top, mashed potatoes alongside. Found at every level from truck stop to smart brasserie — take the portion warning seriously.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🌮</span>
-                        <span class="card-title">The breakfast taco morning</span>
+                        <h3 class="card-title">The breakfast taco morning</h3>
                     </div>
                 </div>
                 <p class="card-desc">Egg, potato, chorizo and a tortilla: the foldable classic of a Texas morning. Bought at a taquería counter, woken up with salsa verde — taco before coffee is legitimate order here.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🌭</span>
-                        <span class="card-title">Corny dogs and pecan pie</span>
+                        <h3 class="card-title">Corny dogs and pecan pie</h3>
                     </div>
                 </div>
                 <p class="card-desc">Fletcher&#x27;s fair-born corn dog is the taste of October; pecan pie is the year-round crown of Texas dessert: nutty, caramelly, heavy by the slice. Both are state pride — take them in turn.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Everyone sees Reunion Tower; these six are Dallas&#x27;s mural-painted, lake-breezed hidden face.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">White Rock Lake</span>
-                    <span class="card-badge badge-emerald">Lake morning inside the city</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Lake morning inside the city</span>
                 </div>
+                <h3 class="card-title">White Rock Lake</h3>
                 <p class="card-desc">A 15-kilometer lakeside loop ten minutes from Downtown: rowers, pelicans and a skyline view. A morning run or bike loop — where Dallasites meet nature.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">The Bishop Arts streets</span>
-                    <span class="card-badge badge-emerald">Art between bungalows</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Art between bungalows</span>
                 </div>
+                <h3 class="card-title">The Bishop Arts streets</h3>
                 <p class="card-desc">Independent shops, empanada bakeries and murals among Oak Cliff&#x27;s restored bungalows: the city of small scale. The afternoon formula of shop-browsing plus a bakery stop never fails.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Pioneer Plaza</span>
-                    <span class="card-badge badge-emerald">Inside the bronze herd</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Inside the bronze herd</span>
                 </div>
+                <h3 class="card-title">Pioneer Plaza</h3>
                 <p class="card-desc">In the heart of Downtown, a life-size sculpture herd of 49 bronze steers and three cowboys: among America&#x27;s largest bronze monuments. Go early — walking alone through the herd is strange and beautiful.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">The walls of Deep Ellum</span>
-                    <span class="card-badge badge-emerald">Morning mural safari</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Morning mural safari</span>
                 </div>
+                <h3 class="card-title">The walls of Deep Ellum</h3>
                 <p class="card-desc">Hundreds of murals across forty-odd blocks: with the clubs closed, the streets become a gallery. Walk it on a Sunday morning with coffee — the same neighborhood, an entirely different face by day.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">The Fort Worth Stockyards</span>
-                    <span class="card-badge badge-emerald">A real cowboy diary</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ A real cowboy diary</span>
                 </div>
+                <h3 class="card-title">The Fort Worth Stockyards</h3>
                 <p class="card-desc">At the Metroplex&#x27;s far end, a longhorn herd is driven down the street twice a day: stables, rodeo and western outfitters. Touristy yet true — the living stage of Texas mythology.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Klyde Warren Park</span>
-                    <span class="card-badge badge-emerald">A park over the highway</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ A park over the highway</span>
                 </div>
+                <h3 class="card-title">Klyde Warren Park</h3>
                 <p class="card-desc">A park built ON TOP of the freeway that split the city: food trucks, free yoga and a pedestrian bridge to the museum axis. Urban planning&#x27;s Dallas victory — Saturday noon is its liveliest hour.</p>
             </div>
             </div>

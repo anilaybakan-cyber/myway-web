@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Ibiza Şehir İçi Ulaşım & Transfer</h2>
             </div>
             <p class="section-intro">Ibiza küçük görünür ama koylar dağınıktır: özgürlük kiralık araçta, pratiklik ana hat otobüslerinde, keyif teknededir.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Havalimanından merkeze</span>
+                        <h3 class="card-title">Havalimanından merkeze</h3>
                     </div>
                 </div>
                 <p class="card-desc">Havalimanı Ibiza Town&#x27;a 10 dakika: 10 numaralı otobüs sezonda sık çalışır, taksi sabit tarifeye yakındır. San Antonio tarafına geçiş yarım saati bulur.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚗</span>
-                        <span class="card-title">Kiralık araç — koy anahtarı</span>
+                        <h3 class="card-title">Kiralık araç — koy anahtarı</h3>
                     </div>
                 </div>
                 <p class="card-desc">Gizli koyların çoğuna toprak yollarla inilir; küçük bir araç adanın kilididir. Yazın erken rezerve et, plaj otoparklarına sabah var — öğlen yer bulmak şansa kalır.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚌</span>
-                        <span class="card-title">Otobüs ana hatları</span>
+                        <h3 class="card-title">Otobüs ana hatları</h3>
                     </div>
                 </div>
                 <p class="card-desc">Ibiza-San Antonio-Santa Eulària üçgeni ve havalimanı hattı düzenli işler; gece Disco Bus kulüpleri birbirine bağlar. Kuzey koylarına seferler seyrektir — saatleri önceden kontrol et.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">⛵</span>
-                        <span class="card-title">Tekne ve feribotlar</span>
+                        <h3 class="card-title">Tekne ve feribotlar</h3>
                     </div>
                 </div>
                 <p class="card-desc">Formentera feribotu limandan yarım saatte kalkar; sahil tekneleri Cala Comte-Cala Bassa hattında taksi gibi çalışır. Es Vedrà turlu gün batımı teknesi, adanın klasik jestidir.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🛵</span>
-                        <span class="card-title">Scooter ve bisiklet</span>
+                        <h3 class="card-title">Scooter ve bisiklet</h3>
                     </div>
                 </div>
                 <p class="card-desc">Kısa mesafeler ve liman çevresi için scooter pratiktir; ada içi yollar tepelik ve yazın sıcaktır — bisiklet sabah erken saatlerin aracıdır.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Nerede Kalınır? Ibiza Mahalleleri</h2>
             </div>
             <p class="section-intro">Ibiza&#x27;da bölge seçimi tatilin türünü belirler: liman ve sur gölgesi, parti sahili, aile koyu ya da kuzeyin çam sessizliği.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Ibiza Town (Eivissa) ve Dalt Vila</span>
+                    <h3 class="card-title">Ibiza Town (Eivissa) ve Dalt Vila</h3>
                     <span class="card-badge badge-purple">En atmosferli</span>
                 </div>
                 <p class="card-desc">Sur içinde taş sokaklar, liman kenarında akşam pasosu, marina barları: tarih + gece hayatı dengesinin merkezi. Yazın canlı ve pahalı — ada hayatının vitrini.</p>
-                <div class="card-footer-tip">Sur içi sokaklar • Liman akşamları • Kulüplere erişim</div>
+                <div class="card-footer-tip">📍 Sur içi sokaklar • Liman akşamları • Kulüplere erişim</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Santa Eulària des Riu</span>
+                    <h3 class="card-title">Santa Eulària des Riu</h3>
                     <span class="card-badge badge-purple">En aile dostu</span>
                 </div>
                 <p class="card-desc">Sakin kordon, kum plajlar ve restoran çeşitliliği: partiden uzak, konfordan yana. Çocuklu aileler ve sakin tatilcilerin klasik üssü.</p>
-                <div class="card-footer-tip">Sakin kordon • Aile plajları • Restoran bolluğu</div>
+                <div class="card-footer-tip">📍 Sakin kordon • Aile plajları • Restoran bolluğu</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">San Antonio (Sant Antoni)</span>
+                    <h3 class="card-title">San Antonio (Sant Antoni)</h3>
                     <span class="card-badge badge-purple">Parti + gün batımı</span>
                 </div>
                 <p class="card-desc">Sunset Strip&#x27;in ve genç parti kalabalığının sahili: gün batımı barları efsane, gece gürültü garantili. Bütçe dostu otelleri ve tekne turu limanıyla gençliğin adresi.</p>
-                <div class="card-footer-tip">Sunset Strip • Genç enerji • Bütçe otelleri</div>
+                <div class="card-footer-tip">📍 Sunset Strip • Genç enerji • Bütçe otelleri</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Kuzey — Portinatx ve Sant Joan tarafı</span>
+                    <h3 class="card-title">Kuzey — Portinatx ve Sant Joan tarafı</h3>
                     <span class="card-badge badge-purple">En sakin</span>
                 </div>
                 <p class="card-desc">Çam ormanları, saklı koylar ve hippi mirası köyler: adanın yavaş yüzü. Araç şart, ödülü sessizlik ve yıldızlı gökyüzü.</p>
-                <div class="card-footer-tip">Saklı koylar • Çam ormanı • Araç gerekir</div>
+                <div class="card-footer-tip">📍 Saklı koylar • Çam ormanı • Araç gerekir</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">İç ada — Santa Gertrudis ve fincalar</span>
+                    <h3 class="card-title">İç ada — Santa Gertrudis ve fincalar</h3>
                     <span class="card-badge badge-purple">En karakterli</span>
                 </div>
                 <p class="card-desc">Beyaz köy meydanları ve agroturismo fincaları: her koya eşit mesafe, akşamları köy meydanında uzun sofra. Ibiza&#x27;yı &#x27;ada köyü&#x27; olarak yaşamak isteyene.</p>
-                <div class="card-footer-tip">Agroturismo • Köy meydanı • Merkezi konum</div>
+                <div class="card-footer-tip">📍 Agroturismo • Köy meydanı • Merkezi konum</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Ibiza İçin En İyi Ziyaret Zamanı</h2>
             </div>
             <p class="section-intro">Ibiza&#x27;nın takvimi kulüp sezonuyla değil, ışık ve kalabalıkla okunmalı: haziran ve eylül altın, temmuz-ağustos zirve, kış bambaşka bir ada.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">İlkbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Nis – Haz</span>
+                        <h3 class="card-title">İlkbahar</h3>
+                        <span class="season-months">Nis – Haz</span>
                     </div>
                     <span class="card-badge badge-amber">Açılış Sezonu</span>
                 </div>
                 <p class="card-desc">Ada kır çiçekleriyle yeşilin en canlısına döner, deniz mayısta yüzülür hale gelir ve mayıs sonu-haziran kulüplerin açılış partileriyle sezon kapısını açar. Koylar sakin, fiyatlar henüz makul.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Yaz</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Tem – Ağu</span>
+                        <h3 class="card-title">Yaz</h3>
+                        <span class="season-months">Tem – Ağu</span>
                     </div>
                     <span class="card-badge badge-amber">Zirve Sezon</span>
                 </div>
                 <p class="card-desc">Dünyanın DJ takvimi adaya taşınır, koylar ve yollar dolar, fiyatlar tavan yapar. Enerji eşsizdir ama plansız gelinmez: kulüp bileti, restoran masası ve araç — üçü de önceden.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Sonbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Eyl – Kas</span>
+                        <h3 class="card-title">Sonbahar</h3>
+                        <span class="season-months">Eyl – Kas</span>
                     </div>
                     <span class="card-badge badge-amber">Kapanış ve Sıcak Deniz</span>
                 </div>
                 <p class="card-desc">Eylül adanın en iyi sırrıdır: deniz en sıcak halinde, kalabalık çekilmiş, ekim başında kapanış partileri final yapar. Kasımla birlikte ada yerlilere döner, yürüyüş sezonu açılır.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Kış</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Ara – Mar</span>
+                        <h3 class="card-title">Kış</h3>
+                        <span class="season-months">Ara – Mar</span>
                     </div>
                     <span class="card-badge badge-amber">Yerlilerin Adası</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🐟</span>
-                        <span class="card-title">Bullit de peix — iki perdelik balık</span>
+                        <h3 class="card-title">Bullit de peix — iki perdelik balık</h3>
                     </div>
                 </div>
                 <p class="card-desc">Önce safranlı suda pişmiş balık ve patates, ikinci perdede aynı suyun pilavı arroz a banda: adanın en büyük gastronomik gururu. Balıkçı koylarındaki aile lokantalarında, mümkünse rezervasyonla.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥘</span>
-                        <span class="card-title">Sofrit pagès — köy tenceresi</span>
+                        <h3 class="card-title">Sofrit pagès — köy tenceresi</h3>
                     </div>
                 </div>
                 <p class="card-desc">Tavuk, kuzu, sosis ve patatesin ağır ateşte buluştuğu köy klasiği: kış sofrasının kalbi, yazın da menülerde. Doyurucu ve dürüst — agroturismo mutfaklarının imzası.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍮</span>
-                        <span class="card-title">Flaó ve greixonera</span>
+                        <h3 class="card-title">Flaó ve greixonera</h3>
                     </div>
                 </div>
                 <p class="card-desc">Flaó: naneli taze peynirli tart, İbiza&#x27;nın yüzyıllardır değişmeyen tatlısı. Greixonera ise dünkü ensaimada&#x27;dan yapılan tarçınlı puding — israf etmeyen ada aklının şaheseri.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🌿</span>
-                        <span class="card-title">Hierbas ibicencas</span>
+                        <h3 class="card-title">Hierbas ibicencas</h3>
                     </div>
                 </div>
                 <p class="card-desc">Adanın çam, rezene ve nane dahil onlarca bitkisiyle demlenen anason likörü: yemek sonu buzlu servis edilir. Her ailenin kendi şişesi, her lokantanın kendi tarifi vardır — hediyelik olarak da klasik.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥗</span>
-                        <span class="card-title">Ensalada payesa ve peix sec</span>
+                        <h3 class="card-title">Ensalada payesa ve peix sec</h3>
                     </div>
                 </div>
                 <p class="card-desc">Köy salatasının Ibiza hali: patates, kırmızı biber ve güneşte kurutulmuş balık (peix sec) ile. Tuzlu, taze ve plaj öğlenin en hafif zaferi.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍹</span>
-                        <span class="card-title">Chiringuito gün batımı sofrası</span>
+                        <h3 class="card-title">Chiringuito gün batımı sofrası</h3>
                     </div>
                 </div>
                 <p class="card-desc">Plaj barlarında ızgara balık, sangria ve ayak kumda akşam: menü basit, sahne muhteşem. Batı kıyısı chiringuito&#x27;larında masayı gün batımından bir saat önce kap.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Ünlü koyları herkes bilir; bu altısı adanın sakladığı yüzü.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Es Vedrà izleme noktaları</span>
-                    <span class="card-badge badge-emerald">Adanın mistik kayası</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Adanın mistik kayası</span>
                 </div>
+                <h3 class="card-title">Es Vedrà izleme noktaları</h3>
                 <p class="card-desc">Denizden 380 metre yükselen ıssız kaya, adanın bütün efsanelerinin merkezidir: sirenler, manyetik alanlar, Tanit&#x27;in evi. Cala d&#x27;Hort üstündeki kayalıklardan ya da Savinar kulesinden gün batımında izle — kalabalık plajda, sen yukarıda.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Benirràs</span>
-                    <span class="card-badge badge-emerald">Davullu gün batımı koyu</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Davullu gün batımı koyu</span>
                 </div>
+                <h3 class="card-title">Benirràs</h3>
                 <p class="card-desc">Kuzeyin çam kuşaklı koyu, pazar akşamları davul çemberiyle gün batımını uğurlar: hippi mirasının hâlâ nefes aldığı yer. Erken git — koy küçük, ritüel ünlü.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Las Dalias ve hippi pazarları</span>
-                    <span class="card-badge badge-emerald">Ada içinde ada pazarı</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Ada içinde ada pazarı</span>
                 </div>
+                <h3 class="card-title">Las Dalias ve hippi pazarları</h3>
                 <p class="card-desc">Sant Carles&#x27;teki efsane pazar 1954&#x27;ten beri kurulur: el yapımı takılar, adanın son gerçek hippileri ve canlı müzik. Cumartesi ana gün — sabah git, öğlen kalabalığından önce çık.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Ses Salines tuzlaları</span>
-                    <span class="card-badge badge-emerald">Tuz düzlüklerinin pembe saati</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Tuz düzlüklerinin pembe saati</span>
                 </div>
+                <h3 class="card-title">Ses Salines tuzlaları</h3>
                 <p class="card-desc">Fenikelilerden beri işleyen tuz havuzları gün batımında pembeye döner; flamingolar sığ suda gezinir. Plajının şöhreti tuzlaların sessiz güzelliğini gölgeler — bisikletle tur at.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Torre des Savinar (Torre del Pirata)</span>
-                    <span class="card-badge badge-emerald">Korsan gözcü kulesi</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Korsan gözcü kulesi</span>
                 </div>
+                <h3 class="card-title">Torre des Savinar (Torre del Pirata)</h3>
                 <p class="card-desc">Es Vedrà&#x27;nın tam karşısındaki 18. yüzyıl gözcü kulesi: kısa ama dik patikayla çıkılır, ödülü adanın en dramatik manzarasıdır. Gün batımından bir saat önce zirvede ol.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Santa Gertrudis akşamı</span>
-                    <span class="card-badge badge-emerald">Beyaz köy meydanı</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Beyaz köy meydanı</span>
                 </div>
+                <h3 class="card-title">Santa Gertrudis akşamı</h3>
                 <p class="card-desc">Ada içinin beyaz köyü: meydan çevresinde tapas barları, galeriler ve ağaç altı masalar. Kıyı gürültüsünden bir akşamlık mola — jamón tabağı ve soğuk beyazla köy Ibiza&#x27;sı.</p>
             </div>
             </div>

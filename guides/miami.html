@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Miami Public Transit & Airport Transfers</h2>
             </div>
             <p class="section-intro">Miami is a sprawling ribbon: a car or ride app is the base, the free Metromover is downtown&#x27;s surprise, and the beach district walks on its own.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Arriving from the airport</span>
+                        <h3 class="card-title">Arriving from the airport</h3>
                     </div>
                 </div>
                 <p class="card-desc">MIA is 20–30 minutes from town and beach: ride apps are practical and taxis run flat rates to the beach. If you land at Fort Lauderdale, the Brightline train is the sleek, fast connection.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚝</span>
-                        <span class="card-title">Metromover and Metrorail</span>
+                        <h3 class="card-title">Metromover and Metrorail</h3>
                     </div>
                 </div>
                 <p class="card-desc">Downtown&#x27;s free elevated Metromover glides from Brickell to Bayside: a surprise gift for visitors. Metrorail serves the airport and Coconut Grove lines — no rail reaches the beach.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚗</span>
-                        <span class="card-title">The car and the causeways</span>
+                        <h3 class="card-title">The car and the causeways</h3>
                     </div>
                 </div>
                 <p class="card-desc">A car is essential between neighborhoods: the MacArthur Causeway crossing to the beach, lined with yachts and cruise ships, is the city&#x27;s most beautiful drive. Parking in South Beach is pricey and gamed — use the garage apps.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚲</span>
-                        <span class="card-title">Citi Bike and the beachwalk</span>
+                        <h3 class="card-title">Citi Bike and the beachwalk</h3>
                     </div>
                 </div>
                 <p class="card-desc">The beachside path stretches north from Lummus Park: pedal in the morning cool with art deco facades for company. Within South Beach, a bike beats a car.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">⛴️</span>
-                        <span class="card-title">The boat perspective</span>
+                        <h3 class="card-title">The boat perspective</h3>
                     </div>
                 </div>
                 <p class="card-desc">Miami is another city from the water: Biscayne Bay cruises, boat rentals and the skyline seen from the waves. The sunset sailing serves the city&#x27;s neon profile in golden light.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Where to Stay in Miami: Best Areas</h2>
             </div>
             <p class="section-intro">In Miami the choice is a choice of stage: South Beach&#x27;s art deco window, Wynwood&#x27;s wall art, Brickell&#x27;s towers or the Grove&#x27;s banyan shade.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">South Beach</span>
+                    <h3 class="card-title">South Beach</h3>
                     <span class="card-badge badge-purple">Art deco window</span>
                 </div>
                 <p class="card-desc">Pastel hotels, Ocean Drive neon and the beach at the door: you wake up inside the Miami postcard. Brace for night noise — the calm-seeker should drift north to Mid-Beach.</p>
-                <div class="card-footer-tip">Beach at the door • Art deco hotels • Night neon</div>
+                <div class="card-footer-tip">📍 Beach at the door • Art deco hotels • Night neon</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Wynwood and Midtown</span>
+                    <h3 class="card-title">Wynwood and Midtown</h3>
                     <span class="card-badge badge-purple">Art soul</span>
                 </div>
                 <p class="card-desc">Mural walls, galleries, breweries and third-wave coffee: Miami&#x27;s creative stage. Fifteen minutes to the beach by car — the young, characterful base.</p>
-                <div class="card-footer-tip">Mural streets • Gallery nights • Coffee scene</div>
+                <div class="card-footer-tip">📍 Mural streets • Gallery nights • Coffee scene</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Brickell</span>
+                    <h3 class="card-title">Brickell</h3>
                     <span class="card-badge badge-purple">Tower views</span>
                 </div>
                 <p class="card-desc">The financial district&#x27;s skyscraper hotels, rooftop pools and riverside restaurants: modern Miami&#x27;s center. Linked to Downtown by Metromover — practical for a city-first stay.</p>
-                <div class="card-footer-tip">Rooftop pools • Riverside • On the Metromover</div>
+                <div class="card-footer-tip">📍 Rooftop pools • Riverside • On the Metromover</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Around Little Havana</span>
+                    <h3 class="card-title">Around Little Havana</h3>
                     <span class="card-badge badge-purple">Cuban soul</span>
                 </div>
                 <p class="card-desc">Calle Ocho&#x27;s domino park, cigar workshops and coffee windows: daily life in Miami&#x27;s truest neighborhood. Boutique lodging is limited, but the soul is matchless.</p>
-                <div class="card-footer-tip">Calle Ocho • Ventanita neighbors • Domino sounds</div>
+                <div class="card-footer-tip">📍 Calle Ocho • Ventanita neighbors • Domino sounds</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Coconut Grove</span>
+                    <h3 class="card-title">Coconut Grove</h3>
                     <span class="card-badge badge-purple">Banyan shade</span>
                 </div>
                 <p class="card-desc">Sail masts on the bay, banyan-shaded streets and calm cafes: Miami&#x27;s oldest, greenest neighborhood. The graceful choice for families and peace-seekers.</p>
-                <div class="card-footer-tip">Marina walks • Banyan streets • Calm evenings</div>
+                <div class="card-footer-tip">📍 Marina walks • Banyan streets • Calm evenings</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Best Time to Visit Miami</h2>
             </div>
             <p class="section-intro">Miami&#x27;s calendar is a bargain with humidity and hurricanes: December–April is the postcard, summer is the locals&#x27; test of patience, and late October is the turning point.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Spring</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Mar – May</span>
+                        <h3 class="card-title">Spring</h3>
+                        <span class="season-months">Mar – May</span>
                     </div>
                     <span class="card-badge badge-amber">The Peak&#x27;s Extension</span>
                 </div>
                 <p class="card-desc">March and April are Miami at its fullest: spring breakers, music festivals and a perfect sea. May calms down as humidity starts to climb — for the balanced experience, late April to early May is the sweet spot.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Summer</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Jun – Sep</span>
+                        <h3 class="card-title">Summer</h3>
+                        <span class="season-months">Jun – Sep</span>
                     </div>
                     <span class="card-badge badge-amber">Humidity and Shower Season</span>
                 </div>
                 <p class="card-desc">Summer Miami is humid and thundery: the afternoon downpour arrives like a ritual and passes, leaving steamy sun. Hotels hit their yearly lows — with a beach-morning, museum-noon, dinner-evening rhythm, summer works too.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Autumn</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Oct – Nov</span>
+                        <h3 class="card-title">Autumn</h3>
+                        <span class="season-months">Oct – Nov</span>
                     </div>
                     <span class="card-badge badge-amber">The Turning Point</span>
                 </div>
                 <p class="card-desc">In late October the humidity breaks and the city exhales: beaches calm, prices still friendly, galleries warming up before early December&#x27;s Art Basel. November is the Miami of those in the know.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Winter</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Dec – Feb</span>
+                        <h3 class="card-title">Winter</h3>
+                        <span class="season-months">Dec – Feb</span>
                     </div>
                     <span class="card-badge badge-amber">Postcard Season</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥪</span>
-                        <span class="card-title">The Cubano sandwich</span>
+                        <h3 class="card-title">The Cubano sandwich</h3>
                     </div>
                 </div>
                 <p class="card-desc">Ham, roast pork, Swiss cheese, pickles and mustard, pressed hot in Cuban bread: the crunch is the mark of mastery. Try it at Little Havana&#x27;s storied counters — the &#x27;medianoche&#x27; version is the midnight classic.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">☕</span>
-                        <span class="card-title">The cafecito and pastelito ritual</span>
+                        <h3 class="card-title">The cafecito and pastelito ritual</h3>
                     </div>
                 </div>
                 <p class="card-desc">Cafecito at the ventanita with a guava pastelito alongside: the official pair of the Miami morning (and afternoon). If you bought a colada, hand out the cups — sharing is the protocol itself.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥘</span>
-                        <span class="card-title">The ropa vieja table</span>
+                        <h3 class="card-title">The ropa vieja table</h3>
                     </div>
                 </div>
                 <p class="card-desc">The shredded beef stew named &#x27;old clothes&#x27;: with black beans, rice and sweet fried plantains. The masterpiece of Cuban home cooking — Little Havana&#x27;s portions are generous.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🦀</span>
-                        <span class="card-title">Stone crab season</span>
+                        <h3 class="card-title">Stone crab season</h3>
                     </div>
                 </div>
                 <p class="card-desc">From October to May, Florida&#x27;s stone crab claws are served cold with mustard sauce: Miami&#x27;s seasonal luxury. Claw size sets the price — if you&#x27;re in season, don&#x27;t miss it.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🐟</span>
-                        <span class="card-title">Ceviche and Latin fusion</span>
+                        <h3 class="card-title">Ceviche and Latin fusion</h3>
                     </div>
                 </div>
                 <p class="card-desc">Peruvian migration brought world-class ceviche to Miami: fresh fish, lime, ají pepper. The city&#x27;s stylish rooms are the laboratory of Latin fusion — tiradito and arepa share a menu.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍧</span>
-                        <span class="card-title">Cuban sweets and batidos</span>
+                        <h3 class="card-title">Cuban sweets and batidos</h3>
                     </div>
                 </div>
                 <p class="card-desc">Tres leches, caramel flan and tropical batidos (shakes): where else will you taste guanabana or mamey? The sweet answer to a hot afternoon.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Everyone sees Ocean Drive; these six are Miami&#x27;s banyan-shaded, lighthouse-lit hidden face.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Vizcaya Museum and Gardens</span>
-                    <span class="card-badge badge-emerald">A palace facing the bay</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ A palace facing the bay</span>
                 </div>
+                <h3 class="card-title">Vizcaya Museum and Gardens</h3>
                 <p class="card-desc">An Italianate villa of 1916: marble terraces, labyrinth gardens and a stone barge descending to the bay. Miami&#x27;s most graceful morning — go early for the light; stumbling into quinceañera photo shoots is part of the show.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">The Venetian Pool</span>
-                    <span class="card-badge badge-emerald">The historic coral pool</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ The historic coral pool</span>
                 </div>
+                <h3 class="card-title">The Venetian Pool</h3>
                 <p class="card-desc">A 1924 public pool carved from a coral rock quarry in Coral Gables: waterfalls, grottoes and palms. The world&#x27;s most beautiful municipal pool — go early on a summer morning.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Bill Baggs and the Key Biscayne lighthouse</span>
-                    <span class="card-badge badge-emerald">Island beach with a lighthouse</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Island beach with a lighthouse</span>
                 </div>
+                <h3 class="card-title">Bill Baggs and the Key Biscayne lighthouse</h3>
                 <p class="card-desc">Island calm twenty minutes over the causeway: an 1825 lighthouse, a waveless beach and picnic groves. The most peaceful address for gazing back at the Miami skyline.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Domino Park (Calle Ocho)</span>
-                    <span class="card-badge badge-emerald">The park of clacking dominoes</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ The park of clacking dominoes</span>
                 </div>
+                <h3 class="card-title">Domino Park (Calle Ocho)</h3>
                 <p class="card-desc">Máximo Gómez Park in the heart of Little Havana: masters in guayabera shirts slam dominoes all day as cigar smoke drifts. Watching is welcome, respect is essential — Miami&#x27;s truest corner.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">The MiMo Boulevard</span>
-                    <span class="card-badge badge-emerald">The pastel motel strip</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ The pastel motel strip</span>
                 </div>
+                <h3 class="card-title">The MiMo Boulevard</h3>
                 <p class="card-desc">Biscayne Boulevard&#x27;s 1950s &#x27;Miami Modern&#x27; motels with neon signs: restored lobbies, retro pools and photogenic facades. Art deco&#x27;s lesser-known sibling — cruise the strip, stop at the signs.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Everglades Shark Valley</span>
-                    <span class="card-badge badge-emerald">A horizon with alligators</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ A horizon with alligators</span>
                 </div>
+                <h3 class="card-title">Everglades Shark Valley</h3>
                 <p class="card-desc">An hour west, the Everglades&#x27; 24-kilometer loop road: you cycle past alligators, and from the observation tower the &#x27;river of grass&#x27; runs to the horizon. Miami&#x27;s wild backyard — early morning, water bottle in hand.</p>
             </div>
             </div>

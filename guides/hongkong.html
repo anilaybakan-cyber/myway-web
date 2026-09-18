@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Hong Kong Public Transit & Airport Transfers</h2>
             </div>
             <p class="section-intro">Hong Kong&#x27;s transport is a sightseeing programme in itself: a century-old tram, a legendary ferry and the world&#x27;s most efficient metro meet on one card.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Airport to the centre</span>
+                        <h3 class="card-title">Airport to the centre</h3>
                     </div>
                 </div>
                 <p class="card-desc">The Airport Express reaches Central in 24 minutes, with free shuttles fanning out to the big hotels. The budget alternative, buses A11/A21, is scenic and half the price.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚇</span>
-                        <span class="card-title">The MTR — a backbone that runs to the second</span>
+                        <h3 class="card-title">The MTR — a backbone that runs to the second</h3>
                     </div>
                 </div>
                 <p class="card-desc">The metro network weaves both shores and the New Territories: clean, fast, flawlessly signed. Be ready for the human tide at rush hour — the flow carries you; just steer.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚋</span>
-                        <span class="card-title">The Ding Ding — the double-decker tram</span>
+                        <h3 class="card-title">The Ding Ding — the double-decker tram</h3>
                     </div>
                 </div>
                 <p class="card-desc">The double-deckers have trundled along the island since 1904 and remain the city&#x27;s cheapest tour: take the front seat on the top deck and glide beneath the neon signs. Board at the back, pay as you leave.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">⛴️</span>
-                        <span class="card-title">The Star Ferry — the harbour&#x27;s legend</span>
+                        <h3 class="card-title">The Star Ferry — the harbour&#x27;s legend</h3>
                     </div>
                 </div>
                 <p class="card-desc">The green-and-white ferries have linked the two shores since 1888 and give the world&#x27;s best view cruise for pocket change: the evening crossing from Kowloon, as the skyline lights up, is the stuff of legend.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚠</span>
-                        <span class="card-title">The Peak Tram and the cable cars</span>
+                        <h3 class="card-title">The Peak Tram and the cable cars</h3>
                     </div>
                 </div>
                 <p class="card-desc">The Peak Tram has climbed steeply to Victoria Peak since 1888; the Ngong Ping 360 cable car glides to the Big Buddha on Lantau. Both love a queue — first departures of the morning are the rule.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Where to Stay in Hong Kong: Best Areas</h2>
             </div>
             <p class="section-intro">In Hong Kong choosing a shore is choosing a character: the island&#x27;s financial polish, Kowloon&#x27;s neon energy, or the islands&#x27; calm?</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Central and Sheung Wan</span>
+                    <h3 class="card-title">Central and Sheung Wan</h3>
                     <span class="card-badge badge-purple">Most central</span>
                 </div>
                 <p class="card-desc">Antique lanes between the finance towers, the Mid-Levels escalator and SoHo&#x27;s restaurants: the island&#x27;s heart. High prices, flawless location — the classic for a first visit.</p>
-                <div class="card-footer-tip">SoHo restaurants • The escalator • Finance heart</div>
+                <div class="card-footer-tip">📍 SoHo restaurants • The escalator • Finance heart</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Tsim Sha Tsui (Kowloon)</span>
+                    <h3 class="card-title">Tsim Sha Tsui (Kowloon)</h3>
                     <span class="card-badge badge-purple">Best views</span>
                 </div>
                 <p class="card-desc">The skyline view from the harbour&#x27;s edge: museums, the Star Ferry pier and Nathan Road&#x27;s energy. Remember the skyline photo is taken from this side — your hotel window can be a gallery.</p>
-                <div class="card-footer-tip">Skyline views • Museum waterfront • Shopping heavy</div>
+                <div class="card-footer-tip">📍 Skyline views • Museum waterfront • Shopping heavy</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Wan Chai and Causeway Bay</span>
+                    <h3 class="card-title">Wan Chai and Causeway Bay</h3>
                     <span class="card-badge badge-purple">Most lively</span>
                 </div>
                 <p class="card-desc">Markets, the tram line, nightlife and shopping floors interlocked: the island&#x27;s dense everyday life. Hotels for every budget, something open at every hour.</p>
-                <div class="card-footer-tip">Tram line • Nightlife • Every budget</div>
+                <div class="card-footer-tip">📍 Tram line • Nightlife • Every budget</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Mong Kok and Yau Ma Tei</span>
+                    <h3 class="card-title">Mong Kok and Yau Ma Tei</h3>
                     <span class="card-badge badge-purple">Most local</span>
                 </div>
                 <p class="card-desc">Neon signs, street markets and one of the densest crowds on earth: Hong Kong unfiltered. From cheap guesthouses to boutique hotels — for those who like their reality in high doses.</p>
-                <div class="card-footer-tip">Street markets • Neon nights • Fair prices</div>
+                <div class="card-footer-tip">📍 Street markets • Neon nights • Fair prices</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Lantau and the islands</span>
+                    <h3 class="card-title">Lantau and the islands</h3>
                     <span class="card-badge badge-purple">Calmest</span>
                 </div>
                 <p class="card-desc">Lantau of the Big Buddha, the fishing island Cheung Chau or laid-back Lamma: another tempo half an hour by ferry. For those who want the city + nature balance built into where they sleep.</p>
-                <div class="card-footer-tip">Ferry life • Mountain trails • Village tempo</div>
+                <div class="card-footer-tip">📍 Ferry life • Mountain trails • Village tempo</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Best Time to Visit Hong Kong</h2>
             </div>
             <p class="section-intro">Read the subtropical calendar like this: October-December is the golden window, summer is humid and typhoon-prone, spring misty but alive.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Spring</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Mar – May</span>
+                        <h3 class="card-title">Spring</h3>
+                        <span class="season-months">Mar – May</span>
                     </div>
                     <span class="card-badge badge-amber">Misty Vitality</span>
                 </div>
                 <p class="card-desc">The air warms, the humidity slowly climbs, and on some mornings the harbour wraps itself in mist — the Peak view becomes a lottery. The art season floods the city with galleries in spring.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Summer</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Jun – Sep</span>
+                        <h3 class="card-title">Summer</h3>
+                        <span class="season-months">Jun – Sep</span>
                     </div>
                     <span class="card-badge badge-amber">Humidity and Typhoon Season</span>
                 </div>
                 <p class="card-desc">The heat and humidity are heavy and the occasional typhoon signal stops the city; but hotels get cheaper, and the malls and museums are icy cool. Island beaches and junk-boat days are this season&#x27;s reward.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Autumn</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Oct – Dec</span>
+                        <h3 class="card-title">Autumn</h3>
+                        <span class="season-months">Oct – Dec</span>
                     </div>
                     <span class="card-badge badge-amber">The Golden Window</span>
                 </div>
                 <p class="card-desc">Humidity drops, the sky clears and the city returns to its best self: the Peak view sharp, the trails cool, the terraces full. This is the year&#x27;s most reliable travel window — everyone knows it, so book early.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Winter</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Jan – Feb</span>
+                        <h3 class="card-title">Winter</h3>
+                        <span class="season-months">Jan – Feb</span>
                     </div>
                     <span class="card-badge badge-amber">Cool and Festive</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥟</span>
-                        <span class="card-title">Dim sum — a ritual by the basket</span>
+                        <h3 class="card-title">Dim sum — a ritual by the basket</h3>
                     </div>
                 </div>
                 <p class="card-desc">Har gow (shrimp dumplings), siu mai, char siu bao: the table builds itself as the steaming baskets land. A morning-and-noon ritual — dim sum without tea is dim sum incomplete.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍗</span>
-                        <span class="card-title">Char siu and roast goose</span>
+                        <h3 class="card-title">Char siu and roast goose</h3>
                     </div>
                 </div>
                 <p class="card-desc">The glossy red char siu and crisp-skinned roast goose hanging in the windows: the shopfront pride of Cantonese cooking. A portion over rice is the city&#x27;s best fast meal.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍜</span>
-                        <span class="card-title">Wonton noodles and fish balls</span>
+                        <h3 class="card-title">Wonton noodles and fish balls</h3>
                     </div>
                 </div>
                 <p class="card-desc">Shrimp-filled wontons over fine egg noodles: the century-old speciality of tiny shops. The street stall&#x27;s fish-ball soup plays in the same league.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍞</span>
-                        <span class="card-title">Cha chaan teng classics</span>
+                        <h3 class="card-title">Cha chaan teng classics</h3>
                     </div>
                 </div>
                 <p class="card-desc">Silk-stocking milk tea, a pineapple bun (bolo bao) with a slab of cold butter, and Hong Kong-style French toast: the warmest menu of the east-west mix. Afternoon tea is drunk here.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥚</span>
-                        <span class="card-title">Egg tarts and egg waffles</span>
+                        <h3 class="card-title">Egg tarts and egg waffles</h3>
                     </div>
                 </div>
                 <p class="card-desc">A warm egg tart (dan tat) from the oven and the bubble-textured egg waffle (gai daan jai): the city&#x27;s two sweet signatures. Whichever bakery has the queue is the right bakery.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍲</span>
-                        <span class="card-title">A dai pai dong evening</span>
+                        <h3 class="card-title">A dai pai dong evening</h3>
                     </div>
                 </div>
                 <p class="card-desc">Wok flames at open-air stalls, plastic stools and ice-cold beer: the smoky flavour called &#x27;wok hei&#x27; (the breath of the wok) is born here. Their numbers have dwindled — when you find one, don&#x27;t pass it by.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Everyone goes up the Peak; these six open Hong Kong&#x27;s layers.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">The Lugard Road walk</span>
-                    <span class="card-badge badge-emerald">The Peak&#x27;s free rival</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ The Peak&#x27;s free rival</span>
                 </div>
+                <h3 class="card-title">The Lugard Road walk</h3>
                 <p class="card-desc">Five minutes from the Peak Tram terrace&#x27;s crowds, a flat path circles the summit: the skyline at your feet, no queue, no entry fee. The sunset loop takes 45 minutes — the city&#x27;s best free view.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Man Mo Temple</span>
-                    <span class="card-badge badge-emerald">Silence under incense spirals</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Silence under incense spirals</span>
                 </div>
+                <h3 class="card-title">Man Mo Temple</h3>
                 <p class="card-desc">A dim temple in the middle of Sheung Wan with giant incense coils hanging from the ceiling, dedicated to the gods of literature and war. At the foot of the skyscrapers, you step into another century in an instant.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">The Temple Street night market</span>
-                    <span class="card-badge badge-emerald">Fortunes under the neon</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Fortunes under the neon</span>
                 </div>
+                <h3 class="card-title">The Temple Street night market</h3>
                 <p class="card-desc">As evening falls the stalls, fortune tellers and open-air karaoke booths appear: the set of Hong Kong cinema in real life. Haggling allowed, atmosphere free.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Yick Fat / Montane Mansion</span>
-                    <span class="card-badge badge-emerald">A thousand lives in one building</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ A thousand lives in one building</span>
                 </div>
+                <h3 class="card-title">Yick Fat / Montane Mansion</h3>
                 <p class="card-desc">Quarry Bay&#x27;s colossal housing blocks are famous as the &#x27;monster building&#x27;: look up from the courtyard and the city&#x27;s density explains itself in one frame. With respect and quiet for the residents — this is a home, not a film set.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Cheung Chau island</span>
-                    <span class="card-badge badge-emerald">Another century on an island</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Another century on an island</span>
                 </div>
+                <h3 class="card-title">Cheung Chau island</h3>
                 <p class="card-desc">A car-free fishing island 40 minutes by ferry: the smell of dried fish, bicycles, mini beaches and a pirate&#x27;s cave. The locals&#x27; Sunday escape — go on a weekday and find it empty.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Sunrise on the Kowloon promenade</span>
-                    <span class="card-badge badge-emerald">Tai chi at dawn on the waterfront</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Tai chi at dawn on the waterfront</span>
                 </div>
+                <h3 class="card-title">Sunrise on the Kowloon promenade</h3>
                 <p class="card-desc">The Tsim Sha Tsui promenade at 6 am: the skyline turns pink, locals practise tai chi, runners pass. Choose this quiet hour over the light show crowds — the harbour saves its most beautiful face for morning.</p>
             </div>
             </div>

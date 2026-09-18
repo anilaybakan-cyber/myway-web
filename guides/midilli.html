@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Lesbos Public Transit & Airport Transfers</h2>
             </div>
             <p class="section-intro">The key to Lesbos is your own set of wheels; everything else is detail.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">⛴️</span>
-                        <span class="card-title">Ferries — Ayvalık and Piraeus</span>
+                        <h3 class="card-title">Ferries — Ayvalık and Piraeus</h3>
                     </div>
                 </div>
                 <p class="card-desc">The Ayvalık–Mytilene crossing runs daily in summer, thinner in winter; about 40 minutes. The big Piraeus ferries are an 8–10 hour overnight voyage. Book ahead and arrive early for passport control.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚗</span>
-                        <span class="card-title">Rental car — the island&#x27;s key</span>
+                        <h3 class="card-title">Rental car — the island&#x27;s key</h3>
                     </div>
                 </div>
                 <p class="card-desc">Offices at the port and airport; reserve ahead in summer. It&#x27;s the only comfortable way to day-trip to the far ends — Molyvos, Plomari, Sigri. Petrol stations are sparse in the villages; never let the tank drop below half.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚌</span>
-                        <span class="card-title">KTEL buses</span>
+                        <h3 class="card-title">KTEL buses</h3>
                     </div>
                 </div>
                 <p class="card-desc">A few daily runs from Mytilene to the main towns; cheap but limited. Without a car, build your route around the timetable and never miss the last bus.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🛵</span>
-                        <span class="card-title">Scooters and ATVs</span>
+                        <h3 class="card-title">Scooters and ATVs</h3>
                     </div>
                 </div>
                 <p class="card-desc">Practical for short hops around Mytilene; but the island is windy and the roads twist — a car is safer for the long legs.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚕</span>
-                        <span class="card-title">Taxis</span>
+                        <h3 class="card-title">Taxis</h3>
                     </div>
                 </div>
                 <p class="card-desc">Findable in Mytilene, rare in the villages. Agree the price before long rides; airport to town is short and reasonable.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Where to Stay in Lesbos: Best Areas</h2>
             </div>
             <p class="section-intro">There is no single &#x27;centre&#x27; on Lesbos; the island splits into four characters. Your choice decides what kind of holiday you get.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Mytilene — the island capital</span>
+                    <h3 class="card-title">Mytilene — the island capital</h3>
                     <span class="card-badge badge-purple">Most practical</span>
                 </div>
                 <p class="card-desc">Port, bazaar, restaurants and nightlife are all here. Ideal first and last night if you arrive by ferry; beautiful in its own right with neoclassical mansions and the castle. As a touring base it sits a little far southeast.</p>
-                <div class="card-footer-tip">Near the ferry • Bazaar and bars • Neoclassical mansions</div>
+                <div class="card-footer-tip">📍 Near the ferry • Bazaar and bars • Neoclassical mansions</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Molyvos (Mithymna) — the northern pearl</span>
+                    <h3 class="card-title">Molyvos (Mithymna) — the northern pearl</h3>
                     <span class="card-badge badge-purple">Most romantic</span>
                 </div>
                 <p class="card-desc">Stone houses, bougainvillea lanes and a Byzantine castle on the hill: the island&#x27;s postcard. Sunset harbour, an artists&#x27; soul and boutique guesthouses make it the corner of Lesbos people fall for. 60 km from Mytilene — and worth it.</p>
-                <div class="card-footer-tip">Castle views • Sunset harbour • Boutique guesthouses</div>
+                <div class="card-footer-tip">📍 Castle views • Sunset harbour • Boutique guesthouses</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Plomari — the ouzo town</span>
+                    <h3 class="card-title">Plomari — the ouzo town</h3>
                     <span class="card-badge badge-purple">Most delicious</span>
                 </div>
                 <p class="card-desc">On the south coast, the capital of the distilleries. Seafront tavernas, a stone-bridged stream and a meze culture taken seriously: the address for a food-and-drink holiday. Agios Isidoros beach is right next door.</p>
-                <div class="card-footer-tip">Ouzo distilleries • Agios Isidoros beach • Meze culture</div>
+                <div class="card-footer-tip">📍 Ouzo distilleries • Agios Isidoros beach • Meze culture</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Skala Eresou — the free spirit of the west</span>
+                    <h3 class="card-title">Skala Eresou — the free spirit of the west</h3>
                     <span class="card-badge badge-purple">Most laid-back</span>
                 </div>
                 <p class="card-desc">The beach of ancient Eresos, birthplace of the poet Sappho: a long sandy shore, easy-going cafés and a loyal crowd from around the world. One of the island&#x27;s best sunsets and its most relaxed air.</p>
-                <div class="card-footer-tip">Long sandy beach • Sappho&#x27;s village • Relaxed atmosphere</div>
+                <div class="card-footer-tip">📍 Long sandy beach • Sappho&#x27;s village • Relaxed atmosphere</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Petra and around — for families</span>
+                    <h3 class="card-title">Petra and around — for families</h3>
                     <span class="card-badge badge-purple">Family friendly</span>
                 </div>
                 <p class="card-desc">Molyvos&#x27;s neighbour Petra, with its church on the rock and long shallow beach, is the family classic. Prices softer than Molyvos, the northern routes just as close.</p>
-                <div class="card-footer-tip">Shallow sea • Church on the rock • Good value</div>
+                <div class="card-footer-tip">📍 Shallow sea • Church on the rock • Good value</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Best Time to Visit Lesbos</h2>
             </div>
             <p class="section-intro">Lesbos lives year-round; the tourist season is short, the beautiful season long.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Spring</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Apr – Jun</span>
+                        <h3 class="card-title">Spring</h3>
+                        <span class="season-months">Apr – Jun</span>
                     </div>
                     <span class="card-badge badge-amber">Flowers and Birds</span>
                 </div>
                 <p class="card-desc">The island becomes one of Europe&#x27;s best birdwatching sites: flamingos on the Kalloni salt pans, wild orchids on the hills. Mild air, a still-cool sea, winter prices. The best window for walking and exploring.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Summer</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Jul – Aug</span>
+                        <h3 class="card-title">Summer</h3>
+                        <span class="season-months">Jul – Aug</span>
                     </div>
                     <span class="card-badge badge-amber">Sea Season</span>
                 </div>
                 <p class="card-desc">The sea hits 25 degrees, beaches come alive, village festivals (panigiri) follow one another. Even by Greek island standards, Lesbos stays calm in summer — no Mykonos crush here. Around August 15, the Assumption, everything fills up.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Autumn</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Sep – Nov</span>
+                        <h3 class="card-title">Autumn</h3>
+                        <span class="season-months">Sep – Nov</span>
                     </div>
                     <span class="card-badge badge-amber">Harvest Time</span>
                 </div>
                 <p class="card-desc">September is the island&#x27;s secret peak: warm sea, crowds gone, softened light. In October and November the olive harvest begins; the island returns to its real work and gladly lets guests join in.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Winter</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Dec – Mar</span>
+                        <h3 class="card-title">Winter</h3>
+                        <span class="season-months">Dec – Mar</span>
                     </div>
                     <span class="card-badge badge-amber">The Locals&#x27; Island</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🐟</span>
-                        <span class="card-title">Kalloni sardines (sardeles pastes)</span>
+                        <h3 class="card-title">Kalloni sardines (sardeles pastes)</h3>
                     </div>
                 </div>
                 <p class="card-desc">The famous sardines of Kalloni Bay are salt-cured for a few hours and served almost raw-fresh; counted among Greece&#x27;s most celebrated meze. The star of the August sardine festival.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥃</span>
-                        <span class="card-title">Plomari ouzo</span>
+                        <h3 class="card-title">Plomari ouzo</h3>
                     </div>
                 </div>
                 <p class="card-desc">The anise national drink finds its finest form on this island; the distilleries of Plomari and Mytilene export it to the world. It clouds over ice, opens with meze, ends in conversation.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🧀</span>
-                        <span class="card-title">Ladotyri — cheese aged in olive oil</span>
+                        <h3 class="card-title">Ladotyri — cheese aged in olive oil</h3>
                     </div>
                 </div>
                 <p class="card-desc">The island&#x27;s protected sheep&#x27;s cheese matures in jars of olive oil; hard, salty, full of character. Grilled as saganaki it becomes a feast of its own.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🫒</span>
-                        <span class="card-title">Olives and olive oil</span>
+                        <h3 class="card-title">Olives and olive oil</h3>
                     </div>
                 </div>
                 <p class="card-desc">On an island of eleven million trees, the oil is fresh enough to drink. Buy a bottle of cold-pressed from a village market; it will be the most precious gift in your suitcase.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🦑</span>
-                        <span class="card-title">Grilled octopus and calamari</span>
+                        <h3 class="card-title">Grilled octopus and calamari</h3>
                     </div>
                 </div>
                 <p class="card-desc">The octopus drying in the sun outside the harbour tavernas is the evening&#x27;s menu: char-grilled, with lemon, by the water. Molyvos and Skala Sikamnias harbours are the classic addresses.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍯</span>
-                        <span class="card-title">Baklava and amygdalota</span>
+                        <h3 class="card-title">Baklava and amygdalota</h3>
                     </div>
                 </div>
                 <p class="card-desc">The Ottoman-heritage sweet tradition is alive and well: pistachio baklava, almond amygdalota and kadayif with ice cream. The patisseries of Mytilene&#x27;s bazaar are a century old.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">The best places on Lesbos are unsigned; for these six you no longer need a local&#x27;s tip-off.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Sigri Petrified Forest</span>
-                    <span class="card-badge badge-emerald">A 20-million-year-old forest</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ A 20-million-year-old forest</span>
                 </div>
+                <h3 class="card-title">Sigri Petrified Forest</h3>
                 <p class="card-desc">At the island&#x27;s western tip, sequoia trunks sealed in volcanic ash 20 million years ago: a UNESCO geopark, an open-air museum and a landscape like the moon. Few places on Earth compare.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Skala Sikamnias</span>
-                    <span class="card-badge badge-emerald">A chapel on the rock</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ A chapel on the rock</span>
                 </div>
+                <h3 class="card-title">Skala Sikamnias</h3>
                 <p class="card-desc">The north coast&#x27;s tiny fishing harbour: the Panagia Gorgona chapel on its rock, tavernas shaded by a mulberry tree, and the atmosphere the writer Stratis Myrivilis carried into literature. Island calm, distilled.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Eftalou Hot Springs</span>
-                    <span class="card-badge badge-emerald">A hot spring at the sea&#x27;s edge</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ A hot spring at the sea&#x27;s edge</span>
                 </div>
+                <h3 class="card-title">Eftalou Hot Springs</h3>
                 <p class="card-desc">Near Molyvos, an Ottoman-era stone-domed bathhouse above a pebble beach: healing water at 43 degrees, the cool Aegean two steps away. The hot-cold ritual costs a symbolic entrance fee.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Moni Limonos</span>
-                    <span class="card-badge badge-emerald">A Byzantine monastery on the hill</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ A Byzantine monastery on the hill</span>
                 </div>
+                <h3 class="card-title">Moni Limonos</h3>
                 <p class="card-desc">The island&#x27;s largest monastery: peacocks in the courtyard, manuscripts in the library, centuries in the silence. Just off the Kalloni road, a world most visitors never turn into.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Kalloni Salt Pans</span>
-                    <span class="card-badge badge-emerald">Salt pans with flamingos</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Salt pans with flamingos</span>
                 </div>
+                <h3 class="card-title">Kalloni Salt Pans</h3>
                 <p class="card-desc">Thousands of flamingos and over 250 bird species in spring and autumn: one of Europe&#x27;s finest birdwatching sites. Bring binoculars, take a hide, wait.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Agiasos</span>
-                    <span class="card-badge badge-emerald">A village inside a forest</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ A village inside a forest</span>
                 </div>
+                <h3 class="card-title">Agiasos</h3>
                 <p class="card-desc">A mountain village in the chestnut forest on the slopes of Mount Olympos: ceramic workshops, a centuries-old church of the Virgin, cool stone lanes. The island&#x27;s freshest escape in high summer.</p>
             </div>
             </div>

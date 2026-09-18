@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Kansas City Public Transit & Airport Transfers</h2>
             </div>
             <p class="section-intro">KC is a car city, but its free streetcar is a model for America: the main axis runs on rails, the neighborhoods connect by car.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Arriving from the airport</span>
+                        <h3 class="card-title">Arriving from the airport</h3>
                     </div>
                 </div>
                 <p class="card-desc">The new MCI terminal is tidy and calm: 25 minutes to the center by ride app. Renting a car buys freedom between neighborhoods — and parking worries in KC are nearly nonexistent by big-city standards.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚋</span>
-                        <span class="card-title">The free KC Streetcar</span>
+                        <h3 class="card-title">The free KC Streetcar</h3>
                     </div>
                 </div>
                 <p class="card-desc">The streetcar from River Market to Union Station (and to the Plaza on the new extension) is completely free: the spine of the main axis. No ticket, no turnstile — hop on, hop off, hop on again. America&#x27;s most hospitable transit.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚗</span>
-                        <span class="card-title">The car and the boulevards</span>
+                        <h3 class="card-title">The car and the boulevards</h3>
                     </div>
                 </div>
                 <p class="card-desc">KC&#x27;s boulevard system turns driving into pleasure: the fountains of Ward Parkway, the views of Cliff Drive. Traffic is light by metro standards — the 10–15-minute neighborhood hop usually holds true.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">Walking within neighborhoods</span>
+                        <h3 class="card-title">Walking within neighborhoods</h3>
                     </div>
                 </div>
                 <p class="card-desc">The Plaza, Crossroads, River Market and Westport are walkable islands: park the car and pace the district. On First Fridays the Crossroads galleries spill into the street — walking at its most pleasant.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚲</span>
-                        <span class="card-title">RideKC bikes</span>
+                        <h3 class="card-title">RideKC bikes</h3>
                     </div>
                 </div>
                 <p class="card-desc">Shared bikes and scooters spread through the center: the riverside and boulevard routes run flat and easy. The scenic curves of Cliff Drive are the pedaler&#x27;s reward.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Where to Stay in Kansas City: Best Areas</h2>
             </div>
             <p class="section-intro">In KC the choice is a choice of rhythm: the Plaza&#x27;s fountain grace, the Crossroads&#x27; art streets, Westport&#x27;s nightlife.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Country Club Plaza</span>
+                    <h3 class="card-title">Country Club Plaza</h3>
                     <span class="card-badge badge-purple">Fountain grace</span>
                 </div>
                 <p class="card-desc">The Spanish-styled open-air shopping district: fountains, towers and boulevard cafes. Evening walks are lovely and the hotels polished — KC&#x27;s postcard quarter.</p>
-                <div class="card-footer-tip">Spanish towers • Fountain views • Boulevard cafes</div>
+                <div class="card-footer-tip">📍 Spanish towers • Fountain views • Boulevard cafes</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Crossroads Arts District</span>
+                    <h3 class="card-title">Crossroads Arts District</h3>
                     <span class="card-badge badge-purple">Art soul</span>
                 </div>
                 <p class="card-desc">Old warehouses turned galleries, roasters and breweries: First Friday evenings feel like a street festival. On the streetcar line — the heart of creative KC.</p>
-                <div class="card-footer-tip">Gallery streets • First Fridays • On the streetcar</div>
+                <div class="card-footer-tip">📍 Gallery streets • First Fridays • On the streetcar</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Downtown and Power &amp; Light</span>
+                    <h3 class="card-title">Downtown and Power &amp; Light</h3>
                     <span class="card-badge badge-purple">Center energy</span>
                 </div>
                 <p class="card-desc">The arena, the entertainment district and the streetcar junction: the base for game and concert nights. Hotels plentiful and practical — suited to an event-driven visit.</p>
-                <div class="card-footer-tip">Entertainment district • Beside the arena • Hotel plenty</div>
+                <div class="card-footer-tip">📍 Entertainment district • Beside the arena • Hotel plenty</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Westport</span>
+                    <h3 class="card-title">Westport</h3>
                     <span class="card-badge badge-purple">Night rhythm</span>
                 </div>
                 <p class="card-desc">The city&#x27;s oldest neighborhood now lives on bars, live music and late tables: young energy under historic facades. Next to the Plaza — the night owl&#x27;s address.</p>
-                <div class="card-footer-tip">Historic bars • Live music • Late tables</div>
+                <div class="card-footer-tip">📍 Historic bars • Live music • Late tables</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">River Market</span>
+                    <h3 class="card-title">River Market</h3>
                     <span class="card-badge badge-purple">Market mornings</span>
                 </div>
                 <p class="card-desc">The riverside neighborhood where the weekend market sets up: fresh stalls, ethnic groceries and the streetcar&#x27;s first stop. The ideal base for morning people.</p>
-                <div class="card-footer-tip">Weekend market • Riverside • Streetcar start</div>
+                <div class="card-footer-tip">📍 Weekend market • Riverside • Streetcar start</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Best Time to Visit Kansas City</h2>
             </div>
             <p class="section-intro">KC lives all four seasons fully: spring stormy and green, summer hot and festive, autumn golden, winter quiet and smoky.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Spring</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Mar – May</span>
+                        <h3 class="card-title">Spring</h3>
+                        <span class="season-months">Mar – May</span>
                     </div>
                     <span class="card-badge badge-amber">Green Boulevard Season</span>
                 </div>
                 <p class="card-desc">The boulevard trees blossom and the fountains switch back on in mid-April (&#x27;Fountain Day&#x27; is a small civic holiday). It&#x27;s storm season too — the thunder asks your plans to stay flexible.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Summer</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Jun – Aug</span>
+                        <h3 class="card-title">Summer</h3>
+                        <span class="season-months">Jun – Aug</span>
                     </div>
                     <span class="card-badge badge-amber">Festivals and Baseball</span>
                 </div>
                 <p class="card-desc">Summer KC is hot and lively: Royals games, open-air concerts and barbecue festivals fill the calendar. Humidity presses at times — the formula of museum noon, stadium or rooftop evening works.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Autumn</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Sep – Nov</span>
+                        <h3 class="card-title">Autumn</h3>
+                        <span class="season-months">Sep – Nov</span>
                     </div>
                     <span class="card-badge badge-amber">Golden Midwest Fall</span>
                 </div>
                 <p class="card-desc">September and October are KC&#x27;s peak: clear air, crimson parks, and Chiefs game days painting the city red. The Loose Park rose garden takes its final bow — walking and porch season.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Winter</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Dec – Feb</span>
+                        <h3 class="card-title">Winter</h3>
+                        <span class="season-months">Dec – Feb</span>
                     </div>
                     <span class="card-badge badge-amber">The Plaza Lights</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍖</span>
-                        <span class="card-title">Burnt ends</span>
+                        <h3 class="card-title">Burnt ends</h3>
                     </div>
                 </div>
                 <p class="card-desc">Caramelized cubes of smoke: with white bread, pickles and KC sauce. Invented in this city and still best here — taste them plain first, add the sauce after.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥩</span>
-                        <span class="card-title">Ribs and KC sauce</span>
+                        <h3 class="card-title">Ribs and KC sauce</h3>
                     </div>
                 </div>
                 <p class="card-desc">The sweet-smoky, tomato-molasses KC sauce set the world&#x27;s standard: as it glistens over the ribs, the slide off the bone is a ceremony. Wet wipes wait on the table — don&#x27;t hesitate to use them.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥓</span>
-                        <span class="card-title">The KC strip steak</span>
+                        <h3 class="card-title">The KC strip steak</h3>
                     </div>
                 </div>
                 <p class="card-desc">The cut that carries the city&#x27;s name: the KC strip (ask a local — this is the New York strip&#x27;s true hometown). Char-grilled at the storied steakhouses, it is the stockyards legacy summarized on a plate.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🌽</span>
-                        <span class="card-title">Cheesy corn and the side army</span>
+                        <h3 class="card-title">Cheesy corn and the side army</h3>
                     </div>
                 </div>
                 <p class="card-desc">Barbecue&#x27;s secret KC stars: cheesy corn, baked beans and pickles. Don&#x27;t let them hide in the meat&#x27;s shadow — at some halls the cheesy corn gets more conversation than the brisket.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍺</span>
-                        <span class="card-title">A Boulevard tasting</span>
+                        <h3 class="card-title">A Boulevard tasting</h3>
                     </div>
                 </div>
                 <p class="card-desc">The independent brewery that carries the city&#x27;s name: its Tank 7 saison is a national legend. The brewery tour and taproom — the natural stop after barbecue.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥧</span>
-                        <span class="card-title">Chili + cinnamon roll</span>
+                        <h3 class="card-title">Chili + cinnamon roll</h3>
                     </div>
                 </div>
                 <p class="card-desc">The Midwest&#x27;s weird-wonderful pair: a sweet cinnamon roll beside a bowl of hot chili. It left the school cafeteria and became a regional classic — try it without questioning, then say thanks.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Everyone knows the barbecue; these six are KC&#x27;s jazz-voiced, fountain-songed hidden face.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">The Liberty Memorial tower</span>
-                    <span class="card-badge badge-emerald">Two states from one tower</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Two states from one tower</span>
                 </div>
+                <h3 class="card-title">The Liberty Memorial tower</h3>
                 <p class="card-desc">Ride the lift up the 66-meter tower of the World War I memorial: Union Station and the skyline at your feet. The museum below holds America&#x27;s most comprehensive WWI collection — combine the two.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Green Lady Lounge</span>
-                    <span class="card-badge badge-emerald">The red-lit jazz room</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ The red-lit jazz room</span>
                 </div>
+                <h3 class="card-title">Green Lady Lounge</h3>
                 <p class="card-desc">Live KC jazz every night in a red-velvet room: the cover modest, the music serious, the atmosphere cinematic. Plan it with the 18th &amp; Vine museums — history by day, swing by night.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">City Market</span>
-                    <span class="card-badge badge-emerald">The city&#x27;s market morning</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ The city&#x27;s market morning</span>
                 </div>
+                <h3 class="card-title">City Market</h3>
                 <p class="card-desc">A market held since 1857: farm stalls, Middle Eastern groceries and empanada stands. Come by streetcar on Saturday morning — gather breakfast from the stalls and eat it by the river.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Loose Park</span>
-                    <span class="card-badge badge-emerald">The park with a rose garden</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ The park with a rose garden</span>
                 </div>
+                <h3 class="card-title">Loose Park</h3>
                 <p class="card-desc">A classic park of rose gardens and a pond beside the Plaza: the locals&#x27; address for picnics and wedding photos. Summer mornings offer the roses, autumn afternoons the trees.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">West Bottoms</span>
-                    <span class="card-badge badge-emerald">The warehouse vintage kingdom</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ The warehouse vintage kingdom</span>
                 </div>
+                <h3 class="card-title">West Bottoms</h3>
                 <p class="card-desc">On the first weekends of the month the old warehouse district becomes a giant vintage and antiques market: five-story buildings, treasure on every floor. The brick streets are photogenic — coffee shops and breweries cover the breaks.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">The Kauffman Center</span>
-                    <span class="card-badge badge-emerald">A glass wave for the arts</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ A glass wave for the arts</span>
                 </div>
+                <h3 class="card-title">The Kauffman Center</h3>
                 <p class="card-desc">Moshe Safdie&#x27;s performing arts center: its glass-wave facade ignites at sunset. Worth visiting for the architecture even without a ticket — with a skyline view from the hill thrown in.</p>
             </div>
             </div>

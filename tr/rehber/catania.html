@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Catania Şehir İçi Ulaşım & Transfer</h2>
             </div>
             <p class="section-intro">Tarihi merkez kompakt ve her şey yürüme mesafesinde. Ama Etna için tek otobüs seferini, Sicilya&#x27;nın geri kalanı için Trenitalia&#x27;yı öğren.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Havalimanı → merkez: Alibus ile 20 dakika</span>
+                        <h3 class="card-title">Havalimanı → merkez: Alibus ile 20 dakika</h3>
                     </div>
                 </div>
                 <p class="card-desc">AMT Alibus havalimanından Catania Centrale tren istasyonuna ve Via Etnea&#x27;ya 20-25 dakikada gidiyor. Bilet 4 euro — havalimanında makine veya şoförden alınıyor, kartla da ödeniyor. Her 25 dakikada bir sefer, sabah 04:40&#x27;tan gece yarısına kadar. Taksi şehir merkezine sabit ~20-25 euro. Alibus hem ucuz hem güvenilir — ilk durağından kaybetmek zor.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚌</span>
-                        <span class="card-title">AMT otobüs ve metro — şehir içi</span>
+                        <h3 class="card-title">AMT otobüs ve metro — şehir içi</h3>
                     </div>
                 </div>
                 <p class="card-desc">AMT şehir otobüsleri ve tek hatlı metro. Bilet 1 euro, 90 dakika geçerli, tabacchi ve edicole&#x27;den alınıyor. Binince biletini validatörde damgalamayı unutma — kontrolörler aniden çıkıyor. Metro ağırlıklı olarak kuzeye gidiyor; tarihi merkez için yürümek daha pratik. Ognina, Riviera dei Ciclopi ve plajlar için AMT.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🌋</span>
-                        <span class="card-title">Etna için AST otobüsü — günün tek seferi</span>
+                        <h3 class="card-title">Etna için AST otobüsü — günün tek seferi</h3>
                     </div>
                 </div>
                 <p class="card-desc">AST şirketi otobüsü Piazza Giovanni XXIII&#x27;ten sabah 08:15&#x27;te kalkıyor, Rifugio Sapienza&#x27;ya (1.910 metre) 10:15&#x27;te ulaşıyor. Dönüş 16:30. Gidiş-dönüş 6,60 euro, nakit, şoförden. Başka sefer yok. Kaçırırsan aynı gün Etna&#x27;ya çıkman mümkün değil. Teleferikle 2.500 metreye çıkış ayrıca ~50 euro. Yukarıda hava soğuk ve rüzgarlı — mont, su ve güneş kremi şart.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚂</span>
-                        <span class="card-title">Tren — Sicilya&#x27;nın geri kalanına kapı</span>
+                        <h3 class="card-title">Tren — Sicilya&#x27;nın geri kalanına kapı</h3>
                     </div>
                 </div>
                 <p class="card-desc">Catania Centrale&#x27;den Trenitalia: Palermo ~3 saat, Messina 1,5 saat, Siracusa 1-1,5 saat (5-10 euro), Agrigento ~2,5 saat. Siracusa için tren hem ucuz hem manzaralı — ideal günübirlik. Taormina için Giardini-Naxos istasyonuna in, oradan minibüs veya taksiyle tepe kasabaya çık.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">Yürüyüş — tarihi merkez için tek gereken</span>
+                        <h3 class="card-title">Yürüyüş — tarihi merkez için tek gereken</h3>
                     </div>
                 </div>
                 <p class="card-desc">Piazza del Duomo&#x27;dan: La Pescheria 2 dakika, Via Etnea 1 dakika, Bellini Tiyatrosu 5 dakika, Roman Tiyatrosu 8 dakika, Via Crociferi 10 dakika. Tüm tarihi merkez rahat bir sabah yürüyüşüyle kapsanıyor. Dar sokaklarda scooter&#x27;lara dikkat, yağmurda ıslak lav taşına.</p>
@@ -616,56 +761,56 @@
             <div class="cards-grid">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Piazza del Duomo çevresi</span>
+                    <h3 class="card-title">Piazza del Duomo çevresi</h3>
                     <span class="card-badge badge-purple">En merkezi</span>
                 </div>
                 <p class="card-desc">La Pescheria&#x27;ya 2 dakika, Via Etnea&#x27;ya 1 dakika. Sabah 06:30&#x27;da pazar sesleri, balıkçı sesleri ve kahve kokusuyla uyanıyorsun — bu deneyim için biraz gürültü kabul edilebilir. Butik oteller ve B&amp;B&#x27;ler mevcut, fiyatlar makul.</p>
-                <div class="card-footer-tip">La Pescheria&#x27;ya 2 dk • Via Etnea&#x27;ya 1 dk • Pazar sesiyle uyan</div>
+                <div class="card-footer-tip">📍 La Pescheria&#x27;ya 2 dk • Via Etnea&#x27;ya 1 dk • Pazar sesiyle uyan</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Via Etnea boyunca</span>
+                    <h3 class="card-title">Via Etnea boyunca</h3>
                     <span class="card-badge badge-purple">En canlı</span>
                 </div>
                 <p class="card-desc">Catania&#x27;nın ana alışveriş ve passeggiata caddesi. Kafeler, restoranlar, butikler. Piazza Stesicoro ve Roma amfitiyatrosu kalıntıları bu caddede. Caddenin kuzeyine doğru yürüyünce Etna&#x27;yı tam karşında görüyorsun — o perspektif Catania&#x27;yı özetliyor. Akşam akışı canlı.</p>
-                <div class="card-footer-tip">Etna manzarası cadde sonunda • Roma amfitiyatrosu • Akşam passeggiata</div>
+                <div class="card-footer-tip">📍 Etna manzarası cadde sonunda • Roma amfitiyatrosu • Akşam passeggiata</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">San Cristoforo çevresi</span>
+                    <h3 class="card-title">San Cristoforo çevresi</h3>
                     <span class="card-badge badge-purple">En yerel</span>
                 </div>
                 <p class="card-desc">La Pescheria&#x27;nın güneybatısında, tamamen yerel ve sakin bir mahalle. Turist yoğunluğu neredeyse yok. Öğleden sonrası bu semtte akan Catania&#x27;dır: esnaf konuşuyor, çocuklar oynuyor, kimse sana İngilizce menü uzatmıyor.</p>
-                <div class="card-footer-tip">Turist baskısı yok • Yerel trattorialar • Günlük mahalle ritmi</div>
+                <div class="card-footer-tip">📍 Turist baskısı yok • Yerel trattorialar • Günlük mahalle ritmi</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Ognina — küçük balıkçı limanı</span>
+                    <h3 class="card-title">Ognina — küçük balıkçı limanı</h3>
                     <span class="card-badge badge-purple">Deniz için</span>
                 </div>
                 <p class="card-desc">Şehrin kuzeyinde, küçük balıkçı limanı etrafında şekillenmiş sakin mahalle. AMT otobüsüyle tarihi merkeze 15-20 dakika. Taze balık restoranları var, akşam yemeklerinde doğru adres. Etna kuzeyden daha geniş açıyla görünüyor.</p>
-                <div class="card-footer-tip">Balıkçı limanı • Taze balık restoranları • Tarihi merkeze 15-20 dk</div>
+                <div class="card-footer-tip">📍 Balıkçı limanı • Taze balık restoranları • Tarihi merkeze 15-20 dk</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Aci Trezza — Kyklopların taşları dibinde</span>
+                    <h3 class="card-title">Aci Trezza — Kyklopların taşları dibinde</h3>
                     <span class="card-badge badge-purple">En sahil</span>
                 </div>
                 <p class="card-desc">Catania&#x27;dan 15-20 dakika otobüsle. Homer&#x27;in Odysseia&#x27;sında geçen bazalt kayalıkların dibinde küçük balıkçı köyü. Taze balık trattorialar, akşam güneşi ve gerçek Sicilya kıyısı. Şehrin kalabalığından arınmak ama yakın kalmak isteyenler için iyi denge.</p>
-                <div class="card-footer-tip">Kyklopların taşları • Taze balık restoranları • Catania&#x27;ya 15-20 dk</div>
+                <div class="card-footer-tip">📍 Kyklopların taşları • Taze balık restoranları • Catania&#x27;ya 15-20 dk</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Taormina — başka bir üs</span>
+                    <h3 class="card-title">Taormina — başka bir üs</h3>
                     <span class="card-badge badge-purple">Farklı bir deneyim</span>
                 </div>
                 <p class="card-desc">Catania&#x27;dan 50 dakika otobüsle veya trenle. Kayalık tepe üzerinde antik Yunan tiyatrosu, Etna ve deniz manzarası — ama turistik. Sabah Etna, akşam Taormina planı yapılabilir. Taormina&#x27;da gecelemek kalabalık saat dilimini atlayarak kasabayı gerçek haliyle görmeyi sağlıyor.</p>
-                <div class="card-footer-tip">Antik Yunan tiyatrosu • Catania&#x27;dan 50 dk • Etna ve deniz panoraması</div>
+                <div class="card-footer-tip">📍 Antik Yunan tiyatrosu • Catania&#x27;dan 50 dk • Etna ve deniz panoraması</div>
             </div>
             </div>
         </section>
@@ -680,45 +825,45 @@
                 <h2 class="section-title">Catania İçin En İyi Ziyaret Zamanı</h2>
             </div>
             <p class="section-intro">Catania&#x27;yı ne zaman ziyaret ettiğin, Etna ile ilişkini doğrudan belirliyor. Yanardağ her mevsimde farklı — ve şehir de onunla birlikte değişiyor.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">İlkbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Nis – Haz</span>
+                        <h3 class="card-title">İlkbahar</h3>
+                        <span class="season-months">Nis – Haz</span>
                     </div>
                     <span class="card-badge badge-amber">Etna&#x27;nın en iyi hali</span>
                 </div>
                 <p class="card-desc">Nisan ve Mayıs hem Etna hem şehir için en dengeli dönem. Hava 18-24°C — tırmanış için ne çok sıcak ne buzlu. La Pescheria sabahları en canlı halinde. Portakal ve limon bahçeleri son hasat günlerinde. Haziran ortasına kadar kalabalık tolere edilebilir düzeyde.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Yaz</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Haz – Ağu</span>
+                        <h3 class="card-title">Yaz</h3>
+                        <span class="season-months">Haz – Ağu</span>
                     </div>
                     <span class="card-badge badge-amber">Yanardağ gölgesinde yaz</span>
                 </div>
                 <p class="card-desc">Temmuz ve Ağustos çok sıcak — 35-38°C normal. Etna tırmanışı kesinlikle öğleden önce tamamlanmalı. Şehir öğle arası yavaşlıyor, akşam 19:00&#x27;dan sonra yeniden canlanıyor. Riviera dei Ciclopi&#x27;nin plajları (Aci Trezza, Aci Castello) serinlemek için en iyi seçenek.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Sonbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Eyl – Kas</span>
+                        <h3 class="card-title">Sonbahar</h3>
+                        <span class="season-months">Eyl – Kas</span>
                     </div>
                     <span class="card-badge badge-amber">Kan portakalı ve sakin Etna</span>
                 </div>
                 <p class="card-desc">Eylül ve Ekim kalabalık azalıyor, hava 22-26°C ve Etna tırmanışı için tekrar mükemmel koşullar. Narenciye sezonu başlıyor — kan portakalı, mandalina, bergamot. La Pescheria biraz daha sakin ama hala sabah ritüelinin bir parçası. Kasım yağmurlu ama fiyatlar belirgin şekilde düşüyor.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Kış</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Ara – Şub</span>
+                        <h3 class="card-title">Kış</h3>
+                        <span class="season-months">Ara – Şub</span>
                     </div>
                     <span class="card-badge badge-amber">Sant&#x27;Agata&#x27;nın şehri</span>
                 </div>
@@ -741,7 +886,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍊</span>
-                        <span class="card-title">Granita e brioche</span>
+                        <h3 class="card-title">Granita e brioche</h3>
                     </div>
                 </div>
                 <p class="card-desc">Sicilya&#x27;nın en özgün sabah geleneği ve Catania&#x27;nın kahvaltı ritüeli. Yarı donmuş granita — badem, antep fıstığı, limon, çilek veya dut — sıcak tereyağlı brioşun içine veya yanına. Sabah 07:00-10:00 arası her kafede taze. Badem granita Catania&#x27;nın klasiği; Caffè del Duomo veya Via Etnea üzerindeki kafelerden 3-5 euro.</p>
@@ -752,7 +897,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍚</span>
-                        <span class="card-title">Arancino</span>
+                        <h3 class="card-title">Arancino</h3>
                     </div>
                 </div>
                 <p class="card-desc">Catania&#x27;nın sivri uçlu, piramit şeklinde kızarmış pirinç topu — içi et ragù, bezelye ve yumurta ile dolu. Her kafe ve fırında 1,50-3 euro. Sabah kahvaltısında, öğle arası veya yürürken yenebilir. Burada adı arancino, eril ve sivri — &#x27;arancina&#x27; dersen Palermo ile karıştırmış olursun.</p>
@@ -763,7 +908,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍝</span>
-                        <span class="card-title">Pasta alla Norma</span>
+                        <h3 class="card-title">Pasta alla Norma</h3>
                     </div>
                 </div>
                 <p class="card-desc">Catania&#x27;nın icat edip İtalya&#x27;nın sahiplendiği makarna. Taze kızarmış patlıcan, yoğun domates sosu, tuzlu ricotta rendesi ve fesleğen. Malzeme kalitesi her şeyi belirliyor — ısıtılmış patlıcan veya yaşlı ricottayla yapılanı hayal kırıklığı. Via Crociferi çevresi ve Piazza del Duomo&#x27;nun arka sokaklarındaki trattorialarda 8-12 euro.</p>
@@ -774,7 +919,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🐟</span>
-                        <span class="card-title">Taze balık — La Pescheria&#x27;dan sofraya</span>
+                        <h3 class="card-title">Taze balık — La Pescheria&#x27;dan sofraya</h3>
                     </div>
                 </div>
                 <p class="card-desc">La Pescheria çevresindeki küçük trattorialarda öğle yemeği hem tazesi hem en ucuzu. Kılıç balığı (pesce spada) Catania&#x27;nın sembolü — Akdeniz&#x27;in bu sularında yetişen en lezzetli türlerden biri. Ahtapot, midye, kirpi balığı da bolca var. 12-20 euro arası deniz ürünleri porsiyonu. Öğle vakti git — akşama kadar taze stok tükeniyor.</p>
@@ -785,7 +930,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥐</span>
-                        <span class="card-title">Scacciata ve pizzolo</span>
+                        <h3 class="card-title">Scacciata ve pizzolo</h3>
                     </div>
                 </div>
                 <p class="card-desc">Catania&#x27;nın kendine özgü, Palermo&#x27;da rastlamayacağın sokak yemeği. Scacciata: iki kat hamur arasına lahana ve sosis veya patates ve peynir doldurulup fırınlanan kapalı pide. Pizzolo: Catania&#x27;nın çift katlı taş fırın pizzası. Her ikisi de hem öğle hem akşam için. Küçük fırın ve rosticceria&#x27;larda 3-6 euro.</p>
@@ -796,7 +941,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍰</span>
-                        <span class="card-title">Cannolo ve cassata</span>
+                        <h3 class="card-title">Cannolo ve cassata</h3>
                     </div>
                 </div>
                 <p class="card-desc">Sicilya tatlı mirası Catania&#x27;da en iyi halinde. Cannolo: kızarmış hamur tüpü, taze ricotta dolgu, şekerlenmiş meyve ve antep fıstığı. Cassata: pandispanya, ricotta kreması, yeşil badem ezmesi ve şekerlenmiş meyve. İkisinde de kritik nokta taze ricotta — dünden kalma ricottayla yapılanı alma. Pasticceria Savia, Via Etnea&#x27;da, 1897&#x27;den beri aynı yerde. 2-4 euro.</p>
@@ -821,51 +966,51 @@
             </div>
             <p class="section-intro">Catania&#x27;nın derinliği Piazza del Duomo&#x27;nun çok ötesinde. Şehrin ruhu ya sabahın çok erken saatlerinde ya Etna&#x27;nın yamaçlarında ya da Homer&#x27;in anlattığı o kıyıda.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Etna</span>
-                    <span class="card-badge badge-emerald">Her sabah pencerenizden bakan komşu — ve dünyanın en aktif yanardağı</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Her sabah pencerenizden bakan komşu — ve dünyanın en aktif yanardağı</span>
                 </div>
+                <h3 class="card-title">Etna</h3>
                 <p class="card-desc">AST otobüsüyle güneyden Rifugio Sapienza&#x27;ya (1.910 metre), oradan teleferikle 2.500 metreye (~50€). Aktif kraterler 3.320 metrede — orası için lisanslı rehber zorunlu, tek başına giriş yasak. Ama 2.500 metredeki manzara bile nefes kesiyor: önde Catania ve Sicilya kıyısı, yanda lav alanları. Sabah 08:15 otobüsunu kaçırma — günün tek seferi bu.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">La Pescheria</span>
-                    <span class="card-badge badge-emerald">Sabahın 07:00&#x27;i — balık, bağırtı, Sicilya kokusu ve donmuş zaman</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Sabahın 07:00&#x27;i — balık, bağırtı, Sicilya kokusu ve donmuş zaman</span>
                 </div>
+                <h3 class="card-title">La Pescheria</h3>
                 <p class="card-desc">Piazza del Duomo&#x27;nun hemen arkasındaki merdivenlerden aşağı inince La Pescheria başlıyor. Sabah 06:00-13:00, Pazar kapalı. Kalamar, kirpi balığı, kılıç balığı, ahtapot — satıcılar Sicilya diyalektiyle bağırıyor, buz üzerinde her şey serilmiş. Fotoğraf çekmeden önce izin iste — çoğu satıcı mutlu oluyor. Pazarı çevreleyen trattorialarda öğle yemeği hem taze hem ucuz.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Teatro Massimo Bellini ve Via Crociferi</span>
-                    <span class="card-badge badge-emerald">Bellini burada doğdu ve şehir bunu her köşede hatırlatıyor</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Bellini burada doğdu ve şehir bunu her köşede hatırlatıyor</span>
                 </div>
+                <h3 class="card-title">Teatro Massimo Bellini ve Via Crociferi</h3>
                 <p class="card-desc">Vincenzo Bellini (1801-1835) Catania&#x27;da doğdu ve en ünlü operası Norma burada sahnelendi. Teatro Massimo Bellini hem opera evi hem müze — içi görülmeye değer. Via Crociferi ise şehrin en güzel Barok sokağı: yan yana dört kilise, lav taşı döşeli dar yol, sarmaşıklar. Sabah erkenden neredeyse boş. Sant&#x27;Benedetto Manastırı bu sokakta — içi görkemli ve az kalabalık.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Aci Trezza ve Aci Castello</span>
-                    <span class="card-badge badge-emerald">Homer burada geçti — taşlar 3.000 yıldır aynı yerde duruyor</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Homer burada geçti — taşlar 3.000 yıldır aynı yerde duruyor</span>
                 </div>
+                <h3 class="card-title">Aci Trezza ve Aci Castello</h3>
                 <p class="card-desc">Catania&#x27;dan 15-20 dakika otobüsle, ama başka bir dünyaya geliyor gibi hissettiriyor. Aci Trezza&#x27;da Kyklopların taşı olarak bilinen siyah bazalt kayalıklar denizden yükseliyor — Homer&#x27;in Odysseia&#x27;sında Polyphemos&#x27;un Odysseus&#x27;a fırlattığı taşlar bunlar. Küçük balıkçı köyü, akşam güneşi ve inanılmaz taze balık trattorialar. Aci Castello&#x27;da Norman kalesi doğrudan kayalığın üstünde, denize uzanıyor. İkisi birlikte tam bir gün ediyor.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Piazza Stesicoro — Roma Amfitiyatrosu kalıntıları</span>
-                    <span class="card-badge badge-emerald">Kaldırımın altında 2.000 yıl — neredeyse hiç kimse durmuyor</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Kaldırımın altında 2.000 yıl — neredeyse hiç kimse durmuyor</span>
                 </div>
+                <h3 class="card-title">Piazza Stesicoro — Roma Amfitiyatrosu kalıntıları</h3>
                 <p class="card-desc">Via Etnea üzerinde, Piazza Stesicoro&#x27;nun ortasında, kaldırımın altında görünen Roma amfitiyatrosu kalıntıları. Koruma kafesi arkasında, açıkta, ücretsiz. 2. yüzyıldan kalma ve yaklaşık 15.000 kişi kapasiteli olduğu düşünülüyor. Yanındaki Belvedere&#x27;den Etna ile aynı karede. Şehrin üzerine inşa edildiği tarihin en somut kanıtı.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Etna eteğindeki kan portakalı bahçeleri</span>
-                    <span class="card-badge badge-emerald">Sicilya&#x27;nın kan portakalı — başka hiçbir toprakta bu renk ve tat çıkmıyor</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Sicilya&#x27;nın kan portakalı — başka hiçbir toprakta bu renk ve tat çıkmıyor</span>
                 </div>
+                <h3 class="card-title">Etna eteğindeki kan portakalı bahçeleri</h3>
                 <p class="card-desc">Catania çevresinde Etna&#x27;nın volkanik, mineral açısından zengin toprakları dünyanın en iyi kan portakallarını yetiştiriyor. Kasım-Mart arası pazarlarda taze sıkılmış kan portakalı suyu 1-2 euro. Rengi koyu kırmızı ve şarap tonlarında, tadı derin ve karmaşık. Etna&#x27;nın güney yamacındaki köyler (Zafferana Etnea, Viagrande) bu bahçelerin içinde — araçla Etna yolunda uğranabilir.</p>
             </div>
             </div>

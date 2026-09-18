@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Gaziantep Şehir İçi Ulaşım & Transfer</h2>
             </div>
             <p class="section-intro">Havalimanı merkeze yakındır, tarihi çekirdek yürünebilir ölçektedir; Zeugma ve Rumkale için tekerlek gerekir.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Havalimanından geliş</span>
+                        <h3 class="card-title">Havalimanından geliş</h3>
                     </div>
                 </div>
                 <p class="card-desc">Gaziantep Havalimanı merkeze yirmi dakikadır: havaş servisleri ve taksiler düzenli çalışır. İstanbul, Ankara ve İzmir&#x27;den sık sefer vardır — hafta sonu gastronomi kaçamağı için ideal mesafe.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">Yürünebilir tarihi çekirdek</span>
+                        <h3 class="card-title">Yürünebilir tarihi çekirdek</h3>
                     </div>
                 </div>
                 <p class="card-desc">Kale, Bakırcılar Çarşısı, hanlar ve Bey Mahallesi birbirine yürüme mesafesindedir: tarihi Antep yarım günde adımlanır. Taş kaldırımlar için rahat ayakkabı — çarşı molalarıyla yürüyüş kendiliğinden uzar.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚋</span>
-                        <span class="card-title">Tramvay ve otobüsler</span>
+                        <h3 class="card-title">Tramvay ve otobüsler</h3>
                     </div>
                 </div>
                 <p class="card-desc">Tramvay hattı üniversiteden merkeze uzanır, otobüsler şehri örer: Gaziantepkart ile ikisine de binersin. Merkez-müze arası kısa taksiyle de zahmetsizdir — şehir içi mesafeler kısadır.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚗</span>
-                        <span class="card-title">Zeugma ve çevre için araç</span>
+                        <h3 class="card-title">Zeugma ve çevre için araç</h3>
                     </div>
                 </div>
                 <p class="card-desc">Zeugma Mozaik Müzesi merkeze on dakikadır: taksi ya da otobüsle kolayca varılır. Rumkale ve Halfeti kaçamağı içinse kiralık araç ya da günlük tur gerekir — yol Fırat manzarasıyla ödüllendirir.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🧭</span>
-                        <span class="card-title">Çarşı labirenti yürüyüşü</span>
+                        <h3 class="card-title">Çarşı labirenti yürüyüşü</h3>
                     </div>
                 </div>
                 <p class="card-desc">Zincirli Bedesten&#x27;den Kemikli Bedesten&#x27;e, Şire Hanı&#x27;ndan Kürkçü Hanı&#x27;na çarşılar iç içe geçer: kaybolmak programın parçasıdır. Çekiç sesini takip et — bakırcılar bölgesi çarşının kalbidir.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Nerede Kalınır? Gaziantep Mahalleleri</h2>
             </div>
             <p class="section-intro">Antep&#x27;te seçim ikilidir: tarihi çekirdekte taş konak butiği ya da yeni şehirde konforlu otel — ikisinin arası on dakikadır.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Bey Mahallesi</span>
+                    <h3 class="card-title">Bey Mahallesi</h3>
                     <span class="card-badge badge-purple">En karakterli</span>
                 </div>
                 <p class="card-desc">Taş konakların mahallesi: oymalı kapılar, avlulu butik oteller, müze-evler. Tarihi Antep&#x27;in içinde uyanmak isteyenin adresi — çarşıya ve kaleye yürüme mesafesi.</p>
-                <div class="card-footer-tip">Taş konaklar • Avlulu oteller • Müze-evler</div>
+                <div class="card-footer-tip">📍 Taş konaklar • Avlulu oteller • Müze-evler</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Kale ve çarşı çevresi</span>
+                    <h3 class="card-title">Kale ve çarşı çevresi</h3>
                     <span class="card-badge badge-purple">Sofraya en yakın</span>
                 </div>
                 <p class="card-desc">Beyran salonları, baklavacılar ve hanlar bölgesi kapının dibinde: sabah 06.00 beyranına terlikle inersin. Gastronomi odaklı ziyaretin en pratik üssü.</p>
-                <div class="card-footer-tip">Beyran mesafesi • Çarşı dibinde • Erken sabah avantajı</div>
+                <div class="card-footer-tip">📍 Beyran mesafesi • Çarşı dibinde • Erken sabah avantajı</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">İbrahimli ve yeni merkez</span>
+                    <h3 class="card-title">İbrahimli ve yeni merkez</h3>
                     <span class="card-badge badge-purple">Konfor tarafı</span>
                 </div>
                 <p class="card-desc">Geniş odalı, otoparklı modern oteller: fiyat-konfor dengesi güçlüdür. Tarihi çekirdeğe taksiyle on dakika — akşam serinliğinde yeni şehrin kafeleri de buradadır.</p>
-                <div class="card-footer-tip">Modern konfor • Otopark kolaylığı • Güçlü kahvaltılar</div>
+                <div class="card-footer-tip">📍 Modern konfor • Otopark kolaylığı • Güçlü kahvaltılar</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Gar ve istasyon çevresi</span>
+                    <h3 class="card-title">Gar ve istasyon çevresi</h3>
                     <span class="card-badge badge-purple">Ulaşım kavşağı</span>
                 </div>
                 <p class="card-desc">Otogar ve ana arterlere yakın pratik bölge: kısa konaklamalar ve erken yol çıkışları için mantıklı. Merkez tramvayla birkaç duraktır.</p>
-                <div class="card-footer-tip">Ulaşıma yakın • Ekonomik seçenek • Kısa konaklama dostu</div>
+                <div class="card-footer-tip">📍 Ulaşıma yakın • Ekonomik seçenek • Kısa konaklama dostu</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Kavaklık</span>
+                    <h3 class="card-title">Kavaklık</h3>
                     <span class="card-badge badge-purple">Yeşil ve sakin</span>
                 </div>
                 <p class="card-desc">Parklarıyla bilinen sakin semt: aile ziyaretleri ve gürültüsüz geceler için yerlinin tercihi. Merkeze kısa taksi mesafesi — akşam yürüyüşü Kavaklık parkında güzeldir.</p>
-                <div class="card-footer-tip">Park komşusu • Sessiz geceler • Yerli ritim</div>
+                <div class="card-footer-tip">📍 Park komşusu • Sessiz geceler • Yerli ritim</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Gaziantep İçin En İyi Ziyaret Zamanı</h2>
             </div>
             <p class="section-intro">Antep sofrası dört mevsim açıktır; fıstık hasadı güzü, baharat kokusu baharı, sıcak yaz öğlenleri avlu gölgelerini çağırır.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">İlkbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Nis – Haz</span>
+                        <h3 class="card-title">İlkbahar</h3>
+                        <span class="season-months">Nis – Haz</span>
                     </div>
                     <span class="card-badge badge-amber">Baharatlı Bahar</span>
                 </div>
                 <p class="card-desc">Çarşı gezmesinin en tatlı mevsimi: hava ılık, avlular serin, sofralar taze soğan ve semizotuyla şenlenir. Mayısta yeni mahsul sebzeyle Antep mutfağı bahar menüsüne geçer — yürüyüş ve yemek dengesi en kolay bu aylarda kurulur.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Yaz</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Tem – Ağu</span>
+                        <h3 class="card-title">Yaz</h3>
+                        <span class="season-months">Tem – Ağu</span>
                     </div>
                     <span class="card-badge badge-amber">Avlu Gölgesi Mevsimi</span>
                 </div>
                 <p class="card-desc">Antep yazı sıcaktır: öğlen saatleri müze ve han avlusuna, sabah-akşam çarşıya ayrılır. Karpuzla peynir, künefeyle dondurma — yaz sofrası da mevsime uyar. Klimalı Zeugma öğlen sıcağının en zarif kaçış noktasıdır.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Sonbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Eyl – Kas</span>
+                        <h3 class="card-title">Sonbahar</h3>
+                        <span class="season-months">Eyl – Kas</span>
                     </div>
                     <span class="card-badge badge-amber">Fıstık Hasadı</span>
                 </div>
                 <p class="card-desc">Eylül fıstık hasadının ayıdır: tezgahlar yeni mahsulle dolar, damlarda biber ve patlıcan kurutmalıkları kızarır. Hava yumuşar, çarşı canlanır — Antep&#x27;in en Antep mevsimi budur.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Kış</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Ara – Mar</span>
+                        <h3 class="card-title">Kış</h3>
+                        <span class="season-months">Ara – Mar</span>
                     </div>
                     <span class="card-badge badge-amber">Beyran Mevsimi</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍲</span>
-                        <span class="card-title">Beyran</span>
+                        <h3 class="card-title">Beyran</h3>
                     </div>
                 </div>
                 <p class="card-desc">Sabahın kaynar açılışı: kemik suyu, didiklenmiş kuzu, sarımsak ve acı. Salonda kaşık sesiyle içilir, yanında turşu ve ekmek — ilk kaşık ders, ikincisi alışkanlıktır.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥮</span>
-                        <span class="card-title">Antep baklavası</span>
+                        <h3 class="card-title">Antep baklavası</h3>
                     </div>
                 </div>
                 <p class="card-desc">Kırk kat yufka, boz iç fıstık, taze tereyağı: baklavanın anavatanında sabah tepsisi ayrı bir ligdir. &#x27;Kuru&#x27; ve &#x27;yaş&#x27; ayrımını ustaya sor — havlu gibi katlanan yufka iyi işaretin ta kendisidir.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍢</span>
-                        <span class="card-title">Kebap müfredatı</span>
+                        <h3 class="card-title">Kebap müfredatı</h3>
                     </div>
                 </div>
                 <p class="card-desc">Ali Nazik&#x27;ten küşlemeye, simit kebabından soğan kebabına: Antep kebabı bir liste değil okuldur. Mevsimine denk gelirsen yenidünya ve sarımsak kebabını kaçırma — közün mevsim takvimi vardır.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥟</span>
-                        <span class="card-title">Yuvalama ve içli köfte</span>
+                        <h3 class="card-title">Yuvalama ve içli köfte</h3>
                     </div>
                 </div>
                 <p class="card-desc">Nohutlu yoğurtlu minik köftelerin bayram çorbası yuvalama, dışı bulgur içi kıyma zarif kabuklu içli köfte: Antep&#x27;in ev mutfağı bu iki tabakta konuşur. Ev yemeği lokantalarında ara.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥞</span>
-                        <span class="card-title">Katmer</span>
+                        <h3 class="card-title">Katmer</h3>
                     </div>
                 </div>
                 <p class="card-desc">İncecik açılan hamurda kaymak, fıstık ve şeker: sabahın tatlı yarışçısı, baklavanın genç rakibi. Sıcakken ve tezgah başında yenir — &#x27;fıstığı çift&#x27; demek Antep&#x27;te aşkın ilanıdır.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">☕</span>
-                        <span class="card-title">Menengiç kahvesi ve fıstık tezgahı</span>
+                        <h3 class="card-title">Menengiç kahvesi ve fıstık tezgahı</h3>
                     </div>
                 </div>
                 <p class="card-desc">Yabani fıstığın közde kavrulup sütle pişirilmiş hali menengiç: kokusu çarşının hafızasıdır. Yanına kuruyemişçiden taze boz iç — Antep&#x27;in ikram ikilisi budur.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Zeugma&#x27;yı ve kaleyi herkes görür; bu altısı Antep&#x27;in çekiç sesli, kahve kokulu saklı yüzü.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Tahmis Kahvesi</span>
-                    <span class="card-badge badge-emerald">Türkiye&#x27;nin en eski kahvehanesi</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Türkiye&#x27;nin en eski kahvehanesi</span>
                 </div>
+                <h3 class="card-title">Tahmis Kahvesi</h3>
                 <p class="card-desc">1630&#x27;lardan beri kahve pişen ahşap sütunlu salon: menengiç kahvesi közde, sohbet yüksek sesli, tarih her masada. Dede Efendi&#x27;nin torunlarının tezgahında bir fincan — şehrin hafızasına oturmaktır.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Bey Mahallesi</span>
-                    <span class="card-badge badge-emerald">Taş konaklar mahallesi</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Taş konaklar mahallesi</span>
                 </div>
+                <h3 class="card-title">Bey Mahallesi</h3>
                 <p class="card-desc">Oymalı kapılar, avlulu konaklar, müze-evler: eski Antep burjuvazisinin taş sokakları. Papirüs Kafe gibi konak avlularında mola ver — duvarlar Antep ağzıyla hikaye anlatır.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Bakırcılar Çarşısı ustaları</span>
-                    <span class="card-badge badge-emerald">Çekiç sesi atölyeleri</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Çekiç sesi atölyeleri</span>
                 </div>
+                <h3 class="card-title">Bakırcılar Çarşısı ustaları</h3>
                 <p class="card-desc">Kalaycı körüğü, çekiç ritmi ve kararmış önlükler: bakır burada hâlâ elde dövülür. Ustadan leğen değilse bile bir cezve al — yaptığını gösteren usta, çayını da esirgemez.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Zincirli Bedesten</span>
-                    <span class="card-badge badge-emerald">Kapalı çarşının kalbi</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Kapalı çarşının kalbi</span>
                 </div>
+                <h3 class="card-title">Zincirli Bedesten</h3>
                 <p class="card-desc">1700&#x27;lerin kapalı çarşısı: baharatçılar, yağlık-kutnu kumaşçılar ve kurutmalık tezgahları taş kemerler altında. Sabah saatinde esnaf sohbeti alışverişten kıymetlidir.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Rumkale ve Halfeti</span>
-                    <span class="card-badge badge-emerald">Fırat kıyısı kaçamağı</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Fırat kıyısı kaçamağı</span>
                 </div>
+                <h3 class="card-title">Rumkale ve Halfeti</h3>
                 <p class="card-desc">Bir saat ötede Fırat&#x27;ın yeşil suyunda tekne: yarısı su altında kalan Halfeti ve kayalık burnundaki Rumkale. Batık minare, kara gül hikayeleri ve nehir serinliği — Antep&#x27;in su tarafı.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Emine Göğüş Mutfak Müzesi</span>
-                    <span class="card-badge badge-emerald">Mutfağın müzesi</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Mutfağın müzesi</span>
                 </div>
+                <h3 class="card-title">Emine Göğüş Mutfak Müzesi</h3>
                 <p class="card-desc">Taş konakta Antep mutfağının ansiklopedisi: bakır kapkacak, yüzyıllık tarifler, sini adabı. Yemeklerin hikayesini öğrenince sofra başka tat verir — çarşı turundan önce gel, ne yediğini bilerek ye.</p>
             </div>
             </div>

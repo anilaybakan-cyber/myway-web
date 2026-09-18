@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Kahire Şehir İçi Ulaşım & Transfer</h2>
             </div>
             <p class="section-intro">Kahire trafiği efsanedir; panzehiri uygulama taksisi, metro ve Nil&#x27;in kendisidir — kısa mesafeyi yürü, uzun mesafeyi akıllıca seç.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Havalimanından geliş</span>
+                        <h3 class="card-title">Havalimanından geliş</h3>
                     </div>
                 </div>
                 <p class="card-desc">Kahire Havalimanı merkeze trafiğe göre 45-60 dakikadır: en temiz çözüm Uber/Careem ya da otel transferidir. Kapıdaki &#x27;taxi my friend&#x27; korosuna gülümseyip geç — uygulama fiyatı üçte biridir.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">📱</span>
-                        <span class="card-title">Uber ve Careem</span>
+                        <h3 class="card-title">Uber ve Careem</h3>
                     </div>
                 </div>
                 <p class="card-desc">Şehrin gerçek toplu taşıması: ucuz, yaygın, pazarlıksız. Trafikte süre tahminini ciddiye al ama rotayı sürücüye bırak — Kahireli şoför, navigasyonun bilmediği aralardan geçer.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚇</span>
-                        <span class="card-title">Metro</span>
+                        <h3 class="card-title">Metro</h3>
                     </div>
                 </div>
                 <p class="card-desc">Üç hatlı metro trafiğin üstünden atlar: Sadat (Tahrir), Mar Girgis (Kıpti Kahire) gibi kilit duraklar turiste de altındır. Kadın vagonları vardır — kalabalık saatlerde kadın gezginler için konforlu seçenek.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">⛵</span>
-                        <span class="card-title">Nil&#x27;de feluka</span>
+                        <h3 class="card-title">Nil&#x27;de feluka</h3>
                     </div>
                 </div>
                 <p class="card-desc">Yelkenli feluka ile Nil&#x27;de bir saat: motor yok, korna yok, sadece yelken sesi. Gün batımından önce kirala, fiyatı binmeden pazarlıkla netleştir — şehrin gürültüsüne alınabilecek en zarif intikam.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">Semt içi yürüyüş</span>
+                        <h3 class="card-title">Semt içi yürüyüş</h3>
                     </div>
                 </div>
                 <p class="card-desc">Kahire bütünüyle yürünmez ama semtleri yürünür: El-Muizz Caddesi, Zamalek sokakları, Kıpti Kahire&#x27;nin avluları. Karşıdan karşıya geçmek başlı başına sanattır — bir yerliye yanaş, onunla akışa gir.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Nerede Kalınır? Kahire Mahalleleri</h2>
             </div>
             <p class="section-intro">Kahire&#x27;de mahalle seçimi konfor seçimidir: Nil adasının yeşili, merkezin gürültülü ihtişamı ya da piramit manzaralı Giza.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Zamalek</span>
+                    <h3 class="card-title">Zamalek</h3>
                     <span class="card-badge badge-purple">En rahat</span>
                 </div>
                 <p class="card-desc">Nil&#x27;in ortasındaki ada semti: ağaçlı sokaklar, elçilikler, kafeler ve galeriler. Kahire yoğunluğunun bir perde kısılmış hali — ilk gelişte şehre en yumuşak iniş buradan yapılır.</p>
-                <div class="card-footer-tip">Ada sakinliği • Kafe ve galeri • Nil kıyısı yürüyüş</div>
+                <div class="card-footer-tip">📍 Ada sakinliği • Kafe ve galeri • Nil kıyısı yürüyüş</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Downtown (Vust el-Balad)</span>
+                    <h3 class="card-title">Downtown (Vust el-Balad)</h3>
                     <span class="card-badge badge-purple">Şehrin kalbi</span>
                 </div>
                 <p class="card-desc">Belle époque cepheli bulvarlar, Tahrir&#x27;e ve müzeye yürüme mesafesi: gürültülü, yorucu, unutulmaz. Tarihi kahvehaneler ve gece hayatı kapının dibinde — Kahire&#x27;yi filtresiz isteyene.</p>
-                <div class="card-footer-tip">Müzeye yakın • Tarihi kahvehaneler • Filtresiz Kahire</div>
+                <div class="card-footer-tip">📍 Müzeye yakın • Tarihi kahvehaneler • Filtresiz Kahire</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Garden City</span>
+                    <h3 class="card-title">Garden City</h3>
                     <span class="card-badge badge-purple">Sakin merkez</span>
                 </div>
                 <p class="card-desc">Downtown&#x27;ın hemen güneyinde, kavisli sokaklı eski diplomat mahallesi: merkeze yakın ama korna senfonisinden bir sokak içeride. Nil kıyısı otelleri de bu şeritte.</p>
-                <div class="card-footer-tip">Kavisli sessiz sokaklar • Nil otelleri • Merkeze komşu</div>
+                <div class="card-footer-tip">📍 Kavisli sessiz sokaklar • Nil otelleri • Merkeze komşu</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Giza — piramit manzarası</span>
+                    <h3 class="card-title">Giza — piramit manzarası</h3>
                     <span class="card-badge badge-purple">Manzara tarafı</span>
                 </div>
                 <p class="card-desc">Piramit manzaralı teraslı oteller: sabah perdeyi açınca Keops seni karşılar. Merkeze uzaktır — programın piramit ve Sakkara ağırlıklıysa bir-iki gece için efsane seçim.</p>
-                <div class="card-footer-tip">Perdede Keops • Erken giriş avantajı • Teras kahvaltısı</div>
+                <div class="card-footer-tip">📍 Perdede Keops • Erken giriş avantajı • Teras kahvaltısı</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Maadi</span>
+                    <h3 class="card-title">Maadi</h3>
                     <span class="card-badge badge-purple">Yeşil ve sakin</span>
                 </div>
                 <p class="card-desc">Güneyin ağaçlı, sakin, uzun dönem yabancıların sevdiği semti: kafeler, Nil yürüyüşü, metro bağlantısı. Kahire&#x27;de &#x27;yaşar gibi&#x27; kalmak isteyene — merkez metroyla yirmi dakika.</p>
-                <div class="card-footer-tip">Ağaçlı sokaklar • Metro bağlantılı • Uzun konaklama dostu</div>
+                <div class="card-footer-tip">📍 Ağaçlı sokaklar • Metro bağlantılı • Uzun konaklama dostu</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Kahire İçin En İyi Ziyaret Zamanı</h2>
             </div>
             <p class="section-intro">Kahire&#x27;nin takvimi çöl güneşiyle pazarlıktır: ekim-nisan altın penceredir, yaz sabah erken ve akşam geç saat şehridir.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">İlkbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Mar – May</span>
+                        <h3 class="card-title">İlkbahar</h3>
+                        <span class="season-months">Mar – May</span>
                     </div>
                     <span class="card-badge badge-amber">Çölün İlkbaharı</span>
                 </div>
                 <p class="card-desc">Mart ve nisan gündüzleri ılık, geceleri serin geçer: piramit ve açık hava programları için rahat sezondur. Hamsin denen kum rüzgarı ara sıra gökyüzünü sarartır — o gün müze günüdür, maalesh.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Yaz</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Haz – Eyl</span>
+                        <h3 class="card-title">Yaz</h3>
+                        <span class="season-months">Haz – Eyl</span>
                     </div>
                     <span class="card-badge badge-amber">Sıcakla Pazarlık</span>
                 </div>
                 <p class="card-desc">Gündüz 35-40 dereceyi bulur: program sabah 07.00-11.00 ve akşam 17.00 sonrası diye ikiye bölünür. Karşılığında oteller ucuzlar ve Kahire geceleri asıl karakterine döner — şehir gece yarısı dondurma kuyruğundadır.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Sonbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Eki – Kas</span>
+                        <h3 class="card-title">Sonbahar</h3>
+                        <span class="season-months">Eki – Kas</span>
                     </div>
                     <span class="card-badge badge-amber">Altın Pencere Açılıyor</span>
                 </div>
                 <p class="card-desc">Ekimle birlikte sıcak insafa gelir: piramit sabahları serin, Nil akşamları ipek gibidir. Ana sezon başlar ama aralık yoğunluğu henüz uzaktır — Kahire&#x27;nin en dengeli gezme penceresi budur.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Kış</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Ara – Şub</span>
+                        <h3 class="card-title">Kış</h3>
+                        <span class="season-months">Ara – Şub</span>
                     </div>
                     <span class="card-badge badge-amber">Yüksek Sezonun Tacı</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍝</span>
-                        <span class="card-title">Koşarî</span>
+                        <h3 class="card-title">Koşarî</h3>
                     </div>
                 </div>
                 <p class="card-desc">Pirinç, makarna, mercimek, nohut, kızarmış soğan ve baharatlı domates sosu tek kasede: Mısır&#x27;ın milli fast food&#x27;u. Tezgahta kaşık sesiyle servis edilir — üstüne sarımsaklı sirke (dakka) ve acı sos, cesaretin kadar.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🧆</span>
-                        <span class="card-title">Fuul ve ta&#x27;meya kahvaltısı</span>
+                        <h3 class="card-title">Fuul ve ta&#x27;meya kahvaltısı</h3>
                     </div>
                 </div>
                 <p class="card-desc">Bakla ezmesi fuul ve bakladan yapılan yeşil içli ta&#x27;meya (Mısır falafeli): baladi ekmeğine dürülür, turşuyla taçlanır. Sokak arabasından sabah sıcak alınır — Kahire güne böyle başlar.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥬</span>
-                        <span class="card-title">Molohiya</span>
+                        <h3 class="card-title">Molohiya</h3>
                     </div>
                 </div>
                 <p class="card-desc">İnce kıyılmış ebegümeci yaprağının sarımsaklı, kişnişli çorba-sosu: tavuk ya da tavşan etiyle, pirinç üstüne. Kıvamı yabancıya oyun oynar, tadı bağımlılık yapar — ev yemeği lokantasında dene.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍢</span>
-                        <span class="card-title">Izgara ve mahşi sofrası</span>
+                        <h3 class="card-title">Izgara ve mahşi sofrası</h3>
                     </div>
                 </div>
                 <p class="card-desc">Kofta, tavuk şiş ve közlü et; yanında pirinç dolgulu mahşi sebzeler ve tahin. Kebapçı sofrası salata ve turşu ordusuyla kurulur — baladi ekmek sıcak geldikçe yenilenir.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥧</span>
-                        <span class="card-title">Feteer</span>
+                        <h3 class="card-title">Feteer</h3>
                     </div>
                 </div>
                 <p class="card-desc">Kat kat açılan tereyağlı Mısır böreği: peynirli-etli tuzlusundan ballı-kaymaklı tatlısına. Fırıncının hamuru havada döndürmesi gösterinin yarısıdır — taş fırından sıcak söyle.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍮</span>
-                        <span class="card-title">Om Ali ve şerbetçi tezgahı</span>
+                        <h3 class="card-title">Om Ali ve şerbetçi tezgahı</h3>
                     </div>
                 </div>
                 <p class="card-desc">Fırında sütlü, fındıklı, kuş üzümlü ekmek tatlısı Om Ali sıcak yenir; yanına sokaktan bir bardak taze şeker kamışı suyu (asab) sıkılır. Tatlı krizi Kahire&#x27;de asla cevapsız kalmaz.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Piramitleri ve büyük müzeyi herkes görür; bu altısı Kahire&#x27;nin katmanlarını açan saklı kapılar.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">El-Ezher Parkı</span>
-                    <span class="card-badge badge-emerald">Şehrin üstünde yeşil teras</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Şehrin üstünde yeşil teras</span>
                 </div>
+                <h3 class="card-title">El-Ezher Parkı</h3>
                 <p class="card-desc">Eski çöplük tepesinden dönüştürülen park, tarihi Kahire&#x27;nin bin minareli silüetine bakar: gün batımında Muhammed Ali Camii altına döner. Çay bahçesine otur, ezan senfonisini yukarıdan dinle — şehrin en huzurlu saati.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">El-Muizz Caddesi gece yürüyüşü</span>
-                    <span class="card-badge badge-emerald">Bin yıllık açık hava müzesi</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Bin yıllık açık hava müzesi</span>
                 </div>
+                <h3 class="card-title">El-Muizz Caddesi gece yürüyüşü</h3>
                 <p class="card-desc">Fatımi Kahiresi&#x27;nin ana caddesi akşam ışıklandırmasıyla bambaşka açılır: medreseler, sebiller ve kervansaraylar bal rengi aydınlanır. Kalabalık azalır, taş işçiliği sahneye çıkar — gündüz gördüysen bile gece dön.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Bab Zuveyla</span>
-                    <span class="card-badge badge-emerald">Minareden şehir okuma</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Minareden şehir okuma</span>
                 </div>
+                <h3 class="card-title">Bab Zuveyla</h3>
                 <p class="card-desc">Fatımi surlarının güney kapısının minarelerine tırmanılır: tarihi Kahire&#x27;nin damları, çamaşır ipleri ve minare ormanı ayaklarının altındadır. Giriş mütevazı, manzara cömert — çadırcılar çarşısı da hemen kapının dibinde.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Kıpti Kahire (Mar Girgis)</span>
-                    <span class="card-badge badge-emerald">Hristiyan Kahire&#x27;nin avluları</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Hristiyan Kahire&#x27;nin avluları</span>
                 </div>
+                <h3 class="card-title">Kıpti Kahire (Mar Girgis)</h3>
                 <p class="card-desc">Asma Kilise, Aziz Sergius&#x27;un mağarası ve Ben Ezra Sinagogu tek avlular labirentinde: Roma kulelerinin içine kurulmuş bir sessizlik adası. Metroyla gelinir — Kahire&#x27;nin en sakin yarım günü buradadır.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Vekalet el-Ghouri tanura gösterisi</span>
-                    <span class="card-badge badge-emerald">Dönen dervişlerin sahnesi</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Dönen dervişlerin sahnesi</span>
                 </div>
+                <h3 class="card-title">Vekalet el-Ghouri tanura gösterisi</h3>
                 <p class="card-desc">Memluk kervansarayının avlusunda haftanın belli akşamları tanura (sema) gösterisi: rengarenk etekler saatlerce döner, ritim trans halini alır. Bilet mütevazı, atmosfer büyülü — erken git, avlu küçüktür.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Manial Sarayı</span>
-                    <span class="card-badge badge-emerald">Nil adasında saray bahçesi</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Nil adasında saray bahçesi</span>
                 </div>
+                <h3 class="card-title">Manial Sarayı</h3>
                 <p class="card-desc">Roda Adası&#x27;ndaki prens sarayı: Osmanlı, Mağrip ve Art Nouveau üslupları tek çatıda, çevresi tropik bahçe. Kalabalığın atladığı bu köşk, Kahire aristokrasisinin son dönemine açılan sessiz bir penceredir.</p>
             </div>
             </div>

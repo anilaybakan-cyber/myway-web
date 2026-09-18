@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Amalfi Kıyısı Şehir İçi Ulaşım & Transfer</h2>
             </div>
             <p class="section-intro">Kıyı boyunca iki seçenek: SITA otobüsü veya feribot. Feribot her zaman daha güzel, otobüs her zaman daha ucuz.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚂</span>
-                        <span class="card-title">Napoli veya Salerno&#x27;dan bağlantı</span>
+                        <h3 class="card-title">Napoli veya Salerno&#x27;dan bağlantı</h3>
                     </div>
                 </div>
                 <p class="card-desc">Amalfi Kıyısı&#x27;na en yakın tren istasyonları Napoli Centrale, Sorrento (Circumvesuviana ile) ve Salerno. Napoli&#x27;den: Circumvesuviana ile Sorrento&#x27;ya, oradan SITA otobüsüyle Positano ve Amalfi&#x27;ye. Salerno&#x27;dan: doğrudan SITA otobüsü veya feribot. Salerno genellikle göz ardı edilen ama pratik bir giriş noktası.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚌</span>
-                        <span class="card-title">SITA Otobüsü — kıyının omurgası</span>
+                        <h3 class="card-title">SITA Otobüsü — kıyının omurgası</h3>
                     </div>
                 </div>
                 <p class="card-desc">Sorrento–Positano–Amalfi hattı ve Amalfi–Salerno hattı olmak üzere iki ana güzergah. Tek biniş 2-3 euro arası, güzergaha göre değişiyor. Günlük Costiera SITA Pas 10 euro — sınırsız biniş. Biletler tabacchi (tütüncü) dükkanlarından, kafelerden ve duraklardaki makinelerden alınıyor. Otobüse binerken mutlaka biletini onaylat — otobüste bilet satılmıyor, satın almak mümkün değil. Yaz aylarında otobüsler çok kalabalık; büyük bavulla binmek neredeyse imkansız.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">⛴️</span>
-                        <span class="card-title">Feribot — manzaralı ve konforlu</span>
+                        <h3 class="card-title">Feribot — manzaralı ve konforlu</h3>
                     </div>
                 </div>
                 <p class="card-desc">Nisan&#x27;dan Ekim&#x27;e Napoli, Sorrento, Positano, Amalfi, Salerno arasında feribot seferleri çalışıyor. Kış aylarında hava koşullarına bağlı, bazı hatlar durabilir. Fiyatlar güzergaha göre 8-20 euro arasında. Travelmar, NLG ve Positano Jet başlıca şirketler. Yaz aylarında bilet önceden alınmalı — dolar. Feribot yolculuğunun kendisi kıyıya dışarıdan bakmanın tek yolu: uçurumlar, köyler ve deniz aynı anda görünüyor.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚗</span>
-                        <span class="card-title">Araç kiralama — dikkatli ol</span>
+                        <h3 class="card-title">Araç kiralama — dikkatli ol</h3>
                     </div>
                 </div>
                 <p class="card-desc">SS163 kıyı yolu tek şeritlik bölümleri, kör virajları ve uzun tünelleriyle zorlayıcı. Yaz aylarında tıkanıklık kaçınılmaz. Motorino (küçük motosiklet) veya scooter kıyı kasabalarında popüler ama dar yollarda tehlikeli olabilir. Araçla geleceksen kasabaların dışındaki otoparkları kullan — kasaba içi park neredeyse imkansız ve pahalı.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">Yürüyüş yolları</span>
+                        <h3 class="card-title">Yürüyüş yolları</h3>
                     </div>
                 </div>
                 <p class="card-desc">Kıyı boyunca tarihi yürüyüş yolları var. Sentiero degli Dei (Tanrıların Yolu) en ünlüsü — Bomerano&#x27;dan Nocelle&#x27;ye, körfezi yukarıdan boydan boya görüyorsun. Yaklaşık 7 kilometre, 2-3 saat, orta zorluk. Kasabalar arası yollar da mevcut ama dik ve yorucu. Rahat ayakkabı şart. Yaz ortasında öğle saatinde yürümekten kaçın.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Nerede Kalınır? Amalfi Kıyısı Mahalleleri</h2>
             </div>
             <p class="section-intro">Her kasabanın karakteri farklı — Positano gösterişli, Amalfi tarihi, Ravello sakin, Cetara yerel.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Positano</span>
+                    <h3 class="card-title">Positano</h3>
                     <span class="card-badge badge-purple">En fotoğrafik</span>
                 </div>
                 <p class="card-desc">Uçuruma yapışmış renkli evleri, dar merdiven sokakları ve Spiaggia Grande plajıyla kıyının en ikonik kasabası. Ve aynı zamanda en pahalısı. Akşam yemeği 40-60 euro kişi başı başlıyor; otel geceleri yüksek sezonda 300 euro altında zor bulunuyor. Ama manzara tartışmasız. Yaz ortasında gündüzleri kalabalık; sabahın erken saatleri ve akşam üstü en güzel anlar.</p>
-                <div class="card-footer-tip">En ikonik manzara • En pahalı kasaba • Spiaggia Grande</div>
+                <div class="card-footer-tip">📍 En ikonik manzara • En pahalı kasaba • Spiaggia Grande</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Amalfi şehri</span>
+                    <h3 class="card-title">Amalfi şehri</h3>
                     <span class="card-badge badge-purple">En tarihi</span>
                 </div>
                 <p class="card-desc">9. yüzyılda güçlü bir deniz cumhuriyetiydi; bugün 5.000 kişilik küçük bir kasaba. Piazza Duomo&#x27;daki katedrali, dar sokakları ve İtalya&#x27;nın ilk kâğıt değirmenlerinin bulunduğu şehrin tarihini anlatan Museo della Carta ile tarihi bir karakter taşıyor. SITA otobüsünün ana merkezi — her yere buradan aktarma yapılıyor. Positano&#x27;dan biraz daha uygun fiyatlı. Atrani&#x27;ye yürüyerek 10 dakika.</p>
-                <div class="card-footer-tip">Duomo Katedrali • SITA otobüs merkezi • Atrani&#x27;ye yürüme mesafesi</div>
+                <div class="card-footer-tip">📍 Duomo Katedrali • SITA otobüs merkezi • Atrani&#x27;ye yürüme mesafesi</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Ravello</span>
+                    <h3 class="card-title">Ravello</h3>
                     <span class="card-badge badge-purple">En sakin</span>
                 </div>
                 <p class="card-desc">Kıyıdan yukarıda, 350 metre yüksekte. Denizi yukarıdan gören Villa Rufolo ve Villa Cimbrone bahçeleri burada. Wagner burada besteledi, Virginia Woolf burada yazdı. Yaz aylarında Ravello Festivali — açık hava konserleri, tiyatro. Kasaba küçük ve sakin — kıyının kaosundan uzaklaşmak için ideal.</p>
-                <div class="card-footer-tip">Villa Cimbrone bahçeleri • Ravello Festivali • Kıyının üzerinde sessizlik</div>
+                <div class="card-footer-tip">📍 Villa Cimbrone bahçeleri • Ravello Festivali • Kıyının üzerinde sessizlik</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Cetara</span>
+                    <h3 class="card-title">Cetara</h3>
                     <span class="card-badge badge-purple">En yerel</span>
                 </div>
                 <p class="card-desc">Kıyının doğusunda, turistlerin büyük bölümünün uğramadığı küçük balıkçı kasabası. Colatura di alici&#x27;nin anavatanı — fermente hamsi sosu, yüzyıllardır burada yapılıyor. Sahil kafesi ve lokantaları hem ucuz hem iyi. Sahil şeridi sakin, deniz temiz. Cetara&#x27;yı görmek için Amalfi&#x27;den SITA otobüsüyle 20 dakika.</p>
-                <div class="card-footer-tip">Colatura di alici • Balıkçı kasabası • Ucuz ve yerel yemek</div>
+                <div class="card-footer-tip">📍 Colatura di alici • Balıkçı kasabası • Ucuz ve yerel yemek</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Praiano</span>
+                    <h3 class="card-title">Praiano</h3>
                     <span class="card-badge badge-purple">Positano alternatifi</span>
                 </div>
                 <p class="card-desc">Positano ile Amalfi arasında, uçurumun üzerinde küçük bir kasaba. Pozitano&#x27;nun manzarasına yakın ama fiyatları ve kalabalığı çok daha az. San Gennaro Kilisesi&#x27;nin önündeki teras manzarası ücretsiz ve nefes kesici. Plajı Marina di Praia — küçük, korunaklı, güzel. Positano&#x27;ya feribot veya otobüsle 15 dakika.</p>
-                <div class="card-footer-tip">Positano manzarası daha ucuza • Marina di Praia plajı • San Gennaro Kilisesi terası</div>
+                <div class="card-footer-tip">📍 Positano manzarası daha ucuza • Marina di Praia plajı • San Gennaro Kilisesi terası</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Amalfi Kıyısı İçin En İyi Ziyaret Zamanı</h2>
             </div>
             <p class="section-intro">Amalfi Kıyısı yıl boyu ziyaret edilebilir ama her mevsim çok farklı bir deneyim sunar.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">İlkbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Nis – May</span>
+                        <h3 class="card-title">İlkbahar</h3>
+                        <span class="season-months">Nis – May</span>
                     </div>
                     <span class="card-badge badge-amber">En iyi dönem</span>
                 </div>
                 <p class="card-desc">Nisan ve Mayıs kıyının en güzel dönemi. Limon bahçeleri çiçekte, hava 18-22°C, turistler var ama yaz kalabalığından uzak. Fiyatlar yaz ortasına göre %30-40 daha düşük. Deniz hâlâ biraz soğuk ama yüzmek mümkün. Yürüyüş yolları ideal bu mevsimde — Sentiero degli Dei&#x27;de sis ve bulut altında manzara çarpıcı.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Yaz</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Haz – Ağu</span>
+                        <h3 class="card-title">Yaz</h3>
+                        <span class="season-months">Haz – Ağu</span>
                     </div>
                     <span class="card-badge badge-amber">Güzel ama kalabalık</span>
                 </div>
                 <p class="card-desc">Haziran kıyının en dengeli hali; deniz güzel, kalabalık henüz zirveye ulaşmamış. Temmuz ve Ağustos ise kıyının en yoğun dönemi. Positano&#x27;nun dar sokakları tıklım tıklım, otobüsler nefes aldırmıyor, plajlarda yer bulmak zor. Deniz bu dönemde en güzel ancak şehir en yorucu. Sabah 08:00 öncesi ve akşam 18:00 sonrası kıyı şeridinin biraz nefes aldığı saatler.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Sonbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Eyl – Kas</span>
+                        <h3 class="card-title">Sonbahar</h3>
+                        <span class="season-months">Eyl – Kas</span>
                     </div>
                     <span class="card-badge badge-amber">İkinci en iyi dönem</span>
                 </div>
                 <p class="card-desc">Eylül ve Ekim kıyının en rahat dönemi. Yaz kalabalığı gitmiş, hava hâlâ ılık, deniz hâlâ yüzülebilir sıcaklıkta. Fiyatlar yaz ortasına göre düşmüş. Sadece göz önünde bulundurmakta fayda var, Kasım ayında yağmur artabiliyor ve bazı feribot seferleri bitiyor.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Kış</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Ara – Şub</span>
+                        <h3 class="card-title">Kış</h3>
+                        <span class="season-months">Ara – Şub</span>
                     </div>
                     <span class="card-badge badge-amber">Sakin ve özgün</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍝</span>
-                        <span class="card-title">Scialatielli ai frutti di mare</span>
+                        <h3 class="card-title">Scialatielli ai frutti di mare</h3>
                     </div>
                 </div>
                 <p class="card-desc">Amalfi&#x27;nin kendine özgü el yapımı makarnası. Spaghetti&#x27;den kalın, linguine&#x27;den kısa. Hamuru her sabah taze hazırlanıyor. Karides, midye, kalamar ve deniz tarağından oluşan deniz ürünleri karışımı ile tabaklanıyor. Taze fesleğen, domates ve zeytinyağı ile servis ediliyor. Sabah denizden çıkarılmış tazecik ürünler, aynı gün tabağında. Damağındaki bu tazeliğin lezzetini ilk lokmanda anlayacaksın.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍝</span>
-                        <span class="card-title">Spaghetti con colatura di alici</span>
+                        <h3 class="card-title">Spaghetti con colatura di alici</h3>
                     </div>
                 </div>
                 <p class="card-desc">Spaghetti üzerine sarımsak, kırmızı biber ve zeytinyağı, sonra birkaç damla colatura di alici (Cetara&#x27;nın fermente hamsi sosu). Bu birkaç damla yemeği tümüyle değiştiriyor: tuzlu, umami ve derin bir lezzet. Tarif sade görünüyor ama colatura&#x27;nın gücü onu bambaşka bir yere taşıyor. Bu yemeği Cetara&#x27;da ye — hem en taze hem en uygun fiyatlı hali orada.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍋</span>
-                        <span class="card-title">Pasta al limone</span>
+                        <h3 class="card-title">Pasta al limone</h3>
                     </div>
                 </div>
                 <p class="card-desc">Sfusato amalfitano limonunun kabuğu ve suyu, ricotta veya krema, parmesan ve zeytinyağı ile yapılan taze makarna. Kıyının en sade ve en yerel yemeği. İyi bir pasta al limone limon kokusunu hissettiriyor ama ağırlaştırmıyor. Limon kabuğu rendelenmiş, içi sıkılmış — bu limonlar çok aromatik. Pozitano ve Amalfi&#x27;nin neredeyse tüm restoranlarında var.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍰</span>
-                        <span class="card-title">Delizia al limone</span>
+                        <h3 class="card-title">Delizia al limone</h3>
                     </div>
                 </div>
                 <p class="card-desc">Küçük, kubbeli sünger pasta — içi limoncello kreması, dışı limon glazesi ile kaplanmış. Amalfi Kıyısı&#x27;nın en karakteristik tatlısı. Soğuk servis edilmeli — ılık yenirse lezzeti düşüyor. Pastanelerde 3-5 euro arası. Limoncello likörünün yoğun versiyonunu sevmiyorsan yine de bu tatlıyı dene: limon aroması farklı, daha nazik.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍋</span>
-                        <span class="card-title">Limoncello</span>
+                        <h3 class="card-title">Limoncello</h3>
                     </div>
                 </div>
                 <p class="card-desc">Sfusato amalfitano limon kabuğu alkol içinde bekletiliyor, şeker şurubu ekleniyor — sonuç sarı, yoğun, soğuk içilen bir likör. Yemek sonrası digestivo olarak servis ediliyor. Restoranlarda genellikle hesabın sonunda ücretsiz küçük bir bardak geliyor. Satın alırken üretici standlarını tercih et — hem taze hem çok daha iyi fiyat. Mağazadan alacaksan DOP etiketini ara.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🧀</span>
-                        <span class="card-title">Provolone del Monaco</span>
+                        <h3 class="card-title">Provolone del Monaco</h3>
                     </div>
                 </div>
                 <p class="card-desc">Monti Lattari dağlarından, inek sütünden yapılan yarı sert peynir. DOP korumalı. Taze hali hafif, yaşlandırılmış hali keskin ve karmaşık. Kıyının peynir dükkanlarında ve şarküterilerinde bulunuyor. Hafif taze versiyonu ekmekle atıştırmalık, yaşlandırılmış versiyonu makarna ve risotto için ideal. Fiyat 18-25 euro kilo.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Kıyının en iyi yerleri çoğunlukla feribot güzergahından bir adım uzakta ya da bir tepenin arkasında.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Atrani</span>
-                    <span class="card-badge badge-emerald">Amalfi&#x27;nin hemen yanında, neredeyse kimsenin bilmediği kasaba</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Amalfi&#x27;nin hemen yanında, neredeyse kimsenin bilmediği kasaba</span>
                 </div>
+                <h3 class="card-title">Atrani</h3>
                 <p class="card-desc">Amalfi şehrinin hemen doğusunda, yürüyerek 10 dakika ya da tünel yoluyla 5 dakika. İtalya&#x27;nın en küçük kasabalarından biri — sadece birkaç yüz kişi. Küçük plajı, dik sokakları, meydandaki kilisesi ve birkaç restoranı var. Amalfi&#x27;nin kalabalığının yüzde onu. Aynı manzara, aynı kıyı, aynı deniz — ama ne turist kalabalığı ne yüksek fiyat. Sabahın erken saatlerinde ve akşam üstü en güzel hali.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Cetara</span>
-                    <span class="card-badge badge-emerald">Cetara — colatura di alici&#x27;nin anavatanı ve kıyının en yerel kasabası</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Cetara — colatura di alici&#x27;nin anavatanı ve kıyının en yerel kasabası</span>
                 </div>
+                <h3 class="card-title">Cetara</h3>
                 <p class="card-desc">Amalfi&#x27;nin doğusunda, otobüsle 20 dakika. Kıyının en küçük ve en az turistik kasabalarından. 16 Ağustos&#x27;ta yıllık ton balığı festivali yapılıyor — festival döneminde tüm kasaba kutluyor. Sahilindeki kafe ve trattorialar hem ucuz hem lezzetli. Burada yemek Positano&#x27;da yemenin yarı fiyatına denk geliyor. Colatura satın almak için kasabadaki küçük dükkanları ziyaret et.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Ravello — Villa Cimbrone</span>
-                    <span class="card-badge badge-emerald">Villa Cimbrone&#x27;nin uçurumundaki sonsuzluk terası</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Villa Cimbrone&#x27;nin uçurumundaki sonsuzluk terası</span>
                 </div>
+                <h3 class="card-title">Ravello — Villa Cimbrone</h3>
                 <p class="card-desc">Ravello kasabasında, yürüyerek 15 dakika. 11. yüzyıldan kalma villa, şimdi otel ve bahçe olarak açık. Belvedere of Infinity (Sonsuzluk Seyir Terası) adlı uçurum kenarındaki teras — önünde hiçbir şey yok, sadece Amalfi Körfezi. Gore Vidal&#x27;in favori yeriydi; Virginia Woolf da burada yazdı. Bahçe girişi biletli ama seyir terası manzarası için değer. Amalfi&#x27;den otobüsle Ravello&#x27;ya 30 dakika.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Praiano — Marina di Praia</span>
-                    <span class="card-badge badge-emerald">Marina di Praia — kıyının en korunaklı küçük koyu</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Marina di Praia — kıyının en korunaklı küçük koyu</span>
                 </div>
+                <h3 class="card-title">Praiano — Marina di Praia</h3>
                 <p class="card-desc">Praiano kasabasının altında, dik merdivenlerle inilen küçük koy. İki yanı kaya, önünde açık deniz. Küçük plajı, bir-iki restoran ve bar. Yaz ortasında bile Positano veya Amalfi&#x27;den çok daha sakin. Feribotsuz ulaşılan bu yer sadece merdivenleri inenler tarafından biliniyor. İnerken bacaklarını hazırla — çok sayıda basamak var.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Furore — La Fiordo</span>
-                    <span class="card-badge badge-emerald">Furore Fjord — fotoğraflarda görülen nefes kesen koy</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Furore Fjord — fotoğraflarda görülen nefes kesen koy</span>
                 </div>
+                <h3 class="card-title">Furore — La Fiordo</h3>
                 <p class="card-desc">Positano ile Amalfi arasında, SS163 yolunun üzerinde küçük bir durak. Buranın asıl sırrı kayaların arasından denize açılan dar koy — fiyort gibi. Yolun kenarındaki köprüden aşağı bakıyorsun, ya da basamaklarla inerek küçük plaja ulaşıyorsun. Her yıl burada Tuffo del Furore düzenleniyor: köprüden denize atlama yarışması, tüm kıyıdan izleyici geliyor. SITA otobüsüyle Furore durağında in.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Minori ve Maiori</span>
-                    <span class="card-badge badge-emerald">Minori ve Maiori — kıyının en rahat ve en uygun fiyatlı kasabaları</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Minori ve Maiori — kıyının en rahat ve en uygun fiyatlı kasabaları</span>
                 </div>
+                <h3 class="card-title">Minori ve Maiori</h3>
                 <p class="card-desc">Amalfi&#x27;nin doğusunda, birbirine yakın iki kasaba. Minori antik Roma villası kalıntılarıyla küçük ve tarihi; Maiori ise kıyının en büyük kumlu plajına sahip. İkisi de Positano ve Amalfi&#x27;den çok daha az turistik ve çok daha uygun fiyatlı. Maiori&#x27;de Perşembe günleri açık hava pazarı kuruluyor — yerel üretim sebze, meyve, peynir. Buradan kalmak veya yemek yemek için iyi seçenek.</p>
             </div>
             </div>

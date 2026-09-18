@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Venice Public Transit & Airport Transfers</h2>
             </div>
             <p class="section-intro">Venice has two means of transport: your feet and the boats. Neither likes to hurry.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚆</span>
-                        <span class="card-title">Arrival — Santa Lucia and Marco Polo</span>
+                        <h3 class="card-title">Arrival — Santa Lucia and Marco Polo</h3>
                     </div>
                 </div>
                 <p class="card-desc">The train reaches Santa Lucia station right on the Grand Canal — the world&#x27;s best station exit. From the airport, the Alilaguna boat or a bus to Piazzale Roma; beyond that point, no wheels pass.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚤</span>
-                        <span class="card-title">Vaporetto — the water bus</span>
+                        <h3 class="card-title">Vaporetto — the water bus</h3>
                     </div>
                 </div>
                 <p class="card-desc">Line 1 crawls the Grand Canal stop by stop (a tour in itself); line 2 is the express. Ride on a pass, and open up the islands with the same card.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">Walking — the real transport</span>
+                        <h3 class="card-title">Walking — the real transport</h3>
                     </div>
                 </div>
                 <p class="card-desc">The city walks end to end in an hour; bridge steps are a suitcase&#x27;s enemy. The yellow &#x27;Per San Marco / Per Rialto&#x27; signs are a rough compass — the rest is happy deviation.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🛶</span>
-                        <span class="card-title">Traghetto — the people&#x27;s gondola</span>
+                        <h3 class="card-title">Traghetto — the people&#x27;s gondola</h3>
                     </div>
                 </div>
                 <p class="card-desc">The shared gondola crossing the Grand Canal where bridges are missing: a two-minute true gondola experience for a few euros. The locals cross standing; you may choose to hold on.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚕</span>
-                        <span class="card-title">Water taxi — the conscious luxury</span>
+                        <h3 class="card-title">Water taxi — the conscious luxury</h3>
                     </div>
                 </div>
                 <p class="card-desc">Sleek, fast and expensive: comfort from airport to hotel carries a high price. Reasonable split among a group; otherwise the vaporetto does every job.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Where to Stay in Venice: Best Areas</h2>
             </div>
             <p class="section-intro">In Venice the choice of sestiere decides whether you watch the city from the stalls or from backstage.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">San Marco</span>
+                    <h3 class="card-title">San Marco</h3>
                     <span class="card-badge badge-purple">Most iconic</span>
                 </div>
                 <p class="card-desc">The sestiere of the square, the basilica and the luxury windows: the centre of everything and the priciest of everything. A human river by day, surprising silence at night — if the budget allows, sleep at centre stage.</p>
-                <div class="card-footer-tip">Beside the square • Silent nights • Luxury windows</div>
+                <div class="card-footer-tip">📍 Beside the square • Silent nights • Luxury windows</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Cannaregio</span>
+                    <h3 class="card-title">Cannaregio</h3>
                     <span class="card-badge badge-purple">Most local</span>
                 </div>
                 <p class="card-desc">Stretching from behind the station to the old Ghetto, full of actual Venetians: bacaro rows (Fondamenta della Misericordia), fair prices, true neighbourhood life. The smart traveller&#x27;s classic choice.</p>
-                <div class="card-footer-tip">Bacaro rows • Local life • Fair prices</div>
+                <div class="card-footer-tip">📍 Bacaro rows • Local life • Fair prices</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Dorsoduro</span>
+                    <h3 class="card-title">Dorsoduro</h3>
                     <span class="card-badge badge-purple">Most artistic</span>
                 </div>
                 <p class="card-desc">The southern bank of the Accademia, the Guggenheim and student squares: art by day, spritz on Campo Santa Margherita by night. The sunset walk on the Zattere is the quarter&#x27;s gift.</p>
-                <div class="card-footer-tip">Museum density • Student energy • The Zattere</div>
+                <div class="card-footer-tip">📍 Museum density • Student energy • The Zattere</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">San Polo / Santa Croce</span>
+                    <h3 class="card-title">San Polo / Santa Croce</h3>
                     <span class="card-badge badge-purple">Balanced centre</span>
                 </div>
                 <p class="card-desc">The bank of the Rialto market and the narrow canals: middling distance to everything, tourist density variable. For those who want to wake to the sound of fish stalls on market morning.</p>
-                <div class="card-footer-tip">Rialto market • Middle distances • Canal views</div>
+                <div class="card-footer-tip">📍 Rialto market • Middle distances • Canal views</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Giudecca</span>
+                    <h3 class="card-title">Giudecca</h3>
                     <span class="card-badge badge-purple">Calmest</span>
                 </div>
                 <p class="card-desc">The long island across the canal: a head-on view of the San Marco skyline, neighbourhood quiet, and a five-minute vaporetto link. For sleeping far from the crowd and &#x27;commuting&#x27; to the city.</p>
-                <div class="card-footer-tip">Skyline view • Island quiet • Vaporetto link</div>
+                <div class="card-footer-tip">📍 Skyline view • Island quiet • Vaporetto link</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Best Time to Visit Venice</h2>
             </div>
             <p class="section-intro">Venice&#x27;s calendar is written in crowds and water: carnival fever, summer crush, autumn tides, winter mist.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Spring</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Apr – Jun</span>
+                        <h3 class="card-title">Spring</h3>
+                        <span class="season-months">Apr – Jun</span>
                     </div>
                     <span class="card-badge badge-amber">The Lit Lagoon</span>
                 </div>
                 <p class="card-desc">The lagoon light turns painterly and the islands (Burano, Torcello) open in colour. Crowds grow but stay manageable; the early-morning and late-evening formula works in full.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Summer</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Jul – Aug</span>
+                        <h3 class="card-title">Summer</h3>
+                        <span class="season-months">Jul – Aug</span>
                     </div>
                     <span class="card-badge badge-amber">Peak and Redentore</span>
                 </div>
                 <p class="card-desc">Humidity and human rivers merge in the narrow lanes; but Redentore night, the third weekend of July — boats, long tables and fireworks over the lagoon — is Venice&#x27;s most Venetian night.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Autumn</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Sep – Nov</span>
+                        <h3 class="card-title">Autumn</h3>
+                        <span class="season-months">Sep – Nov</span>
                     </div>
                     <span class="card-badge badge-amber">Golden Mist and Tide</span>
                 </div>
                 <p class="card-desc">September opens with the Regata Storica, October&#x27;s light is a photographer&#x27;s dream; November raises the acqua alta odds — and with boots and raised walkways, the city carries on.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Winter</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Dec – Feb</span>
+                        <h3 class="card-title">Winter</h3>
+                        <span class="season-months">Dec – Feb</span>
                     </div>
                     <span class="card-badge badge-amber">Mist and Carnival</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍢</span>
-                        <span class="card-title">Cicchetti — counter bites</span>
+                        <h3 class="card-title">Cicchetti — counter bites</h3>
                     </div>
                 </div>
                 <p class="card-desc">Baccalà on toasted bread, garlicky prawns, stuffed octopus: the colourful army of the bacaro counter. Two or three bites + one ombra, then the next bacaro — that&#x27;s how the crawl goes.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🐟</span>
-                        <span class="card-title">Sarde in saor</span>
+                        <h3 class="card-title">Sarde in saor</h3>
                     </div>
                 </div>
                 <p class="card-desc">Sardines under sweet-sour onions with raisins and pine nuts: the sailors&#x27; centuries-old preserve. Served cold, warm in character.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥖</span>
-                        <span class="card-title">Baccalà mantecato</span>
+                        <h3 class="card-title">Baccalà mantecato</h3>
                     </div>
                 </div>
                 <p class="card-desc">Whipped salt cod: silken, garlicky, on grilled polenta. Venice&#x27;s most elegant simple dish — every bacaro&#x27;s pride.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🦑</span>
-                        <span class="card-title">Risotto al nero di seppia</span>
+                        <h3 class="card-title">Risotto al nero di seppia</h3>
                     </div>
                 </div>
                 <p class="card-desc">Risotto dyed with cuttlefish ink: it stains the teeth and conquers the palate. The lagoon kitchen&#x27;s signature; a place that does it well is a good place, full stop.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍤</span>
-                        <span class="card-title">Fritto misto — in a paper cone</span>
+                        <h3 class="card-title">Fritto misto — in a paper cone</h3>
                     </div>
                 </div>
                 <p class="card-desc">Crisp-fried prawns, calamari and the season&#x27;s fish in a paper cone: the walking classic of the canal bank.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍹</span>
-                        <span class="card-title">Spritz — with Select</span>
+                        <h3 class="card-title">Spritz — with Select</h3>
                     </div>
                 </div>
                 <p class="card-desc">Aperol belongs to everyone; Select belongs to Venice: deep red, gently bitter, served with an olive. Six o&#x27;clock is spritz o&#x27;clock — at a square&#x27;s edge, facing the sun.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">&#x27;Hidden&#x27; is a relative idea in Venice; these six wait two bridges beyond the crowd.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Libreria Acqua Alta</span>
-                    <span class="card-badge badge-emerald">Where books float in gondolas</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Where books float in gondolas</span>
                 </div>
+                <h3 class="card-title">Libreria Acqua Alta</h3>
                 <p class="card-desc">The absurd-beautiful bookshop where books pile into gondolas, bathtubs and barrels: in the back courtyard a staircase of old books looks over the canal. The cats are regulars too.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">The campanile of San Giorgio Maggiore</span>
-                    <span class="card-badge badge-emerald">The best view without a queue</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ The best view without a queue</span>
                 </div>
+                <h3 class="card-title">The campanile of San Giorgio Maggiore</h3>
                 <p class="card-desc">The tower of Palladio&#x27;s church on the island facing San Marco: ride the lift and see the piazza head-on. The clever alternative to the Campanile queue — with a better view.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Torcello</span>
-                    <span class="card-badge badge-emerald">Where the lagoon began</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Where the lagoon began</span>
                 </div>
+                <h3 class="card-title">Torcello</h3>
                 <p class="card-desc">The island older than Venice: golden mosaics in a thousand-year cathedral, &#x27;Attila&#x27;s throne&#x27; in the grass, and a deep hush. Ten minutes and a thousand years from Burano&#x27;s colours.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Squero di San Trovaso</span>
-                    <span class="card-badge badge-emerald">The boatyard of the gondolas</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ The boatyard of the gondolas</span>
                 </div>
+                <h3 class="card-title">Squero di San Trovaso</h3>
                 <p class="card-desc">The still-working gondola yard in Dorsoduro: wooden skeletons, the smell of pitch, an alpine-hut workshop. Watched best from the far bank, ombra in hand.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Scala Contarini del Bovolo</span>
-                    <span class="card-badge badge-emerald">The hidden spiral</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ The hidden spiral</span>
                 </div>
+                <h3 class="card-title">Scala Contarini del Bovolo</h3>
                 <p class="card-desc">The Renaissance tower with a spiral staircase tucked into a narrow courtyard: &#x27;bovolo&#x27; is Venetian for snail. From its top, a sea of rooftops — without the crowds.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Sant&#x27;Erasmo</span>
-                    <span class="card-badge badge-emerald">The lagoon&#x27;s kitchen garden</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ The lagoon&#x27;s kitchen garden</span>
                 </div>
+                <h3 class="card-title">Sant&#x27;Erasmo</h3>
                 <p class="card-desc">Venice&#x27;s vegetable-garden island: its purple artichoke (castraure) is legend, bicycles rule, and the beach belongs to locals. The antidote to tourist Venice.</p>
             </div>
             </div>

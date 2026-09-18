@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Atlanta Şehir İçi Ulaşım & Transfer</h2>
             </div>
             <p class="section-intro">Atlanta araba şehridir ama turistin işini MARTA treni, BeltLine ve akıllı saat seçimi görür.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Havalimanından geliş</span>
+                        <h3 class="card-title">Havalimanından geliş</h3>
                     </div>
                 </div>
                 <p class="card-desc">Hartsfield-Jackson&#x27;dan MARTA kırmızı/altın hat Downtown ve Midtown&#x27;a 20 dakikada bağlar: ucuz, dertsiz, trafiksiz. Dünyanın en işlek havalimanında terminal içi tren mesafeleri ciddidir — aktarma süreni cömert hesapla.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚇</span>
-                        <span class="card-title">MARTA treni</span>
+                        <h3 class="card-title">MARTA treni</h3>
                     </div>
                 </div>
                 <p class="card-desc">Dört hatlı sistem havalimanı, Downtown, Midtown ve Decatur&#x27;u örer: Breeze kartla binilir. Kapsama alanı sınırlıdır ama hattın üstündeki her nokta için en akıllı seçenektir — maç ve konser günlerinde arabaya her zaman kazanır.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">BeltLine yürüyüşü</span>
+                        <h3 class="card-title">BeltLine yürüyüşü</h3>
                     </div>
                 </div>
                 <p class="card-desc">Eski demiryolu çemberi park-yola dönüştü: Eastside Trail, Old Fourth Ward&#x27;dan Ponce City Market&#x27;e sanat eserleri arasında yürütür. Yürü, koş ya da bisiklet kirala — Atlanta&#x27;nın en keyifli &#x27;ulaşım hattı&#x27; budur.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">📱</span>
-                        <span class="card-title">Uber/Lyft ve araç</span>
+                        <h3 class="card-title">Uber/Lyft ve araç</h3>
                     </div>
                 </div>
                 <p class="card-desc">Mahalleler arası geçişte uygulama araçları pratik çözümdür; birkaç günlük gezide araç kiralamak özgürlük katar. Park çoğu yerde kolay ve ücretlidir — stadyum günlerinde fiyatlar uçar, erken davran.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚋</span>
-                        <span class="card-title">Streetcar ve tematik rotalar</span>
+                        <h3 class="card-title">Streetcar ve tematik rotalar</h3>
                     </div>
                 </div>
                 <p class="card-desc">Downtown tramvayı kısa bir halkada Sweet Auburn&#x27;a uzanır: MLK bölgesine pratik bağlantı. Atlanta&#x27;yı tema ile gez: bir gün sivil haklar rotası, bir gün BeltLine mahalleleri — şehir temayla anlam kazanır.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Nerede Kalınır? Atlanta Mahalleleri</h2>
             </div>
             <p class="section-intro">Atlanta&#x27;da seçim çember meselesidir: şehir hayatı Perimeter&#x27;ın içinde döner — Midtown&#x27;ın yürünebilirliği, O4W&#x27;nin BeltLine ritmi, Decatur&#x27;un meydan sükuneti.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Midtown</span>
+                    <h3 class="card-title">Midtown</h3>
                     <span class="card-badge badge-purple">En dengeli</span>
                 </div>
                 <p class="card-desc">Piedmont Park, sanat müzesi ve MARTA hattı bir arada: Atlanta&#x27;nın en yürünebilir bölgesi. Restoran ve bar yoğunluğu yüksek — ilk gelişin en pratik üssü.</p>
-                <div class="card-footer-tip">Parka komşu • MARTA üstünde • Yürünebilir sokaklar</div>
+                <div class="card-footer-tip">📍 Parka komşu • MARTA üstünde • Yürünebilir sokaklar</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Old Fourth Ward</span>
+                    <h3 class="card-title">Old Fourth Ward</h3>
                     <span class="card-badge badge-purple">BeltLine ruhu</span>
                 </div>
                 <p class="card-desc">MLK&#x27;in mahallesi bugün şehrin en canlı dönüşümünü yaşıyor: BeltLine, Ponce City Market ve tarihi sokaklar iç içe. Tarih ile yeni Atlanta&#x27;yı aynı adreste isteyene.</p>
-                <div class="card-footer-tip">BeltLine kapıda • MLK mirası • Market komşusu</div>
+                <div class="card-footer-tip">📍 BeltLine kapıda • MLK mirası • Market komşusu</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Virginia-Highland</span>
+                    <h3 class="card-title">Virginia-Highland</h3>
                     <span class="card-badge badge-purple">Veranda sükuneti</span>
                 </div>
                 <p class="card-desc">Bungalov evler, mahalle barları ve bağımsız dükkanlar: Atlanta&#x27;nın verandalı, ağaçlı gündelik hayatı. Merkeze kısa sürüş — sakin ve karakterli taraf.</p>
-                <div class="card-footer-tip">Bungalov sokaklar • Mahalle barları • Ağaçlı yürüyüş</div>
+                <div class="card-footer-tip">📍 Bungalov sokaklar • Mahalle barları • Ağaçlı yürüyüş</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Downtown</span>
+                    <h3 class="card-title">Downtown</h3>
                     <span class="card-badge badge-purple">Simgelere komşu</span>
                 </div>
                 <p class="card-desc">Akvaryum, Centennial Park ve kongre oteller bölgesi: simge gezilerine yürüme mesafesi. Akşamları sakinleşir — programı yoğun, konumu pratik isteyene.</p>
-                <div class="card-footer-tip">Akvaryuma yürüme • Otel bolluğu • Simge üssü</div>
+                <div class="card-footer-tip">📍 Akvaryuma yürüme • Otel bolluğu • Simge üssü</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Decatur</span>
+                    <h3 class="card-title">Decatur</h3>
                     <span class="card-badge badge-purple">Kasaba meydanı</span>
                 </div>
                 <p class="card-desc">MARTA ile bağlanan eski kasaba: meydanı, bağımsız lokantaları ve kitapçısıyla kendi ritminde yaşar. Şehre bağlı ama kasabada uyanmak isteyene.</p>
-                <div class="card-footer-tip">Meydan hayatı • MARTA bağlantılı • Bağımsız sofralar</div>
+                <div class="card-footer-tip">📍 Meydan hayatı • MARTA bağlantılı • Bağımsız sofralar</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Atlanta İçin En İyi Ziyaret Zamanı</h2>
             </div>
             <p class="section-intro">Atlanta&#x27;nın takvimi bahar çiçeği ve güz serinliği üstüne kuruludur; yaz nemli ve fırtınalı, kış kısa ve ılımandır.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">İlkbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Mar – May</span>
+                        <h3 class="card-title">İlkbahar</h3>
+                        <span class="season-months">Mar – May</span>
                     </div>
                     <span class="card-badge badge-amber">Dogwood Baharı</span>
                 </div>
                 <p class="card-desc">Mart sonunda şehir çiçeğe boğulur: dogwood ve azalealar mahalleleri pastele çevirir, Piedmont Park festivallenir. Polen haftalarında arabalar sarıya boyanır — alerjin varsa hazırlıklı gel, manzara buna değer.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Yaz</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Haz – Ağu</span>
+                        <h3 class="card-title">Yaz</h3>
+                        <span class="season-months">Haz – Ağu</span>
                     </div>
                     <span class="card-badge badge-amber">Nemli Güney Yazı</span>
                 </div>
                 <p class="card-desc">Yaz Atlanta&#x27;sı nemli ve gök gürültülüdür: öğlen sıcağı ağırdır, ikindi sağanağı kısa ve gürültülü gelir. Sabah erken ve akşamüstü dışarı, öğlen müze-akvaryum içeri — buzlu sweet tea bu mevsimin resmi içeceğidir.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Sonbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Eyl – Kas</span>
+                        <h3 class="card-title">Sonbahar</h3>
+                        <span class="season-months">Eyl – Kas</span>
                     </div>
                     <span class="card-badge badge-amber">Altın Güney Güzü</span>
                 </div>
                 <p class="card-desc">Ekimle nem kırılır, ağaç denizi altına döner, veranda mevsimi açılır: Atlanta&#x27;nın en keyifli haftaları bunlardır. Cumartesileri kolej futbolu şehri ele geçirir — stadyum günü trafiği ve otel fiyatını hesaba kat.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Kış</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Ara – Şub</span>
+                        <h3 class="card-title">Kış</h3>
+                        <span class="season-months">Ara – Şub</span>
                     </div>
                     <span class="card-badge badge-amber">Ilıman ve Sakin</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍗</span>
-                        <span class="card-title">Lemon pepper wings</span>
+                        <h3 class="card-title">Lemon pepper wings</h3>
                     </div>
                 </div>
                 <p class="card-desc">Atlanta&#x27;nın imza kanadı: limon-karabiber tozuyla, istersen &#x27;wet&#x27; (tereyağlı soslu) halde. Şehrin kanat salonlarında rap kültürüyle iç içe bir kurumdur — ıslak peçete stoğunu hazırla.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍛</span>
-                        <span class="card-title">Meat-and-three soul food</span>
+                        <h3 class="card-title">Meat-and-three soul food</h3>
                     </div>
                 </div>
                 <p class="card-desc">Kızarmış tavuk ya da güveç et, yanına collard greens, mac and cheese ve mısır ekmeği: tepsili Güney klasiği. Sweet Auburn ve Westside&#x27;ın köklü salonlarında öğlen kuyruğuna karış.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🌏</span>
-                        <span class="card-title">Buford Highway sofrası</span>
+                        <h3 class="card-title">Buford Highway sofrası</h3>
                     </div>
                 </div>
                 <p class="card-desc">Şehrin kuzeydoğu koridoru dünya mutfağının bulvarıdır: Vietnam pho&#x27;su, Kore barbeküsü, Meksika taquería&#x27;sı yan yana. Bir akşamı bu koridora ayır — Atlanta&#x27;nın en az bilinen süper gücü budur.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🧇</span>
-                        <span class="card-title">Chicken and waffles brunch&#x27;ı</span>
+                        <h3 class="card-title">Chicken and waffles brunch&#x27;ı</h3>
                     </div>
                 </div>
                 <p class="card-desc">Çıtır tavuk, sıcak waffle ve akçaağaç şurubu: Güney brunch&#x27;ının tatlı-tuzlu zirvesi. Pazar sabahı kilise çıkışı kalabalığıyla aynı masayı paylaşmak, şehrin en sahici saatlerindendir.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍑</span>
-                        <span class="card-title">Peach cobbler ve sweet tea</span>
+                        <h3 class="card-title">Peach cobbler ve sweet tea</h3>
                     </div>
                 </div>
                 <p class="card-desc">Georgia şeftalisinin fırında şerbetli hali, yanında dev bardak buzlu tatlı çay: Güney sofrasının kapanış imzası. Cobbler&#x27;ın üstüne bir top vanilyalı dondurma — pazarlıksız klasik.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🌭</span>
-                        <span class="card-title">Drive-in chili dog</span>
+                        <h3 class="card-title">Drive-in chili dog</h3>
                     </div>
                 </div>
                 <p class="card-desc">Asırlık drive-in geleneği: chili soslu sosisli, yanında halka soğan ve donmuş meyveli içecek. &#x27;What&#x27;ll ya have?&#x27; nidasıyla sipariş ver — Atlanta nostaljisinin ayaküstü hali.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Akvaryumu herkes görür; bu altısı Atlanta&#x27;nın mahalle ölçekli, hikaye yüklü saklı yüzü.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Jackson Street Köprüsü</span>
-                    <span class="card-badge badge-emerald">Skyline&#x27;ın en iyi karesi</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Skyline&#x27;ın en iyi karesi</span>
                 </div>
+                <h3 class="card-title">Jackson Street Köprüsü</h3>
                 <p class="card-desc">Old Fourth Ward&#x27;dan Downtown silüetine bakan köprü: &#x27;Walking Dead&#x27; jeneriğinden tanıdık kare, gün batımında fotoğrafçılarla dolar. Ücretsiz, açık ve her saat etkileyici — tripodunu al.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Oakland Mezarlığı</span>
-                    <span class="card-badge badge-emerald">Bahçe gibi mezarlık</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Bahçe gibi mezarlık</span>
                 </div>
+                <h3 class="card-title">Oakland Mezarlığı</h3>
                 <p class="card-desc">1850&#x27;den kalma Victorian bahçe-mezarlık: manolyalar, Margaret Mitchell&#x27;in kabri ve şehir silüeti manzarası. Atlantalı burada koşar, piknik yapar — tarih burada parkın kendisidir.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Krog Street Tüneli</span>
-                    <span class="card-badge badge-emerald">Neonlu tünel galerisi</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Neonlu tünel galerisi</span>
                 </div>
+                <h3 class="card-title">Krog Street Tüneli</h3>
                 <p class="card-desc">Cabbagetown&#x27;ı Inman Park&#x27;a bağlayan tünel, sürekli değişen grafiti katmanlarıyla yaşayan bir galeridir: her geçişte başka duvar. BeltLine yürüyüşüne doğal ara durak.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Sweet Auburn Curb Market</span>
-                    <span class="card-badge badge-emerald">Pazarın yüz yıllık hali</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Pazarın yüz yıllık hali</span>
                 </div>
+                <h3 class="card-title">Sweet Auburn Curb Market</h3>
                 <p class="card-desc">1918&#x27;den beri açık şehir pazarı: kasaplar, soul food tezgahları ve yeni nesil mutfaklar aynı çatıda. MLK bölgesi gezisiyle birleştir — öğle yemeğinin en tarihi adresi.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Old Fourth Ward Parkı ve göleti</span>
-                    <span class="card-badge badge-emerald">Şelaleli şehir parkı</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Şelaleli şehir parkı</span>
                 </div>
+                <h3 class="card-title">Old Fourth Ward Parkı ve göleti</h3>
                 <p class="card-desc">BeltLine&#x27;ın dibinde amfitiyatrolu, gölet manzaralı park: Ponce City Market&#x27;in kulesi suya yansır. Gün batımında çimlere otur — yeni Atlanta&#x27;nın kartpostalı buradan çekilir.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Ponce City Market çatısı</span>
-                    <span class="card-badge badge-emerald">Çatıda lunapark</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Çatıda lunapark</span>
                 </div>
+                <h3 class="card-title">Ponce City Market çatısı</h3>
                 <p class="card-desc">Eski Sears deposunun çatısında mini lunapark, bar ve şehir manzarası: aşağıda market katının yemek tezgahları. Skee-ball oyna, manzaraya karşı bir şeyler iç — Atlanta&#x27;nın en eğlenceli çatısı.</p>
             </div>
             </div>

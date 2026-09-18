@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Santorini Public Transit & Airport Transfers</h2>
             </div>
             <p class="section-intro">The island is small but its roads are narrow and its July is crowded; the transport plan decides the day&#x27;s pleasure.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">⛴️</span>
-                        <span class="card-title">Arrival — port and airport</span>
+                        <h3 class="card-title">Arrival — port and airport</h3>
                     </div>
                 </div>
                 <p class="card-desc">Ferries dock at Athinios; the climb out is a serpentine road needing bus or transfer. The airport is 15 minutes from Fira. For both, arrange summer transfers ahead — taxis are few.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚌</span>
-                        <span class="card-title">KTEL buses — hub at Fira</span>
+                        <h3 class="card-title">KTEL buses — hub at Fira</h3>
                     </div>
                 </div>
                 <p class="card-desc">All lines radiate from the Fira terminal: Oia, Perissa, Akrotiri, the port. Cheap and frequent but packed in summer; avoid rush hours with big luggage.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚗</span>
-                        <span class="card-title">Renting a small car</span>
+                        <h3 class="card-title">Renting a small car</h3>
                     </div>
                 </div>
                 <p class="card-desc">The way to roam freely; but the roads are narrow and parking in Oia and Fira is a struggle. Choose a small car and respect the headlit bends at night.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚠</span>
-                        <span class="card-title">Cable car and the caldera steps</span>
+                        <h3 class="card-title">Cable car and the caldera steps</h3>
                     </div>
                 </div>
                 <p class="card-desc">The cable car links the old port and Fira in minutes; the 587-step stairway is a scenic workout. Give the donkey rides no custom.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥾</span>
-                        <span class="card-title">The Fira–Oia caldera walk</span>
+                        <h3 class="card-title">The Fira–Oia caldera walk</h3>
                     </div>
                 </div>
                 <p class="card-desc">The island&#x27;s best &#x27;transport&#x27;: 10 km along the caldera&#x27;s rim, 3–4 hours. It passes Imerovigli and Skaros; timed to reach Oia at sunset, it becomes legend.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Where to Stay in Santorini: Best Areas</h2>
             </div>
             <p class="section-intro">On Santorini the address boils down to two words: caldera, or not? Both can be the right answer.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Oia</span>
+                    <h3 class="card-title">Oia</h3>
                     <span class="card-badge badge-purple">Most iconic</span>
                 </div>
                 <p class="card-desc">The village of blue domes, windmills and that famous sunset: the honeymoon classic. Prices at their peak, lanes full by day; but owning Oia at 7 am is beyond price.</p>
-                <div class="card-footer-tip">Blue domes • The sunset • Honeymoon classic</div>
+                <div class="card-footer-tip">📍 Blue domes • The sunset • Honeymoon classic</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Imerovigli</span>
+                    <h3 class="card-title">Imerovigli</h3>
                     <span class="card-badge badge-purple">Best balanced</span>
                 </div>
                 <p class="card-desc">The caldera&#x27;s highest village: Oia&#x27;s view, Fira&#x27;s proximity, the night&#x27;s silence. Skaros Rock at your doorstep; the caldera budget is often spent most wisely here.</p>
-                <div class="card-footer-tip">Caldera quiet • Skaros Rock • The smart choice</div>
+                <div class="card-footer-tip">📍 Caldera quiet • Skaros Rock • The smart choice</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Fira</span>
+                    <h3 class="card-title">Fira</h3>
                     <span class="card-badge badge-purple">Most central</span>
                 </div>
                 <p class="card-desc">The island&#x27;s capital: bus terminal, restaurants, nightlife and the cable car. Easy reach everywhere at the price of crowds and noise; a sensible base for short stays.</p>
-                <div class="card-footer-tip">Transport hub • Nightlife • Everything at hand</div>
+                <div class="card-footer-tip">📍 Transport hub • Nightlife • Everything at hand</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Pyrgos</span>
+                    <h3 class="card-title">Pyrgos</h3>
                     <span class="card-badge badge-purple">Most authentic</span>
                 </div>
                 <p class="card-desc">A hilltop kastelli village inland: narrow lanes, blue doors, real life far from caldera tourism. Next door to the wine country; fair prices, starry evenings.</p>
-                <div class="card-footer-tip">Kastelli lanes • Wine country • Local life</div>
+                <div class="card-footer-tip">📍 Kastelli lanes • Wine country • Local life</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Perissa / Perivolos</span>
+                    <h3 class="card-title">Perissa / Perivolos</h3>
                     <span class="card-badge badge-purple">Beach side</span>
                 </div>
                 <p class="card-desc">The long shore of black sand: beach bars, dive schools and half the caldera&#x27;s prices. Cut out for the beach holiday + caldera day-trip formula.</p>
-                <div class="card-footer-tip">Black sand beach • Good value • Beach bars</div>
+                <div class="card-footer-tip">📍 Black sand beach • Good value • Beach bars</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Best Time to Visit Santorini</h2>
             </div>
             <p class="section-intro">Santorini&#x27;s question is not the sun but the people per square metre.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Spring</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Apr – Jun</span>
+                        <h3 class="card-title">Spring</h3>
+                        <span class="season-months">Apr – Jun</span>
                     </div>
                     <span class="card-badge badge-amber">The Calm Caldera</span>
                 </div>
                 <p class="card-desc">Ideal temperature for the Fira–Oia path, hotels open, crowds still manageable. The sea warms in June; the photographer&#x27;s light is clean.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Summer</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Jul – Aug</span>
+                        <h3 class="card-title">Summer</h3>
+                        <span class="season-months">Jul – Aug</span>
                     </div>
                     <span class="card-badge badge-amber">Peak Season</span>
                 </div>
                 <p class="card-desc">The island at capacity: sunset sittings like ticketed shows, restaurants by reservation. Lovers of warm seas and nightlife come now — with patience and a budget.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Autumn</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Sep – Nov</span>
+                        <h3 class="card-title">Autumn</h3>
+                        <span class="season-months">Sep – Nov</span>
                     </div>
                     <span class="card-badge badge-amber">Harvest Light</span>
                 </div>
                 <p class="card-desc">September is the island&#x27;s secret peak: warm sea, golden light, harvest in the wineries. Toward late October the island takes a deep breath.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Winter</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Dec – Mar</span>
+                        <h3 class="card-title">Winter</h3>
+                        <span class="season-months">Dec – Mar</span>
                     </div>
                     <span class="card-badge badge-amber">The Island Itself</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍅</span>
-                        <span class="card-title">Tomatokeftedes — tomato fritters</span>
+                        <h3 class="card-title">Tomatokeftedes — tomato fritters</h3>
                     </div>
                 </div>
                 <p class="card-desc">The tiny, intense tomatoes of the dry land become fritters with mint and onion: crisp outside, sunshine within. The island&#x27;s signature meze.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🫘</span>
-                        <span class="card-title">Fava — Santorini style</span>
+                        <h3 class="card-title">Fava — Santorini style</h3>
                     </div>
                 </div>
                 <p class="card-desc">The island&#x27;s yellow split peas (PDO protected) become a silken purée, topped with capers, onion and lemon. It looks simple and stays unforgettable.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍆</span>
-                        <span class="card-title">The white aubergine</span>
+                        <h3 class="card-title">The white aubergine</h3>
                     </div>
                 </div>
                 <p class="card-desc">Sweet, seedless and grown only here: grilled or in salad, the star of the summer menus.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🐟</span>
-                        <span class="card-title">Grilled fish at Ammoudi</span>
+                        <h3 class="card-title">Grilled fish at Ammoudi</h3>
                     </div>
                 </div>
                 <p class="card-desc">In the tiny port below Oia the tavernas sit at the water&#x27;s edge: the day&#x27;s fish, white tablecloths, red cliffs. Book before sunset hour.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍷</span>
-                        <span class="card-title">A winery tasting</span>
+                        <h3 class="card-title">A winery tasting</h3>
                     </div>
                 </div>
                 <p class="card-desc">Santo, Venetsanos, Sigalas: the caldera-view tasting terraces are the island&#x27;s best &#x27;museums&#x27;. Start with Assyrtiko, close with sweet Vinsanto.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍮</span>
-                        <span class="card-title">Melitinia with Vinsanto</span>
+                        <h3 class="card-title">Melitinia with Vinsanto</h3>
                     </div>
                 </div>
                 <p class="card-desc">The little Easter-born cheese sweets and the wine of sun-dried grapes: the island&#x27;s sweet farewell.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Behind the postcard there is another island: quiet, volcanic, invisible to most visitors.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Ancient Akrotiri</span>
-                    <span class="card-badge badge-emerald">The Pompeii of the Aegean</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ The Pompeii of the Aegean</span>
                 </div>
+                <h3 class="card-title">Ancient Akrotiri</h3>
                 <p class="card-desc">The Minoan town buried in ash by the 1600 BC eruption: three-storey houses, frescoes, drainage systems. The covered site stays cool even in summer — the island&#x27;s most underrated wonder.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Skaros Rock</span>
-                    <span class="card-badge badge-emerald">The caldera&#x27;s throne room</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ The caldera&#x27;s throne room</span>
                 </div>
+                <h3 class="card-title">Skaros Rock</h3>
                 <p class="card-desc">The old fortress rock reached by a path down from Imerovigli: 360 degrees of caldera, a precipice underfoot, no trace of the crowds. The clever alternative to Oia at sunset.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Vlychada</span>
-                    <span class="card-badge badge-emerald">A beach on the moon</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ A beach on the moon</span>
                 </div>
+                <h3 class="card-title">Vlychada</h3>
                 <p class="card-desc">A calm beach beneath white tuff cliffs sculpted by the wind: lunar scenery, few people, and next door an industrial museum in an old tomato factory.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Emporio</span>
-                    <span class="card-badge badge-emerald">The kastelli labyrinth</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ The kastelli labyrinth</span>
                 </div>
+                <h3 class="card-title">Emporio</h3>
                 <p class="card-desc">The medieval core of the island&#x27;s largest village: interlocking white passages, arches and fortress houses. Tourist density near zero, photographic value infinite.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Therasia</span>
-                    <span class="card-badge badge-emerald">The silence across the water</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ The silence across the water</span>
                 </div>
+                <h3 class="card-title">Therasia</h3>
                 <p class="card-desc">The mini island on the caldera&#x27;s far side: Santorini as it was fifty years ago. Cross by boat from Ammoudi, lunch in the stone village of Manolas, feel the clock stop.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">The Akrotiri Lighthouse</span>
-                    <span class="card-badge badge-emerald">Sunset at the lighthouse</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Sunset at the lighthouse</span>
                 </div>
+                <h3 class="card-title">The Akrotiri Lighthouse</h3>
                 <p class="card-desc">The 19th-century lighthouse at the island&#x27;s southwest tip: stones facing the whole caldera, wind, and a sunset that is the exact opposite of Oia&#x27;s crowd.</p>
             </div>
             </div>

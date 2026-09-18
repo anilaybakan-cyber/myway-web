@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Seattle Şehir İçi Ulaşım & Transfer</h2>
             </div>
             <p class="section-intro">Seattle raylı sistemle rahatlamış bir tepe şehridir: Link treni omurga, feribotlar şölen, mahalleler yürünebilir adalar.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Havalimanından geliş</span>
+                        <h3 class="card-title">Havalimanından geliş</h3>
                     </div>
                 </div>
                 <p class="card-desc">Sea-Tac&#x27;tan Link hafif rayı Downtown&#x27;a 40 dakikada bağlar: ucuz ve trafiksiz. ORCA kart ya da temassız ödeme — uygulama aracı trafiğe göre 25-50 dakikadır, tren çoğu saatte kazanır.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚈</span>
-                        <span class="card-title">Link hafif rayı</span>
+                        <h3 class="card-title">Link hafif rayı</h3>
                     </div>
                 </div>
                 <p class="card-desc">Kuzey-güney hattı üniversiteden havalimanına iner: Capitol Hill ve Downtown durakları turistin işini görür. Genişleyen ağ şehri hızla raylıya çeviriyor — otel seçimini hatta yakın yap.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">⛴️</span>
-                        <span class="card-title">Feribot ağı</span>
+                        <h3 class="card-title">Feribot ağı</h3>
                     </div>
                 </div>
                 <p class="card-desc">Colman Dock&#x27;tan Bainbridge ve Bremerton&#x27;a feribotlar gün boyu kalkar: yaya binişi ucuz ve zahmetsizdir. Güverte soğuk olabilir — manzara ceket farkını fazlasıyla öder.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">Tepe yürüyüşleri</span>
+                        <h3 class="card-title">Tepe yürüyüşleri</h3>
                     </div>
                 </div>
                 <p class="card-desc">Downtown-Pike Place-sahil üçgeni yürünebilir ama tepeli: Pike Place&#x27;ten sahile inen merdivenler ve yeni sahil promenadı keyifli rotadır. Capitol Hill ve Fremont kendi içinde yürünür.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚲</span>
-                        <span class="card-title">Burke-Gilman patikası</span>
+                        <h3 class="card-title">Burke-Gilman patikası</h3>
                     </div>
                 </div>
                 <p class="card-desc">Eski demiryolu hattı göl kıyısı boyunca kilometrelerce bisiklet yolu sunar: Fremont&#x27;tan Gas Works&#x27;e bölüm klasiktir. Paylaşımlı bisiklet ve scooter yaygın — yağmursuz günde en iyi rota.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Nerede Kalınır? Seattle Mahalleleri</h2>
             </div>
             <p class="section-intro">Seattle&#x27;da seçim ritim seçimidir: pazara komşu Downtown, Capitol Hill&#x27;in gece enerjisi, Fremont&#x27;un tuhaf şirinliği, Ballard&#x27;ın İskandinav ruhu.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Downtown ve Pike Place çevresi</span>
+                    <h3 class="card-title">Downtown ve Pike Place çevresi</h3>
                     <span class="card-badge badge-purple">Pazara komşu</span>
                 </div>
                 <p class="card-desc">Pazar tezgahlarına, sahile ve Link hattına yürüme mesafesi: ilk gelişin pratik üssü. Sabah pazarın kurulumunu izlemek bu konumun ödülüdür.</p>
-                <div class="card-footer-tip">Pazara yürüme • Sahil promenadı • Link üstünde</div>
+                <div class="card-footer-tip">📍 Pazara yürüme • Sahil promenadı • Link üstünde</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Capitol Hill</span>
+                    <h3 class="card-title">Capitol Hill</h3>
                     <span class="card-badge badge-purple">Gece enerjisi</span>
                 </div>
                 <p class="card-desc">Kahveciler, plakçılar, barlar ve şehrin en canlı gece sahnesi: genç Seattle&#x27;ın kalbi. Link ile Downtown&#x27;a iki durak — enerji ve karakter arayana.</p>
-                <div class="card-footer-tip">Kahve sahnesi • Gece hayatı • Link bağlantılı</div>
+                <div class="card-footer-tip">📍 Kahve sahnesi • Gece hayatı • Link bağlantılı</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Ballard</span>
+                    <h3 class="card-title">Ballard</h3>
                     <span class="card-badge badge-purple">İskandinav ruhu</span>
                 </div>
                 <p class="card-desc">Eski balıkçı mahallesinin bira imalathaneleri, pazar günü sokak pazarı ve kanal kilitleri: kendi kasaba ritminde yaşar. Deniz mahsulü sofraları güçlü — sakin ve karakterli taraf.</p>
-                <div class="card-footer-tip">Bira imalathaneleri • Pazar pazarı • Kanal kilitleri</div>
+                <div class="card-footer-tip">📍 Bira imalathaneleri • Pazar pazarı • Kanal kilitleri</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Fremont</span>
+                    <h3 class="card-title">Fremont</h3>
                     <span class="card-badge badge-purple">Tuhaf ve şirin</span>
                 </div>
                 <p class="card-desc">&#x27;Evrenin merkezi&#x27; ilan edilen mahalle: köprü altında trol heykeli, pazar günleri bit pazarı, kanal kıyısı yürüyüşleri. Seattle&#x27;ın mizah duygusu burada oturur.</p>
-                <div class="card-footer-tip">Trol komşusu • Kanal yürüyüşü • Pazar biti</div>
+                <div class="card-footer-tip">📍 Trol komşusu • Kanal yürüyüşü • Pazar biti</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Queen Anne</span>
+                    <h3 class="card-title">Queen Anne</h3>
                     <span class="card-badge badge-purple">Manzara tepesi</span>
                 </div>
                 <p class="card-desc">Space Needle&#x27;a komşu tepe mahalle: Kerry Park&#x27;ın meşhur silüet karesi buradadır. Sakin sokaklar, veranda kahvaltıları — manzara öncelikliye zarif üs.</p>
-                <div class="card-footer-tip">Kerry Park • Needle komşusu • Sakin sokaklar</div>
+                <div class="card-footer-tip">📍 Kerry Park • Needle komşusu • Sakin sokaklar</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Seattle İçin En İyi Ziyaret Zamanı</h2>
             </div>
             <p class="section-intro">Seattle&#x27;ın sırrı takvimdedir: temmuz-eylül neredeyse yağmursuz bir cennettir, kış ise kahve ve müze mevsimidir.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">İlkbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Mar – May</span>
+                        <h3 class="card-title">İlkbahar</h3>
+                        <span class="season-months">Mar – May</span>
                     </div>
                     <span class="card-badge badge-amber">Kiraz Çiçeği ve Sunbreak</span>
                 </div>
                 <p class="card-desc">Mart sonunda üniversite kampüsünün kiraz ağaçları pembe kubbeye döner, lale tarlaları kuzeyde açar. Hava kararsızdır: çise, güneş ve gökkuşağı aynı saate sığar — katman ve esneklik mevsimidir.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Yaz</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Haz – Eyl</span>
+                        <h3 class="card-title">Yaz</h3>
+                        <span class="season-months">Haz – Eyl</span>
                     </div>
                     <span class="card-badge badge-amber">Kuru Sezon Mucizesi</span>
                 </div>
                 <p class="card-desc">Seattle yazı Amerika&#x27;nın en iyi saklanan sırrıdır: temmuz-ağustos neredeyse yağmursuz, 22.00&#x27;ye kadar aydınlık ve nemsizdir. Dağ çoğu gün dışarıdadır, göller yüzülür, şehir festivallenir — takvimin altın penceresi.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Sonbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Eki – Kas</span>
+                        <h3 class="card-title">Sonbahar</h3>
+                        <span class="season-months">Eki – Kas</span>
                     </div>
                     <span class="card-badge badge-amber">Altın Yaprak ve Somon</span>
                 </div>
                 <p class="card-desc">Ekim şehri altına boyar, kanal kilitlerinde somonlar yuvaya döner, kahveciler kış moduna geçer. Çise başlar ama dramatik değildir — sakin, buğulu ve fotojenik bir mevsimdir.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Kış</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Ara – Şub</span>
+                        <h3 class="card-title">Kış</h3>
+                        <span class="season-months">Ara – Şub</span>
                     </div>
                     <span class="card-badge badge-amber">Kahve ve Buğu Mevsimi</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">☕</span>
-                        <span class="card-title">Kahve ritüeli</span>
+                        <h3 class="card-title">Kahve ritüeli</h3>
                     </div>
                 </div>
                 <p class="card-desc">Starbucks burada doğdu ama şehrin kalbi bağımsız kavurucularda atar: single origin, pour over ve latte art ciddiyeti. Baristaya &#x27;bugün ne demliyorsun&#x27; diye sor — Seattle&#x27;da bu soru saygı işaretidir.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🐟</span>
-                        <span class="card-title">Pike Place tezgah turu</span>
+                        <h3 class="card-title">Pike Place tezgah turu</h3>
                     </div>
                 </div>
                 <p class="card-desc">Balık fırlatan tezgahlar, piroshky fırını, chowder kasesi ve taze meyve: pazarın içinde ayaküstü tur en iyi öğle yemeğidir. Sabah git — tezgahların kurulumu gösterinin kendisidir.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍗</span>
-                        <span class="card-title">Teriyaki dükkanı klasiği</span>
+                        <h3 class="card-title">Teriyaki dükkanı klasiği</h3>
                     </div>
                 </div>
                 <p class="card-desc">Tatlı-soyalı ızgara tavuk, buharlı pirinç ve lahana salatası: mahalle teriyaki dükkanının tabldotu. Gösterişsiz vitrin, dolu masalar — Seattle&#x27;ın gündelik lezzet demokrasisi.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🦪</span>
-                        <span class="card-title">İstiridye ve somon sofrası</span>
+                        <h3 class="card-title">İstiridye ve somon sofrası</h3>
                     </div>
                 </div>
                 <p class="card-desc">Puget Sound istiridyeleri buz üstünde, kızıl somon közde: soğuk suların bereketi tabakta. İstiridye barlarının happy hour&#x27;ı şehrin en iyi ekonomik lüksüdür — mevsim somonu sorulur, geçiştirilmez.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍜</span>
-                        <span class="card-title">ID District&#x27;te pho ve dim sum</span>
+                        <h3 class="card-title">ID District&#x27;te pho ve dim sum</h3>
                     </div>
                 </div>
                 <p class="card-desc">Chinatown-International District&#x27;in köklü mutfakları: buharlı pho kaseleri, dim sum arabaları ve Filipin fırınları. Çiseli günün en sıcak cevabı bu mahallededir.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍩</span>
-                        <span class="card-title">Doughnut ve dondurma sahnesi</span>
+                        <h3 class="card-title">Doughnut ve dondurma sahnesi</h3>
                     </div>
                 </div>
                 <p class="card-desc">Artizan doughnut dükkanları ve yerel dondurmacılar tatlı rekabeti ciddiye alır: lavantalı ya da tuzlu karamelli top, kahvenin yanında imza kapanıştır.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Space Needle&#x27;ı herkes görür; bu altısı Seattle&#x27;ın feribot düdüklü, trol gölgeli saklı yüzü.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Gas Works Park</span>
-                    <span class="card-badge badge-emerald">Endüstriyel gün batımı parkı</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Endüstriyel gün batımı parkı</span>
                 </div>
+                <h3 class="card-title">Gas Works Park</h3>
                 <p class="card-desc">Eski gaz fabrikasının paslı kuleleri göl kıyısında heykele dönüşmüş: tepesinden silüet, yelkenliler ve gün batımı izlenir. Seattle&#x27;ın en sevilen çimi — uçurtma ve piknik yerlisiyle paylaşılır.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Kerry Park</span>
-                    <span class="card-badge badge-emerald">Silüetin tahtı</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Silüetin tahtı</span>
                 </div>
+                <h3 class="card-title">Kerry Park</h3>
                 <p class="card-desc">Queen Anne tepesinin küçük terası: Space Needle, silüet ve açık günde Rainier aynı karede. Kartpostalların çekildiği nokta — gün batımından yirmi dakika önce yerini al.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Ballard Kilitleri</span>
-                    <span class="card-badge badge-emerald">Somonlu kanal kapısı</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Somonlu kanal kapısı</span>
                 </div>
+                <h3 class="card-title">Ballard Kilitleri</h3>
                 <p class="card-desc">Deniz ile göl arasındaki gemi kilitleri ve balık merdiveni: tekneler yükselirken camın ardında somonlar tırmanır. Ücretsiz, mühendislik ve doğa aynı sahnede — botanik bahçesi de cabası.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Discovery Park</span>
-                    <span class="card-badge badge-emerald">Deniz feneri ve klif patikası</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Deniz feneri ve klif patikası</span>
                 </div>
+                <h3 class="card-title">Discovery Park</h3>
                 <p class="card-desc">Şehrin en büyük parkı: orman patikaları klifli sahile iner, West Point fenerinde Sound açılır. İki saatlik döngü rotası şehirden çıkmadan vahşi doğa verir.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Fremont Trolü</span>
-                    <span class="card-badge badge-emerald">Köprü altında dev</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Köprü altında dev</span>
                 </div>
+                <h3 class="card-title">Fremont Trolü</h3>
                 <p class="card-desc">Aurora köprüsünün altında gerçek bir Volkswagen&#x27;i avuçlayan beton dev: mahallenin mizah anıtı. Fremont pazarı ve Lenin heykeliyle birleştir — &#x27;evrenin merkezi&#x27; turu yarım gün ister.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Bainbridge Adası</span>
-                    <span class="card-badge badge-emerald">Feribotla kasaba kaçamağı</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Feribotla kasaba kaçamağı</span>
                 </div>
+                <h3 class="card-title">Bainbridge Adası</h3>
                 <p class="card-desc">35 dakikalık feribotla ada kasabası: ana caddede kitapçı, şarap tadım odaları ve sakin koylar. Dönüş güvertesinde silüet manzarası — Seattle&#x27;ın en keyifli yarım günü.</p>
             </div>
             </div>

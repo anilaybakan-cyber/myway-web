@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Málaga Şehir İçi Ulaşım & Transfer</h2>
             </div>
             <p class="section-intro">Havalimanından merkeze banliyö treniyle 12 dakikada varılır; tarihi merkez tamamen yayalaştırılmıştır ve sahil boyu bisiklet yolları uzanır.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚆</span>
-                        <span class="card-title">Cercanías C1 Banliyö Treni</span>
+                        <h3 class="card-title">Cercanías C1 Banliyö Treni</h3>
                     </div>
                 </div>
                 <p class="card-desc">AGP Havalimanı terminalinden doğrudan kalkan trenle Centro Alameda istasyonuna sadece 12 dakikada ve çok uygun fiyata varılır.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">Yaya dostu tarihi merkez</span>
+                        <h3 class="card-title">Yaya dostu tarihi merkez</h3>
                     </div>
                 </div>
                 <p class="card-desc">Calle Larios, Katedral, Alcazaba ve Roma Tiyatrosu birbirine birkaç adım mesafededir; yürüyerek keşfetmek en keyifli yoldur.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚲</span>
-                        <span class="card-title">Sahil bisiklet şeridi</span>
+                        <h3 class="card-title">Sahil bisiklet şeridi</h3>
                     </div>
                 </div>
                 <p class="card-desc">Liman Muelle Uno&#x27;dan Pedregalejo balıkçı mahallesine kadar deniz kenarında kilometrelerce düz ve güvenli bisiklet yolu bulunur.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚌</span>
-                        <span class="card-title">EMT Şehir İçi Otobüsler</span>
+                        <h3 class="card-title">EMT Şehir İçi Otobüsler</h3>
                     </div>
                 </div>
                 <p class="card-desc">Gibralfaro Kalesi tepesine çıkan 35 numaralı otobüs ve Malagueta plajlarına bağlanan hatlar modern ve klimalıdır.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚇</span>
-                        <span class="card-title">Málaga Metrosu</span>
+                        <h3 class="card-title">Málaga Metrosu</h3>
                     </div>
                 </div>
                 <p class="card-desc">Üniversite ve batı banliyölerini ana tren garı Maria Zambrano ve tarihi merkeze bağlayan modern hafif raylı sistem.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Nerede Kalınır? Málaga Mahalleleri</h2>
             </div>
             <p class="section-intro">Tarihi merkezin canlı sokakları mı, Muelle Uno liman şıklığı mı, yoksa Pedregalejo&#x27;nun otantik sahil atmosferi mi?</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Centro Histórico (Tarihi Merkez)</span>
+                    <h3 class="card-title">Centro Histórico (Tarihi Merkez)</h3>
                     <span class="card-badge badge-purple">Kültür &amp; Hareket</span>
                 </div>
                 <p class="card-desc">Calle Larios, Picasso Müzesi ve Katedral&#x27;e komşu; butik oteller, tapas barlar ve yürüyerek gezmek isteyenler için 1 numara.</p>
-                <div class="card-footer-tip">Picasso müzesi • Calle Larios • Tapas barlar</div>
+                <div class="card-footer-tip">📍 Picasso müzesi • Calle Larios • Tapas barlar</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">La Malagueta</span>
+                    <h3 class="card-title">La Malagueta</h3>
                     <span class="card-badge badge-purple">Plaj &amp; Şehir Dengesi</span>
                 </div>
                 <p class="card-desc">Şehir merkezine 10 dakika yürüme mesafesinde, kumsalın hemen kıyısında yer alan deniz manzaralı modern oteller.</p>
-                <div class="card-footer-tip">Kumsal kenarı • Liman yakın • Deniz manzarası</div>
+                <div class="card-footer-tip">📍 Kumsal kenarı • Liman yakın • Deniz manzarası</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Soho (Sanat Mahallesi)</span>
+                    <h3 class="card-title">Soho (Sanat Mahallesi)</h3>
                     <span class="card-badge badge-purple">Bohem &amp; Tasarım</span>
                 </div>
                 <p class="card-desc">Dev sokak sanatı duvar resimleri, tasarım kafeleri, tiyatrolar ve liman arasında yükselen yenilikçi hipster semti.</p>
-                <div class="card-footer-tip">Sokak sanatı • Tasarım kafeler • Gençlik enerjisi</div>
+                <div class="card-footer-tip">📍 Sokak sanatı • Tasarım kafeler • Gençlik enerjisi</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Pedregalejo &amp; El Palo</span>
+                    <h3 class="card-title">Pedregalejo &amp; El Palo</h3>
                     <span class="card-badge badge-purple">Lokal Balıkçı Kıyı</span>
                 </div>
                 <p class="card-desc">Merkezin 4 km doğusunda, eski balıkçı evleri, chiringuito&#x27;lar ve sakin koylarıyla otantik sahil kasabası hissi.</p>
-                <div class="card-footer-tip">Balıkçı evleri • Espeto cenneti • Huzurlu sahil</div>
+                <div class="card-footer-tip">📍 Balıkçı evleri • Espeto cenneti • Huzurlu sahil</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Muelle Uno Liman Çevresi</span>
+                    <h3 class="card-title">Muelle Uno Liman Çevresi</h3>
                     <span class="card-badge badge-purple">Modern &amp; Lüks</span>
                 </div>
                 <p class="card-desc">Centre Pompidou, lüks yatlar, açık hava alışveriş kordonu ve gurme restoranlarla çevrili şık sahil şeridi.</p>
-                <div class="card-footer-tip">Yat limanı • Centre Pompidou • Gurme restoranlar</div>
+                <div class="card-footer-tip">📍 Yat limanı • Centre Pompidou • Gurme restoranlar</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Málaga İçin En İyi Ziyaret Zamanı</h2>
             </div>
             <p class="section-intro">Yılda 300&#x27;den fazla güneşli güne sahip olan Málaga, Avrupa&#x27;nın en ılıman kışına ve en parlak ilkbaharına sahiptir.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">İlkbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Mar – May</span>
+                        <h3 class="card-title">İlkbahar</h3>
+                        <span class="season-months">Mar – May</span>
                     </div>
                     <span class="card-badge badge-amber">Portakal Çiçekleri &amp; Semana Santa</span>
                 </div>
                 <p class="card-desc">Málaga sokakları portakal çiçeği (azahar) kokar; görkemli Semana Santa geçitleri ve açık havada teras keyfi için en büyüleyici dönemdir.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Yaz</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Haz – Ağu</span>
+                        <h3 class="card-title">Yaz</h3>
+                        <span class="season-months">Haz – Ağu</span>
                     </div>
                     <span class="card-badge badge-amber">Feria de Málaga ve Plajlar</span>
                 </div>
                 <p class="card-desc">Ağustos ayındaki Feria de Málaga&#x27;da sokaklar flamenko elbiseleri, at arabaları ve Cartojal tatlı şarabıyla dev bir festivale dönüşür.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Sonbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Eyl – Kas</span>
+                        <h3 class="card-title">Sonbahar</h3>
+                        <span class="season-months">Eyl – Kas</span>
                     </div>
                     <span class="card-badge badge-amber">Ilık Deniz ve Sakin Müzeler</span>
                 </div>
                 <p class="card-desc">Yazın kavurucu sıcağı diner, deniz suyu sıcaklığını korur; müzeleri kalabalıksız gezmek ve sahil yürüyüşleri yapmak için idealdir.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Kış</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Ara – Şub</span>
+                        <h3 class="card-title">Kış</h3>
+                        <span class="season-months">Ara – Şub</span>
                     </div>
                     <span class="card-badge badge-amber">Ilıman Avrupa Kaçamağı</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🐟</span>
-                        <span class="card-title">Kömürde Sardalye Espeto</span>
+                        <h3 class="card-title">Kömürde Sardalye Espeto</h3>
                     </div>
                 </div>
                 <p class="card-desc">Kumsalın üstündeki ahşap sandallarda meşe kömüründe kamış şişlerde pişen, üzerine iri deniz tuzu serpilmiş taze sardalye.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥣</span>
-                        <span class="card-title">Ajoblanco Soğuk Badem Çorbası</span>
+                        <h3 class="card-title">Ajoblanco Soğuk Badem Çorbası</h3>
                     </div>
                 </div>
                 <p class="card-desc">Öğütülmüş Marcona bademleri, sarımsak, zeytinyağı ve ekmek içiyle hazırlanan, yanında tatlı yeşil üzümle sunulan serinletici çorba.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍤</span>
-                        <span class="card-title">Gambas al Pil-Pil</span>
+                        <h3 class="card-title">Gambas al Pil-Pil</h3>
                     </div>
                 </div>
                 <p class="card-desc">Toprak güveçte cızırdayan sızma zeytinyağı, bol dilim sarımsak ve kurutulmuş kırmızı acı biberle pişen taze karidesler.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥩</span>
-                        <span class="card-title">Rabo de Toro (Boğa Kuyruğu)</span>
+                        <h3 class="card-title">Rabo de Toro (Boğa Kuyruğu)</h3>
                     </div>
                 </div>
                 <p class="card-desc">Kırmızı şarap, havuç ve baharatlarla saatlerce kısık ateşte pişen, kemiğinden tel tel ayrılan geleneksel Endülüs yahni yemeği.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍷</span>
-                        <span class="card-title">Tatlı Málaga Şarabı (Vino Dulce)</span>
+                        <h3 class="card-title">Tatlı Málaga Şarabı (Vino Dulce)</h3>
                     </div>
                 </div>
                 <p class="card-desc">Güneşte kurutulmuş Pedro Ximénez ve Moscatel üzümlerinden üretilen, asırlık ahşap fıçılardan bardağa doldurulan kehribar şarap.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥖</span>
-                        <span class="card-title">Campero Malagueño</span>
+                        <h3 class="card-title">Campero Malagueño</h3>
                     </div>
                 </div>
                 <p class="card-desc">Yuvarlak çıtır ekmek içinde ızgara jambon, eritme peynir, marul, domates ve özel mayonezli sosla kentin ünlü sokak sandviçi.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Plajların ve kalabalık caddelerin ardında saklanan altı büyüleyici Málaga durağı.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">La Concepción Tarihi Botanik Bahçesi</span>
-                    <span class="card-badge badge-emerald">Tarihi Botanik Cenneti</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Tarihi Botanik Cenneti</span>
                 </div>
+                <h3 class="card-title">La Concepción Tarihi Botanik Bahçesi</h3>
                 <p class="card-desc">19. yüzyıl soylularının kurduğu, devasa wisteria sarmaşıkları, tropikal palmiyeleri ve şelaleleriyle masalsı bir açık hava vahas.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Centre Pompidou Málaga</span>
-                    <span class="card-badge badge-emerald">Renkli Sanat Küpü</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Renkli Sanat Küpü</span>
                 </div>
+                <h3 class="card-title">Centre Pompidou Málaga</h3>
                 <p class="card-desc">Paris dışındaki ilk Pompidou şubesi; limanın köşesindeki devasa renkli cam küpü ve altındaki çağdaş sanat koleksiyonu.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Mercado Central de Atarazanas</span>
-                    <span class="card-badge badge-emerald">Tarihi Pazar Yeri</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Tarihi Pazar Yeri</span>
                 </div>
+                <h3 class="card-title">Mercado Central de Atarazanas</h3>
                 <p class="card-desc">14. yüzyıl Mağribi tersane kapısından girilen, taze deniz mahsulleri, zeytinler ve renkli vitray pencereleriyle gastronomi mabedi.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Antigua Casa de Guardia</span>
-                    <span class="card-badge badge-emerald">Asırlık Şarap Barı</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Asırlık Şarap Barı</span>
                 </div>
+                <h3 class="card-title">Antigua Casa de Guardia</h3>
                 <p class="card-desc">1840&#x27;tan beri hiç değişmeyen ahşap fıçıları, tebeşirle bara yazılan hesapları ve kehribar tatlı şarabıyla kentin en eski barı.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Teatro Romano &amp; Alcazaba Meydanı</span>
-                    <span class="card-badge badge-emerald">Antik Tiyatro Manzarası</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Antik Tiyatro Manzarası</span>
                 </div>
+                <h3 class="card-title">Teatro Romano &amp; Alcazaba Meydanı</h3>
                 <p class="card-desc">İmparator Augustus döneminden kalan Roma tiyatrosunun basamakları ve arkasında yükselen Mağribi saray duvarlarının buluştuğu meydan.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Pedregalejo Sahil Kordonu</span>
-                    <span class="card-badge badge-emerald">Otantik Balıkçı Kumsalı</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Otantik Balıkçı Kumsalı</span>
                 </div>
+                <h3 class="card-title">Pedregalejo Sahil Kordonu</h3>
                 <p class="card-desc">Eski balıkçı kulübeleri, sahilde yanan espeto ateşleri ve dalga sesleriyle turist kalabalıklarından uzak gerçek Málaga sahili.</p>
             </div>
             </div>

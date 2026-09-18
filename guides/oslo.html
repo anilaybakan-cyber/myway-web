@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Oslo Public Transit & Airport Transfers</h2>
             </div>
             <p class="section-intro">Ruter&#x27;s single ticket system gathers metro, tram, bus and the fjord ferries under one roof: one ticket, the whole city — islands included.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Airport to the centre</span>
+                        <h3 class="card-title">Airport to the centre</h3>
                     </div>
                 </div>
                 <p class="card-desc">The Flytoget express reaches Central Station in 19 minutes; the regular regional train (Vy) does the same trip minutes slower at half the price. In this city a taxi is the last resort.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚇</span>
-                        <span class="card-title">The metro (T-bane) — a network that opens into forest</span>
+                        <h3 class="card-title">The metro (T-bane) — a network that opens into forest</h3>
                     </div>
                 </div>
                 <p class="card-desc">Five lines merge in the centre and scatter into nature at the ends: line 1 drops you at the forest paths of Frognerseteren, the Sognsvann line at a lakeside. Centre to wilderness: 30 minutes.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚋</span>
-                        <span class="card-title">The tram classics</span>
+                        <h3 class="card-title">The tram classics</h3>
                     </div>
                 </div>
                 <p class="card-desc">Tram 12 is like the city&#x27;s sightseeing line: it ties together Vigeland Park, Aker Brygge and Gamlebyen. The blue trams are the constant figures of Oslo street photography.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">⛴️</span>
-                        <span class="card-title">The fjord ferries</span>
+                        <h3 class="card-title">The fjord ferries</h3>
                     </div>
                 </div>
                 <p class="card-desc">Ferries from Aker Brygge reach Hovedøya, Gressholmen and the other islands on a normal Ruter ticket: in summer the island beaches, monastery ruins and picnic lawns are the city&#x27;s swimming pool.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">The centre and shore on foot</span>
+                        <h3 class="card-title">The centre and shore on foot</h3>
                     </div>
                 </div>
                 <p class="card-desc">The harbour promenade (Havnepromenaden) walks end to end from the Opera past Akershus Fortress to Aker Brygge: a 9 km route marked by orange towers, the city&#x27;s best free tour.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Where to Stay in Oslo: Best Areas</h2>
             </div>
             <p class="section-intro">Oslo&#x27;s districts don&#x27;t hide their characters: the centre practical, Grünerløkka bohemian, Frogner elegant, Sørenga brand-new and right on the water.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Sentrum (around Karl Johan)</span>
+                    <h3 class="card-title">Sentrum (around Karl Johan)</h3>
                     <span class="card-badge badge-purple">Most practical</span>
                 </div>
                 <p class="card-desc">Between the station, the palace, the opera and the main street: walk everywhere, reach every line. High hotel density, less character — the efficient base for a short visit.</p>
-                <div class="card-footer-tip">Near the station • Walk to everything • Plenty of hotels</div>
+                <div class="card-footer-tip">📍 Near the station • Walk to everything • Plenty of hotels</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Grünerløkka</span>
+                    <h3 class="card-title">Grünerløkka</h3>
                     <span class="card-badge badge-purple">Most bohemian</span>
                 </div>
                 <p class="card-desc">The old workers&#x27; quarter&#x27;s new life of coffee roasters, bars and vintage shops: walks along the Akerselva river, second-hand markets on Sundays. Oslo&#x27;s young heart beats here.</p>
-                <div class="card-footer-tip">Third-wave coffee • River walks • Vintage markets</div>
+                <div class="card-footer-tip">📍 Third-wave coffee • River walks • Vintage markets</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Frogner and Majorstuen</span>
+                    <h3 class="card-title">Frogner and Majorstuen</h3>
                     <span class="card-badge badge-purple">Most elegant</span>
                 </div>
                 <p class="card-desc">The neighbourhood of embassies, art nouveau apartment houses and Vigeland Park: calm streets, smart cafés, park runs. The showcase of classic Oslo life.</p>
-                <div class="card-footer-tip">Vigeland Park • Elegant apartments • Quiet nights</div>
+                <div class="card-footer-tip">📍 Vigeland Park • Elegant apartments • Quiet nights</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Aker Brygge and Tjuvholmen</span>
+                    <h3 class="card-title">Aker Brygge and Tjuvholmen</h3>
                     <span class="card-badge badge-purple">Best views</span>
                 </div>
                 <p class="card-desc">Modern life on the wharf: fjord-view hotels, the Astrup Fearnley museum, waterfront restaurants. Prices high, sunset included.</p>
-                <div class="card-footer-tip">Fjord views • Wharf restaurants • Modern architecture</div>
+                <div class="card-footer-tip">📍 Fjord views • Wharf restaurants • Modern architecture</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Sørenga and Bjørvika</span>
+                    <h3 class="card-title">Sørenga and Bjørvika</h3>
                     <span class="card-badge badge-purple">Newest</span>
                 </div>
                 <p class="card-desc">The new waterside quarter behind the opera: a swimming pier (Sørenga Sjøbad), the Munch museum and the Barcode towers. A modern base for sea-bathers and architecture lovers.</p>
-                <div class="card-footer-tip">Swimming pier • Munch museum • New architecture</div>
+                <div class="card-footer-tip">📍 Swimming pier • Munch museum • New architecture</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Best Time to Visit Oslo</h2>
             </div>
             <p class="section-intro">Oslo changes shape with the seasons: a fjord city in summer, a ski city in winter, and two short, lovely transitions in between.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Spring</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Apr – Jun</span>
+                        <h3 class="card-title">Spring</h3>
+                        <span class="season-months">Apr – Jun</span>
                     </div>
                     <span class="card-badge badge-amber">Awakening and 17 May</span>
                 </div>
                 <p class="card-desc">The snow retreats, the terraces open, and the city gorges on light. On Constitution Day, 17 May, all of Norway takes to the streets in national dress (bunad): parades, ice cream and brass bands — the year&#x27;s most colourful day.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Summer</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Jul – Aug</span>
+                        <h3 class="card-title">Summer</h3>
+                        <span class="season-months">Jul – Aug</span>
                     </div>
                     <span class="card-badge badge-amber">Fjord Season</span>
                 </div>
                 <p class="card-desc">The days are long, the fjord counts as warm, the islands fill with picnickers: the city moves outdoors. Utepils (outdoor beer) season peaks; hotels are relatively calm because the Norwegians are on holiday too.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Autumn</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Sep – Nov</span>
+                        <h3 class="card-title">Autumn</h3>
+                        <span class="season-months">Sep – Nov</span>
                     </div>
                     <span class="card-badge badge-amber">Golden Marka</span>
                 </div>
                 <p class="card-desc">The Marka forest turns gold, the air sharpens, the museums calm down. September is for hiking, October and November for museums and coffee; the first snow sometimes reaches the city in November.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Winter</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Dec – Mar</span>
+                        <h3 class="card-title">Winter</h3>
+                        <span class="season-months">Dec – Mar</span>
                     </div>
                     <span class="card-badge badge-amber">Ski Capital</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🦐</span>
-                        <span class="card-title">Fresh shrimp on the quay</span>
+                        <h3 class="card-title">Fresh shrimp on the quay</h3>
                     </div>
                 </div>
                 <p class="card-desc">Boiled shrimp bought from the boat, peeled on the quay with baguette, mayonnaise and lemon: the best-loved ritual of an Oslo summer. Find a bench on the Aker Brygge pier and defend the shells from the gulls.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🐟</span>
-                        <span class="card-title">Salmon and skrei — fjord cooking</span>
+                        <h3 class="card-title">Salmon and skrei — fjord cooking</h3>
                     </div>
                 </div>
                 <p class="card-desc">Norwegian salmon is good everywhere, but fish soup and, in season, skrei (the migrating cod) are the city&#x27;s real pride. The fish halls and the Mathallen counters show the day&#x27;s fresh catch.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🧀</span>
-                        <span class="card-title">Brunost — the caramel cheese</span>
+                        <h3 class="card-title">Brunost — the caramel cheese</h3>
                     </div>
                 </div>
                 <p class="card-desc">The brown goat&#x27;s cheese is Norway&#x27;s odd and lovable classic: caramel-like, on a waffle or the breakfast bread. Be surprised at the first bite, be addicted by the third.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥐</span>
-                        <span class="card-title">Kanelbolle and kardemummebolle</span>
+                        <h3 class="card-title">Kanelbolle and kardemummebolle</h3>
                     </div>
                 </div>
                 <p class="card-desc">Cinnamon and cardamom buns are the daily contest of Oslo&#x27;s bakeries: at a good one they don&#x27;t last past noon. In a city of coffee world champions, bun + filter coffee counts as a meal.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🌭</span>
-                        <span class="card-title">Pølse med lompe</span>
+                        <h3 class="card-title">Pølse med lompe</h3>
                     </div>
                 </div>
                 <p class="card-desc">A sausage wrapped in potato flatbread (lompe), crowned with mustard and crispy onions: Norway&#x27;s standing national snack. From petrol station to stadium, the same sincerity everywhere.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍺</span>
-                        <span class="card-title">Craft beer and happy hour arithmetic</span>
+                        <h3 class="card-title">Craft beer and happy hour arithmetic</h3>
                     </div>
                 </div>
                 <p class="card-desc">Oslo&#x27;s micro-brewery scene is strong and its prices brave: the early-hour discounts of Grünerløkka&#x27;s bars are a budget&#x27;s friend. Vinmonopolet (the state monopoly) closes at 6 pm, Saturdays at 4 — plan ahead.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Everyone walks the opera roof; these six are Oslo one layer deeper.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Hovedøya</span>
-                    <span class="card-badge badge-emerald">An island monastery inside the city</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ An island monastery inside the city</span>
                 </div>
+                <h3 class="card-title">Hovedøya</h3>
                 <p class="card-desc">The island ten minutes away by ferry: an 800-year-old monastery ruin, small beaches and pine-shaded picnic lawns. Reached on a normal city ticket — Oslo&#x27;s cheapest &#x27;holiday&#x27;.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">The Akerselva walk</span>
-                    <span class="card-badge badge-emerald">A river road of waterfalls</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ A river road of waterfalls</span>
                 </div>
+                <h3 class="card-title">The Akerselva walk</h3>
                 <p class="card-desc">The river that splits the city descends 8 km between waterfalls and old factories: art schools, coffee roasters and falls under bridges — Oslo&#x27;s industrial memory. Walk it downhill and break in Grünerløkka.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Ekebergparken</span>
-                    <span class="card-badge badge-emerald">A sculpture forest above the fjord</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ A sculpture forest above the fjord</span>
                 </div>
+                <h3 class="card-title">Ekebergparken</h3>
                 <p class="card-desc">The sculpture park on the ridge where Munch drew the Scream&#x27;s landscape: an open-air collection from Dalí to Vigeland, in among the trees. Go up by tram — the city and the fjord lie at your feet.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Damstredet and Telthusbakken</span>
-                    <span class="card-badge badge-emerald">A wooden-house time capsule</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ A wooden-house time capsule</span>
                 </div>
+                <h3 class="card-title">Damstredet and Telthusbakken</h3>
                 <p class="card-desc">Eighteenth-century wooden houses two steps from the centre: crooked lanes, coloured façades, garden roses. A five-minute detour, two hundred years of quiet.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">The fjord saunas — Oslo&#x27;s floating bathhouses</span>
-                    <span class="card-badge badge-emerald">Sauna rafts on the fjord</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Sauna rafts on the fjord</span>
                 </div>
+                <h3 class="card-title">The fjord saunas — Oslo&#x27;s floating bathhouses</h3>
                 <p class="card-desc">Warm up in the floating sauna rafts opposite the Opera, then jump into the fjord: ice in winter, cool relief in summer — open all year. The best tradition Oslo has invented in the last decade.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">The Holmenkollen jump tower</span>
-                    <span class="card-badge badge-emerald">The tower of ski history</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ The tower of ski history</span>
                 </div>
+                <h3 class="card-title">The Holmenkollen jump tower</h3>
                 <p class="card-desc">From the top of the legendary ski jump the Oslo fjord turns into a map; the ski museum inside tells a 4,000-year story. Reached by metro — and the tower offers a zipline to the brave.</p>
             </div>
             </div>

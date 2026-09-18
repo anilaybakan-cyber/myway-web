@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Mallorca Şehir İçi Ulaşım & Transfer</h2>
             </div>
             <p class="section-intro">Palma şehir içi toplu taşımayla gezilebilir. Ada geneli için TIB otobüsleri ve trenler var ama araç kiralama en özgür seçenek.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Havalimanı → Palma merkezi</span>
+                        <h3 class="card-title">Havalimanı → Palma merkezi</h3>
                     </div>
                 </div>
                 <p class="card-desc">EMT otobüsü Line A1 havalimanından Palma merkezine (Plaça d&#x27;Espanya) her 15 dakikada bir sefer yapıyor, yaklaşık 20 dakika, 5 euro. Taksi sabit fiyat yaklaşık 25 euro. Araç kiralıyorsan direkt otoparka geç. Otobüs en pratik ve en ucuz seçenek. TIB AeroTib otobüsleri adanın diğer tatil bölgelerine (Alcúdia, Magaluf) direkt bağlantı sağlıyor.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚌</span>
-                        <span class="card-title">EMT — Palma şehir içi</span>
+                        <h3 class="card-title">EMT — Palma şehir içi</h3>
                     </div>
                 </div>
                 <p class="card-desc">Palma&#x27;nın mavi otobüsleri şehrin her noktasını kapsıyor. Tek biniş 1,50 euro (Line 1 liman hattı 3 euro), şoförden veya kartla ödeniyor. 10&#x27;lu kart 10 euro. Bellver Kalesi, Es Baluard Müzesi, Santa Catalina mahallesi ve Passeig Marítim hepsi EMT ile ulaşılabilir. Palma metro hattı M1 üniversiteye gidiyor — turistik açıdan sınırlı kullanım.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚂</span>
-                        <span class="card-title">SFM treni — adanın içine</span>
+                        <h3 class="card-title">SFM treni — adanın içine</h3>
                     </div>
                 </div>
                 <p class="card-desc">Palma Plaça d&#x27;Espanya&#x27;dan SFM trenleri Inca, Sa Pobla ve Manacor&#x27;a gidiyor. Sóller Treni (1912&#x27;den beri) ayrı ve tarihi — Palma-Sóller arası nefes kesen dağ geçişi, gidiş-dönüş yaklaşık 20 euro. Adanın iç kesimlerine günübirlik gezi planlarken tren iyi bir seçenek. Pazar günü Sineu&#x27;da kurulan büyük pazar için tren ideal.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚗</span>
-                        <span class="card-title">Araç kiralama — ada için şart</span>
+                        <h3 class="card-title">Araç kiralama — ada için şart</h3>
                     </div>
                 </div>
                 <p class="card-desc">Tramuntana köyleri, gizli koylar, Sa Dragonera, Cala Mondragó, Formentor burnu — bunların hepsi için araç gerekiyor. Erken rezervasyonla uygun fiyatlı, yaz ortasında son dakika pahalı. Şehir içi park genellikle ücretli ama bol. Palma&#x27;da araçla gezmek gerekmiyor; araç kiralamak için Palma&#x27;dan çıkarken en uygun. Navigasyon şart — bazı yollar dar.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚲</span>
-                        <span class="card-title">Bisiklet ve scooter</span>
+                        <h3 class="card-title">Bisiklet ve scooter</h3>
                     </div>
                 </div>
                 <p class="card-desc">Palma şehri bisiklet dostu — Passeig Marítim boyunca bisiklet yolu mükemmel. BiciPalma (şehir bisiklet paylaşım sistemi) istasyonları her yerde. Scooter kiralama da yaygın. İç kesim ve dağ köyleri için bisiklet zorlu ama mümkün — Mallorca profesyonel bisikletçiler için de bir cennet.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Nerede Kalınır? Mallorca Mahalleleri</h2>
             </div>
             <p class="section-intro">Mallorca&#x27;da konum kritik — Palma hem şehirsel hem merkezi, Tramuntana köyleri özgün ama araç şart, kıyı bölgeleri kalabalık.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Palma — tarihi merkez</span>
+                    <h3 class="card-title">Palma — tarihi merkez</h3>
                     <span class="card-badge badge-purple">En merkezi</span>
                 </div>
                 <p class="card-desc">La Seu Katedrali, Bellver Kalesi, Mercat de l&#x27;Olivar ve Santa Catalina mahallesine yürüme mesafesinde. Her şeye yakın ama pahalı. La Lonja ve El Born mahalleleri Palma&#x27;nın en canlı ve en şık noktaları. Araçsız şehri keşfetmek için ideal. Tarihi binaları restore edilen butik oteller karakterli ama küçük.</p>
-                <div class="card-footer-tip">La Seu Katedrali yakını • Santa Catalina mahallesi • Her şeye yürüme mesafesi</div>
+                <div class="card-footer-tip">📍 La Seu Katedrali yakını • Santa Catalina mahallesi • Her şeye yürüme mesafesi</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Deià — Tramuntana&#x27;nın incisi</span>
+                    <h3 class="card-title">Deià — Tramuntana&#x27;nın incisi</h3>
                     <span class="card-badge badge-purple">En özgün</span>
                 </div>
                 <p class="card-desc">Tramuntana dağlarında, denize bakan tepe köyü. Robert Graves burada yaşadı ve yazdı. Sanatçılar, yazarlar ve müzisyenlerin çekim merkezi. Otel ve fincalar pahalı ama atmosfer eşsiz. Palma&#x27;dan araçla 30 dakika. Her şey küçük ölçekli ve özgün — fazla ticari değil.</p>
-                <div class="card-footer-tip">Robert Graves&#x27;in köyü • Tramuntana atmosferi • Sanatçılar köyü</div>
+                <div class="card-footer-tip">📍 Robert Graves&#x27;in köyü • Tramuntana atmosferi • Sanatçılar köyü</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Sóller — portakal bahçeleri şehri</span>
+                    <h3 class="card-title">Sóller — portakal bahçeleri şehri</h3>
                     <span class="card-badge badge-purple">En karakterli</span>
                 </div>
                 <p class="card-desc">Tramuntana vadisinde, portakal bahçeleri arasında güzel bir kasaba. Tarihi trenle Palma&#x27;ya bağlı, tramvayla Port de Sóller&#x27;e iniş. Merkezi şirin ve yürünebilir. Palma&#x27;ya yakın ama sakin. Hem dağı hem denizi yakın görmek için ideal konum.</p>
-                <div class="card-footer-tip">Tarihi tren bağlantısı • Portakal bahçeleri • Tramvayla limana iniş</div>
+                <div class="card-footer-tip">📍 Tarihi tren bağlantısı • Portakal bahçeleri • Tramvayla limana iniş</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Alcúdia — kuzey kıyısı</span>
+                    <h3 class="card-title">Alcúdia — kuzey kıyısı</h3>
                     <span class="card-badge badge-purple">Aile tatili için</span>
                 </div>
                 <p class="card-desc">Adanın kuzeyinde, hem tarihi surlu şehri hem geniş kumlu plajıyla çok yönlü. Playa de Muro ve Alcúdia plajları uzun ve temiz. Surlu iç kale küçük ama etkileyici. Güneyin tatil bölgelerine kıyasla biraz daha sakin. Pazar günleri Alcúdia pazarı bölgenin en büyük açık hava pazarı.</p>
-                <div class="card-footer-tip">Surlu tarihi şehir • Uzun kumlu plaj • Aile dostu</div>
+                <div class="card-footer-tip">📍 Surlu tarihi şehir • Uzun kumlu plaj • Aile dostu</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Santanyí — güney kıyısı</span>
+                    <h3 class="card-title">Santanyí — güney kıyısı</h3>
                     <span class="card-badge badge-purple">En şık</span>
                 </div>
                 <p class="card-desc">Adanın güneydoğusunda, altın renkli taş binalarıyla şık küçük kasaba. Çevresinde Es Trenc plajı (adanın en güzel kumu) ve Cala Mondragó doğal parkı. Çarşamba ve Cumartesi günleri sanatsal pazar. Kalabalıktan uzak, kaliteli restoran ve butikler.</p>
-                <div class="card-footer-tip">Es Trenc plajı yakını • Çarşamba-Cumartesi pazarı • Altın taş mimari</div>
+                <div class="card-footer-tip">📍 Es Trenc plajı yakını • Çarşamba-Cumartesi pazarı • Altın taş mimari</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Mallorca İçin En İyi Ziyaret Zamanı</h2>
             </div>
             <p class="section-intro">Mallorca yıl boyu ziyaret edilebilir — yaz sıcak ve kalabalık, ilkbahar ve sonbahar en dengeli dönem.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">İlkbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Nis – Haz</span>
+                        <h3 class="card-title">İlkbahar</h3>
+                        <span class="season-months">Nis – Haz</span>
                     </div>
                     <span class="card-badge badge-amber">En iyi dönem</span>
                 </div>
                 <p class="card-desc">Nisan ve Mayıs Mallorca&#x27;nın altın dönemi: hava 18-24°C, kalabalık yok, fiyatlar uygun. Tramuntana dağlarındaki yürüyüş yolları ideal — çiçekli vadiler, portakal bahçeleri. Haziran ortasından itibaren dolmaya başlıyor ama Temmuz-Ağustos kalabalığından hala çok uzak. Deniz biraz soğuk ama yüzmek mümkün.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Yaz</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Haz – Ağu</span>
+                        <h3 class="card-title">Yaz</h3>
+                        <span class="season-months">Haz – Ağu</span>
                     </div>
                     <span class="card-badge badge-amber">Kalabalık ama canlı</span>
                 </div>
                 <p class="card-desc">Temmuz ve Ağustos kıyı tatil bölgeleri tıklım tıklım. Ama aynı dönemde Tramuntana dağları, iç kesim köyleri ve Palma&#x27;nın tarihi merkezi hala sakin. Deniz en güzel, akşamlar uzun ve eğlenceli. Gizli koyları sabahın çok erken saatlerinde görmek için erken kalkmak gerekiyor. Haziran daha tercih edilebilir.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Sonbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Eyl – Kas</span>
+                        <h3 class="card-title">Sonbahar</h3>
+                        <span class="season-months">Eyl – Kas</span>
                     </div>
                     <span class="card-badge badge-amber">İkinci en iyi dönem</span>
                 </div>
                 <p class="card-desc">Eylül ve Ekim kalabalık bitti, hava hala sıcak, deniz yüzülebilir. Zeytin ve portakal hasatları başlıyor. İç kesim köylerinde sonbahar pazarları ve fuar. Kasım&#x27;da yağmur artıyor ama fiyatlar çok düşüyor. Tramuntana yürüyüş yolları sonbaharda da mükemmel.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Kış</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Ara – Şub</span>
+                        <h3 class="card-title">Kış</h3>
+                        <span class="season-months">Ara – Şub</span>
                     </div>
                     <span class="card-badge badge-amber">Sakin ve yeşil</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥐</span>
-                        <span class="card-title">Ensaimada</span>
+                        <h3 class="card-title">Ensaimada</h3>
                     </div>
                 </div>
                 <p class="card-desc">Mallorca&#x27;nın sarmal hamur tatlısı, her sabah fırından taze çıkıyor. Sade, ballı veya dolmalı (kayısı reçeli, sobrasada, krem şanti) çeşitleri var. Palma&#x27;daki tarihi fırınlarda veya Mercat de l&#x27;Olivar&#x27;da kahvaltı için 1,50-3 euro. Yumurta sarısıyla fırçalanmış, pudra şekeri serpilmiş — görüntüsü kadar tadı da güzel.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥩</span>
-                        <span class="card-title">Sobrasada</span>
+                        <h3 class="card-title">Sobrasada</h3>
                     </div>
                 </div>
                 <p class="card-desc">Mallorca&#x27;nın köfteye benzer yumuşak domuz eti ezmesi — kırmızı biber, tuz ve baharatlarla kürlenen çiğ sosis. Pa amb oli ile yenilir, ekmek üzerine sürülür veya pişirilir. Ada genelinde her dükkan ve markette var. Kalitesi üreticiye göre büyük fark gösteriyor — küçük yerel üreticilerden veya köy pazarlarından alanı çok daha lezzetli.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥘</span>
-                        <span class="card-title">Tumbet</span>
+                        <h3 class="card-title">Tumbet</h3>
                     </div>
                 </div>
                 <p class="card-desc">Mallorca&#x27;nın ratatouille&#x27;u ama farklı — patlıcan, kabak, patates ve domates sosuyla fırında katman katman pişirilmiş yemek. Kızartılmış sebzeler, zeytinyağı ve sarımsak. Hem ana yemek hem garnitür olarak servis ediliyor. Yaz sebzelerinin en güzel hali. İç kesim köylerinin yerel restoranlarında daha otantik.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍞</span>
-                        <span class="card-title">Pa amb oli</span>
+                        <h3 class="card-title">Pa amb oli</h3>
                     </div>
                 </div>
                 <p class="card-desc">Domates ovulmuş ekmek, zeytinyağı ve tuz — Mallorca&#x27;nın en sade ve en doyurucu yemeği. Üzerine sobrasada veya peynir eklenir. Öğle arası hafif yemek için idealdir, her yerde ve her saatte bulunur. Adanın en ucuz ve en yerel lezzeti. Malzeme kalitesi farkı hemen anlaşılıyor — taze domates ve iyi zeytinyağı her şeyi değiştiriyor.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🐟</span>
-                        <span class="card-title">Taze balık — Santa Catalina&#x27;da</span>
+                        <h3 class="card-title">Taze balık — Santa Catalina&#x27;da</h3>
                     </div>
                 </div>
                 <p class="card-desc">Palma&#x27;nın Santa Catalina mahallesi adanın en iyi taze deniz ürünleri ve balık mekanlarının adresi. Mercat de Santa Catalina&#x27;da sabahları balıkçı tezgahları var. Çevreniçeki küçük restoranlar hem taze hem uygun fiyatlı. Dorado (çipura), llampuga (mahimahi, Eylül-Kasım sezonu) ve taze karides adanın öne çıkan seçenekleri.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🫒</span>
-                        <span class="card-title">Mallorca zeytinyağı ve şarabı</span>
+                        <h3 class="card-title">Mallorca zeytinyağı ve şarabı</h3>
                     </div>
                 </div>
                 <p class="card-desc">Ada küçük ama kaliteli zeytinyağı ve şarap üretiyor. Binissalem ve Pla i Llevant DO bölgelerinden kırmızı şaraplar özellikle iyi — Manto Negro üzümünden yapılan yerli kırmızı. Zeytinyağı için iç kesim çiftliklerine veya Mercat de l&#x27;Olivar&#x27;a git. Manacor ve Felanitx çevresindeki küçük bodegalarda şarap tadımı mümkün.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Mallorca&#x27;nın en güzel köşeleri kıyı tatil bölgelerinin çok uzağında değil — sadece biraz araç ve biraz merak yeterli.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Sóller Treni</span>
-                    <span class="card-badge badge-emerald">Dünyanın en güzel dağ tren yolculuğu — 1912&#x27;den beri</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Dünyanın en güzel dağ tren yolculuğu — 1912&#x27;den beri</span>
                 </div>
+                <h3 class="card-title">Sóller Treni</h3>
                 <p class="card-desc">Palma&#x27;dan Sóller&#x27;e tarihi ahşap tren — 1912&#x27;den beri aynı ray, aynı vagonlar. Tramuntana dağlarını 13 tünelden geçerek, viyadüklerden atlayarak aşıyor. Yaklaşık 1 saat. Sóller&#x27;de indikten sonra 1913&#x27;ten beri çalışan tramvayla Port de Sóller&#x27;e iniş. Biletleri önceden al, yaz aylarında doluyor. Gidiş-dönüş yaklaşık 20 euro. Adanın en unutulmaz deneyimlerinden biri.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Deià</span>
-                    <span class="card-badge badge-emerald">Robert Graves&#x27;in köyü — turistik ama hala büyülü</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Robert Graves&#x27;in köyü — turistik ama hala büyülü</span>
                 </div>
+                <h3 class="card-title">Deià</h3>
                 <p class="card-desc">Tramuntana dağlarında, Akdeniz&#x27;e bakan küçük bir köy. İngiliz şair ve yazar Robert Graves&#x27;in 1929&#x27;dan ölümüne kadar yaşadığı yer. Evi bugün müze. Köyün kendisi küçük, taş sokaklı, panoramik. Kalabalık ama sabahın erken saatlerinde ve akşam saatlerinde sakin. Yakınındaki Cala Deià koyu için küçük patika yolu var — dikkatli in, çok güzel bir koy.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Sa Calobra</span>
-                    <span class="card-badge badge-emerald">Sa Calobra — erişimi sarp, manzarası benzersiz</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Sa Calobra — erişimi sarp, manzarası benzersiz</span>
                 </div>
+                <h3 class="card-title">Sa Calobra</h3>
                 <p class="card-desc">Kuzey kıyısında, Tramuntana dağlarından inen 13 km uzunluğunda efsanevi virajlı yol. Yol kendisi başlı başına bir deneyim — kıvrımlı, dar, nefes kesen manzara. Altta küçük koy ve Torrent de Pareis (derin kaya kanyonu) var. Yaz ortasında öğleden sonra çok kalabalık — sabah erkenden veya öğleden sonra geç git. Araba parkı sınırlı, bisikletle gelmek de mümkün ama zorlayıcı.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Fornalutx</span>
-                    <span class="card-badge badge-emerald">Fornalutx — İspanya&#x27;nın en güzel köylerinden biri</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Fornalutx — İspanya&#x27;nın en güzel köylerinden biri</span>
                 </div>
+                <h3 class="card-title">Fornalutx</h3>
                 <p class="card-desc">Sóller&#x27;den 4 kilometre yukarı, Tramuntana&#x27;nın en etkileyici köylerinden. Bal rengi taş evler, merdiven sokaklar, limon ve portakal bahçeleri. Nüfus 600 kişi. Turizm var ama sakin. Sóller&#x27;den yürüyerek gelmek de mümkün — kısaca 1 saat. Burada küçük bir restoranda öğle yemesi Mallorca&#x27;nın en yerel ve en güzel anlarından.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Cala Mondragó Doğal Parkı</span>
-                    <span class="card-badge badge-emerald">Cala Mondragó — korunan doğal parkta koy</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Cala Mondragó — korunan doğal parkta koy</span>
                 </div>
+                <h3 class="card-title">Cala Mondragó Doğal Parkı</h3>
                 <p class="card-desc">Güneydoğu kıyısında, Santanyí yakınında. Doğal park içinde iki küçük koy — kalabalık plaj bölgelerinden çok daha sakin ve korunaklı. Yürüyüş yolları, çam ormanları ve berrak turkuaz su. Otobüsle veya araçla ulaşılıyor. Ücretli otopark var. Yaz ortasında sabahın erken saatlerinde gidilmesi öneriliyor. Yakınlarda Cala Figuera balıkçı köyü — taze balık için ideal.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Bellver Kalesi</span>
-                    <span class="card-badge badge-emerald">Bellver Kalesi — Palma&#x27;nın en göz ardı edilen manzara noktası</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Bellver Kalesi — Palma&#x27;nın en göz ardı edilen manzara noktası</span>
                 </div>
+                <h3 class="card-title">Bellver Kalesi</h3>
                 <p class="card-desc">Palma şehir merkezinin hemen batısında, çam ormanıyla kaplı tepede. 14. yüzyıldan kalma dairesel plan — Avrupa&#x27;nın nadir yuvarlak kalelerinden. İçinde Palma Tarih Müzesi var. Ama asıl sebep: terastan Palma körfezi ve şehrin tamamı 360 derece görünüyor. Biletli ama ucuz. EMT otobüsüyle ulaşılıyor. Yaz akşamları açık hava konserleri.</p>
             </div>
             </div>

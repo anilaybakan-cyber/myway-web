@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Kas Public Transit & Airport Transfers</h2>
             </div>
             <p class="section-intro">Reaching Kas takes patience — both airports are far; once you arrive, everything is within walking, dolmus or boat distance.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Arriving from the airports</span>
+                        <h3 class="card-title">Arriving from the airports</h3>
                     </div>
                 </div>
                 <p class="card-desc">Dalaman and Antalya airports are 2.5–3 hours away: airport buses and transfers run steadily. The road is long but the D400 coastal highway earns forgiveness with its views — ask for the window seat.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">A walkable town</span>
+                        <h3 class="card-title">A walkable town</h3>
                     </div>
                 </div>
                 <p class="card-desc">The square, harbor, ancient theater and Kucukcakil beach are all within walking distance: most days a car is unnecessary in Kas. The bougainvillea slopes of the Long Bazaar are the town&#x27;s main artery — comfortable shoes beat flip-flops.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚐</span>
-                        <span class="card-title">Dolmus minibuses</span>
+                        <h3 class="card-title">Dolmus minibuses</h3>
                     </div>
                 </div>
                 <p class="card-desc">Minibuses run all day toward Kaputas and Kalkan: hop on with your beach bag, and in twenty minutes you&#x27;re in turquoise. The Cukurbag peninsula loop dolmus is handy for the hotels — ask the driver about return times.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">⛵</span>
-                        <span class="card-title">Boats and the captains&#x27; cooperative</span>
+                        <h3 class="card-title">Boats and the captains&#x27; cooperative</h3>
                     </div>
                 </div>
                 <p class="card-desc">Daily boats leave the harbor for Kekova: the sunken city, Kalekoy and swimming stops included. A small boat beats a big one — talk at the cooperative stand and choose your captain.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🛥️</span>
-                        <span class="card-title">The Kastellorizo ferry</span>
+                        <h3 class="card-title">The Kastellorizo ferry</h3>
                     </div>
                 </div>
                 <p class="card-desc">The ferry to the Greek island of Meis (Kastellorizo) across the water takes twenty minutes: a day trip with your passport. Colorful harbor houses, Greek tavernas and the blue cave tour — Turkey&#x27;s shortest trip abroad.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Where to Stay in Kas: Best Areas</h2>
             </div>
             <p class="section-intro">In Kas, choosing where to stay means choosing a scale: a pansiyon above the square, a seafront hotel on the peninsula, a view terrace in Kalkan, or a stone house in a village.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Kas center</span>
+                    <h3 class="card-title">Kas center</h3>
                     <span class="card-badge badge-purple">Most character</span>
                 </div>
                 <p class="card-desc">Pansiyons and boutique hotels on the bougainvillea lanes: you walk down to the square, the harbor and the evening life. The natural address for those who want to feel the town&#x27;s rhythm.</p>
-                <div class="card-footer-tip">Bougainvillea lanes • Walk to the square • Pansiyon soul</div>
+                <div class="card-footer-tip">📍 Bougainvillea lanes • Walk to the square • Pansiyon soul</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Cukurbag Peninsula</span>
+                    <h3 class="card-title">Cukurbag Peninsula</h3>
                     <span class="card-badge badge-purple">On the water</span>
                 </div>
                 <p class="card-desc">Seafront hotels on the peninsula five minutes from town: you leap into turquoise from ladder-down platforms. The sunset view is this side&#x27;s signature — the quiet, scenic option.</p>
-                <div class="card-footer-tip">Waterfront • Sunset terrace • Quiet nights</div>
+                <div class="card-footer-tip">📍 Waterfront • Sunset terrace • Quiet nights</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Around Kucukcakil</span>
+                    <h3 class="card-title">Around Kucukcakil</h3>
                     <span class="card-badge badge-purple">Most practical</span>
                 </div>
                 <p class="card-desc">The town&#x27;s beach quarter: swim in the morning, be at breakfast in two minutes, walk to the square at night. The densest cluster of hotels and pansiyons — a balanced, practical choice.</p>
-                <div class="card-footer-tip">Next to the beach • Near the center • Wide choice</div>
+                <div class="card-footer-tip">📍 Next to the beach • Near the center • Wide choice</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Kalkan</span>
+                    <h3 class="card-title">Kalkan</h3>
                     <span class="card-badge badge-purple">View terraces</span>
                 </div>
                 <p class="card-desc">The neighboring town twenty minutes away: a more polished alternative with white houses, rooftop restaurants and marina views. It&#x27;s even closer to Kaputas than Kas is — splitting your stay between the two towns is a strategy of its own.</p>
-                <div class="card-footer-tip">Rooftop restaurants • Marina views • Close to Kaputas</div>
+                <div class="card-footer-tip">📍 Rooftop restaurants • Marina views • Close to Kaputas</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Lycian villages</span>
+                    <h3 class="card-title">Lycian villages</h3>
                     <span class="card-badge badge-purple">The real side</span>
                 </div>
                 <p class="card-desc">Stone houses and mountain cool in Islamlar and the surrounding villages: crickets at night, roosters at dawn. A peaceful base if you have a car — fifteen minutes to the sea, zero to serenity.</p>
-                <div class="card-footer-tip">Stone houses • Mountain cool • Village table</div>
+                <div class="card-footer-tip">📍 Stone houses • Mountain cool • Village table</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Best Time to Visit Kas</h2>
             </div>
             <p class="section-intro">The sea at Kas is open from May to November; spring and autumn belong to the trails, summer to the sea, winter to the silence.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Spring</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Apr – Jun</span>
+                        <h3 class="card-title">Spring</h3>
+                        <span class="season-months">Apr – Jun</span>
                     </div>
                     <span class="card-badge badge-amber">Lycian Spring</span>
                 </div>
                 <p class="card-desc">The golden season of the Lycian Way: the trails are in flower, the weather is made for hiking, and by May the sea is swimmable. The town is calm, the pansiyons easygoing — this is the hiker&#x27;s and early-season traveler&#x27;s Kas.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Summer</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Jul – Aug</span>
+                        <h3 class="card-title">Summer</h3>
+                        <span class="season-months">Jul – Aug</span>
                     </div>
                     <span class="card-badge badge-amber">Turquoise Peak</span>
                 </div>
                 <p class="card-desc">The sea is at its clearest and the nights at their liveliest: the square lives late, the coves fill with boat chatter. Hot middays call for shade — beach in the morning, keyif at noon, square at night is summer&#x27;s constitution.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Autumn</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Sep – Nov</span>
+                        <h3 class="card-title">Autumn</h3>
+                        <span class="season-months">Sep – Nov</span>
                     </div>
                     <span class="card-badge badge-amber">September Clarity</span>
                 </div>
                 <p class="card-desc">September and October are Kas at its wisest setting: the sea keeps its summer warmth, the crowds recede, and diving visibility peaks. Even in November you can swim on a sunny day — and the trails live their second spring.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Winter</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Dec – Mar</span>
+                        <h3 class="card-title">Winter</h3>
+                        <span class="season-months">Dec – Mar</span>
                     </div>
                     <span class="card-badge badge-amber">The Quiet Harbor</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🐟</span>
-                        <span class="card-title">Catch of the day</span>
+                        <h3 class="card-title">Catch of the day</h3>
                     </div>
                 </div>
                 <p class="card-desc">Grouper, sea bream, sea bass or gurnard in season: chosen from the display, cooked over coals. The lokantas behind the harbor sell by weight — ask the price before the scale, order it simple with lemon.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥗</span>
-                        <span class="card-title">Olive-oil wild greens</span>
+                        <h3 class="card-title">Olive-oil wild greens</h3>
                     </div>
                 </div>
                 <p class="card-desc">Sea beans, şevketibostan, pickled rock samphire: Mediterranean greens in olive oil are the table&#x27;s foundation. Ask to see the meze fridge — the season&#x27;s greens are announced by the fridge, not the menu.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🦑</span>
-                        <span class="card-title">Calamari and octopus</span>
+                        <h3 class="card-title">Calamari and octopus</h3>
                     </div>
                 </div>
                 <p class="card-desc">A diving town takes its seafood seriously: grilled octopus and crisp calamari are every meyhane&#x27;s pride plate. Grilled beats fried — squeeze the lemon, take your time.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🫓</span>
-                        <span class="card-title">Village breakfast</span>
+                        <h3 class="card-title">Village breakfast</h3>
                     </div>
                 </div>
                 <p class="card-desc">A spread breakfast in the courtyard: goat cheese, olive varieties, homemade jams, griddle borek and well-steeped tea. The long ritual of a Kas morning — a second round after a swim is entirely legitimate.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍢</span>
-                        <span class="card-title">Cop sis and village kebab</span>
+                        <h3 class="card-title">Cop sis and village kebab</h3>
                     </div>
                 </div>
                 <p class="card-desc">Marinated lamb on the thinnest skewers: the craft of village lokantas along the D400 and the town&#x27;s masters. A carnivorous pause between sea meals — with charred peppers and tandoor bread alongside.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍯</span>
-                        <span class="card-title">Semolina halva with ice cream</span>
+                        <h3 class="card-title">Semolina halva with ice cream</h3>
                     </div>
                 </div>
                 <p class="card-desc">Hot semolina halva meeting cold ice cream: the classic close of a Kas evening. With pistachios for those who want them — this is the last plate before the square stroll.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Everyone knows the Kaputas photo; these six are Kas&#x27;s hidden blues.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Limanagzi</span>
-                    <span class="card-badge badge-emerald">Coves without roads</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Coves without roads</span>
                 </div>
+                <h3 class="card-title">Limanagzi</h3>
                 <p class="card-desc">The coves on the peninsula across the harbor, reached only by boat or footpath: small jetty beaches, crystal water, Lycian rock tombs on the ridge behind. Five minutes by water taxi — the antidote to crowds.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Kalekoy (Simena)</span>
-                    <span class="card-badge badge-emerald">Sunken village with a castle</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Sunken village with a castle</span>
                 </div>
+                <h3 class="card-title">Kalekoy (Simena)</h3>
                 <p class="card-desc">A coastal village with no road, unreachable without a boat: a path climbing to a Lycian castle, sarcophagi half-sunk in the sea, gozleme scenting the jetty. The Kekova view from the castle is among the Mediterranean&#x27;s finest frames.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Aperlai</span>
-                    <span class="card-badge badge-emerald">Ancient harbor silence</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Ancient harbor silence</span>
                 </div>
+                <h3 class="card-title">Aperlai</h3>
                 <p class="card-desc">An ancient Lycian harbor reached on foot or by boat on the Sicak peninsula: city walls, quay stones half underwater, and barely a boat in sight. Snorkeling above an ancient quay — the Kas version of time travel.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Meis (Kastellorizo)</span>
-                    <span class="card-badge badge-emerald">Greece in twenty minutes</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Greece in twenty minutes</span>
                 </div>
+                <h3 class="card-title">Meis (Kastellorizo)</h3>
                 <p class="card-desc">The colorful Greek town on the opposite shore: twenty minutes by ferry, a day trip with a passport. Harbor tavernas, the blue cave boat and pastel facades — the island you keep gazing at from Kas is even lovelier up close.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Patara</span>
-                    <span class="card-badge badge-emerald">Mother of all beaches</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Mother of all beaches</span>
                 </div>
+                <h3 class="card-title">Patara</h3>
                 <p class="card-desc">Half an hour away, 12 kilometers of unbroken sand: the columns of ancient Patara stand at the beach&#x27;s gate. Kept unbuilt as a loggerhead turtle nesting ground — at sunset the dunes turn to gold.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Sunset at the ancient theater</span>
-                    <span class="card-badge badge-emerald">The town&#x27;s balcony</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ The town&#x27;s balcony</span>
                 </div>
+                <h3 class="card-title">Sunset at the ancient theater</h3>
                 <p class="card-desc">The steps of the Hellenistic theater in the middle of town face the sea: at dusk, locals and those in the know gather quietly. No ticket, no gate — just stone, sea and the sinking sun.</p>
             </div>
             </div>

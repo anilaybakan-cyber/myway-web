@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Geneva Public Transit & Airport Transfers</h2>
             </div>
             <p class="section-intro">Geneva is small and well connected. Tram, bus, train and yellow ferry all run on the same ticket — and if you&#x27;re staying in a hotel, it&#x27;s all free.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Airport → City</span>
+                        <h3 class="card-title">Airport → City</h3>
                     </div>
                 </div>
                 <p class="card-desc">From the train station in the basement of the airport to Gare Cornavin: 7 minutes, every 10-15 minutes. After collecting your baggage, show your boarding pass at the ticket machines to get a free 80-minute ticket. If you have the Geneva Transport Card, you don&#x27;t need this — it&#x27;s already free.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚋</span>
-                        <span class="card-title">TPG — tram and bus</span>
+                        <h3 class="card-title">TPG — tram and bus</h3>
                     </div>
                 </div>
                 <p class="card-desc">6 tram lines (numbered 12-17) and a comprehensive bus network cover every corner of the city. A single ticket is valid for 60 minutes; free transfers between tram, bus, train and Mouettes. Tickets are bought at machines at stops — city buses have no machines on board, so buy before you get on.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">⛴️</span>
-                        <span class="card-title">Mouettes Genevoises — yellow ferry</span>
+                        <h3 class="card-title">Mouettes Genevoises — yellow ferry</h3>
                     </div>
                 </div>
                 <p class="card-desc">Small yellow boats linking the two shores of the lake, on the same TPG ticket. Line M1 runs from Pâquis to Eaux-Vives, line M2 from near the Mont-Blanc Bridge to Genève-Plage. A short crossing, but over Lac Léman — the easiest way to see the city from a different angle.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚲</span>
-                        <span class="card-title">Bike — Geneveroule</span>
+                        <h3 class="card-title">Bike — Geneveroule</h3>
                     </div>
                 </div>
                 <p class="card-desc">Directly across from Gare Cornavin. Leave your ID and a 20 CHF deposit for a free day bike. Flat, safe routes along the lakeside to Carouge and Plainpalais. Season May to October.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">Walking — ideal for the city centre</span>
+                        <h3 class="card-title">Walking — ideal for the city centre</h3>
                     </div>
                 </div>
                 <p class="card-desc">Vieille Ville, Pâquis and the lakeside are all connected on foot. Gare Cornavin to the Jet d&#x27;Eau: 20 minutes. Carouge: 15 minutes by tram or 35 minutes on foot. Jonction: 25 minutes&#x27; walk from the centre.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Where to Stay in Geneva: Best Areas</h2>
             </div>
             <p class="section-intro">Geneva is small but its neighbourhoods are very different. Where you stay directly shapes how you experience the city.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Rive / Eaux-Vives</span>
+                    <h3 class="card-title">Rive / Eaux-Vives</h3>
                     <span class="card-badge badge-purple">Most central</span>
                 </div>
                 <p class="card-desc">On the left bank of the lake, walking distance from the Jet d&#x27;Eau. The Jardin Anglais, shopping streets and the Halles de Rive food market are here. Easy tram connections everywhere. The right choice if it&#x27;s your first time and you want easy access to everything.</p>
-                <div class="card-footer-tip">Walking distance to Jet d&#x27;Eau • Halles de Rive • Easy access to everything</div>
+                <div class="card-footer-tip">📍 Walking distance to Jet d&#x27;Eau • Halles de Rive • Easy access to everything</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Pâquis</span>
+                    <h3 class="card-title">Pâquis</h3>
                     <span class="card-badge badge-purple">Most lively</span>
                 </div>
                 <p class="card-desc">Right next to Gare Cornavin, on the right bank of the lake. Geneva&#x27;s most multicultural neighbourhood; Asian, African and Arab communities live here. Bains des Pâquis is the summer gathering point on the lakeside. Restaurants and bars stay open late — the least quiet part of the city.</p>
-                <div class="card-footer-tip">Bains des Pâquis • Next to Gare Cornavin • Multicultural, lively</div>
+                <div class="card-footer-tip">📍 Bains des Pâquis • Next to Gare Cornavin • Multicultural, lively</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Vieille Ville / Old Town</span>
+                    <h3 class="card-title">Vieille Ville / Old Town</h3>
                     <span class="card-badge badge-purple">Most historic</span>
                 </div>
                 <p class="card-desc">On top of the hill, with the Cathédrale Saint-Pierre and the Reformation Wall. Narrow stone streets, historic buildings, small cafés. The most touristic part of Geneva, but genuinely beautiful in the quiet hours — early morning or late afternoon. The hill is tiring but the views are worth it.</p>
-                <div class="card-footer-tip">Cathédrale Saint-Pierre • Reformation Wall • Panoramic views</div>
+                <div class="card-footer-tip">📍 Cathédrale Saint-Pierre • Reformation Wall • Panoramic views</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Carouge</span>
+                    <h3 class="card-title">Carouge</h3>
                     <span class="card-badge badge-purple">Most characterful</span>
                 </div>
                 <p class="card-desc">Technically a separate municipality attached to Geneva. 15 minutes by tram. Italian courtyard architecture, a weekend market, local restaurants. Completely different from the rest of the city&#x27;s cool and orderly atmosphere. Go to Carouge for dinner; stay there.</p>
-                <div class="card-footer-tip">15 min by tram • Weekend market • Most authentic neighbourhood</div>
+                <div class="card-footer-tip">📍 15 min by tram • Weekend market • Most authentic neighbourhood</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Plainpalais / Jonction</span>
+                    <h3 class="card-title">Plainpalais / Jonction</h3>
                     <span class="card-badge badge-purple">Most local</span>
                 </div>
                 <p class="card-desc">Student and artist neighbourhood around the University of Geneva. The Plainpalais square turns into the city&#x27;s best second-hand market on Wednesdays and Saturdays. Jonction is where the Rhône and the Arve meet — where locals swim in summer. The furthest from any tourist atmosphere.</p>
-                <div class="card-footer-tip">Plainpalais second-hand market • Jonction confluence • Student neighbourhood</div>
+                <div class="card-footer-tip">📍 Plainpalais second-hand market • Jonction confluence • Student neighbourhood</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Best Time to Visit Geneva</h2>
             </div>
             <p class="section-intro">Geneva lives each season differently. In summer it&#x27;s the lake; in winter it&#x27;s the Alps and the silence.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Spring</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Apr – Jun</span>
+                        <h3 class="card-title">Spring</h3>
+                        <span class="season-months">Apr – Jun</span>
                     </div>
                     <span class="card-badge badge-amber">The most balanced time</span>
                 </div>
                 <p class="card-desc">From late April to June, Geneva&#x27;s most balanced period. The lake is still cold but the shore is beautiful. The Jardin Anglais and Parc La Grange are in bloom. Crowds haven&#x27;t built up yet, flights are cheaper than summer peak. Bike season opens. May is when the city is at its best: not too cold, not too crowded.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Summer</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Jul – Aug</span>
+                        <h3 class="card-title">Summer</h3>
+                        <span class="season-months">Jul – Aug</span>
                     </div>
                     <span class="card-badge badge-amber">Lake season</span>
                 </div>
                 <p class="card-desc">July and August are the busiest months but the city never feels overwhelming. The lake is ready for swimming. The Geneva Festival in early August — a large fireworks display. Fresh Léman perch instead of fondue; the right choice in summer.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Autumn</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Sep – Nov</span>
+                        <h3 class="card-title">Autumn</h3>
+                        <span class="season-months">Sep – Nov</span>
                     </div>
                     <span class="card-badge badge-amber">The most underrated season</span>
                 </div>
                 <p class="card-desc">September and October: the crowds have gone, the weather is still mild, the lake is calm and blue. Fondue season opens. By late October, Favarger&#x27;s annual chocolate pots are appearing in confectioners&#x27; windows — the first sign of L&#x27;Escalade.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Winter</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Dec – Mar</span>
+                        <h3 class="card-title">Winter</h3>
+                        <span class="season-months">Dec – Mar</span>
                     </div>
                     <span class="card-badge badge-amber">Silence and the Alps</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🧀</span>
-                        <span class="card-title">Fondue moitié-moitié</span>
+                        <h3 class="card-title">Fondue moitié-moitié</h3>
                     </div>
                 </div>
                 <p class="card-desc">Geneva&#x27;s classic fondue: half Gruyère, half Vacherin Fribourgeois. Bread pieces dipped in melted cheese with a long fork. The right season for fondue runs from November to March. Avoid the restaurants around Gare Cornavin — they use cheap cheese blends and the difference is noticeable. Bains des Pâquis or restaurants in Carouge are the reliable addresses.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🧀</span>
-                        <span class="card-title">Raclette</span>
+                        <h3 class="card-title">Raclette</h3>
                     </div>
                 </div>
                 <p class="card-desc">A half wheel of cheese heated beside the fire, the melted part scraped directly onto the plate. Served with boiled potatoes, cornichons and onions. The electric tabletop version is a shortcut — the real thing is made with a half wheel of cheese.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🌭</span>
-                        <span class="card-title">Longeole</span>
+                        <h3 class="card-title">Longeole</h3>
                     </div>
                 </div>
                 <p class="card-desc">A local sausage unique to Geneva, with protected geographical indication (PDO). Made with pork, fennel seeds and spices; produced nowhere else. One of the city&#x27;s official dishes. Served with lentils or dried beans. Found at local restaurants in Carouge and at Halles de Rive.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🐟</span>
-                        <span class="card-title">Filets de perches du Léman</span>
+                        <h3 class="card-title">Filets de perches du Léman</h3>
                     </div>
                 </div>
                 <p class="card-desc">Fresh lake perch fillets from Lac Léman — the main dish at lakeside restaurants in summer. If the menu doesn&#x27;t say &#x27;du Léman&#x27;, the fish isn&#x27;t fresh — look for that label. Lightly floured and fried in butter. May to September.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍫</span>
-                        <span class="card-title">Marmite de l&#x27;Escalade</span>
+                        <h3 class="card-title">Marmite de l&#x27;Escalade</h3>
                     </div>
                 </div>
                 <p class="card-desc">A chocolate pot produced by Favarger each year from mid-November to mid-December. Commemorates the 1602 victory. Filled with small sweets; the tradition is to break it and share the contents. Geneva&#x27;s most local chocolate experience — unavailable the rest of the year.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🛒</span>
-                        <span class="card-title">Halles de Rive</span>
+                        <h3 class="card-title">Halles de Rive</h3>
                     </div>
                 </div>
                 <p class="card-desc">In Rive, right next to the lake. Geneva&#x27;s best covered food market. Local cheese sellers, butchers, fishmongers and bakeries together. Longeole, Gruyère and fresh perch here. Not a tourist destination; this is where Genevans do their shopping. Open every day, busiest in the mornings.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Just behind Geneva&#x27;s diplomatic face, a completely different city is waiting.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">La Pointe de la Jonction</span>
-                    <span class="card-badge badge-emerald">Two rivers, two colours — flowing side by side without mixing</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Two rivers, two colours — flowing side by side without mixing</span>
                 </div>
+                <h3 class="card-title">La Pointe de la Jonction</h3>
                 <p class="card-desc">At the western edge of the city, the Rhône and the Arve meet. One is turquoise-green, the other muddy brown — the two colours flow side by side for a long stretch without mixing. Clearly visible to the eye. In summer you can swim in safe areas. Easily reached on foot or by bike. Free, always open.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Quartier des Grottes</span>
-                    <span class="card-badge badge-emerald">Switzerland&#x27;s strangest buildings — the Smurf neighbourhood</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Switzerland&#x27;s strangest buildings — the Smurf neighbourhood</span>
                 </div>
+                <h3 class="card-title">Quartier des Grottes</h3>
                 <p class="card-desc">A few minutes&#x27; walk northwest of Gare Cornavin. In the 1980s, residents of a neighbourhood facing demolition occupied their buildings; architects designed organic, wavy, multicoloured façades. Now known as the &#x27;Smurf buildings&#x27;. The complete opposite of Geneva&#x27;s orderly and sterile character. Art studios and alternative cafés in the courtyards. Free, always open.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Promenade de la Treille</span>
-                    <span class="card-badge badge-emerald">A 120-metre wooden bench and the official announcement of spring</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ A 120-metre wooden bench and the official announcement of spring</span>
                 </div>
+                <h3 class="card-title">Promenade de la Treille</h3>
                 <p class="card-desc">Just above the Vieille Ville, along the edge of Parc des Bastions. The wooden bench here, at 120 metres, is among the longest in the world. Each year, the arrival of spring is officially announced by the first bud on the chestnut tree beside this path. Panoramic views over the city, walking distance to the Reformation Wall.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">CERN</span>
-                    <span class="card-badge badge-emerald">Where the World Wide Web was born — and the Large Hadron Collider</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Where the World Wide Web was born — and the Large Hadron Collider</span>
                 </div>
+                <h3 class="card-title">CERN</h3>
                 <p class="card-desc">At the western edge of the city, on the Swiss-French border. The world&#x27;s largest particle physics laboratory and the birthplace of the World Wide Web. Entry to the Science Gateway, opened in 2023, is free — but registration is required. Online registration can be made up to a month in advance and guarantees entry; on-site registration is also possible but subject to availability. Guided tours are also free but open for on-site booking only, two hours before the tour starts — they fill up very quickly. Around 30 minutes by tram.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Place des Nations — Broken Chair</span>
-                    <span class="card-badge badge-emerald">A sculpture, a treaty — and Geneva never let it go</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ A sculpture, a treaty — and Geneva never let it go</span>
                 </div>
+                <h3 class="card-title">Place des Nations — Broken Chair</h3>
                 <p class="card-desc">In front of the United Nations building, a giant three-legged wooden chair. The fourth leg is broken — representing landmines and unexploded ordnance. Erected temporarily in 1997 to push for the signing of the Ottawa Treaty banning landmines. Geneva never took it down. A guided tour of the Palais des Nations is ticketed, but entry to the square is free.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Bains des Pâquis</span>
-                    <span class="card-badge badge-emerald">Swimming, sauna and fondue by the lake — open all year</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Swimming, sauna and fondue by the lake — open all year</span>
                 </div>
+                <h3 class="card-title">Bains des Pâquis</h3>
                 <p class="card-desc">A wooden jetty extending into the lake on the Pâquis shore. In summer an open-air pool and hammam: swimming, sunbathing, sauna, light food. Doesn&#x27;t close in winter — one of the most popular spots for winter fondue. Ticketed but reasonably priced. In winter, reservations for fondue are essential; weekends fill up fast.</p>
             </div>
             </div>

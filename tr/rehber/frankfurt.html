@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Frankfurt Şehir İçi Ulaşım & Transfer</h2>
             </div>
             <p class="section-intro">RMV bilet sistemi altında S-Bahn, U-Bahn, tramvaylar ve nostaljik Ebbelwei-Expreß kenti birbirine bağlar.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚆</span>
-                        <span class="card-title">Havalimanı S-Bahn (S8/S9)</span>
+                        <h3 class="card-title">Havalimanı S-Bahn (S8/S9)</h3>
                     </div>
                 </div>
                 <p class="card-desc">Frankfurt Havalimanı Regionalbahnhof istasyonundan 15 dakikada bir kalkan trenler Hauptbahnhof ana tren garına 12 dakikada varır.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚇</span>
-                        <span class="card-title">U-Bahn ve S-Bahn Ağı</span>
+                        <h3 class="card-title">U-Bahn ve S-Bahn Ağı</h3>
                     </div>
                 </div>
                 <p class="card-desc">Hauptwache ve Konstablerwache merkez istasyonları üzerinden tüm semtlere ve banliyölere dakikalar içinde ulaşım sağlar.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚋</span>
-                        <span class="card-title">Ebbelwei-Expreß Tarihi Tramvay</span>
+                        <h3 class="card-title">Ebbelwei-Expreß Tarihi Tramvay</h3>
                     </div>
                 </div>
                 <p class="card-desc">Hafta sonları kentin simge noktalarını turlayan nostaljik renkli tramvay; bilet fiyatına bir şişe elma şarabı ve kraker dahildir.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🌉</span>
-                        <span class="card-title">Eiserner Steg Yaya Köprüsü</span>
+                        <h3 class="card-title">Eiserner Steg Yaya Köprüsü</h3>
                     </div>
                 </div>
                 <p class="card-desc">Römerberg tarihi merkezini Sachsenhausen meyhaneler bölgesine bağlayan, aşk kilitleriyle bezeli tarihi demir asma köprü.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚲</span>
-                        <span class="card-title">Nextbike ve DB Call a Bike</span>
+                        <h3 class="card-title">Nextbike ve DB Call a Bike</h3>
                     </div>
                 </div>
                 <p class="card-desc">Main Nehri boyunca uzanan kesintisiz bisiklet yollarında sürmek için kentin dört bir yanındaki kiralık bisikletler.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Nerede Kalınır? Frankfurt Mahalleleri</h2>
             </div>
             <p class="section-intro">Tarihi Römer çevresi mi, geleneksel Sachsenhausen sokakları mı, yoksa modern Ostend mi?</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Altstadt &amp; Innenstadt</span>
+                    <h3 class="card-title">Altstadt &amp; Innenstadt</h3>
                     <span class="card-badge badge-purple">Tarihi Merkez</span>
                 </div>
                 <p class="card-desc">Römerberg, Dom Katedrali ve Hauptwache&#x27;ye adım mesafesinde; ilk kez gelenler için en pratik ve büyüleyici bölge.</p>
-                <div class="card-footer-tip">Römerberg • Katedral • Merkezi</div>
+                <div class="card-footer-tip">📍 Römerberg • Katedral • Merkezi</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Sachsenhausen</span>
+                    <h3 class="card-title">Sachsenhausen</h3>
                     <span class="card-badge badge-purple">Geleneksel &amp; Bohem</span>
                 </div>
                 <p class="card-desc">Arnavut kaldırımlı sokaklar, asırlık elma şarabı meyhaneleri, müzeler kıyısı ve sakin yerel atmosfer.</p>
-                <div class="card-footer-tip">Ebbelwoi • Museumsufer • Tarihi Meyhaneler</div>
+                <div class="card-footer-tip">📍 Ebbelwoi • Museumsufer • Tarihi Meyhaneler</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Westend &amp; Bockenheim</span>
+                    <h3 class="card-title">Westend &amp; Bockenheim</h3>
                     <span class="card-badge badge-purple">Nezih &amp; Yeşil</span>
                 </div>
                 <p class="card-desc">Viktorya dönemi villaları, Palmengarten botanik bahçesi ve şık kafeleriyle kentin en prestijli sakin yerleşim bölgesi.</p>
-                <div class="card-footer-tip">Palmengarten • Tasarım Kafeler • Nezih</div>
+                <div class="card-footer-tip">📍 Palmengarten • Tasarım Kafeler • Nezih</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Ostend &amp; EZB</span>
+                    <h3 class="card-title">Ostend &amp; EZB</h3>
                     <span class="card-badge badge-purple">Modern &amp; Trend</span>
                 </div>
                 <p class="card-desc">Avrupa Merkez Bankası&#x27;nın fütüristik kulesi, Hafenpark kaykay alanı ve nehir kıyısı loft otelleri.</p>
-                <div class="card-footer-tip">EZB kulesi • Hafenpark • Tasarım</div>
+                <div class="card-footer-tip">📍 EZB kulesi • Hafenpark • Tasarım</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Bahnhofsviertel (Kaiserstraße)</span>
+                    <h3 class="card-title">Bahnhofsviertel (Kaiserstraße)</h3>
                     <span class="card-badge badge-purple">Gastronomi &amp; Dinamik</span>
                 </div>
                 <p class="card-desc">Ana tren garının önünde uzanan, son yıllarda trend füzyon restoranlar, hip barlar ve konsept otellerle dolan cadde.</p>
-                <div class="card-footer-tip">Trend Gastronomi • Gar Yakını • Ulaşım</div>
+                <div class="card-footer-tip">📍 Trend Gastronomi • Gar Yakını • Ulaşım</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Frankfurt İçin En İyi Ziyaret Zamanı</h2>
             </div>
             <p class="section-intro">Bahar aylarında Main kıyısında piknikler, yazın Museumsuferfest festivali, kışın ise Römer meydanında ışıl ışıl Noel pazarı.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">İlkbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Nis – Haz</span>
+                        <h3 class="card-title">İlkbahar</h3>
+                        <span class="season-months">Nis – Haz</span>
                     </div>
                     <span class="card-badge badge-amber">Yeşil Sos ve Bahar Güneşi</span>
                 </div>
                 <p class="card-desc">Mayıs ayında Rossmarkt&#x27;ta düzenlenen Yeşil Sos festivali ve Main kıyısındaki çimlerde açık hava günleri.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Yaz</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Tem – Ağu</span>
+                        <h3 class="card-title">Yaz</h3>
+                        <span class="season-months">Tem – Ağu</span>
                     </div>
                     <span class="card-badge badge-amber">Museumsuferfest &amp; Nehir Terasları</span>
                 </div>
                 <p class="card-desc">Ağustos ayının son hafta sonunda nehrin iki yakasını kaplayan konserler, sokak lezzetleri ve havai fişek gösterileri.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Sonbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Eyl – Kas</span>
+                        <h3 class="card-title">Sonbahar</h3>
+                        <span class="season-months">Eyl – Kas</span>
                     </div>
                     <span class="card-badge badge-amber">Elma Hasadı &amp; Kitap Fuarı</span>
                 </div>
                 <p class="card-desc">Dünyanın en büyük kitap fuarı Frankfurter Buchmesse ve taze sıkılmış elma şırası Süßer&#x27;in meyhanelerde aktığı mevsim.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Kış</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Ara – Şub</span>
+                        <h3 class="card-title">Kış</h3>
+                        <span class="season-months">Ara – Şub</span>
                     </div>
                     <span class="card-badge badge-amber">Römerberg Tarihi Noel Masalı</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥗</span>
-                        <span class="card-title">Frankfurter Grüne Soße</span>
+                        <h3 class="card-title">Frankfurter Grüne Soße</h3>
                     </div>
                 </div>
                 <p class="card-desc">Hodan, frenk maydanozu, su teresi, hodan, kuzukulağı, pimpinel ve frenk soğanıyla yapılan 7 otlu nefis yeşil sos; haşlanmış yumurta ve patatesle servis edilir.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🌭</span>
-                        <span class="card-title">Frankfurter Würstchen</span>
+                        <h3 class="card-title">Frankfurter Würstchen</h3>
                     </div>
                 </div>
                 <p class="card-desc">Özel koyun bağırsağında kayın ağacı dumanıyla tütsülenen, haşlandığında ısırdığınızda çıtırdayan hakiki Frankfurt sosisi.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🧀</span>
-                        <span class="card-title">Handkäs mit Musik</span>
+                        <h3 class="card-title">Handkäs mit Musik</h3>
                     </div>
                 </div>
                 <p class="card-desc">Sirkeli, sıvı yağlı, soğanlı ve kimyonlu özel sosta marine edilen yağsız yerel ekşi süt peyniri; çavdar ekmeğiyle yenir.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍖</span>
-                        <span class="card-title">Frankfurter Rippchen mit Kraut</span>
+                        <h3 class="card-title">Frankfurter Rippchen mit Kraut</h3>
                     </div>
                 </div>
                 <p class="card-desc">Tuzlu suda dinlendirilip haşlanan kemikli yumuşacık domuz pirzolası; sıcak lahana turşusu ve patates püresi eşliğinde.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍪</span>
-                        <span class="card-title">Bethmännchen</span>
+                        <h3 class="card-title">Bethmännchen</h3>
                     </div>
                 </div>
                 <p class="card-desc">Üzerine üç yarım badem yerleştirilmiş, fırında nar gibi kızartılan tarihi marzipanlı badem kurabiyesi.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🎂</span>
-                        <span class="card-title">Frankfurter Kranz</span>
+                        <h3 class="card-title">Frankfurter Kranz</h3>
                     </div>
                 </div>
                 <p class="card-desc">Ortası reçelli, üzeri tereyağlı vanilya kreması ve altın rengi kıtır fındık krokanla kaplı taç şeklinde efsanevi pasta.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Gökdelenlerin gölgesinden kaçıp Frankfurt&#x27;un bilinmeyen büyüleyici köşelerini keşfedin.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Höchst Tarihi Eski Kenti</span>
-                    <span class="card-badge badge-emerald">Nadir</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Nadir</span>
                 </div>
+                <h3 class="card-title">Höchst Tarihi Eski Kenti</h3>
                 <p class="card-desc">Kentin batısında kalan, ahşap karkas evleri, kalesi ve 1746&#x27;dan kalma ünlü porselen atölyesiyle zamanın durduğu masalsı semt.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Liebieghaus Heykel Müzesi Bahçesi</span>
-                    <span class="card-badge badge-emerald">Çok Nadir</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Çok Nadir</span>
                 </div>
+                <h3 class="card-title">Liebieghaus Heykel Müzesi Bahçesi</h3>
                 <p class="card-desc">Museumsufer kıyısında neogotik bir şatonun içinde saklanan, antik heykeller ve asırlık ağaçlar altındaki huzurlu kafe bahçesi.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Holzhausen Parkı ve Barok Su Şatosu</span>
-                    <span class="card-badge badge-emerald">Gizli</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Gizli</span>
                 </div>
+                <h3 class="card-title">Holzhausen Parkı ve Barok Su Şatosu</h3>
                 <p class="card-desc">Nordend mahallesinin ortasında hendekli göletiyle masallardan fırlamış gibi duran zarif 18. yüzyıl Rokoko köşkü.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Kaiserdom Gizli Revakları ve Zirvesi</span>
-                    <span class="card-badge badge-emerald">Nadir</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Nadir</span>
                 </div>
+                <h3 class="card-title">Kaiserdom Gizli Revakları ve Zirvesi</h3>
                 <p class="card-desc">Kutsal Roma İmparatorlarının taç giydiği katedralin 328 basamaklı kulesine çıkıp gökdelenleri tam karşıdan selamlayın.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Kleinmarkthalle Üst Kat Şarap Terası</span>
-                    <span class="card-badge badge-emerald">Gizli</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Gizli</span>
                 </div>
+                <h3 class="card-title">Kleinmarkthalle Üst Kat Şarap Terası</h3>
                 <p class="card-desc">Gurme pazarının üst katındaki gizli açık terasta yerel bağcıların Riesling şaraplarını yerlilerle yan yana kadehle tatmak.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Lohrberg Elma Bahçeleri Tepesi</span>
-                    <span class="card-badge badge-emerald">Çok Nadir</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Çok Nadir</span>
                 </div>
+                <h3 class="card-title">Lohrberg Elma Bahçeleri Tepesi</h3>
                 <p class="card-desc">Frankfurt&#x27;un tek gerçek üzüm ve elma bağının bulunduğu tepeden kentin gökdelen silüetini yemyeşil ağaçlar arasından izleyin.</p>
             </div>
             </div>

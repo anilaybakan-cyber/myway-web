@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Cannes Şehir İçi Ulaşım & Transfer</h2>
             </div>
             <p class="section-intro">Cannes küçük ve yürünebilir. Palm Bus şehir içi ulaşım için yeterli, çevre şehirlere tren daha hızlı.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Nice Havalimanı&#x27;ndan Cannes&#x27;a</span>
+                        <h3 class="card-title">Nice Havalimanı&#x27;ndan Cannes&#x27;a</h3>
                     </div>
                 </div>
                 <p class="card-desc">Nice Côte d&#x27;Azur Havalimanı, Cannes&#x27;ın en yakın havalimanı — yaklaşık 30 kilometre. En pratik seçenek: Nice-Ville tren istasyonuna ulaş, oradan Cannes&#x27;a tren ile 30-40 dakika. Express otobüs (Ligne Azur 210) havalimanından direkt Cannes tren istasyonuna, yaklaşık 1 saat, 19,50 euro. Taksi sabit fiyat yaklaşık 80 euro. Tren-otobüs kombinasyonu hem ucuz hem makul süreli.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚂</span>
-                        <span class="card-title">Tren — Fransız Rivierası boyunca</span>
+                        <h3 class="card-title">Tren — Fransız Rivierası boyunca</h3>
                     </div>
                 </div>
                 <p class="card-desc">Cannes tren istasyonu şehrin merkezinde. Nice&#x27;den 30-40 dakika, Antibes&#x27;ten 10 dakika, Grasse&#x27;tan 25 dakika. TER bölgesel trenler sık sefer yapıyor. Günübirlik geziler için ideal: Monaco, Eze, Menton, Antibes, Juan-les-Pins hepsi tren ile ulaşılabilir. Bilet fiyatları 5-15 euro arasında güzergaha göre.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚌</span>
-                        <span class="card-title">Palm Bus — şehir içi</span>
+                        <h3 class="card-title">Palm Bus — şehir içi</h3>
                     </div>
                 </div>
                 <p class="card-desc">Cannes&#x27;ın sarı otobüsleri şehrin her noktasını kapsıyor. Tek biniş 1,80 euro, 74 dakika geçerli ve bu süre içinde aktarma serbest. Günlük pas 4,60 euro. Bilet şoförden veya duraksaldaki makineden alınıyor. Temassız banka kartıyla direkt ödeme de mümkün. Palm Imperial — kırmızı açık üstlü panoramik otobüs — Croisette boyunca turistik tur için, 1,50 euro tek biniş.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">⛴️</span>
-                        <span class="card-title">Lérins Adaları feribotu</span>
+                        <h3 class="card-title">Lérins Adaları feribotu</h3>
                     </div>
                 </div>
                 <p class="card-desc">Vieux-Port (eski liman) iskelesinden Sainte-Marguerite ve Saint-Honorat adalarına günlük feribot seferleri. Sainte-Marguerite&#x27;ye gidiş-dönüş yaklaşık 18 euro, Saint-Honorat&#x27;a ayrı bilet. Planaria, Trans Côte d&#x27;Azur ve Riviera Lines başlıca şirketler. Yaz aylarında yoğun — sabahın erken saatlerinde gitmek önerilir. Kışın sefer sayısı azalıyor, önceden kontrol et.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">Yürüyüş — en iyi seçenek</span>
+                        <h3 class="card-title">Yürüyüş — en iyi seçenek</h3>
                     </div>
                 </div>
                 <p class="card-desc">Cannes merkezi kompakt. Tren istasyonundan Forville Pazarı 10 dakika, Le Suquet tepesi 15 dakika, Vieux-Port 10 dakika, Croisette&#x27;in tamamı 25-30 dakika yürüyüş. Le Suquet&#x27;e çıkış dik ama kısa. Akşam saatlerinde Croisette boyunca yürüyüş Cannes&#x27;ın en klasik deneyimlerinden biri.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Nerede Kalınır? Cannes Mahalleleri</h2>
             </div>
             <p class="section-intro">Cannes&#x27;da konum kritik — Croisette pahalı ve turistik, Le Suquet karakterli, tren istasyonu çevresi pratik.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Croisette — sahil bulvarı</span>
+                    <h3 class="card-title">Croisette — sahil bulvarı</h3>
                     <span class="card-badge badge-purple">En prestijli</span>
                 </div>
                 <p class="card-desc">Dünyanın en tanınan sahil bulvarlarından biri. Büyük oteller, lüks butikler, ücretli plajlar. Her şey tam karşında ama fiyatlar buna göre. Film Festivali döneminde şehrin en pahalı ve en kalabalık noktası. Cannes&#x27;ı tam cephesinden görmek isteyenler için doğru yer — bütçen varsa.</p>
-                <div class="card-footer-tip">Film Festivali atmosferi • Lüks oteller • Sahile sıfır konum</div>
+                <div class="card-footer-tip">📍 Film Festivali atmosferi • Lüks oteller • Sahile sıfır konum</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Le Suquet — eski mahalle</span>
+                    <h3 class="card-title">Le Suquet — eski mahalle</h3>
                     <span class="card-badge badge-purple">En karakterli</span>
                 </div>
                 <p class="card-desc">Ortaçağ&#x27;dan kalma dar sokaklar, küçük restoranlar ve şehrin en iyi manzarası. Forville Pazarı&#x27;na ve Vieux-Port&#x27;a yürüyerek 5 dakika. Croisette&#x27;in pahalılığından uzak, sakin ve özgün. Dik ve merdivenli sokaklar var ama karşılığını veriyor.</p>
-                <div class="card-footer-tip">Panoramik manzara • Forville Pazarı yakını • Yerel atmosfer</div>
+                <div class="card-footer-tip">📍 Panoramik manzara • Forville Pazarı yakını • Yerel atmosfer</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Tren istasyonu çevresi</span>
+                    <h3 class="card-title">Tren istasyonu çevresi</h3>
                     <span class="card-badge badge-purple">En pratik</span>
                 </div>
                 <p class="card-desc">Croisette&#x27;e 10 dakika, Forville&#x27;e 10 dakika, Antibes&#x27;e 10 dakika trenle. Ulaşım açısından en merkezi nokta. Fiyatlar Croisette&#x27;ten düşük. Rue d&#x27;Antibes alışveriş caddesi yakında. Sabah gidip akşam döneceklerin veya çevre şehirleri gezeceklerin için ideal.</p>
-                <div class="card-footer-tip">Tren bağlantısı • Rue d&#x27;Antibes • Uygun fiyatlı seçenekler</div>
+                <div class="card-footer-tip">📍 Tren bağlantısı • Rue d&#x27;Antibes • Uygun fiyatlı seçenekler</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Forville — pazar mahallesi</span>
+                    <h3 class="card-title">Forville — pazar mahallesi</h3>
                     <span class="card-badge badge-purple">En yerel</span>
                 </div>
                 <p class="card-desc">Le Suquet&#x27;in eteğinde, Forville Pazarı&#x27;nın çevresinde küçük bir mahalle. Sabahları pazar aktivitesiyle canlanıyor. Rue Meynadier&#x27;in yürüyüş sokağı yakında — yerel fırınlar, şarküteriler, peynirciler. Cannes&#x27;ı yerel gibi yaşamak için en doğru konum.</p>
-                <div class="card-footer-tip">Forville Pazarı • Rue Meynadier • Sabah pazarı hayatı</div>
+                <div class="card-footer-tip">📍 Forville Pazarı • Rue Meynadier • Sabah pazarı hayatı</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Californie — tepe mahallesi</span>
+                    <h3 class="card-title">Californie — tepe mahallesi</h3>
                     <span class="card-badge badge-purple">En sakin</span>
                 </div>
                 <p class="card-desc">Şehrin doğusunda, denize bakan yamaçta Villa Belle Époque mimarisiyle dolup taşan sakin mahalle. Croisette&#x27;e ulaşmak için biraz yürüyüş veya otobüs gerekiyor. Daha uzun konaklayacaklar için huzurlu alternatif. Riviera manzarasını tepeden görmek isteyenler için.</p>
-                <div class="card-footer-tip">Belle Époque villalar • Sakin atmosfer • Panoramik manzara</div>
+                <div class="card-footer-tip">📍 Belle Époque villalar • Sakin atmosfer • Panoramik manzara</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Cannes İçin En İyi Ziyaret Zamanı</h2>
             </div>
             <p class="section-intro">Cannes yıl boyu ziyaret edilebilir ama Film Festivali dönemi ayrı bir kategori — hazır olarak gel ya da o dönemin dışında plan yap.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">İlkbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Nis – May</span>
+                        <h3 class="card-title">İlkbahar</h3>
+                        <span class="season-months">Nis – May</span>
                     </div>
                     <span class="card-badge badge-amber">En iyi dönem</span>
                 </div>
                 <p class="card-desc">Nisan Cannes&#x27;ın en dengeli ayı: hava 18-22°C, kalabalık yok, fiyatlar makul. Mimoza çiçeği Şubat&#x27;ta zirveye çıkıyor ama Nisan&#x27;da da bahçelerde görülüyor. Mayıs Film Festivali&#x27;ne denk geldiği için ikiye bölünüyor: festival öncesi sakin ve ucuz, festival haftasında şehir dolup taşıyor.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Yaz</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Haz – Ağu</span>
+                        <h3 class="card-title">Yaz</h3>
+                        <span class="season-months">Haz – Ağu</span>
                     </div>
                     <span class="card-badge badge-amber">Kalabalık ama canlı</span>
                 </div>
                 <p class="card-desc">Temmuz ve Ağustos Fransız Rivierası&#x27;nın en yoğun dönemi. Cannes plajları kalabalık, Croisette dolup taşıyor. Buna karşın deniz en güzel, akşamlar uzun ve canlı. Pyrotechnique gösterileri ve yat fuarı gibi etkinlikler bu mevsimde. Sabahın erken saatleri ve akşam 19:00 sonrası daha katlanılır.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Sonbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Eyl – Kas</span>
+                        <h3 class="card-title">Sonbahar</h3>
+                        <span class="season-months">Eyl – Kas</span>
                     </div>
                     <span class="card-badge badge-amber">İkinci en iyi dönem</span>
                 </div>
                 <p class="card-desc">Eylül ve Ekim Cannes&#x27;ın en rahat dönemi. Yaz kalabalığı gitmiş, hava hala 22-25°C, Akdeniz&#x27;de yüzmek mümkün. MIPCOM (Ekim) ve diğer profesyonel fuarlar şehri canlandırıyor ama Film Festivali kadar kalabalık değil. Restoran ve oteller daha uygun fiyatlı, Lérins Adaları neredeyse boş.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Kış</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Ara – Şub</span>
+                        <h3 class="card-title">Kış</h3>
+                        <span class="season-months">Ara – Şub</span>
                     </div>
                     <span class="card-badge badge-amber">Sakin ve güneşli</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥞</span>
-                        <span class="card-title">Socca</span>
+                        <h3 class="card-title">Socca</h3>
                     </div>
                 </div>
                 <p class="card-desc">Forville Pazarı&#x27;nda Socca&#x27;nne tezgahında, odun ateşinde pişirilmiş taze socca. Kağıda sarılı, üzerine karabiber, 3 euro. Sıcakken ye — soğuduğunda o çıtır doku kayboluyor. Pazarın yanındaki kafelerden birinde oturabilir, içeri getirmek için izin isteyebilirsin. Pazar kapalı olduğu gün (Pazartesi antika pazarı oluyor) socca da yok.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥪</span>
-                        <span class="card-title">Pan bagnat</span>
+                        <h3 class="card-title">Pan bagnat</h3>
                     </div>
                 </div>
                 <p class="card-desc">Niçoise salatasının sandviç hali — yuvarlak ekmek içine ton balığı, haşlanmış yumurta, domates, biber, Niçoise zeytinleri ve hamsi. Provençal Rivierası&#x27;nın öğle yemeği. Kiosklarda ve küçük dükkanlarda her yerde satılıyor. Gerçek pan bagnat&#x27;ı tanımanın yolu: ıslatılmış ekmek, çiğ sebze ve kaliteli konserve ton balığı. Pişmiş sebze varsa yanlış versiyondur.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🧅</span>
-                        <span class="card-title">Pissaladière</span>
+                        <h3 class="card-title">Pissaladière</h3>
                     </div>
                 </div>
                 <p class="card-desc">Soğan turtası — kalın hamur tabanı, saatlerce pişirilmiş karamelize soğan, Niçoise zeytinleri ve hamsi ızgarasıyla. İlk bakışta görüntüsü pizza sandırabilir ama farklı ve daha yoğun. Rue Meynadier&#x27;deki fırınlarda sabahtan itibaren taze. Jean-Luc Pelé bu caddenin en iyisi. Bir dilim 2-3 euro, yürürken ye.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🐟</span>
-                        <span class="card-title">Bouillabaisse</span>
+                        <h3 class="card-title">Bouillabaisse</h3>
                     </div>
                 </div>
                 <p class="card-desc">Marsilya&#x27;nın ünlü balık çorbasının Riviera versiyonu — kaya balıklarından yapılan zengin, safran aromalı et suyu, rouille (sarımsaklı mayonez) ve krutonla servis edilen derin lezzetli çorba. Cannes&#x27;da iyi bouillabaisse pahalı: kişi başı 35-55 euro. Le Suquet mahallesindeki restoranlar en güvenilir. Menüde fiyat yazmıyorsa ya da çok ucuzsa muhtemelen hazır paket.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍷</span>
-                        <span class="card-title">Rosé şarap — Provence usulü</span>
+                        <h3 class="card-title">Rosé şarap — Provence usulü</h3>
                     </div>
                 </div>
                 <p class="card-desc">Provence, dünyanın en iyi rosé şarabını üretiyor. Cannes&#x27;da her bistro ve kafede Provence rosésu var. Açık rosé (verre) 5-8 euro bardakta, Croisette&#x27;te iki katı. Sarı Bandol veya soluk Côtes de Provence — hangisi olursa olsun, sıcak bir öğleden sonra Forville yakınında bir kafe terasında bu şarabı içmek Fransız Rivierası&#x27;nın en saf anlarından biri.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🧀</span>
-                        <span class="card-title">Forville Pazarı&#x27;nda kahvaltı</span>
+                        <h3 class="card-title">Forville Pazarı&#x27;nda kahvaltı</h3>
                     </div>
                 </div>
                 <p class="card-desc">Sabah 07:00-13:00 arası açık olan kapalı pazar. Pazartesi günleri antika pazarı, diğer günler gıda. Taze meyve, sebze, peynir, balık, çiçek ve yerel ürünler. Socca, fougasse (zeytinli Provençal ekmek) ve taze peynir alıp dışarıda oturursan hem ucuz hem en yerel Cannes kahvaltısı. Şefler ve büyükanneler sabah 08:00-10:00 arasında en coşkulu saatlerinde.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Cannes&#x27;ın en güzel köşeleri Croisette&#x27;ten bir adım uzakta ya da birkaç metre yukarıda.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Le Suquet tepesi — Notre-Dame d&#x27;Espérance</span>
-                    <span class="card-badge badge-emerald">Croisette&#x27;in tam üzerinde — hiç kalabalık olmayan manzara noktası</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Croisette&#x27;in tam üzerinde — hiç kalabalık olmayan manzara noktası</span>
                 </div>
+                <h3 class="card-title">Le Suquet tepesi — Notre-Dame d&#x27;Espérance</h3>
                 <p class="card-desc">Vieux-Port&#x27;tan merdivenleri çıkınca Le Suquet tepesine ulaşırsın. Notre-Dame d&#x27;Espérance Kilisesi&#x27;nin önünden hem yat limanı hem Croisette hem de Estérel dağları görünüyor. Gün batımından 30 dakika önce git — ışık bu tepeye doğrudan vuruyor. Yanında bir şişe rosé al, taraçada otur. Croisette&#x27;in kalabalığının onda birinde, ücretsiz ve çok daha güzel.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Île Sainte-Marguerite</span>
-                    <span class="card-badge badge-emerald">Man in the Iron Mask&#x27;ın tutulduğu ada — 15 dakika karşıda</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Man in the Iron Mask&#x27;ın tutulduğu ada — 15 dakika karşıda</span>
                 </div>
+                <h3 class="card-title">Île Sainte-Marguerite</h3>
                 <p class="card-desc">Vieux-Port&#x27;tan feribotla 15 dakika. Fort Royal&#x27;de Demir Maskeli Adam&#x27;ın hücresini görebilirsin — gerçek mi efsane mi tartışılıyor ama mağara gerçekten var. Adanın geri kalanı çam ve okaliptüs ormanı, berrak deniz koyları, yürüyüş yolları. Yaz ortasında bile sakin. Öğle yemeğini adada ye — ada restoranı basit ama taze balık.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Île Saint-Honorat</span>
-                    <span class="card-badge badge-emerald">Yaşayan manastır, üzüm bağları ve kendi şarabı</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Yaşayan manastır, üzüm bağları ve kendi şarabı</span>
                 </div>
+                <h3 class="card-title">Île Saint-Honorat</h3>
                 <p class="card-desc">Sainte-Marguerite&#x27;nin yanında, ayrı feribotla ulaşılan daha küçük ada. 5. yüzyıldan beri aktif manastır — bugün hala keşişler yaşıyor ve bağlarını işliyor. Manastır şarabı dünya çapında ünlü, ziyaretçilere tadım ve satış yapılıyor. Ada küçük, yürüyerek tamamı geziliyor. Sainte-Marguerite ile aynı günde ziyaret edilebilir — iki ada için ayrı bilet al.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Vallauris — Picasso&#x27;nun çömlekçi köyü</span>
-                    <span class="card-badge badge-emerald">Cannes&#x27;ın Picasso bağlantısı — şehrin hemen dışında</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Cannes&#x27;ın Picasso bağlantısı — şehrin hemen dışında</span>
                 </div>
+                <h3 class="card-title">Vallauris — Picasso&#x27;nun çömlekçi köyü</h3>
                 <p class="card-desc">Cannes&#x27;dan otobüsle 20 dakika. Picasso 1948-1955 yılları arasında burada yaşadı ve çömlekçilik sanatıyla burada tanıştı. Bugün hala aktif çömlekçi atölyeleri ve küçük galeriler var. Musée National Picasso La Guerre et la Paix — Picasso&#x27;nun bizzat boyayıp belediyeye bağışladığı şapel. Biletli ama ucuz, kalabalık değil, gerçekten etkileyici.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Grasse — parfüm şehri</span>
-                    <span class="card-badge badge-emerald">Mimoza ve parfüm başkenti — Cannes&#x27;ın hemen arkasında</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Mimoza ve parfüm başkenti — Cannes&#x27;ın hemen arkasında</span>
                 </div>
+                <h3 class="card-title">Grasse — parfüm şehri</h3>
                 <p class="card-desc">Cannes&#x27;dan tren veya otobüsle 25-30 dakika. Dünyanın parfüm başkenti — Chanel No.5&#x27;in hammaddesi buradan geliyor. Fragonard, Molinard ve Galimard parfüm fabrikaları ücretsiz tur sunuyor, atölye çalışmaları biletli. Eski şehir (vieille ville) dar sokaklar ve Provençal kahvaltı noktaları. Şubat-Mart&#x27;ta mimoza çiçeği yolları boyunca açıyor.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Forville antika pazarı</span>
-                    <span class="card-badge badge-emerald">Cannes&#x27;ın sessiz Pazartesi ritüeli</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Cannes&#x27;ın sessiz Pazartesi ritüeli</span>
                 </div>
+                <h3 class="card-title">Forville antika pazarı</h3>
                 <p class="card-desc">Her Pazartesi Forville Pazarı gıda yerine antika, vintage ve ikinci el eşya pazarına dönüşüyor. Eski fotoğraflar, çerçeveler, mücevherler, kitaplar, tabaklar. Fiyatlar müzayede evlerinden çok daha uygun. Sabah 07:00&#x27;de tezgahlar kurulurken en iyi fırsatlar. Satıcılar genellikle pazarlığa açık. Croisette&#x27;in glamuruna karşı tamamen farklı ve çok daha gerçek bir Cannes deneyimi.</p>
             </div>
             </div>

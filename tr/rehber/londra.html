@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">London Şehir İçi Ulaşım & Transfer</h2>
             </div>
             <p class="section-intro">London&#x27;ın ulaşım ağı dünyanın en kapsamlılarından biri. Sistemi anlamak 5 dakika sürer ve hem zaman hem para kazandırır.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Heathrow (LHR) → Şehir Merkezi</span>
+                        <h3 class="card-title">Heathrow (LHR) → Şehir Merkezi</h3>
                     </div>
                 </div>
                 <p class="card-desc">Elizabeth line maliyet ve hız dengesi açısından en iyi seçenek: şehir merkezindeki istasyonlara 35 dakikada, birkaç dakikada bir sefer. Piccadilly line daha ucuz ama yavaş (60+ dakika) ve bagajla kullanımı zor. Heathrow Express hızlı (Paddington&#x27;a 15 dk) ama Elizabeth line varken buna değmez. Heathrow&#x27;dan taksiyle gitmeyi düşünme: çok pahalı ve trafiğe bağlı.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Gatwick (LGW) → Şehir Merkezi</span>
+                        <h3 class="card-title">Gatwick (LGW) → Şehir Merkezi</h3>
                     </div>
                 </div>
                 <p class="card-desc">Gatwick Express, London Victoria&#x27;ya 30 dakikada direkt sefer yapıyor. Thameslink trenleri daha uygun fiyatlı ve London Bridge ile St Pancras dahil daha fazla istasyona uğruyor; genellikle aynı hızda. National Express otobüsleri en uygun fiyatlı seçenek ama trafikte 90 dakika veya daha uzun sürebiliyor. Taksi çok pahalı; değmez.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚇</span>
-                        <span class="card-title">Tube (London Metrosu) — tek ihtiyacın temassız ödeme</span>
+                        <h3 class="card-title">Tube (London Metrosu) — tek ihtiyacın temassız ödeme</h3>
                     </div>
                 </div>
                 <p class="card-desc">Her Tube istasyonuna girişte ve çıkışta sarı okuyucuya banka kartını, Apple Pay veya Google Pay&#x27;i dokut. Sistem otomatik olarak en ucuz tarifyi hesaplıyor ve günlük azami ücret uyguluyor; azami ücrete ulaşınca o günkü kalan tüm yolculuklar ücretsiz. Tek kart her şey için geçerli: Tube (yeraltı metrosu), otobüs, Overground (banliyö treni), Elizabeth line ve DLR (sürücüsüz hafif metro).</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚌</span>
-                        <span class="card-title">Otobüsler — şehri görerek ulaşım</span>
+                        <h3 class="card-title">Otobüsler — şehri görerek ulaşım</h3>
                     </div>
                 </div>
                 <p class="card-desc">London&#x27;da her otobüs sabit tarifeli; mesafeden bağımsız. Hiçbir otobüste nakit kabul edilmiyor, yalnızca temassız ödeme ile. Tube (London metrosu)&#x27;dan yavaş ama London&#x27;ı sokak seviyesinde görüyorsun. 11 ve 15 numaralı hatlar şehrin merkezinde özellikle güzel güzergahlar. Gezi amaçlı kullanıldığında otobüs çoğu zaman Tube&#x27;dan daha keyifli.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚲</span>
-                        <span class="card-title">Santander Cycles (Boris Bikes)</span>
+                        <h3 class="card-title">Santander Cycles (Boris Bikes)</h3>
                     </div>
                 </div>
                 <p class="card-desc">Şehrin merkezinde yüzlerce istasyonda kiralık bisiklet. Erişim ücreti karşılığında 30 dakikalık sürüşler; istasyona bırakıp tekrar alarak sınırsız kullanım. TfL (Transport for London) uygulaması veya herhangi bir istasyondaki temassız okuyucuyla kullanabilirsin. Şehir merkezi şaşırtıcı biçimde düz. South Bank, parklar ve kanal yolları için harika.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Nerede Kalınır? London Mahalleleri</h2>
             </div>
             <p class="section-intro">London&#x27;ın mahalleleri birbirinden köklü biçimde farklı. Nerede kaldığın tüm deneyimini şekillendiriyor; şehir yeterince büyük ki konum gerçekten önemli.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">South Bank &amp; Borough</span>
+                    <h3 class="card-title">South Bank &amp; Borough</h3>
                     <span class="card-badge badge-purple">En manzaralı</span>
                 </div>
                 <p class="card-desc">Tate Modern, Borough Market, Shakespeare&#x27;s Globe: hepsi yürüme mesafesinde, Tamesis&#x27;in tam kenarında. London&#x27;ın en güzel nehir kenarı yürüyüşleri burada. Covent Garden&#x27;ın turist kaosu olmadan tam merkezde. Sabah uyandığında en tatmin edici manor&#x27;lardan biri.</p>
-                <div class="card-footer-tip">Nehir kenarı • Borough Market • Harika ulaşım</div>
+                <div class="card-footer-tip">📍 Nehir kenarı • Borough Market • Harika ulaşım</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Shoreditch &amp; Hackney</span>
+                    <h3 class="card-title">Shoreditch &amp; Hackney</h3>
                     <span class="card-badge badge-purple">En yaratıcı</span>
                 </div>
                 <p class="card-desc">Doğu London&#x27;ın yaratıcı kalbi. Her yerde sokak sanatı, bağımsız restoranlar, vintage pazarlar, London&#x27;ın en iyi kahveleri. Londralıların gerçekte yaşayıp çıktığı yer. Ana turistik alanlardan biraz uzak ama Tube her yere 20 dakikada götürüyor.</p>
-                <div class="card-footer-tip">Sokak sanatı ve kahve • En iyi restoranlar • Yerel hayat</div>
+                <div class="card-footer-tip">📍 Sokak sanatı ve kahve • En iyi restoranlar • Yerel hayat</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Marylebone &amp; Fitzrovia</span>
+                    <h3 class="card-title">Marylebone &amp; Fitzrovia</h3>
                     <span class="card-badge badge-purple">En sakin</span>
                 </div>
                 <p class="card-desc">Bağımsız kitapçılar, Gürcü dönem konutları ve sakin kafe sokakları. Hyde Park&#x27;a, British Museum&#x27;a ve Oxford Street&#x27;e yürüme mesafesi; bunların içine gömülmeden. London&#x27;da kalmak için en keyifli manor&#x27;lardan biri: sakin, güzel ve merkezi.</p>
-                <div class="card-footer-tip">Gürcü mimari • Sakin sokaklar • Hyde Park yakını</div>
+                <div class="card-footer-tip">📍 Gürcü mimari • Sakin sokaklar • Hyde Park yakını</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Covent Garden &amp; Strand</span>
+                    <h3 class="card-title">Covent Garden &amp; Strand</h3>
                     <span class="card-badge badge-purple">En merkezi</span>
                 </div>
                 <p class="card-desc">West End tiyatroları, Trafalgar Square, National Gallery, Somerset House: hepsi yürüme mesafesinde. Canlı, gürültülü, sonsuz derecede pratik. Her yerden daha pahalı ama hiç ulaşıma ihtiyaç duymuyorsun. İlk kez gelenler için ve her şeye kolay erişmek isteyenler için harika bir seçim.</p>
-                <div class="card-footer-tip">Her yer yürünebilir • Tiyatro bölgesi • İlk kez gelenler için</div>
+                <div class="card-footer-tip">📍 Her yer yürünebilir • Tiyatro bölgesi • İlk kez gelenler için</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Brixton &amp; Peckham</span>
+                    <h3 class="card-title">Brixton &amp; Peckham</h3>
                     <span class="card-badge badge-purple">En uygun fiyat</span>
                 </div>
                 <p class="card-desc">Güney London&#x27;ın canlı, çok kültürlü manor&#x27;ları. Pazar kültürü, olağanüstü yemek, aktif gece hayatı, gerçekten yerel atmosfer. Victoria hattı Brixton&#x27;ı Oxford Circus&#x27;a 15 dakikada bağlıyor. Genç Londralıların gerçekte yaşadığı yer ve Thames&#x27;in kuzeyine göre çok daha uygun fiyatlı.</p>
-                <div class="card-footer-tip">Çok kültürlü yemek • Uygun fiyat • Yerel gece hayatı</div>
+                <div class="card-footer-tip">📍 Çok kültürlü yemek • Uygun fiyat • Yerel gece hayatı</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">London İçin En İyi Ziyaret Zamanı</h2>
             </div>
             <p class="section-intro">London dört mevsim de işliyor ama her biri bambaşka bir şehir sunuyor. Hava durumu meşhur derecede tahmin edilemez; tahmin ne olursa olsun yanına bir kat ekstra giysi al.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">İlkbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Mar – May</span>
+                        <h3 class="card-title">İlkbahar</h3>
+                        <span class="season-months">Mar – May</span>
                     </div>
                     <span class="card-badge badge-amber">Parklar ve Çiçekler</span>
                 </div>
                 <p class="card-desc">London&#x27;ın parkları ilkbaharda dönüşüyor: Greenwich Park ve Battersea&#x27;da kiraz çiçekleri, Hyde Park ve Regent&#x27;s Park&#x27;ta nergisler, açık hava pazarları ve teraslar yeniden hayat buluyor. Şehir umut dolu ve canlı. Kalabalık artıyor ama henüz bunaltıcı değil. Büyük ihtimalle London&#x27;ın en güzel olduğu dönem. Chelsea Flower Show Mayıs&#x27;ta dünya çapında bir etkinlik.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Yaz</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Haz – Ağu</span>
+                        <h3 class="card-title">Yaz</h3>
+                        <span class="season-months">Haz – Ağu</span>
                     </div>
                     <span class="card-badge badge-amber">Festival Sezonu</span>
                 </div>
                 <p class="card-desc">Wimbledon, Notting Hill Carnival (Ağustos Bank Holiday: dünyanın en büyük sokak partilerinden biri), parklarda açık hava konserleri. Günler uzun; gece 22:00&#x27;ye kadar aydınlık. Ama zirve kalabalık, yüksek fiyatlar ve tahmin edilemez sıcaklıklar var. London aşırı sıcak hava için tasarlanmamış ve gerçek yaz aylarında zorlanabiliyor.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Sonbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Eyl – Kas</span>
+                        <h3 class="card-title">Sonbahar</h3>
+                        <span class="season-months">Eyl – Kas</span>
                     </div>
                     <span class="card-badge badge-amber">Altın Dönem</span>
                 </div>
                 <p class="card-desc">Eylül ve Ekim London&#x27;ın en iyi saklanan sırrı. Yaz kalabalıkları dağılıyor, parklar altın sarısına bürünüyor, kültür sezonu başlıyor: büyük sergiler, tiyatro açılışları, London Film Festivali. Hava hâlâ ılık ve güzel. Müze kuyrukları belirgin biçimde kısalıyor. Londralıların kendi şehirlerini en çok sevdiği dönem bu.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Kış</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Ara – Şub</span>
+                        <h3 class="card-title">Kış</h3>
+                        <span class="season-months">Ara – Şub</span>
                     </div>
                     <span class="card-badge badge-amber">Büyülü ve Sakin</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍳</span>
-                        <span class="card-title">Full English Breakfast — gerçek olanı</span>
+                        <h3 class="card-title">Full English Breakfast — gerçek olanı</h3>
                     </div>
                 </div>
                 <p class="card-desc">Pastırma, yumurta, sosis, fırında fasulye, közlenmiş domates, mantar, kan sucuğu ve tost. Britanya&#x27;nın dünya mutfağına en büyük katkısı. Düzgün bir &quot;caff&quot; (greasy spoon: küçük, bağımsız, gösterişsiz kafe) bulmaya çalış. İyi bir caff&#x27;ta hem uygun hem lezzetli. Lokalden birine &quot;caff&#x27;ın nerede?&quot; diye sor; cevabın o olsun.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍛</span>
-                        <span class="card-title">Brick Lane ve curry house&#x27;lar</span>
+                        <h3 class="card-title">Brick Lane ve curry house&#x27;lar</h3>
                     </div>
                 </div>
                 <p class="card-desc">London, Hint Yarımadası dışındaki en iyi Hint ve Bangladeş yemeğine sahip şehir. Shoreditch&#x27;teki Brick Lane tarihi merkez; ama tüm East End olağanüstü. Dishoom (birden fazla şubesi var) en çok sevilen: kahvaltıda bacon naan için gerçek bir kuyruk oluşuyor. Beklemeye değiyor.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🧺</span>
-                        <span class="card-title">Borough Market — gerçek olanı</span>
+                        <h3 class="card-title">Borough Market — gerçek olanı</h3>
                     </div>
                 </div>
                 <p class="card-desc">London&#x27;ın en eski ve en iyi yemek pazarı; London Bridge yakınındaki demiryolu kemerlerinin altında. Salı–Cumartesi açık. London&#x27;ın en iyi şefleri buradan alışveriş yapıyor. Buradaki Monmouth Coffee London&#x27;ın en iyileri arasında. Aç git. Her şeyden tat. Ertesi gün tekrar gel.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🐟</span>
-                        <span class="card-title">Fish &amp; chips — ama düzgün şekilde</span>
+                        <h3 class="card-title">Fish &amp; chips — ama düzgün şekilde</h3>
                     </div>
                 </div>
                 <p class="card-desc">Gerçek fish &amp; chips için şehrin içine gir; turistik yerlerden uzak dur. Gerçeği: kalın kesilmiş patates, taze hamurlu morina ya da mezgit, mushy peas (ezilmiş bezelye) ve malt sirkesi. Spitalfields&#x27;da Poppies veya Covent Garden&#x27;da Rock &amp; Sole Plaice iyi seçenekler. Kâğıda sarılmış ye. London&#x27;ın en dürüst yemeği.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍺</span>
-                        <span class="card-title">Pub — bir Britanya kurumu</span>
+                        <h3 class="card-title">Pub — bir Britanya kurumu</h3>
                     </div>
                 </div>
                 <p class="card-desc">Masada servis bekleme; barda sipariş ver. Bir bardak gerçek ale, bitter (geleneksel İngiliz birasının hafif ve aromatlı türleri) veya London Pride. Gastropub (yemek odaklı pub) İngiliz mutfağını dönüştürdü; bazıları Michelin yıldızı kalitesinde yemek sunuyor. Geleneksel bir Viktorya dönemi pub&#x27;ı bul ve bir öğleden sonrasını içinde geçir. London gerçekte bu.</p>
@@ -787,22 +932,11 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">☕</span>
-                        <span class="card-title">Specialty coffee sahnesi</span>
+                        <h3 class="card-title">Specialty coffee sahnesi</h3>
                     </div>
                 </div>
                 <p class="card-desc">London dünyanın en iyi specialty coffee sahnelerinden birine sahip. Monmouth Coffee, Ozone, Workshop ve Allpress referans noktaları. Bu sahne büyük ölçüde 2000&#x27;lerde gelen ve kafe kültürünü kalıcı olarak dönüştüren Avustralyalı ve Yeni Zelandalı expat&#x27;lar tarafından kuruldu.</p>
                 <div class="card-footer-tip">⭐ Monmouth · Ozone · Workshop Coffee</div>
-            </div>
-            
-            <div class="feature-card">
-                <div class="card-header">
-                    <div class="card-title-group">
-                        <span class="card-icon">🫖</span>
-                        <span class="card-title">Afternoon tea — düzgün şekilde</span>
-                    </div>
-                </div>
-                <p class="card-desc">Küçük sandviçler, sıcak scone&#x27;lar (geleneksel İngiliz ekmeği), kaymak ve reçel (önce kaymak, sonra reçel; Devon geleneği bu — Cornwall&#x27;da tam tersi) ve gerçek yaprak çay. Fortnum &amp; Mason klasik. Önceden rezervasyon yap. Biraz özel ama gerçekten buna değen bir deneyim.</p>
-                <div class="card-footer-tip">⭐ Fortnum &amp; Mason · önceden rezervasyon · önce kaymak</div>
             </div>
             </div>
             
@@ -823,68 +957,52 @@
             </div>
             <p class="section-intro">London merakı Avrupa&#x27;daki herhangi bir şehirden daha fazla ödüllendiriyor. Buradaki en iyi şeyler ücretsiz, işaretsiz ve herkesin fotoğrafladığı ünlü yerlerin tam arasına sıkışmış.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">King&#x27;s Cross İstasyonu — Platform 9¾</span>
-                    <span class="card-badge badge-emerald">Ekrandan gerçeğe — Harry Potter</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Ekrandan gerçeğe — Harry Potter</span>
                 </div>
+                <h3 class="card-title">King&#x27;s Cross İstasyonu — Platform 9¾</h3>
                 <p class="card-desc">Harry Potter&#x27;ın Hogwarts Ekspresi&#x27;ne bindiği efsanevi platform. King&#x27;s Cross İstasyonu&#x27;nun içinde gerçek bir kurulum var: yarısı duvara gömülmüş bir bagaj arabası ve üzerinde &#x27;9¾&#x27; tabelası. Fotoğraf çektirmek için sıra oluşuyor ama kısa sürüyor. Harry Potter hayranı olsan da olmasan da uğramaya değiyor. Ücretsiz.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Leadenhall Market</span>
-                    <span class="card-badge badge-emerald">Ekrandan gerçeğe — Diagon Alley</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Ekrandan gerçeğe — Diagon Alley</span>
                 </div>
+                <h3 class="card-title">Leadenhall Market</h3>
                 <p class="card-desc">City of London&#x27;ın kalbinde, 14. yüzyıldan kalma bu görkemli kapalı pazar Harry Potter filmlerinde Diagon Alley olarak çekildi. Viktorya dönemi demir ve cam tavan, renkli boyalı duvarlar. Film olmasa bile London&#x27;ın en güzel iç mekanlarından biri. Ücretsiz, her gün açık. Öğle aralarında çalışanlarla, akşamları ise neredeyse tamamen sessiz.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">St Dunstan in the East</span>
-                    <span class="card-badge badge-emerald">İkinci Dünya Savaşı bombalarından gizli bahçe</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ İkinci Dünya Savaşı bombalarından gizli bahçe</span>
                 </div>
+                <h3 class="card-title">St Dunstan in the East</h3>
                 <p class="card-desc">12. yüzyıldan kalma kilise, 1941&#x27;de İkinci Dünya Savaşı&#x27;ndaki Alman hava bombardımanı (Blitz) sırasında yerle bir edildi. Yıkıntılar olduğu gibi bırakıldı ve kamusal bahçeye dönüştürüldü: bombalanmış duvarları tırmanan sarmaşıklar, pencere kemerlerinden büyüyen ağaçlar, bir zamanlar şefon olan yerde banklar. London&#x27;ın en olağanüstü mekanlarından biri. Ücretsiz, her gün açık. Bilenlerin sırrı olmaya devam ediyor.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Primrose Hill&#x27;de Günbatımı</span>
-                    <span class="card-badge badge-emerald">London&#x27;ın en iyi ücretsiz manzarası — rezervasyon gerekmez</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ London&#x27;ın en iyi ücretsiz manzarası — rezervasyon gerekmez</span>
                 </div>
+                <h3 class="card-title">Primrose Hill&#x27;de Günbatımı</h3>
                 <p class="card-desc">Kuzey London&#x27;da 64 metrelik tepe; tüm şehir silüetine panoramik manzara sunuyor. Bilet yok, kuyruk yok, ticari hiçbir şey yok. Yaz akşamları Londralılar şarap ve piknik sepetleriyle geliyor. Günbatımında dünyanın en güzel kentsel manzaralarından biri. Burası bedava.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Postman&#x27;s Park — Kahramanca Fedakârlık Anıtı</span>
-                    <span class="card-badge badge-emerald">City of London&#x27;da gizli bahçe</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ City of London&#x27;da gizli bahçe</span>
                 </div>
+                <h3 class="card-title">Postman&#x27;s Park — Kahramanca Fedakârlık Anıtı</h3>
                 <p class="card-desc">St Paul&#x27;s Katedrali yakınında sakin bir park; içinde olağanüstü bir anıt var. Başkalarını kurtarırken hayatını kaybeden sıradan insanları anlatan kısa ve yürek burkan hikâyelerle dolu seramik karolar. 1900&#x27;de yapıldı. London&#x27;ın en etkileyici ve en az bilinen anıtlarından biri. Gören her insanı yerinde durduruyor.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Sky Garden at 20 Fenchurch Street</span>
-                    <span class="card-badge badge-emerald">Ücretsiz çatı bahçesi — önceden online rezervasyon şart</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Ücretsiz çatı bahçesi — önceden online rezervasyon şart</span>
                 </div>
+                <h3 class="card-title">Sky Garden at 20 Fenchurch Street</h3>
                 <p class="card-desc">&quot;Walkie-Talkie&quot; binasının tepesinde London&#x27;ın 360 derece manzarasına sahip görkemli bir kamusal bahçe; tamamen ücretsiz ama önceden online rezervasyon gerekiyor. Sky Garden sitesinden birkaç gün önceden rezervasyon yap; gittiğinde pişman olmayacaksın.</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">The Hill Garden &amp; Pergola — Hampstead</span>
-                    <span class="card-badge badge-emerald">Viktorya dönemi zevk bahçesi — tamamen işaretsiz</span>
-                </div>
-                <p class="card-desc">Hampstead Heath&#x27;in üzerinde gizlenmiş olağanüstü bir Edwardian pergola (yükseltilmiş sütunlu yürüyüş yolu): sarkık glisinya ve tırmanıcı güller dökülen taş kemerler boyunca uzanıyor. 1904&#x27;te inşa edildi. Girişi ücretsiz, neredeyse tamamen bilinmiyor. Glisinyanın çiçek açtığı Mayıs sonunda git; İngiltere&#x27;nin en romantik mekanlarından birine dönüşüyor.</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Ye Olde Cheshire Cheese — Fleet Street</span>
-                    <span class="card-badge badge-emerald">Zamanın unuttuğu pub — 1546&#x27;dan beri</span>
-                </div>
-                <p class="card-desc">1666 Büyük Yangını&#x27;ndan sonra yeniden inşa edilmiş London&#x27;ın en eski pub&#x27;larından biri. Koyu ahşap, alçak tavanlar, zeminde testere talaşı. Dickens, Samuel Johnson ve Mark Twain burada içti. Fleet Street&#x27;ten dar bir geçitle bulunuyor; küçük bir tabela ve başka hiçbir şey. London pub&#x27;ının gerçekte ne olduğu bu.</p>
             </div>
             </div>
             

@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Cologne Public Transit & Airport Transfers</h2>
             </div>
             <p class="section-intro">KVB&#x27;s tram (Stadtbahn) and bus network connects all quarters, though most sights are steps from Köln Hbf.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚆</span>
-                        <span class="card-title">Airport S-Bahn (S19 &amp; RB27)</span>
+                        <h3 class="card-title">Airport S-Bahn (S19 &amp; RB27)</h3>
                     </div>
                 </div>
                 <p class="card-desc">Direct trains connect Cologne/Bonn Airport to Köln Hauptbahnhof in only 14 minutes.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚋</span>
-                        <span class="card-title">Stadtbahn (Tram &amp; Subway)</span>
+                        <h3 class="card-title">Stadtbahn (Tram &amp; Subway)</h3>
                     </div>
                 </div>
                 <p class="card-desc">Efficient network spanning underground in the center and scenic overground lines across the Rhine.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">Walking Altstadt</span>
+                        <h3 class="card-title">Walking Altstadt</h3>
                     </div>
                 </div>
                 <p class="card-desc">The Cathedral, Rhine promenade, Chocolate Museum, and Old Town brewpubs are all within a 15-minute walk.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚡</span>
-                        <span class="card-title">Rhine Cable Car (Kölner Seilbahn)</span>
+                        <h3 class="card-title">Rhine Cable Car (Kölner Seilbahn)</h3>
                     </div>
                 </div>
                 <p class="card-desc">Glides high over the River Rhine between the Zoo and Rheinpark with breathtaking cathedral vistas.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🎫</span>
-                        <span class="card-title">KölnCard</span>
+                        <h3 class="card-title">KölnCard</h3>
                     </div>
                 </div>
                 <p class="card-desc">Unlimited 24h or 48h public transit plus up to 50% discounts on museums, Rhine river tours, and city walks.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Where to Stay in Cologne: Best Areas</h2>
             </div>
             <p class="section-intro">From the heart of Altstadt next to the Dom to the hip Belgian Quarter and scenic Rheinauhafen.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Altstadt-Nord &amp; Dom</span>
+                    <h3 class="card-title">Altstadt-Nord &amp; Dom</h3>
                     <span class="card-badge badge-purple">Cathedral Heart</span>
                 </div>
                 <p class="card-desc">Steps from Köln Hbf, the Cathedral, and museum row. Unbeatable convenience for sightseeing.</p>
-                <div class="card-footer-tip">Central • Cathedral • Walkable</div>
+                <div class="card-footer-tip">📍 Central • Cathedral • Walkable</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Belgisches Viertel (Belgian Quarter)</span>
+                    <h3 class="card-title">Belgisches Viertel (Belgian Quarter)</h3>
                     <span class="card-badge badge-purple">Hip &amp; Boutique</span>
                 </div>
                 <p class="card-desc">Cologne&#x27;s trendiest creative neighborhood around Brüsseler Platz, packed with indie boutiques, cafes, and cocktail lounges.</p>
-                <div class="card-footer-tip">Boutiques • Cafes • Nightlife</div>
+                <div class="card-footer-tip">📍 Boutiques • Cafes • Nightlife</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Südstadt</span>
+                    <h3 class="card-title">Südstadt</h3>
                     <span class="card-badge badge-purple">Bohemian &amp; Lively</span>
                 </div>
                 <p class="card-desc">Historic tree-lined avenues with Art Nouveau facades, cozy wine bistros, and authentic student brewpubs around Chlodwigplatz.</p>
-                <div class="card-footer-tip">Authentic • Foodies • Local</div>
+                <div class="card-footer-tip">📍 Authentic • Foodies • Local</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Rheinauhafen</span>
+                    <h3 class="card-title">Rheinauhafen</h3>
                     <span class="card-badge badge-purple">Modern &amp; Architecture</span>
                 </div>
                 <p class="card-desc">Contemporary waterside promenade featuring the striking cantilevered Kranhäuser crane buildings and luxury loft hotels.</p>
-                <div class="card-footer-tip">Design • Rhine Views • Architecture</div>
+                <div class="card-footer-tip">📍 Design • Rhine Views • Architecture</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Deutz</span>
+                    <h3 class="card-title">Deutz</h3>
                     <span class="card-badge badge-purple">Cathedral Skyline Views</span>
                 </div>
                 <p class="card-desc">Across the Rhine river; offers quieter hotels, convention center proximity, and unbeatable panoramic views of the Dom.</p>
-                <div class="card-footer-tip">Skyline Views • Quiet • Connected</div>
+                <div class="card-footer-tip">📍 Skyline Views • Quiet • Connected</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Best Time to Visit Cologne</h2>
             </div>
             <p class="section-intro">The wildest carnival in Europe in February, sunny summer riverbank terraces, and fairytale Christmas markets.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Spring</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Apr – Jun</span>
+                        <h3 class="card-title">Spring</h3>
+                        <span class="season-months">Apr – Jun</span>
                     </div>
                     <span class="card-badge badge-amber">Rhine Terraces &amp; Cherry Blossoms</span>
                 </div>
                 <p class="card-desc">Sunny afternoons return to the Rhine garden promenade, and the cable car glides over blooming green parks.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Summer</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Jul – Aug</span>
+                        <h3 class="card-title">Summer</h3>
+                        <span class="season-months">Jul – Aug</span>
                     </div>
                     <span class="card-badge badge-amber">Kölner Lichter &amp; Open-Air Life</span>
                 </div>
                 <p class="card-desc">The Kölner Lichter music fireworks light up the cathedral towers while hundreds of illuminated boats drift on the water.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Autumn</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Sep – Nov</span>
+                        <h3 class="card-title">Autumn</h3>
+                        <span class="season-months">Sep – Nov</span>
                     </div>
                     <span class="card-badge badge-amber">Carnival Season Kickoff (11.11)</span>
                 </div>
                 <p class="card-desc">On November 11 at 11:11 AM, tens of thousands in flamboyant costumes sing in the Old Town for the official start of Carnival.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Winter</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Nov – Feb</span>
+                        <h3 class="card-title">Winter</h3>
+                        <span class="season-months">Nov – Feb</span>
                     </div>
                     <span class="card-badge badge-amber">Dom Christmas Market &amp; Fastelovend</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍺</span>
-                        <span class="card-title">Fresh Draft Kölsch</span>
+                        <h3 class="card-title">Fresh Draft Kölsch</h3>
                     </div>
                 </div>
                 <p class="card-desc">Served ice-cold in slender 0.2L &#x27;Stange&#x27; glasses from cylindrical trays (Kranz). Crisp, fruity, and delightfully refreshing.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🧀</span>
-                        <span class="card-title">Halve Hahn</span>
+                        <h3 class="card-title">Halve Hahn</h3>
                     </div>
                 </div>
                 <p class="card-desc">Cologne&#x27;s legendary culinary joke: not half a chicken, but a thick slab of aged Dutch Gouda served on a split rye roll (Röggelchen) with sharp mustard and butter.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍎</span>
-                        <span class="card-title">Himmel un Ääd (Heaven &amp; Earth)</span>
+                        <h3 class="card-title">Himmel un Ääd (Heaven &amp; Earth)</h3>
                     </div>
                 </div>
                 <p class="card-desc">Pan-fried crispy black pudding (Flönz) served with sweet stewed apples (&#x27;heaven&#x27;) and buttery potato mash (&#x27;earth&#x27;) topped with caramelized onions.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥩</span>
-                        <span class="card-title">Rheinischer Sauerbraten</span>
+                        <h3 class="card-title">Rheinischer Sauerbraten</h3>
                     </div>
                 </div>
                 <p class="card-desc">Beef pot roast marinated for days in spiced vinegar and wine, stewed tender and enriched with sweet raisin and gingerbread gravy.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥔</span>
-                        <span class="card-title">Reibekuchen (Rievkooche)</span>
+                        <h3 class="card-title">Reibekuchen (Rievkooche)</h3>
                     </div>
                 </div>
                 <p class="card-desc">Crispy golden grated potato pancakes fried in hot oil, served piping hot with chilled sweet applesauce or dark rye bread.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍫</span>
-                        <span class="card-title">Chocolate Museum Fountain</span>
+                        <h3 class="card-title">Chocolate Museum Fountain</h3>
                     </div>
                 </div>
                 <p class="card-desc">Dip fresh waffle wafers into the three-meter-high golden fountain flowing with 200 kg of liquid Lindt warm chocolate at the Imhoff Chocolate Museum.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Panoramic glass triangles, Roman governors&#x27; palaces, and fragrance birthplaces.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">KölnTriangle Observation Deck</span>
-                    <span class="card-badge badge-emerald">Best View</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Best View</span>
                 </div>
+                <h3 class="card-title">KölnTriangle Observation Deck</h3>
                 <p class="card-desc">Take the lift to the 29th floor glass open-air deck in Deutz for the ultimate panorama of the Dom, Rhine, and Hohenzollern Bridge.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Farina 1709 Fragrance House</span>
-                    <span class="card-badge badge-emerald">Fragrance History</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Fragrance History</span>
                 </div>
+                <h3 class="card-title">Farina 1709 Fragrance House</h3>
                 <p class="card-desc">The birthplace of Eau de Cologne. Italian perfumer Giovanni Maria Farina created the world&#x27;s most famous citrus scent here over 300 years ago.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Kranhäuser (Rheinauhafen)</span>
-                    <span class="card-badge badge-emerald">Architecture</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Architecture</span>
                 </div>
+                <h3 class="card-title">Kranhäuser (Rheinauhafen)</h3>
                 <p class="card-desc">Three dramatic 60-meter-high inverted L-shaped buildings cantilevered directly over the Rhine, inspired by historic harbor cranes.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">St. Gereon Romanesque Decagon</span>
-                    <span class="card-badge badge-emerald">Secret Art</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Secret Art</span>
                 </div>
+                <h3 class="card-title">St. Gereon Romanesque Decagon</h3>
                 <p class="card-desc">An architectural marvel: a fourth-century Roman ten-sided oval dome, glowing with modern stained glass and medieval acoustics.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Praetorium Roman Governor&#x27;s Palace</span>
-                    <span class="card-badge badge-emerald">Roman Relic</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Roman Relic</span>
                 </div>
+                <h3 class="card-title">Praetorium Roman Governor&#x27;s Palace</h3>
                 <p class="card-desc">Descend beneath the historic Town Hall to walk along the underground Roman stone foundations and ancient arched sewer systems.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Brüsseler Platz in the Belgian Quarter</span>
-                    <span class="card-badge badge-emerald">Neighborhood Heart</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Neighborhood Heart</span>
                 </div>
+                <h3 class="card-title">Brüsseler Platz in the Belgian Quarter</h3>
                 <p class="card-desc">On warm summer nights, hundreds of locals gather with bottle beers outside the neo-Gothic St. Michael church for spontaneous conversation.</p>
             </div>
             </div>

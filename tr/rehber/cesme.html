@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Çeşme Şehir İçi Ulaşım & Transfer</h2>
             </div>
             <p class="section-intro">İzmir&#x27;den otoyol yarım saatte yarımadaya bağlar; içeride dolmuşlar Çeşme-Alaçatı-Ilıca üçgenini örer, koylar için direksiyon gerekir.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">İzmir&#x27;den geliş</span>
+                        <h3 class="card-title">İzmir&#x27;den geliş</h3>
                     </div>
                 </div>
                 <p class="card-desc">Adnan Menderes havalimanından otoyolla bir saat: havaalanı transferleri ve otobüsler düzenli işler. İzmir&#x27;den Çeşme otogarına kalkan otobüsler günün her saatinde vardır.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚐</span>
-                        <span class="card-title">Dolmuş üçgeni</span>
+                        <h3 class="card-title">Dolmuş üçgeni</h3>
                     </div>
                 </div>
                 <p class="card-desc">Çeşme merkez, Alaçatı ve Ilıca arasında dolmuşlar gün boyu mekik dokur: ucuz ve pratik. Gece dönüşleri sezonda geç saate uzar — yine de son dolmuş saatini sormak Ege adabıdır.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚗</span>
-                        <span class="card-title">Koy avcılığı için araç</span>
+                        <h3 class="card-title">Koy avcılığı için araç</h3>
                     </div>
                 </div>
                 <p class="card-desc">Altınkum, Pırlanta ve Ildırı gibi uçlara dolmuş seyrek gider: koy koy gezmek isteyene kiralık araç ya da scooter gerekir. Yaz hafta sonlarında Alaçatı içinde park sabır işidir — dışarı bırak, yürü.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">⛴️</span>
-                        <span class="card-title">Sakız Adası feribotu</span>
+                        <h3 class="card-title">Sakız Adası feribotu</h3>
                     </div>
                 </div>
                 <p class="card-desc">Çeşme limanından Sakız&#x27;a (Chios) feribot yarım saattir: pasaportunu al, sabah git, akşam dön. Yunan kahvesi, mastika ve Cunda benzeri sokaklar — yarımadanın en kısa &#x27;yurt dışı&#x27; kaçamağı.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚲</span>
-                        <span class="card-title">Bisiklet ve elektrikli scooter</span>
+                        <h3 class="card-title">Bisiklet ve elektrikli scooter</h3>
                     </div>
                 </div>
                 <p class="card-desc">Alaçatı içi ve Ilıca sahil şeridi pedala uygundur: düz, manzaralı ve keyifli. Öğle sıcağı ve akşam rüzgarını hesaba kat — sabah turu her zaman en iyisidir.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Nerede Kalınır? Çeşme Mahalleleri</h2>
             </div>
             <p class="section-intro">Yarımadada seçim üçgenlidir: Alaçatı&#x27;nın taş otelleri, Ilıca&#x27;nın plajı, Çeşme merkezin marinası — ve sakinlik arayana Dalyan.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Alaçatı</span>
+                    <h3 class="card-title">Alaçatı</h3>
                     <span class="card-badge badge-purple">En karakterli</span>
                 </div>
                 <p class="card-desc">Taş sokakların içinde avlulu butik oteller: kahvaltı bahçede, akşam sokak sofralarında. Yaz hafta sonları hareketli ve fiyatlı — atmosferin başkenti burasıdır.</p>
-                <div class="card-footer-tip">Taş oteller • Avlu kahvaltısı • Sokak sofraları</div>
+                <div class="card-footer-tip">📍 Taş oteller • Avlu kahvaltısı • Sokak sofraları</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Ilıca</span>
+                    <h3 class="card-title">Ilıca</h3>
                     <span class="card-badge badge-purple">En plajcı</span>
                 </div>
                 <p class="card-desc">Beyaz kumlu, sığ ve ılık deniziyle yarımadanın plaj klasiği: termal kaynaklar kıyıda kaynar. Aileler ve uzun plaj günü sevenler için birebir — merkeze dolmuşla on dakika.</p>
-                <div class="card-footer-tip">Sığ ılık deniz • Beyaz kum • Termal kaynak</div>
+                <div class="card-footer-tip">📍 Sığ ılık deniz • Beyaz kum • Termal kaynak</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Çeşme merkez</span>
+                    <h3 class="card-title">Çeşme merkez</h3>
                     <span class="card-badge badge-purple">En pratik</span>
                 </div>
                 <p class="card-desc">Kale, marina ve çarşı çevresinde oteller: feribot iskelesi ve otogar el altında. Yarımadayı üs kurarak gezmek isteyene mantıklı merkez.</p>
-                <div class="card-footer-tip">Marina yürüyüşü • Feribota yakın • Çarşı hayatı</div>
+                <div class="card-footer-tip">📍 Marina yürüyüşü • Feribota yakın • Çarşı hayatı</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Dalyan (Çeşme)</span>
+                    <h3 class="card-title">Dalyan (Çeşme)</h3>
                     <span class="card-badge badge-purple">En sakin</span>
                 </div>
                 <p class="card-desc">Balıkçı tekneleri ve kanal boyu balık lokantalarıyla sessiz mahalle: akşamları rıhtım sofraları, gündüzleri sükunet. Kalabalıktan uzak, denize yakın.</p>
-                <div class="card-footer-tip">Balıkçı rıhtımı • Kanal sofraları • Sessiz geceler</div>
+                <div class="card-footer-tip">📍 Balıkçı rıhtımı • Kanal sofraları • Sessiz geceler</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Paşalimanı ve Ayayorgi yönü</span>
+                    <h3 class="card-title">Paşalimanı ve Ayayorgi yönü</h3>
                     <span class="card-badge badge-purple">Koy başı</span>
                 </div>
                 <p class="card-desc">Kuytu koyların üstünde butik oteller ve beach club komşuluğu: gündüz turkuaz, akşam kadeh sesi. Rüzgardan korunaklı — denize sıfır uyanmak isteyene.</p>
-                <div class="card-footer-tip">Kuytu koylar • Beach club yakını • Turkuaz manzara</div>
+                <div class="card-footer-tip">📍 Kuytu koylar • Beach club yakını • Turkuaz manzara</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Çeşme İçin En İyi Ziyaret Zamanı</h2>
             </div>
             <p class="section-intro">Çeşme&#x27;nin takvimi ot festivaliyle açılır, eylül altınıyla kapanır; temmuz-ağustos rüzgarlı ve dolu, kış sakin ve sahicidir.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">İlkbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Nis – Haz</span>
+                        <h3 class="card-title">İlkbahar</h3>
+                        <span class="season-months">Nis – Haz</span>
                     </div>
                     <span class="card-badge badge-amber">Ot Festivali Baharı</span>
                 </div>
                 <p class="card-desc">Nisan otların bayramıdır: Alaçatı Ot Festivali&#x27;nde tezgahlar şevketibostandan arapsaçına yeşile boğulur. Mayıs-haziran deniz ısınır, sokaklar henüz ferah — yarımadanın en zarif penceresi.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Yaz</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Tem – Ağu</span>
+                        <h3 class="card-title">Yaz</h3>
+                        <span class="season-months">Tem – Ağu</span>
                     </div>
                     <span class="card-badge badge-amber">Rüzgar ve Sahne</span>
                 </div>
                 <p class="card-desc">Sörf koyları bayraklarla dolar, beach clublar sahne kurar, İzmir hafta sonu yarımadaya taşınır. Deniz berrak, rüzgar diri, fiyatlar zirvededir — cuma-pazar trafiğini bilerek planla.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Sonbahar</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Eyl – Kas</span>
+                        <h3 class="card-title">Sonbahar</h3>
+                        <span class="season-months">Eyl – Kas</span>
                     </div>
                     <span class="card-badge badge-amber">Eylül Altını</span>
                 </div>
                 <p class="card-desc">Eylül yarımadanın en iyi ayıdır: deniz yaz sıcaklığında, koylar sakin, Alaçatı sofraları rahat. Ekimde bağ bozumu ve sakin plaj günleri sürer — bilenlerin sezonu budur.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Kış</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Ara – Mar</span>
+                        <h3 class="card-title">Kış</h3>
+                        <span class="season-months">Ara – Mar</span>
                     </div>
                     <span class="card-badge badge-amber">Sakin Yarımada</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥪</span>
-                        <span class="card-title">Çeşme kumrusu</span>
+                        <h3 class="card-title">Çeşme kumrusu</h3>
                     </div>
                 </div>
                 <p class="card-desc">Susamlı ekmek, kaşar, sucuk: üçlünün sıcak dengesi. Plaj dönüşü ayaküstü klasik — &#x27;az kaşarlı bol sucuklu&#x27; diyenle &#x27;sade kaşarlı&#x27; diyenin tartışması hiç bitmez, sen ikisini de dene.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🌿</span>
-                        <span class="card-title">Ot mezeleri sofrası</span>
+                        <h3 class="card-title">Ot mezeleri sofrası</h3>
                     </div>
                 </div>
                 <p class="card-desc">Şevketibostan, deniz börülcesi, arapsaçı, cibes: zeytinyağıyla buluşan Ege otları meze dolabının yıldızlarıdır. Mevsim ne verdiyse onu söyle — ot sofrası ezber sevmez.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🐟</span>
-                        <span class="card-title">Dalyan&#x27;da balık</span>
+                        <h3 class="card-title">Dalyan&#x27;da balık</h3>
                     </div>
                 </div>
                 <p class="card-desc">Balıkçı teknelerinin yanaştığı kanal boyunda günün balığı: çipura, levrek, mevsiminde sinarit. Rıhtım masasında gün batımıyla — tezgahtan seç, tartıdan önce fiyatı öğren.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍨</span>
-                        <span class="card-title">Sakızlı her şey</span>
+                        <h3 class="card-title">Sakızlı her şey</h3>
                     </div>
                 </div>
                 <p class="card-desc">Sakızlı muhallebi, sakızlı dondurma, sakızlı kurabiye ve Türk kahvesinin sakızlısı: karşı adanın reçinesi bu kıyının tatlı imzasıdır. Muhallebiyi fırından, dondurmayı akşam gezintisinde al.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🌱</span>
-                        <span class="card-title">Sakız enginarı mevsimi</span>
+                        <h3 class="card-title">Sakız enginarı mevsimi</h3>
                     </div>
                 </div>
                 <p class="card-desc">İlkbaharda yarımada tezgahları enginara döner: zeytinyağlısı, ızgarası, çiğden salatası. Nisan-mayıs penceresinde her menünün başrolüdür — mevsimini kaçırma.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍳</span>
-                        <span class="card-title">Alaçatı kahvaltısı</span>
+                        <h3 class="card-title">Alaçatı kahvaltısı</h3>
                     </div>
                 </div>
                 <p class="card-desc">Taş avluda serpme kahvaltı: köy peynirleri, ot kavurması, sakız reçeli ve sac böreği. Hafta sonu sabahının uzun ritüeli — masa gölgede, çay demli, acele yasak.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Alaçatı&#x27;nın ana sokağını herkes bilir; bu altısı yarımadanın saklı yüzü.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Ildırı (Erythrai)</span>
-                    <span class="card-badge badge-emerald">Antik tiyatrolu sahil köyü</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Antik tiyatrolu sahil köyü</span>
                 </div>
+                <h3 class="card-title">Ildırı (Erythrai)</h3>
                 <p class="card-desc">Yarımadanın kuzey ucunda, antik Erythrai&#x27;nin tepesine kurulu sakin köy: tiyatro kalıntısından ada manzarası, aşağıda balıkçı iskelesi. Kalabalığın hiç uğramadığı, gün batımı sessiz bir klasik.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Germiyan</span>
-                    <span class="card-badge badge-emerald">Rum evli bağ köyü</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Rum evli bağ köyü</span>
                 </div>
+                <h3 class="card-title">Germiyan</h3>
                 <p class="card-desc">Taş evleri ve bağlarıyla iç yarımadanın sakin köyü: hafta sonları köy kahvaltısı ve el emeği pazarıyla canlanır. Alaçatı&#x27;nın yirmi yıl önceki hali — sahici ve telaşsız.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Ayayorgi Koyu</span>
-                    <span class="card-badge badge-emerald">Koylar zinciri</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Koylar zinciri</span>
                 </div>
+                <h3 class="card-title">Ayayorgi Koyu</h3>
                 <p class="card-desc">Çam gölgeli, turkuaz sulu kuytu koy: sabah erken saatte neredeyse özeldir, öğleden sonra beach club ritmine geçer. İki hali de güzeldir — saatini bilerek git.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Altınkum</span>
-                    <span class="card-badge badge-emerald">Karayip yanılsaması</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Karayip yanılsaması</span>
                 </div>
+                <h3 class="card-title">Altınkum</h3>
                 <p class="card-desc">İnce beyaz kum ve şeffaf sığ su: yarımadanın en berrak plajı. Rüzgarlı günde dalgalı, sabah saatinde ayna gibidir — şemsiyeni al, büfeyle yetin, doğallığın tadını çıkar.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Sakız Adası kaçamağı</span>
-                    <span class="card-badge badge-emerald">Yarım saatte Yunanistan</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Yarım saatte Yunanistan</span>
                 </div>
+                <h3 class="card-title">Sakız Adası kaçamağı</h3>
                 <p class="card-desc">Feribotla yarım saatte Chios: mastika köyleri, Cenova dönemi taş desenli Pyrgi evleri ve sakin Rum meyhaneleri. Günübirlik pasaportlu kaçamağın Ege&#x27;deki en kolay hali.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Alaçatı sörf koyu sabahı</span>
-                    <span class="card-badge badge-emerald">Sörfün mutfağı</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Sörfün mutfağı</span>
                 </div>
+                <h3 class="card-title">Alaçatı sörf koyu sabahı</h3>
                 <p class="card-desc">Sabah erken sörf koyuna git: rüzgar yeni uyanırken yelkenler tek tek suya iner, okullar ilk dersi verir. Sörfe niyetin olmasa da kahveni al, iskeleden izle — yarımadanın en dinamik manzarası.</p>
             </div>
             </div>

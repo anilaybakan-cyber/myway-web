@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Saint-Tropez Public Transit & Airport Transfers</h2>
             </div>
             <p class="section-intro">Getting to Saint-Tropez isn&#x27;t easy — no trains, roads are narrow and jammed in summer. The ferry is the most enjoyable option.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">⛴️</span>
-                        <span class="card-title">Ferry — the best option</span>
+                        <h3 class="card-title">Ferry — the best option</h3>
                     </div>
                 </div>
                 <p class="card-desc">Les Bateaux Verts ferry from Sainte-Maxime reaches Saint-Tropez in 25 minutes. Daily sailings April-October. Return approximately €16-18. Trans Côte d&#x27;Azur ferry from Nice runs direct during summer season (June-September) — about 2.5 hours, enjoyable but long. Ferry connections also available from Saint-Raphaël. Book tickets in advance in summer.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚌</span>
-                        <span class="card-title">Bus — cheap but slow</span>
+                        <h3 class="card-title">Bus — cheap but slow</h3>
                     </div>
                 </div>
                 <p class="card-desc">Varlib/ZOU! route 7601 from Saint-Raphaël train station goes to Saint-Tropez. About 1-1.5 hours, €2-3. Can stretch to 2-3 hours in summer traffic. Bus connections also available from Les Arcs-Draguignan train station. Budget-friendly but requires patience.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚗</span>
-                        <span class="card-title">Car — freedom but traffic</span>
+                        <h3 class="card-title">Car — freedom but traffic</h3>
                     </div>
                 </div>
                 <p class="card-desc">Your own car or a hire car is the most flexible option — essential for seeing the surrounding villages. But the N98 road is gridlocked for hours in midsummer. Solution: leave the car at Les Marines de Cogolin or Port Grimaud car parks 3-4km from town and get to the centre by shuttle bus or boat. Parking in town is both expensive and nearly impossible.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚲</span>
-                        <span class="card-title">Bicycle — ideal for Pampelonne</span>
+                        <h3 class="card-title">Bicycle — ideal for Pampelonne</h3>
                     </div>
                 </div>
                 <p class="card-desc">Saint-Tropez centre is small and walkable but Pampelonne beach is 5 kilometres away — a bicycle is the smartest choice. Many hire points in and around town. The cycling path to Pampelonne is partly shaded. Electric bikes are also available — more comfortable for the hilly sections.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">Walking — sufficient within town</span>
+                        <h3 class="card-title">Walking — sufficient within town</h3>
                     </div>
                 </div>
                 <p class="card-desc">Saint-Tropez centre is genuinely small: from the harbour square to Place des Lices is 5 minutes, La Ponche 7 minutes, the Citadelle 15 minutes. The entire historic centre is walkable. The Sentier du Littoral coastal walking trail extends all the way to Pampelonne — about 35km, requires a full day.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Where to Stay in Saint-Tropez: Best Areas</h2>
             </div>
             <p class="section-intro">Saint-Tropez and surroundings — the town itself is expensive; surrounding villages are both more affordable and more authentic.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Saint-Tropez centre</span>
+                    <h3 class="card-title">Saint-Tropez centre</h3>
                     <span class="card-badge badge-purple">Most central</span>
                 </div>
                 <p class="card-desc">The harbour square, Place des Lices and La Ponche all within walking distance. Prices very high in summer — finding a room under €200 is difficult. The right place if you want to be close to the yacht harbour. Early booking essential.</p>
-                <div class="card-footer-tip">Close to the harbour square • Place des Lices • Everything walkable</div>
+                <div class="card-footer-tip">📍 Close to the harbour square • Place des Lices • Everything walkable</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Ramatuelle — hilltop village</span>
+                    <h3 class="card-title">Ramatuelle — hilltop village</h3>
                     <span class="card-badge badge-purple">Most authentic</span>
                 </div>
                 <p class="card-desc">10km south of Saint-Tropez, a medieval village among vineyards and olive groves. 10 minutes to Pampelonne beach by bike or car. Half the price of Saint-Tropez, much quieter. Small restaurants, local market and a Provençal atmosphere in the village itself. Car essential.</p>
-                <div class="card-footer-tip">Close to Pampelonne • Half the price • Provençal village life</div>
+                <div class="card-footer-tip">📍 Close to Pampelonne • Half the price • Provençal village life</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Gassin — panoramic hilltop village</span>
+                    <h3 class="card-title">Gassin — panoramic hilltop village</h3>
                     <span class="card-badge badge-purple">Most scenic</span>
                 </div>
                 <p class="card-desc">A medieval village looking down over the bay. On France&#x27;s &#x27;most beautiful villages&#x27; list. 7km from Saint-Tropez, reached by car. Small but impressive — narrow streets, bay views, a few restaurants.</p>
-                <div class="card-footer-tip">Bay panorama • Most beautiful villages list • Quiet and authentic</div>
+                <div class="card-footer-tip">📍 Bay panorama • Most beautiful villages list • Quiet and authentic</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Sainte-Maxime</span>
+                    <h3 class="card-title">Sainte-Maxime</h3>
                     <span class="card-badge badge-purple">Most practical</span>
                 </div>
                 <p class="card-desc">On the opposite shore of the bay, 25 minutes from Saint-Tropez by ferry. Prices noticeably lower. Has its own beaches, restaurants and shopping street. Take the morning ferry to Saint-Tropez and return in the evening. Ideal base if you&#x27;re making many day trips.</p>
-                <div class="card-footer-tip">25 minutes by ferry • More affordable • Own beaches and restaurants</div>
+                <div class="card-footer-tip">📍 25 minutes by ferry • More affordable • Own beaches and restaurants</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Port Grimaud</span>
+                    <h3 class="card-title">Port Grimaud</h3>
                     <span class="card-badge badge-purple">Most unusual</span>
                 </div>
                 <p class="card-desc">A canal city built in the 1960s — every house has a boat mooring out front. 10 minutes from Saint-Tropez by car or boat connection. Walkable within itself, restaurants along the canals. A good option for escaping the crowds.</p>
-                <div class="card-footer-tip">Canal city architecture • Close to Saint-Tropez • Unusual experience</div>
+                <div class="card-footer-tip">📍 Canal city architecture • Close to Saint-Tropez • Unusual experience</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Best Time to Visit Saint-Tropez</h2>
             </div>
             <p class="section-intro">Saint-Tropez is a completely different place depending on the season — crowded and expensive in midsummer, beautifully different in spring and autumn.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Spring</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Apr – Jun</span>
+                        <h3 class="card-title">Spring</h3>
+                        <span class="season-months">Apr – Jun</span>
                     </div>
                     <span class="card-badge badge-amber">The best time</span>
                 </div>
                 <p class="card-desc">April and early May are Saint-Tropez&#x27;s golden period. Temperatures 18-22°C, no crowds, prices half those of midsummer. Vineyards lush, the bay clear. It starts filling up from early June but still far from the July-August crowds. No restaurant reservations needed, space on the beaches.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Summer</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Jun – Aug</span>
+                        <h3 class="card-title">Summer</h3>
+                        <span class="season-months">Jun – Aug</span>
                     </div>
                     <span class="card-badge badge-amber">Crowded and expensive</span>
                 </div>
                 <p class="card-desc">July and August are Saint-Tropez&#x27;s most intense period. Pampelonne beach is packed, roads gridlocked, hotel prices are staggering. That said, the beach clubs are at their liveliest and evenings are long and glamorous. Very early morning and after 7pm the town gets a little breathing room. June is more manageable; July-August is genuinely very crowded.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Autumn</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Sep – Nov</span>
+                        <h3 class="card-title">Autumn</h3>
+                        <span class="season-months">Sep – Nov</span>
                     </div>
                     <span class="card-badge badge-amber">Second best time</span>
                 </div>
                 <p class="card-desc">September and October see the crowds go, the weather stays warm and the sea remains swimmable. Grape harvest around Ramatuelle and Gassin — vineyards turn golden. No restaurant reservations needed, prices have dropped. From November some venues close but the town itself keeps going.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Winter</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Dec – Feb</span>
+                        <h3 class="card-title">Winter</h3>
+                        <span class="season-months">Dec – Feb</span>
                     </div>
                     <span class="card-badge badge-amber">Quiet and local</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🎂</span>
-                        <span class="card-title">Tarte Tropézienne</span>
+                        <h3 class="card-title">Tarte Tropézienne</h3>
                     </div>
                 </div>
                 <p class="card-desc">Buy it from the original La Tarte Tropézienne shop at Place des Lices. Whole tart €25-35, a slice €5-8. Fresh in the morning. The orange blossom aroma is subtle, the filling creamy. Eating this pastry here is one of Saint-Tropez&#x27;s most local and most accessible rituals.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🐟</span>
-                        <span class="card-title">Fresh fish — at Place aux Herbes</span>
+                        <h3 class="card-title">Fresh fish — at Place aux Herbes</h3>
                     </div>
                 </div>
                 <p class="card-desc">The small fish market at Place aux Herbes runs in the mornings — the Tropézien fishermen&#x27;s daily catch is sold here. If you want fresher and cheaper fish than the tourist restaurants on the harbour front, go to the small bistros around Place aux Herbes. Get there early before it sells out.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥘</span>
-                        <span class="card-title">Ratatouille</span>
+                        <h3 class="card-title">Ratatouille</h3>
                     </div>
                 </div>
                 <p class="card-desc">Courgette, aubergine, tomatoes, peppers, onions and garlic — Provence&#x27;s most pure vegetable dish. Every local restaurant in Saint-Tropez makes it; both as a main dish and alongside meat and fish. In summer, the version made with vegetables from the local market is the finest. Can also be eaten cold in the summer heat.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥩</span>
-                        <span class="card-title">Daube Provençale</span>
+                        <h3 class="card-title">Daube Provençale</h3>
                     </div>
                 </div>
                 <p class="card-desc">Provence&#x27;s beef stew slow-cooked in red wine. Prepared with olive oil, onions, garlic, thyme and bay leaf, simmered slowly for hours. A winter and spring dish — rarely seen on summer menus. Between September and May, findable at small restaurants around La Ponche.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍷</span>
-                        <span class="card-title">Côtes de Provence rosé</span>
+                        <h3 class="card-title">Côtes de Provence rosé</h3>
                     </div>
                 </div>
                 <p class="card-desc">From the vineyards surrounding Saint-Tropez, France&#x27;s most famous rosé. Pale in colour, light in aroma, dry in character — Provence rosé is exported around the world. But the best is drunk here. A glass at cafés on Place des Lices or the bars near the harbour: €6-10.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🧅</span>
-                        <span class="card-title">Socca and pissaladière — at Place des Lices market</span>
+                        <h3 class="card-title">Socca and pissaladière — at Place des Lices market</h3>
                     </div>
                 </div>
                 <p class="card-desc">At the Tuesday and Thursday morning market, local stalls sell chickpea flour pancake (socca) and onion tart slices (pissaladière). €2-4, the best morning snack. Try both as you browse the market stalls — the cheapest and most delicious way to have a Provençal breakfast.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Saint-Tropez&#x27;s finest corners are usually a few minutes from the harbour square or in the surrounding villages.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">La Ponche — the old fishing quarter</span>
-                    <span class="card-badge badge-emerald">Brigitte Bardot&#x27;s Saint-Tropez — La Ponche neighbourhood</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Brigitte Bardot&#x27;s Saint-Tropez — La Ponche neighbourhood</span>
                 </div>
+                <h3 class="card-title">La Ponche — the old fishing quarter</h3>
                 <p class="card-desc">Just behind the harbour square, a few steps in. Narrow stone streets, colourfully painted windows, old fishermen&#x27;s houses. Bardot filmed And God Created Woman here in 1956 and introduced Saint-Tropez to the world. It still carries the spirit of that film. In the early morning hours there&#x27;s almost no one here. Small restaurants and cafés exist but most open in the afternoon.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Gassin — medieval village overlooking the bay</span>
-                    <span class="card-badge badge-emerald">From France&#x27;s most beautiful villages list — Gassin</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ From France&#x27;s most beautiful villages list — Gassin</span>
                 </div>
+                <h3 class="card-title">Gassin — medieval village overlooking the bay</h3>
                 <p class="card-desc">7km from Saint-Tropez, 15 minutes by car. On France&#x27;s &#x27;Les Plus Beaux Villages&#x27; list. The village with the best panoramic view of the bay — nothing obstructing it, just sea. Small church, narrow streets, a few restaurants. Coming here for dinner means escaping the crowds below and gaining the view.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Citadelle de Saint-Tropez</span>
-                    <span class="card-badge badge-emerald">The Citadelle and the town&#x27;s finest view — affordable</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ The Citadelle and the town&#x27;s finest view — affordable</span>
                 </div>
+                <h3 class="card-title">Citadelle de Saint-Tropez</h3>
                 <p class="card-desc">A 17th-century castle on the hill east of town. Contains a maritime history museum inside. But the real reason: the panoramic view of Saint-Tropez bay from the moat and ramparts around the castle. Ticketed but reasonably priced. Quietest in the early morning hours. Standing here looking out at the harbour, Pampelonne and the distant Estérel mountains, you understand why the town became so beloved.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Sentier du Littoral — coastal path</span>
-                    <span class="card-badge badge-emerald">Sentier du Littoral — coastal walking trail</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Sentier du Littoral — coastal walking trail</span>
                 </div>
+                <h3 class="card-title">Sentier du Littoral — coastal path</h3>
                 <p class="card-desc">A coastal walking trail from Saint-Tropez extending to Pampelonne and Ramatuelle. 35km in total but can be done in sections. Rocky shores, small coves, pine forests and Mediterranean views. Hot in July-August; spring and autumn are ideal. Walking it, you find your own secret cove — an experience far beyond Saint-Tropez&#x27;s beach club facade.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Musée de l&#x27;Annonciade</span>
-                    <span class="card-badge badge-emerald">Not a museum — a real Provençal experience</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Not a museum — a real Provençal experience</span>
                 </div>
+                <h3 class="card-title">Musée de l&#x27;Annonciade</h3>
                 <p class="card-desc">Five minutes from the harbour square, in a former chapel. Signac, Matisse, Derain, Bonnard — Post-Impressionist and Fauvist painters lived and worked in Saint-Tropez at the start of the 20th century. This museum holds their works. If it&#x27;s very hot outside or the harbour is too crowded, stepping into this museum means both cooling down and seeing genuinely fine art. Little-known but of real quality.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Port Grimaud</span>
-                    <span class="card-badge badge-emerald">Port Grimaud — Provençal village on canals</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Port Grimaud — Provençal village on canals</span>
                 </div>
+                <h3 class="card-title">Port Grimaud</h3>
                 <p class="card-desc">8km from Saint-Tropez, a canal city built from scratch in the 1960s by architect François Spoerry. Venice-like but Provençal — every house has a boat mooring out front, colourfully painted facades. Boat tours are ticketed; the outer area is free to explore. Perfect for stopping before or after the Sainte-Maxime ferry.</p>
             </div>
             </div>

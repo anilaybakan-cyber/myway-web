@@ -218,10 +218,11 @@
         .pron { color: var(--primary-light); font-weight: normal; font-size: 13px; }
 
         /* Facts Grid */
-        .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+        .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
         .fact-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md); padding: 18px; display: flex; gap: 14px; align-items: flex-start;
+            height: 100%;
         }
         .fact-icon { font-size: 24px; flex-shrink: 0; }
         .fact-label { font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; }
@@ -242,31 +243,151 @@
         .rule-content h4 { font-size: 16px; margin-bottom: 4px; }
         .rule-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        /* Multi-Cards Grid (Transport, Stay, Eat, Gems, Seasons) */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
-        .feature-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md); padding: 22px; position: relative; transition: border-color 0.2s, background 0.2s;
-            display: flex; flex-direction: column; justify-content: space-between;
+        /* Multi-Cards Grids (Eat, Gems, Transport, Stay, Seasons) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
         }
-        .feature-card:hover { border-color: var(--border-highlight); background: var(--bg-card-hover); }
-        .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; }
-        .card-title-group { display: flex; align-items: center; gap: 10px; }
-        .card-icon { font-size: 20px; }
-        .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
+        .cards-grid-5 {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .cards-grid-5 > .feature-card {
+            grid-column: span 2;
+        }
+        .cards-grid-5 > .feature-card:nth-child(4),
+        .cards-grid-5 > .feature-card:nth-child(5) {
+            grid-column: span 3;
+        }
+
+        /* 4-Item Grid Layout (2x2) */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        /* Seasons Grid: 4 seasons side-by-side */
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .season-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .season-months {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .feature-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+        }
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+        }
         .card-badge {
-            font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 99px; white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
         }
         .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
         .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
         .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
         .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         
-        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+        /* Hidden Gems Eyebrow Pill Layout */
+        .gem-badge-wrap {
+            margin-bottom: 12px;
+        }
+        .gem-card .card-badge {
+            white-space: normal;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .gem-card .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
         .card-footer-tip {
-            margin-top: auto; padding: 8px 12px; background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px; font-size: 12px; color: #cbd5e1; border-left: 2px solid var(--primary-light);
+            margin-top: auto;
+            padding: 9px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #cbd5e1;
+            border-left: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.4;
         }
 
         /* Traps List */
@@ -339,7 +460,7 @@
 
 
         /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
         .phrase-card {
             background: var(--bg-card); border: 1px solid var(--border-subtle);
             border-radius: var(--radius-sm); padding: 14px 18px;
@@ -367,11 +488,24 @@
             padding-top: 24px; max-width: 1080px; margin: 0 auto;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1040px) {
+            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
+            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 960px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid-5 > .feature-card { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 680px) {
             .navbar { height: 64px; }
             .nav-links {
                 display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -381,7 +515,18 @@
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .guide-hero { min-height: 420px; padding-top: 100px; }
+            
             .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid-5 { grid-template-columns: 1fr; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
+            
+            .cards-grid-4 { grid-template-columns: 1fr; }
+            .seasons-grid { grid-template-columns: 1fr; }
+            .facts-grid { grid-template-columns: 1fr; }
+            .phrases-grid { grid-template-columns: 1fr; }
+            
             .footer-grid { grid-template-columns: 1fr; }
             .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
         }
@@ -545,12 +690,12 @@
                 <h2 class="section-title">Cairo Public Transit & Airport Transfers</h2>
             </div>
             <p class="section-intro">Cairo traffic is legendary; the antidotes are ride apps, the metro and the Nile itself — walk the short distances, choose the long ones wisely.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">✈️</span>
-                        <span class="card-title">Arriving from the airport</span>
+                        <h3 class="card-title">Arriving from the airport</h3>
                     </div>
                 </div>
                 <p class="card-desc">Cairo Airport is 45–60 minutes from the center depending on traffic: the cleanest solution is Uber/Careem or a hotel transfer. Smile past the &#x27;taxi my friend&#x27; chorus at the door — the app price is a third of theirs.</p>
@@ -560,7 +705,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">📱</span>
-                        <span class="card-title">Uber and Careem</span>
+                        <h3 class="card-title">Uber and Careem</h3>
                     </div>
                 </div>
                 <p class="card-desc">The city&#x27;s real public transport: cheap, ubiquitous, haggle-free. Take the time estimates seriously in traffic, but leave the route to the driver — a Cairo driver knows alleys the navigation has never heard of.</p>
@@ -570,7 +715,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚇</span>
-                        <span class="card-title">The metro</span>
+                        <h3 class="card-title">The metro</h3>
                     </div>
                 </div>
                 <p class="card-desc">Three lines leap over the traffic: key stops like Sadat (Tahrir) and Mar Girgis (Coptic Cairo) are gold for visitors too. There are women-only cars — a comfortable option for women travelers at rush hour.</p>
@@ -580,7 +725,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">⛵</span>
-                        <span class="card-title">A felucca on the Nile</span>
+                        <h3 class="card-title">A felucca on the Nile</h3>
                     </div>
                 </div>
                 <p class="card-desc">An hour on the Nile under sail: no motor, no horns, just canvas in the wind. Hire before sunset and settle the price before boarding — the most graceful revenge available on the city&#x27;s noise.</p>
@@ -590,7 +735,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🚶</span>
-                        <span class="card-title">Walking within districts</span>
+                        <h3 class="card-title">Walking within districts</h3>
                     </div>
                 </div>
                 <p class="card-desc">Cairo as a whole can&#x27;t be walked, but its districts can: El-Muizz Street, the lanes of Zamalek, the courtyards of Coptic Cairo. Crossing the street is an art form — sidle up to a local and cross in their slipstream.</p>
@@ -613,50 +758,50 @@
                 <h2 class="section-title">Where to Stay in Cairo: Best Areas</h2>
             </div>
             <p class="section-intro">In Cairo choosing a district means choosing your comfort level: the green of the Nile island, the loud grandeur of downtown, or Giza with a pyramid view.</p>
-            <div class="cards-grid">
+            <div class="cards-grid-5">
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Zamalek</span>
+                    <h3 class="card-title">Zamalek</h3>
                     <span class="card-badge badge-purple">Most comfortable</span>
                 </div>
                 <p class="card-desc">The island district in the middle of the Nile: tree-lined streets, embassies, cafes and galleries. Cairo&#x27;s intensity turned down one notch — the softest landing for a first visit.</p>
-                <div class="card-footer-tip">Island calm • Cafes and galleries • Nile-side walks</div>
+                <div class="card-footer-tip">📍 Island calm • Cafes and galleries • Nile-side walks</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Downtown (Wust el-Balad)</span>
+                    <h3 class="card-title">Downtown (Wust el-Balad)</h3>
                     <span class="card-badge badge-purple">The city&#x27;s heart</span>
                 </div>
                 <p class="card-desc">Belle époque boulevards within walking distance of Tahrir and the museum: loud, exhausting, unforgettable. Historic coffeehouses and nightlife at the doorstep — for those who want Cairo unfiltered.</p>
-                <div class="card-footer-tip">Near the museum • Historic coffeehouses • Cairo unfiltered</div>
+                <div class="card-footer-tip">📍 Near the museum • Historic coffeehouses • Cairo unfiltered</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Garden City</span>
+                    <h3 class="card-title">Garden City</h3>
                     <span class="card-badge badge-purple">Quiet center</span>
                 </div>
                 <p class="card-desc">The old diplomatic quarter of curving streets just south of downtown: near the center but one street removed from the horn symphony. The Nile-side hotels line this strip too.</p>
-                <div class="card-footer-tip">Curving quiet streets • Nile hotels • Beside downtown</div>
+                <div class="card-footer-tip">📍 Curving quiet streets • Nile hotels • Beside downtown</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Giza — pyramid view</span>
+                    <h3 class="card-title">Giza — pyramid view</h3>
                     <span class="card-badge badge-purple">View side</span>
                 </div>
                 <p class="card-desc">Hotels with pyramid-view terraces: open the curtains and Khufu greets you. Far from the center — but if your program leans on the pyramids and Saqqara, a legendary choice for a night or two.</p>
-                <div class="card-footer-tip">Khufu at the window • Early-entry advantage • Terrace breakfasts</div>
+                <div class="card-footer-tip">📍 Khufu at the window • Early-entry advantage • Terrace breakfasts</div>
             </div>
             
             <div class="feature-card">
                 <div class="card-header">
-                    <span class="card-title">Maadi</span>
+                    <h3 class="card-title">Maadi</h3>
                     <span class="card-badge badge-purple">Green and calm</span>
                 </div>
                 <p class="card-desc">The leafy southern district beloved of long-term expats: cafes, Nile walks, a metro link. For staying in Cairo as if you lived there — the center is twenty minutes by metro.</p>
-                <div class="card-footer-tip">Leafy streets • On the metro • Long-stay friendly</div>
+                <div class="card-footer-tip">📍 Leafy streets • On the metro • Long-stay friendly</div>
             </div>
             </div>
         </section>
@@ -671,45 +816,45 @@
                 <h2 class="section-title">Best Time to Visit Cairo</h2>
             </div>
             <p class="section-intro">Cairo&#x27;s calendar is a negotiation with the desert sun: October to April is the golden window; summer is a city of early mornings and late evenings.</p>
-            <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="seasons-grid">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Spring</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Mar – May</span>
+                        <h3 class="card-title">Spring</h3>
+                        <span class="season-months">Mar – May</span>
                     </div>
                     <span class="card-badge badge-amber">Desert Spring</span>
                 </div>
                 <p class="card-desc">March and April bring mild days and cool nights: a comfortable season for the pyramids and open-air plans. The sand wind called khamsin occasionally yellows the sky — that day is a museum day, maalesh.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Summer</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Jun – Sep</span>
+                        <h3 class="card-title">Summer</h3>
+                        <span class="season-months">Jun – Sep</span>
                     </div>
                     <span class="card-badge badge-amber">Bargaining with the Heat</span>
                 </div>
                 <p class="card-desc">Days reach 35–40°C: the program splits into 07:00–11:00 and after 17:00. In exchange, hotels get cheaper and Cairo nights return to their true character — at midnight the city is queueing for ice cream.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Autumn</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Oct – Nov</span>
+                        <h3 class="card-title">Autumn</h3>
+                        <span class="season-months">Oct – Nov</span>
                     </div>
                     <span class="card-badge badge-amber">The Golden Window Opens</span>
                 </div>
                 <p class="card-desc">With October the heat relents: pyramid mornings are cool and Nile evenings silken. High season begins, but December&#x27;s crowds are still far — this is Cairo&#x27;s most balanced touring window.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
+            <div class="feature-card season-card">
+                <div class="card-header season-header">
                     <div>
-                        <span class="card-title">Winter</span>
-                        <span style="display:block; font-size:12px; color:var(--text-muted);">Dec – Feb</span>
+                        <h3 class="card-title">Winter</h3>
+                        <span class="season-months">Dec – Feb</span>
                     </div>
                     <span class="card-badge badge-amber">The Crown of High Season</span>
                 </div>
@@ -732,7 +877,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍝</span>
-                        <span class="card-title">Koshary</span>
+                        <h3 class="card-title">Koshary</h3>
                     </div>
                 </div>
                 <p class="card-desc">Rice, pasta, lentils, chickpeas, fried onions and spiced tomato sauce in one bowl: Egypt&#x27;s national fast food. Served at the counter to a percussion of spoons — top with garlic vinegar (dakka) and hot sauce, to the limit of your courage.</p>
@@ -743,7 +888,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🧆</span>
-                        <span class="card-title">Ful and ta&#x27;meya breakfast</span>
+                        <h3 class="card-title">Ful and ta&#x27;meya breakfast</h3>
                     </div>
                 </div>
                 <p class="card-desc">Ful, the slow-stewed fava mash, and ta&#x27;meya, Egypt&#x27;s green-hearted falafel made from fava beans: rolled into baladi bread, crowned with pickles. Hot off the street cart in the morning — this is how Cairo starts its day.</p>
@@ -754,7 +899,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥬</span>
-                        <span class="card-title">Molokhia</span>
+                        <h3 class="card-title">Molokhia</h3>
                     </div>
                 </div>
                 <p class="card-desc">A garlicky, coriander-scented soup-sauce of finely chopped jute leaves: with chicken or rabbit, over rice. The texture plays tricks on newcomers, the flavor becomes an addiction — try it at a home-cooking eatery.</p>
@@ -765,7 +910,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍢</span>
-                        <span class="card-title">The grill and mahshi table</span>
+                        <h3 class="card-title">The grill and mahshi table</h3>
                     </div>
                 </div>
                 <p class="card-desc">Kofta, chicken skewers and charcoal meat; alongside, rice-stuffed mahshi vegetables and tahini. The kebab table is laid with an army of salads and pickles — the baladi bread keeps arriving hot.</p>
@@ -776,7 +921,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🥧</span>
-                        <span class="card-title">Feteer</span>
+                        <h3 class="card-title">Feteer</h3>
                     </div>
                 </div>
                 <p class="card-desc">Egypt&#x27;s layered butter pastry: savory with cheese or meat, sweet with honey and cream. The baker spinning the dough in the air is half the show — order it hot from the stone oven.</p>
@@ -787,7 +932,7 @@
                 <div class="card-header">
                     <div class="card-title-group">
                         <span class="card-icon">🍮</span>
-                        <span class="card-title">Om Ali and the juice stand</span>
+                        <h3 class="card-title">Om Ali and the juice stand</h3>
                     </div>
                 </div>
                 <p class="card-desc">Om Ali, the baked bread pudding with milk, nuts and raisins, is eaten hot; alongside, a street glass of fresh-pressed sugarcane juice (asab). A sweet craving never goes unanswered in Cairo.</p>
@@ -812,51 +957,51 @@
             </div>
             <p class="section-intro">Everyone sees the pyramids and the great museum; these six are the hidden doors into Cairo&#x27;s layers.</p>
             <div class="cards-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Al-Azhar Park</span>
-                    <span class="card-badge badge-emerald">Green terrace above the city</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Green terrace above the city</span>
                 </div>
+                <h3 class="card-title">Al-Azhar Park</h3>
                 <p class="card-desc">A park reclaimed from an old rubbish hill, facing historic Cairo&#x27;s thousand-minaret skyline: at sunset the Muhammad Ali Mosque turns to gold. Sit in the tea garden and listen to the call-to-prayer symphony from above — the city&#x27;s most peaceful hour.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">El-Muizz Street by night</span>
-                    <span class="card-badge badge-emerald">Thousand-year open-air museum</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Thousand-year open-air museum</span>
                 </div>
+                <h3 class="card-title">El-Muizz Street by night</h3>
                 <p class="card-desc">The main street of Fatimid Cairo opens differently under evening lights: madrasas, sabils and caravanserais glow honey-colored. The crowds thin and the stonework takes the stage — even if you saw it by day, return at night.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Bab Zuweila</span>
-                    <span class="card-badge badge-emerald">Reading the city from a minaret</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Reading the city from a minaret</span>
                 </div>
+                <h3 class="card-title">Bab Zuweila</h3>
                 <p class="card-desc">You can climb the minarets of the Fatimid walls&#x27; southern gate: the rooftops, laundry lines and minaret forest of historic Cairo lie at your feet. Modest entrance, generous view — and the tentmakers&#x27; bazaar is right at the gate.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Coptic Cairo (Mar Girgis)</span>
-                    <span class="card-badge badge-emerald">Courtyards of Christian Cairo</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Courtyards of Christian Cairo</span>
                 </div>
+                <h3 class="card-title">Coptic Cairo (Mar Girgis)</h3>
                 <p class="card-desc">The Hanging Church, the crypt of St. Sergius and the Ben Ezra Synagogue in one labyrinth of courtyards: an island of silence built into Roman towers. Reached by metro — Cairo&#x27;s calmest half day is here.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Tanoura at Wekalet El Ghouri</span>
-                    <span class="card-badge badge-emerald">The whirling dervishes&#x27; stage</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ The whirling dervishes&#x27; stage</span>
                 </div>
+                <h3 class="card-title">Tanoura at Wekalet El Ghouri</h3>
                 <p class="card-desc">On set evenings, the courtyard of a Mameluke caravanserai hosts the tanoura (whirling) performance: rainbow skirts spin for hours and the rhythm becomes a trance. The ticket is modest, the atmosphere spellbinding — go early, the courtyard is small.</p>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <span class="card-title">Manial Palace</span>
-                    <span class="card-badge badge-emerald">Palace garden on a Nile island</span>
+            <div class="feature-card gem-card">
+                <div class="gem-badge-wrap">
+                    <span class="card-badge badge-emerald">✨ Palace garden on a Nile island</span>
                 </div>
+                <h3 class="card-title">Manial Palace</h3>
                 <p class="card-desc">A prince&#x27;s palace on Roda Island: Ottoman, Moorish and Art Nouveau styles under one roof, wrapped in a tropical garden. Skipped by the crowds, this mansion is a quiet window onto the last era of Cairo&#x27;s aristocracy.</p>
             </div>
             </div>
