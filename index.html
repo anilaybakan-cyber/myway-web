@@ -11,12 +11,16 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://mywaytravelapp.com">
     <meta property="og:image" content="https://mywaytravelapp.com/images/cities/barcelona.jpg">
-    <link rel="canonical" href="https://mywaytravelapp.com">
+    <link rel="canonical" href="https://mywaytravelapp.com/">
     
-    <link rel="alternate" hreflang="en" href="https://mywaytravelapp.com/">
+            <link rel="alternate" hreflang="en" href="https://mywaytravelapp.com/">
     <link rel="alternate" hreflang="tr" href="https://mywaytravelapp.com/tr/">
-
-    <link rel="icon" type="image/png" href="images/app_icon.png">
+    <link rel="alternate" hreflang="it" href="https://mywaytravelapp.com/it/">
+    <link rel="alternate" hreflang="es" href="https://mywaytravelapp.com/es/">
+    <link rel="alternate" hreflang="de" href="https://mywaytravelapp.com/de/">
+    <link rel="alternate" hreflang="fr" href="https://mywaytravelapp.com/fr/">
+    <link rel="alternate" hreflang="x-default" href="https://mywaytravelapp.com/">
+<link rel="icon" type="image/png" href="images/app_icon.png">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
@@ -1163,7 +1167,11 @@
                     </button>
                     <div class="lang-dropdown-menu">
                         <a href="/" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item active">🇬🇧 English</a>
-                        <a href="/tr/" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item ">🇹🇷 Türkçe</a>
+                        <a href="/tr/" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item">🇹🇷 Türkçe</a>
+                        <a href="/it/" onclick="localStorage.setItem('myway_user_lang', 'it')" class="lang-dropdown-item">🇮🇹 Italiano</a>
+                        <a href="/es/" onclick="localStorage.setItem('myway_user_lang', 'es')" class="lang-dropdown-item">🇪🇸 Español</a>
+                        <a href="/de/" onclick="localStorage.setItem('myway_user_lang', 'de')" class="lang-dropdown-item">🇩🇪 Deutsch</a>
+                        <a href="/fr/" onclick="localStorage.setItem('myway_user_lang', 'fr')" class="lang-dropdown-item">🇫🇷 Français</a>
                     </div>
                 </div>
 
@@ -1841,7 +1849,7 @@
 
         // Fetch routes data with fallback
         fetch('/data/homepage_routes_en.json')
-            .catch(function() { return fetch('data/homepage_routes_en.json'); })
+            .catch(function() { return fetch('/data/homepage_routes_en.json'); })
             .then(function(res) { return res.json(); })
             .then(function(data) {
                 allRoutesData = data;

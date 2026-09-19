@@ -1,111 +1,355 @@
 <!DOCTYPE html>
 <html lang="tr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gizlilik Politikası - MyWay Seyahat Uygulaması</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Gizlilik Politikası - MyWay Gezi Rehberi</title>
+    <meta name="description" content="MyWay'in kişisel verilerinizi nasıl koruduğunu ve gizliliğinize nasıl saygı duyduğunu öğrenin.">
+    
+    <link rel="canonical" href="https://mywaytravelapp.com/privacy-tr.html">
+    <link rel="alternate" hreflang="en" href="https://mywaytravelapp.com/privacy.html">
+    <link rel="alternate" hreflang="tr" href="https://mywaytravelapp.com/privacy-tr.html">
+    <link rel="alternate" hreflang="it" href="https://mywaytravelapp.com/it/privacy.html">
+    <link rel="alternate" hreflang="es" href="https://mywaytravelapp.com/es/privacy.html">
+    <link rel="alternate" hreflang="de" href="https://mywaytravelapp.com/de/privacy.html">
+    <link rel="alternate" hreflang="fr" href="https://mywaytravelapp.com/fr/privacy.html">
+    <link rel="alternate" hreflang="x-default" href="https://mywaytravelapp.com/privacy.html">
+
+    <!-- Google Tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['Outfit', 'sans-serif'] },
-                    colors: { bg: '#252131', card: '#1C1C26', primary: '#8C88F5' }
-                }
-            }
-        }
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17973398305');
     </script>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
+         crossorigin="anonymous"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <link rel="icon" type="image/png" href="images/app_icon.png">
+
     <style>
-        body {
-            background-color: #252131;
-            color: #ffffff;
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        :root {
+            --primary: #7B6EF6;
+            --primary-light: #9D93FF;
+            --primary-dark: #5B4FD6;
+            --accent: #EC4899;
+            --bg-dark: #0F0B1A;
+            --bg-section: #130F22;
+            --bg-card: rgba(255, 255, 255, 0.04);
+            --text-primary: #FFFFFF;
+            --text-secondary: #9CA3AF;
+            --text-muted: #6B7280;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --radius-sm: 12px;
+            --shadow-glow: 0 0 80px rgba(123, 110, 246, 0.15);
         }
+        
+        body {
+            background-color: var(--bg-dark); color: var(--text-primary);
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7; overflow-x: hidden;
+        }
+        
+        .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+        
+        /* Navbar */
+        .navbar {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(15, 11, 26, 0.88); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle); height: 72px; display: flex; align-items: center;
+        }
+        .navbar-inner {
+            max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .nav-brand {
+            display: flex; align-items: center; gap: 12px; text-decoration: none;
+            color: #fff; font-weight: 700; font-size: 20px;
+        }
+        .nav-brand img { border-radius: 10px; }
+        .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+        .nav-links a {
+            color: var(--text-secondary); text-decoration: none; font-size: 14px;
+            font-weight: 500; transition: color 0.2s;
+        }
+        .nav-links a:hover, .nav-links a.active { color: #fff; }
+        .nav-actions { display: flex; align-items: center; gap: 14px; }
+        
+        /* Globe Language Dropdown */
+        .lang-dropdown-wrapper { position: relative; }
+        .lang-dropdown-btn {
+            display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 100px;
+            background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s ease;
+            font-family: inherit;
+        }
+        .lang-dropdown-btn:hover { background: rgba(255, 255, 255, 0.15); border-color: var(--primary); }
+        .lang-globe-icon { width: 15px; height: 15px; fill: currentColor; }
+        .lang-dropdown-menu {
+            display: none; position: absolute; top: calc(100% + 8px); right: 0;
+            background: #19142B; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 14px;
+            padding: 6px; min-width: 140px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); z-index: 1001;
+        }
+        .lang-dropdown-wrapper:hover .lang-dropdown-menu,
+        .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
+            display: flex; flex-direction: column; gap: 2px;
+        }
+        .lang-dropdown-item {
+            display: flex; align-items: center; padding: 8px 12px; font-size: 13px; font-weight: 600;
+            color: #CBD5E1; text-decoration: none; border-radius: 8px; transition: background 0.2s, color 0.2s;
+            white-space: nowrap;
+        }
+        .lang-dropdown-item:hover { background: rgba(123, 110, 246, 0.2); color: white; }
+        .lang-dropdown-item.active { background: var(--primary); color: white; }
+
+        .nav-cta {
+            background: var(--primary); color: #fff !important; padding: 8px 20px;
+            border-radius: 100px; font-size: 13px; font-weight: 600; text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(123, 110, 246, 0.4); }
+        .nav-toggle { display: none; background: none; border: none; color: #fff; cursor: pointer; padding: 8px; }
+
+        /* Hero */
+        .page-hero {
+            padding: 140px 24px 60px; text-align: center; position: relative;
+        }
+        .page-hero-icon {
+            width: 72px; height: 72px; border-radius: 20px;
+            background: linear-gradient(135deg, rgba(123, 110, 246, 0.2), rgba(236, 72, 153, 0.15));
+            border: 1px solid rgba(157, 147, 255, 0.3); display: flex; align-items: center;
+            justify-content: center; font-size: 32px; margin: 0 auto 24px;
+        }
+        .page-hero h1 { font-size: clamp(32px, 6vw, 48px); font-weight: 800; letter-spacing: -1px; margin-bottom: 16px; }
+        .page-hero p { font-size: 18px; color: var(--text-secondary); max-width: 680px; margin: 0 auto; line-height: 1.6; }
+
+        /* Content Sections */
+        .content-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg); padding: 40px; margin-bottom: 32px;
+            backdrop-filter: blur(10px);
+        }
+        .content-card h2 {
+            font-size: 24px; font-weight: 700; color: #fff; margin-bottom: 16px;
+            display: flex; align-items: center; gap: 12px;
+        }
+        .content-card p {
+            color: var(--text-secondary); font-size: 16px; margin-bottom: 16px;
+        }
+        .content-card p:last-child { margin-bottom: 0; }
+        
+        .grid-2 {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 24px;
+        }
+        .stat-box {
+            background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md); padding: 24px; text-align: center;
+        }
+        .stat-box .num {
+            font-size: 36px; font-weight: 800; color: var(--primary-light); margin-bottom: 6px;
+        }
+        .stat-box .lbl {
+            font-size: 14px; color: var(--text-muted); font-weight: 500;
+        }
+
+        /* Support / FAQ specific */
+        .contact-box {
+            text-align: center; padding: 40px 24px;
+        }
+        .email-pill {
+            display: inline-block; background: rgba(123, 110, 246, 0.15); border: 1px solid rgba(157, 147, 255, 0.4);
+            padding: 16px 32px; border-radius: 100px; color: var(--primary-light);
+            font-size: 20px; font-weight: 700; text-decoration: none; margin: 20px 0 12px;
+            transition: all 0.2s ease;
+        }
+        .email-pill:hover {
+            background: var(--primary); color: #fff; transform: scale(1.03);
+            box-shadow: 0 8px 30px rgba(123, 110, 246, 0.4);
+        }
+
+        .faq-item {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md); padding: 24px; margin-bottom: 16px;
+        }
+        .faq-item h3 {
+            font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 8px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .faq-item p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+        /* Legal specific */
+        .legal-content h3 { font-size: 18px; color: #fff; margin: 24px 0 8px; }
+        .legal-content ul { list-style: disc; padding-left: 24px; color: var(--text-secondary); margin-bottom: 16px; }
+        .legal-content li { margin-bottom: 6px; }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--border-subtle); padding: 60px 0 40px;
+            margin-top: 60px; background: #0B0813;
+        }
+        .footer-grid {
+            display: grid; grid-template-columns: 2fr repeat(3, 1fr); gap: 40px; margin-bottom: 40px;
+        }
+        .footer-brand h4 { font-size: 18px; margin-bottom: 12px; color: #fff; }
+        .footer-brand p { font-size: 14px; color: var(--text-secondary); max-width: 320px; line-height: 1.6; }
+        .footer-col h5 { font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #fff; margin-bottom: 16px; }
+        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+        .footer-col a { color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+        .footer-col a:hover { color: #fff; }
+        .footer-bottom {
+            padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center; font-size: 13px; color: var(--text-muted);
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .nav-toggle { display: block; }
+            .page-hero { padding: 110px 20px 40px; }
+            .content-card { padding: 24px; }
+        }
+
     </style>
 </head>
+<body>
 
-<body class="antialiased p-6 md:p-12 max-w-4xl mx-auto">
-    <div class="mb-12">
-        <a href="/tr/" class="text-primary hover:text-white transition">&larr; Ana Sayfaya Dön</a>
-    </div>
-
-    <h1 class="text-3xl md:text-4xl font-bold mb-8">Gizlilik Politikası</h1>
-
-    <div class="prose prose-invert prose-lg max-w-none text-gray-400 space-y-6 break-words">
-        <p><strong>Son güncelleme: Ocak 2026</strong></p>
-
-        <p>MyWay Seyahat Uygulaması ("biz", "bizim" veya "bize"), gizliliğinizi korumayı taahhüt eder. Bu Gizlilik
-            Politikası, mobil uygulamamızı kullandığınızda bilgilerin toplanması, kullanılması ve ifşa edilmesine
-            ilişkin uygulamalarımızı açıklar.</p>
-
-        <div>
-            <h3 class="text-white text-xl font-bold mb-2">1. Bilgi Toplama ve Kullanım</h3>
-            <p>Gizliliğinize öncelik veriyoruz ve açık rızanız olmadan sizi doğrudan tanımlayabilecek herhangi bir
-                kişisel bilgiyi (adınız, e-posta adresiniz veya telefon numaranız gibi) toplamıyoruz.</p>
-            <ul class="list-disc ml-6 mt-2">
-                <li><strong>Kullanım Verileri:</strong> Uygulama performansını ve kullanıcı deneyimini iyileştirmek için
-                    anonim teknik bilgiler topluyoruz. Bu, cihaz türünü, işletim sistemi sürümünü ve genel uygulama
-                    kullanım modellerini içerir.</li>
-                <li><strong>Benzersiz Tanımlayıcılar:</strong> Toplu analizleri izlemek için anonim cihaz
-                    tanımlayıcıları kullanabiliriz.</li>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="/tr/" class="nav-brand">
+                <img src="images/app_icon.png" alt="MyWay" width="38" height="38">
+                <span>MyWay</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/tr/rehber/">Şehir Rehberleri</a></li>
+                <li><a href="/tr/#features">Özellikler</a></li>
+                <li><a href="/tr/about.html" class="">Hakkımızda</a></li>
+                <li><a href="/tr/support.html" class="">Destek</a></li>
             </ul>
-        </div>
+            <div class="nav-actions">
+                <!-- Top Right Globe Dropdown -->
+                <div class="lang-dropdown-wrapper">
+                    <button class="lang-dropdown-btn" aria-label="Language">
+                        <svg class="lang-globe-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>🇹🇷 TR</span>
+                        <span style="font-size: 10px; opacity: 0.7;">▼</span>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <a href="/privacy.html" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item">🇬🇧 English</a>
+                        <a href="/privacy-tr.html" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item active">🇹🇷 Türkçe</a>
+                        <a href="/it/privacy.html" onclick="localStorage.setItem('myway_user_lang', 'it')" class="lang-dropdown-item">🇮🇹 Italiano</a>
+                        <a href="/es/privacy.html" onclick="localStorage.setItem('myway_user_lang', 'es')" class="lang-dropdown-item">🇪🇸 Español</a>
+                        <a href="/de/privacy.html" onclick="localStorage.setItem('myway_user_lang', 'de')" class="lang-dropdown-item">🇩🇪 Deutsch</a>
+                        <a href="/fr/privacy.html" onclick="localStorage.setItem('myway_user_lang', 'fr')" class="lang-dropdown-item">🇫🇷 Français</a>
+                    </div>
+                </div>
 
-        <div>
-            <h3 class="text-white text-xl font-bold mb-2">2. Konum Verileri</h3>
-            <p>Navigasyon ve "yakındaki" yer önerileri gibi temel özellikleri sağlamak için uygulama, cihazınızın konum
-                servislerine erişim gerektirir.</p>
-            <ul class="list-disc ml-6 mt-2">
-                <li><strong>İşleme:</strong> Konum verileri birincil olarak cihazınızda yerel olarak işlenir.</li>
-                <li><strong>Depolama:</strong> Gerçek zamanlı konumunuzu veya seyahat geçmişinizi kalıcı sunucularımızda
-                    saklamıyoruz.</li>
-            </ul>
+                <a href="/tr/#download" class="nav-cta">İndir</a>
+            </div>
         </div>
+    </nav>
 
-        <div>
-            <h3 class="text-white text-xl font-bold mb-2">3. Üçüncü Taraf Hizmetleri</h3>
-            <p>Hizmetlerimizin işlevselliğini artırmak için saygın üçüncü taraf hizmetleri kullanıyoruz. Bu sağlayıcıların
-                kendi gizlilik politikaları vardır:</p>
-            <ul class="list-disc ml-6 mt-2">
-                <li><strong>Google Firebase:</strong> Analiz, uzaktan yapılandırma ve hata raporlama için kullanılır. <a
-                        href="https://policies.google.com/privacy" class="text-primary underline" target="_blank" rel="noopener">Google Gizlilik
-                        Politikası</a></li>
-                <li><strong>RevenueCat:</strong> Uygulama içi abonelikleri ve satın alma doğrulamasını yönetmek için
-                    kullanılır. <a href="https://www.revenuecat.com/privacy" class="text-primary underline" target="_blank" rel="noopener">RevenueCat Gizlilik
-                        Politikası</a></li>
-            </ul>
+    <!-- Hero -->
+    <header class="page-hero">
+        <div class="container">
+            <div class="page-hero-icon">🛡️</div>
+            <h1>Gizlilik Politikası</h1>
+            <p>MyWay'in kişisel verilerinizi nasıl koruduğunu ve gizliliğinize nasıl saygı duyduğunu öğrenin.</p>
         </div>
+    </header>
 
-        <div>
-            <h3 class="text-white text-xl font-bold mb-2">4. Çerezler, Web İşaretçileri ve Üçüncü Taraf Reklam Yayını</h3>
-            <p>Diğer tüm web siteleri gibi MyWay de web platformunda "çerezler" (cookies) kullanır. Bu çerezler, ziyaretçilerin tercihlerini ve sitede erişilen veya ziyaret edilen sayfaları kaydetmek için kullanılır. Toplanan bilgiler, ziyaretçilerin tarayıcı türüne ve/veya diğer verilere göre web sayfası içeriğimizi kişiselleştirerek kullanıcı deneyimini optimize etmek amacıyla değerlendirilir.</p>
-            <p class="mt-2"><strong>Google AdSense ve DoubleClick DART Çerezi:</strong></p>
-            <p>Google, sitemizde reklam yayınlayan üçüncü taraf bir satıcıdır. Ziyaretçilerimize www.mywaytravelapp.com ve internetteki diğer sitelere yaptıkları ziyaretlere dayalı olarak reklam sunmak için DART çerezleri adı verilen çerezleri kullanır. Ancak ziyaretçiler, Google reklam ve içerik ağı Gizlilik Politikasını ziyaret ederek DART çerezlerinin kullanımını reddedebilir: <a href="https://policies.google.com/technologies/ads" class="text-primary underline" target="_blank" rel="noopener">https://policies.google.com/technologies/ads</a>.</p>
-            <p class="mt-2">Üçüncü taraf reklam sunucuları veya reklam ağları, MyWay'de görünen reklamlarında ve bağlantılarında doğrudan kullanıcıların tarayıcısına gönderilen çerezler, JavaScript veya Web İşaretçileri gibi teknolojiler kullanır. Bu işlem gerçekleştiğinde IP adresiniz otomatik olarak alınır. Bu teknolojiler, reklam kampanyalarının etkinliğini ölçmek ve/veya ziyaret ettiğiniz web sitelerindeki reklam içeriğini kişiselleştirmek için kullanılır.</p>
-            <p class="mt-2 text-sm text-gray-400">MyWay'in üçüncü taraf reklamverenler tarafından kullanılan bu çerezlere erişimi veya bunlar üzerinde herhangi bir kontrolü bulunmamaktadır.</p>
+    <main class="container">
+        
+        <div class="content-card legal-content">
+            <h2>1. Giriş</h2>
+            <p>MyWay olarak gizliliğinize derin saygı duyuyor ve verilerinizi korumayı taahhüt ediyoruz. Bu Gizlilik Politikası, web sitemizi (mywaytravelapp.com) ve mobil uygulamamızı kullanırken geçerli olan veri ilkelerimizi açıklar.</p>
         </div>
+        
+        <div class="content-card legal-content">
+            <h2>2. Toplanan Bilgiler</h2>
+            <p>Yalnızca kaliteli bir gezi rehberi ve rota deneyimi sunabilmek için gerekli minimum verileri toplarız:<br>• <strong>Kullanım & Analiz Verileri:</strong> Uygulama performansını iyileştirmek için kullanılan anonim kaza ve kullanım raporları.<br>• <strong>Konum Verisi:</strong> Açık izniniz dahilinde yalnızca harita üzerinde nerede olduğunuzu göstermek amacıyla cihazınızda yerel olarak kullanılır. Konum geçmişiniz asla kaydedilmez ve satılmaz.<br>• <strong>Çerezler ve Reklamlar:</strong> Google AdSense ve site trafiği analitiği için uluslararası standartlara (GDPR/KVKK) uygun çerezler kullanılır.</p>
+        </div>
+        
+        <div class="content-card legal-content">
+            <h2>3. Üçüncü Taraf Hizmetleri</h2>
+            <p>Altyapı, faturalandırma ve analitik için Google Firebase, Google AdSense ve uygulama mağazaları gibi güvenilir üçüncü taraf ortaklarla çalışırız.</p>
+        </div>
+        
+        <div class="content-card legal-content">
+            <h2>4. İletişim</h2>
+            <p>Gizlilik politikamız veya haklarınızla ilgili her türlü soru için <a href='mailto:support@mywaytravelapp.com' style='color: #9D93FF;'>support@mywaytravelapp.com</a> adresinden bize ulaşabilirsiniz.</p>
+        </div>
+        
+    </main>
 
-        <div>
-            <h3 class="text-white text-xl font-bold mb-2">5. Üçüncü Taraf Gizlilik Politikaları ve Tercihler</h3>
-            <p>MyWay Gizlilik Politikası, diğer reklamverenler veya web siteleri için geçerli değildir. Bu nedenle, daha ayrıntılı bilgi için bu üçüncü taraf reklam sunucularının ilgili Gizlilik Politikalarına başvurmanızı öneririz. Bu politikalar, belirli seçeneklerin nasıl devre dışı bırakılacağına ilişkin uygulamaları ve talimatları içerebilir.</p>
-            <p class="mt-2">Çerezleri tarayıcı ayarlarınızdan devre dışı bırakabilirsiniz. Belirli web tarayıcılarında çerez yönetimi hakkında ayrıntılı bilgiye tarayıcıların resmi web sitelerinden ulaşabilirsiniz. Ayrıca kişiselleştirilmiş reklamcılığı <a href="https://www.aboutads.info/choices/" class="text-primary underline" target="_blank" rel="noopener">AboutAds.info Choices</a> veya <a href="https://adssettings.google.com/" class="text-primary underline" target="_blank" rel="noopener">Google Reklam Ayarları</a> sayfalarından dilediğiniz zaman kapatabilirsiniz.</p>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+                        <img src="images/app_icon.png" alt="MyWay" width="32" height="32" style="border-radius:8px;">
+                        <h4 style="margin:0;">MyWay</h4>
+                    </div>
+                    <p>Modern gezginler için yapay zeka destekli akıllı gezi rehberi ve rota planlayıcı. Şehirleri turist gibi değil, yerli gibi keşfedin.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>Şehir Rehberleri</h5>
+                    <ul>
+                        <li><a href="/tr/rehber/">Tüm Şehirler</a></li>
+                        <li><a href="/tr/rehber/barcelona.html">Barcelona</a></li>
+                        <li><a href="/tr/rehber/roma.html">Roma</a></li>
+                        <li><a href="/tr/rehber/paris.html">Paris</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Kurumsal</h5>
+                    <ul>
+                        <li><a href="/tr/about.html">Hakkımızda</a></li>
+                        <li><a href="/tr/support.html">Destek</a></li>
+                        <li><a href="/tr/#features">Özellikler</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Yasal</h5>
+                    <ul>
+                        <li><a href="/privacy-tr.html">Gizlilik Politikası</a></li>
+                        <li><a href="/terms-tr.html">Kullanım Koşulları</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MyWay Travel App. Tüm hakları saklıdır.</p>
+            </div>
         </div>
+    </footer>
 
-        <div>
-            <h3 class="text-white text-xl font-bold mb-2">6. Çocukların Gizliliği</h3>
-            <p>Hizmetlerimiz 13 yaşın altındaki çocuklar tarafından kullanılmak üzere tasarlanmamıştır. Çocuklardan
-                bilerek kişisel veri toplamıyoruz.</p>
-        </div>
-
-        <div>
-            <h3 class="text-white text-xl font-bold mb-2">7. Bize Ulaşın</h3>
-            <p>Gizlilik Politikamız hakkında herhangi bir sorunuz veya öneriniz varsa, lütfen aşağıdaki adresten bizimle
-                iletişime geçin:</p>
-            <p class="font-bold">E-posta: <a href="mailto:support@mywaytravelapp.com"
-                    class="text-primary underline">support@mywaytravelapp.com</a></p>
-        </div>
-    </div>
+    <script>
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        if (navToggle && navLinks) {
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
+    </script>
 </body>
-
 </html>

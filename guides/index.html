@@ -6,11 +6,24 @@
     <title>112+ Curated City Guides & Smart Walking Routes | MyWay</title>
     <meta name="description" content="Explore 112+ curated world city guides, hidden spots, local food and optimized walking routes.">
     
-    <link rel="alternate" hreflang="en" href="/guides/">
-    <link rel="alternate" hreflang="tr" href="/tr/rehber/">
+    <!-- Canonical & Alternates -->
     <link rel="canonical" href="https://mywaytravelapp.com/guides/">
+    <link rel="alternate" hreflang="en" href="https://mywaytravelapp.com/guides/">
+    <link rel="alternate" hreflang="tr" href="https://mywaytravelapp.com/tr/rehber/">
+    <link rel="alternate" hreflang="it" href="https://mywaytravelapp.com/it/guides/">
+    <link rel="alternate" hreflang="es" href="https://mywaytravelapp.com/es/guides/">
+    <link rel="alternate" hreflang="de" href="https://mywaytravelapp.com/de/guides/">
+    <link rel="alternate" hreflang="fr" href="https://mywaytravelapp.com/fr/guides/">
+    <link rel="alternate" hreflang="x-default" href="https://mywaytravelapp.com/guides/">
 
-    <!-- Google tag (gtag.js) -->
+    <!-- Open Graph -->
+    <meta property="og:title" content="112+ Curated City Guides & Smart Walking Routes | MyWay">
+    <meta property="og:description" content="Explore 112+ curated world city guides, hidden spots, local food and optimized walking routes.">
+    <meta property="og:image" content="https://mywaytravelapp.com/images/og_banner.jpg">
+    <meta property="og:url" content="https://mywaytravelapp.com/guides/">
+    <meta property="og:type" content="website">
+
+    <!-- Google Tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17973398305"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -19,13 +32,11 @@
       gtag('config', 'AW-17973398305');
     </script>
 
-    <!-- Leaflet Map CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
          crossorigin="anonymous"></script>
 
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -101,7 +112,7 @@
         .lang-dropdown-menu {
             display: none; position: absolute; top: calc(100% + 8px); right: 0;
             background: #19142B; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 14px;
-            padding: 6px; min-width: 130px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); z-index: 1001;
+            padding: 6px; min-width: 140px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); z-index: 1001;
         }
         .lang-dropdown-wrapper:hover .lang-dropdown-menu,
         .lang-dropdown-wrapper:focus-within .lang-dropdown-menu {
@@ -110,6 +121,7 @@
         .lang-dropdown-item {
             display: flex; align-items: center; padding: 8px 12px; font-size: 13px; font-weight: 600;
             color: #CBD5E1; text-decoration: none; border-radius: 8px; transition: background 0.2s, color 0.2s;
+            white-space: nowrap;
         }
         .lang-dropdown-item:hover { background: rgba(123, 110, 246, 0.2); color: white; }
         .lang-dropdown-item.active { background: var(--primary); color: white; }
@@ -210,7 +222,6 @@
             margin: 20px 0;
         }
 
-        /* 5-Item Grid Layout: 3 cards in row 1, 2 cards in row 2 (full width balanced) */
         .cards-grid-5 {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
@@ -225,7 +236,6 @@
             grid-column: span 3;
         }
 
-        /* 4-Item Grid Layout (2x2) */
         .cards-grid-4 {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -233,7 +243,6 @@
             margin: 20px 0;
         }
 
-        /* Seasons Grid: 4 seasons side-by-side */
         .seasons-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -278,157 +287,164 @@
             gap: 12px;
             margin-bottom: 12px;
         }
-        .card-title-group {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .card-icon {
-            font-size: 20px;
-            flex-shrink: 0;
-        }
-        .card-title {
-            font-size: 17px;
-            font-weight: 700;
-            color: #fff;
-            line-height: 1.35;
-        }
-        .card-badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
+        .card-title { font-size: 18px; font-weight: 700; color: #fff; line-height: 1.3; }
+        .card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 14px; }
+        .card-tag {
+            display: inline-block;
             font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
+            font-weight: 600;
             padding: 4px 10px;
             border-radius: 99px;
+            background: rgba(123, 110, 246, 0.15);
+            color: var(--primary-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
             white-space: nowrap;
-            letter-spacing: 0.3px;
-            flex-shrink: 0;
         }
-        .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
-        .badge-purple { background: rgba(123, 110, 246, 0.15); color: var(--primary-light); border: 1px solid rgba(123, 110, 246, 0.3); }
-        .badge-pink { background: rgba(236, 72, 153, 0.15); color: #F472B6; border: 1px solid rgba(236, 72, 153, 0.3); }
-        .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
-        
-        /* Hidden Gems Eyebrow Pill Layout */
-        .gem-badge-wrap {
-            margin-bottom: 12px;
-        }
-        .gem-card .card-badge {
-            white-space: normal;
-            line-height: 1.4;
-            max-width: 100%;
-        }
-        .gem-card .card-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: #fff;
-            line-height: 1.35;
-            margin-bottom: 12px;
-        }
+        .card-tag.warning { background: rgba(239, 68, 68, 0.15); color: #F87171; }
+        .card-tag.success { background: rgba(16, 185, 129, 0.15); color: #34D399; }
+        .card-tag.neutral { background: rgba(255, 255, 255, 0.1); color: #E2E8F0; }
 
-        .card-desc {
-            font-size: 14px;
-            color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 16px;
-            flex-grow: 1;
-        }
-        .card-footer-tip {
+        .card-meta {
             margin-top: auto;
-            padding: 9px 12px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px;
-            font-size: 12px;
-            color: #cbd5e1;
-            border-left: 2px solid var(--primary-light);
             display: flex;
-            align-items: center;
-            gap: 6px;
-            line-height: 1.4;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        .card-meta span { display: inline-flex; align-items: center; gap: 4px; }
+
+        /* Itinerary Timeline */
+        .timeline { position: relative; margin: 30px 0; padding-left: 20px; }
+        .timeline::before {
+            content: ''; position: absolute; top: 10px; bottom: 10px; left: 6px;
+            width: 2px; background: rgba(123, 110, 246, 0.3);
+        }
+        .timeline-step {
+            position: relative; padding-left: 28px; margin-bottom: 28px;
+        }
+        .timeline-step::before {
+            content: ''; position: absolute; left: -18px; top: 6px;
+            width: 14px; height: 14px; border-radius: 50%;
+            background: var(--primary); border: 3px solid var(--bg-dark);
+            box-shadow: 0 0 10px var(--primary);
+        }
+        .timeline-time {
+            display: inline-block; font-size: 12px; font-weight: 700;
+            color: var(--primary-light); text-transform: uppercase; letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+        .timeline-title { font-size: 17px; font-weight: 700; margin-bottom: 6px; color: #fff; }
+        .timeline-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+        /* App Exclusive Lock Box */
+        .app-lock-card {
+            background: linear-gradient(135deg, rgba(123, 110, 246, 0.15) 0%, rgba(236, 72, 153, 0.15) 100%);
+            border: 1px solid rgba(123, 110, 246, 0.3); border-radius: var(--radius-lg);
+            padding: 40px; margin: 40px 0; text-align: center; position: relative;
+            overflow: hidden;
+        }
+        .app-lock-badge {
+            display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.1);
+            padding: 6px 14px; border-radius: 99px; font-size: 12px; font-weight: 600; margin-bottom: 16px;
+            color: #fff;
+        }
+        .app-lock-title { font-size: clamp(22px, 3.5vw, 30px); font-weight: 800; margin-bottom: 12px; }
+        .app-lock-desc { font-size: 15px; color: #CBD5E1; max-width: 680px; margin: 0 auto 24px; line-height: 1.7; }
+        .app-lock-features {
+            display: flex; justify-content: center; gap: 24px; margin-bottom: 28px; flex-wrap: wrap;
+        }
+        .app-feature-pill {
+            display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600;
+            color: #E2E8F0; background: rgba(0, 0, 0, 0.2); padding: 8px 16px; border-radius: 99px;
+        }
+        .app-buttons { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+        .btn-store {
+            display: inline-flex; align-items: center; gap: 10px; background: #fff; color: #0F0B1A;
+            padding: 12px 24px; border-radius: 100px; font-weight: 700; font-size: 14px;
+            text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn-store:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255, 255, 255, 0.25); }
+        .btn-store.outline {
+            background: transparent; color: #fff; border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .btn-store.outline:hover { background: rgba(255, 255, 255, 0.1); }
+
+        /* Phrases Table */
+        .phrases-grid {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 20px 0;
+        }
+        .phrase-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm); padding: 14px 18px; display: flex;
+            justify-content: space-between; align-items: center;
+        }
+        .phrase-text { font-size: 15px; font-weight: 700; color: #fff; }
+        .phrase-pron { font-size: 12px; color: var(--primary-light); font-style: italic; margin-top: 2px; }
+        .phrase-meaning { font-size: 13px; color: var(--text-secondary); text-align: right; }
+
+        /* AdSense Placements */
+        .ad-container {
+            margin: 40px auto; padding: 14px; background: rgba(255, 255, 255, 0.02);
+            border: 1px dashed rgba(255, 255, 255, 0.1); border-radius: var(--radius-md);
+            text-align: center; max-width: 100%; overflow: hidden;
+        }
+        .ad-label {
+            display: block; font-size: 10px; text-transform: uppercase;
+            letter-spacing: 1.5px; color: var(--text-muted); margin-bottom: 8px;
         }
 
-        /* Traps List */
-        .traps-list { display: flex; flex-direction: column; gap: 16px; margin: 20px 0; }
-        .trap-card {
-            background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.18);
-            border-radius: var(--radius-md); padding: 22px;
-        }
-        .trap-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-        .trap-tag {
-            background: #EF4444; color: #fff; font-size: 11px; font-weight: 700;
-            text-transform: uppercase; padding: 3px 8px; border-radius: 6px;
-        }
-        .trap-header h4 { font-size: 17px; color: #fff; font-weight: 700; }
-        .trap-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-        .trap-solution {
-            margin-top: 12px; padding: 12px 16px; background: rgba(16, 185, 129, 0.08);
-            border-left: 3px solid #10B981; border-radius: 6px; font-size: 13px; color: #D1D5DB; line-height: 1.5;
-        }
-
-
-        /* Interactive Route Map */
+        /* Route Map Styling */
         .route-map-wrapper {
             margin: 24px 0 32px;
-            background: rgba(22, 17, 38, 0.65);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md);
             overflow: hidden;
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
         }
         .route-map-header {
-            padding: 14px 20px;
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid var(--border-subtle);
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: rgba(15, 11, 26, 0.85);
-            border-bottom: 1px solid var(--border-subtle);
+            gap: 12px;
+            flex-wrap: wrap;
         }
-        .route-map-header-left {
+        .route-map-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .route-map-tag {
+            font-size: 11px;
+            background: rgba(123, 110, 246, 0.2);
+            color: var(--primary-light);
+            padding: 3px 8px;
+            border-radius: 99px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        .route-map-meta {
+            font-size: 12px;
+            color: var(--text-secondary);
             display: flex;
             align-items: center;
             gap: 12px;
         }
-        .route-map-icon { font-size: 22px; }
-        .route-map-heading { font-size: 15px; font-weight: 700; color: #fff; margin: 0; line-height: 1.2; }
-        .route-map-subheading { font-size: 12px; color: var(--text-secondary); margin: 0; }
-        .route-map-badge {
-            background: rgba(16, 185, 129, 0.15);
-            color: var(--emerald);
-            border: 1px solid rgba(16, 185, 129, 0.35);
-            font-size: 11px;
-            font-weight: 700;
-            padding: 4px 10px;
-            border-radius: 100px;
-            letter-spacing: 0.5px;
-        }
-        .route-map-canvas {
-            width: 100%;
-            height: 380px;
-            background: #0B0814;
-            z-index: 1;
-        }
-        .route-map-canvas .leaflet-tile {
-            filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.6);
-            -webkit-filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.6);
-        }
-        .route-map-footer {
-            padding: 10px 18px;
-            background: rgba(15, 11, 26, 0.75);
-            border-top: 1px solid var(--border-subtle);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 12px;
-            color: var(--text-secondary);
-        }
-        .route-map-hint { display: flex; align-items: center; gap: 6px; }
         .route-map-reset-btn {
-            background: rgba(123, 110, 246, 0.18);
-            border: 1px solid rgba(123, 110, 246, 0.4);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             color: #fff;
-            padding: 4px 12px;
+            padding: 4px 10px;
             border-radius: 6px;
             font-size: 11px;
             font-weight: 600;
@@ -436,238 +452,209 @@
             transition: background 0.2s;
         }
         .route-map-reset-btn:hover {
+            background: rgba(123, 110, 246, 0.3);
+        }
+        .route-map-canvas {
+            width: 100%;
+            height: 380px;
+            background: #140F22;
+        }
+        .custom-route-marker {
+            background: transparent;
+            border: none;
+        }
+        .marker-pin-bubble {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
             background: var(--primary);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 800;
+            box-shadow: 0 4px 12px rgba(123, 110, 246, 0.6), 0 0 0 2px rgba(255, 255, 255, 0.9);
+            cursor: pointer;
+            transition: transform 0.2s;
         }
-        .custom-route-marker { background: transparent; border: none; }
-        .marker-pin {
-            width: 32px; height: 32px; border-radius: 50% 50% 50% 0;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            transform: rotate(-45deg);
-            display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 4px 14px rgba(123, 110, 246, 0.6);
-            border: 2px solid #ffffff;
-            transition: transform 0.2s ease;
+        .marker-pin-bubble:hover {
+            transform: scale(1.15);
+            background: var(--primary-light);
         }
-        .marker-pin:hover { transform: rotate(-45deg) scale(1.15); }
-        .marker-num { transform: rotate(45deg); color: #ffffff; font-weight: 800; font-size: 12px; line-height: 1; }
-        .leaflet-popup-content-wrapper {
-            background: rgba(18, 13, 30, 0.95) !important;
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(123, 110, 246, 0.35) !important;
-            border-radius: 14px !important;
-            color: #ffffff !important;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6) !important;
+        .route-popup .leaflet-popup-content-wrapper {
+            background: #19142B;
+            color: #fff;
+            border-radius: 12px;
+            padding: 4px;
+            border: 1px solid rgba(123, 110, 246, 0.4);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
         }
-        .leaflet-popup-tip { background: rgba(18, 13, 30, 0.95) !important; border: 1px solid rgba(123, 110, 246, 0.35) !important; }
-        .route-popup .popup-time { display: inline-block; font-size: 11px; font-weight: 700; color: var(--primary-light); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
-        .route-popup .popup-title { font-size: 14px; font-weight: 700; color: #ffffff; margin-bottom: 4px; }
-        .route-popup .popup-desc { font-size: 12px; color: #CBD5E1; line-height: 1.5; margin: 0; }
-        .timeline-step { cursor: pointer; transition: transform 0.2s ease; }
-        .timeline-step:hover { transform: translateX(4px); }
-        .timeline-step:hover .step-title { color: var(--primary-light); }
-        .step-map-badge { font-size: 11px; color: var(--primary-light); opacity: 0.85; font-weight: 500; margin-left: 6px; }
-
-        /* Timeline (Itinerary) */
-        .timeline { position: relative; padding-left: 32px; margin: 24px 0 32px; }
-        .timeline::before {
-            content: ''; position: absolute; left: 11px; top: 8px; bottom: 8px;
-            width: 2px; background: linear-gradient(to bottom, var(--primary), var(--accent));
+        .route-popup .leaflet-popup-tip {
+            background: #19142B;
         }
-        .timeline-step { position: relative; margin-bottom: 24px; }
-        .timeline-step:last-child { margin-bottom: 0; }
-        .timeline-dot {
-            position: absolute; left: -32px; top: 4px; width: 24px; height: 24px;
-            border-radius: 50%; background: #19142B; border: 2px solid var(--primary-light);
-            display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700;
+        .route-popup .popup-time {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--primary-light);
+            text-transform: uppercase;
+            margin-bottom: 2px;
         }
-        .step-header { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; flex-wrap: wrap; }
-        .step-time {
-            background: rgba(123, 110, 246, 0.2); color: var(--primary-light); font-size: 12px;
-            font-weight: 700; padding: 2px 8px; border-radius: 6px;
+        .route-popup .popup-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 4px;
         }
-        .step-title { font-size: 16px; font-weight: 700; color: #fff; }
-        .step-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-
-        /* Mobile App Gate Banner (Days 2 & 3 + Live Map) */
-        .app-lock-banner {
-            background: linear-gradient(135deg, rgba(123, 110, 246, 0.16) 0%, rgba(236, 72, 153, 0.12) 100%);
-            border: 1.5px solid rgba(157, 147, 255, 0.35); border-radius: var(--radius-lg);
-            padding: 36px 28px; margin: 36px 0; text-align: center; position: relative;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        .route-popup .popup-desc {
+            font-size: 12px;
+            color: #CBD5E1;
+            line-height: 1.4;
+            margin: 0;
         }
-        .app-lock-badge {
-            display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.1);
-            padding: 4px 12px; border-radius: 100px; font-size: 12px; font-weight: 700;
-            color: #fff; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;
+        .timeline-step {
+            cursor: pointer;
+            transition: background 0.2s;
+            border-radius: 8px;
+            padding: 8px 8px 8px 28px;
         }
-        .app-lock-banner h3 { font-size: clamp(22px, 3.5vw, 28px); font-weight: 800; margin-bottom: 8px; }
-        .app-lock-banner p { color: var(--text-secondary); max-width: 620px; margin: 0 auto 20px; font-size: 14px; line-height: 1.6; }
-        .app-lock-features {
-            display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 24px;
-            font-size: 13px; color: #E2E8F0; font-weight: 500;
+        .timeline-step:hover {
+            background: rgba(255, 255, 255, 0.03);
         }
-        .app-lock-feature-item { display: flex; align-items: center; gap: 6px; }
-
-        /* Store Buttons */
-        .store-btn-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
-        .store-pill-btn {
-            display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: white;
-            color: #0f1016; font-weight: 700; font-size: 14px; border-radius: 100px; text-decoration: none;
-            transition: transform 0.2s, box-shadow 0.2s;
+        .timeline-step.active-step {
+            background: rgba(123, 110, 246, 0.1);
+            border-left: 3px solid var(--primary);
         }
-        .store-pill-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2); }
-
-
-        /* Phrases Table */
-        .phrases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
-        .phrase-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-sm); padding: 14px 18px;
+        .timeline-pin-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 11px;
+            color: var(--primary-light);
+            background: rgba(123, 110, 246, 0.15);
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-left: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            vertical-align: middle;
         }
-        .phrase-orig { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 2px; }
-        .phrase-trans { font-size: 13px; color: var(--text-secondary); }
+        .timeline-pin-btn:hover {
+            background: var(--primary);
+            color: #fff;
+        }
 
         /* Footer */
         .footer {
-            border-top: 1px solid var(--border-subtle); padding: 50px 24px 36px;
-            color: var(--text-muted); font-size: 13px; background: #0A0713;
+            background: #0B0813; border-top: 1px solid var(--border-subtle);
+            padding: 60px 0 40px; margin-top: 60px;
         }
         .footer-grid {
-            display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px;
-            max-width: 1080px; margin: 0 auto 40px; text-align: left;
+            display: grid; grid-template-columns: 2fr repeat(3, 1fr); gap: 40px; margin-bottom: 40px;
         }
-        .footer-brand h4 { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 8px; }
-        .footer-brand p { font-size: 13px; line-height: 1.6; color: var(--text-secondary); max-width: 340px; }
-        .footer-col h5 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 12px; }
-        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-        .footer-col a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+        .footer-brand h4 { font-size: 18px; margin-bottom: 12px; color: #fff; }
+        .footer-brand p { font-size: 14px; color: var(--text-secondary); max-width: 320px; line-height: 1.6; }
+        .footer-col h5 { font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #fff; margin-bottom: 16px; }
+        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+        .footer-col a { color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: color 0.2s; }
         .footer-col a:hover { color: #fff; }
         .footer-bottom {
-            text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding-top: 24px; max-width: 1080px; margin: 0 auto;
+            padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center; font-size: 13px; color: var(--text-muted);
         }
 
-        @media (max-width: 1040px) {
-            .seasons-grid { grid-template-columns: repeat(2, 1fr); }
-            .phrases-grid { grid-template-columns: repeat(2, 1fr); }
-            .facts-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        @media (max-width: 960px) {
-            .cards-grid { grid-template-columns: repeat(2, 1fr); }
-            
-            .cards-grid-5 { grid-template-columns: repeat(2, 1fr); }
-            .cards-grid-5 > .feature-card { grid-column: span 1; }
-            .cards-grid-5 > .feature-card:nth-child(4) { grid-column: span 1; }
-            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 2; }
-            
-            .footer-grid { grid-template-columns: 1fr 1fr; }
-        }
-
-        @media (max-width: 768px) {
-            .container { padding: 0 16px; }
-            .navbar { padding: 0 14px; }
-            .navbar-inner { height: 60px; }
-            .nav-brand span { font-size: 18px; }
-            .nav-brand img { width: 34px; height: 34px; }
-            .nav-links {
-                display: none; position: fixed; top: 60px; left: 0; right: 0;
-                background: rgba(15, 11, 26, 0.98); backdrop-filter: blur(25px);
-                flex-direction: column; padding: 24px; gap: 18px;
-                border-bottom: 1px solid var(--border-subtle); z-index: 99;
+        /* Responsive */
+        @media (max-width: 900px) {
+            .cards-grid, .cards-grid-5, .cards-grid-4, .seasons-grid, .facts-grid, .phrases-grid {
+                grid-template-columns: 1fr;
             }
-            .nav-links.active { display: flex; }
+            .cards-grid-5 > .feature-card,
+            .cards-grid-5 > .feature-card:nth-child(4),
+            .cards-grid-5 > .feature-card:nth-child(5) {
+                grid-column: auto;
+            }
+            .footer-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
             .nav-toggle { display: block; }
-            .hub-header { padding: 95px 16px 30px; }
-            .hub-header h1 { font-size: clamp(28px, 7vw, 42px); }
-            .hub-header p { font-size: 14.5px; margin-bottom: 20px; }
-            .search-bar-wrap { max-width: 100%; }
-            .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+            .guide-hero { min-height: 400px; padding: 100px 20px 40px; }
+            .route-map-canvas { height: 300px; }
         }
 
-        @media (max-width: 600px) {
-            .nav-cta { display: none; }
+        
+        .hub-hero {
+            padding: 140px 24px 60px; text-align: center;
+            background: linear-gradient(180deg, #16102B 0%, var(--bg-dark) 100%);
+            border-bottom: 1px solid var(--border-subtle);
         }
-
-        /* Hub Header */
-        .hub-header {
-            padding: 130px 24px 44px; text-align: center; max-width: 800px; margin: 0 auto;
-        }
-        .hub-header h1 {
-            font-size: clamp(34px, 6vw, 52px); font-weight: 800; letter-spacing: -1px; margin-bottom: 12px;
-        }
-        .hub-header p {
-            font-size: 17px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 32px;
-        }
-
-        .search-bar-wrap {
-            position: relative; max-width: 520px; margin: 0 auto;
+        .hub-title { font-size: clamp(32px, 5vw, 48px); font-weight: 800; margin-bottom: 12px; }
+        .hub-subtitle { font-size: 17px; color: var(--text-secondary); max-width: 640px; margin: 0 auto 30px; }
+        
+        .search-box-wrapper {
+            max-width: 540px; margin: 0 auto; position: relative;
         }
         .search-input {
-            width: 100%; padding: 15px 20px 15px 50px; border-radius: 100px;
-            background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-subtle);
-            color: white; font-size: 15px; outline: none; transition: border-color 0.2s, box-shadow 0.2s;
-            font-family: inherit;
+            width: 100%; padding: 16px 24px 16px 50px; border-radius: 100px;
+            background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #fff; font-size: 15px; outline: none; font-family: inherit;
+            transition: all 0.2s ease;
         }
         .search-input:focus {
-            border-color: var(--primary); box-shadow: 0 0 20px rgba(123, 110, 246, 0.3);
+            border-color: var(--primary); background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 0 30px rgba(123, 110, 246, 0.3);
         }
         .search-icon {
-            position: absolute; left: 18px; top: 50%; transform: translateY(-50%);
-            color: var(--text-muted); font-size: 16px; pointer-events: none;
+            position: absolute; left: 20px; top: 50%; transform: translateY(-50%);
+            width: 18px; height: 18px; fill: var(--text-muted);
         }
-
-        /* Hub Grid */
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        
         .hub-grid {
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; padding: 60px 0;
         }
-
-        .hub-city-card {
-            position: relative; height: 320px; border-radius: 20px; overflow: hidden;
-            display: flex; flex-direction: column; justify-content: flex-end;
-            text-decoration: none; color: white; border: 1px solid var(--border-subtle);
-            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        
+        .guide-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md); overflow: hidden; text-decoration: none;
+            color: inherit; transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+            display: flex; flex-direction: column;
         }
-        .hub-city-card:hover {
-            transform: translateY(-6px); border-color: var(--primary-light);
-            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 25px rgba(123, 110, 246, 0.25);
+        .guide-card:hover {
+            transform: translateY(-4px); border-color: var(--border-highlight);
+            box-shadow: 0 12px 30px rgba(123, 110, 246, 0.18);
         }
-        .hub-city-card img {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;
-            transition: transform 0.5s ease;
+        .guide-card-img-wrapper {
+            position: relative; height: 200px; overflow: hidden; background: #1A132F;
         }
-        .hub-city-card:hover img { transform: scale(1.06); }
-        .hub-card-overlay {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to top, rgba(15, 11, 26, 0.95) 0%, rgba(15, 11, 26, 0.4) 60%, rgba(15, 11, 26, 0.1) 100%);
+        .guide-card-img {
+            width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s;
         }
-        .hub-card-content {
-            position: relative; z-index: 2; padding: 22px;
+        .guide-card:hover .guide-card-img { transform: scale(1.05); }
+        .guide-card-badge {
+            position: absolute; top: 12px; left: 12px; background: rgba(15, 11, 26, 0.75);
+            backdrop-filter: blur(8px); padding: 4px 10px; border-radius: 99px;
+            font-size: 11px; font-weight: 600; color: #fff;
         }
-        .hub-card-flag {
-            font-size: 12px; font-weight: 600; color: #cbd5e1; margin-bottom: 4px;
+        .guide-card-content {
+            padding: 20px; flex: 1; display: flex; flex-direction: column;
         }
-        .hub-card-title {
-            font-size: 22px; font-weight: 800; margin-bottom: 6px; letter-spacing: -0.5px;
+        .guide-card-title { font-size: 20px; font-weight: 700; margin-bottom: 6px; color: #fff; }
+        .guide-card-tagline {
+            font-size: 13px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 16px; flex: 1;
         }
-        .hub-card-action {
+        .guide-card-footer {
+            padding-top: 14px; border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .guide-card-link {
             font-size: 13px; font-weight: 600; color: var(--primary-light);
+            display: inline-flex; align-items: center; gap: 4px;
         }
-
-        @media (max-width: 768px) {
-            .hub-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
-            .hub-city-card { height: 230px; }
-            .hub-card-title { font-size: 18px; }
+        
+        @media (max-width: 900px) {
+            .hub-grid { grid-template-columns: repeat(2, 1fr); }
         }
-
-        @media (max-width: 480px) {
-            .hub-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .hub-city-card { height: 195px; border-radius: 16px; }
-            .hub-card-content { padding: 14px; }
-            .hub-card-title { font-size: 16px; margin-bottom: 2px; }
-            .hub-card-flag { font-size: 11px; }
-            .hub-card-action { display: none; }
+        @media (max-width: 600px) {
+            .hub-grid { grid-template-columns: 1fr; }
+            .hub-hero { padding: 120px 20px 40px; }
         }
     </style>
 </head>
@@ -701,7 +688,11 @@
                     </button>
                     <div class="lang-dropdown-menu">
                         <a href="/guides/" onclick="localStorage.setItem('myway_user_lang', 'en')" class="lang-dropdown-item active">🇬🇧 English</a>
-                        <a href="/tr/rehber/" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item ">🇹🇷 Türkçe</a>
+                        <a href="/tr/rehber/" onclick="localStorage.setItem('myway_user_lang', 'tr')" class="lang-dropdown-item">🇹🇷 Türkçe</a>
+                        <a href="/it/guides/" onclick="localStorage.setItem('myway_user_lang', 'it')" class="lang-dropdown-item">🇮🇹 Italiano</a>
+                        <a href="/es/guides/" onclick="localStorage.setItem('myway_user_lang', 'es')" class="lang-dropdown-item">🇪🇸 Español</a>
+                        <a href="/de/guides/" onclick="localStorage.setItem('myway_user_lang', 'de')" class="lang-dropdown-item">🇩🇪 Deutsch</a>
+                        <a href="/fr/guides/" onclick="localStorage.setItem('myway_user_lang', 'fr')" class="lang-dropdown-item">🇫🇷 Français</a>
                     </div>
                 </div>
 
@@ -710,1147 +701,1631 @@
         </div>
     </nav>
 
-    <!-- Header -->
-    <header class="hub-header">
-        <h1>112+ Curated City Guides</h1>
-        <p>Explore like a local without wasted steps. Step-by-step walking routes, hidden gems, and insider advice.</p>
-        <div class="search-bar-wrap">
-            <span class="search-icon">🔍</span>
-            <input type="text" id="citySearch" class="search-input" placeholder="Search city or country (e.g. Rome, Italy)..." autocomplete="off">
+    <!-- Hub Header -->
+    <header class="hub-hero">
+        <div class="container">
+            <h1 class="hub-title">112+ Curated City Guides</h1>
+            <p class="hub-subtitle">Explore like a local without wasted steps. Step-by-step walking routes, hidden gems, and insider advice.</p>
+            <div class="search-box-wrapper">
+                <svg class="search-icon" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                <input type="text" id="citySearch" class="search-input" placeholder="Search city or country (e.g. Rome, Italy)...">
+            </div>
         </div>
     </header>
 
-
-    <!-- Grid -->
     <main class="container">
-        <div class="hub-grid" id="cityGrid">
+        <div class="hub-grid" id="guidesGrid">
             
-        <a href="amalfi.html" class="hub-city-card" data-name="amalfi coast" data-country="italy">
-            <img src="../images/cities/amalfi.jpg" alt="Amalfi Coast" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇮🇹 Italy</div>
-                <h3 class="hub-card-title">Amalfi Coast</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/amalfi.html" class="guide-card" data-name="amalfi coast" data-country="italy">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/amalfi.jpg" alt="Amalfi Coast" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇮🇹 Italy</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Amalfi Coast</h3>
+                <p class="guide-card-tagline">Lemon groves, turquoise sea and villages hanging on the edge of cliffs — this view is more beautiful in real life than in any photograph</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="amsterdam.html" class="hub-city-card" data-name="amsterdam" data-country="netherlands">
-            <img src="../images/cities/amsterdam.jpg" alt="Amsterdam" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇳🇱 Netherlands</div>
-                <h3 class="hub-card-title">Amsterdam</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/amsterdam.html" class="guide-card" data-name="amsterdam" data-country="netherlands">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/amsterdam.jpg" alt="Amsterdam" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇳🇱 Netherlands</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Amsterdam</h3>
+                <p class="guide-card-tagline">Freedom, canals, and more bicycles than people</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="ankara.html" class="hub-city-card" data-name="ankara" data-country="turkey">
-            <img src="../images/cities/ankara.jpg" alt="Ankara" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">📍 Turkey</div>
-                <h3 class="hub-card-title">Ankara</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/ankara.html" class="guide-card" data-name="ankara" data-country="turkey">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/ankara.jpg" alt="Ankara" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">📍 Turkey</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Ankara</h3>
+                <p class="guide-card-tagline">The heart of the Republic: ancient citadel, monumental museums, swan parks, and vibrant steppe evenings</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="annecy.html" class="hub-city-card" data-name="annecy" data-country="france">
-            <img src="../images/cities/annecy.jpg" alt="Annecy" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">📍 France</div>
-                <h3 class="hub-card-title">Annecy</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/annecy.html" class="guide-card" data-name="annecy" data-country="france">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/annecy.jpg" alt="Annecy" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">📍 France</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Annecy</h3>
+                <p class="guide-card-tagline">Venice of the Alps: turquoise Lake Annecy, Thiou flower canals, and fairy-tale Palais de l'Île</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="antalya.html" class="hub-city-card" data-name="antalya" data-country="türkiye">
-            <img src="../images/cities/antalya.jpg" alt="Antalya" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇹🇷 Türkiye</div>
-                <h3 class="hub-card-title">Antalya</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/antalya.html" class="guide-card" data-name="antalya" data-country="türkiye">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/antalya.jpg" alt="Antalya" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇹🇷 Türkiye</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Antalya</h3>
+                <p class="guide-card-tagline">City of the cliffs: orange blossom, ancient theatres and a waterfall that falls into the sea</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="atina.html" class="hub-city-card" data-name="athens" data-country="greece">
-            <img src="../images/cities/atina.jpg" alt="Athens" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇬🇷 Greece</div>
-                <h3 class="hub-card-title">Athens</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/atina.html" class="guide-card" data-name="athens" data-country="greece">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/atina.jpg" alt="Athens" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇬🇷 Greece</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Athens</h3>
+                <p class="guide-card-tagline">The hill of the gods, the chaos of the streets, and a kefi that never ends</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="atlanta.html" class="hub-city-card" data-name="atlanta" data-country="usa">
-            <img src="../images/cities/atlanta.jpg" alt="Atlanta" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇺🇸 USA</div>
-                <h3 class="hub-card-title">Atlanta</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/atlanta.html" class="guide-card" data-name="atlanta" data-country="usa">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/atlanta.jpg" alt="Atlanta" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇺🇸 USA</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Atlanta</h3>
+                <p class="guide-card-tagline">Capital of the South: civil rights legacy, peach trees and soul food tables</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="bangkok.html" class="hub-city-card" data-name="bangkok" data-country="thailand">
-            <img src="../images/cities/bangkok.jpg" alt="Bangkok" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇹🇭 Thailand</div>
-                <h3 class="hub-card-title">Bangkok</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/bangkok.html" class="guide-card" data-name="bangkok" data-country="thailand">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/bangkok.jpg" alt="Bangkok" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇹🇭 Thailand</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Bangkok</h3>
+                <p class="guide-card-tagline">From golden temples to night stalls, the city that never stops</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="barcelona.html" class="hub-city-card" data-name="barcelona" data-country="spain">
-            <img src="../images/cities/barcelona.jpg" alt="Barcelona" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇪🇸 Spain</div>
-                <h3 class="hub-card-title">Barcelona</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/barcelona.html" class="guide-card" data-name="barcelona" data-country="spain">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/barcelona.jpg" alt="Barcelona" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇪🇸 Spain</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Barcelona</h3>
+                <p class="guide-card-tagline">Gaudí, sun, sea — and always, always Catalan first</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="bari.html" class="hub-city-card" data-name="bari" data-country="italy">
-            <img src="../images/cities/bari.jpg" alt="Bari" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇮🇹 Italy</div>
-                <h3 class="hub-card-title">Bari</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/bari.html" class="guide-card" data-name="bari" data-country="italy">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/bari.jpg" alt="Bari" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇮🇹 Italy</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Bari</h3>
+                <p class="guide-card-tagline">The capital of Puglia — and the street where grandmothers sit in their doorways making orecchiette (Puglia's handmade pasta) by hand</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="belgrad.html" class="hub-city-card" data-name="belgrade" data-country="serbia">
-            <img src="../images/cities/belgrad.jpg" alt="Belgrade" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇷🇸 Serbia</div>
-                <h3 class="hub-card-title">Belgrade</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/belgrad.html" class="guide-card" data-name="belgrade" data-country="serbia">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/belgrad.jpg" alt="Belgrade" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇷🇸 Serbia</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Belgrade</h3>
+                <p class="guide-card-tagline">The Balkan capital where two rivers meet and nights never end</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="berlin.html" class="hub-city-card" data-name="berlin" data-country="germany">
-            <img src="../images/cities/berlin.jpg" alt="Berlin" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇩🇪 Germany</div>
-                <h3 class="hub-card-title">Berlin</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/berlin.html" class="guide-card" data-name="berlin" data-country="germany">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/berlin.jpg" alt="Berlin" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇩🇪 Germany</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Berlin</h3>
+                <p class="guide-card-tagline">Raw, free, forever unfinished — and proud of every crack</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="bodrum.html" class="hub-city-card" data-name="bodrum" data-country="türkiye">
-            <img src="../images/cities/bodrum.jpg" alt="Bodrum" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇹🇷 Türkiye</div>
-                <h3 class="hub-card-title">Bodrum</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/bodrum.html" class="guide-card" data-name="bodrum" data-country="türkiye">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/bodrum.jpg" alt="Bodrum" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇹🇷 Türkiye</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Bodrum</h3>
+                <p class="guide-card-tagline">White houses, bougainvillea purple and the birthplace of the Blue Voyage</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="bologna.html" class="hub-city-card" data-name="bologna" data-country="italy">
-            <img src="../images/cities/bologna.jpg" alt="Bologna" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇮🇹 Italy</div>
-                <h3 class="hub-card-title">Bologna</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/bologna.html" class="guide-card" data-name="bologna" data-country="italy">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/bologna.jpg" alt="Bologna" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇮🇹 Italy</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Bologna</h3>
+                <p class="guide-card-tagline">La Rossa, La Dotta, La Grassa — the Red, the Learned, the Fat</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="bordeaux.html" class="hub-city-card" data-name="bordeaux" data-country="france">
-            <img src="../images/cities/bordeaux.jpg" alt="Bordeaux" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">📍 France</div>
-                <h3 class="hub-card-title">Bordeaux</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/bordeaux.html" class="guide-card" data-name="bordeaux" data-country="france">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/bordeaux.jpg" alt="Bordeaux" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">📍 France</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Bordeaux</h3>
+                <p class="guide-card-tagline">Wine capital of the world, 18th-century UNESCO palaces, and the magical Miroir d'Eau</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="boston.html" class="hub-city-card" data-name="boston" data-country="usa">
-            <img src="../images/cities/boston.jpg" alt="Boston" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇺🇸 USA</div>
-                <h3 class="hub-card-title">Boston</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/boston.html" class="guide-card" data-name="boston" data-country="usa">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/boston.jpg" alt="Boston" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇺🇸 USA</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Boston</h3>
+                <p class="guide-card-tagline">Brick streets where revolution was born, chowder steam and wicked pride</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="bremen.html" class="hub-city-card" data-name="bremen" data-country="germany">
-            <img src="../images/cities/bremen.jpg" alt="Bremen" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">📍 Germany</div>
-                <h3 class="hub-card-title">Bremen</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/bremen.html" class="guide-card" data-name="bremen" data-country="germany">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/bremen.jpg" alt="Bremen" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">📍 Germany</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Bremen</h3>
+                <p class="guide-card-tagline">Fairy tale of the Town Musicians, UNESCO Gothic Town Hall, and the enchanting Schnoor quarter</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="brugge.html" class="hub-city-card" data-name="bruges" data-country="belgium">
-            <img src="../images/cities/brugge.jpg" alt="Bruges" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇧🇪 Belgium</div>
-                <h3 class="hub-card-title">Bruges</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/brugge.html" class="guide-card" data-name="bruges" data-country="belgium">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/brugge.jpg" alt="Bruges" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇧🇪 Belgium</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Bruges</h3>
+                <p class="guide-card-tagline">Canals, a belfry and a medieval fairytale that smells of chocolate</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="bruksel.html" class="hub-city-card" data-name="brussels" data-country="belgium">
-            <img src="../images/cities/bruksel.jpg" alt="Brussels" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇧🇪 Belgium</div>
-                <h3 class="hub-card-title">Brussels</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/bruksel.html" class="guide-card" data-name="brussels" data-country="belgium">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/bruksel.jpg" alt="Brussels" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇧🇪 Belgium</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Brussels</h3>
+                <p class="guide-card-tagline">Art nouveau, comic-strip walls and Europe's untidy but lovable capital</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="budapeste.html" class="hub-city-card" data-name="budapest" data-country="hungary">
-            <img src="../images/cities/budapeste.jpg" alt="Budapest" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇭🇺 Hungary</div>
-                <h3 class="hub-card-title">Budapest</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/budapeste.html" class="guide-card" data-name="budapest" data-country="hungary">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/budapeste.jpg" alt="Budapest" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇭🇺 Hungary</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Budapest</h3>
+                <p class="guide-card-tagline">Two banks of the Danube, thermal steam and the city of ruin bars</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="budva.html" class="hub-city-card" data-name="budva" data-country="montenegro">
-            <img src="../images/cities/budva.jpg" alt="Budva" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇲🇪 Montenegro</div>
-                <h3 class="hub-card-title">Budva</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/budva.html" class="guide-card" data-name="budva" data-country="montenegro">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/budva.jpg" alt="Budva" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇲🇪 Montenegro</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Budva</h3>
+                <p class="guide-card-tagline">2,500-year-old walls, Adriatic coves and a coastline that never sleeps</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="cannes.html" class="hub-city-card" data-name="cannes" data-country="france">
-            <img src="../images/cities/cannes.jpg" alt="Cannes" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇫🇷 France</div>
-                <h3 class="hub-card-title">Cannes</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/cannes.html" class="guide-card" data-name="cannes" data-country="france">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/cannes.jpg" alt="Cannes" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇫🇷 France</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Cannes</h3>
+                <p class="guide-card-tagline">The film festival lasts just one week — the real Cannes begins in the other 51</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="catania.html" class="hub-city-card" data-name="catania" data-country="italy">
-            <img src="../images/cities/catania.jpg" alt="Catania" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇮🇹 Italy</div>
-                <h3 class="hub-card-title">Catania</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/catania.html" class="guide-card" data-name="catania" data-country="italy">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/catania.jpg" alt="Catania" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇮🇹 Italy</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Catania</h3>
+                <p class="guide-card-tagline">Built from lava stone at the foot of Etna — a city that has never surrendered</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="cenevre.html" class="hub-city-card" data-name="geneva" data-country="switzerland">
-            <img src="../images/cities/cenevre.jpg" alt="Geneva" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇨🇭 Switzerland</div>
-                <h3 class="hub-card-title">Geneva</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/cenevre.html" class="guide-card" data-name="geneva" data-country="switzerland">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/cenevre.jpg" alt="Geneva" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇨🇭 Switzerland</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Geneva</h3>
+                <p class="guide-card-tagline">One of the world's most expensive cities — most of the best things are free</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="cesme.html" class="hub-city-card" data-name="cesme" data-country="turkey">
-            <img src="../images/cities/cesme.jpg" alt="Cesme" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇹🇷 Turkey</div>
-                <h3 class="hub-card-title">Cesme</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/cesme.html" class="guide-card" data-name="cesme" data-country="turkey">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/cesme.jpg" alt="Cesme" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇹🇷 Turkey</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Cesme</h3>
+                <p class="guide-card-tagline">A peninsula of wind, mastic and stone streets</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="colmar.html" class="hub-city-card" data-name="colmar" data-country="france">
-            <img src="../images/cities/colmar.jpg" alt="Colmar" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇫🇷 France</div>
-                <h3 class="hub-card-title">Colmar</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/colmar.html" class="guide-card" data-name="colmar" data-country="france">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/colmar.jpg" alt="Colmar" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇫🇷 France</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Colmar</h3>
+                <p class="guide-card-tagline">When the fairytale set turns out real: half-timber, canals and Riesling</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="cordoba.html" class="hub-city-card" data-name="córdoba" data-country="spain">
-            <img src="../images/cities/cordoba.jpg" alt="Córdoba" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">📍 Spain</div>
-                <h3 class="hub-card-title">Córdoba</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/cordoba.html" class="guide-card" data-name="córdoba" data-country="spain">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/cordoba.jpg" alt="Córdoba" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">📍 Spain</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Córdoba</h3>
+                <p class="guide-card-tagline">Capital of the Caliphate: red-and-white horseshoe arches, blooming courtyards, and Roman bridge</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="dallas.html" class="hub-city-card" data-name="dallas" data-country="usa">
-            <img src="../images/cities/dallas.jpg" alt="Dallas" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇺🇸 USA</div>
-                <h3 class="hub-card-title">Dallas</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/dallas.html" class="guide-card" data-name="dallas" data-country="usa">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/dallas.jpg" alt="Dallas" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇺🇸 USA</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Dallas</h3>
+                <p class="guide-card-tagline">Brisket smoke, neon cowboys and jazz-age walls under a big sky</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="dubai.html" class="hub-city-card" data-name="dubai" data-country="united arab emirates">
-            <img src="../images/cities/dubai.jpg" alt="Dubai" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇦🇪 United Arab Emirates</div>
-                <h3 class="hub-card-title">Dubai</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/dubai.html" class="guide-card" data-name="dubai" data-country="united arab emirates">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/dubai.jpg" alt="Dubai" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇦🇪 United Arab Emirates</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Dubai</h3>
+                <p class="guide-card-tagline">A glass skyline rising from the desert, beside a one-dirham ferry</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="dublin.html" class="hub-city-card" data-name="dublin" data-country="ireland">
-            <img src="../images/cities/dublin.jpg" alt="Dublin" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇮🇪 Ireland</div>
-                <h3 class="hub-card-title">Dublin</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/dublin.html" class="guide-card" data-name="dublin" data-country="ireland">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/dublin.jpg" alt="Dublin" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇮🇪 Ireland</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Dublin</h3>
+                <p class="guide-card-tagline">The city of literature, pub talk and rainbow-colored doors</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="dubrovnik.html" class="hub-city-card" data-name="dubrovnik" data-country="croatia">
-            <img src="../images/cities/dubrovnik.jpg" alt="Dubrovnik" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇭🇷 Croatia</div>
-                <h3 class="hub-card-title">Dubrovnik</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/dubrovnik.html" class="guide-card" data-name="dubrovnik" data-country="croatia">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/dubrovnik.jpg" alt="Dubrovnik" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇭🇷 Croatia</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Dubrovnik</h3>
+                <p class="guide-card-tagline">Marble streets embraced by walls, the Adriatic at their feet</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="dusseldorf.html" class="hub-city-card" data-name="düsseldorf" data-country="germany">
-            <img src="../images/cities/dusseldorf.jpg" alt="Düsseldorf" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">📍 Germany</div>
-                <h3 class="hub-card-title">Düsseldorf</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/dusseldorf.html" class="guide-card" data-name="düsseldorf" data-country="germany">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/dusseldorf.jpg" alt="Düsseldorf" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">📍 Germany</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Düsseldorf</h3>
+                <p class="guide-card-tagline">Rhine fashion capital: 'longest bar in the world' Altstadt, Altbier brewing, and Little Tokyo</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="edinburgh.html" class="hub-city-card" data-name="edinburgh" data-country="scotland">
-            <img src="../images/cities/edinburgh.jpg" alt="Edinburgh" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland</div>
-                <h3 class="hub-card-title">Edinburgh</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/edinburgh.html" class="guide-card" data-name="edinburgh" data-country="scotland">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/edinburgh.jpg" alt="Edinburgh" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Edinburgh</h3>
+                <p class="guide-card-tagline">Stone streets in the castle's shadow, stories in the mist</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="fes.html" class="hub-city-card" data-name="fes" data-country="morocco">
-            <img src="../images/cities/fes.jpg" alt="Fes" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇲🇦 Morocco</div>
-                <h3 class="hub-card-title">Fes</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/fes.html" class="guide-card" data-name="fes" data-country="morocco">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/fes.jpg" alt="Fes" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇲🇦 Morocco</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Fes</h3>
+                <p class="guide-card-tagline">The world's largest car-free labyrinth: medina, tanneries and a thousand years of learning</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="floransa.html" class="hub-city-card" data-name="florence" data-country="italy">
-            <img src="../images/cities/floransa.jpg" alt="Florence" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇮🇹 Italy</div>
-                <h3 class="hub-card-title">Florence</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/floransa.html" class="guide-card" data-name="florence" data-country="italy">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/floransa.jpg" alt="Florence" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇮🇹 Italy</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Florence</h3>
+                <p class="guide-card-tagline">The Renaissance was born here — and the city reminds you of this on every corner, without ever becoming tiresome</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="frankfurt.html" class="hub-city-card" data-name="frankfurt" data-country="germany">
-            <img src="../images/cities/frankfurt.jpg" alt="Frankfurt" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">📍 Germany</div>
-                <h3 class="hub-card-title">Frankfurt</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/frankfurt.html" class="guide-card" data-name="frankfurt" data-country="germany">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/frankfurt.jpg" alt="Frankfurt" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">📍 Germany</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Frankfurt</h3>
+                <p class="guide-card-tagline">Mainhattan's glass skyline, historic Römerberg square, and rustic Ebbelwoi cider taverns</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="gaziantep.html" class="hub-city-card" data-name="gaziantep" data-country="turkey">
-            <img src="../images/cities/gaziantep.jpg" alt="Gaziantep" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇹🇷 Turkey</div>
-                <h3 class="hub-card-title">Gaziantep</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/gaziantep.html" class="guide-card" data-name="gaziantep" data-country="turkey">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/gaziantep.jpg" alt="Gaziantep" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇹🇷 Turkey</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Gaziantep</h3>
+                <p class="guide-card-tagline">The gastronomy capital of pistachios, copper and mosaics</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="giethoorn.html" class="hub-city-card" data-name="giethoorn" data-country="netherlands">
-            <img src="../images/cities/giethoorn.jpg" alt="Giethoorn" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇳🇱 Netherlands</div>
-                <h3 class="hub-card-title">Giethoorn</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/giethoorn.html" class="guide-card" data-name="giethoorn" data-country="netherlands">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/giethoorn.jpg" alt="Giethoorn" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇳🇱 Netherlands</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Giethoorn</h3>
+                <p class="guide-card-tagline">The roadless village: canals, thatched roofs and whisper boats</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="girit.html" class="hub-city-card" data-name="crete" data-country="greece">
-            <img src="../images/cities/girit.jpg" alt="Crete" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">📍 Greece</div>
-                <h3 class="hub-card-title">Crete</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/girit.html" class="guide-card" data-name="crete" data-country="greece">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/girit.jpg" alt="Crete" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">📍 Greece</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Crete</h3>
+                <p class="guide-card-tagline">Island of Zeus & cradle of Minoans: Knossos labyrinth, Chania's Venetian lighthouse, and pink Balos lagoon</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="granada.html" class="hub-city-card" data-name="granada" data-country="spain">
-            <img src="../images/cities/granada.jpg" alt="Granada" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">📍 Spain</div>
-                <h3 class="hub-card-title">Granada</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/granada.html" class="guide-card" data-name="granada" data-country="spain">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/granada.jpg" alt="Granada" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">📍 Spain</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Granada</h3>
+                <p class="guide-card-tagline">The crimson crown of Andalusia: Alhambra Palace, Albaicín labyrinth, and gypsy flamenco caves</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="hallstatt.html" class="hub-city-card" data-name="hallstatt" data-country="austria">
-            <img src="../images/cities/hallstatt.jpg" alt="Hallstatt" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇦🇹 Austria</div>
-                <h3 class="hub-card-title">Hallstatt</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/hallstatt.html" class="guide-card" data-name="hallstatt" data-country="austria">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/hallstatt.jpg" alt="Hallstatt" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇦🇹 Austria</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Hallstatt</h3>
+                <p class="guide-card-tagline">A postcard wedged between lake and mountain — and the real village behind it</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="hamburg.html" class="hub-city-card" data-name="hamburg" data-country="germany">
-            <img src="../images/cities/hamburg.jpg" alt="Hamburg" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">📍 Germany</div>
-                <h3 class="hub-card-title">Hamburg</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/hamburg.html" class="guide-card" data-name="hamburg" data-country="germany">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/hamburg.jpg" alt="Hamburg" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">📍 Germany</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Hamburg</h3>
+                <p class="guide-card-tagline">Gateway to the world: red-brick Speicherstadt, wavy Elbphilharmonie, and vibrant St. Pauli</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="heidelberg.html" class="hub-city-card" data-name="heidelberg" data-country="germany">
-            <img src="../images/cities/heidelberg.jpg" alt="Heidelberg" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇩🇪 Germany</div>
-                <h3 class="hub-card-title">Heidelberg</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/heidelberg.html" class="guide-card" data-name="heidelberg" data-country="germany">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/heidelberg.jpg" alt="Heidelberg" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇩🇪 Germany</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Heidelberg</h3>
+                <p class="guide-card-tagline">A castle on the Neckar, a bridge and the capital of romanticism</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="hongkong.html" class="hub-city-card" data-name="hong kong" data-country="china (sar)">
-            <img src="../images/cities/hongkong.jpg" alt="Hong Kong" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🌍 China (SAR)</div>
-                <h3 class="hub-card-title">Hong Kong</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/hongkong.html" class="guide-card" data-name="hong kong" data-country="china (sar)">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/hongkong.jpg" alt="Hong Kong" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🌍 China (SAR)</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Hong Kong</h3>
+                <p class="guide-card-tagline">The harbour where skyscrapers meet mountains, and dim sum meets neon</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="houston.html" class="hub-city-card" data-name="houston" data-country="usa">
-            <img src="../images/cities/houston.jpg" alt="Houston" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇺🇸 USA</div>
-                <h3 class="hub-card-title">Houston</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/houston.html" class="guide-card" data-name="houston" data-country="usa">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/houston.jpg" alt="Houston" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇺🇸 USA</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Houston</h3>
+                <p class="guide-card-tagline">The bayou city that commands space and sets the world's table</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="ibiza.html" class="hub-city-card" data-name="ibiza" data-country="spain">
-            <img src="../images/cities/ibiza.jpg" alt="Ibiza" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇪🇸 Spain</div>
-                <h3 class="hub-card-title">Ibiza</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/ibiza.html" class="guide-card" data-name="ibiza" data-country="spain">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/ibiza.jpg" alt="Ibiza" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇪🇸 Spain</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Ibiza</h3>
+                <p class="guide-card-tagline">The White Isle: turquoise coves, hippie markets and sunset rituals</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="istanbul.html" class="hub-city-card" data-name="istanbul" data-country="türkiye">
-            <img src="../images/cities/istanbul.jpg" alt="Istanbul" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇹🇷 Türkiye</div>
-                <h3 class="hub-card-title">Istanbul</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/istanbul.html" class="guide-card" data-name="istanbul" data-country="türkiye">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/istanbul.jpg" alt="Istanbul" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇹🇷 Türkiye</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Istanbul</h3>
+                <p class="guide-card-tagline">Two continents, one Bosphorus: ferry horns, tea steam and eight thousand years of memory</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="izmir.html" class="hub-city-card" data-name="i̇zmir" data-country="turkey">
-            <img src="../images/cities/izmir.jpg" alt="İzmir" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">📍 Turkey</div>
-                <h3 class="hub-card-title">İzmir</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/izmir.html" class="guide-card" data-name="i̇zmir" data-country="turkey">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/izmir.jpg" alt="İzmir" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">📍 Turkey</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">İzmir</h3>
+                <p class="guide-card-tagline">Pearl of the Aegean: Kordon seafront sunsets, aroma of fresh boyoz, and ancient elegance</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="kahire.html" class="hub-city-card" data-name="cairo" data-country="egypt">
-            <img src="../images/cities/kahire.jpg" alt="Cairo" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇪🇬 Egypt</div>
-                <h3 class="hub-card-title">Cairo</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/kahire.html" class="guide-card" data-name="cairo" data-country="egypt">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/kahire.jpg" alt="Cairo" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇪🇬 Egypt</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Cairo</h3>
+                <p class="guide-card-tagline">A megacity of a thousand minarets in the shadow of the pyramids</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="kansascity.html" class="hub-city-card" data-name="kansas city" data-country="usa">
-            <img src="../images/cities/kansascity.jpg" alt="Kansas City" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇺🇸 USA</div>
-                <h3 class="hub-card-title">Kansas City</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/kansascity.html" class="guide-card" data-name="kansas city" data-country="usa">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/kansascity.jpg" alt="Kansas City" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇺🇸 USA</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Kansas City</h3>
+                <p class="guide-card-tagline">Barbecue smoke, jazz nights and fountain song — the Paris of the Plains</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="kapadokya.html" class="hub-city-card" data-name="cappadocia" data-country="turkey">
-            <img src="../images/cities/kapadokya.jpg" alt="Cappadocia" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇹🇷 Turkey</div>
-                <h3 class="hub-card-title">Cappadocia</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/kapadokya.html" class="guide-card" data-name="cappadocia" data-country="turkey">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/kapadokya.jpg" alt="Cappadocia" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇹🇷 Turkey</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Cappadocia</h3>
+                <p class="guide-card-tagline">A rock-carved fairytale under the shadow of balloons</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="kas.html" class="hub-city-card" data-name="kas" data-country="turkey">
-            <img src="../images/cities/kas.jpg" alt="Kas" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇹🇷 Turkey</div>
-                <h3 class="hub-card-title">Kas</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/kas.html" class="guide-card" data-name="kas" data-country="turkey">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/kas.jpg" alt="Kas" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇹🇷 Turkey</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Kas</h3>
+                <p class="guide-card-tagline">From bougainvillea lanes to turquoise depths — Lycia's calm harbor</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="kavala.html" class="hub-city-card" data-name="kavala" data-country="greece">
-            <img src="../images/cities/kavala.jpg" alt="Kavala" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">📍 Greece</div>
-                <h3 class="hub-card-title">Kavala</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/kavala.html" class="guide-card" data-name="kavala" data-country="greece">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/kavala.jpg" alt="Kavala" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">📍 Greece</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Kavala</h3>
+                <p class="guide-card-tagline">Amphitheater of the blue Aegean: Kamares Aqueduct, Panagia peninsula, and famous almond kurabiye</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="koln.html" class="hub-city-card" data-name="cologne" data-country="germany">
-            <img src="../images/cities/koln.jpg" alt="Cologne" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">📍 Germany</div>
-                <h3 class="hub-card-title">Cologne</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/koln.html" class="guide-card" data-name="cologne" data-country="germany">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/koln.jpg" alt="Cologne" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">📍 Germany</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Cologne</h3>
+                <p class="guide-card-tagline">Gothic crown of the Rhine: Kölner Dom, cheerful Kölsch beer halls, and romantic love locks</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="kopenhag.html" class="hub-city-card" data-name="copenhagen" data-country="denmark">
-            <img src="../images/cities/kopenhag.jpg" alt="Copenhagen" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇩🇰 Denmark</div>
-                <h3 class="hub-card-title">Copenhagen</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/kopenhag.html" class="guide-card" data-name="copenhagen" data-country="denmark">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/kopenhag.jpg" alt="Copenhagen" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇩🇰 Denmark</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Copenhagen</h3>
+                <p class="guide-card-tagline">The capital of bicycles, harbour water and hygge</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="korfu.html" class="hub-city-card" data-name="corfu" data-country="greece">
-            <img src="../images/cities/korfu.jpg" alt="Corfu" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">📍 Greece</div>
-                <h3 class="hub-card-title">Corfu</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/korfu.html" class="guide-card" data-name="corfu" data-country="greece">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/korfu.jpg" alt="Corfu" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">📍 Greece</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Corfu</h3>
+                <p class="guide-card-tagline">Venetian elegance meets Ionian sun: Liston arcades, emerald Paleokastritsa bays, and kumquat liqueur</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="kotor.html" class="hub-city-card" data-name="kotor" data-country="montenegro">
-            <img src="../images/cities/kotor.jpg" alt="Kotor" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇲🇪 Montenegro</div>
-                <h3 class="hub-card-title">Kotor</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/kotor.html" class="guide-card" data-name="kotor" data-country="montenegro">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/kotor.jpg" alt="Kotor" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇲🇪 Montenegro</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Kotor</h3>
+                <p class="guide-card-tagline">A fjord-like bay, medieval walls and the city's true owners: the cats</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="ksamil.html" class="hub-city-card" data-name="ksamil" data-country="albania">
-            <img src="../images/cities/ksamil.jpg" alt="Ksamil" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇦🇱 Albania</div>
-                <h3 class="hub-card-title">Ksamil</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/ksamil.html" class="guide-card" data-name="ksamil" data-country="albania">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/ksamil.jpg" alt="Ksamil" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇦🇱 Albania</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Ksamil</h3>
+                <p class="guide-card-tagline">Ionian turquoise, lagoon mussels and the pearl of the Albanian Riviera</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="leipzig.html" class="hub-city-card" data-name="leipzig" data-country="germany">
-            <img src="../images/cities/leipzig.jpg" alt="Leipzig" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">📍 Germany</div>
-                <h3 class="hub-card-title">Leipzig</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/leipzig.html" class="guide-card" data-name="leipzig" data-country="germany">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/leipzig.jpg" alt="Leipzig" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">📍 Germany</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Leipzig</h3>
+                <p class="guide-card-tagline">City of music, books, and peaceful revolution: Bach's St. Thomas, historic arcades, and industrial canals</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="lizbon.html" class="hub-city-card" data-name="lisbon" data-country="portugal">
-            <img src="../images/cities/lizbon.jpg" alt="Lisbon" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇵🇹 Portugal</div>
-                <h3 class="hub-card-title">Lisbon</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/lizbon.html" class="guide-card" data-name="lisbon" data-country="portugal">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/lizbon.jpg" alt="Lisbon" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇵🇹 Portugal</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Lisbon</h3>
+                <p class="guide-card-tagline">Seven hills, Atlantic light and the smell of freshly baked pastéis — the city rebuilds itself from scratch every morning</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="londra.html" class="hub-city-card" data-name="london" data-country="united kingdom">
-            <img src="../images/cities/londra.jpg" alt="London" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇬🇧 United Kingdom</div>
-                <h3 class="hub-card-title">London</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/londra.html" class="guide-card" data-name="london" data-country="united kingdom">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/londra.jpg" alt="London" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇬🇧 United Kingdom</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">London</h3>
+                <p class="guide-card-tagline">One city, a thousand cities inside it</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="losangeles.html" class="hub-city-card" data-name="los angeles" data-country="usa">
-            <img src="../images/cities/losangeles.jpg" alt="Los Angeles" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇺🇸 USA</div>
-                <h3 class="hub-card-title">Los Angeles</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/losangeles.html" class="guide-card" data-name="los angeles" data-country="usa">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/losangeles.jpg" alt="Los Angeles" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇺🇸 USA</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Los Angeles</h3>
+                <p class="guide-card-tagline">The endless city of palms, golden-hour light and taco trucks</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="lucerne.html" class="hub-city-card" data-name="lucerne" data-country="switzerland">
-            <img src="../images/cities/lucerne.jpg" alt="Lucerne" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇨🇭 Switzerland</div>
-                <h3 class="hub-card-title">Lucerne</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/lucerne.html" class="guide-card" data-name="lucerne" data-country="switzerland">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/lucerne.jpg" alt="Lucerne" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇨🇭 Switzerland</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Lucerne</h3>
+                <p class="guide-card-tagline">A wooden bridge, a turquoise lake and a city in the mountains' box seat</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="lyon.html" class="hub-city-card" data-name="lyon" data-country="france">
-            <img src="../images/cities/lyon.jpg" alt="Lyon" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇫🇷 France</div>
-                <h3 class="hub-card-title">Lyon</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/lyon.html" class="guide-card" data-name="lyon" data-country="france">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/lyon.jpg" alt="Lyon" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇫🇷 France</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Lyon</h3>
+                <p class="guide-card-tagline">France's stomach capital: two rivers, one hill, a thousand bouchons</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="madrid.html" class="hub-city-card" data-name="madrid" data-country="spain">
-            <img src="../images/cities/madrid.jpg" alt="Madrid" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇪🇸 Spain</div>
-                <h3 class="hub-card-title">Madrid</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/madrid.html" class="guide-card" data-name="madrid" data-country="spain">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/madrid.jpg" alt="Madrid" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇪🇸 Spain</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Madrid</h3>
+                <p class="guide-card-tagline">Europe's city that never sleeps — being out at 2am here needs no explanation</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="malaga.html" class="hub-city-card" data-name="málaga" data-country="spain">
-            <img src="../images/cities/malaga.jpg" alt="Málaga" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">📍 Spain</div>
-                <h3 class="hub-card-title">Málaga</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/malaga.html" class="guide-card" data-name="málaga" data-country="spain">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/malaga.jpg" alt="Málaga" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">📍 Spain</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Málaga</h3>
+                <p class="guide-card-tagline">Sunshine of Costa del Sol: Picasso's birthplace, Alcazaba fortress, and beachfront espetos</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="mallorca.html" class="hub-city-card" data-name="mallorca" data-country="spain">
-            <img src="../images/cities/mallorca.jpg" alt="Mallorca" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇪🇸 Spain</div>
-                <h3 class="hub-card-title">Mallorca</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/mallorca.html" class="guide-card" data-name="mallorca" data-country="spain">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/mallorca.jpg" alt="Mallorca" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇪🇸 Spain</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Mallorca</h3>
+                <p class="guide-card-tagline">Behind the crowded beaches, villages, olive groves and mountains that have kept their authenticity are still hiding</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="marakes.html" class="hub-city-card" data-name="marrakech" data-country="morocco">
-            <img src="../images/cities/marakes.jpg" alt="Marrakech" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇲🇦 Morocco</div>
-                <h3 class="hub-card-title">Marrakech</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/marakes.html" class="guide-card" data-name="marrakech" data-country="morocco">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/marakes.jpg" alt="Marrakech" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇲🇦 Morocco</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Marrakech</h3>
+                <p class="guide-card-tagline">The red city's square, gardens and never-ending theatre</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="marsilya.html" class="hub-city-card" data-name="marseille" data-country="france">
-            <img src="../images/cities/marsilya.jpg" alt="Marseille" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇫🇷 France</div>
-                <h3 class="hub-card-title">Marseille</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/marsilya.html" class="guide-card" data-name="marseille" data-country="france">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/marsilya.jpg" alt="Marseille" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇫🇷 France</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Marseille</h3>
+                <p class="guide-card-tagline">France's oldest city — and its most misunderstood</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="matera.html" class="hub-city-card" data-name="matera" data-country="italy">
-            <img src="../images/cities/matera.jpg" alt="Matera" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇮🇹 Italy</div>
-                <h3 class="hub-card-title">Matera</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/matera.html" class="guide-card" data-name="matera" data-country="italy">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/matera.jpg" alt="Matera" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇮🇹 Italy</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Matera</h3>
+                <p class="guide-card-tagline">A nine-thousand-year cave city: a story of stone, bread and rebirth</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="miami.html" class="hub-city-card" data-name="miami" data-country="usa">
-            <img src="../images/cities/miami.jpg" alt="Miami" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇺🇸 USA</div>
-                <h3 class="hub-card-title">Miami</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/miami.html" class="guide-card" data-name="miami" data-country="usa">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/miami.jpg" alt="Miami" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇺🇸 USA</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Miami</h3>
+                <p class="guide-card-tagline">The tropical stage of art deco pastels, cafecito steam and turquoise water</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="midilli.html" class="hub-city-card" data-name="lesbos" data-country="greece">
-            <img src="../images/cities/midilli.jpg" alt="Lesbos" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇬🇷 Greece</div>
-                <h3 class="hub-card-title">Lesbos</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/midilli.html" class="guide-card" data-name="lesbos" data-country="greece">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/midilli.jpg" alt="Lesbos" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇬🇷 Greece</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Lesbos</h3>
+                <p class="guide-card-tagline">Ouzo, olives and an island in no hurry</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="milano.html" class="hub-city-card" data-name="milano" data-country="italy">
-            <img src="../images/cities/milano.jpg" alt="Milano" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇮🇹 Italy</div>
-                <h3 class="hub-card-title">Milano</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/milano.html" class="guide-card" data-name="milano" data-country="italy">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/milano.jpg" alt="Milano" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇮🇹 Italy</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Milano</h3>
+                <p class="guide-card-tagline">Fashion, design, football and the best aperitivo on earth — in that order</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="munih.html" class="hub-city-card" data-name="munich" data-country="germany">
-            <img src="../images/cities/munih.jpg" alt="Munich" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">📍 Germany</div>
-                <h3 class="hub-card-title">Munich</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/munih.html" class="guide-card" data-name="munich" data-country="germany">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/munih.jpg" alt="Munich" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">📍 Germany</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Munich</h3>
+                <p class="guide-card-tagline">Heart of Bavaria: Marienplatz clock tower, historic beer gardens, and Alpine breezes</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="mykonos.html" class="hub-city-card" data-name="mykonos" data-country="greece">
-            <img src="../images/cities/mykonos.jpg" alt="Mykonos" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇬🇷 Greece</div>
-                <h3 class="hub-card-title">Mykonos</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/mykonos.html" class="guide-card" data-name="mykonos" data-country="greece">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/mykonos.jpg" alt="Mykonos" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇬🇷 Greece</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Mykonos</h3>
+                <p class="guide-card-tagline">One of the world's most expensive islands — but this is also where you find the spirit of the Aegean islands in its purest form</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="napoli.html" class="hub-city-card" data-name="naples" data-country="italy">
-            <img src="../images/cities/napoli.jpg" alt="Naples" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇮🇹 Italy</div>
-                <h3 class="hub-card-title">Naples</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/napoli.html" class="guide-card" data-name="naples" data-country="italy">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/napoli.jpg" alt="Naples" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇮🇹 Italy</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Naples</h3>
+                <p class="guide-card-tagline">Chaotic, noisy, full of life — the city that serves the world's best pizza for the least money, wrapped in paper, eaten standing up</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="newyork.html" class="hub-city-card" data-name="new york" data-country="united states">
-            <img src="../images/cities/newyork.jpg" alt="New York" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇺🇸 United States</div>
-                <h3 class="hub-card-title">New York</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/newyork.html" class="guide-card" data-name="new york" data-country="united states">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/newyork.jpg" alt="New York" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇺🇸 United States</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">New York</h3>
+                <p class="guide-card-tagline">The city that doesn't explain itself — and doesn't need to</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="nice.html" class="hub-city-card" data-name="nice" data-country="france">
-            <img src="../images/cities/nice.jpg" alt="Nice" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇫🇷 France</div>
-                <h3 class="hub-card-title">Nice</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/nice.html" class="guide-card" data-name="nice" data-country="france">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/nice.jpg" alt="Nice" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇫🇷 France</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Nice</h3>
+                <p class="guide-card-tagline">The French Riviera's real city — not the postcard, the place</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="nurnberg.html" class="hub-city-card" data-name="nuremberg" data-country="germany">
-            <img src="../images/cities/nurnberg.jpg" alt="Nuremberg" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">📍 Germany</div>
-                <h3 class="hub-card-title">Nuremberg</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/nurnberg.html" class="guide-card" data-name="nuremberg" data-country="germany">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/nurnberg.jpg" alt="Nuremberg" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">📍 Germany</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Nuremberg</h3>
+                <p class="guide-card-tagline">Imperial fortress, Albrecht Dürer's timbered home, legendary Lebkuchen, and beechwood-grilled sausages</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="oslo.html" class="hub-city-card" data-name="oslo" data-country="norway">
-            <img src="../images/cities/oslo.jpg" alt="Oslo" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇳🇴 Norway</div>
-                <h3 class="hub-card-title">Oslo</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/oslo.html" class="guide-card" data-name="oslo" data-country="norway">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/oslo.jpg" alt="Oslo" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇳🇴 Norway</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Oslo</h3>
+                <p class="guide-card-tagline">A capital between fjord and forest, with an opera roof you can walk on</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="palermo.html" class="hub-city-card" data-name="palermo" data-country="italy">
-            <img src="../images/cities/palermo.jpg" alt="Palermo" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇮🇹 Italy</div>
-                <h3 class="hub-card-title">Palermo</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/palermo.html" class="guide-card" data-name="palermo" data-country="italy">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/palermo.jpg" alt="Palermo" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇮🇹 Italy</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Palermo</h3>
+                <p class="guide-card-tagline">The only city where Arab, Norman, Byzantine and Baroque live side by side on the same street</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="paris.html" class="hub-city-card" data-name="paris" data-country="france">
-            <img src="../images/cities/paris.jpg" alt="Paris" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇫🇷 France</div>
-                <h3 class="hub-card-title">Paris</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/paris.html" class="guide-card" data-name="paris" data-country="france">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/paris.jpg" alt="Paris" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇫🇷 France</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Paris</h3>
+                <p class="guide-card-tagline">The city everyone thinks they know — and almost no one does</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="philadelphia.html" class="hub-city-card" data-name="philadelphia" data-country="usa">
-            <img src="../images/cities/philadelphia.jpg" alt="Philadelphia" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇺🇸 USA</div>
-                <h3 class="hub-card-title">Philadelphia</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/philadelphia.html" class="guide-card" data-name="philadelphia" data-country="usa">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/philadelphia.jpg" alt="Philadelphia" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇺🇸 USA</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Philadelphia</h3>
+                <p class="guide-card-tagline">Brick streets where independence was born, mural walls and a cheesesteak wit</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="porto.html" class="hub-city-card" data-name="porto" data-country="portugal">
-            <img src="../images/cities/porto.jpg" alt="Porto" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇵🇹 Portugal</div>
-                <h3 class="hub-card-title">Porto</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/porto.html" class="guide-card" data-name="porto" data-country="portugal">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/porto.jpg" alt="Porto" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇵🇹 Portugal</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Porto</h3>
+                <p class="guide-card-tagline">Azulejo blue, the Douro's wine and a city of bridges</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="prag.html" class="hub-city-card" data-name="prague" data-country="czech republic">
-            <img src="../images/cities/prag.jpg" alt="Prague" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🌍 Czech Republic</div>
-                <h3 class="hub-card-title">Prague</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/prag.html" class="guide-card" data-name="prague" data-country="czech republic">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/prag.jpg" alt="Prague" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🌍 Czech Republic</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Prague</h3>
+                <p class="guide-card-tagline">A city so beautiful it almost doesn't seem real — and far deeper than it looks</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="rhodes.html" class="hub-city-card" data-name="rhodes" data-country="greece">
-            <img src="../images/cities/rhodes.jpg" alt="Rhodes" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇬🇷 Greece</div>
-                <h3 class="hub-card-title">Rhodes</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/rhodes.html" class="guide-card" data-name="rhodes" data-country="greece">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/rhodes.jpg" alt="Rhodes" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇬🇷 Greece</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Rhodes</h3>
+                <p class="guide-card-tagline">Knights' walls, three hundred days of sun, and an island where two seas meet</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="roma.html" class="hub-city-card" data-name="rome" data-country="italy">
-            <img src="../images/cities/roma.jpg" alt="Rome" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇮🇹 Italy</div>
-                <h3 class="hub-card-title">Rome</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/roma.html" class="guide-card" data-name="rome" data-country="italy">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/roma.jpg" alt="Rome" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇮🇹 Italy</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Rome</h3>
+                <p class="guide-card-tagline">Three thousand years of history — and a city that still belongs to the living</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="rovaniemi.html" class="hub-city-card" data-name="rovaniemi" data-country="finland">
-            <img src="../images/cities/rovaniemi.jpg" alt="Rovaniemi" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇫🇮 Finland</div>
-                <h3 class="hub-card-title">Rovaniemi</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/rovaniemi.html" class="guide-card" data-name="rovaniemi" data-country="finland">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/rovaniemi.jpg" alt="Rovaniemi" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇫🇮 Finland</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Rovaniemi</h3>
+                <p class="guide-card-tagline">The Arctic Circle, Santa's village and lights that dance across the sky</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="saint_tropez.html" class="hub-city-card" data-name="saint-tropez" data-country="france">
-            <img src="../images/cities/saint_tropez.jpg" alt="Saint-Tropez" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇫🇷 France</div>
-                <h3 class="hub-card-title">Saint-Tropez</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/saint_tropez.html" class="guide-card" data-name="saint-tropez" data-country="france">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/saint_tropez.jpg" alt="Saint-Tropez" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇫🇷 France</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Saint-Tropez</h3>
+                <p class="guide-card-tagline">Behind the yachts and beach clubs, a fishing village is still hiding — finding it takes a little time</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="san_sebastian.html" class="hub-city-card" data-name="san sebastián" data-country="spain">
-            <img src="../images/cities/san_sebastian.jpg" alt="San Sebastián" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇪🇸 Spain</div>
-                <h3 class="hub-card-title">San Sebastián</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/san_sebastian.html" class="guide-card" data-name="san sebastián" data-country="spain">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/san_sebastian.jpg" alt="San Sebastián" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇪🇸 Spain</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">San Sebastián</h3>
+                <p class="guide-card-tagline">La Concha's golden sand and the world's finest standing-up cuisine</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="sanfrancisco.html" class="hub-city-card" data-name="san francisco" data-country="usa">
-            <img src="../images/cities/sanfrancisco.jpg" alt="San Francisco" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇺🇸 USA</div>
-                <h3 class="hub-card-title">San Francisco</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/sanfrancisco.html" class="guide-card" data-name="san francisco" data-country="usa">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/sanfrancisco.jpg" alt="San Francisco" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇺🇸 USA</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">San Francisco</h3>
+                <p class="guide-card-tagline">The free-spirited city of fog, hills and the orange bridge</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="santorini.html" class="hub-city-card" data-name="santorini" data-country="greece">
-            <img src="../images/cities/santorini.jpg" alt="Santorini" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇬🇷 Greece</div>
-                <h3 class="hub-card-title">Santorini</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/santorini.html" class="guide-card" data-name="santorini" data-country="greece">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/santorini.jpg" alt="Santorini" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇬🇷 Greece</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Santorini</h3>
+                <p class="guide-card-tagline">White villages on a volcano's rim, wine below, the sunset across</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="saraybosna.html" class="hub-city-card" data-name="sarajevo" data-country="bosnia and herzegovina">
-            <img src="../images/cities/saraybosna.jpg" alt="Sarajevo" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇧🇦 Bosnia and Herzegovina</div>
-                <h3 class="hub-card-title">Sarajevo</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/saraybosna.html" class="guide-card" data-name="sarajevo" data-country="bosnia and herzegovina">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/saraybosna.jpg" alt="Sarajevo" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇧🇦 Bosnia and Herzegovina</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Sarajevo</h3>
+                <p class="guide-card-tagline">The city where East and West shake hands in a bazaar</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="sardinya.html" class="hub-city-card" data-name="sardinia" data-country="italy">
-            <img src="../images/cities/sardinya.jpg" alt="Sardinia" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇮🇹 Italy</div>
-                <h3 class="hub-card-title">Sardinia</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/sardinya.html" class="guide-card" data-name="sardinia" data-country="italy">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/sardinya.jpg" alt="Sardinia" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇮🇹 Italy</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Sardinia</h3>
+                <p class="guide-card-tagline">Caribbean-blue sea, granite mountains, and an island that speaks its own language</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="seattle.html" class="hub-city-card" data-name="seattle" data-country="usa">
-            <img src="../images/cities/seattle.jpg" alt="Seattle" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇺🇸 USA</div>
-                <h3 class="hub-card-title">Seattle</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/seattle.html" class="guide-card" data-name="seattle" data-country="usa">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/seattle.jpg" alt="Seattle" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇺🇸 USA</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Seattle</h3>
+                <p class="guide-card-tagline">The emerald city of coffee steam, ferry horns and mountain views</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="selanik.html" class="hub-city-card" data-name="thessaloniki" data-country="greece">
-            <img src="../images/cities/selanik.jpg" alt="Thessaloniki" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇬🇷 Greece</div>
-                <h3 class="hub-card-title">Thessaloniki</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/selanik.html" class="guide-card" data-name="thessaloniki" data-country="greece">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/selanik.jpg" alt="Thessaloniki" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇬🇷 Greece</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Thessaloniki</h3>
+                <p class="guide-card-tagline">The easygoing city of Byzantium, the waterfront and long tables</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="seul.html" class="hub-city-card" data-name="seoul" data-country="south korea">
-            <img src="../images/cities/seul.jpg" alt="Seoul" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇰🇷 South Korea</div>
-                <h3 class="hub-card-title">Seoul</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/seul.html" class="guide-card" data-name="seoul" data-country="south korea">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/seul.jpg" alt="Seoul" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇰🇷 South Korea</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Seoul</h3>
+                <p class="guide-card-tagline">Where five-hundred-year-old palaces and neon streets live at once</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="sevilla.html" class="hub-city-card" data-name="seville" data-country="spain">
-            <img src="../images/cities/sevilla.jpg" alt="Seville" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇪🇸 Spain</div>
-                <h3 class="hub-card-title">Seville</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/sevilla.html" class="guide-card" data-name="seville" data-country="spain">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/sevilla.jpg" alt="Seville" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇪🇸 Spain</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Seville</h3>
+                <p class="guide-card-tagline">The most Spanish city in Spain — and the one that earned it</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="singapur.html" class="hub-city-card" data-name="singapore" data-country="singapore">
-            <img src="../images/cities/singapur.jpg" alt="Singapore" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇸🇬 Singapore</div>
-                <h3 class="hub-card-title">Singapore</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/singapur.html" class="guide-card" data-name="singapore" data-country="singapore">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/singapur.jpg" alt="Singapore" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇸🇬 Singapore</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Singapore</h3>
+                <p class="guide-card-tagline">Hawker tables, supertrees and three cuisines in a garden city</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="sintra.html" class="hub-city-card" data-name="sintra" data-country="portugal">
-            <img src="../images/cities/sintra.jpg" alt="Sintra" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇵🇹 Portugal</div>
-                <h3 class="hub-card-title">Sintra</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/sintra.html" class="guide-card" data-name="sintra" data-country="portugal">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/sintra.jpg" alt="Sintra" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇵🇹 Portugal</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Sintra</h3>
+                <p class="guide-card-tagline">A romantic fairytale in the palaces of a misty mountain</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="stockholm.html" class="hub-city-card" data-name="stockholm" data-country="sweden">
-            <img src="../images/cities/stockholm.jpg" alt="Stockholm" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇸🇪 Sweden</div>
-                <h3 class="hub-card-title">Stockholm</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/stockholm.html" class="guide-card" data-name="stockholm" data-country="sweden">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/stockholm.jpg" alt="Stockholm" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇸🇪 Sweden</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Stockholm</h3>
+                <p class="guide-card-tagline">Elegance built on fourteen islands: water, design and fika</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="strazburg.html" class="hub-city-card" data-name="strasbourg" data-country="france">
-            <img src="../images/cities/strazburg.jpg" alt="Strasbourg" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇫🇷 France</div>
-                <h3 class="hub-card-title">Strasbourg</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/strazburg.html" class="guide-card" data-name="strasbourg" data-country="france">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/strazburg.jpg" alt="Strasbourg" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇫🇷 France</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Strasbourg</h3>
+                <p class="guide-card-tagline">Capital of Europe, homeland of Christmas, one city of two cultures</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="stuttgart.html" class="hub-city-card" data-name="stuttgart" data-country="germany">
-            <img src="../images/cities/stuttgart.jpg" alt="Stuttgart" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">📍 Germany</div>
-                <h3 class="hub-card-title">Stuttgart</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/stuttgart.html" class="guide-card" data-name="stuttgart" data-country="germany">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/stuttgart.jpg" alt="Stuttgart" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">📍 Germany</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Stuttgart</h3>
+                <p class="guide-card-tagline">Birthplace of the automobile, terraced hillside vineyards, and Swabian culinary soul</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="tokyo.html" class="hub-city-card" data-name="tokyo" data-country="japan">
-            <img src="../images/cities/tokyo.jpg" alt="Tokyo" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇯🇵 Japan</div>
-                <h3 class="hub-card-title">Tokyo</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/tokyo.html" class="guide-card" data-name="tokyo" data-country="japan">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/tokyo.jpg" alt="Tokyo" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇯🇵 Japan</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Tokyo</h3>
+                <p class="guide-card-tagline">The quiet giant of order, neon and perfection</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="trabzon.html" class="hub-city-card" data-name="trabzon" data-country="turkey">
-            <img src="../images/cities/trabzon.jpg" alt="Trabzon" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">📍 Turkey</div>
-                <h3 class="hub-card-title">Trabzon</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/trabzon.html" class="guide-card" data-name="trabzon" data-country="turkey">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/trabzon.jpg" alt="Trabzon" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">📍 Turkey</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Trabzon</h3>
+                <p class="guide-card-tagline">Ancient stronghold of the Black Sea: misty plateaus, cliffside Sumela, and joyful kemençe rhythms</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="tromso.html" class="hub-city-card" data-name="tromsø" data-country="norway">
-            <img src="../images/cities/tromso.jpg" alt="Tromsø" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇳🇴 Norway</div>
-                <h3 class="hub-card-title">Tromsø</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/tromso.html" class="guide-card" data-name="tromsø" data-country="norway">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/tromso.jpg" alt="Tromsø" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇳🇴 Norway</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Tromsø</h3>
+                <p class="guide-card-tagline">City of the polar night, the aurora and mountain-ringed fjords</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="valencia.html" class="hub-city-card" data-name="valencia" data-country="spain">
-            <img src="../images/cities/valencia.jpg" alt="Valencia" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇪🇸 Spain</div>
-                <h3 class="hub-card-title">Valencia</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/valencia.html" class="guide-card" data-name="valencia" data-country="spain">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/valencia.jpg" alt="Valencia" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇪🇸 Spain</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Valencia</h3>
+                <p class="guide-card-tagline">The birthplace of paella, a city shaped by oranges, and Spain's most underrated metropolis</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="venedik.html" class="hub-city-card" data-name="venice" data-country="italy">
-            <img src="../images/cities/venedik.jpg" alt="Venice" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇮🇹 Italy</div>
-                <h3 class="hub-card-title">Venice</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/venedik.html" class="guide-card" data-name="venice" data-country="italy">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/venedik.jpg" alt="Venice" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇮🇹 Italy</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Venice</h3>
+                <p class="guide-card-tagline">The impossible city built on water: get lost, drink an ombra, get lost again</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="viyana.html" class="hub-city-card" data-name="vienna" data-country="austria">
-            <img src="../images/cities/viyana.jpg" alt="Vienna" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇦🇹 Austria</div>
-                <h3 class="hub-card-title">Vienna</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/viyana.html" class="guide-card" data-name="vienna" data-country="austria">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/viyana.jpg" alt="Vienna" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇦🇹 Austria</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Vienna</h3>
+                <p class="guide-card-tagline">Imperial elegance, coffeehouse philosophy and a slice of Sachertorte</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="zakintos.html" class="hub-city-card" data-name="zakynthos" data-country="greece">
-            <img src="../images/cities/zakintos.jpg" alt="Zakynthos" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">📍 Greece</div>
-                <h3 class="hub-card-title">Zakynthos</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/zakintos.html" class="guide-card" data-name="zakynthos" data-country="greece">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/zakintos.jpg" alt="Zakynthos" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">📍 Greece</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Zakynthos</h3>
+                <p class="guide-card-tagline">Emerald isle of the Ionian: Navagio Shipwreck beach, loggerhead sea turtles, and glowing blue caves</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
-        <a href="zermatt.html" class="hub-city-card" data-name="zermatt" data-country="switzerland">
-            <img src="../images/cities/zermatt.jpg" alt="Zermatt" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇨🇭 Switzerland</div>
-                <h3 class="hub-card-title">Zermatt</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/zermatt.html" class="guide-card" data-name="zermatt" data-country="switzerland">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/zermatt.jpg" alt="Zermatt" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇨🇭 Switzerland</span>
             </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Zermatt</h3>
+                <p class="guide-card-tagline">A car-free village, glacier trains and the Matterhorn's shadow</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
+            </div>
         </a>
         
-        <a href="zurih.html" class="hub-city-card" data-name="zurich" data-country="switzerland">
-            <img src="../images/cities/zurih.jpg" alt="Zurich" loading="lazy">
-            <div class="hub-card-overlay"></div>
-            <div class="hub-card-content">
-                <div class="hub-card-flag">🇨🇭 Switzerland</div>
-                <h3 class="hub-card-title">Zurich</h3>
-                <div class="hub-card-action">Explore Guide &rarr;</div>
+        <a href="/guides/zurih.html" class="guide-card" data-name="zurich" data-country="switzerland">
+            <div class="guide-card-img-wrapper">
+                <img src="../images/cities/zurih.jpg" alt="Zurich" loading="lazy" class="guide-card-img">
+                <span class="guide-card-badge">🇨🇭 Switzerland</span>
+            </div>
+            <div class="guide-card-content">
+                <h3 class="guide-card-title">Zurich</h3>
+                <p class="guide-card-tagline">The lake city hidden behind the banks: river swims, Dada and chocolate</p>
+                <div class="guide-card-footer">
+                    <span class="guide-card-link">Explore Guide &rarr;</span>
+                </div>
             </div>
         </a>
         
         </div>
     </main>
 
-    <footer class="footer" style="margin-top: 60px;">
-        <div class="container" style="text-align: center;">
-            <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+                        <img src="../images/app_icon.png" alt="MyWay" width="32" height="32" style="border-radius:8px;">
+                        <h4 style="margin:0;">MyWay</h4>
+                    </div>
+                    <p>The ultimate smart travel guide and AI route planner for modern explorers. Stop being a tourist; experience cities like a local.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>City Guides</h5>
+                    <ul>
+                        <li><a href="/guides/">All Cities</a></li>
+                        <li><a href="/guides/barcelona.html">Barcelona</a></li>
+                        <li><a href="/guides/roma.html">Roma</a></li>
+                        <li><a href="/guides/paris.html">Paris</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Company</h5>
+                    <ul>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../support.html">Support</a></li>
+                        <li><a href="/#features">Features</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Legal</h5>
+                    <ul>
+                        <li><a href="../privacy.html">Privacy Policy</a></li>
+                        <li><a href="../terms.html">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MyWay Travel App. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
@@ -1863,23 +2338,21 @@
             });
         }
 
-        // Client-side instant search filter
-        const citySearch = document.getElementById('citySearch');
-        const cityGrid = document.getElementById('cityGrid');
-        const cards = cityGrid.getElementsByClassName('hub-city-card');
-
-        if (citySearch) {
-            citySearch.addEventListener('input', (e) => {
-                const query = e.target.value.toLowerCase().trim();
-                for (let i = 0; i < cards.length; i++) {
-                    const name = cards[i].getAttribute('data-name') || '';
-                    const country = cards[i].getAttribute('data-country') || '';
-                    if (name.includes(query) || country.includes(query)) {
-                        cards[i].style.display = 'flex';
+        // Client-side instant live search
+        const searchInput = document.getElementById('citySearch');
+        const cards = document.querySelectorAll('.guide-card');
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                const q = e.target.value.toLowerCase().trim();
+                cards.forEach(card => {
+                    const name = card.getAttribute('data-name') || '';
+                    const country = card.getAttribute('data-country') || '';
+                    if (name.includes(q) || country.includes(q)) {
+                        card.style.display = 'flex';
                     } else {
-                        cards[i].style.display = 'none';
+                        card.style.display = 'none';
                     }
-                }
+                });
             });
         }
     </script>

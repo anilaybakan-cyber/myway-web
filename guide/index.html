@@ -13,15 +13,30 @@
             var params = new URLSearchParams(window.location.search);
             var cityId = (params.get("cityId") || filtered[filtered.length - 1] || "").toLowerCase();
 
-            // Language detection
+            // 6-Language detection: en, tr, it, es, de, fr
             var userChoice = localStorage.getItem('myway_user_lang');
-            var isTr = userChoice === 'tr' || (!userChoice && (navigator.language || '').toLowerCase().indexOf('tr') === 0);
+            var browserLang = (navigator.language || 'en').toLowerCase();
+            var detected = userChoice;
+            if (!detected) {
+                if (browserLang.indexOf('tr') === 0) detected = 'tr';
+                else if (browserLang.indexOf('it') === 0) detected = 'it';
+                else if (browserLang.indexOf('es') === 0) detected = 'es';
+                else if (browserLang.indexOf('de') === 0) detected = 'de';
+                else if (browserLang.indexOf('fr') === 0) detected = 'fr';
+                else detected = 'en';
+            }
+
+            var guidePrefix = '/guides/';
+            if (detected === 'tr') guidePrefix = '/tr/rehber/';
+            else if (detected === 'it') guidePrefix = '/it/guides/';
+            else if (detected === 'es') guidePrefix = '/es/guides/';
+            else if (detected === 'de') guidePrefix = '/de/guides/';
+            else if (detected === 'fr') guidePrefix = '/fr/guides/';
 
             if (cityId) {
-                var target = isTr ? "/tr/rehber/" + encodeURIComponent(cityId) + ".html" : "/guides/" + encodeURIComponent(cityId) + ".html";
-                window.location.replace(target);
+                window.location.replace(guidePrefix + encodeURIComponent(cityId) + ".html");
             } else {
-                window.location.replace(isTr ? "/tr/rehber/" : "/guides/");
+                window.location.replace(guidePrefix);
             }
         })();
     </script>
