@@ -55,6 +55,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         :root {
             --primary: #7B6EF6;
             --primary-light: #9D93FF;
@@ -76,13 +82,15 @@
             --shadow-glow: 0 0 80px rgba(123, 110, 246, 0.15);
         }
 
-        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; overflow-x: hidden; }
         body {
             font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background-color: var(--bg-dark);
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
+            width: 100%;
+            position: relative;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -436,31 +444,85 @@
 
         @media (max-width: 960px) {
             .features-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+            .curation-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
             .footer-grid { grid-template-columns: 1fr 1fr; }
+            .explorer-grid { grid-template-columns: 1fr; gap: 20px; }
+            .explorer-feature-strip { grid-template-columns: 1fr; }
+            .feature-strip-item { justify-content: flex-start; text-align: left; }
         }
 
         @media (max-width: 768px) {
-            .navbar { padding: 0 16px; }
-            .navbar-inner { height: 64px; }
+            .container { padding: 0 16px; }
+            .navbar { padding: 0 14px; }
+            .navbar-inner { height: 60px; }
+            .nav-brand span { font-size: 18px; }
+            .nav-brand img { width: 34px; height: 34px; }
             .nav-links {
-                display: none; position: fixed; top: 64px; left: 0; right: 0;
+                display: none; position: fixed; top: 60px; left: 0; right: 0;
                 background: rgba(15, 11, 26, 0.98); backdrop-filter: blur(25px);
                 flex-direction: column; padding: 24px; gap: 18px;
                 border-bottom: 1px solid var(--border-subtle); z-index: 99;
             }
             .nav-links.open { display: flex; }
             .nav-toggle { display: block; }
-            .hero { padding: 100px 16px 50px; }
-            .stats-grid { flex-direction: column; gap: 14px; padding: 18px 20px; }
+            .hero { padding: 95px 16px 45px; }
+            .hero h1 { font-size: clamp(28px, 7vw, 44px); }
+            .hero-description { font-size: 15px; margin-bottom: 22px; }
+            .store-buttons { width: 100%; gap: 10px; }
+            .store-btn { width: 100%; max-width: 290px; justify-content: center; }
+            .hero-guides-btn { width: 100%; max-width: 290px; justify-content: center; }
+            .stats { margin: 28px auto 0; }
+            .stats-grid { flex-direction: column; gap: 12px; padding: 16px 18px; width: 100%; }
             .stat-item:not(:last-child)::after { display: none; }
+            
             .home-guides-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-            .home-guide-card { height: 230px; }
-            .home-guide-title { font-size: 18px; }
-            .footer-grid { grid-template-columns: 1fr; }
+            .home-guide-card { height: 220px; }
+            .home-guide-title { font-size: 17px; }
+            
+            .curation-grid { grid-template-columns: 1fr; gap: 16px; }
+            .curation-card { padding: 24px 18px; }
+            .carousel-item img { height: 380px; }
+            
+            .home-route-explorer { padding: 50px 0 40px; }
+            .explorer-header { margin-bottom: 20px; }
+            .explorer-header h2 { font-size: clamp(22px, 5.5vw, 32px); }
+            .explorer-control-bar {
+                flex-direction: column; align-items: stretch; gap: 12px; padding: 12px 14px;
+            }
+            .explorer-select-wrap {
+                flex-direction: column; align-items: stretch; gap: 6px; width: 100%;
+            }
+            .select-dropdown-custom { width: 100%; }
+            .explorer-select { width: 100%; font-size: 13.5px; padding: 10px 36px 10px 14px; }
+            .explorer-pills {
+                display: flex; overflow-x: auto; -webkit-overflow-scrolling: touch;
+                flex-wrap: nowrap; gap: 6px; width: 100%; padding-bottom: 4px;
+                scrollbar-width: none;
+            }
+            .explorer-pills::-webkit-scrollbar { display: none; }
+            .explorer-pill-btn {
+                flex-shrink: 0; white-space: nowrap; font-size: 11.5px; padding: 6px 12px;
+            }
+            .explorer-map-wrapper { min-height: auto; border-radius: 16px; }
+            .explorer-map-canvas { height: 300px; min-height: 300px; }
+            .explorer-itinerary-card { min-height: auto; border-radius: 16px; }
+            .itinerary-steps-scroll { max-height: 340px; padding: 12px 14px; gap: 10px; }
+            .home-timeline-step { padding: 10px 12px; gap: 10px; }
+            .itinerary-app-promo { margin: 0 12px 12px; padding: 12px 14px; }
+            .explorer-feature-strip { padding: 16px; gap: 14px; }
+            .feature-strip-cta { width: 100%; text-align: center; justify-content: center; }
+
+            .cta { padding: 60px 16px; }
+            .footer { padding: 40px 16px 28px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 28px; }
         }
 
         @media (max-width: 600px) {
+            .nav-cta { display: none; }
             .features-grid { grid-template-columns: 1fr; gap: 16px; }
+            .feature-box { padding: 22px 18px; }
+            .carousel-item img { height: 330px; }
+            .carousel-track { padding: 0 20px; gap: 14px; }
         }
 
         @media (max-width: 480px) {
@@ -470,6 +532,19 @@
             .home-guide-title { font-size: 16px; margin-bottom: 2px; }
             .home-guide-tagline { display: none; }
             .home-guide-link { display: none; }
+            .explorer-map-canvas { height: 260px; min-height: 260px; }
+            .explorer-map-bar { padding: 10px 12px; }
+            .explorer-map-title { font-size: 13.5px; }
+            .itinerary-card-header { padding: 10px 12px; }
+            .itinerary-card-badge { font-size: 12px; }
+            .day-tab-btn { font-size: 10px; padding: 4px 7px; }
+            .step-heading { font-size: 13px; }
+            .step-body-desc { font-size: 11px; }
+            .step-circle-num { width: 20px; height: 20px; font-size: 9px; }
+            #cookieBanner {
+                bottom: 12px !important; left: 12px !important; right: 12px !important;
+                padding: 14px 16px !important; border-radius: 16px !important;
+            }
         }
 
         /* ============================================================

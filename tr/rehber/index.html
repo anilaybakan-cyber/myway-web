@@ -564,32 +564,30 @@
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 680px) {
-            .navbar { height: 64px; }
+        @media (max-width: 768px) {
+            .container { padding: 0 16px; }
+            .navbar { padding: 0 14px; }
+            .navbar-inner { height: 60px; }
+            .nav-brand span { font-size: 18px; }
+            .nav-brand img { width: 34px; height: 34px; }
             .nav-links {
-                display: none; position: fixed; top: 64px; left: 0; right: 0;
-                background: rgba(15, 11, 26, 0.98); flex-direction: column;
-                padding: 24px; border-bottom: 1px solid var(--border-subtle); gap: 16px;
+                display: none; position: fixed; top: 60px; left: 0; right: 0;
+                background: rgba(15, 11, 26, 0.98); backdrop-filter: blur(25px);
+                flex-direction: column; padding: 24px; gap: 18px;
+                border-bottom: 1px solid var(--border-subtle); z-index: 99;
             }
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
-            .guide-hero { min-height: 420px; padding-top: 100px; }
-            
-            .cards-grid { grid-template-columns: 1fr; }
-            .cards-grid-5 { grid-template-columns: 1fr; }
-            .cards-grid-5 > .feature-card,
-            .cards-grid-5 > .feature-card:nth-child(4),
-            .cards-grid-5 > .feature-card:nth-child(5) { grid-column: span 1; }
-            
-            .cards-grid-4 { grid-template-columns: 1fr; }
-            .seasons-grid { grid-template-columns: 1fr; }
-            .facts-grid { grid-template-columns: 1fr; }
-            .phrases-grid { grid-template-columns: 1fr; }
-            
-            .footer-grid { grid-template-columns: 1fr; }
-            .store-pill-btn { width: 100%; max-width: 280px; justify-content: center; }
+            .hub-header { padding: 95px 16px 30px; }
+            .hub-header h1 { font-size: clamp(28px, 7vw, 42px); }
+            .hub-header p { font-size: 14.5px; margin-bottom: 20px; }
+            .search-bar-wrap { max-width: 100%; }
+            .footer-grid { grid-template-columns: 1fr; gap: 28px; }
         }
 
+        @media (max-width: 600px) {
+            .nav-cta { display: none; }
+        }
 
         /* Hub Header */
         .hub-header {
