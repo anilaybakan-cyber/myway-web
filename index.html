@@ -28,6 +28,7 @@
     </script>
 
 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3430388081048209"
          crossorigin="anonymous"></script>
@@ -470,6 +471,378 @@
             .home-guide-tagline { display: none; }
             .home-guide-link { display: none; }
         }
+
+        /* ============================================================
+           Interactive Route Explorer Section (Homepage)
+           ============================================================ */
+        .home-route-explorer {
+            padding: 80px 0;
+            position: relative;
+            border-bottom: 1px solid var(--border-subtle);
+            background: radial-gradient(circle at 50% 0%, rgba(123, 110, 246, 0.08) 0%, transparent 70%);
+            z-index: 2;
+        }
+        .explorer-header {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto 36px;
+        }
+        .explorer-control-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-subtle);
+            padding: 14px 18px;
+            border-radius: var(--radius-md);
+            backdrop-filter: blur(12px);
+        }
+        .explorer-select-wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .explorer-select-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+        .select-dropdown-custom {
+            position: relative;
+        }
+        .explorer-select {
+            appearance: none;
+            -webkit-appearance: none;
+            background: rgba(22, 17, 38, 0.95);
+            border: 1px solid rgba(123, 110, 246, 0.4);
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 9px 36px 9px 14px;
+            border-radius: 10px;
+            cursor: pointer;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            font-family: inherit;
+        }
+        .select-dropdown-custom::after {
+            content: '▾';
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-light);
+            pointer-events: none;
+            font-size: 13px;
+        }
+        .explorer-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(123, 110, 246, 0.25);
+        }
+        .explorer-pills {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .explorer-pill-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+        .explorer-pill-btn:hover {
+            background: rgba(123, 110, 246, 0.15);
+            border-color: rgba(123, 110, 246, 0.4);
+            color: #fff;
+            transform: translateY(-1px);
+        }
+        .explorer-pill-btn.active {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-color: var(--primary-light);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(123, 110, 246, 0.35);
+        }
+        .explorer-grid {
+            display: grid;
+            grid-template-columns: 1.25fr 1fr;
+            gap: 24px;
+            align-items: stretch;
+        }
+        @media (max-width: 960px) {
+            .explorer-grid { grid-template-columns: 1fr; }
+        }
+        .explorer-map-wrapper {
+            background: rgba(22, 17, 38, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            min-height: 520px;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+        }
+        .explorer-map-bar {
+            padding: 14px 18px;
+            background: rgba(15, 11, 26, 0.9);
+            border-bottom: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .explorer-map-city-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .pulse-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #10B981;
+            box-shadow: 0 0 10px #10B981;
+            animation: pulseMap 2s infinite;
+        }
+        @keyframes pulseMap {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { transform: scale(1.1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+        .explorer-map-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            margin: 0;
+        }
+        .explorer-stops-pill {
+            background: rgba(123, 110, 246, 0.18);
+            color: var(--primary-light);
+            border: 1px solid rgba(123, 110, 246, 0.35);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 100px;
+        }
+        .explorer-reset-btn {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            font-size: 12px;
+            font-weight: 600;
+            padding: 5px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .explorer-reset-btn:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+        .explorer-map-canvas {
+            flex: 1;
+            width: 100%;
+            min-height: 420px;
+            background: #0B0814;
+            z-index: 1;
+        }
+        .explorer-map-canvas .leaflet-tile {
+            filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.6);
+            -webkit-filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.6);
+        }
+        .explorer-map-hint {
+            padding: 10px 18px;
+            background: rgba(15, 11, 26, 0.85);
+            border-top: 1px solid var(--border-subtle);
+            font-size: 12px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .custom-route-marker { background: transparent; border: none; }
+        .marker-pin {
+            width: 32px; height: 32px; border-radius: 50% 50% 50% 0;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            transform: rotate(-45deg);
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 14px rgba(123, 110, 246, 0.6);
+            border: 2px solid #ffffff;
+            transition: transform 0.2s ease;
+        }
+        .marker-pin:hover, .marker-pin.active {
+            transform: rotate(-45deg) scale(1.18);
+            box-shadow: 0 6px 20px rgba(236, 72, 153, 0.85);
+        }
+        .marker-num {
+            transform: rotate(45deg);
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 12px;
+            line-height: 1;
+        }
+        .leaflet-popup-content-wrapper {
+            background: rgba(18, 13, 30, 0.96) !important;
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(123, 110, 246, 0.35) !important;
+            border-radius: 14px !important;
+            color: #ffffff !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6) !important;
+        }
+        .leaflet-popup-tip { background: rgba(18, 13, 30, 0.96) !important; }
+        .route-popup .popup-time { display: inline-block; font-size: 11px; font-weight: 700; color: var(--primary-light); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+        .route-popup .popup-title { font-size: 14px; font-weight: 700; color: #ffffff; margin-bottom: 4px; }
+        .route-popup .popup-desc { font-size: 12px; color: #CBD5E1; line-height: 1.5; margin: 0; }
+        .explorer-itinerary-card {
+            background: rgba(22, 17, 38, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-md);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            min-height: 520px;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+            overflow: hidden;
+        }
+        .itinerary-card-header {
+            padding: 16px 20px;
+            background: rgba(15, 11, 26, 0.85);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        .itinerary-card-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+        .itinerary-day-tag {
+            background: rgba(123, 110, 246, 0.2);
+            color: var(--primary-light);
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+        .itinerary-card-heading {
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            margin: 0;
+        }
+        .itinerary-steps-scroll {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-height: 380px;
+        }
+        .itinerary-steps-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .itinerary-steps-scroll::-webkit-scrollbar-thumb {
+            background: rgba(123, 110, 246, 0.25);
+            border-radius: 4px;
+        }
+        .home-timeline-step {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 12px 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+        .home-timeline-step:hover {
+            background: rgba(123, 110, 246, 0.12);
+            border-color: rgba(123, 110, 246, 0.4);
+            transform: translateX(3px);
+        }
+        .home-timeline-step.active {
+            background: rgba(123, 110, 246, 0.18);
+            border-color: var(--primary-light);
+        }
+        .step-circle-num {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #19142B;
+            border: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 800;
+            color: #fff;
+            flex-shrink: 0;
+        }
+        .step-main-info {
+            flex: 1;
+        }
+        .step-time-badge {
+            background: rgba(123, 110, 246, 0.2);
+            color: var(--primary-light);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-bottom: 4px;
+            display: inline-block;
+        }
+        .step-heading {
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            margin: 0 0 4px;
+            line-height: 1.3;
+        }
+        .step-body-desc {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin: 0;
+        }
+        .itinerary-card-footer {
+            padding: 14px 20px;
+            background: rgba(15, 11, 26, 0.85);
+            border-top: 1px solid var(--border-subtle);
+        }
+        .explorer-guide-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 700;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 16px rgba(123, 110, 246, 0.35);
+        }
+        .explorer-guide-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(123, 110, 246, 0.55);
+        }
+
     </style>
 </head>
 <body>
@@ -582,6 +955,76 @@
         </div>
     </section>
 
+
+    <!-- Interactive Day 1 Route Explorer Section -->
+    <section class="home-route-explorer" id="route-explorer">
+        <div class="container">
+            <div class="explorer-header">
+                <span class="section-label">📍 LIVE INTERACTIVE ROUTE PREVIEW</span>
+                <h2 class="section-title">Explore 1-Day Walking Tours in 112+ Cities</h2>
+                <p class="section-subtitle" style="margin: 0 auto;">Select any destination to preview its optimized walking itinerary, numbered pins, and live route map.</p>
+            </div>
+
+            <!-- City Selector Bar -->
+            <div class="explorer-control-bar">
+                <div class="explorer-select-wrap">
+                    <label for="explorerCitySelect" class="explorer-select-label">📍 Choose Destination:</label>
+                    <div class="select-dropdown-custom">
+                        <select id="explorerCitySelect" class="explorer-select" aria-label="Choose Destination">
+                        </select>
+                    </div>
+                </div>
+                <div class="explorer-pills" id="explorerPills">
+                </div>
+            </div>
+
+            <!-- Explorer Grid -->
+            <div class="explorer-grid">
+                <!-- Map Column -->
+                <div class="explorer-map-wrapper">
+                    <div class="explorer-map-bar">
+                        <div class="explorer-map-city-info">
+                            <span class="pulse-dot"></span>
+                            <h3 id="explorerMapTitle" class="explorer-map-title">...</h3>
+                            <span id="explorerMapStopsCount" class="explorer-stops-pill">...</span>
+                        </div>
+                        <button type="button" class="explorer-reset-btn" id="explorerResetBtn" title="Fit map to route">
+                            ⟲ Reset View
+                        </button>
+                    </div>
+                    <div id="homeRouteMap" class="explorer-map-canvas"></div>
+                    <div class="explorer-map-hint">
+                        <span>💡</span>
+                        <span>Click any pin or timeline step below to inspect details on the map</span>
+                    </div>
+                </div>
+
+                <!-- Itinerary Column -->
+                <div class="explorer-itinerary-card">
+                    <div class="itinerary-card-header">
+                        <div class="itinerary-card-badge">
+                            <span id="itineraryCityFlag">📍</span>
+                            <span id="itineraryCityName">...</span>
+                            <span class="itinerary-day-tag">Day 1</span>
+                        </div>
+                        <h4 class="itinerary-card-heading">Curated Walking Flow</h4>
+                    </div>
+                    
+                    <div class="itinerary-steps-scroll" id="explorerStepsList">
+                    </div>
+
+                    <div class="itinerary-card-footer">
+                        <a id="explorerGuideLink" href="#" class="explorer-guide-btn">
+                            <span>📖</span>
+                            <span id="explorerGuideBtnText">Open Full Guide</span>
+                            <span>&rarr;</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
 
     <!-- Featured City Guides Section -->
     <section class="home-guides-section">
@@ -999,5 +1442,191 @@
             });
         }
     </script>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var mapContainer = document.getElementById('homeRouteMap');
+        if (!mapContainer) return;
+
+        var map = L.map('homeRouteMap', {
+            scrollWheelZoom: false,
+            zoomControl: true,
+            attributionControl: false
+        });
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19
+        }).addTo(map);
+
+        var currentMarkers = [];
+        var currentPolyline = null;
+        var allRoutesData = {};
+        var defaultSlug = 'barcelona';
+
+        var quickPills = [{"slug":"barcelona","label":"🇪🇸 Barcelona"},{"slug":"amsterdam","label":"🇳🇱 Amsterdam"},{"slug":"roma","label":"🇮🇹 Rome"},{"slug":"paris","label":"🇫🇷 Paris"},{"slug":"londra","label":"🇬🇧 London"},{"slug":"istanbul","label":"🇹🇷 Istanbul"},{"slug":"tokyo","label":"🇯🇵 Tokyo"},{"slug":"newyork","label":"🇺🇸 New York"}];
+        var selectEl = document.getElementById('explorerCitySelect');
+        var pillsContainer = document.getElementById('explorerPills');
+
+        // Render quick pills
+        quickPills.forEach(function(p) {
+            var btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'explorer-pill-btn' + (p.slug === defaultSlug ? ' active' : '');
+            btn.textContent = p.label;
+            btn.setAttribute('data-slug', p.slug);
+            btn.addEventListener('click', function() {
+                selectCity(p.slug);
+            });
+            pillsContainer.appendChild(btn);
+        });
+
+        // Fetch routes data with fallback
+        var primaryDataUrl = '/data/homepage_routes_en.json';
+        var fallbackDataUrl = 'data/homepage_routes_en.json';
+        fetch(primaryDataUrl)
+            .catch(function() { return fetch(fallbackDataUrl); })
+            .then(function(res) { return res.json(); })
+            .then(function(data) {
+                allRoutesData = data;
+                
+                var sortedSlugs = Object.keys(data).sort(function(a, b) {
+                    return (data[a].name || a).localeCompare(data[b].name || b);
+                });
+
+                sortedSlugs.forEach(function(slug) {
+                    var c = data[slug];
+                    var opt = document.createElement('option');
+                    opt.value = slug;
+                    opt.textContent = (c.flag ? c.flag + ' ' : '') + c.name + (c.country ? ' (' + c.country + ')' : '');
+                    if (slug === defaultSlug) opt.selected = true;
+                    selectEl.appendChild(opt);
+                });
+
+                selectCity(defaultSlug);
+            })
+            .catch(function(err) {
+                console.error('Failed to load homepage routes data:', err);
+            });
+
+        selectEl.addEventListener('change', function(e) {
+            selectCity(e.target.value);
+        });
+
+        function selectCity(slug) {
+            var city = allRoutesData[slug];
+            if (!city) return;
+
+            if (selectEl.value !== slug) {
+                selectEl.value = slug;
+            }
+
+            document.querySelectorAll('.explorer-pill-btn').forEach(function(btn) {
+                if (btn.getAttribute('data-slug') === slug) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
+            document.getElementById('explorerMapTitle').textContent = (city.flag ? city.flag + ' ' : '') + city.name;
+            document.getElementById('explorerMapStopsCount').textContent = city.stops.length + ' Stops';
+
+            document.getElementById('itineraryCityFlag').textContent = city.flag || '📍';
+            document.getElementById('itineraryCityName').textContent = city.name;
+            document.getElementById('explorerGuideLink').href = city.guide_url;
+            document.getElementById('explorerGuideBtnText').textContent = 'Open Full ' + city.name + ' Guide';
+
+            currentMarkers.forEach(function(m) { map.removeLayer(m); });
+            currentMarkers = [];
+            if (currentPolyline) {
+                map.removeLayer(currentPolyline);
+                currentPolyline = null;
+            }
+
+            var latlngs = [];
+            var stepsListEl = document.getElementById('explorerStepsList');
+            stepsListEl.innerHTML = '';
+
+            city.stops.forEach(function(stop, idx) {
+                var pt = [stop.lat, stop.lng];
+                latlngs.push(pt);
+
+                var icon = L.divIcon({
+                    className: 'custom-route-marker',
+                    html: '<div class="marker-pin"><span class="marker-num">' + (idx + 1) + '</span></div>',
+                    iconSize: [32, 32],
+                    iconAnchor: [16, 32],
+                    popupAnchor: [0, -32]
+                });
+
+                var m = L.marker(pt, { icon: icon }).addTo(map);
+                var popupContent = '<div class="route-popup">' +
+                    '<span class="popup-time">' + stop.time + ' · Stop # ' + (idx + 1) + '</span>' +
+                    '<h5 class="popup-title">' + stop.title + '</h5>' +
+                    '<p class="popup-desc">' + stop.desc + '</p>' +
+                    '</div>';
+                m.bindPopup(popupContent);
+                currentMarkers.push(m);
+
+                var stepEl = document.createElement('div');
+                stepEl.className = 'home-timeline-step' + (idx === 0 ? ' active' : '');
+                stepEl.setAttribute('data-idx', idx);
+                stepEl.innerHTML = 
+                    '<div class="step-circle-num">' + (idx + 1) + '</div>' +
+                    '<div class="step-main-info">' +
+                        '<span class="step-time-badge">' + stop.time + '</span>' +
+                        '<h5 class="step-heading">' + stop.title + '</h5>' +
+                        '<p class="step-body-desc">' + stop.desc + '</p>' +
+                    '</div>';
+
+                stepEl.addEventListener('click', function() {
+                    highlightStep(idx);
+                    map.flyTo(pt, Math.max(map.getZoom(), 15), { duration: 0.8 });
+                    m.openPopup();
+                });
+
+                stepsListEl.appendChild(stepEl);
+
+                m.on('click', function() {
+                    highlightStep(idx);
+                });
+            });
+
+            if (latlngs.length > 1) {
+                currentPolyline = L.polyline(latlngs, {
+                    color: '#7B6EF6',
+                    weight: 4,
+                    opacity: 0.85,
+                    dashArray: '6, 8',
+                    lineCap: 'round'
+                }).addTo(map);
+                map.fitBounds(currentPolyline.getBounds(), { padding: [40, 40] });
+            } else if (latlngs.length === 1) {
+                map.setView(latlngs[0], 14);
+            }
+
+            setTimeout(function() { map.invalidateSize(); }, 250);
+        }
+
+        function highlightStep(idx) {
+            document.querySelectorAll('.home-timeline-step').forEach(function(el, i) {
+                if (i === idx) {
+                    el.classList.add('active');
+                    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                } else {
+                    el.classList.remove('active');
+                }
+            });
+        }
+
+        document.getElementById('explorerResetBtn').addEventListener('click', function() {
+            if (currentPolyline) {
+                map.fitBounds(currentPolyline.getBounds(), { padding: [40, 40] });
+            }
+        });
+    });
+    </script>
+    
 </body>
 </html>
