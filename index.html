@@ -475,8 +475,14 @@
         /* ============================================================
            Interactive Route Explorer Section (Homepage)
            ============================================================ */
+        
+
+
+        /* ============================================================
+           Interactive Route Explorer Section (Homepage)
+           ============================================================ */
         .home-route-explorer {
-            padding: 80px 0;
+            padding: 80px 0 70px;
             position: relative;
             border-bottom: 1px solid var(--border-subtle);
             background: radial-gradient(circle at 50% 0%, rgba(123, 110, 246, 0.08) 0%, transparent 70%);
@@ -485,7 +491,7 @@
         .explorer-header {
             text-align: center;
             max-width: 760px;
-            margin: 0 auto 36px;
+            margin: 0 auto 32px;
         }
         .explorer-control-bar {
             display: flex;
@@ -590,7 +596,7 @@
             display: flex;
             flex-direction: column;
             height: 100%;
-            min-height: 520px;
+            min-height: 540px;
             box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
         }
         .explorer-map-bar {
@@ -652,7 +658,7 @@
         .explorer-map-canvas {
             flex: 1;
             width: 100%;
-            min-height: 420px;
+            min-height: 440px;
             background: #0B0814;
             z-index: 1;
         }
@@ -703,6 +709,7 @@
         .route-popup .popup-time { display: inline-block; font-size: 11px; font-weight: 700; color: var(--primary-light); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
         .route-popup .popup-title { font-size: 14px; font-weight: 700; color: #ffffff; margin-bottom: 4px; }
         .route-popup .popup-desc { font-size: 12px; color: #CBD5E1; line-height: 1.5; margin: 0; }
+        
         .explorer-itinerary-card {
             background: rgba(22, 17, 38, 0.7);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -710,14 +717,21 @@
             display: flex;
             flex-direction: column;
             height: 100%;
-            min-height: 520px;
+            min-height: 540px;
             box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
             overflow: hidden;
+            position: relative;
         }
         .itinerary-card-header {
             padding: 16px 20px;
-            background: rgba(15, 11, 26, 0.85);
+            background: rgba(15, 11, 26, 0.9);
             border-bottom: 1px solid var(--border-subtle);
+        }
+        .itinerary-card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 6px;
         }
         .itinerary-card-badge {
             display: flex;
@@ -726,21 +740,41 @@
             font-size: 13px;
             font-weight: 700;
             color: #fff;
-            margin-bottom: 4px;
         }
-        .itinerary-day-tag {
-            background: rgba(123, 110, 246, 0.2);
-            color: var(--primary-light);
-            padding: 2px 8px;
-            border-radius: 6px;
+        .itinerary-day-tabs {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            overflow-x: auto;
+            margin-top: 8px;
+        }
+        .day-tab-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
             font-size: 11px;
             font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            font-family: inherit;
         }
-        .itinerary-card-heading {
-            font-size: 16px;
-            font-weight: 700;
+        .day-tab-btn:hover {
+            background: rgba(123, 110, 246, 0.15);
+            border-color: rgba(123, 110, 246, 0.4);
             color: #fff;
-            margin: 0;
+        }
+        .day-tab-btn.active {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-color: var(--primary-light);
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(123, 110, 246, 0.35);
+        }
+        .day-tab-btn.locked {
+            border: 1px dashed rgba(157, 147, 255, 0.4);
+            color: #C4B5FD;
         }
         .itinerary-steps-scroll {
             flex: 1;
@@ -749,11 +783,9 @@
             display: flex;
             flex-direction: column;
             gap: 12px;
-            max-height: 380px;
+            max-height: 330px;
         }
-        .itinerary-steps-scroll::-webkit-scrollbar {
-            width: 6px;
-        }
+        .itinerary-steps-scroll::-webkit-scrollbar { width: 6px; }
         .itinerary-steps-scroll::-webkit-scrollbar-thumb {
             background: rgba(123, 110, 246, 0.25);
             border-radius: 4px;
@@ -792,9 +824,7 @@
             color: #fff;
             flex-shrink: 0;
         }
-        .step-main-info {
-            flex: 1;
-        }
+        .step-main-info { flex: 1; }
         .step-time-badge {
             background: rgba(123, 110, 246, 0.2);
             color: var(--primary-light);
@@ -818,9 +848,130 @@
             line-height: 1.5;
             margin: 0;
         }
+
+        /* In-Card App Teaser Box (Multi-Day Emphasis) */
+        .itinerary-app-promo {
+            margin: 0 20px 14px;
+            background: linear-gradient(135deg, rgba(123, 110, 246, 0.16) 0%, rgba(236, 72, 153, 0.12) 100%);
+            border: 1px solid rgba(157, 147, 255, 0.35);
+            border-radius: 12px;
+            padding: 14px 16px;
+            position: relative;
+        }
+        .app-promo-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 4px;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .app-promo-badge {
+            font-size: 10px;
+            font-weight: 800;
+            color: var(--primary-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .app-promo-tag {
+            font-size: 10px;
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--emerald);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 700;
+        }
+        .app-promo-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 3px;
+            line-height: 1.3;
+        }
+        .app-promo-desc {
+            font-size: 11px;
+            color: #CBD5E1;
+            line-height: 1.4;
+            margin: 0 0 8px;
+        }
+        .app-promo-btn-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .promo-store-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        .promo-store-btn:hover {
+            background: var(--primary);
+            border-color: var(--primary-light);
+        }
+
+        /* Locked Multi-Day View inside Card */
+        .itinerary-locked-view {
+            display: none;
+            padding: 30px 20px;
+            text-align: center;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+        }
+        .locked-view-icon {
+            font-size: 38px;
+            margin-bottom: 12px;
+            filter: drop-shadow(0 4px 12px rgba(123, 110, 246, 0.5));
+        }
+        .locked-view-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+        .locked-view-desc {
+            font-size: 12px;
+            color: var(--text-secondary);
+            max-width: 340px;
+            line-height: 1.5;
+            margin: 0 auto 16px;
+        }
+        .locked-view-features {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            text-align: left;
+            margin-bottom: 20px;
+            font-size: 12px;
+            color: #E2E8F0;
+        }
+        .locked-feature-check {
+            color: var(--emerald);
+            font-weight: 700;
+            margin-right: 6px;
+        }
+        .locked-back-btn {
+            background: transparent;
+            border: none;
+            color: var(--primary-light);
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+            text-decoration: underline;
+        }
+
         .itinerary-card-footer {
             padding: 14px 20px;
-            background: rgba(15, 11, 26, 0.85);
+            background: rgba(15, 11, 26, 0.9);
             border-top: 1px solid var(--border-subtle);
         }
         .explorer-guide-btn {
@@ -841,6 +992,70 @@
         .explorer-guide-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 24px rgba(123, 110, 246, 0.55);
+        }
+
+        /* Bottom Feature Strip under Explorer Grid */
+        .explorer-feature-strip {
+            margin-top: 24px;
+            background: rgba(22, 17, 38, 0.65);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 16px 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) auto;
+            gap: 16px;
+            align-items: center;
+            backdrop-filter: blur(10px);
+        }
+        @media (max-width: 900px) {
+            .explorer-feature-strip {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+        .feature-strip-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        @media (max-width: 900px) {
+            .feature-strip-item {
+                justify-content: center;
+                text-align: left;
+            }
+        }
+        .strip-icon {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        .feature-strip-item strong {
+            display: block;
+            font-size: 13px;
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+        .feature-strip-item span {
+            display: block;
+            font-size: 11px;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+        .strip-app-btn {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 700;
+            white-space: nowrap;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 14px rgba(236, 72, 153, 0.35);
+        }
+        .strip-app-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(236, 72, 153, 0.5);
         }
 
     </style>
@@ -1002,15 +1217,55 @@
                 <!-- Itinerary Column -->
                 <div class="explorer-itinerary-card">
                     <div class="itinerary-card-header">
-                        <div class="itinerary-card-badge">
-                            <span id="itineraryCityFlag">📍</span>
-                            <span id="itineraryCityName">...</span>
-                            <span class="itinerary-day-tag">Day 1</span>
+                        <div class="itinerary-card-top">
+                            <div class="itinerary-card-badge">
+                                <span id="itineraryCityFlag">📍</span>
+                                <span id="itineraryCityName">...</span>
+                            </div>
+                            <span style="font-size: 11px; color: #10B981; font-weight: 700;">● Web Canlı Önizleme</span>
                         </div>
-                        <h4 class="itinerary-card-heading">Curated Walking Flow</h4>
+                        <!-- Day Selector Tabs -->
+                        <div class="itinerary-day-tabs">
+                            <button type="button" class="day-tab-btn active" id="tabDay1" onclick="switchDayTab(1)">🌟 Day 1 (Preview)</button>
+                            <button type="button" class="day-tab-btn locked" id="tabDay2" onclick="switchDayTab(2)">🔒 Day 2</button>
+                            <button type="button" class="day-tab-btn locked" id="tabDay3" onclick="switchDayTab(3)">🔒 Day 3</button>
+                            <button type="button" class="day-tab-btn locked" id="tabCustom" onclick="switchDayTab(4)">✨ + Add Days</button>
+                        </div>
                     </div>
                     
+                    <!-- Day 1 Steps Scroll -->
                     <div class="itinerary-steps-scroll" id="explorerStepsList">
+                    </div>
+
+                    <!-- Locked Multi-Day View (shown when clicking Day 2, 3 or Custom) -->
+                    <div class="itinerary-locked-view" id="explorerLockedView">
+                        <div class="locked-view-icon">📱✨</div>
+                        <h4 class="locked-view-title">Unlock Day 2, Day 3 & Custom Routes in MyWay</h4>
+                        <p class="locked-view-desc">Get complete 3-day hourly itineraries, explore our 180+ verified place database offline, and plan collaborative daily itineraries with friends in the MyWay app.</p>
+                        <div class="locked-view-features">
+                            <div><span class="locked-feature-check">✓</span>2 to 7-day personalized hourly walking routes</div>
+                            <div><span class="locked-feature-check">✓</span>Full 180+ place database (Offline Mode & Turn-by-turn GPS)</div>
+                            <div><span class="locked-feature-check">✓</span>Co-plan hourly trips with friends and vote on spots</div>
+                        </div>
+                        <div class="app-promo-btn-row" style="justify-content: center;">
+                            <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="promo-store-btn"> App Store</a>
+                            <a href="https://play.google.com/store/apps/details?id=com.anilaybakan.sehirkesif" class="promo-store-btn">▶ Google Play</a>
+                        </div>
+                        <button type="button" class="locked-back-btn" onclick="switchDayTab(1)">← Back to Day 1 Walking Flow</button>
+                    </div>
+
+                    <!-- In-Card Multi-Day Promo Strip (visible under Day 1 steps) -->
+                    <div class="itinerary-app-promo" id="explorerPromoBox">
+                        <div class="app-promo-header">
+                            <span class="app-promo-badge">📱 MYWAY MOBILE APP</span>
+                            <span class="app-promo-tag">AI Planner & Live GPS</span>
+                        </div>
+                        <div class="app-promo-title">Unlock Days 2 & 3 or Build Your Custom Multi-Day Itinerary</div>
+                        <p class="app-promo-desc">Staying longer? Create personalized 2 to 7-day hourly routes, co-plan live with travel buddies, and access offline GPS walking navigation in the MyWay app.</p>
+                        <div class="app-promo-btn-row">
+                            <a href="https://apps.apple.com/app/myway-route-travel-planner/id6757671492" class="promo-store-btn"> App Store</a>
+                            <a href="https://play.google.com/store/apps/details?id=com.anilaybakan.sehirkesif" class="promo-store-btn">▶ Google Play</a>
+                        </div>
                     </div>
 
                     <div class="itinerary-card-footer">
@@ -1020,6 +1275,34 @@
                             <span>&rarr;</span>
                         </a>
                     </div>
+                </div>
+            </div>
+
+            <!-- Bottom Feature Strip (Emphasizing Multi-Day, Co-Planning & Offline GPS) -->
+            <div class="explorer-feature-strip">
+                <div class="feature-strip-item">
+                    <span class="strip-icon">🗓️</span>
+                    <div>
+                        <strong>1-7 Day Custom Itineraries</strong>
+                        <span>Generate Day 2, Day 3, and week-long customized walking trips in the app.</span>
+                    </div>
+                </div>
+                <div class="feature-strip-item">
+                    <span class="strip-icon">👥</span>
+                    <div>
+                        <strong>Live Co-Planning With Friends</strong>
+                        <span>Invite travel buddies, pick stops together, and sync hourly plans in real time.</span>
+                    </div>
+                </div>
+                <div class="feature-strip-item">
+                    <span class="strip-icon">📍</span>
+                    <div>
+                        <strong>Offline Turn-by-Turn GPS</strong>
+                        <span>Navigate without roaming fees across 180+ verified neighborhood spots.</span>
+                    </div>
+                </div>
+                <div class="feature-strip-item">
+                    <a href="#download" class="strip-app-btn">📱 Build Multi-Day Routes</a>
                 </div>
             </div>
         </div>
@@ -1443,6 +1726,7 @@
         }
     </script>
 
+    
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -1468,7 +1752,6 @@
         var selectEl = document.getElementById('explorerCitySelect');
         var pillsContainer = document.getElementById('explorerPills');
 
-        // Render quick pills
         quickPills.forEach(function(p) {
             var btn = document.createElement('button');
             btn.type = 'button';
@@ -1482,10 +1765,8 @@
         });
 
         // Fetch routes data with fallback
-        var primaryDataUrl = '/data/homepage_routes_en.json';
-        var fallbackDataUrl = 'data/homepage_routes_en.json';
-        fetch(primaryDataUrl)
-            .catch(function() { return fetch(fallbackDataUrl); })
+        fetch('/data/homepage_routes_en.json')
+            .catch(function() { return fetch('data/homepage_routes_en.json'); })
             .then(function(res) { return res.json(); })
             .then(function(data) {
                 allRoutesData = data;
@@ -1513,9 +1794,38 @@
             selectCity(e.target.value);
         });
 
+        window.switchDayTab = function(dayNum) {
+            var tab1 = document.getElementById('tabDay1');
+            var tab2 = document.getElementById('tabDay2');
+            var tab3 = document.getElementById('tabDay3');
+            var tabCustom = document.getElementById('tabCustom');
+            var stepsList = document.getElementById('explorerStepsList');
+            var lockedView = document.getElementById('explorerLockedView');
+            var promoBox = document.getElementById('explorerPromoBox');
+
+            [tab1, tab2, tab3, tabCustom].forEach(function(t) { if (t) t.classList.remove('active'); });
+
+            if (dayNum === 1) {
+                if (tab1) tab1.classList.add('active');
+                if (stepsList) stepsList.style.display = 'flex';
+                if (lockedView) lockedView.style.display = 'none';
+                if (promoBox) promoBox.style.display = 'block';
+            } else {
+                if (dayNum === 2 && tab2) tab2.classList.add('active');
+                if (dayNum === 3 && tab3) tab3.classList.add('active');
+                if (dayNum === 4 && tabCustom) tabCustom.classList.add('active');
+                if (stepsList) stepsList.style.display = 'none';
+                if (lockedView) lockedView.style.display = 'flex';
+                if (promoBox) promoBox.style.display = 'none';
+            }
+        };
+
         function selectCity(slug) {
             var city = allRoutesData[slug];
             if (!city) return;
+
+            // Always reset to Day 1 tab when switching city
+            switchDayTab(1);
 
             if (selectEl.value !== slug) {
                 selectEl.value = slug;
